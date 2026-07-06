@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 2 · Привітання. Дієслово SER · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 2 · @malinnaartstudio</div>
+    <h1 id="htitle">Привітання. Дієслово SER: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 2 · Saludos y presentaciones. Verbo SER.</b>
+      30 вправ по 10 питань: привітання, знайомство, всі форми SER, професії, національності.
+      Складність зростає від ★ до ★★★. ¡Vamos! 💪
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · базові</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · SER у житті</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі та діалоги</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 2</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Привітання", lv:1, q:[
+["«Привіт» — це…","Hola","Adiós","Adiós = до побачення"],
+["«Доброго ранку» — це…","Buenos días","Buenas noches","noches — пізній вечір/ніч"],
+["Buenas tardes кажуть…","вдень після обіду","рано вранці","≈ з 14:00 до сутінків"],
+["Пізно ввечері вітаються…","Buenas noches","Buenos días","noches — і привітання, і «добраніч»"],
+["Hola можна казати…","у будь-який час доби","лише вранці","універсальне привітання"],
+["Зайшовши до маленького магазину, іспанці зазвичай…","вітаються з усіма","мовчать","¡Buenos días! — норма ввічливості"],
+["Buenos días вживають приблизно до…","обіду (≈14:00)","півночі","іспанський обід пізній!"],
+["«Привіт, як справи?» — це…","Hola, ¿qué tal?","Adiós, ¿qué tal?","класика зустрічі"],
+["Скорочене «¡Buenas!» — це…","розмовне привітання","прощання","підходить у будь-який час"],
+["Найформальніше привітання:","Buenos días, señor García","¡Ey! ¿Qué pasa?","¡Ey! — лише для друзів"]
+]},
+{t:"Прощання", lv:1, q:[
+["«До побачення» — це…","Adiós","Hola","базове прощання"],
+["«До зустрічі» — це…","Hasta luego","Buenas tardes","найпопулярніше прощання в Іспанії"],
+["«До завтра» — це…","Hasta mañana","Hasta ayer","ayer = вчора!"],
+["«До скорого» — це…","Hasta pronto","Hasta nunca","nunca = ніколи 😅"],
+["Hasta el lunes означає…","до понеділка","щопонеділка","hasta + день"],
+["«Гарних вихідних!» — це…","¡Buen fin de semana!","¡Buena semana pasada!","fin de semana = вихідні"],
+["Nos vemos означає…","побачимось","ми бачимо","дослівно «бачимось»"],
+["Chao — це…","розмовне «бувай»","офіційне прощання","з італійської ciao"],
+["Йдучи спати, кажуть…","Buenas noches","Buenos días","добраніч!"],
+["На Hasta luego зазвичай відповідають…","Hasta luego","Mucho gusto","дзеркальна відповідь"]
+]},
+{t:"SER: yo і tú", lv:1, q:[
+["Yo ___ Inna.","soy","eres","yo → soy"],
+["¿Tú ___ de Madrid?","eres","soy","tú → eres"],
+["Yo ___ estudiante.","soy","es","yo → soy"],
+["Tú ___ muy simpático.","eres","es","tú → eres"],
+["Yo no ___ profesor.","soy","son","yo → soy"],
+["¿___ tú Carlos?","Eres","Es","tú → eres"],
+["Yo ___ ucraniana.","soy","somos","yo → soy"],
+["Tú ___ mi amigo.","eres","sois","tú → eres"],
+["Займеннику yo відповідає форма…","soy","sois","sois — це vosotros"],
+["Займеннику tú відповідає форма…","eres","es","es — це él/ella"]
+]},
+{t:"SER: él, ella, usted", lv:1, q:[
+["Él ___ mi hermano.","es","eres","él → es"],
+["Ella ___ doctora.","es","soy","ella → es"],
+["Usted ___ muy amable.","es","eres","usted → форма 3-ї особи"],
+["María ___ de Valencia.","es","son","María = ella → es"],
+["Mi padre ___ ingeniero.","es","somos","mi padre = él → es"],
+["¿___ usted el señor López?","Es","Eres","usted → es"],
+["Pedro no ___ español.","es","sois","Pedro = él → es"],
+["Usted вживає дієслово у формі…","3-ї особи (es)","2-ї особи (eres)","ввічливе «Ви» = 3-тя особа!"],
+["Ella ___ mi mejor amiga.","es","soy","ella → es"],
+["Займенникам él/ella відповідає форма…","es","son","son — це множина"]
+]},
+{t:"SER: ми, ви, вони", lv:1, q:[
+["Nosotros ___ amigos.","somos","son","nosotros → somos"],
+["Vosotros ___ estudiantes.","sois","somos","vosotros → sois"],
+["Ellos ___ de Ucrania.","son","es","ellos → son"],
+["Nosotras ___ hermanas.","somos","sois","nosotras → somos"],
+["¿Vosotras ___ profesoras?","sois","son","vosotras → sois"],
+["Ellas ___ muy simpáticas.","son","somos","ellas → son"],
+["Ustedes ___ bienvenidos.","son","sois","ustedes → son (3-тя особа мн.)"],
+["nosotros → …","somos","sois","со-мос"],
+["vosotros → …","sois","son","со-іс"],
+["ellos / ellas / ustedes → …","son","somos","всі троє → son"]
+]},
+{t:"SER: уся парадигма", lv:1, q:[
+["yo → …","soy","es","я є"],
+["tú → …","eres","sois","ти є"],
+["él → …","es","son","він є"],
+["nosotros → …","somos","soy","ми є"],
+["vosotros → …","sois","eres","ви є (Іспанія)"],
+["ellas → …","son","es","вони є"],
+["usted → …","es","eres","Ви (ввічливо) → 3-тя особа"],
+["ustedes → …","son","sois","Ви (мн., ввічливо)"],
+["Yo no ___ de aquí.","soy","somos","yo → soy"],
+["¿Tú ___ nuevo aquí?","eres","es","tú → eres"]
+]},
+{t:"Представлення", lv:1, q:[
+["«Мене звати Inna» — це…","Me llamo Inna","Me llama Inna","me llamO — я звУся"],
+["«Я — Inna» — це…","Soy Inna","Estoy Inna","імʼя → SER"],
+["«Дуже приємно» — це…","Mucho gusto","Muchas gracias","gracias = дякую"],
+["Відповідь на Mucho gusto:","Igualmente","De nada","навзаєм!"],
+["«Це моя подруга Ана» — це…","Esta es mi amiga Ana","Este es mi amiga Ana","amiga ж.р. → esta"],
+["Чоловік каже «радий познайомитися»:","Encantado","Encantada","-o для чоловіка"],
+["Жінка каже «рада познайомитися»:","Encantada","Encantado","-a для жінки"],
+["«Знайомлю тебе з Мартою»:","Te presento a Marta","Te presento Marta","перед особою — прийменник a"],
+["«Як тебе звати?» — це…","¿Cómo te llamas?","¿Cómo estás?","estás — про самопочуття"],
+["Правильно сказати:","Soy Inna","Estoy Inna","хто я → ser"]
+]},
+{t:"Ввічливі слова", lv:1, q:[
+["«Дякую» — це…","Gracias","De nada","de nada — відповідь на дякую"],
+["«Будь ласка» (прохання) — це…","Por favor","Por qué","por qué = чому"],
+["«Прошу / нема за що» — це…","De nada","Por favor","відповідь на gracias"],
+["«Вибачте» — це…","Perdón","Perdiz","perdiz = куріпка 🐦"],
+["«Дуже дякую» — це…","Muchas gracias","Mucho gracias","gracias ж.р. мн. → muchas"],
+["Disculpe кажуть, щоб…","ввічливо звернутися","привітатися","«перепрошую, скажіть…»"],
+["«Заходьте! / Проходьте!» — це…","¡Adelante!","¡Adiós!","запрошення увійти"],
+["Lo siento означає…","мені шкода / вибачте","я це чую","вибачення співчуттям"],
+["Con permiso кажуть, коли…","проходять повз когось","дарують подарунок","«з дозволу»"],
+["Відповідь на Gracias:","De nada","Hasta luego","нема за що"]
+]},
+{t:"Як справи? Відповіді", lv:1, q:[
+["«Добре, дякую» — це…","Bien, gracias","Buen, gracias","добре = bien"],
+["«Дуже добре» — це…","Muy bien","Mucho bien","перед прислівником → muy"],
+["«Так собі» — це…","Regular","Regularmente","regular = середньо"],
+["«Погано» — це…","Mal","Malo","mal — прислівник"],
+["¿Qué tal? — це…","неформальне «як справи»","офіційне звертання","дуже поширене!"],
+["Відповідь + зустрічне питання:","Bien, ¿y tú?","Bien, ¿y té?","té = чай ☕"],
+["Формальне «як справи»:","¿Cómo está usted?","¿Cómo estás usted?","usted → está"],
+["«Чудово!» — це…","¡Genial!","¡General!","general = генерал 😄"],
+["«Трохи втомлений» — це…","Un poco cansado","Un poco casado","casado = одружений!"],
+["¿Y tú? означає…","А ти?","І чай?","зустрічне питання"]
+]},
+{t:"Питання знайомства", lv:1, q:[
+["«Звідки ти?» — це…","¿De dónde eres?","¿Dónde eres?","походження → DE dónde"],
+["«Скільки тобі років?» — це…","¿Cuántos años tienes?","¿Cuántos años eres?","вік → tener!"],
+["«Чим ти займаєшся?» — це…","¿A qué te dedicas?","¿A qué te duchas?","duchas = приймаєш душ 🚿"],
+["«Де ти живеш?» — це…","¿Dónde vives?","¿De dónde vives?","живеш ДЕ → dónde"],
+["Відповідь на ¿De dónde eres?:","Soy de Kyiv","Estoy de Kyiv","походження → ser"],
+["«Хто це?» — це…","¿Quién es?","¿Qué es?","про особу → quién"],
+["«Як Ваші справи?» (формально):","¿Cómo está?","¿Cómo estás?","usted → está"],
+["¿Cuál es tu nombre? означає…","Як тебе звати?","Який твій номер?","nombre = імʼя, número = номер"],
+["«Ти іспанець?» — це…","¿Eres español?","¿Estás español?","національність → ser"],
+["«Дуже приємно, я Марта»:","Encantada, soy Marta","Encantada, estoy Marta","імʼя → soy"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"SER + професія", lv:2, q:[
+["Yo ___ profesora.","soy","estoy","професія → ser"],
+["Él es ___.","médico","médica","він → médico"],
+["Ella es ___.","enfermera","enfermero","вона → -a"],
+["«Я вчителька» — це…","Soy profesora","Soy una profesora","професія БЕЗ артикля!"],
+["Nosotros ___ camareros.","somos","estamos","професія → ser"],
+["¿Tú ___ estudiante?","eres","estás","статус → ser"],
+["Mi madre es ___.","abogada","abogado","мама → -a"],
+["Ellos son ___.","cocineros","cocinero","вони → множина"],
+["Професія після SER вживається…","без артикля","завжди з un/una","soy médico, не soy un médico"],
+["Marta es ___ de español.","profesora","profesión","profesión = професія (поняття)"]
+]},
+{t:"Професії: лексика", lv:2, q:[
+["«лікар» — це…","el médico","el miedo","miedo = страх!"],
+["«вчитель» — це…","el profesor","el profesional","profesional = професіонал"],
+["«офіціант» — це…","el camarero","el camino","camino = дорога"],
+["«кухар» — це…","el cocinero","la cocina","cocina = кухня"],
+["«адвокат» — це…","el abogado","el aguacate","aguacate = авокадо 🥑"],
+["«медсестра» — це…","la enfermera","la enferma","enferma = хвора!"],
+["«інженер» — це…","el ingeniero","el genio","genio = геній"],
+["«перукар» — це…","el peluquero","el pelo","pelo = волосся"],
+["«письменниця» — це…","la escritora","el escritorio","escritorio = письмовий стіл"],
+["«продавець» — це…","el vendedor","el ganador","ganador = переможець"]
+]},
+{t:"SER DE: походження", lv:2, q:[
+["Soy ___ Ucrania.","de","en","походження → de"],
+["¿De dónde ___ (tú)?","eres","estás","походження → ser"],
+["Ana es ___ Barcelona.","de","a","ser DE + місто"],
+["Somos ___ Kyiv.","de","del","перед назвою міста — просто de"],
+["«Він з Мексики» — це…","Es de México","Es en México","de = з"],
+["¿___ dónde sois?","De","A","¿DE dónde…?"],
+["Ser de означає…","походити з","прямувати до","soy de = я з…"],
+["Soy de ___.","Lviv","el Lviv","міста без артикля"],
+["Ellos son ___ Perú.","de","desde","походження → de"],
+["«Ми з України» — це…","Somos de Ucrania","Estamos de Ucrania","походження → ser"]
+]},
+{t:"Національності", lv:2, q:[
+["Ucrania → він…","ucraniano","ucranio","ucraniano/ucraniana"],
+["España → він…","español","españolo","без -o!"],
+["Іспанка — це…","española","español","ж.р. → +a"],
+["Francia → він…","francés","francio","francés із тильдою"],
+["Француженка — це…","francesa","francésa","тильда зникає у ж.р.!"],
+["Italia → він…","italiano","italián","italiano"],
+["Alemania → він…","alemán","alemano","alemán"],
+["Німкеня — це…","alemana","alemána","тильда зникає"],
+["Portugal → він…","portugués","portugalés","portugués"],
+["Національності пишуться…","з малої літери","з великої літери","español, а не Español!"]
+]},
+{t:"SER + характер", lv:2, q:[
+["Mi amigo es muy ___.","simpático","simpática","amigo → -o"],
+["Ana es ___.","inteligente","inteligenta","на -e не змінюється за родом!"],
+["Mis padres son ___.","trabajadores","trabajadora","множина"],
+["«привітний/люб'язний» — це…","amable","amoble","amable для обох родів"],
+["Ellos son ___. (веселі)","divertidos","divertidas","ellos → -os"],
+["Mi hermana es ___. (сором'язлива)","tímida","tímido","hermana → -a"],
+["«серйозний» — це…","serio","sirio","sirio = сирієць!"],
+["Nosotras somos ___.","optimistas","optimistos","на -ista — одна форма!"],
+["Él es un poco ___. (ледачий)","perezoso","perezosa","él → -o"],
+["«кмітлива/розумна» — це…","lista","listo","ser lista = розумна"]
+]},
+{t:"TÚ чи USTED?", lv:2, q:[
+["До близького друга звертаються на…","tú","usted","неформально"],
+["До літнього незнайомця ввічливо на…","usted","tú","повага → usted"],
+["Usted вимагає дієслова у…","3-й особі","2-й особі","usted es, usted habla"],
+["«Як Вас звати?» — це…","¿Cómo se llama usted?","¿Cómo te llamas usted?","usted → se llama"],
+["До дитини звертаються на…","tú","usted","з дітьми — завжди tú"],
+["Між колегами в Іспанії зазвичай…","tú","usted","Іспанія дуже неформальна"],
+["Ввічлива множина «Ви всі»:","ustedes","vosotros","vosotros — неформальне"],
+["Неформальна множина «ви» в Іспанії:","vosotros","ustedes","у Лат. Америці — ustedes"],
+["¿Y usted? означає…","А Ви?","А ти?","формальне"],
+["Перехід на «ти» називається…","tutear","tutelar","¿Nos tuteamos?"]
+]},
+{t:"Заперечення з SER", lv:2, q:[
+["Yo ___ soy español.","no","non","no перед дієсловом"],
+["«Я не лікар» — це…","No soy médico","Soy no médico","no ПЕРЕД дієсловом"],
+["Ella no ___ de aquí.","es","eres","ella → es"],
+["«No, no soy Marta» — подвійне no…","звучить природно","груба помилка","перше no = «ні», друге — заперечення"],
+["¿Eres profesor? — No, ___ estudiante.","soy","estoy","статус → ser"],
+["Nosotros no ___ hermanos.","somos","sois","nosotros → somos"],
+["Частка NO ставиться…","перед дієсловом","після дієслова","no soy, no eres…"],
+["«Він не мій брат» — це…","No es mi hermano","Es no mi hermano","no + дієслово"],
+["¿Sois de Madrid? — No, ___ de Valencia.","somos","sois","відповідаємо про себе → somos"],
+["Vosotros no ___ camareros.","sois","son","vosotros → sois"]
+]},
+{t:"Питання з SER", lv:2, q:[
+["«Ти Ана?» — це…","¿Eres Ana?","¿Estás Ana?","ідентифікація → ser"],
+["¿___ usted el director?","Es","Eres","usted → es"],
+["¿Quién ___ esa chica?","es","son","одна дівчина → es"],
+["«Ви студенти?» (vosotros) — це…","¿Sois estudiantes?","¿Son estudiantes vosotros?","vosotros → sois"],
+["Eres de Kyiv, ¿___?","verdad","verdadero","«…, чи не так?»"],
+["¿Qué ___ esto?","es","eres","esto → es"],
+["¿De quién ___ este bolso?","es","eres","чия сумка → es"],
+["В іспанському питанні порядок слів…","може лишатися прямим","завжди інвертується","¿Tú eres Ana? — теж ок"],
+["«Хто Ви?» (ввічливо) — це…","¿Quién es usted?","¿Quién eres usted?","usted → es"],
+["¿Sois hermanos? питає про…","співрозмовників (вас)","третіх осіб","sois = ви"]
+]},
+{t:"Обери правильну форму", lv:2, q:[
+["Yo ___ Inna.","soy","es","yo → soy"],
+["Tú ___ simpático.","eres","sois","tú → eres"],
+["Nosotros ___ amigos.","somos","son","nosotros → somos"],
+["Ellos ___ de Polonia.","son","es","ellos → son"],
+["Usted ___ muy amable.","es","eres","usted → es"],
+["Vosotras ___ estudiantes.","sois","son","vosotras → sois"],
+["Ella ___ mi madre.","es","soy","ella → es"],
+["Yo no ___ de aquí.","soy","eres","yo → soy"],
+["¿___ tú el nuevo profesor?","Eres","Es","tú → eres"],
+["Marta y yo ___ vecinas.","somos","son","Marta y yo = МИ → somos!"]
+]},
+{t:"Діалог знайомства", lv:2, q:[
+["A: ¡Hola! ¿Cómo ___ llamas?","te","se","tú → te llamas"],
+["B: Me llamo Andrés. ¿Y ___?","tú","ti","¿y tú? = а ти?"],
+["A: Soy Olha. Mucho ___.","gusto","gustos","mucho gusto — однина"],
+["B: ___. ¿De dónde eres?","Igualmente","Iguales","навзаєм"],
+["A: ___ de Ucrania.","Soy","Estoy","походження → ser"],
+["B: ¡Qué bien! Yo soy ___ Sevilla.","de","en","ser DE"],
+["A: ¿A qué te ___?","dedicas","duchas","dedicarse = займатися"],
+["B: Soy ___. (він)","enfermero","enfermera","Andrés → -o"],
+["A: ¿Y cuántos años ___?","tienes","eres","вік → tener"],
+["B: Tengo 28. ¡Hasta ___!","luego","lejos","lejos = далеко"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Коли вживаємо SER", lv:3, q:[
+["Ідентифікація (Es mi amiga) — це…","ser","estar","хто це → ser"],
+["Професія виражається дієсловом…","ser","tener","soy profesora"],
+["Походження (de Kyiv) — це…","ser","estar","soy de…"],
+["Характер (simpático) — це…","ser","estar","постійна риса"],
+["«Я — Inna» — це…","Soy Inna","Estoy Inna","ідентифікація"],
+["Національність виражається дієсловом…","ser","haber","soy ucraniana"],
+["SER описує…","суть: хто/що/який за природою","тимчасовий стан","стани — це estar (далі в курсі)"],
+["Hoy es lunes — це вживання SER для…","днів і дат","місцезнаходження","дні тижня → ser"],
+["Питання про професію:","¿A qué te dedicas?","¿A qué te llamas?","або ¿Qué haces?"],
+["Постійна ознака людини → …","ser","estar","ser = «паспортні дані»"]
+]},
+{t:"Артикль із професією", lv:3, q:[
+["«Я вчителька»:","Soy profesora","Soy una profesora","без артикля!"],
+["«Es médico» — це…","правильно","бракує артикля","професія без un"],
+["Він ___ médico excelente.","es un","es","З ПРИКМЕТНИКОМ артикль зʼявляється!"],
+["Якщо є прикметник (excelente), артикль…","потрібен","заборонений","es un médico excelente"],
+["«Вона вчителька» —","Es profesora","Es una profesora","просто професія → без артикля"],
+["«Він чудовий кухар» —","Es un cocinero estupendo","Es cocinero estupendo","з оцінкою → артикль"],
+["«Mi padre es ingeniero» — це…","правильно","помилка","класична конструкція"],
+["«Soy la profesora de tu hijo» — артикль…","доречний: конкретна вчителька","помилка","LA = саме та"],
+["У «¿Eres estudiante?» артикль…","не потрібен","обовʼязковий","статус без артикля"],
+["«Es una abogada muy famosa» — це…","правильно","зайвий артикль","famosa → артикль потрібен"]
+]},
+{t:"SER DE: три значення", lv:3, q:[
+["Soy de Ucrania — тут DE означає…","походження","матеріал","звідки я"],
+["La mesa es de madera — тут DE означає…","матеріал","походження","з дерева"],
+["El coche es de Juan — тут DE означає…","належність","матеріал","чиє авто"],
+["«Годинник — золотий»:","El reloj es de oro","El reloj es oro","матеріал → de"],
+["¿De quién es esto? питає про…","власника","матеріал","чиє це?"],
+["La camisa es ___ algodón.","de","del","матеріал → de"],
+["Este libro es ___ la profesora.","de","a","належність → de"],
+["«Я з Харкова»:","Soy de Járkiv","Soy en Járkiv","походження → de"],
+["La casa es de mis abuelos означає…","дім належить дідусеві й бабусі","дім зроблений з дідусів 😄","належність"],
+["¿De dónde es este queso? питає про…","походження продукту","власника сиру","звідки сир"]
+]},
+{t:"Encantado/a: узгодження", lv:3, q:[
+["Чоловік каже:","Encantado","Encantada","-o"],
+["Жінка каже:","Encantada","Encantado","-a"],
+["Двоє чоловіків кажуть:","Encantados","Encantado","множина"],
+["«Радий познайомитися з тобою»:","Encantado de conocerte","Encantado de conocerse","з тобою → te"],
+["Ввічливо (з Вами):","Encantado de conocerle","Encantado de conocerte","usted → le"],
+["Mucho gusto змінюється за родом?","ні","так","каже і чоловік, і жінка"],
+["Igualmente означає…","навзаєм","однаково завжди","відповідь на приємність"],
+["Es un placer означає…","це приємність","це площа","plaza = площа!"],
+["Найформальніше:","Es un placer conocerle","¡Qué pasa, tío!","tío — суто розмовне"],
+["Жінка відповідає на Encantado:","Encantada","Encantados","узгоджує зі СВОЇМ родом"]
+]},
+{t:"Обери правильне речення", lv:3, q:[
+["Про походження:","Soy de Ucrania.","Estoy de Ucrania.","ser de"],
+["Про професію:","Marta es profesora.","Marta es una profesora.","без артикля"],
+["Питання про імʼя:","¿Cómo te llamas?","¿Cómo tú te llamas te?","зайві слова!"],
+["Про дружбу:","Nosotros somos amigos.","Nosotros son amigos.","nosotros → somos"],
+["Про характер:","Él es muy simpático.","Él es mucho simpático.","перед прикметником → muy"],
+["Представлення:","Yo soy Andriy.","Yo estoy Andriy.","імʼя → ser"],
+["Питання про походження:","¿De dónde eres?","¿De dónde estás?","походження → ser"],
+["Ввічливість:","Usted es muy amable.","Usted eres muy amable.","usted → es"],
+["Національність:","Ellos son españoles.","Ellos son españols.","español → españolEs"],
+["Про нас двох:","Mi hermana y yo somos altas.","Mi hermana y yo son altas.","…y yo = ми → somos"]
+]},
+{t:"Розмовні формули", lv:3, q:[
+["¿Qué tal? означає…","Як справи?","Що це таке?","універсальне"],
+["¡Cuánto tiempo! означає…","Скільки часу не бачились!","Котра година!","при зустрічі після перерви"],
+["¿Qué hay? — це…","розмовне привітання","питання про асортимент","≈ «як воно?»"],
+["¡Bienvenido! означає…","Ласкаво просимо!","До побачення!","bien + venido"],
+["Жінці кажуть:","¡Bienvenida!","¡Bienvenido!","узгодження за родом"],
+["«Передавай вітання Ані»:","Saludos a Ana","Salidas a Ana","salidas = виходи 🚪"],
+["Un abrazo наприкінці листа означає…","обіймаю","парасолька","тепле завершення"],
+["¡Que te vaya bien! означає…","Хай щастить!","Іди геть!","добре побажання"],
+["¿Qué pasa? розмовно означає…","Як справи? / Що чути?","Що ти накоїв?","привітання серед друзів"],
+["¡Nos vemos! означає…","Побачимось!","Ми дивимось телевізор!","прощання"]
+]},
+{t:"Привітання і час доби", lv:3, q:[
+["О 9:00 кажуть…","Buenos días","Buenas tardes","ранок"],
+["О 17:00 кажуть…","Buenas tardes","Buenos días","після обіду"],
+["О 22:00 кажуть…","Buenas noches","Buenas tardes","пізній вечір"],
+["Buenos días — приблизно до…","обіду (≈14:00)","18:00","іспанський обід — о 14-15"],
+["Межа між días і tardes в Іспанії — це…","обід","схід сонця","поїв — почалась tarde 😄"],
+["О 7:30 ранку кажуть…","Buenos días","Buenas noches","ранок"],
+["Buenas noches вживають…","і вітаючись пізно, і прощаючись","лише прощаючись","подвійна функція"],
+["О 15:00 (по обіді) кажуть…","Buenas tardes","Buenos días","tarde почалась"],
+["Días/tardes/noches у привітаннях стоять у…","множині","однині","buenOS díAS!"],
+["Buenos días дослівно означає…","добрі дні","добрий день","вітають одразу багатьма днями 😊"]
+]},
+{t:"Виправи типову помилку", lv:3, q:[
+["«Soy 25 años» → правильно…","Tengo 25 años","Estoy 25 años","вік → tener"],
+["«Estoy Inna» → правильно…","Soy Inna","Es Inna","імʼя → ser, я → soy"],
+["«Es una profesora» (просто професія) → краще…","Es profesora","Está profesora","без артикля"],
+["«¿Cómo estás usted?» → правильно…","¿Cómo está usted?","¿Cómo eres usted?","usted → está"],
+["«Mucho gusta» → правильно…","Mucho gusto","Muy gusto","gusto — іменник"],
+["«Yo es estudiante» → правильно…","Yo soy estudiante","Yo son estudiante","yo → soy"],
+["«Somos de en Ucrania» → правильно…","Somos de Ucrania","Somos en de Ucrania","лише de"],
+["«Ellos es amigos» → правильно…","Ellos son amigos","Ellos sois amigos","ellos → son"],
+["«Tú es mi amigo» → правильно…","Tú eres mi amigo","Tú soy mi amigo","tú → eres"],
+["Жінка сказала «Encantado» → правильно…","Encantada","Encantados","узгодження за родом"]
+]},
+{t:"Діалог: обери репліку", lv:3, q:[
+["— ¡Hola! — …","¡Hola! ¿Qué tal?","¡Adiós!","вітання на вітання"],
+["— ¿Cómo te llamas? — …","Me llamo Sofía","Estoy Sofía","me llamo…"],
+["— ¿De dónde eres? — …","Soy de Odesa","Tengo de Odesa","ser de"],
+["— ¿A qué te dedicas? — …","Soy diseñadora","Me llamo diseñadora","професія → soy"],
+["— Mucho gusto. — …","Igualmente","De nada","навзаєм"],
+["— ¿Cómo está usted? — …","Muy bien, gracias. ¿Y usted?","Muy bien, ¿y tú?","тримаємо формальність!"],
+["— Te presento a mi amiga Eva. — …","Encantado, Eva","Gracias, Eva","знайомство → encantado"],
+["— ¿Eres español? — …","No, soy argentino","No, estoy argentino","національність → ser"],
+["— Bueno, me voy. — …","¡Hasta luego!","¡Bienvenido!","людина йде → прощаємось"],
+["— ¡Que tengas buen día! — …","¡Gracias, igualmente!","¡De nada!","дякуємо і бажаємо навзаєм"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["yo → …","soy","es","база бáз"],
+["«Дуже приємно» — це…","Mucho gusto","Muchos gustos","однина"],
+["Nosotros ___ de Ucrania.","somos","estamos","походження → ser"],
+["Професія вживається без…","артикля","дієслова","soy médico"],
+["usted → …","es","eres","3-тя особа"],
+["О 21:30 вітаються…","Buenas noches","Buenos días","пізній вечір"],
+["«Звідки ти?» — це…","¿De dónde eres?","¿Dónde eres?","DE dónde"],
+["Жінка каже:","Encantada","Encantado","-a"],
+["Marta y yo ___ amigas.","somos","son","…y yo = ми"],
+["Відповідь на Gracias:","De nada","Por favor","нема за що"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Привітання. Дієслово SER: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 2 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>
