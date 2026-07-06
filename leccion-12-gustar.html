@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 12 · GUSTAR та непрямий додаток · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 12 · @malinnaartstudio</div>
+    <h1 id="htitle">GUSTAR: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 12 · Verbos de objeto indirecto. Gustar.</b>
+      30 вправ по 10 питань: me/te/le/nos/os/les, gusta vs gustan, encantar, doler,
+      узгодження, підсилення a mí… Від ★ до ★★★. ¡Te va a gustar! 😍
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · основи gustar</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · інші дієслова, контекст</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й підсилення</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 12</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"GUSTA чи GUSTAN?", lv:1, q:[
+["Me ___ el café.","gusta","gustan","однина → gusta"],
+["Me ___ los gatos.","gustan","gusta","множина → gustan"],
+["Me ___ la música.","gusta","gustan","однина → gusta"],
+["Me ___ las flores.","gustan","gusta","множина → gustan"],
+["Me ___ bailar.","gusta","gustan","інфінітив → gusta"],
+["Me ___ el chocolate.","gusta","gustan","однина → gusta"],
+["Me ___ los libros.","gustan","gusta","множина → gustan"],
+["Me ___ leer y escribir.","gusta","gustan","дії (інфінітиви) → gusta"],
+["gusta вживається з…","одниною та інфінітивом","множиною","me gusta el mar"],
+["gustan вживається з…","множиною","одниною","me gustan los perros"]
+]},
+{t:"Займенники me, te, le", lv:1, q:[
+["___ gusta el té. (мені)","Me","Te","мені → me"],
+["___ gusta el té. (тобі)","Te","Me","тобі → te"],
+["___ gusta el té. (йому/їй)","Le","Me","йому → le"],
+["A mí ___ gusta el mar.","me","te","a mí → me"],
+["A ti ___ gusta viajar.","te","le","a ti → te"],
+["A ella ___ gusta el arte.","le","te","a ella → le"],
+["me = …","мені","тобі","me gusta"],
+["te = …","тобі","йому","te gusta"],
+["le = …","йому/їй/Вам","мені","le gusta"],
+["A Juan ___ gusta el fútbol.","le","se","a Juan → le"]
+]},
+{t:"Займенники nos, os, les", lv:1, q:[
+["___ gusta el cine. (нам)","Nos","Os","нам → nos"],
+["___ gusta el cine. (вам, vosotros)","Os","Nos","вам → os"],
+["___ gusta el cine. (їм)","Les","Nos","їм → les"],
+["A nosotros ___ gusta cocinar.","nos","os","a nosotros → nos"],
+["A vosotros ___ gusta el fútbol.","os","les","a vosotros → os"],
+["A ellos ___ gusta viajar.","les","nos","a ellos → les"],
+["nos = …","нам","вам","nos gusta"],
+["os = …","вам (vosotros)","їм","os gusta"],
+["les = …","їм/Вам (ustedes)","нам","les gusta"],
+["A mis padres ___ gusta pasear.","les","le","a mis padres → les"]
+]},
+{t:"Побудова речення", lv:1, q:[
+["«Мені подобається кава» — це…","Me gusta el café","Yo gusto el café","gustar: me gusta"],
+["Дослівно me gusta el café означає…","кава мені подобається","я люблю каву","«кава мені є приємною»"],
+["Що є підметом у «Me gusta el café»?","el café","me","gustar узгоджується з кавою"],
+["«Тобі подобаються собаки» — це…","Te gustan los perros","Tú gustas los perros","множина → gustan"],
+["«Йому подобається читати» — це…","Le gusta leer","Le gustan leer","інфінітив → gusta"],
+["У gustar «я» виражається через…","me","yo","me gusta"],
+["Дієслово gustar узгоджується з…","тим, що подобається","тим, хто любить","el café → gusta"],
+["«Нам подобається море» — це…","Nos gusta el mar","Nosotros gustamos el mar","nos gusta"],
+["«Їм подобаються квіти» — це…","Les gustan las flores","Ellos gustan las flores","les gustan"],
+["Порядок: (A + особа) + займенник + gustar + …","що подобається","підмет-особа","A mí me gusta X"]
+]},
+{t:"ME GUSTA + інфінітив", lv:1, q:[
+["Me gusta ___. (танцювати)","bailar","bailo","gustar + інфінітив"],
+["Me gusta ___ música. (слухати)","escuchar","escucho","gusta + інфінітив"],
+["Te gusta ___. (читати)","leer","lees","gusta leer"],
+["Le gusta ___ en bici. (їздити)","montar","monta","gusta montar"],
+["Me gusta ___ y ___.","cocinar, comer","cocino, como","два інфінітиви → gusta"],
+["Після me gusta йде…","інфінітив (не змінена форма)","дієслово в презенсі","me gusta cantar"],
+["Me gusta ___ por la mañana. (гуляти)","pasear","paseo","gusta pasear"],
+["Навіть із кількома діями вживається…","gusta (однина)","gustan","me gusta comer y dormir"],
+["«Мені подобається подорожувати» — це…","Me gusta viajar","Me gustan viajar","інфінітив → gusta"],
+["Nos gusta ___ juntos. (готувати)","cocinar","cocinamos","gusta cocinar"]
+]},
+{t:"Що подобається: лексика", lv:1, q:[
+["Me gusta el ___. (кіно)","cine","cena","cena = вечеря"],
+["Me gustan los ___. (тварини)","animales","árboles","árboles = дерева"],
+["Me gusta la ___. (музика)","música","muñeca","muñeca = лялька/зап'ясток"],
+["Me gusta el ___. (спорт)","deporte","desierto","desierto = пустеля"],
+["Me gustan los ___. (солодощі)","dulces","dedos","dedos = пальці"],
+["Me gusta ___. (море)","el mar","el maíz","maíz = кукурудза"],
+["Me gusta la ___. (природа)","naturaleza","natación","natación = плавання"],
+["Me gustan las ___. (подорожі)","vacaciones","ventanas","ventanas = вікна"],
+["Me gusta el ___. (мистецтво)","arte","aire","aire = повітря"],
+["Me gustan los ___. (фільми)","películas","pueblos","películas = фільми (ж.р.!)"]
+]},
+{t:"Ступінь: gusta / encanta", lv:1, q:[
+["Me ___ el chocolate. (обожнюю)","encanta","gusta mucho más","encantar = обожнювати"],
+["encantar сильніше за…","gustar","odiar","me encanta > me gusta"],
+["Me ___ este libro. (дуже подобається)","encanta","encantan","однина → encanta"],
+["Me ___ los perros. (обожнюю)","encantan","encanta","множина → encantan"],
+["З encantar НЕ вживають…","muy/mucho (вже сильне)","займенник","*me encanta mucho — зайве"],
+["«Мені дуже подобається» через gustar — це…","Me gusta mucho","Me gusta muy","gustar + mucho"],
+["Me ___ bailar salsa. (обожнюю)","encanta","encantan","інфінітив → encanta"],
+["encanta / encantan узгоджується так само, як…","gusta / gustan","tener","me encanta / me encantan"],
+["«Нам це подобається» (сильно) — це…","Nos encanta","Nos encantamos","nos encanta"],
+["Порядок сили: odiar < gustar < …","encantar","comer","обожнювати — максимум ❤️"]
+]},
+{t:"Заперечення й згода", lv:1, q:[
+["No me ___ el café.","gusta","gustan","no + me gusta"],
+["Частка no ставиться…","перед me/te/le (no me gusta)","після gustar","no me gusta"],
+["«Мені не подобається» — це…","No me gusta","Me no gusta","no me gusta"],
+["— Me gusta el mar. — A mí ___. (теж так)","también","tampoco","згода зі ствердженням → también"],
+["— No me gusta. — A mí ___. (теж ні)","tampoco","también","згода із запереченням → tampoco"],
+["también вживається після…","ствердження","заперечення","«мені теж»"],
+["tampoco вживається після…","заперечення","ствердження","«мені теж ні»"],
+["— No me gustan los lunes. — A mí ___.","tampoco","también","заперечення → tampoco"],
+["«А мені ні» (незгода зі ствердженням) — це…","A mí no","A mí sí","незгода → a mí no"],
+["— No me gusta. — A mí ___. (а мені так!)","sí","también","незгода → a mí sí"]
+]},
+{t:"Питання з gustar", lv:1, q:[
+["¿___ gusta el café? (тобі)","Te","Me","тобі → te"],
+["¿Qué música ___ gusta? (тобі)","te","le","te gusta"],
+["¿___ gustan los animales? (вам, vosotros)","Os","Nos","вам → os"],
+["¿A ti ___ gusta viajar?","te","me","a ti → te"],
+["— ¿Te gusta? — Sí, me ___ mucho.","gusta","gustan","однина → gusta"],
+["¿Qué ___ gusta hacer los fines de semana?","te","les","до «ти» → te"],
+["¿A usted ___ gusta el flamenco?","le","te","usted → le"],
+["¿Qué deportes ___ gustan? (тобі)","te","le","deportes мн. → te gustan"],
+["— ¿Os gusta la paella? — Sí, ___ encanta.","nos","os","відповідь про нас → nos"],
+["¿A tus padres ___ gusta este barrio?","les","le","a tus padres → les"]
+]},
+{t:"A mí, a ti — підсилення", lv:1, q:[
+["A ___ me gusta el té.","mí","mi","a mí (з наголосом)"],
+["A ___ te gusta el café.","ti","tú","a ti"],
+["A mí me gusta — «a mí» додається для…","підсилення / уточнення","обов'язково завжди","A MÍ me gusta"],
+["A ___ le gusta leer. (їй)","ella","le","a ella"],
+["A ___ nos gusta viajar.","nosotros","nos","a nosotros"],
+["A mí ___ gusta, ¿y a ti?","me","te","a mí → me"],
+["«A mí me» — це не помилка, бо…","a mí підсилює, me обов'язкове","одне зайве","обидва потрібні"],
+["A ___ les gusta el cine. (їм)","ellos","les","a ellos"],
+["¿Y a ___? (а тобі?)","ti","tú","a ti"],
+["Наголошена форма після a — це…","mí, ti, él…","yo, tú…","a mí, a ti"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"LE чи LES?", lv:2, q:[
+["A María ___ gusta el arte.","le","les","одна особа → le"],
+["A María y Ana ___ gusta el arte.","les","le","дві особи → les"],
+["A mi hermano ___ gustan los coches.","le","les","один → le"],
+["A mis hermanos ___ gustan los coches.","les","le","кілька → les"],
+["A usted ___ gusta el vino.","le","les","usted → le"],
+["A ustedes ___ gusta el vino.","les","le","ustedes → les"],
+["le — для…","однієї особи","кількох осіб","a él/ella/usted"],
+["les — для…","кількох осіб","однієї особи","a ellos/ellas/ustedes"],
+["A los niños ___ encanta jugar.","les","le","niños мн. → les"],
+["A tu amiga ___ gusta bailar.","le","les","одна подруга → le"]
+]},
+{t:"ENCANTAR у контексті", lv:2, q:[
+["A mí me ___ el verano.","encanta","encantan","однина → encanta"],
+["A ella le ___ los animales.","encantan","encanta","множина → encantan"],
+["Nos ___ esta ciudad.","encanta","encantan","ciudad однина → encanta"],
+["Les ___ las películas de terror.","encantan","encanta","películas → encantan"],
+["Me ___ cocinar para mis amigos.","encanta","encantan","інфінітив → encanta"],
+["¿Te ___ el chocolate? — ¡Sí!","encanta","encantan","chocolate → encanta"],
+["A los turistas les ___ las playas.","encantan","encanta","playas → encantan"],
+["Me ___ los fines de semana.","encantan","encanta","fines мн. → encantan"],
+["encantar завжди виражає…","сильну симпатію","легку неприязнь","обожнювання ❤️"],
+["Os ___ viajar, ¿verdad?","encanta","encantan","viajar інфінітив → encanta"]
+]},
+{t:"DOLER: боліти", lv:2, q:[
+["Me ___ la cabeza.","duele","duelen","cabeza однина → duele"],
+["Me ___ los pies.","duelen","duele","pies множина → duelen"],
+["¿Te ___ el estómago?","duele","duelen","estómago → duele"],
+["Le ___ las muelas.","duelen","duele","muelas множина → duelen"],
+["doler працює як…","gustar (me duele/duelen)","звичайне дієслово","непрямий додаток"],
+["Me ___ la garganta.","duele","duelen","garganta → duele"],
+["Nos ___ las piernas después de correr.","duelen","duele","piernas → duelen"],
+["doler має чергування…","o→ue (duele)","e→ie","dUEle"],
+["З частинами тіла у doler вживають…","артикль (la cabeza)","присвійне (mi cabeza)","me duele LA cabeza"],
+["¿Qué te ___? — La espalda.","duele","duelen","espalda → duele"]
+]},
+{t:"Дієслова як gustar", lv:2, q:[
+["interesar (цікавити): Me ___ la historia.","interesa","interesan","historia → interesa"],
+["parecer (здаватися): Me ___ bien.","parece","parecen","bien → parece"],
+["quedar (личити/лишатися): Te ___ bien ese vestido.","queda","quedan","vestido → queda"],
+["molestar (заважати): Me ___ el ruido.","molesta","molestan","ruido → molesta"],
+["importar (бути важливим): No me ___ esperar.","importa","importan","esperar → importa"],
+["faltar (бракувати): Me ___ dos euros.","faltan","falta","dos euros → faltan"],
+["apetecer (кортіти): ¿Te ___ un café?","apetece","apeteces","café → apetece"],
+["Ці дієслова будуються…","як gustar (me + дієслово)","звичайно (yo…)","непрямий додаток"],
+["Me ___ los zapatos, pero me ___ dinero.","gustan / falta","gusta / faltan","zapatos → gustan; dinero → falta"],
+["¿Qué te ___ hacer hoy? (кортить)","apetece","apeteces","apetecer як gustar"]
+]},
+{t:"Смаки й уподобання", lv:2, q:[
+["Me gusta la comida ___. (гостра)","picante","picar","picante = гострий 🌶️"],
+["Me encanta el café ___. (без цукру)","sin azúcar","sin azúcares","sin azúcar"],
+["No me gustan las ___. (оливки)","aceitunas","aceites","aceite = олія"],
+["Me apetece algo ___. (солодке)","dulce","dolor","dolor = біль"],
+["¿Te gusta la comida ___? (солона)","salada","salado","comida ж.р. → salada"],
+["Me gusta el zumo de ___. (апельсин)","naranja","naranjo","naranja = апельсин"],
+["No me gusta nada ___. (гірке)","amargo","amar","amar = кохати"],
+["Me encanta el ___ con leche. (кава)","café","calle","calle = вулиця"],
+["¿Te gustan las ___? (овочі)","verduras","verdades","verdades = істини"],
+["Me gusta la fruta ___. (свіжа)","fresca","fresa","fresa = полуниця 🍓"]
+]},
+{t:"Хобі та інтереси", lv:2, q:[
+["Me gusta ___ al tenis. (грати)","jugar","tocar","спорт → jugar"],
+["Me gusta ___ la guitarra. (грати на)","tocar","jugar","інструмент → tocar 🎸"],
+["Me encanta ___ fotos. (робити)","hacer","hacen","hacer fotos 📸"],
+["Me gusta ___ series. (дивитися)","ver","veo","ver series"],
+["A mi hijo le gusta ___ videojuegos.","jugar a","tocar","jugar a videojuegos 🎮"],
+["Me gusta ___ por la montaña. (гуляти)","pasear","paso","pasear"],
+["¿Te gusta ___ en la playa? (засмагати)","tomar el sol","tomar el suelo","tomar el sol ☀️"],
+["Me encanta ___ recetas nuevas. (готувати)","cocinar","coser","coser = шити"],
+["A ellos les gusta ___ en bici.","montar","subir","montar en bici 🚴"],
+["Me gusta ___ novelas. (читати)","leer","leo","leer novelas"]
+]},
+{t:"Узгодження: пастки", lv:2, q:[
+["Me gusta el café y el té. (два в однині)","gusta","gustan","кожне в однині → gusta"],
+["Me gustan el café y el té. (перелік)","gustan","gusta","перелік кількох → часто gustan"],
+["Me gusta ir al cine y pasear.","gusta","gustan","дії → gusta"],
+["Me ___ la música clásica.","gusta","gustan","música однина → gusta"],
+["Me ___ las canciones de verano.","gustan","gusta","canciones → gustan"],
+["Me ___ este color.","gusta","gustan","color однина → gusta"],
+["Me ___ estos zapatos.","gustan","gusta","zapatos → gustan"],
+["Me ___ tu idea.","gusta","gustan","idea однина → gusta"],
+["Me ___ tus ideas.","gustan","gusta","ideas → gustan"],
+["З інфінітивом (навіть кількома) завжди…","gusta","gustan","me gusta leer y escribir"]
+]},
+{t:"Діалог про смаки", lv:2, q:[
+["— ¿Qué ___ gusta hacer? — Leer.","te","me","до «ти» → te"],
+["— A mí ___ encanta el cine. ¿Y a ti?","me","te","про себе → me"],
+["— A mí también. ___ gustan las pelis de acción.","Me","Te","про себе → me"],
+["— ¿___ gusta la comida picante? — No mucho.","Te","Me","питання «тобі» → te"],
+["— A mí no ___ gusta nada. Prefiero lo dulce.","me","te","про себе → me"],
+["— ¿Y a tus amigos? — ___ encanta salir.","Les","Le","друзі мн. → les"],
+["— A nosotros ___ gusta cocinar juntos.","nos","os","про нас → nos"],
+["— ¿___ apetece un café? (тобі)","Te","Le","apetecer як gustar → te"],
+["— Sí, ___ apetece mucho, gracias.","me","te","про себе → me"],
+["— A mí ___ gusta este sitio. ¡Qué bonito!","me","te","про себе → me"]
+]},
+{t:"Обери правильне речення", lv:2, q:[
+["«Мені подобається море»:","Me gusta el mar","Yo gusto el mar","gustar: me gusta"],
+["«Тобі подобаються книги»:","Te gustan los libros","Tú gustas los libros","te gustan"],
+["«Йому подобається бігати»:","Le gusta correr","Le gustan correr","інфінітив → gusta"],
+["«Нам подобається це місто»:","Nos gusta esta ciudad","Nosotros gustamos esta ciudad","nos gusta"],
+["«Їм подобаються квіти»:","Les gustan las flores","Ellos gustan las flores","les gustan"],
+["«Мені болить голова»:","Me duele la cabeza","Me duelo la cabeza","me duele"],
+["«Мені це не подобається»:","No me gusta","Me no gusta","no перед me"],
+["«А мені теж» (згода):","A mí también","A mí tampoco","+ ствердження → también"],
+["«Мені дуже подобається»:","Me gusta mucho","Me gusta muy","gustar + mucho"],
+["«Мені обожнюється» (я обожнюю):","Me encanta","Me encanto","me encanta"]
+]},
+{t:"INTERESAR, APETECER, MOLESTAR", lv:2, q:[
+["Me ___ el arte. (цікавить)","interesa","interesan","arte однина → interesa"],
+["Me ___ los idiomas. (цікавлять)","interesan","interesa","idiomas → interesan"],
+["¿Te ___ un té? (кортить)","apetece","apeteces","té → apetece"],
+["No me ___ los ruidos. (заважають)","molestan","molesta","ruidos → molestan"],
+["¿Os ___ ir al cine? (кортить)","apetece","apetecéis","ir → apetece"],
+["Me ___ el humo. (заважає)","molesta","molestan","humo → molesta"],
+["A ella le ___ la política. (цікавить)","interesa","interesan","política → interesa"],
+["¿Te ___ algo de cenar? (кортить)","apetece","apeteces","apetecer як gustar"],
+["Nos ___ mucho este tema. (цікавить)","interesa","interesan","tema → interesa"],
+["Ці дієслова будуються…","як gustar (me + 3-тя особа)","звичайно","непрямий додаток"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"A + наголошена форма", lv:3, q:[
+["A ___ me gusta el jazz.","mí","yo","a mí (не a yo!)"],
+["A ___ te gusta el rock.","ti","tú","a ti (не a tú!)"],
+["A ___ le gusta el pop. (йому)","él","le","a él"],
+["Після прийменника a вживається…","mí, ti, él, ella…","yo, tú","a mí me gusta"],
+["A ___ nos gusta todo tipo de música.","nosotros","nos","a nosotros"],
+["A ___ os gusta bailar.","vosotros","os","a vosotros"],
+["A ___ les gusta el flamenco. (їм)","ellos","les","a ellos"],
+["«A yo me gusta» — це…","помилка (треба a mí)","норма","НІКОЛИ a yo!"],
+["Наголошена форма потрібна для…","підсилення й уточнення (le → a él/ella)","прикраси","знімає двозначність le"],
+["A ___ le gusta, pero a mí no. (їй)","ella","le","a ella"]
+]},
+{t:"Уточнення двозначного LE", lv:3, q:[
+["«Le gusta» без уточнення може означати…","йому/їй/Вам подобається","лише йому","le — багатозначне"],
+["Щоб уточнити «їй», додають…","a ella","a le","A ella le gusta"],
+["A ___ le gusta el mar, a él no. (їй)","ella","le","a ella le…"],
+["Уточнення ставиться…","на початку (A ella le…)","в кінці речення","A + особа + le…"],
+["«Йому подобається, а їй ні» — це…","A él le gusta, a ella no","Le gusta él, no ella","a él / a ella"],
+["A usted ___ gusta el vino, ¿verdad?","le","les","usted → le"],
+["Коли з контексту ясно, уточнення a él/ella…","можна опустити","обов'язкове завжди","Le gusta (і так зрозуміло)"],
+["«Марії подобається» — це…","A María le gusta","María le gusta","a María + le"],
+["Подвійне le (a él le) — це…","норма іспанської","помилка","дублювання обов'язкове"],
+["A los estudiantes ___ interesa la gramática.","les","le","estudiantes мн. → les"]
+]},
+{t:"GUSTAR vs QUERER", lv:3, q:[
+["«Мені подобається Ана» (як людина) обережно:","Me cae bien Ana","Me gusta Ana","«me gusta» про людину = симпатія-потяг!"],
+["caer bien означає…","бути приємним (про характер)","падати добре","me cae bien = він мені симпатичний"],
+["«Ана мені симпатична (як друг)» — це…","Ana me cae bien","Ana me gusta","caer bien = дружня симпатія"],
+["«Me gusta Juan» частіше означає…","Хуан мені подобається (романтично)","Хуан хороший друг","обережно з людьми!"],
+["querer a alguien означає…","любити когось","хотіти річ","te quiero ❤️"],
+["Для дружньої симпатії краще…","caer bien","gustar","me cae genial"],
+["A mí me cae muy ___ tu hermana.","bien","bueno","caer bien (не bueno)"],
+["Різниця: gustar (річ) — це…","подобатися","хотіти отримати","me gusta el libro"],
+["«Мені не симпатичний цей тип» — це…","Me cae mal","Me gusta mal","caer mal"],
+["encantar про людину теж означає…","дуже подобатися (романтично/захоплено)","дружбу","обережно, як gustar"]
+]},
+{t:"FALTAR та QUEDAR", lv:3, q:[
+["faltar означає…","бракувати","вистачати","me falta dinero"],
+["Me ___ cinco euros. (бракує)","faltan","falta","cinco euros → faltan"],
+["quedar (про одяг) означає…","личити","лишати назавжди","te queda bien"],
+["Ese vestido te ___ genial.","queda","quedan","vestido → queda"],
+["quedar також означає…","залишатися (кількість)","бракувати","me quedan dos días"],
+["Me ___ dos exámenes. (залишається)","quedan","queda","dos exámenes → quedan"],
+["Me falta / me sobra — антоніми:","бракує / забагато","однакові","faltar ↔ sobrar"],
+["Estos pantalones te ___ pequeños.","quedan","queda","pantalones → quedan"],
+["¿Cuánto dinero te ___? (залишається)","queda","quedan","dinero незлічуване → queda"],
+["Nos ___ poco tiempo.","queda","quedan","tiempo → queda"]
+]},
+{t:"Порядок слів", lv:3, q:[
+["Правильно:","A mí me gusta el café","Me a mí gusta el café","A + особа, потім me"],
+["Правильно:","¿Te gusta bailar?","¿Gusta te bailar?","займенник перед gustar"],
+["Правильно:","No me gusta madrugar","Me no gusta madrugar","no перед me"],
+["Наголошена (a mí) стоїть…","на початку","в кінці","A mí me gusta…"],
+["Обов'язковий займенник (me/te/le) стоїть…","перед gustar","після нього","me gusta"],
+["Правильно:","A Ana le encanta viajar","Ana le encanta viajar… стоп","a Ana + le"],
+["Правильно:","A ellos les gusta el cine","Ellos les gusta el cine","a ellos + les"],
+["У питанні порядок…","¿Te gusta…?","¿Gustas…?","займенник + gustar"],
+["«Мені морозиво не подобається» — це…","No me gusta el helado","Me gusta no el helado","no me gusta"],
+["Правильно з підсиленням:","A mí sí me gusta","Me sí a mí gusta","A mí sí me…"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«Yo gusto el café» → …","Me gusta el café","Yo gusta el café","gustar: me gusta"],
+["«Me gusta los perros» → …","Me gustan los perros","Me gustas los perros","множина → gustan"],
+["«Me gustan bailar» → …","Me gusta bailar","Me gusto bailar","інфінітив → gusta"],
+["«A mí gusta el mar» → …","A mí me gusta el mar","A mí yo gusta el mar","потрібен me"],
+["«A yo me gusta» → …","A mí me gusta","A yo me gusta","a mí, не a yo"],
+["«Me duele mis pies» → …","Me duelen los pies","Me duele mis pies","pies мн. + артикль"],
+["«A ella le gustan leer» → …","A ella le gusta leer","A ella le gustan leer","інфінітив → gusta"],
+["«Nos encanta los gatos» → …","Nos encantan los gatos","Nos encanto los gatos","gatos → encantan"],
+["«Me no gusta» → …","No me gusta","Me gusta no","no перед me"],
+["«A María gusta el arte» → …","A María le gusta el arte","A María gusta el arte","потрібен le"]
+]},
+{t:"Переклади речення", lv:3, q:[
+["«Мені подобається ця пісня»:","Me gusta esta canción","Me gustan esta canción","canción однина → gusta"],
+["«Тобі подобаються ці туфлі»:","Te gustan estos zapatos","Te gusta estos zapatos","zapatos → gustan"],
+["«Нам обожнюється подорожувати»:","Nos encanta viajar","Nos encantan viajar","інфінітив → encanta"],
+["«Їм болять ноги»:","Les duelen las piernas","Les duele las piernas","piernas → duelen"],
+["«Їй не подобається гостре»:","No le gusta lo picante","No le gustan lo picante","lo picante → gusta"],
+["«Мені бракує часу»:","Me falta tiempo","Me faltan tiempo","tiempo → falta"],
+["«Тобі личить ця сукня»:","Te queda bien ese vestido","Te quedan bien ese vestido","vestido → queda"],
+["«А мені теж подобається»:","A mí también me gusta","A mí tampoco me gusta","+ → también"],
+["«Вам цікава історія?» (vosotros):","¿Os interesa la historia?","¿Os interesan la historia?","historia → interesa"],
+["«Мені кортить піци»:","Me apetece pizza","Me apetecen pizza","pizza → apetece 🍕"]
+]},
+{t:"Складні узгодження", lv:3, q:[
+["Me gustan el cine y el teatro. (перелік)","gustan","gusta","два обʼєкти → gustan"],
+["Me gusta ver series y leer. (дії)","gusta","gustan","інфінітиви → gusta"],
+["A ella le ___ las matemáticas.","gustan","gusta","matemáticas мн. → gustan"],
+["Nos ___ pasar tiempo juntos.","gusta","gustan","pasar інфінітив → gusta"],
+["¿Te ___ los idiomas o prefieres las ciencias?","gustan","gusta","idiomas → gustan"],
+["Me ___ todo de esta ciudad.","gusta","gustan","todo → gusta"],
+["Les ___ las mismas cosas.","gustan","gusta","cosas → gustan"],
+["Me ___ este tipo de películas.","gusta","gustan","tipo однина → gusta"],
+["A los niños les ___ los dibujos animados.","gustan","gusta","dibujos → gustan"],
+["Me ___ cantar, bailar y actuar.","gusta","gustan","перелік дій → gusta"]
+]},
+{t:"Мої смаки (текст)", lv:3, q:[
+["A mí me ___ mucho la música.","gusta","gustan","música → gusta"],
+["Me ___ especialmente el jazz y el blues.","encantan","encanta","jazz y blues (перелік) → encantan"],
+["También me ___ tocar el piano.","gusta","gustan","інфінітив → gusta"],
+["No me ___ nada los conciertos con mucha gente.","gustan","gusta","conciertos → gustan"],
+["A mi pareja le ___ el rock.","encanta","encantan","rock → encanta"],
+["A los dos nos ___ ir a festivales.","gusta","gustan","ir → gusta"],
+["Aunque a veces me ___ los pies de tanto bailar. 😄","duelen","duele","pies → duelen"],
+["¿Y a ti? ¿Qué música te ___?","gusta","gustan","música → gusta"],
+["¿Te ___ más el pop o el rock?","gusta","gustan","вибір → gusta"],
+["A mí me ___ descubrir grupos nuevos.","encanta","encantan","інфінітив → encanta"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["Me ___ el café.","gusta","gustan","однина → gusta"],
+["Me ___ los libros.","gustan","gusta","множина → gustan"],
+["Me ___ bailar.","gusta","gustan","інфінітив → gusta"],
+["___ gusta el mar. (мені)","Me","Te","мені → me"],
+["A María ___ gusta leer.","le","les","одна особа → le"],
+["A mis padres ___ gusta pasear.","les","le","кілька → les"],
+["Me ___ la cabeza. (болить)","duele","duelen","cabeza → duele"],
+["A mí me gusta — «a mí» тут для…","підсилення","обов'язкове","A MÍ me gusta"],
+["— No me gusta. — A mí ___. (теж ні)","tampoco","también","заперечення → tampoco"],
+["encantar сильніше за…","gustar","odiar","обожнювати ❤️"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "GUSTAR: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 12 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 10 · Muy y mucho. Hace... · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 10 · @malinnaartstudio</div>
+    <h1 id="htitle">Muy, mucho, погода: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 10 · Muy y mucho. Hace...</b>
+      30 вправ по 10 питань: коли muy, а коли mucho, узгодження mucho, погода з hace/hay/está,
+      пори року. Від ★ до ★★★. ¡Hace un día perfecto para practicar! ☀️
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · muy/mucho, погода</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · узгодження й контекст</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й пастки</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 10</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"MUY + прикметник", lv:1, q:[
+["Estoy ___ cansada.","muy","mucho","перед прикметником → muy"],
+["Es ___ interesante.","muy","mucho","muy + прикметник"],
+["La casa es ___ grande.","muy","mucha","muy + прикметник"],
+["Ana es ___ simpática.","muy","mucha","перед прикметником → muy"],
+["El examen es ___ difícil.","muy","mucho","muy difícil"],
+["muy вживається перед…","прикметником або прислівником","іменником","muy + прикм./присл."],
+["Estamos ___ contentos.","muy","muchos","muy contentos"],
+["El café está ___ caliente.","muy","mucho","muy caliente"],
+["Es una ciudad ___ bonita.","muy","mucha","перед прикметником → muy"],
+["muy НЕ вживається перед…","іменником","прикметником","*muy hambre — помилка!"]
+]},
+{t:"MUY + прислівник", lv:1, q:[
+["Habla ___ rápido.","muy","mucho","muy + прислівник"],
+["Vive ___ lejos.","muy","mucho","muy lejos"],
+["Llegas ___ tarde.","muy","mucho","muy tarde"],
+["Cocina ___ bien.","muy","mucho","muy bien!"],
+["Está ___ cerca.","muy","mucho","muy cerca"],
+["muy bien означає…","дуже добре","дуже багато","перед прислівником bien"],
+["Canta ___ mal. 😅","muy","mucho","muy mal"],
+["Camina ___ despacio.","muy","mucho","muy despacio"],
+["Es ___ temprano.","muy","mucho","muy temprano"],
+["muy + bien / mal / rápido — це…","прислівники","іменники","muy перед присл."]
+]},
+{t:"MUCHO після дієслова", lv:1, q:[
+["Trabajo ___.","mucho","muy","після дієслова → mucho"],
+["Ella estudia ___.","mucho","muy","estudia mucho"],
+["Me gusta ___.","mucho","muy","gusta mucho"],
+["Llueve ___.","mucho","muy","llueve mucho 🌧️"],
+["Ellos viajan ___.","mucho","muy","viajan mucho"],
+["mucho після дієслова…","не змінюється (mucho)","узгоджується","trabajo mucho"],
+["Duermo ___.","mucho","muy","duermo mucho 😴"],
+["Te quiero ___. ❤️","mucho","muy","te quiero mucho"],
+["El niño come ___.","mucho","muy","come mucho"],
+["Після дієслова вживається…","mucho","muy","habla mucho"]
+]},
+{t:"MUCHO + іменник (рід)", lv:1, q:[
+["___ dinero","mucho","mucha","dinero ч.р. → mucho"],
+["___ agua","mucha","mucho","agua ж.р. → mucha"],
+["___ tiempo","mucho","mucha","tiempo ч.р. → mucho"],
+["___ gente","mucha","mucho","gente ж.р. → mucha"],
+["___ calor","mucho","mucha","calor ч.р. → mucho"],
+["___ hambre","mucha","mucho","hambre ж.р. → mucha"],
+["___ trabajo","mucho","mucha","trabajo ч.р. → mucho"],
+["___ suerte","mucha","mucho","suerte ж.р. → mucha"],
+["mucho перед іменником узгоджується за…","родом і числом","нічим","mucho/mucha/muchos/muchas"],
+["___ frío","mucho","mucha","frío ч.р. → mucho"]
+]},
+{t:"MUCHOS / MUCHAS", lv:1, q:[
+["___ libros","muchos","muchas","libros ч.р. мн. → muchos"],
+["___ casas","muchas","muchos","casas ж.р. мн. → muchas"],
+["___ amigos","muchos","mucho","amigos → muchos"],
+["___ personas","muchas","muchos","personas ж.р. → muchas"],
+["___ años","muchos","muchas","años ч.р. → muchos"],
+["___ horas","muchas","muchos","horas ж.р. → muchas"],
+["Tengo ___ cosas que hacer.","muchas","muchos","cosas ж.р. → muchas"],
+["Hay ___ turistas.","muchos","mucho","turistas → muchos"],
+["___ gracias!","Muchas","Muchos","gracias ж.р. → muchas"],
+["muchos/muchas — це форма…","множини mucho","прислівника","з іменниками мн."]
+]},
+{t:"MUY чи MUCHO: база", lv:1, q:[
+["Estoy ___ cansado.","muy","mucho","прикметник → muy"],
+["Trabajo ___.","mucho","muy","дієслово → mucho"],
+["Tengo ___ hambre.","mucha","muy","іменник ж.р. → mucha"],
+["Habla ___ bien.","muy","mucho","прислівник → muy"],
+["Hay ___ gente.","mucha","muy","іменник → mucha"],
+["Es ___ inteligente.","muy","mucho","прикметник → muy"],
+["Come ___.","mucho","muy","дієслово → mucho"],
+["Правило: перед прикметником/прислівником → …","muy","mucho","muy bonito, muy bien"],
+["Правило: після дієслова або перед іменником → …","mucho","muy","como mucho, mucho pan"],
+["Tengo ___ amigos.","muchos","muy","іменник мн. → muchos"]
+]},
+{t:"Погода: HACE", lv:1, q:[
+["___ calor. (спекотно)","Hace","Está","hace calor ☀️"],
+["___ frío. (холодно)","Hace","Es","hace frío ❄️"],
+["___ sol. (сонячно)","Hace","Está","hace sol"],
+["___ viento. (вітряно)","Hace","Está","hace viento 💨"],
+["___ buen tiempo. (гарна погода)","Hace","Está","hace buen tiempo"],
+["Погода зазвичай виражається дієсловом…","hacer (hace)","ser","hace calor/frío/sol"],
+["Hoy ___ mal tiempo.","hace","está","hace mal tiempo"],
+["En verano ___ mucho calor.","hace","está","hace calor"],
+["¿Qué tiempo ___?","hace","es","¿qué tiempo hace?"],
+["hace fresco означає…","прохолодно","дуже спекотно","fresco = свіжо/прохолодно"]
+]},
+{t:"Погода: LLUEVE, NIEVA", lv:1, q:[
+["«йде дощ» — це…","llueve","llora","llora = плаче"],
+["«йде сніг» — це…","nieva","nieve","nieve = сніг (іменник)"],
+["llueve походить від дієслова…","llover","llorar","llover = дощити"],
+["Hoy ___. (дощить)","llueve","lluvia","llueve"],
+["En invierno a veces ___. (сніжить)","nieva","nieve","nieva"],
+["¿___ mucho en tu ciudad? (дощить)","Llueve","Lluvia","llueve"],
+["«дощ» (іменник) — це…","la lluvia","llueve","lluvia — іменник"],
+["Está lloviendo означає…","дощ іде просто зараз","дощ був учора","estar + герундій"],
+["Cuando nieva, todo está blanco. ❄️","nieva","nieve","nieva — дієслово"],
+["llover і nevar — це дієслова…","безособові (лише 3-тя особа)","звичайні","llueve, nieva"]
+]},
+{t:"Погода: HAY та ESTÁ", lv:1, q:[
+["___ niebla. (туман)","Hay","Hace","hay niebla 🌫️"],
+["___ nubes. (хмари)","Hay","Hace","hay nubes ☁️"],
+["El cielo ___ nublado. (хмарно)","está","hace","está nublado"],
+["___ tormenta. (гроза)","Hay","Hace","hay tormenta ⛈️"],
+["hay вживається для погодних явищ, як…","niebla, nubes, tormenta","calor, frío, sol","hay niebla"],
+["El día ___ despejado. (ясно)","está","hay","está despejado"],
+["Hoy ___ mucha niebla.","hay","hace","hay niebla"],
+["está nublado означає…","хмарно","сонячно","небо в хмарах"],
+["¿___ nubes hoy?","Hay","Hace","hay nubes"],
+["nube — це…","хмара","дощ","☁️ = nube"]
+]},
+{t:"Пори року й погода", lv:1, q:[
+["En verano hace…","calor","frío","літо → спека ☀️"],
+["En invierno hace…","frío","calor","зима → холод ❄️"],
+["En primavera a veces…","llueve","nieva","весна → дощі 🌦️"],
+["En otoño hace…","viento","mucho calor","осінь → вітер 🍂"],
+["«весна» — це…","la primavera","el verano","primavera 🌸"],
+["En agosto en España hace…","mucho calor","mucho frío","серпень — пік спеки"],
+["En diciembre en Ucrania hace…","frío","calor","грудень → холод"],
+["Ideal para la playa: ___ sol y calor.","hace","está","hace sol y calor 🏖️"],
+["«осінь» — це…","el otoño","el invierno","otoño 🍂"],
+["¿En qué estación nieva más?","en invierno","en verano","зима → сніг"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"MUY чи MUCHO у реченнях", lv:2, q:[
+["El libro es ___ bueno.","muy","mucho","прикметник → muy"],
+["Me gusta ___ este libro.","mucho","muy","gustar + mucho"],
+["Hace ___ frío hoy.","mucho","muy","frío — іменник → mucho"],
+["El agua está ___ fría.","muy","mucha","fría — прикметник → muy"],
+["Hay ___ nubes.","muchas","muy","nubes — іменник → muchas"],
+["Está ___ nublado.","muy","mucho","nublado — прикметник → muy"],
+["Llueve ___.","mucho","muy","дієслово → mucho"],
+["Es un día ___ bonito.","muy","mucho","прикметник → muy"],
+["Tengo ___ calor.","mucho","muy","calor — іменник → mucho"],
+["Estoy ___ cansada del calor.","muy","mucha","прикметник → muy"]
+]},
+{t:"Узгодження MUCHO", lv:2, q:[
+["Hace ___ calor.","mucho","mucha","calor ч.р. → mucho"],
+["Hace ___ viento.","mucho","mucha","viento ч.р. → mucho"],
+["Hay ___ niebla.","mucha","mucho","niebla ж.р. → mucha"],
+["Tengo ___ sed.","mucha","mucho","sed ж.р. → mucha"],
+["Hay ___ nieve en la montaña.","mucha","mucho","nieve ж.р. → mucha"],
+["Cae ___ lluvia.","mucha","mucho","lluvia ж.р. → mucha"],
+["Hace ___ sol.","mucho","mucha","sol ч.р. → mucho"],
+["Hay ___ humedad.","mucha","mucho","humedad ж.р. → mucha"],
+["Con este calor tengo ___ sed.","mucha","mucho","sed ж.р."],
+["mucho з погодними іменниками узгоджується за…","родом","нічим","mucho calor / mucha niebla"]
+]},
+{t:"MUY чи MUCHO: розшир.", lv:2, q:[
+["Estoy ___ mejor, gracias.","mucho","muy","mejor — виняток! mucho mejor"],
+["Este es ___ mejor que aquel.","mucho","muy","mucho mejor (не muy!)"],
+["Hoy hace ___ más calor que ayer.","mucho","muy","mucho más"],
+["Es ___ peor.","mucho","muy","mucho peor (порівняльні → mucho)"],
+["mejor, peor, más, menos йдуть із…","mucho","muy","mucho mejor, mucho más"],
+["Estoy ___ cansada.","muy","mucho","прикметник cansada → muy"],
+["Me duele ___ la cabeza.","mucho","muy","дієслово duele → mucho"],
+["Es ___ tarde.","muy","mucho","tarde — прислівник → muy"],
+["Hay ___ más gente hoy.","mucha","muy","gente ж.р. → mucha más"],
+["Corre ___ más rápido que yo.","mucho","muy","з más → mucho más"]
+]},
+{t:"Температура", lv:2, q:[
+["Estamos a 35 grados: hace ___ calor.","mucho","muy","іменник calor → mucho"],
+["«Скільки градусів?» — це…","¿Cuántos grados hace?","¿Cuántos grados es?","hace X grados"],
+["Hace 40 grados: ¡qué ___!","calor","frío","40° = спека"],
+["Estamos ___ cero. (нижче нуля)","bajo","sobre","bajo cero = нижче нуля"],
+["-5 °C: hace ___ frío.","mucho","muy","frío → mucho"],
+["«градус» — це…","el grado","el grande","grande = великий"],
+["Hoy estamos a 20 grados: hace ___ tiempo.","buen","bueno","перед іменником → buen"],
+["¿A cuántos grados estamos? — ___ 25.","A","En","estamos A 25"],
+["30 °C — це…","hace calor","hace frío","спека"],
+["0 °C — це…","cero grados","cero grado","мн. → grados"]
+]},
+{t:"BUEN, BUENO, BIEN", lv:2, q:[
+["Hace ___ tiempo.","buen","bueno","перед іменником ч.р. → buen"],
+["El tiempo es ___.","bueno","buen","після ser → bueno"],
+["Estoy ___.","bien","bueno","самопочуття → bien"],
+["Es un ___ día.","buen","bueno","перед іменником → buen"],
+["bueno → buen перед…","іменником ч.р. однини","будь-яким словом","un buen día"],
+["Cocina muy ___.","bien","bueno","прислівник → bien"],
+["El café está ___.","bueno","bien","смак → está bueno"],
+["¡___ suerte! (жіночий рід)","Buena","Buen","suerte ж.р. → buena"],
+["Todo va ___.","bien","bueno","іде добре → bien"],
+["Es una ___ idea.","buena","buen","idea ж.р. → buena"]
+]},
+{t:"Погода: питання", lv:2, q:[
+["¿Qué tiempo ___ hoy?","hace","es","¿qué tiempo hace?"],
+["— ¿Hace frío? — Sí, ___ mucho.","hace","está","hace mucho (frío)"],
+["¿___ lloviendo? (просто зараз)","Está","Hace","estar + герундій"],
+["¿Cuántos grados ___?","hace","son","hace X grados"],
+["— ¿Hay nubes? — Sí, ___ muchas.","hay","hace","hay muchas"],
+["¿___ sol en tu ciudad ahora?","Hace","Está","hace sol"],
+["— ¿Qué tal el tiempo? — ___ buen tiempo.","Hace","Es","hace buen tiempo"],
+["¿___ mucho viento hoy?","Hace","Hay","hace viento"],
+["— ¿Nieva en invierno? — Sí, ___ mucho.","nieva","nieve","nieva"],
+["¿El cielo ___ nublado o despejado?","está","hace","está nublado"]
+]},
+{t:"Опис клімату", lv:2, q:[
+["En Alicante hace ___ tiempo casi todo el año.","buen","bueno","перед іменником → buen"],
+["El clima de España es ___.","muy agradable","mucho agradable","прикметник → muy"],
+["En el sur hace ___ calor en verano.","mucho","muy","calor → mucho"],
+["En el norte llueve ___.","mucho","muy","дієслово → mucho"],
+["Las noches de verano son ___ calurosas.","muy","mucho","прикметник → muy"],
+["En invierno no hace ___ frío en la costa.","mucho","muy","frío → mucho"],
+["El clima es ___ seco en el interior.","muy","mucho","seco — прикметник → muy"],
+["Hay ___ humedad cerca del mar.","mucha","muy","humedad ж.р. → mucha"],
+["La primavera es ___ agradable.","muy","mucha","прикметник → muy"],
+["En la montaña nieva ___ en invierno.","mucho","muy","дієслово → mucho"]
+]},
+{t:"Одяг і погода", lv:2, q:[
+["Hace frío: ponte el ___.","abrigo","bañador","bañador = купальник"],
+["Hace calor: lleva ___.","pantalón corto","abrigo","шорти для спеки"],
+["Llueve: necesitas un ___.","paraguas","sombrero","парасолька ☂️"],
+["Hace sol: usa ___.","gafas de sol","guantes","сонцезахисні окуляри 😎"],
+["Hace frío: ponte ___.","guantes y bufanda","bañador","рукавиці й шарф 🧣"],
+["Para la playa en verano: ___.","el bañador","el abrigo","купальник 🏖️"],
+["Hace mucho viento: cuidado con el ___.","paraguas","abrigo","парасолька летить! 💨"],
+["«парасолька» — це…","el paraguas","el paisaje","paisaje = пейзаж"],
+["«шарф» — це…","la bufanda","la banda","banda = гурт/стрічка"],
+["«чоботи» для дощу — це…","las botas","las botellas","botellas = пляшки"]
+]},
+{t:"Кількість MUCHO", lv:2, q:[
+["Tengo ___ trabajo esta semana.","mucho","muchos","trabajo — незлічуване → mucho"],
+["Hay ___ coches en la calle.","muchos","mucho","coches мн. → muchos"],
+["Bebo ___ agua al día.","mucha","muchos","agua ж.р. → mucha"],
+["Come ___ verduras. 🥦","muchas","mucho","verduras ж.р. мн. → muchas"],
+["Tenemos ___ tiempo.","mucho","muchos","tiempo незлічуване → mucho"],
+["Hay ___ turistas en verano.","muchos","mucho","turistas → muchos"],
+["Necesito ___ ayuda.","mucha","mucho","ayuda ж.р. → mucha"],
+["Tiene ___ dinero.","mucho","muchos","dinero незлічуване → mucho"],
+["Hay ___ flores en el jardín. 🌷","muchas","muchos","flores ж.р. → muchas"],
+["Незлічувані (dinero, agua, tiempo) йдуть із…","mucho/mucha (однина)","muchos/muchas","mucho dinero"]
+]},
+{t:"Погода по містах", lv:2, q:[
+["En Kyiv en enero ___ mucho frío.","hace","hay","frío → hace"],
+["En Alicante casi siempre ___ sol.","hace","hay","sol → hace"],
+["En Londres ___ mucha niebla. 🌫️","hay","hace","niebla → hay"],
+["En el desierto ___ muchísimo calor.","hace","hay","calor → hace"],
+["En la montaña en invierno ___.","nieva","nieve","дієслово → nieva"],
+["En Galicia llueve ___.","mucho","muy","дієслово → mucho"],
+["Hoy en Madrid el cielo ___ despejado.","está","hace","despejado → está"],
+["En primavera ___ muchas flores. 🌷","hay","hace","flores → hay"],
+["En verano las noches son ___ calurosas.","muy","mucho","прикметник → muy"],
+["¿Qué tiempo ___ en tu ciudad hoy?","hace","es","¿qué tiempo hace?"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"MUCHO = дуже (винятки)", lv:3, q:[
+["Me gusta ___.","mucho","muy","gustar + mucho (не muy!)"],
+["Te quiero ___.","mucho","muy","querer + mucho ❤️"],
+["Lo siento ___.","mucho","muy","lo siento mucho"],
+["З дієсловами gustar, querer, sentir вживається…","mucho","muy","gusta mucho"],
+["«Дуже дякую» — це…","Muchas gracias","Muy gracias","gracias — іменник → muchas"],
+["Me duele ___.","mucho","muy","doler + mucho"],
+["Estoy ___ mejor. (набагато краще)","mucho","muy","mejor → mucho mejor"],
+["«Дуже приємно» (mucho gusto) — тут…","mucho + іменник gusto","muy","gusto — іменник"],
+["Después de «gustar» siempre →","mucho","muy","me gusta mucho"],
+["«Я тебе дуже кохаю» — це…","Te quiero mucho","Te quiero muy","querer → mucho"]
+]},
+{t:"MUY + прикметник = дуже", lv:3, q:[
+["muy перед bueno дає…","muy bueno","mucho bueno","прикметник → muy"],
+["Але «набагато кращий» — це…","mucho mejor","muy mejor","порівняльний → mucho"],
+["muy grande означає…","дуже великий","набагато більший","muy + прикм."],
+["«набагато більший» — це…","mucho más grande","muy más grande","з más → mucho"],
+["Es ___ fácil.","muy","mucho","fácil прикм. → muy"],
+["Es ___ más fácil.","mucho","muy","más → mucho más"],
+["Está ___ contento.","muy","mucho","contento прикм. → muy"],
+["Está ___ mejor de salud.","mucho","muy","mejor → mucho"],
+["muy vs mucho перед mayor/menor:","mucho (mucho mayor)","muy","порівняльні → mucho"],
+["Es ___ inteligente.","muy","mucho","прикм. → muy"]
+]},
+{t:"HACE, HAY чи ESTÁ?", lv:3, q:[
+["___ calor.","Hace","Hay","calor → hace"],
+["___ niebla.","Hay","Hace","niebla → hay"],
+["El cielo ___ nublado.","está","hace","nublado → está"],
+["___ viento.","Hace","Hay","viento → hace"],
+["___ tormenta.","Hay","Hace","tormenta → hay"],
+["___ sol.","Hace","Está","sol → hace"],
+["El día ___ despejado.","está","hay","despejado → está"],
+["___ nubes.","Hay","Hace","nubes → hay"],
+["calor, frío, sol, viento йдуть із…","hace","hay","hace calor"],
+["niebla, nubes, tormenta йдуть із…","hay","hace","hay niebla"]
+]},
+{t:"Estar + gerundio погода", lv:3, q:[
+["Está ___ ahora mismo. (дощ)","lloviendo","llueviendo","llover → lloviendo"],
+["Está ___. (сніг просто зараз)","nevando","nievando","nevar → nevando"],
+["Está lloviendo означає…","дощ іде саме зараз","дощ буває часто","estar + герундій = зараз"],
+["«Іде сніг зараз» — це…","Está nevando","Nieva siempre","estar nevando"],
+["Herундій від llover — це…","lloviendo","llorando","llorando = плачучи!"],
+["Ahora mismo está ___. (дощ)","lloviendo","lluvia","lloviendo"],
+["Herундій від nevar — це…","nevando","nevado","nevando"],
+["«Дощить» (загалом) — це…","Llueve","Está lloviendo mucho ayer","llueve — презенс"],
+["¿___ lloviendo? — Sí, coge el paraguas.","Está","Hace","estar + герундій"],
+["Different: llueve (загалом) vs está lloviendo (…)","саме зараз","у минулому","конкретний момент"]
+]},
+{t:"Вирази з погодою", lv:3, q:[
+["¡Qué calor hace! означає…","Ну і спека!","Який тут калорій!","вигук про спеку"],
+["¡Qué frío! означає…","Ну і холод!","Який холодний!","вигук"],
+["hace un día precioso означає…","чудовий день (погода)","коштовний день","гарна погода 🌞"],
+["Llueve a cántaros означає…","ллє як з відра","ллє в глеки","злива!"],
+["hace bochorno означає…","задушливо-спекотно","дме бриз","важка спека"],
+["está despejado означає…","ясно, без хмар","похмуро","чисте небо"],
+["cae una buena nevada означає…","сильний снігопад","гарна дівчина","nevada = снігопад ❄️"],
+["hace un frío que pela означає…","страшенно холодно","холод, що чистить","дуже морозно 🥶"],
+["¡Vaya tiempecito! (іронічно) означає…","ну й погодка!","гарний час","сарказм про негоду"],
+["hace una tarde estupenda означає…","чудовий вечір (погода)","дорогий вечір","гарний надвечір'я"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«Estoy mucho cansada» → …","muy cansada","muy mucho cansada","прикметник → muy"],
+["«Trabajo muy» → …","Trabajo mucho","Muy trabajo","дієслово → mucho"],
+["«Tengo muy hambre» → …","Tengo mucha hambre","Tengo muy mucha hambre","іменник ж.р. → mucha"],
+["«Hace mucho frío» — це…","правильно","muy frío","frío іменник → mucho ✓"],
+["«Es muy mejor» → …","Es mucho mejor","Es muy mucho mejor","mejor → mucho"],
+["«Está calor» → …","Hace calor","Es calor","погода → hace"],
+["«Hay calor» → …","Hace calor","Está calor","calor → hace"],
+["«Me gusta muy» → …","Me gusta mucho","Me gusta muy mucho","gustar → mucho"],
+["«Muchas gracias» — це…","правильно","Muy gracias","gracias → muchas ✓"],
+["«Hace niebla» → …","Hay niebla","Está niebla","niebla → hay"]
+]},
+{t:"MUY / MUCHO фінальний тест", lv:3, q:[
+["Es ___ tarde.","muy","mucho","tarde присл. → muy"],
+["Duermo ___.","mucho","muy","дієслово → mucho"],
+["Hace ___ calor.","mucho","muy","calor іменник → mucho"],
+["Es ___ guapo.","muy","mucho","прикметник → muy"],
+["Hay ___ gente.","mucha","muy","gente ж.р. → mucha"],
+["Habla ___ bien.","muy","mucho","присл. bien → muy"],
+["Te quiero ___.","mucho","muy","querer → mucho"],
+["Es ___ mejor.","mucho","muy","mejor → mucho"],
+["Tengo ___ sueño.","mucho","muy","sueño іменник → mucho"],
+["Está ___ contenta.","muy","mucho","прикметник → muy"]
+]},
+{t:"El tiempo hoy (текст)", lv:3, q:[
+["Hoy ___ un día precioso.","hace","hay","hace un día…"],
+["___ sol y el cielo está despejado.","Hace","Hay","hace sol"],
+["No ___ ni una nube.","hay","hace","hay nubes → тут ні однієї"],
+["___ 24 grados: temperatura perfecta.","Hace","Hay","hace 24 grados"],
+["No ___ mucho calor todavía.","hace","hay","hace calor"],
+["Por la tarde va a ___ un poco de viento.","hacer","haber","hacer viento"],
+["Mañana, en cambio, va a ___.","llover","lluvia","llover — дієслово"],
+["Dicen que ___ tormenta por la noche.","habrá","hará","hay/habrá tormenta"],
+["Así que mejor coge el ___.","paraguas","bañador","дощ → парасолька ☂️"],
+["¡Qué ___ hace en primavera aquí!","tiempo tan bueno","muy tiempo","qué buen tiempo"]
+]},
+{t:"MUY / MUCHO у діалозі", lv:3, q:[
+["— ¿Qué tal el examen? — ___ difícil.","Muy","Mucho","прикметник → muy"],
+["— ¿Estudiaste? — Sí, ___.","mucho","muy","дієслово → mucho"],
+["— ¿Tienes hambre? — Sí, ___.","mucha","muy","hambre ж.р. → mucha"],
+["— ¿Te gustó la peli? — Sí, ___.","mucho","muy","gustar → mucho"],
+["— ¿Hace calor fuera? — Sí, ___.","mucho","muy","calor → mucho"],
+["— ¿Es cara la casa? — Sí, ___ cara.","muy","mucho","прикм. → muy"],
+["— ¿Hay gente? — Sí, ___.","mucha","muy","gente ж.р. → mucha"],
+["— ¿Cómo estás? — ___ bien, gracias.","Muy","Mucho","bien → muy"],
+["— ¿Trabajas hoy? — Sí, y ___.","mucho","muy","дієслово → mucho"],
+["— ¡___ gracias por todo! — De nada.","Muchas","Muy","gracias → muchas"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["Estoy ___ cansada.","muy","mucho","прикметник → muy"],
+["Trabajo ___.","mucho","muy","дієслово → mucho"],
+["Tengo ___ hambre.","mucha","muy","іменник ж.р. → mucha"],
+["Habla ___ bien.","muy","mucho","присл. → muy"],
+["Me gusta ___.","mucho","muy","gustar → mucho"],
+["Hace ___ calor.","mucho","muy","погода: hace + calor"],
+["Hay ___ niebla.","mucha","hace","niebla → hay + mucha"],
+["Es ___ mejor.","mucho","muy","mejor → mucho"],
+["¡___ gracias!","Muchas","Muy","gracias → muchas"],
+["Está ___ lloviendo.","—","muy","«Está lloviendo» вже повне; тут просто lloviendo"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Muy, mucho, погода: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 10 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

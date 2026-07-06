@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 9 · Присвійні · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 9 · @malinnaartstudio</div>
+    <h1 id="htitle">Присвійні: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 9 · Posesivos.</b>
+      30 вправ по 10 питань: mi/tu/su, nuestro/vuestro, наголошені mío/tuyo/suyo, лексика родини.
+      Від ★ до ★★★. ¡Todo tuyo! 🔑
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · короткі форми</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · рід і наголошені</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й пастки</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 9</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"MI / MIS", lv:1, q:[
+["___ casa (моя)","mi","mis","однина → mi"],
+["___ padres (мої)","mis","mi","множина → mis"],
+["___ hermana","mi","mis","hermana однина → mi"],
+["___ amigos","mis","mi","amigos множина → mis"],
+["___ móvil","mi","mis","móvil однина → mi"],
+["___ llaves","mis","mi","llaves множина → mis"],
+["mi узгоджується за…","числом","родом","mi/mis — лише число"],
+["«моя книга» — це…","mi libro","mío libro","перед іменником → mi"],
+["«мої речі» — це…","mis cosas","mi cosas","cosas множина → mis"],
+["mi для роду…","не змінюється","змінюється","mi hijo / mi hija"]
+]},
+{t:"TU / TUS", lv:1, q:[
+["___ coche (твій)","tu","tus","однина → tu"],
+["___ zapatos (твої)","tus","tu","множина → tus"],
+["___ profesora","tu","tus","однина → tu"],
+["___ gafas","tus","tu","gafas множина → tus"],
+["tu (твій) — це…","без наголосу","з наголосом","tu ≠ tú (ти)!"],
+["¿Es ___ mochila?","tu","tú","присвійне → tu без наголосу"],
+["___ ideas son buenas.","Tus","Tu","ideas множина → tus"],
+["tú з наголосом означає…","ти","твій","tú = займенник"],
+["«твоя сім'я» — це…","tu familia","tus familia","familia однина → tu"],
+["___ hermanos viven aquí.","Tus","Tu","hermanos множина → tus"]
+]},
+{t:"SU / SUS", lv:1, q:[
+["___ perro (його)","su","sus","однина → su"],
+["___ hijos (їхні)","sus","su","множина → sus"],
+["su означає…","його/її/їхній/Ваш","лише його","багатозначне!"],
+["señor López, ¿es ___ coche?","su","tu","ввічливо (usted) → su"],
+["___ casa es bonita. (їхня)","Su","Sus","casa однина → su"],
+["___ ojos son verdes. (її)","Sus","Su","ojos множина → sus"],
+["su hija означає…","його/її/їхня/Ваша донька","лише твоя донька","контекст вирішує"],
+["До сеньйори кажуть про її сумку…","su bolso","tu bolso","ввічливо → su"],
+["___ padres viven en Kyiv. (його)","Sus","Su","padres множина → sus"],
+["su/sus узгоджується за…","числом іменника","кількістю власників","su casa (їхня одна хата)"]
+]},
+{t:"Родина: лексика", lv:1, q:[
+["«мати» — це…","la madre","el padre","padre = батько"],
+["«батько» — це…","el padre","el padrino","padrino = хрещений"],
+["«брат» — це…","el hermano","el hombre","hombre = чоловік"],
+["«сестра» — це…","la hermana","la mano","mano = рука"],
+["«син» — це…","el hijo","el ajo","ajo = часник! 🧄"],
+["«донька» — це…","la hija","la hoja","hoja = аркуш/листок"],
+["«дідусь» — це…","el abuelo","el abuso","abuso = зловживання"],
+["«бабуся» — це…","la abuela","la abeja","abeja = бджола 🐝"],
+["«батьки» (мама й тато) — це…","los padres","los parientes","parientes = родичі загалом"],
+["«дружина» — це…","la esposa/mujer","la esposas","esposas мн. = ще й наручники 😄"]
+]},
+{t:"MI + родина", lv:1, q:[
+["___ madre se llama Olena.","Mi","Mis","madre однина → mi"],
+["___ hermanos son gemelos.","Mis","Mi","hermanos множина → mis"],
+["___ abuela cocina genial.","Mi","Mis","abuela → mi"],
+["___ tíos viven en Lviv.","Mis","Mi","tíos множина → mis"],
+["___ hijo tiene tres años.","Mi","Mis","hijo → mi"],
+["«мої двоюрідні» (primos) — це…","mis primos","mi primos","множина → mis"],
+["___ marido trabaja mucho.","Mi","Mis","marido → mi"],
+["___ padres están jubilados.","Mis","Mi","padres множина → mis"],
+["«моя тітка» — це…","mi tía","mis tía","однина → mi"],
+["___ suegra es muy amable. (свекруха)","Mi","Mis","suegra → mi"]
+]},
+{t:"Обери присвійне", lv:1, q:[
+["(я) ___ libro","mi","tu","мій → mi"],
+["(ти) ___ casa","tu","su","твій → tu"],
+["(він) ___ coche","su","mi","його → su"],
+["(я) ___ amigos","mis","mi","мої → mis"],
+["(ти) ___ gafas","tus","tu","твої → tus"],
+["(вона) ___ hijos","sus","su","її → sus"],
+["(я) ___ familia","mi","mis","моя → mi"],
+["(ти) ___ hermanos","tus","tu","твої → tus"],
+["(usted) ___ pasaporte","su","tu","Ваш → su"],
+["(він) ___ llaves","sus","su","його → sus"]
+]},
+{t:"У реченнях", lv:1, q:[
+["___ nombre es Andriy. (моє)","Mi","Mis","nombre → mi"],
+["¿Cómo se llama ___ perro? (твій)","tu","tus","perro → tu"],
+["___ profesores son simpáticos. (наші — з su поки ні: його)","Sus","Su","profesores множина"],
+["Este es ___ coche. (мій)","mi","mis","coche → mi"],
+["¿Dónde están ___ llaves? (твої)","tus","tu","llaves множина → tus"],
+["___ abuelos viven cerca. (мої)","Mis","Mi","abuelos → mis"],
+["Ella busca ___ móvil. (свій = її)","su","sus","móvil → su"],
+["___ hermana estudia en Madrid. (моя)","Mi","Mis","hermana → mi"],
+["¿Son ___ maletas? (твої)","tus","tu","maletas → tus"],
+["___ jefe es muy exigente. (його)","Su","Sus","jefe → su"]
+]},
+{t:"Однина чи множина?", lv:1, q:[
+["mi + casa → …","mi casa","mis casa","casa однина"],
+["mi + libros → …","mis libros","mi libros","libros множина → mis"],
+["tu + amigo → …","tu amigo","tus amigo","однина → tu"],
+["tu + amigos → …","tus amigos","tu amigos","множина → tus"],
+["su + hijo → …","su hijo","sus hijo","однина → su"],
+["su + hijos → …","sus hijos","su hijos","множина → sus"],
+["Присвійне узгоджується з…","іменником після нього","підметом речення","mi/mis за числом іменника"],
+["mi + gafas → …","mis gafas","mi gafas","gafas завжди множина → mis"],
+["tu + problema → …","tu problema","tus problema","problema однина → tu"],
+["su + padres → …","sus padres","su padres","padres множина → sus"]
+]},
+{t:"Питання про власність", lv:1, q:[
+["«Як тебе звати?» дослівно «яке твоє ім'я»:","¿Cómo es tu nombre?","¿Cómo es su nombre?","до «ти» → tu"],
+["¿De qué color es ___ coche? (твоє)","tu","tus","coche → tu"],
+["¿Dónde están ___ padres? (твої)","tus","tu","padres → tus"],
+["¿Cuál es ___ número? (Ваш, ввічливо)","su","tu","usted → su"],
+["¿Es ___ este bolígrafo? (твій)","tuyo","tu","після ser → tuyo (наголошена!)"],
+["¿Cómo se llaman ___ hijos? (Ваші)","sus","su","hijos множина → sus"],
+["¿___ familia es grande? (твоя)","Tu","Tus","familia → tu"],
+["¿Dónde vive ___ abuela? (твоя)","tu","tus","abuela → tu"],
+["¿Son ___ estas gafas? (твої)","tuyas","tus","після ser → tuyas"],
+["¿Cuántos años tiene ___ hermano? (твій)","tu","tus","hermano → tu"]
+]},
+{t:"MI, TU, SU: швидкий вибір", lv:1, q:[
+["(я, однина) → …","mi","mis","мій → mi"],
+["(я, множина) → …","mis","mi","мої → mis"],
+["(ти, однина) → …","tu","tus","твій → tu"],
+["(ти, множина) → …","tus","tu","твої → tus"],
+["(він/вона, однина) → …","su","sus","його → su"],
+["(він/вона, множина) → …","sus","su","його → sus"],
+["«моя валіза» — це…","mi maleta","mis maleta","maleta однина → mi"],
+["«твої окуляри» — це…","tus gafas","tu gafas","gafas множина → tus"],
+["«його друзі» — це…","sus amigos","su amigos","amigos множина → sus"],
+["mi, tu, su змінюються за…","числом","родом","однина/множина"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"NUESTRO: рід і число", lv:2, q:[
+["___ casa (наша)","nuestra","nuestro","casa ж.р. → nuestra"],
+["___ coche (наш)","nuestro","nuestra","coche ч.р. → nuestro"],
+["___ hijos (наші)","nuestros","nuestro","ч.р. мн. → nuestros"],
+["___ hijas (наші)","nuestras","nuestros","ж.р. мн. → nuestras"],
+["nuestro змінюється за…","родом і числом","лише числом","nuestro/-a/-os/-as"],
+["___ profesora es genial.","Nuestra","Nuestro","profesora ж.р. → nuestra"],
+["___ amigos vienen hoy.","Nuestros","Nuestras","amigos ч.р. → nuestros"],
+["___ ciudad es pequeña.","Nuestra","Nuestro","ciudad ж.р. → nuestra"],
+["___ vecinos son ruidosos.","Nuestros","Nuestro","vecinos → nuestros"],
+["«наша сім'я» — це…","nuestra familia","nuestro familia","familia ж.р. → nuestra"]
+]},
+{t:"VUESTRO: рід і число", lv:2, q:[
+["___ casa (ваша, vosotros)","vuestra","vuestro","casa ж.р. → vuestra"],
+["___ coche (ваш)","vuestro","vuestra","coche ч.р. → vuestro"],
+["___ hijos (ваші)","vuestros","vuestro","ч.р. мн. → vuestros"],
+["___ hijas (ваші)","vuestras","vuestros","ж.р. мн. → vuestras"],
+["vuestro вживають в Іспанії для…","«ви» (vosotros)","однини «ти»","неформальна множина"],
+["¿Es ___ profesora? (ваша)","vuestra","vuestro","profesora → vuestra"],
+["___ ideas son geniales.","Vuestras","Vuestros","ideas ж.р. → vuestras"],
+["___ perro es muy grande.","Vuestro","Vuestra","perro ч.р. → vuestro"],
+["У Латинській Америці замість vuestro кажуть…","su (de ustedes)","nuestro","там немає vosotros"],
+["«ваша школа» (vosotros) — це…","vuestra escuela","vuestro escuela","escuela ж.р."]
+]},
+{t:"Наголошені: MÍO / MÍA", lv:2, q:[
+["Este libro es ___. (мій)","mío","mía","libro ч.р. → mío"],
+["Esta casa es ___. (моя)","mía","mío","casa ж.р. → mía"],
+["Estos zapatos son ___. (мої)","míos","mías","zapatos ч.р. → míos"],
+["Estas gafas son ___. (мої)","mías","míos","gafas ж.р. → mías"],
+["Наголошені форми узгоджуються за…","родом і числом","лише числом","mío/mía/míos/mías"],
+["La culpa es ___. (моя)","mía","mío","culpa ж.р. → mía"],
+["Un amigo ___. (мій)","mío","mi","після іменника → mío"],
+["¿Es ___ este boli? — Sí, es mío.","tuyo","tu","після ser → tuyo"],
+["Estas llaves son ___. (мої)","mías","míos","llaves ж.р. → mías"],
+["Наголошені форми стоять…","після іменника або ser","лише перед іменником","es mío / un amigo mío"]
+]},
+{t:"Наголошені: TUYO / SUYO", lv:2, q:[
+["Este boli es ___. (твій)","tuyo","tuya","boli ч.р. → tuyo"],
+["Esta mochila es ___. (твоя)","tuya","tuyo","mochila ж.р. → tuya"],
+["Estos guantes son ___. (твої)","tuyos","tuyas","guantes ч.р. → tuyos"],
+["Este coche es ___. (його)","suyo","suya","coche ч.р. → suyo"],
+["Esta idea es ___. (її)","suya","suyo","idea ж.р. → suya"],
+["¿Estas maletas son ___? (Ваші, usted)","suyas","suyos","maletas ж.р. → suyas"],
+["Un primo ___. (твій)","tuyo","tu","після іменника → tuyo"],
+["Esos asientos son ___. (їхні)","suyos","suyas","asientos ч.р. → suyos"],
+["«друг твій» (una amiga…) → …","tuya","tuyo","amiga ж.р. → tuya"],
+["Este perro es ___. (Ваш, usted)","suyo","tuyo","usted → suyo"]
+]},
+{t:"Коротка чи наголошена?", lv:2, q:[
+["___ coche es rojo. (мій, перед іменником)","Mi","Mío","перед іменником → mi"],
+["Este coche es ___. (мій, після ser)","mío","mi","після ser → mío"],
+["Короткі форми (mi/tu/su) стоять…","перед іменником","після ser","mi casa"],
+["Наголошені (mío/tuyo) стоять…","після ser або іменника","лише перед іменником","es mío"],
+["Un amigo ___ vive en Roma. (мій)","mío","mi","після іменника → mío"],
+["___ hermana es médica. (моя)","Mi","Mía","перед іменником → mi"],
+["¿Es ___ esta bufanda? (твоя)","tuya","tu","після ser → tuya"],
+["___ ideas son buenas. (твої)","Tus","Tuyas","перед іменником → tus"],
+["Esta no es mi taza, la ___ es azul.","mía","mi","з артиклем → la mía"],
+["«un libro mío» означає…","одна моя книга","моя ця книга","наголошена після іменника"]
+]},
+{t:"SU: чиє саме?", lv:2, q:[
+["su casa може означати…","його/її/їхня/Ваша хата","лише твоя хата","багатозначність su"],
+["Щоб уточнити «його», кажуть…","la casa de él","la su casa","de él/de ella"],
+["«хата Марії» — це…","la casa de María","la María casa","de + власник"],
+["su coche (Марка й Ани) = …","їхнє авто","моє авто","de ellos"],
+["Señor Ruiz, ¿es ___ maleta?","su","tu","ввічливо → su"],
+["«його книга» точніше — …","su libro / el libro de él","el libro suyo de él… стоп","de él уточнює"],
+["su hija (говоримо про Ану) = …","донька Ани","моя донька","контекст = Ана"],
+["Коли su неоднозначне, допомагає…","de él/ella/ellos/usted","заміна на mi","уточнення власника"],
+["«їхні діти» — це…","sus hijos","su hijos","hijos множина → sus"],
+["До клієнта в магазині: ¿Es ___ este abrigo?","suyo","tuyo","ввічливо → suyo"]
+]},
+{t:"Родина: розширена", lv:2, q:[
+["«дядько» — це…","el tío","el tejo","tejo = тис (дерево)"],
+["«тітка» — це…","la tía","la tinta","tinta = чорнило"],
+["«двоюрідний брат» — це…","el primo","el primero","primero = перший"],
+["«племінник» — це…","el sobrino","el sobre","sobre = конверт ✉️"],
+["«онук» — це…","el nieto","el nieve","nieve = сніг ❄️"],
+["«свекор/тесть» — це…","el suegro","el suelo","suelo = підлога"],
+["«зять» — це…","el yerno","el hierro","hierro = залізо"],
+["«невістка» — це…","la nuera","la nueva","nueva = нова"],
+["«чоловік (у шлюбі)» — це…","el marido","el marino","marino = моряк"],
+["«родичі» загалом — це…","los parientes","los padres","padres = батьки"]
+]},
+{t:"Опис сім'ї", lv:2, q:[
+["___ familia es grande. (моя)","Mi","Mis","familia однина → mi"],
+["Tenemos dos hijos: ___ hijos son gemelos.","nuestros","nuestro","hijos → nuestros"],
+["___ abuelos viven con nosotros. (наші)","Nuestros","Nuestro","abuelos → nuestros"],
+["¿Cómo es ___ hermano? (твій)","tu","tus","hermano → tu"],
+["___ tía trabaja en un hospital. (моя)","Mi","Mis","tía → mi"],
+["Ellos adoran a ___ nietos. (своїх = їхніх)","sus","su","nietos → sus"],
+["___ prima estudia Medicina. (моя)","Mi","Mías","prima → mi"],
+["¿Vienen ___ padres a la boda? (ваші)","vuestros","vuestro","padres → vuestros"],
+["___ sobrina tiene un año. (наша)","Nuestra","Nuestro","sobrina ж.р. → nuestra"],
+["Este es ___ marido. (мій)","mi","mío","перед іменником → mi"]
+]},
+{t:"Питання й відповіді", lv:2, q:[
+["— ¿Es tuyo este boli? — Sí, es ___.","mío","mi","після ser → mío"],
+["— ¿Son vuestras las maletas? — Sí, son ___.","nuestras","nuestros","maletas ж.р. → nuestras"],
+["— ¿De quién es? — Es ___. (моє)","mío","mi","es mío"],
+["— ¿Es suya esta chaqueta? — No, no es ___.","suya","su","chaqueta → suya"],
+["— ¿Son tuyos? — Sí, son ___.","míos","mías","tuyos ч.р. → míos"],
+["— ¿Es vuestro el coche? — Sí, es ___.","nuestro","nuestros","coche → nuestro"],
+["— ¿Es mío o tuyo? — Es ___. (твоє)","tuyo","tu","es tuyo"],
+["— ¿Son suyas estas gafas? — Sí.","suyas","suyos","gafas ж.р. → suyas"],
+["— ¿Es de Ana? — Sí, es ___. (її)","suyo","suya","залежить від речі; тут coche → suyo"],
+["Після ser вживаємо форму…","наголошену (mío…)","коротку (mi…)","es mío, не es mi"]
+]},
+{t:"Наголошені: усі особи", lv:2, q:[
+["(я) este boli es → …","mío","mía","boli ч.р. → mío"],
+["(ти) esta mochila es → …","tuya","tuyo","mochila ж.р. → tuya"],
+["(він) este coche es → …","suyo","suya","coche ч.р. → suyo"],
+["(ми) esta casa es → …","nuestra","nuestro","casa ж.р. → nuestra"],
+["(ви, vosotros) estos libros son → …","vuestros","vuestras","libros ч.р. → vuestros"],
+["(вони) estas gafas son → …","suyas","suyos","gafas ж.р. → suyas"],
+["(я) estas llaves son → …","mías","míos","llaves ж.р. → mías"],
+["(ти) estos zapatos son → …","tuyos","tuyas","zapatos ч.р. → tuyos"],
+["Наголошені форми узгоджуються за…","родом і числом","лише числом","mío/mía/míos/mías"],
+["(ми) estos asientos son → …","nuestros","nuestras","asientos ч.р. → nuestros"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Артикль + наголошена", lv:3, q:[
+["Mi coche es viejo, ___ es nuevo. (твій)","el tuyo","tuyo","заміна іменника → el tuyo"],
+["Tu casa y ___ son bonitas. (моя)","la mía","mía","la mía"],
+["___ (моя) es mejor.","La mía","Mía","з артиклем → la mía"],
+["el mío / la mía замінюють…","іменник, про який ідеться","підмет речення","«моя (та річ)»"],
+["Estos zapatos son viejos; ___ (твої) son nuevos.","los tuyos","tuyos","los tuyos"],
+["Mis padres y ___ se conocen. (твої)","los tuyos","tuyos","los tuyos"],
+["— ¿Tu coche? — No, ___ está en el taller.","el mío","mío","з артиклем → el mío"],
+["Nuestra casa es grande; ___ (ваша) también.","la vuestra","vuestra","la vuestra"],
+["Артикль перед наголошеною формою потрібен, коли…","вона замінює іменник","завжди","el mío = моя річ"],
+["Sus hijos y ___ juegan juntos. (наші)","los nuestros","nuestros","los nuestros"]
+]},
+{t:"Порядок слів", lv:3, q:[
+["Правильно:","mi hermana","la mi hermana","короткі форми — без артикля!"],
+["«la mi casa» — це…","помилка","норма","НЕ можна артикль + mi"],
+["«un amigo mío» означає…","один мій друг","мій цей друг","наголошена після іменника"],
+["«un mi amigo» — це…","помилка","норма","треба un amigo mío"],
+["«друг мій» правильно — …","un amigo mío","un mi amigo","наголошена!"],
+["Коротка форма (mi) вживається…","без артикля, перед іменником","з артиклем","mi libro"],
+["«Одна моя ідея» — це…","una idea mía","una mi idea","idea mía"],
+["Наголошена після іменника додає відтінок…","«один із…»","обов'язковості","un amigo mío = один з друзів"],
+["Правильно:","tus amigos","los tus amigos","без артикля"],
+["«mi el coche» — це…","помилка","норма","або mi coche, або el mío"]
+]},
+{t:"Частини тіла: без присвійних", lv:3, q:[
+["«Мию руки» іспанською:","Me lavo las manos","Me lavo mis manos","з тілом → артикль!"],
+["З частинами тіла іспанці частіше вживають…","артикль (las manos)","присвійне (mis manos)","+ зворотне дієслово"],
+["«Болить голова» — це…","Me duele la cabeza","Me duele mi cabeza","la cabeza"],
+["«Він миє обличчя» — це…","Se lava la cara","Se lava su cara","la cara"],
+["«Дай руку» — це…","Dame la mano","Dame tu mano","la mano"],
+["Замість «mi pelo» частіше кажуть…","el pelo","mío pelo","me corto el pelo"],
+["«У мене болять ноги» — це…","Me duelen las piernas","Duelen mis piernas","las piernas"],
+["З одягом і тілом присвійне часто…","замінюється артиклем","подвоюється","+ me/te/se"],
+["«Чищу зуби» — це…","Me lavo los dientes","Lavo mis dientes","los dientes"],
+["Чому так? Бо зрозуміло, що…","це твої частини тіла","тіло спільне","me lavo → мої"]
+]},
+{t:"DE + власник", lv:3, q:[
+["«книга Хуана» — це…","el libro de Juan","el Juan libro","de + власник"],
+["«авто моїх батьків» — це…","el coche de mis padres","el mis padres coche","de + власники"],
+["Присвійності в іспанській немає апострофа, тому…","вживають de","додають 's","de María, не María's"],
+["«собака сусідів» — це…","el perro de los vecinos","los vecinos perro","de los vecinos"],
+["¿De quién es? — Es ___ Marta.","de","a","de Marta"],
+["«ключі від хати» — це…","las llaves de casa","las casa llaves","de casa"],
+["«ім'я дитини» — це…","el nombre del niño","el niño nombre","de + el = del"],
+["«стіл викладача» — це…","la mesa del profesor","la profesor mesa","del profesor"],
+["Англійське «Ana's book» іспанською — …","el libro de Ana","el Ana's libro","de Ana"],
+["«будинок бабусі й дідуся» — це…","la casa de los abuelos","la abuelos casa","de los abuelos"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«mis casa» → …","mi casa","mi casas","casa однина → mi"],
+["«la mi hermana» → …","mi hermana","la hermana mía… стоп","без артикля з mi"],
+["«Es mi.» (після ser) → …","Es mío/mía","Es mi","після ser → наголошена"],
+["«un mi amigo» → …","un amigo mío","mi un amigo","наголошена після іменника"],
+["«nuestro casa» → …","nuestra casa","nuestros casa","casa ж.р. → nuestra"],
+["«vuestros hija» → …","vuestra hija","vuestro hija","hija ж.р. однина → vuestra"],
+["«tu tús libros» → …","tus libros","tu libros","libros мн. → tus"],
+["«Me lavo mis manos» → природніше…","Me lavo las manos","Lavo mis manos","з тілом → артикль"],
+["«el libro de la María» → …","el libro de María","el libro de la María","імена без артикля"],
+["«sus de ellos casa» → …","su casa / la casa de ellos","sus casa ellos","одне з двох"]
+]},
+{t:"Наголос: MÍO vs MIO", lv:3, q:[
+["Наголошена форма «мій» пишеться…","mío (з тильдою)","mio","MÍ-o"],
+["mía має тильду над…","í","a","mí-a"],
+["Чому mío з тильдою?","розбиває дифтонг i+o","для краси","mí-o = два склади"],
+["míos пишеться…","з тильдою","без тильди","mí-os"],
+["tuyo має тильду?","ні","так","tu-yo — без неї"],
+["suyo має тильду?","ні","так","su-yo — без неї"],
+["Тильда потрібна у формах…","mío/mía/míos/mías","tuyo/suyo","лише «мій»-серія"],
+["mía і mia — це…","mía правильно, mia — помилка","однакові","завжди з тильдою"],
+["nuestro має тильду?","ні","так","nues-tro"],
+["Форми на -uyo (tuyo, suyo)…","без тильди","з тильдою","дифтонг не розбивається"]
+]},
+{t:"Контекст: чий предмет", lv:3, q:[
+["Марта каже про свою сумку: «Es ___.»","mía","suya","її власна → mía"],
+["Ти кажеш Марті про її сумку: «Es ___.»","tuya","mía","звертаючись → tuya"],
+["Про сумку Марти третій особі: «Es ___.»","suya","mía","її → suya"],
+["Ти про свій телефон: «El móvil es ___.»","mío","tuyo","мій → mío"],
+["Друг про твій телефон: «Es ___.» (звертаючись)","tuyo","mío","твій → tuyo"],
+["Група про спільну хату: «La casa es ___.»","nuestra","vuestra","наша → nuestra"],
+["Ти групі про їхню хату: «Es ___.» (vosotros)","vuestra","nuestra","ваша → vuestra"],
+["Про хату двох сусідів: «Es ___.»","suya","nuestra","їхня → suya"],
+["Продавець клієнту про його річ: «Es ___.»","suya","tuya","ввічливо → suya"],
+["Ти про свої й друга речі: «Son ___.» (наші)","nuestras","suyas","наші → nuestras"]
+]},
+{t:"Присвійні + прикметники", lv:3, q:[
+["___ nueva casa es grande. (моя)","Mi","Mía","перед іменником → mi"],
+["Este coche ___ es rápido. (мій, після іменника)","mío","mi","un coche mío"],
+["___ mejores amigos. (мої)","Mis","Míos","перед іменником → mis"],
+["Порядок: присвійне + прикметник + …","іменник (mi mejor amigo)","навпаки","mi buen amigo"],
+["«моя стара машина» — це…","mi coche viejo","mi viejo coche mío","mi + іменник + прикм."],
+["___ querida abuela. (моя дорога)","Mi","Mía","mi querida abuela"],
+["Nuestros ___ vecinos. (нові)","nuevos","nueva","vecinos → nuevos"],
+["«твоя найкраща подруга» — це…","tu mejor amiga","tu mejor amigo","amiga ж.р."],
+["Присвійне зазвичай стоїть…","на початку групи","в кінці","mi + … + іменник"],
+["«їхні маленькі діти» — це…","sus hijos pequeños","suyos hijos pequeños","перед іменником → sus"]
+]},
+{t:"Моя родина (текст)", lv:3, q:[
+["___ familia no es muy grande.","Mi","Mis","familia → mi"],
+["___ padres se llaman Ivan y Olena.","Mis","Mi","padres → mis"],
+["___ madre es profesora.","Mi","Mía","madre → mi"],
+["Tengo un hermano; ___ hermano es mayor.","mi","mis","hermano → mi"],
+["___ abuelos viven en un pueblo.","Mis","Mi","abuelos → mis"],
+["Adoro a ___ abuela: cocina genial.","mi","mía","abuela → mi"],
+["___ tíos tienen dos hijos.","Mis","Mi","tíos → mis"],
+["Así que tengo dos primos; ___ primos son pequeños.","mis","mi","primos → mis"],
+["¿Y ___ familia? ¿Cómo es? (твоя)","tu","tus","familia → tu"],
+["¿Cómo se llaman ___ padres? (твої)","tus","tu","padres → tus"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["___ casa (моя)","mi","mis","однина → mi"],
+["___ padres (мої)","mis","mi","множина → mis"],
+["___ casa (наша)","nuestra","nuestro","casa ж.р."],
+["Este libro es ___. (мій)","mío","mi","після ser → mío"],
+["Un amigo ___. (мій)","mío","mi","після іменника → mío"],
+["su casa може означати…","його/її/їхня/Ваша","лише твоя","багатозначне"],
+["«книга Ани» — це…","el libro de Ana","el Ana libro","de + власник"],
+["«Мию руки» — це…","Me lavo las manos","Me lavo mis manos","з тілом → артикль"],
+["mío пишеться…","з тильдою","без тильди","розбиває дифтонг"],
+["Mi coche es viejo, ___ es nuevo. (твій)","el tuyo","tuyo","з артиклем"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Присвійні: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 9 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

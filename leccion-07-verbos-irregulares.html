@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 7 · Презенс: неправильні дієслова · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 7 · @malinnaartstudio</div>
+    <h1 id="htitle">Неправильні дієслова: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 7 · Presente: verbos irregulares.</b>
+      30 вправ по 10 питань: чергування e→ie, o→ue, e→i, u→ue, неправильне «yo» (hago, salgo, sé),
+      повністю особливі ir, venir, oír, decir. Від ★ до ★★★. ¡Sí, puedes! 💪
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · форми</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · речення</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · вирази й пастки</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 7</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"QUERER: e→ie", lv:1, q:[
+["yo → …","quiero","quero","e→ie"],
+["tú → …","quieres","queres","quieres"],
+["él → …","quiere","quere","quiere"],
+["nosotros → …","queremos","quieremos","БЕЗ дифтонга!"],
+["vosotros → …","queréis","quieréis","БЕЗ дифтонга!"],
+["ellos → …","quieren","queren","quieren"],
+["Yo ___ un café con leche.","quiero","quero","хочу каву ☕"],
+["¿___ (tú) agua?","Quieres","Queres","tú → quieres"],
+["Nosotros ___ viajar a Valencia.","queremos","quieremos","ми — без зміни"],
+["querer означає…","хотіти; любити","питати","te quiero ❤️"]
+]},
+{t:"E→IE: pensar, empezar…", lv:1, q:[
+["Yo ___ (pensar) en ti.","pienso","penso","e→ie: pienso"],
+["La clase ___ (empezar) ya.","empieza","empeza","empieza"],
+["¿A qué hora ___ (cerrar) la tienda?","cierra","cerra","cierra"],
+["Yo no ___ (entender).","entiendo","entendo","entiendo"],
+["¿Tú ___ (preferir) té o café?","prefieres","preferes","prefieres"],
+["Ellos ___ (pensar) mucho.","piensan","pensan","piensan"],
+["Yo ___ (empezar) mañana.","empiezo","empezo","empiezo"],
+["Nosotros ___ (cerrar) a las ocho.","cerramos","cierramos","ми — без зміни!"],
+["Ella ___ (preferir) el mar.","prefiere","prefere","prefiere"],
+["Чергування e→ie відбувається…","коли корінь наголошений","у всіх формах","тому nosotros/vosotros без зміни"]
+]},
+{t:"PODER: o→ue", lv:1, q:[
+["yo → …","puedo","podo","o→ue"],
+["tú → …","puedes","podes","puedes"],
+["ella → …","puede","pode","puede"],
+["nosotros → …","podemos","puedemos","БЕЗ дифтонга!"],
+["vosotros → …","podéis","puedéis","БЕЗ дифтонга!"],
+["ellos → …","pueden","poden","pueden"],
+["¿___ (tú) ayudarme?","Puedes","Podes","можеш допомогти?"],
+["No ___ (yo) ir hoy.","puedo","podo","не можу сьогодні"],
+["¿___ (vosotros) venir mañana?","Podéis","Puedéis","ви — без зміни"],
+["poder означає…","могти","класти","poder = міч, могти"]
+]},
+{t:"O→UE: dormir, volver…", lv:1, q:[
+["El bebé ___ (dormir) mucho.","duerme","dorme","duerme 😴"],
+["Yo ___ (volver) tarde.","vuelvo","volvo","Volvo — це авто 🚗"],
+["¿Cuánto ___ (costar) esto?","cuesta","costa","cuesta"],
+["No ___ (yo, encontrar) mis llaves.","encuentro","encontro","encuentro"],
+["¿___ (tú, recordar) su nombre?","Recuerdas","Recordas","recuerdas"],
+["Nosotros ___ (volver) el lunes.","volvemos","vuelvemos","ми — без зміни"],
+["Ellos ___ (dormir) ocho horas.","duermen","dormen","duermen"],
+["La película ___ (contar) una historia real.","cuenta","conta","cuenta"],
+["Yo ___ (almorzar) a las dos.","almuerzo","almorzo","almuerzo = обідаю"],
+["У формі nosotros чергування o→ue…","немає","є","dormimos, volvemos"]
+]},
+{t:"E→I: pedir, servir…", lv:1, q:[
+["Yo ___ (pedir) la cuenta.","pido","pide","yo → pido"],
+["¿Qué ___ (pedir, tú)?","pides","pedes","pides"],
+["El camarero ___ (servir) los platos.","sirve","serve","sirve"],
+["Yo ___ (repetir) las palabras nuevas.","repito","repeto","repito"],
+["Nosotros ___ (pedir) dos cafés.","pedimos","pidimos","ми — без зміни!"],
+["Ellos ___ (servir) la cena a las nueve.","sirven","serven","sirven"],
+["La profesora ___ (repetir) la regla.","repite","repete","repite"],
+["Yo ___ (seguir) las instrucciones.","sigo","sego","seguir → sigo"],
+["¿___ (vosotros, pedir) postre?","Pedís","Pidís","ви — без зміни"],
+["Чергування e→i буває лише у дієсловах на…","-IR","-AR","pedir, servir, repetir…"]
+]},
+{t:"JUGAR: u→ue", lv:1, q:[
+["yo → …","juego","jugo","jugo = сік! 🧃"],
+["tú → …","juegas","jugas","juegas"],
+["él → …","juega","juga","juega"],
+["nosotros → …","jugamos","juegamos","БЕЗ дифтонга"],
+["vosotros → …","jugáis","juegáis","БЕЗ дифтонга"],
+["ellos → …","juegan","jugan","juegan"],
+["Yo ___ al fútbol los sábados.","juego","jugo","juego al fútbol ⚽"],
+["¿___ (tú) al ajedrez?","Juegas","Jugas","juegas"],
+["Los niños ___ en el patio.","juegan","jugan","juegan"],
+["jugar — єдине дієслово з чергуванням…","u→ue","o→ue","унікальне!"]
+]},
+{t:"YO на -GO", lv:1, q:[
+["hacer, yo → …","hago","haco","hago"],
+["poner, yo → …","pongo","pono","pongo"],
+["salir, yo → …","salgo","salo","salgo"],
+["traer, yo → …","traigo","trago","trago = ковток 😄"],
+["Yo ___ (hacer) la cena hoy.","hago","hazo","готую вечерю"],
+["Yo ___ (poner) música.","pongo","pono","вмикаю музику 🎵"],
+["Yo ___ (salir) a las siete.","salgo","salo","виходжу о сьомій"],
+["Yo ___ (traer) el vino.","traigo","traido","приношу вино 🍷"],
+["А у формі tú ці дієслова…","правильні: haces, pones…","теж мають -go","лише yo особливе!"],
+["-go зʼявляється лише у формі…","yo","усіх осіб","hago, але haces, hace…"]
+]},
+{t:"YO особливі: sé, conozco…", lv:1, q:[
+["saber, yo → …","sé","sabo","sé — з тильдою!"],
+["conocer, yo → …","conozco","conoco","-zco"],
+["ver, yo → …","veo","vo","veo"],
+["dar, yo → …","doy","dao","doy"],
+["Yo ___ (saber) la verdad.","sé","sabo","я знаю"],
+["Yo no ___ (conocer) a nadie aquí.","conozco","conozo","conozco"],
+["Yo ___ (ver) la tele por la noche.","veo","vejo","veo"],
+["Yo te ___ (dar) mi número.","doy","do","doy"],
+["Тильда у sé потрібна, щоб…","відрізнити від займенника se","для краси","sé ≠ se"],
+["Дієслова на -cer у формі yo часто дають…","-zco","-go","conozco, parezco"]
+]},
+{t:"IR: повністю особливе", lv:1, q:[
+["yo → …","voy","vo","voy"],
+["tú → …","vas","vais","vas"],
+["él → …","va","ve","va"],
+["nosotros → …","vamos","imos","vamos"],
+["vosotros → …","vais","vas","vais"],
+["ellos → …","van","iven","van"],
+["Yo ___ al trabajo en bus.","voy","vo","voy al trabajo"],
+["¿Adónde ___ (tú)?","vas","va","vas"],
+["Nosotros ___ a la playa.","vamos","imos","¡vamos! 🏖️"],
+["Дієслово ir —","повністю неправильне","звичайне правильне","voy, vas, va…"]
+]},
+{t:"VENIR і TENER", lv:1, q:[
+["venir, yo → …","vengo","veno","-go + e→ie далі"],
+["venir, tú → …","vienes","venes","vienes"],
+["venir, nosotros → …","venimos","vienimos","без зміни"],
+["tener, yo → …","tengo","teno","tengo"],
+["tener, tú → …","tienes","tenes","tienes"],
+["tener, ellos → …","tienen","tenen","tienen"],
+["¿___ (tú, venir) a la fiesta?","Vienes","Venes","прийдеш? 🎉"],
+["Ellos ___ (venir) mañana.","vienen","venen","vienen"],
+["Nosotros ___ (tener) prisa.","tenemos","tienemos","без дифтонга"],
+["У формі yo venir і tener мають…","-go: vengo, tengo","-zco","подвійна неправильність!"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"E→IE у реченнях", lv:2, q:[
+["¿En qué ___ (pensar, tú)?","piensas","pensas","про що думаєш?"],
+["Las clases ___ (empezar) en septiembre.","empiezan","empezan","empiezan"],
+["Yo ___ (querer) aprender más palabras.","quiero","quero","quiero"],
+["¿A qué hora ___ (cerrar, vosotros)?","cerráis","cierráis","ви — без зміни!"],
+["Mi hija no ___ (entender) el ejercicio.","entiende","entende","entiende"],
+["Nosotros ___ (preferir) el tren.","preferimos","prefirimos","без зміни"],
+["¿___ (querer, tú) venir con nosotros?","Quieres","Queres","quieres"],
+["El curso ___ (empezar) hoy.","empieza","empeza","empieza"],
+["Yo ___ (cerrar) la puerta con llave.","cierro","cerro","cierro"],
+["Ellos ___ (preferir) quedarse en casa.","prefieren","preferen","prefieren"]
+]},
+{t:"O→UE у реченнях", lv:2, q:[
+["¿A qué hora ___ (volver, tú)?","vuelves","volves","vuelves"],
+["Este abrigo ___ (costar) mucho.","cuesta","costa","cuesta"],
+["Yo no ___ (poder) hoy, lo siento.","puedo","podo","puedo"],
+["Los sábados nosotros ___ (dormir) más.","dormimos","duermimos","ми — без зміни!"],
+["¿Dónde ___ (encontrar, yo) un taxi?","encuentro","encontro","encuentro"],
+["Mi abuela ___ (contar) historias increíbles.","cuenta","conta","cuenta"],
+["¿___ (poder, vosotros) esperar un momento?","Podéis","Puedéis","ви — без зміни"],
+["El niño ___ (soñar) con dinosaurios.","sueña","soña","sueña 🦖"],
+["¿Cuánto ___ (costar) estas botas?","cuestan","costan","botas мн. → cuestan"],
+["Yo ___ (recordar) aquel verano.","recuerdo","recordo","recuerdo"]
+]},
+{t:"E→I у реченнях", lv:2, q:[
+["Siempre yo ___ (pedir) lo mismo.","pido","pide","yo → pido"],
+["¿Qué ___ (servir, ellos) aquí?","sirven","serven","sirven"],
+["El loro ___ (repetir) todo. 🦜","repite","repete","repite"],
+["¿Me ___ (seguir, tú) en Instagram? 😉","sigues","segues","sigues"],
+["Nosotros ___ (repetir) el diálogo.","repetimos","repitimos","ми — без зміни"],
+["El restaurante ___ (servir) paella los jueves.","sirve","serve","sirve"],
+["Yo ___ (seguir) una dieta sana.","sigo","sijo","sigo"],
+["¿Qué postre ___ (pedir, vosotros)?","pedís","pidís","ви — без зміни"],
+["Ellos ___ (pedir) ayuda.","piden","peden","piden"],
+["Los alumnos ___ (repetir) después de la profe.","repiten","repeten","repiten"]
+]},
+{t:"YO-форми у реченнях", lv:2, q:[
+["Yo ___ (hacer) yoga por las mañanas.","hago","haces","yo → hago"],
+["Yo ___ (salir) con amigos los viernes.","salgo","sales","salgo"],
+["Yo ___ (poner) la mesa cada día.","pongo","pones","pongo"],
+["Yo ___ (traer) buenas noticias.","traigo","traes","traigo"],
+["Yo ___ (saber) cocinar paella.","sé","sabes","sé"],
+["Yo ___ (conocer) un bar genial.","conozco","conoces","conozco"],
+["Yo ___ (ver) a mis padres los domingos.","veo","ves","veo"],
+["Yo ___ (dar) clases de ucraniano.","doy","das","doy"],
+["Yo ___ (oír) un ruido raro.","oigo","oyes","oigo"],
+["Yo siempre ___ (decir) la verdad.","digo","dices","digo"]
+]},
+{t:"NOSOTROS і VOSOTROS: без зміни!", lv:2, q:[
+["querer, nosotros → …","queremos","quieremos","без дифтонга"],
+["poder, vosotros → …","podéis","puedéis","без дифтонга"],
+["dormir, nosotros → …","dormimos","duermimos","dormimos"],
+["pedir, vosotros → …","pedís","pidís","pedís"],
+["volver, nosotros → …","volvemos","vuelvemos","volvemos"],
+["empezar, vosotros → …","empezáis","empiezáis","empezáis"],
+["jugar, nosotros → …","jugamos","juegamos","jugamos"],
+["entender, vosotros → …","entendéis","entiendéis","entendéis"],
+["У nosotros/vosotros корінь…","не змінюється","змінюється як усюди","золоте правило чергувань!"],
+["preferir, nosotros → …","preferimos","prefierimos","preferimos"]
+]},
+{t:"IR A + місце", lv:2, q:[
+["Voy ___ cine.","al","a el","a+el=al"],
+["Vamos ___ playa.","a la","al","playa ж.р."],
+["¿Vas ___ gimnasio?","al","a el","al gimnasio 🏋️"],
+["Van ___ escuela.","a la","al","escuela ж.р."],
+["Voy a ___ de Ana. (до Ани додому)","casa","la casa","a casa de… без артикля"],
+["ir a означає…","йти / їхати до","приходити з","напрямок туди"],
+["Vamos ___ supermercado.","al","a la","supermercado ч.р."],
+["¿Adónde ___ (vosotros)?","vais","vas","vosotros → vais"],
+["Voy ___ pie.","a","en","a pie = пішки"],
+["Los lunes voy ___ trabajo.","al","en","al trabajo"]
+]},
+{t:"VENIR DE: рух сюди", lv:2, q:[
+["Vengo ___ trabajo.","del","al","з роботи → del"],
+["venir de означає…","приходити з","йти до","рух до мовця"],
+["¿De dónde ___ (tú)?","vienes","vas","звідки йдеш → vienes"],
+["Venimos ___ la playa.","de","a","з пляжу"],
+["Mis padres vienen ___ Ucrania mañana.","de","a","приїжджають з України 🇺🇦"],
+["Voy A Madrid, pero vengo ___ Madrid.","de","en","туди — a, звідти — de"],
+["¿___ (tú) conmigo o vas con ellos?","Vienes","Vas","зі мною → vienes"],
+["El tren ___ (venir) de Barcelona.","viene","vene","viene"],
+["ir — це рух…","туди, від мовця","сюди, до мовця","voy a…"],
+["venir — це рух…","сюди, до мовця","туди, від мовця","ven aquí = іди сюди"]
+]},
+{t:"OÍR та DECIR", lv:2, q:[
+["oír, yo → …","oigo","oyo","oigo"],
+["oír, tú → …","oyes","oes","oyes"],
+["oír, nosotros → …","oímos","oyemos","oímos"],
+["decir, yo → …","digo","dico","digo"],
+["decir, tú → …","dices","deces","dices"],
+["decir, ellos → …","dicen","decen","dicen"],
+["No ___ (oír, yo) nada, habla más alto.","oigo","oyo","oigo"],
+["¿Qué ___ (decir, tú)?","dices","deces","що ти кажеш?"],
+["Ellos siempre ___ (decir) que sí.","dicen","dizen","dicen"],
+["¿Me ___ (oír, vosotros)?","oís","oyéis","oís"]
+]},
+{t:"Мікс у реченнях", lv:2, q:[
+["Yo ___ (empezar) a las nueve.","empiezo","empezo","empiezo"],
+["¿Tú ___ (poder) mañana?","puedes","podes","puedes"],
+["Ella ___ (pedir) siempre pescado.","pide","pede","pide"],
+["Nosotros ___ (ir) al centro.","vamos","imos","vamos"],
+["Yo ___ (hacer) la compra los viernes.","hago","haco","hago"],
+["¿Vosotros ___ (venir) en coche?","venís","vienís","без дифтонга"],
+["Ellos ___ (jugar) al tenis.","juegan","jugan","juegan 🎾"],
+["Yo no ___ (saber) bailar salsa.","sé","sabo","sé"],
+["La tienda ___ (cerrar) a las nueve.","cierra","cerra","cierra"],
+["Yo ___ (dormir) muy poco.","duermo","dormo","duermo"]
+]},
+{t:"Питання", lv:2, q:[
+["¿Qué ___ (querer, tú) de postre?","quieres","quieren","tú → quieres"],
+["¿A qué hora ___ (empezar) la clase?","empieza","empiezan","la clase → однина"],
+["¿___ (poder, yo) pasar?","Puedo","Podo","можна увійти?"],
+["¿Dónde ___ (poner, yo) esto?","pongo","pono","куди це поставити?"],
+["¿___ (venir, vosotros) o no?","Venís","Vienen","vosotros → venís"],
+["¿Cuántas horas ___ (dormir, tú)?","duermes","dormes","duermes"],
+["¿Qué ___ (hacer, tú) este finde?","haces","hagas","haces"],
+["¿___ (jugar, nosotros) una partida?","Jugamos","Juegamos","зіграємо? без дифтонга"],
+["¿A quién ___ (conocer, tú) aquí?","conoces","conozcas","tú → conoces"],
+["¿Adónde ___ (ir) este autobús?","va","vay","va"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Є чергування чи ні?", lv:3, q:[
+["У формі quiere чергування…","є (e→ie)","немає","quIEre"],
+["У формі queremos чергування…","немає","є","ми — чисті!"],
+["У формі duermo чергування…","є (o→ue)","немає","dUErmo"],
+["У формі dormís чергування…","немає","є","vosotros — без зміни"],
+["У формі piden чергування…","є (e→i)","немає","pIden"],
+["У формі pedimos чергування…","немає","є","pedimos"],
+["У формі juego чергування…","є (u→ue)","немає","jUEgo"],
+["У формі jugáis чергування…","немає","є","jugáis"],
+["У формі entiendes чергування…","є","немає","entIEndes"],
+["У формі entendemos чергування…","немає","є","entendemos"]
+]},
+{t:"Вирази з HACER", lv:3, q:[
+["hacer deporte означає…","займатися спортом","робити депорт","hago deporte"],
+["hacer los deberes означає…","робити домашнє завдання","мати обовʼязки","класика школяра"],
+["Hace calor означає…","спекотно","він виробляє тепло","безособове про погоду"],
+["hacer la compra означає…","робити закупи продуктів","купувати будинок","у супермаркеті 🛒"],
+["hacer una pregunta означає…","ставити питання","робити прохання","hago una pregunta"],
+["hacer la cama означає…","застеляти ліжко","будувати ліжко","щоранку 😅"],
+["hacer cola означає…","стояти в черзі","робити хвіст","cola = черга (і хвіст!)"],
+["У «Hace frío en enero» hace — це…","безособова форма про погоду","хтось щось робить","погода → hace"],
+["hacer fotos означає…","фотографувати","друкувати фото","hago fotos 📸"],
+["¿Qué haces? означає…","Що робиш?","Що маєш?","найчастіше питання"]
+]},
+{t:"Вирази з PONER і SALIR", lv:3, q:[
+["poner la mesa означає…","накривати на стіл","ставити стіл","перед вечерею"],
+["poner la tele означає…","вмикати телевізор","класти телевізор","pongo la tele"],
+["salir de casa означає…","виходити з дому","заходити додому","salgo de casa a las 8"],
+["salir con amigos означає…","гуляти / зустрічатися з друзями","виходити проти друзів","los viernes 🎉"],
+["El sol sale означає…","сонце сходить","сонце виходить погуляти","схід сонця 🌅"],
+["poner música означає…","вмикати музику","писати музику","pon música!"],
+["salir bien означає…","вдаватися, виходити добре","виходити праворуч","todo sale bien"],
+["«Salgo del trabajo a las seis» означає…","виходжу з роботи о 6","влаштовуюсь на роботу о 6","кінець робочого дня"],
+["poner un ejemplo означає…","наводити приклад","ставити оцінку","pongo un ejemplo"],
+["«La película sale en marzo» означає…","фільм виходить у березні","фільм зникає в березні","премʼєра 🎬"]
+]},
+{t:"DECIR чи HABLAR?", lv:3, q:[
+["«сказати щось конкретне» — це…","decir","hablar","digo que…"],
+["«розмовляти мовою» — це…","hablar","decir","hablo español"],
+["___ español y ucraniano.","Hablo","Digo","мови → hablar"],
+["¿Qué ___ (tú)? — Nada, nada.","dices","hablas","що кажеш → decir"],
+["Ella ___ que viene mañana.","dice","habla","переказ слів → decir"],
+["___ con mi madre cada día.","Hablo","Digo","розмовляю З кимось → hablar"],
+["Зміст сказаного («що саме») приєднує…","decir","hablar","dice que…, dice la verdad"],
+["¿Puedes ___ más despacio?","hablar","decir","говорити повільніше"],
+["Los niños pequeños ya ___.","hablan","dicen","вміють говорити → hablar"],
+["«Він каже правду» — це…","Dice la verdad","Habla la verdad","decir la verdad"]
+]},
+{t:"VER чи MIRAR?", lv:3, q:[
+["«бачити» — це…","ver","mirar","сприймати очима"],
+["«дивитися (навмисно)» — це…","mirar","ver","спрямувати погляд"],
+["___ la tele por la noche.","Veo","Miro","ver la tele — сталий вираз"],
+["¡___! ¡Un arcoíris! 🌈","Mira","Ve","дивись!"],
+["No ___ bien sin gafas.","veo","miro","не бачу → ver"],
+["___ el escaparate con atención. (роздивляюсь)","Miro","Veo","уважно → mirar"],
+["¿___ (tú) esa serie nueva?","Ves","Miras","ver una serie"],
+["mirar — це…","спрямовувати погляд","мимоволі помічати","дія навмисна"],
+["Nos vemos означає…","побачимось","подивимось одне на одного","¡nos vemos! 👋"],
+["¡Mira qué bonito! означає…","Диви, як гарно!","Бачу, що гарно!","mira = диви"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«Yo sabo» → …","sé","sabo bien","saber → sé"],
+["«No podo ir» → …","No puedo ir","No podo venir","puedo"],
+["«Ella quere» → …","quiere","quiera","quiere"],
+["«Nosotros duermimos» → …","dormimos","duermemos","ми — без дифтонга"],
+["«Yo hazo la cena» → …","hago","haco","hago"],
+["«Tú tenes razón» → …","tienes","tenies","tienes"],
+["«Ellos jugan» → …","juegan","juegán","juegan"],
+["«Vosotros puedéis» → …","podéis","pudéis","ви — без дифтонга"],
+["«Yo oyo música» → …","oigo","ojo","oigo (ojo = око!)"],
+["«El niño dorme» → …","duerme","dormie","duerme"]
+]},
+{t:"JUGAR A чи TOCAR?", lv:3, q:[
+["«грати у футбол» — це…","jugar al fútbol","tocar el fútbol","спорт → jugar a"],
+["«грати на гітарі» — це…","tocar la guitarra","jugar la guitarra","інструмент → tocar 🎸"],
+["Juego ___ ajedrez.","al","el","jugar A + al"],
+["Ella toca ___ piano.","el","al","tocar + артикль без a"],
+["jugar = гра-розвага/спорт; tocar = …","грати на інструменті","лише торкатися","музика → tocar"],
+["¿A qué ___ (tú)? (у що граєш)","juegas","tocas","juegas"],
+["Mi hijo ___ el violín.","toca","juega","toca 🎻"],
+["Los domingos jugamos ___ cartas.","a las","en las","jugar a las cartas"],
+["tocar також означає…","торкатися","грати у мʼяч","no tocar = не торкатися"],
+["«грати у відеоігри» — це…","jugar a videojuegos","tocar videojuegos","jugar a 🎮"]
+]},
+{t:"Форми-пастки", lv:3, q:[
+["tener, yo → …","tengo","tiengo","НЕ tiengo! Дуже часта помилка"],
+["venir, yo → …","vengo","viengo","НЕ viengo!"],
+["decir, él → …","dice","dize","dice"],
+["seguir, yo → …","sigo","siguo","gu → g перед o"],
+["oír, ellos → …","oyen","oien","oyen"],
+["dar, yo → …","doy","dou","doy"],
+["ver, vosotros → …","veis","véis","один склад — без тильди!"],
+["ir, vosotros → …","vais","váis","теж без тильди"],
+["saber, nosotros → …","sabemos","sebemos","правильна форма"],
+["jugar, tú → …","juegas","jugas","juegas"]
+]},
+{t:"Мій день (текст)", lv:3, q:[
+["Yo ___ (empezar) el día a las siete.","empiezo","empezo","empiezo"],
+["Primero ___ (hacer) café.","hago","haco","hago ☕"],
+["___ (salir) de casa a las ocho.","Salgo","Salo","salgo"],
+["___ (ir) al trabajo en metro.","Voy","Vo","voy"],
+["En el trabajo ___ (tener) muchas reuniones.","tengo","teno","tengo"],
+["A mediodía nosotros ___ (almorzar) juntos.","almorzamos","almuerzamos","ми — без дифтонга"],
+["Después yo ___ (volver) a casa.","vuelvo","volvo","vuelvo"],
+["Por la tarde ___ (jugar) con mi gato. 🐱","juego","jugo","juego"],
+["Luego ___ (ver) una serie.","veo","vejo","veo"],
+["Y ___ (dormir) ocho horas.","duermo","dormo","duermo 😴"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["querer, yo → …","quiero","quero","e→ie"],
+["poder, nosotros → …","podemos","puedemos","без зміни"],
+["pedir, él → …","pide","pede","e→i"],
+["jugar, yo → …","juego","jugo","u→ue"],
+["hacer, yo → …","hago","haco","-go"],
+["ir, ellos → …","van","iven","van"],
+["venir, tú → …","vienes","venes","vienes"],
+["saber, yo → …","sé","sabo","sé"],
+["oír, yo → …","oigo","oyo","oigo"],
+["У nosotros чергування кореня…","немає","є завжди","головне правило уроку!"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Неправильні дієслова: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 7 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

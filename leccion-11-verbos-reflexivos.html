@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 11 · Зворотні дієслова · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 11 · @malinnaartstudio</div>
+    <h1 id="htitle">Зворотні дієслова: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 11 · Verbos reflexivos.</b>
+      30 вправ по 10 питань: me/te/se/nos/os/se, розпорядок дня, позиція займенника,
+      зворотні vs звичайні дієслова. Від ★ до ★★★. ¡Me encanta practicar! 🪥
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · займенники й форми</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · розпорядок дня</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · позиція й тонкощі</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 11</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Займенники: me, te, se", lv:1, q:[
+["Yo ___ levanto temprano.","me","se","yo → me"],
+["Tú ___ levantas tarde.","te","se","tú → te"],
+["Él ___ levanta a las siete.","se","me","él → se"],
+["Yo ___ ducho por la mañana.","me","te","yo → me"],
+["¿Cómo ___ llamas?","te","se","tú → te"],
+["Ella ___ maquilla.","se","me","ella → se"],
+["Yo ___ despierto a las seis.","me","se","yo → me"],
+["Займенник для yo — це…","me","se","me levanto"],
+["Займенник для tú — це…","te","nos","te lavas"],
+["Займенник для él/ella — це…","se","me","se peina"]
+]},
+{t:"Займенники: nos, os, se", lv:1, q:[
+["Nosotros ___ levantamos.","nos","os","nosotros → nos"],
+["Vosotros ___ laváis.","os","nos","vosotros → os"],
+["Ellos ___ acuestan tarde.","se","os","ellos → se"],
+["Nosotras ___ vestimos rápido.","nos","os","nosotras → nos"],
+["¿Vosotros ___ despertáis pronto?","os","nos","vosotros → os"],
+["Ellas ___ peinan.","se","nos","ellas → se"],
+["Займенник для nosotros — це…","nos","os","nos levantamos"],
+["Займенник для vosotros — це…","os","se","os laváis"],
+["Займенник для ellos/ellas/ustedes — це…","se","nos","se acuestan"],
+["Ustedes ___ sientan aquí.","se","os","ustedes → se"]
+]},
+{t:"LAVARSE", lv:1, q:[
+["yo → …","me lavo","se lavo","me lavo"],
+["tú → …","te lavas","te lava","te lavas"],
+["él → …","se lava","me lava","se lava"],
+["nosotros → …","nos lavamos","se lavamos","nos lavamos"],
+["vosotros → …","os laváis","os lavan","os laváis"],
+["ellos → …","se lavan","nos lavan","se lavan"],
+["Yo ___ las manos.","me lavo","se lava","me lavo las manos"],
+["Зворотний займенник стоїть…","перед дієсловом","після дієслова","me lavo"],
+["lavarse означає…","митися (себе)","мити (щось)","lavar = мити; lavarse = митися"],
+["Ella ___ el pelo.","se lava","me lavo","ella → se lava"]
+]},
+{t:"LLAMARSE", lv:1, q:[
+["Yo me ___ Inna.","llamo","llama","yo → llamo"],
+["Tú te ___ Carlos.","llamas","llama","tú → llamas"],
+["Él se ___ Pedro.","llama","llamo","él → llama"],
+["¿Cómo te ___?","llamas","llama","tú → llamas"],
+["¿Cómo se ___ usted?","llama","llamas","usted → llama"],
+["Nosotros nos ___ igual.","llamamos","llaman","nosotros → llamamos"],
+["Mis gatos se ___ Luna y Sol.","llaman","llama","мн. → llaman"],
+["llamarse дослівно означає…","називати себе","кликати когось","me llamo = я звуся"],
+["¿Cómo se ___ tus padres?","llaman","llama","padres мн. → llaman"],
+["Yo ___ Ana. (правильна форма повністю)","me llamo","me llama","me llamo"]
+]},
+{t:"Розпорядок: лексика", lv:1, q:[
+["despertarse означає…","прокидатися","засинати","despertar = будити"],
+["levantarse означає…","вставати (з ліжка)","лягати","levantar = піднімати"],
+["ducharse означає…","приймати душ","купатися у ванні","ducha = душ 🚿"],
+["vestirse означає…","одягатися","роздягатися","vestir = одягати"],
+["peinarse означає…","розчісуватися","мити голову","peine = гребінець"],
+["acostarse означає…","лягати спати","прокидатися","cama = ліжко"],
+["afeitarse означає…","голитися","вмиватися","afeitar = голити"],
+["maquillarse означає…","робити макіяж","милитися","maquillaje = макіяж 💄"],
+["cepillarse los dientes означає…","чистити зуби","розчісувати волосся","cepillo = щітка 🪥"],
+["bañarse означає…","купатися","снідати","baño = ванна"]
+]},
+{t:"Дзеркальні дії", lv:1, q:[
+["despertarse ↔ …","acostarse","levantarse","прокидатися ↔ лягати"],
+["Вранці ти спершу…","te despiertas, luego te levantas","te acuestas","прокидаєшся → встаєш"],
+["Ввечері ти…","te acuestas","te levantas","лягаєш спати"],
+["Перед виходом ти…","te vistes","te desnudas","одягаєшся"],
+["Після душу ти…","te secas","te mojas","te secas = витираєшся"],
+["vestirse ↔ …","desnudarse","peinarse","одягатися ↔ роздягатися"],
+["Щоб зачіска була гарна, ти…","te peinas","te afeitas","розчісуєшся"],
+["Вранці для свіжості ти…","te duchas","te acuestas","приймаєш душ"],
+["ponerse la ropa означає…","одягати одяг на себе","знімати одяг","ponerse = вдягати"],
+["quitarse los zapatos означає…","знімати взуття","взувати взуття","quitarse = знімати"]
+]},
+{t:"Зворотний чи ні?", lv:1, q:[
+["«Я миюся» — це…","me lavo","lavo","себе → зворотне"],
+["«Я мию машину» — це…","lavo el coche","me lavo el coche","обʼєкт — інший → без se"],
+["«Вона будить сина» — це…","despierta a su hijo","se despierta a su hijo","будить іншого → без se"],
+["«Вона прокидається» — це…","se despierta","despierta","сама → se"],
+["Зворотне дієслово — це коли…","дія спрямована на себе","дія на інший обʼєкт","me/te/se…"],
+["«Я одягаю дитину» — це…","visto al niño","me visto al niño","іншого → без se"],
+["«Я одягаюся» — це…","me visto","visto","себе → se"],
+["lavar (без se) означає…","мити щось/когось","митися","lavar los platos"],
+["lavarse (зі se) означає…","митися самому","мити посуд","себе"],
+["«Він голить бороду клієнту» (перукар) — …","afeita al cliente","se afeita al cliente","клієнта → без se"]
+]},
+{t:"Прості речення", lv:1, q:[
+["Yo ___ (levantarse) a las siete.","me levanto","levanto","yo → me levanto"],
+["Tú ___ (ducharse) rápido.","te duchas","duchas","tú → te duchas"],
+["Ella ___ (maquillarse) cada día.","se maquilla","maquilla","ella → se maquilla"],
+["Nosotros ___ (acostarse) tarde.","nos acostamos","acostamos","nosotros → nos"],
+["Ellos ___ (vestirse) elegantes.","se visten","visten","ellos → se visten"],
+["Yo ___ (peinarse) delante del espejo.","me peino","peino","yo → me peino"],
+["¿Tú ___ (afeitarse) todos los días?","te afeitas","afeitas","tú → te afeitas"],
+["El niño ___ (bañarse) por la noche.","se baña","baña","él → se baña"],
+["Vosotros ___ (despertarse) temprano.","os despertáis","despertáis","vosotros → os"],
+["Yo ___ (cepillarse) los dientes.","me cepillo","cepillo","yo → me cepillo"]
+]},
+{t:"Питання про рутину", lv:1, q:[
+["¿A qué hora ___ (levantarse, tú)?","te levantas","levantas","tú → te levantas"],
+["¿___ (ducharse, tú) por la mañana o por la noche?","Te duchas","Duchas","tú → te duchas"],
+["¿Cómo ___ (llamarse, tú)?","te llamas","llamas","te llamas"],
+["¿A qué hora ___ (acostarse, vosotros)?","os acostáis","acostáis","vosotros → os"],
+["¿___ (maquillarse, tú) cada día?","Te maquillas","Maquillas","te maquillas"],
+["¿Dónde ___ (sentarse, nosotros)?","nos sentamos","sentamos","nosotros → nos"],
+["¿___ (afeitarse) usted?","Se afeita","Afeita","usted → se"],
+["¿Cuándo ___ (despertarse, tú)?","te despiertas","despiertas","te despiertas"],
+["¿___ (peinarse, vosotros) antes de salir?","Os peináis","Peináis","vosotros → os"],
+["¿A qué hora ___ (despertarse) los niños?","se despiertan","despiertan","niños → se"]
+]},
+{t:"Заперечення", lv:1, q:[
+["Yo no ___ (levantarse) tarde.","me levanto","levanto me","no + me + дієслово"],
+["Частка no ставиться…","перед займенником (no me lavo)","після дієслова","no me levanto"],
+["«Я не голюся» — це…","No me afeito","No afeito me","no me afeito"],
+["Ella no ___ (maquillarse) hoy.","se maquilla","maquilla se","no se maquilla"],
+["Tú no ___ (acostarse) temprano.","te acuestas","acuestas te","no te acuestas"],
+["«Ми не купаємось у морі» — це…","No nos bañamos","No bañamos nos","no nos bañamos"],
+["Порядок: no + займенник + …","дієслово","нічого","no me ducho"],
+["Vosotros no ___ (peinarse).","os peináis","peináis os","no os peináis"],
+["Ellos no ___ (despertarse) pronto.","se despiertan","despiertan se","no se despiertan"],
+["«Я не розчісуюся» — це…","No me peino","No peino","no me peino"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"DESPERTARSE: e→ie", lv:2, q:[
+["Yo ___ a las seis.","me despierto","me despierta","yo → despierto"],
+["Tú ___ tarde.","te despiertas","te despertas","e→ie: despiertas"],
+["Él ___ con música.","se despierta","se despierto","él → despierta"],
+["Nosotros ___ temprano.","nos despertamos","nos despiertamos","без дифтонга!"],
+["Vosotros ___ a las ocho.","os despertáis","os despiertáis","без дифтонга"],
+["Ellos ___ tarde los domingos.","se despiertan","se despertan","e→ie: despiertan"],
+["despertarse має чергування…","e→ie","o→ue","despIErto"],
+["У формі nosotros дифтонга…","немає","є","nos despertamos"],
+["Yo ___ y luego me levanto.","me despierto","me despierta","me despierto"],
+["¿A qué hora ___ (tú)?","te despiertas","te despertas","te despiertas"]
+]},
+{t:"ACOSTARSE: o→ue", lv:2, q:[
+["Yo ___ a las once.","me acuesto","me acosto","o→ue: acuesto"],
+["Tú ___ tarde.","te acuestas","te acostas","te acuestas"],
+["Ella ___ pronto.","se acuesta","se acosta","se acuesta"],
+["Nosotros ___ a medianoche.","nos acostamos","nos acuestamos","без дифтонга!"],
+["Vosotros ___ temprano.","os acostáis","os acuestáis","без дифтонга"],
+["Ellos ___ tarde.","se acuestan","se acostan","se acuestan"],
+["acostarse має чергування…","o→ue","e→ie","acUEsto"],
+["У nosotros дифтонга…","немає","є","nos acostamos"],
+["Yo ___ y leo un poco.","me acuesto","me acosto","me acuesto"],
+["El bebé ___ a las ocho.","se acuesta","se acosta","se acuesta"]
+]},
+{t:"VESTIRSE: e→i", lv:2, q:[
+["Yo ___ rápido.","me visto","me vesto","e→i: visto"],
+["Tú ___ elegante.","te vistes","te vestes","te vistes"],
+["Ella ___ de negro.","se viste","se veste","se viste"],
+["Nosotros ___ despacio.","nos vestimos","nos vistimos","без зміни!"],
+["Vosotros ___ bien.","os vestís","os vistís","без зміни"],
+["Ellos ___ deprisa.","se visten","se vesten","se visten"],
+["vestirse має чергування…","e→i","o→ue","vИsto"],
+["У nosotros/vosotros…","без зміни (vestimos, vestís)","з дифтонгом","чисті форми"],
+["Yo ___ antes de desayunar.","me visto","me vesto","me visto"],
+["¿Cómo ___ (tú) para la fiesta?","te vistes","te vestes","te vistes"]
+]},
+{t:"Мій ранок", lv:2, q:[
+["Primero ___ (despertarse, yo) a las siete.","me despierto","despierto","yo → me"],
+["Luego ___ (levantarse) de la cama.","me levanto","levanto","me levanto"],
+["___ (ducharse) con agua caliente.","Me ducho","Ducho","me ducho 🚿"],
+["Después ___ (secarse) con la toalla.","me seco","seco","me seco"],
+["___ (vestirse) rápido.","Me visto","Visto","me visto"],
+["___ (peinarse) delante del espejo.","Me peino","Peino","me peino"],
+["___ (cepillarse) los dientes.","Me cepillo","Cepillo","me cepillo 🪥"],
+["Y por fin ___ (maquillarse) un poco.","me maquillo","maquillo","me maquillo"],
+["Después de todo esto, ___ (irse) a trabajar.","me voy","voy me","irse → me voy"],
+["¡Y así ___ (prepararse) para el día!","me preparo","preparo","me preparo"]
+]},
+{t:"Різні особи", lv:2, q:[
+["Mi marido ___ (afeitarse) cada mañana.","se afeita","me afeita","él → se"],
+["Los niños ___ (bañarse) por la noche.","se bañan","nos bañan","ellos → se"],
+["Mi hija y yo ___ (peinarse) juntas.","nos peinamos","se peinan","…y yo = ми"],
+["¿Vosotros ___ (acostarse) tarde?","os acostáis","se acuestan","vosotros → os"],
+["Mi hermana ___ (maquillarse) muy bien.","se maquilla","te maquilla","ella → se"],
+["Yo ___ (vestirse) en cinco minutos.","me visto","se viste","yo → me"],
+["¿Tú ___ (despertarse) con alarma?","te despiertas","se despierta","tú → te"],
+["Mis padres ___ (levantarse) temprano.","se levantan","nos levantan","ellos → se"],
+["Nosotros ___ (ducharse) por la mañana.","nos duchamos","se duchan","ми → nos"],
+["Usted ___ (sentarse) aquí, por favor.","se sienta","te sientas","usted → se"]
+]},
+{t:"Прислівники частоти", lv:2, q:[
+["«завжди» — це…","siempre","nunca","siempre me levanto pronto"],
+["«ніколи» — це…","nunca","siempre","nunca me acuesto tarde"],
+["«зазвичай» — це…","normalmente","raramente","normalmente me ducho"],
+["«іноді» — це…","a veces","siempre","a veces me maquillo"],
+["«щодня» — це…","todos los días","todo el día","todos los días = кожен день"],
+["Siempre ___ (levantarse, yo) a las seis.","me levanto","levanto","siempre me levanto"],
+["«кожного ранку» — це…","cada mañana","toda mañana","cada mañana"],
+["A veces ___ (acostarse, yo) muy tarde.","me acuesto","acuesto","a veces me acuesto"],
+["«рано» — це…","temprano/pronto","tarde","tarde = пізно"],
+["Normalmente ___ (ducharse) por la mañana.","me ducho","ducho","normalmente me ducho"]
+]},
+{t:"Послідовність дій", lv:2, q:[
+["«спочатку» — це…","primero","luego","primero me levanto"],
+["«потім» — це…","luego/después","antes","luego me ducho"],
+["«перед тим» — це…","antes de","después de","antes de comer"],
+["«після того» — це…","después de","antes de","después de comer"],
+["Antes de ___ (acostarse), leo.","acostarme","me acuesto","antes de + інфінітив зі займенником"],
+["Después de ___ (ducharse), me visto.","ducharme","me ducho","después de ducharme"],
+["«нарешті» — це…","por fin/finalmente","primero","por fin"],
+["Me levanto y ___ me ducho.","luego","antes","потім"],
+["Primero..., luego..., y ___...","por último","antes","нарешті"],
+["Antes de salir, ___ (peinarse, yo).","me peino","peinarme","перед виходом розчісуюсь"]
+]},
+{t:"Дні тижня й рутина", lv:2, q:[
+["Los lunes ___ (levantarse, yo) temprano.","me levanto","levanto","los lunes = щопонеділка"],
+["Los fines de semana ___ (acostarse) tarde.","me acuesto","acuesto","на вихідних"],
+["Entre semana ___ (despertarse) a las seis.","me despierto","despierto","у будні"],
+["Los sábados no ___ (maquillarse, yo).","me maquillo","maquillo","no me maquillo"],
+["¿___ (ducharse, tú) todos los días?","Te duchas","Duchas","te duchas"],
+["Los domingos ___ (quedarse, nosotros) en casa.","nos quedamos","quedamos","quedarse = залишатися"],
+["quedarse en casa означає…","залишатися вдома","виходити з дому","quedarse = залишатися"],
+["Por la noche ___ (relajarse, yo).","me relajo","relajo","relajarse = розслаблятися"],
+["relajarse означає…","розслаблятися","напружуватися","me relajo"],
+["Los viernes ___ (divertirse, nosotros).","nos divertimos","divertimos","divertirse = веселитися 🎉"]
+]},
+{t:"Зворотні дієслова емоцій", lv:2, q:[
+["alegrarse означає…","радіти","сумувати","me alegro"],
+["enfadarse означає…","сердитися","радіти","me enfado"],
+["preocuparse означає…","хвилюватися","відпочивати","me preocupo"],
+["aburrirse означає…","нудьгувати","веселитися","me aburro"],
+["divertirse означає…","веселитися","нудьгувати","me divierto"],
+["Me ___ cuando veo a mis amigos.","alegro","enfado","радію → me alegro"],
+["cansarse означає…","втомлюватися","прокидатися","me canso"],
+["sentirse означає…","почуватися","сідати","me siento bien"],
+["Me ___ muy bien hoy.","siento","sento","sentirse → me siento"],
+["ponerse nervioso означає…","нервувати","заспокоюватися","me pongo nervioso"]
+]},
+{t:"SENTARSE та інші e→ie", lv:2, q:[
+["Yo ___ (sentarse) aquí.","me siento","me sento","e→ie: siento"],
+["Tú ___ (sentarse) allí.","te sientas","te sentas","te sientas"],
+["Ella ___ (despertarse) tarde.","se despierta","se desperta","se despierta"],
+["Nosotros ___ (sentarse) juntos.","nos sentamos","nos sientamos","без дифтонга!"],
+["Ellos ___ (divertirse) mucho.","se divierten","se divertien","divertirse → se divierten"],
+["Me ___ (sentirse) muy bien.","siento","sento","sentirse → me siento"],
+["¿Vosotros ___ (sentarse) aquí?","os sentáis","os sientáis","без дифтонга"],
+["El público ___ (sentarse) en silencio.","se sienta","se senta","se sienta"],
+["sentarse (сідати) має чергування…","e→ie","o→ue","siÉNto"],
+["Не плутай: sentarse = сідати, sentirse = …","почуватися","спати","me siento bien"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Позиція: інфінітив", lv:3, q:[
+["Voy a ___ (ducharse).","ducharme","me duchar","займенник до інфінітива → ducharme"],
+["Із інфінітивом займенник…","приєднується в кінець (ducharme)","стоїть окремо перед","voy a ducharme"],
+["Quiero ___ (acostarse) pronto.","acostarme","me acostar","acostarme"],
+["Necesito ___ (peinarse).","peinarme","me peinar","peinarme"],
+["Або можна сказати:","Me voy a duchar","Voy me a duchar","обидва варіанти ок!"],
+["Tengo que ___ (levantarse) temprano.","levantarme","me levantar","levantarme"],
+["¿Puedes ___ (vestirse) rápido?","vestirte","te vestir","vestirte (tú → te)"],
+["Vamos a ___ (relajarse).","relajarnos","nos relajar","relajarnos (ми → nos)"],
+["Займенник узгоджується з…","підметом (vestirte для tú)","завжди se","me/te/se…"],
+["Voy a ___ (maquillarse).","maquillarme","me maquillar","maquillarme"]
+]},
+{t:"Позиція: герундій", lv:3, q:[
+["Estoy ___ (ducharse).","duchándome","me duchando","в кінець герундія + тильда"],
+["Із герундієм займенник…","приєднується (duchándome)","лише окремо","estoy duchándome"],
+["Або окремо:","Me estoy duchando","Estoy me duchando","обидва ок"],
+["Está ___ (vestirse).","vistiéndose","se vistiendo","vistiéndose"],
+["При приєднанні до герундія…","зʼявляється тильда","нічого не змінюється","duchándome"],
+["Estamos ___ (relajarse).","relajándonos","nos relajando","relajándonos"],
+["¿Estás ___ (maquillarse)?","maquillándote","te maquillando","maquillándote"],
+["Los niños están ___ (bañarse).","bañándose","se bañando","bañándose"],
+["Тильда потрібна, щоб…","зберегти наголос","прикрасити","duchÁndome"],
+["Estoy ___ (peinarse).","peinándome","me peinando","peinándome"]
+]},
+{t:"Позиція: наказ", lv:3, q:[
+["¡___ (levantarse, tú)!","Levántate","Te levanta","до наказу — в кінець"],
+["У стверджувальному наказі займенник…","приєднується (siéntate)","стоїть перед","¡siéntate!"],
+["¡___ (sentarse, usted)!","Siéntese","Se siente","siéntese"],
+["¡___ (callarse, tú)! (замовкни)","Cállate","Te calla","cállate"],
+["¡___ (ducharse, tú) ya!","Dúchate","Te ducha","dúchate"],
+["А в заперечному наказі займенник…","перед дієсловом (no te levantes)","теж у кінці","no te sientes"],
+["«Не сідай» — це…","No te sientes","No siéntate","заперечення → перед"],
+["¡___ (peinarse, tú)!","Péinate","Te peina","péinate"],
+["¡___ (relajarse, vosotros)!","Relajaos","Os relajáis","relajaos (форма vosotros)"],
+["Тильда у Levántate потрібна…","бо наголос зберігається","для краси","LeVÁNtate"]
+]},
+{t:"Зворотне змінює значення", lv:3, q:[
+["ir означає «йти», irse означає…","йти геть, покидати","приходити","me voy = я пішов"],
+["dormir = спати, dormirse = …","засинати","прокидатися","me duermo = засинаю"],
+["ir vs irse: «Me voy» означає…","я йду геть","я є тут","прощання: me voy"],
+["quedar = домовлятися, quedarse = …","залишатися","йти","me quedo en casa"],
+["poner = класти, ponerse = …","вдягати на себе; ставати","знімати","me pongo el abrigo"],
+["llevar = нести, llevarse = …","забирати з собою; ладнати","приносити","me llevo bien con…"],
+["acordar = домовлятися, acordarse = …","памʼятати","забувати","me acuerdo de ti"],
+["parecer = здаватися, parecerse = …","бути схожим","відрізнятися","se parece a su madre"],
+["Me duermo en el sofá означає…","я засинаю на дивані","я сплю на дивані щоночі","dormirse = засинати"],
+["«Йду геть, до завтра!» — це…","¡Me voy, hasta mañana!","¡Voy, hasta mañana!","irse → me voy"]
+]},
+{t:"Взаємні дії", lv:3, q:[
+["Ellos se quieren означає…","вони люблять одне одного","він себе любить","взаємна дія"],
+["Nos vemos означає…","побачимось (одне одного)","я бачу себе","взаємне"],
+["Взаємні дії виражаються…","займенником nos/os/se","лише se","Ana y yo nos escribimos"],
+["Ana y Luis ___ (besarse). 💏","se besan","besan","одне одного → se besan"],
+["Nosotros ___ (abrazarse).","nos abrazamos","abrazamos","обіймаємось"],
+["¿Vosotros ___ (conocerse) bien?","os conocéis","conocéis","знайомі одне з одним"],
+["Los amigos ___ (ayudarse).","se ayudan","ayudan","допомагають одне одному"],
+["Mi hermana y yo ___ (parecerse).","nos parecemos","parecemos","схожі одна на одну"],
+["«Ми пишемо одне одному» — це…","Nos escribimos","Escribimos nos","nos escribimos"],
+["Взаємне «одне одного» — по-іспанськи…","через зворотний займенник","окремим словом","se, nos, os"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«Yo levanto a las siete» (про себе) → …","Me levanto","Yo se levanto","себе → me"],
+["«Me ducho el coche» → …","Lavo el coche","Me lavo el coche","авто — не себе → без me"],
+["«Voy a me duchar» → …","Voy a ducharme","Voy me a duchar","до інфінітива"],
+["«Te llamo Carlos» (представлення) → …","Me llamo Carlos","Se llamo Carlos","я → me llamo"],
+["«Nos acostan tarde» → …","Nos acostamos tarde","Se acostamos tarde","ми → nos + amos"],
+["«¡Te levanta!» (наказ) → …","¡Levántate!","¡Levanta te!","наказ → приєднати"],
+["«Ella se despierta a su hijo» → …","Ella despierta a su hijo","Ella se despierta su hijo","будить іншого → без se"],
+["«Estoy me duchando» → …","Estoy duchándome","Me estoy me duchando","один займенник"],
+["«No me levanto no» → …","No me levanto","No me no levanto","одне no перед займенником"],
+["«Yo me visto el niño» → …","Yo visto al niño","Yo me visto al niño","одягаю іншого → без me"]
+]},
+{t:"Розпорядок дня (текст)", lv:3, q:[
+["Marta ___ (despertarse) a las seis y media.","se despierta","despierta","ella → se"],
+["___ (levantarse) enseguida.","Se levanta","Levanta","se levanta"],
+["___ (ducharse) y ___ (vestirse).","Se ducha, se viste","Ducha, viste","se ducha, se viste"],
+["Desayuna y ___ (cepillarse) los dientes.","se cepilla","cepilla","se cepilla"],
+["Antes de salir ___ (maquillarse) un poco.","se maquilla","maquilla","se maquilla"],
+["Trabaja todo el día y ___ (cansarse).","se cansa","cansa","cansarse → se cansa"],
+["Por la tarde ___ (relajarse) con un té.","se relaja","relaja","se relaja"],
+["___ (acostarse) sobre las once.","Se acuesta","Acuesta","se acuesta"],
+["Lee un rato y ___ (dormirse) rápido.","se duerme","duerme","dormirse → se duerme"],
+["Y tú, ¿a qué hora ___ (acostarse)?","te acuestas","acuestas","tú → te"]
+]},
+{t:"Мікс зворотних", lv:3, q:[
+["Yo ___ (llamarse) Andriy.","me llamo","llamo","me llamo"],
+["¿Tú ___ (ducharse) por la mañana?","te duchas","duchas","te duchas"],
+["Ella ___ (maquillarse) cada día.","se maquilla","maquilla","se maquilla"],
+["Nosotros ___ (acostarse) tarde.","nos acostamos","acostamos","nos acostamos"],
+["Voy a ___ (levantarse) temprano.","levantarme","me levantar","levantarme"],
+["¡___ (sentarse, tú)!","Siéntate","Te sienta","siéntate"],
+["Estoy ___ (peinarse).","peinándome","me peinando","peinándome"],
+["Me voy означає…","я йду геть","я тут","irse"],
+["Ellos ___ (quererse). ❤️","se quieren","quieren","взаємне → se"],
+["No ___ (preocuparse, tú).","te preocupes","preocupes te","no te preocupes"]
+]},
+{t:"Два займенники разом", lv:3, q:[
+["«Мию руки» → Me lavo las manos. «Мию їх» → …","Me las lavo","Las me lavo","зворотний + прямий: me las"],
+["Порядок двох займенників:","зворотний + прямий (me lo)","прямий + зворотний","se lo, me la…"],
+["«Вдягаю це» (пальто) → Me ___ pongo.","lo","me","me lo pongo"],
+["Se lava los dientes → Se ___ lava.","los","les","los dientes → los"],
+["¿El abrigo? Me ___ pongo ahora.","lo","le","me lo pongo"],
+["Quiero lavármelas (las manos) — займенники…","приєднані до інфінітива","стоять окремо","lavár-me-las"],
+["¡Lávate las manos! → ¡___!","Lávatelas","Te las lava","наказ: lávatelas"],
+["«Знімаю їх» (черевики) → Me ___ quito.","los","les","los zapatos → los"],
+["Estoy poniéndomelo (el abrigo) — це…","правильно, з тильдою","помилка","герундій + два займенники"],
+["Зворотний займенник іде…","перед прямим (me lo)","після прямого","me lo, te la, se los"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["Займенник для yo — це…","me","se","me levanto"],
+["Yo ___ (levantarse) temprano.","me levanto","levanto","me levanto"],
+["lavarse означає…","митися","мити щось","себе"],
+["Voy a ___ (ducharse).","ducharme","me duchar","до інфінітива"],
+["¡___ (levantarse, tú)!","Levántate","Te levanta","наказ → приєднати"],
+["Estoy ___ (vestirse).","vistiéndome","me vistiendo","герундій + тильда"],
+["«Me voy» означає…","я йду геть","я є","irse"],
+["despertarse має чергування…","e→ie","o→ue","despIErto"],
+["Ellos ___ (quererse).","se quieren","quieren","взаємне"],
+["No ___ (preocuparse, tú).","te preocupes","preocupes","заперечення → перед дієсловом"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Зворотні дієслова: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 11 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 8 · TENER, SABER, CONOCER · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 8 · @malinnaartstudio</div>
+    <h1 id="htitle">TENER, SABER, CONOCER: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 8 · Verbos tener, saber y conocer.</b>
+      30 вправ по 10 питань: форми трьох дієслів, вирази з tener (hambre, prisa, razón…),
+      вічна дилема saber чи conocer, особистий «a». Від ★ до ★★★. ¡Tú puedes! 💪
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · форми й основи</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · у контексті</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · ідіоми й тонкощі</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 8</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"TENER: форми", lv:1, q:[
+["yo → …","tengo","teno","tengo"],
+["tú → …","tienes","tenes","tienes"],
+["él → …","tiene","tene","tiene"],
+["nosotros → …","tenemos","tienemos","без дифтонга!"],
+["vosotros → …","tenéis","tienéis","без дифтонга!"],
+["ellos → …","tienen","tenen","tienen"],
+["Yo ___ dos gatos. 🐱🐱","tengo","tiengo","НЕ tiengo!"],
+["¿___ (tú) un momento?","Tienes","Tenes","tienes"],
+["Nosotros ___ una reunión hoy.","tenemos","tienemos","tenemos"],
+["tener означає…","мати","тримати лише","володіння"]
+]},
+{t:"TENER: володіння", lv:1, q:[
+["Yo ___ un coche viejo.","tengo","tiene","yo → tengo"],
+["Mi hermana ___ dos hijos.","tiene","tienes","ella → tiene"],
+["¿___ (vosotros) mascotas?","Tenéis","Tienen","vosotros → tenéis"],
+["Ellos ___ una casa en el pueblo.","tienen","tenemos","ellos → tienen"],
+["¿Tú ___ hermanos?","tienes","tenéis","tú → tienes"],
+["Nosotros no ___ tele.","tenemos","tienen","ми → tenemos"],
+["Marta ___ el pelo largo.","tiene","tengo","опис зовнішності → tener"],
+["Yo ___ muchos libros.","tengo","tienes","yo → tengo"],
+["¿Usted ___ hijos?","tiene","tienes","usted → tiene"],
+["«У мене є…» іспанською кажуть через…","tener: tengo…","haber: he…","tengo un perro"]
+]},
+{t:"TENER: вік", lv:1, q:[
+["Yo ___ treinta años.","tengo","soy","вік → tener!"],
+["¿Cuántos años ___ (tú)?","tienes","eres","tienes"],
+["Mi madre ___ sesenta años.","tiene","es","tiene"],
+["Вік виражається дієсловом…","tener","ser","«маю роки»"],
+["«Йому 5 років» — це…","Tiene cinco años","Es cinco años","tiene"],
+["¿Cuántos años ___ (vosotros)?","tenéis","sois","tenéis"],
+["Nosotros ___ la misma edad.","tenemos","somos","edad = вік"],
+["La ciudad ___ mil años.","tiene","está","навіть міста «мають» роки"],
+["«Скільки тобі років?» — це…","¿Cuántos años tienes?","¿Cuántos años estás?","tienes"],
+["Слово años пишеться з…","ñ","n","без ñ — зовсім інше слово! 😅"]
+]},
+{t:"SABER: форми", lv:1, q:[
+["yo → …","sé","sabo","особлива форма!"],
+["tú → …","sabes","sabas","sabes"],
+["él → …","sabe","sape","sabe"],
+["nosotros → …","sabemos","sebemos","sabemos"],
+["vosotros → …","sabéis","sabís","sabéis"],
+["ellos → …","saben","sapen","saben"],
+["Yo no ___ la respuesta.","sé","sabo","sé"],
+["¿___ (tú) la hora?","Sabes","Sabas","sabes"],
+["Nosotros ___ la verdad.","sabemos","sabimos","sabemos"],
+["Єдина особлива форма saber у презенсі — це…","yo sé","tú sabes","решта — правильні"]
+]},
+{t:"CONOCER: форми", lv:1, q:[
+["yo → …","conozco","conoco","-zco!"],
+["tú → …","conoces","conozes","conoces"],
+["ella → …","conoce","conoze","conoce"],
+["nosotros → …","conocemos","conozcemos","conocemos"],
+["vosotros → …","conocéis","conocís","conocéis"],
+["ellos → …","conocen","conozen","conocen"],
+["Yo ___ bien Alicante.","conozco","conoco","conozco"],
+["¿___ (tú) a mi prima?","Conoces","Conozes","conoces"],
+["Ellos no ___ la ciudad.","conocen","conozcan","conocen"],
+["-zco зʼявляється у формі…","yo","усіх осіб","лише conozco"]
+]},
+{t:"TENER hambre, sed, frío…", lv:1, q:[
+["Yo ___ hambre.","tengo","estoy","tener hambre!"],
+["¿___ (tú) sed?","Tienes","Estás","tener sed"],
+["tener hambre означає…","бути голодним","мати їжу вдома","«мати голод»"],
+["Los niños ___ frío.","tienen","están","tener frío"],
+["¡Qué calor! ___ mucho calor.","Tengo","Soy","tener calor"],
+["tener sed означає…","хотіти пити","мати сітку","«мати спрагу»"],
+["¿___ (vosotros) frío? ¿Cierro la ventana?","Tenéis","Sois","tenéis frío"],
+["Después de correr ___ (nosotros) mucha sed.","tenemos","estamos","tenemos sed 💧"],
+["«Мені холодно» — це…","Tengo frío","Estoy frío","tener!"],
+["Слово hambre вживається з дієсловом…","tener","ser","tengo hambre 🍽️"]
+]},
+{t:"TENER sueño, miedo, prisa…", lv:1, q:[
+["El bebé ___ sueño.","tiene","es","tener sueño 😴"],
+["tener sueño означає…","хотіти спати","бачити сон-мрію","сонливість"],
+["Yo ___ miedo a las arañas. 🕷️","tengo","estoy","tener miedo"],
+["tener prisa означає…","поспішати","мати прес","«мати поспіх»"],
+["¡Corre! ___ (nosotros) prisa.","Tenemos","Estamos","tenemos prisa"],
+["Tú ___ razón.","tienes","eres","tener razón"],
+["tener razón означає…","мати рацію","мати порцію","«ти правий»"],
+["¿___ (tú) miedo?","Tienes","Estás","tienes miedo"],
+["No ___ (yo) sueño todavía.","tengo","soy","no tengo sueño"],
+["«Ти маєш рацію» — це…","Tienes razón","Estás razón","tener!"]
+]},
+{t:"SABER + інфінітив = вміти", lv:1, q:[
+["Yo ___ nadar. 🏊","sé","conozco","вміння → saber"],
+["¿___ (tú) conducir?","Sabes","Conoces","sabes conducir"],
+["saber + інфінітив означає…","уміти","знати особисто","sé cocinar = вмію готувати"],
+["Mi abuela ___ coser.","sabe","conoce","sabe coser"],
+["Nosotros ___ cocinar paella.","sabemos","conocemos","sabemos"],
+["¿___ (vosotros) esquiar?","Sabéis","Conocéis","sabéis esquiar ⛷️"],
+["Ellos no ___ bailar.","saben","conocen","no saben bailar"],
+["Yo no ___ tocar el piano.","sé","conozco","no sé tocar"],
+["«Я вмію плавати» — це…","Sé nadar","Conozco nadar","saber + inf"],
+["Після saber-вміти одразу йде…","інфінітив","герундій","sé nadar (без que!)"]
+]},
+{t:"CONOCER A + особа", lv:1, q:[
+["___ a tu hermano.","Conozco","Sé","особа → conocer"],
+["¿___ (tú) a la nueva profesora?","Conoces","Sabes","conoces a"],
+["conocer a + …","особа","річ","знати людину"],
+["Nosotros ___ a mucha gente aquí.","conocemos","sabemos","conocer gente"],
+["Перед особою після conocer ставиться…","a","de","особистий a!"],
+["¿___ (vosotros) a mis padres?","Conocéis","Sabéis","conocéis a"],
+["Ella ___ a todos los vecinos.","conoce","sabe","conoce a todos"],
+["Yo no ___ a nadie en esta fiesta.","conozco","sé","no conozco a nadie"],
+["«Я знаю Марту» — це…","Conozco a Marta","Sé a Marta","людина → conocer a"],
+["Conozco ___ Juan.","a","— (нічого)","особистий a обовʼязковий"]
+]},
+{t:"SABER чи CONOCER: база", lv:1, q:[
+["___ la respuesta.","Sé","Conozco","факт → saber"],
+["___ Madrid.","Conozco","Sé","місто → conocer"],
+["___ nadar.","Sé","Conozco","вміння → saber"],
+["___ a Pedro.","Conozco","Sé","особа → conocer"],
+["___ dónde vives.","Sé","Conozco","інформація → saber"],
+["___ un restaurante genial.","Conozco","Sé","заклад → conocer"],
+["___ que tienes razón.","Sé","Conozco","que + факт → saber"],
+["___ bien este barrio.","Conozco","Sé","район → conocer"],
+["saber = знати факт; conocer = …","бути знайомим із","забувати","знати з досвіду"],
+["Міста, місця, заклади → …","conocer","saber","conozco Barcelona"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"TENER у реченнях", lv:2, q:[
+["Mi piso ___ dos habitaciones.","tiene","tienes","el piso = він"],
+["¿Cuántas ventanas ___ tu casa?","tiene","tienes","tu casa = вона"],
+["Nosotros ___ un perro y un gato.","tenemos","tienen","ми → tenemos"],
+["Mis padres ___ un huerto.","tienen","tenéis","padres = ellos"],
+["Yo no ___ coche.","tengo","tiengo","tengo"],
+["¿___ (vosotros) wifi en casa?","Tenéis","Tienen","vosotros → tenéis"],
+["La escuela ___ una biblioteca grande.","tiene","hay","школа МАЄ → tiene"],
+["Yo ___ una idea. 💡","tengo","teno","tengo"],
+["¿Tú ___ tiempo mañana?","tienes","tenes","tienes tiempo"],
+["España ___ 47 millones de habitantes.","tiene","hay","España tiene…"]
+]},
+{t:"¿Cuántos tienes?", lv:2, q:[
+["¿Cuántos hermanos ___?","tienes","eres","tienes"],
+["¿Cuántos años ___ tu perro? 🐶","tiene","es","tiene"],
+["— ¿Cuántos hijos tenéis? — ___ dos.","Tenemos","Somos","tenemos"],
+["¿Cuántas mascotas ___ (tú)?","tienes","hay","tienes"],
+["¿Cuántos alumnos ___ la clase?","tiene","es","la clase tiene"],
+["— ¿Tienes primos? — Sí, ___ muchos.","tengo","hay","tengo muchos"],
+["¿Cuántas habitaciones ___ el piso?","tiene","está","tiene"],
+["— ¿Cuántos años tiene Ana? — ___ veinte.","Tiene","Es","tiene veinte"],
+["¿Cuánto dinero ___ (nosotros)?","tenemos","somos","tenemos 💶"],
+["— ¿Tenéis coche? — No, no ___.","tenemos","tenéis","відповідаємо про себе"]
+]},
+{t:"Вирази TENER у контексті", lv:2, q:[
+["Es la una de la noche: ___ sueño.","tengo","soy","tener sueño"],
+["No como desde ayer: ___ mucha hambre.","tengo","estoy","mucha hambre"],
+["¡El tren sale en 5 minutos! ___ prisa.","Tenemos","Estamos","tener prisa 🏃"],
+["En agosto en Alicante siempre ___ calor.","tenemos","somos","tener calor ☀️"],
+["Este niño no quiere dormir: no ___ sueño.","tiene","es","no tiene sueño"],
+["Bebe agua si ___ sed.","tienes","estás","tener sed"],
+["Mi hija ___ miedo a la oscuridad.","tiene","está","tener miedo a"],
+["Discúlpame, ___ (tú) razón.","tienes","eres","tienes razón"],
+["Ponte el abrigo si ___ frío.","tienes","eres","tener frío 🧥"],
+["___ (yo) 39 de fiebre.","Tengo","Soy","tener fiebre 🤒"]
+]},
+{t:"SABER + інформація", lv:2, q:[
+["No ___ dónde están mis gafas.","sé","conozco","інформація → saber"],
+["¿___ (tú) cuándo empieza la peli?","Sabes","Conoces","sabes cuándo"],
+["Ella ___ que llegamos hoy.","sabe","conoce","sabe que…"],
+["No ___ (nosotros) cómo funciona.","sabemos","conocemos","sabemos cómo"],
+["¿___ (vosotros) qué hora es?","Sabéis","Conocéis","sabéis qué hora"],
+["Yo ___ por qué llora.","sé","conozco","sé por qué"],
+["saber que… означає…","знати, що…","знайомитися з…","факт після que"],
+["¿Sabes ___ viene Juan? — Sí, mañana.","cuándo","quién","відповідь про час"],
+["No sabemos ___ vive ahora.","dónde","que","де живе"],
+["saber + питальне слово = …","знати інформацію","уміти щось робити","sé dónde/cuándo/cómo…"]
+]},
+{t:"CONOCER + місця", lv:2, q:[
+["¿___ (tú) Barcelona?","Conoces","Sabes","місто → conocer"],
+["Yo no ___ Ucrania todavía.","conozco","sé","conocer + країна"],
+["conocer + місто означає…","бувати там, знати його","знати лише назву","особистий досвід"],
+["Queremos ___ Andalucía.","conocer","saber","хочемо відвідати"],
+["Mis padres ___ media Europa.","conocen","saben","обʼїздили пів-Європи"],
+["¿___ (vosotros) este museo?","Conocéis","Sabéis","заклад → conocer"],
+["Ella ___ todos los bares del barrio. 😄","conoce","sabe","conoce"],
+["«Я не бував у Парижі» ≈ …","No conozco París","No sé París","conocer = бувати"],
+["___ (yo) un sitio perfecto para cenar.","Conozco","Sé","знаю місцинку"],
+["Місця і заклади завжди йдуть із…","conocer","saber","conozco un café…"]
+]},
+{t:"SABER vs CONOCER: контраст", lv:2, q:[
+["¿___ dónde está el banco?","Sabes","Conoces","де = інформація"],
+["¿___ el banco de la calle Mayor?","Conoces","Sabes","сам банк = місце"],
+["___ a María.","Conozco","Sé","особа"],
+["___ que María es médica.","Sé","Conozco","факт про Марію"],
+["___ conducir.","Sé","Conozco","вміння"],
+["___ este coche: es de Juan.","Conozco","Sé","впізнаю авто"],
+["¿___ (tú) su número de teléfono?","Sabes","Conoces","номер = факт"],
+["¿___ (tú) a su hermana?","Conoces","Sabes","особа"],
+["No ___ (yo) qué hacer.","sé","conozco","що робити = інформація"],
+["No ___ (yo) esta canción.","conozco","sé","пісня не знайома"]
+]},
+{t:"Особистий A", lv:2, q:[
+["Conozco ___ tu jefe.","a","— (нічого)","особа → a"],
+["Conozco ___ este restaurante.","— (нічого)","a","місце — без a"],
+["Veo ___ mi madre cada día.","a","— (нічого)","бачу МАМУ → a"],
+["Особистий a ставиться перед…","людьми","речами","і перед улюбленцями!"],
+["Busco ___ mi gato. 🐱","a","— (нічого)","улюбленець → a"],
+["Busco ___ un piso.","— (нічого)","a","річ — без a"],
+["¿Conoces ___ alguien aquí?","a","— (нічого)","alguien = особа"],
+["Espero ___ mi amiga.","a","— (нічого)","чекаю подругу → a"],
+["Espero ___ el autobús.","— (нічого)","a","автобус — без a 🚌"],
+["Miro ___ los niños en el parque.","a","— (нічого)","діти → a"]
+]},
+{t:"TENER GANAS DE", lv:2, q:[
+["tener ganas de означає…","дуже хотіти","мати ганок","кортить!"],
+["___ ganas de café. ☕","Tengo","Estoy","tengo ganas"],
+["Tengo ganas ___ verte.","de","a","ganas DE"],
+["¿___ (tú) ganas de salir?","Tienes","Sabes","tienes ganas"],
+["No tenemos ganas ___ cocinar hoy.","de","para","ganas de + inf"],
+["Після ganas de йде…","інфінітив або іменник","лише прикметник","ganas de dormir / de pizza"],
+["«Мені кортить у відпустку» — це…","Tengo ganas de vacaciones","Estoy ganas de vacaciones","tener!"],
+["Ellos ___ ganas de fiesta. 🎉","tienen","hay","tienen ganas"],
+["¡Qué ganas ___ verano!","de","del","qué ganas de…"],
+["tener muchas ganas означає…","дуже-дуже хотіти","мати великий заробіток","muchas ganas!"]
+]},
+{t:"Питання з трьома дієсловами", lv:2, q:[
+["¿___ (tú) hermanos?","Tienes","Sabes","маєш братів?"],
+["¿___ (tú) dónde vive?","Sabes","Conoces","де = інформація"],
+["¿___ (tú) a sus padres?","Conoces","Sabes","особи"],
+["¿___ (vosotros) hambre?","Tenéis","Sabéis","tener hambre"],
+["¿___ usted la respuesta?","Sabe","Conoce","відповідь = факт"],
+["¿___ ustedes esta zona?","Conocen","Saben","район → conocer"],
+["¿Cuántos idiomas ___ (tú)?","sabes","conoces","мови → saber (hablar)"],
+["¿___ (tú) tocar algún instrumento?","Sabes","Tienes","вміння → saber"],
+["¿___ (tú) frío?","Tienes","Conoces","tener frío"],
+["¿___ (vosotros) a la nueva vecina?","Conocéis","Tenéis","особа → conocer a"]
+]},
+{t:"Діалог про Лауру", lv:2, q:[
+["— ¿___ (tú) a Laura? — Sí, es mi vecina.","Conoces","Sabes","особа"],
+["— ¿___ cuántos años tiene? — Creo que 25.","Sabes","Conoces","інформація"],
+["— ¿Y ___ novio? — Sí, un chico muy majo.","tiene","es","tiene novio"],
+["— ¿___ (tú) dónde trabaja? — En una clínica.","Sabes","Tienes","де = saber"],
+["— ¿Es médica? — No ___ ni idea.","tengo","soy","no tengo ni idea"],
+["— ¿___ (ella) coche? — No, va en bici. 🚲","Tiene","Sabe","tiene coche"],
+["— ¿___ (tú) su número? — Sí, te lo paso.","Tienes","Eres","tienes su número"],
+["— Gracias, ___ ganas de conocerla.","tengo","soy","tengo ganas"],
+["— Ella también ___ a mucha gente interesante.","conoce","sabe","conoce a gente"],
+["— ¡Perfecto! ___ (nosotros) suerte.","Tenemos","Sabemos","tener suerte 🍀"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"SABER чи CONOCER: тонкощі", lv:3, q:[
+["Знати вірш напамʼять → …","saber","conocer","sé el poema de memoria"],
+["Знати новину → …","saber","conocer","¿sabes la noticia?"],
+["Бути обізнаним із творчістю письменника → …","conocer","saber","conozco sus libros"],
+["¿___ la noticia? ¡Marta se casa! 💍","Sabes","Conoces","новина = факт"],
+["___ sus libros, es un autor genial.","Conozco","Sé","знайомий із книгами"],
+["¿___ (tú) hablar francés?","Sabes","Conoces","вміння"],
+["¿___ (tú) Francia?","Conoces","Sabes","країна"],
+["___ (yo) un atajo. (короткий шлях)","Conozco","Sé","знаю місце-шлях"],
+["No ___ nada de este tema.","sé","conozco","не знаю нічого = факти"],
+["Me la ___ de memoria. (пісню)","sé","conozco","saber de memoria = напамʼять"]
+]},
+{t:"Ідіоми з TENER", lv:3, q:[
+["tener suerte означає…","щастити","мати сорт","¡qué suerte! 🍀"],
+["tener cuidado означає…","бути обережним","мати догляд","¡ten cuidado!"],
+["¡Ten ___! (обережно!)","cuidado","miedo","cuidado"],
+["tener éxito означає…","мати успіх","мати вихід","éxito ≠ exit!"],
+["tener lugar означає…","відбуватися","мати місце вдома","la boda tiene lugar…"],
+["La boda ___ lugar en junio.","tiene","está","tiene lugar"],
+["tener en cuenta означає…","брати до уваги","рахувати на пальцях","tenlo en cuenta"],
+["tener buena pinta означає…","мати апетитний/гарний вигляд","мати добру фарбу","¡qué buena pinta!"],
+["Esta paella ___ buena pinta. 🥘","tiene","es","tiene buena pinta"],
+["tener claro означає…","чітко розуміти","мати світле волосся","lo tengo claro"]
+]},
+{t:"Розмовні з TENER", lv:3, q:[
+["No tengo ni idea означає…","гадки не маю","не маю ідей для бізнесу","ni idea!"],
+["¿Qué tienes? означає…","Що з тобою?","Що в тебе в кишені?","питання про стан"],
+["Aquí tienes означає…","ось, тримай","тут ти маєш","передаючи щось"],
+["tener mala cara означає…","кепсько виглядати","мати некрасиве обличчя","стомлений вигляд"],
+["«Hoy tienes mala cara» означає…","сьогодні кепсько виглядаєш","у тебе погане обличчя","занепокоєння"],
+["no tener remedio означає…","бути безнадійним","не мати ліків удома","¡no tienes remedio! 😄"],
+["Tiene sus años означає…","він уже в літах","має свої окуляри","делікатно про вік"],
+["tener morro (розм.) означає…","бути нахабою","мати мордочку","¡qué morro tienes!"],
+["No tengo tiempo para nada означає…","зовсім не маю часу","не маю годинника","класика дорослого життя"],
+["¡Que tengas suerte! означає…","Хай щастить!","Щоб ти мав сорт!","побажання"]
+]},
+{t:"SÉ QUE чи SÉ + інфінітив", lv:3, q:[
+["Sé ___ vives aquí.","que","a","sé que + факт"],
+["Sé ___ cocinar.","— (нічого)","que","вміння — без que!"],
+["saber que + …","факт (ціле речення)","інфінітив","sé que es tarde"],
+["saber + інфінітив = …","уміти","знати, що","sé nadar"],
+["___ que mañana es fiesta.","Sé","Conozco","факт"],
+["¿Sabes ___ es muy tarde?","que","de","sabes que…"],
+["Sabemos ___ nadar muy bien.","— (нічого)","que","вміння"],
+["Ella sabe ___ la quiero.","que","para","sabe que…"],
+["«Знаю, що ти правий» — це…","Sé que tienes razón","Sé tener razón","que + факт"],
+["«Вмію читати» — це…","Sé leer","Sé que leer","без que"]
+]},
+{t:"CONOCER = знайомитися", lv:3, q:[
+["Quiero ___ a tus amigos.","conocer","saber","познайомитися з"],
+["Nos ___ desde 2020.","conocemos","sabemos","ми знайомі з 2020"],
+["Encantado de ___.","conocerte","saberte","приємно познайомитись"],
+["«Приємно познайомитися» будується з дієсловом…","conocer","saber","conocerte/conocerle"],
+["¿Quieres ___ a mi familia?","conocer","saber","знайомство"],
+["conocer gente nueva означає…","знайомитися з новими людьми","знати всіх людей світу","розширювати коло"],
+["Nos conocemos, ¿verdad? означає…","ми знайомі, так?","ми знаємось на цьому","десь бачились!"],
+["Me gustaría ___ Japón. 🗾","conocer","saber","відвідати країну"],
+["¿De qué os ___? (звідки ви знайомі)","conocéis","sabéis","os conocéis"],
+["conocer a alguien por primera vez означає…","познайомитися вперше","впізнати здалеку","перше знайомство"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«Yo sabo la respuesta» → …","sé","sabo bien","sé!"],
+["«Conozco que vives aquí» → …","Sé que vives aquí","Conozco donde vives aquí","que + факт → saber"],
+["«Sé a tu hermana» → …","Conozco a tu hermana","Sé tu hermana","особа → conocer"],
+["«Tengo 30 anos» → …","Tengo 30 años","Tengo 30 annos","ñ обовʼязкова!"],
+["«Estoy hambre» → …","Tengo hambre","Soy hambre","tener hambre"],
+["«Sabo nadar» → …","Sé nadar","Sabo bien nadar","sé"],
+["«¿Conoces dónde está?» → …","¿Sabes dónde está?","¿Conoces dónde es?","dónde = інформація"],
+["«Tú tenes suerte» → …","tienes","tenies","tienes"],
+["«No conozco nadie» → …","No conozco a nadie","No conozco de nadie","особистий a!"],
+["«Somos sed» → …","Tenemos sed","Estamos sed","tener sed"]
+]},
+{t:"SOY, TENGO чи ESTOY?", lv:3, q:[
+["___ 28 años.","Tengo","Soy","вік → tener"],
+["___ ucraniana.","Soy","Tengo","національність → ser"],
+["___ cansada.","Estoy","Tengo","стан → estar"],
+["___ hambre.","Tengo","Estoy","tener hambre"],
+["___ profesora.","Soy","Estoy","професія → ser"],
+["___ en casa.","Estoy","Soy","місце → estar"],
+["___ frío. (мені холодно)","Tengo","Estoy","tener frío"],
+["___ contenta.","Estoy","Tengo","емоція → estar"],
+["___ dos hermanos.","Tengo","Soy","володіння → tener"],
+["___ de Kyiv.","Soy","Estoy","походження → ser"]
+]},
+{t:"Питання → відповідь", lv:3, q:[
+["— ¿Tienes hambre? — …","Sí, mucha","Sí, muy","hambre ж.р. → mucha"],
+["— ¿Sabes esquiar? — …","No, no sé","No, no conozco","вміння → saber"],
+["— ¿Conoces Sevilla? — …","Sí, es preciosa","Sí, la sé de memoria","бував → conocer"],
+["— ¿Cuántos años tienes? — …","Veintiocho","Soy veintiocho","просто число"],
+["— ¿Tenéis prisa? — …","Sí, muchísima","Sí, somos","prisa ж.р."],
+["— ¿Sabes dónde está Juan? — …","Ni idea","Ni cara","ni idea = без поняття"],
+["— ¿Conocéis a mi novio? — …","Todavía no","Todavía no sabemos a él","ще ні"],
+["— ¿Tienes miedo? — …","Un poco","Un poco estoy","un poco (de miedo)"],
+["— ¿Sabe usted la hora? — …","Son las tres","Conozco las tres","час"],
+["— ¿Tienes ganas de cenar fuera? — …","¡Claro que sí!","¡Claro que soy!","звісно!"]
+]},
+{t:"Моя подруга (текст)", lv:3, q:[
+["Mi amiga Olia ___ 27 años.","tiene","es","вік"],
+["La ___ (conocer, yo) desde la universidad.","conozco","sé","знайомі з універу"],
+["Ella ___ hablar cuatro idiomas.","sabe","conoce","вміння"],
+["___ (tener) un trabajo interesante.","Tiene","Sabe","має роботу"],
+["___ (conocer) media Europa.","Conoce","Sabe","обʼїздила пів-Європи"],
+["Siempre ___ (saber) qué decir.","sabe","conoce","знає, що сказати"],
+["No ___ (tener) miedo a nada.","tiene","sabe","безстрашна!"],
+["___ (conocer) a gente de todo el mundo.","Conoce","Sabe","особи → conocer a"],
+["Y casi siempre ___ (tener) razón. 😄","tiene","sabe","tener razón"],
+["¡___ (tener, yo) mucha suerte de tenerla!","Tengo","Sé","tener suerte 🍀"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["tener, yo → …","tengo","tiengo","tengo"],
+["saber, yo → …","sé","sabo","sé"],
+["conocer, yo → …","conozco","conoco","conozco"],
+["Вік виражається через…","tener","ser","tengo X años"],
+["___ nadar.","Sé","Conozco","вміння"],
+["___ a Marta.","Conozco","Sé","особа + a"],
+["___ hambre.","Tengo","Estoy","tener hambre"],
+["___ dónde vives.","Sé","Conozco","інформація"],
+["___ Madrid.","Conozco","Sé","місто"],
+["tener razón означає…","мати рацію","мати порцію","тепер точно маєш рацію! 😉"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "TENER, SABER, CONOCER: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 8 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>
