@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 3 · Числівники · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 3 · @malinnaartstudio</div>
+    <h1 id="htitle">Числівники: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 3 · Los números.</b>
+      30 вправ по 10 питань: від cero до un millón, сотні й тисячі, порядкові, час, дати та гроші.
+      Складність зростає від ★ до ★★★. ¡A contar! 🔢
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · числа 0–99</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · сотні, тисячі, гроші</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · порядкові, час, дати</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 3</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Числа 0–10", lv:1, q:[
+["«пʼять» — це…","cinco","quinto","quinto = пʼятий"],
+["«три» — це…","tres","trece","trece = 13!"],
+["«нуль» — це…","cero","zero","іспанською через c"],
+["«вісім» — це…","ocho","hocho","без h"],
+["«два» — це…","dos","doce","doce = 12!"],
+["«десять» — це…","diez","dieciséis","dieciséis = 16"],
+["«сім» — це…","siete","séptimo","séptimo = сьомий"],
+["«чотири» — це…","cuatro","cuarto","cuarto = четвертий/чверть"],
+["«один» — це…","uno","once","once = 11"],
+["«девʼять» — це…","nueve","nuevo","nuevo = новий!"]
+]},
+{t:"Числа 11–15", lv:1, q:[
+["11 — це…","once","onze","once"],
+["12 — це…","doce","dos","dos = 2"],
+["13 — це…","trece","tres","tres = 3"],
+["14 — це…","catorce","cuatro","cuatro = 4"],
+["15 — це…","quince","cinco","cinco = 5"],
+["once — це число…","11","1","один = uno"],
+["catorce — це число…","14","4","чотирнадцять"],
+["Числа 11–15 — це…","особливі форми","просто «десять + число»","їх треба вивчити напамʼять"],
+["«пʼятнадцять років» — це…","quince años","quinto años","quince = 15"],
+["13 письмово — це…","trece","tresce","без s після e"]
+]},
+{t:"Числа 16–19", lv:1, q:[
+["16 — це…","dieciséis","seisdiez","dieci + séis"],
+["17 — це…","diecisiete","dieciseite","dieci + siete"],
+["18 — це…","dieciocho","diezocho","dieciocho"],
+["19 — це…","diecinueve","diecinuevo","nueve, не nuevo"],
+["У dieciséis тильда стоїть над…","é","i","dieci-SÉIS"],
+["Числа 16–19 пишуться…","одним словом","трьома словами","сучасна норма — разом"],
+["Частина dieci- походить від…","diez y (десять і)","dedo (палець)","історичне злиття"],
+["Після quince (15) йде…","dieciséis","diecicinco","16"],
+["diecisiete — це число…","17","27","27 = veintisiete"],
+["dieciocho — це число…","18","80","80 = ochenta"]
+]},
+{t:"Десятки 20–90", lv:1, q:[
+["20 — це…","veinte","venti","venti — це в кавʼярні 😄"],
+["30 — це…","treinta","trenta","з i: treinta"],
+["40 — це…","cuarenta","cuaranta","cuarenta"],
+["50 — це…","cincuenta","cinquenta","cincuenta"],
+["60 — це…","sesenta","seisenta","sesenta"],
+["70 — це…","setenta","sietenta","setenta"],
+["80 — це…","ochenta","ochoenta","ochenta"],
+["90 — це…","noventa","nuevanta","noventa"],
+["setenta — це…","70","90","90 = noventa; часто плутають!"],
+["veinte — це число…","20","12","12 = doce"]
+]},
+{t:"Числа 21–29", lv:1, q:[
+["21 — це…","veintiuno","veinte-uno","одним словом"],
+["22 — це…","veintidós","veintedós","veinti + dós"],
+["23 — це…","veintitrés","veintetres","з тильдою: veintitrés"],
+["25 — це…","veinticinco","veintecinco","veinti-, не veinte-"],
+["27 — це…","veintisiete","veintesiete","veintisiete"],
+["Числа 21–29 пишуться…","одним словом","трьома словами","як 16–19"],
+["veintidós має тильду?","так","ні","бо наголос на останньому складі"],
+["26 — це…","veintiséis","veintiseis","з тильдою над é"],
+["29 — це…","veintinueve","veintinuevo","nueve!"],
+["24 — це…","veinticuatro","veintecuatro","veinti-"]
+]},
+{t:"Числа 31–99", lv:1, q:[
+["31 — це…","treinta y uno","treintiuno","від 31 — окремо, з y"],
+["45 — це…","cuarenta y cinco","cuarenticinco","три слова"],
+["58 — це…","cincuenta y ocho","cincuentiocho","з y"],
+["63 — це…","sesenta y tres","sesentitres","sesenta y tres"],
+["77 — це…","setenta y siete","setentisiete","setenta y siete"],
+["82 — це…","ochenta y dos","ochentidos","ochenta y dos"],
+["99 — це…","noventa y nueve","noventinueve","noventa y nueve"],
+["Від 31 числа пишуться…","трьома словами з y","одним словом","лише 16–29 разом"],
+["36 — це…","treinta y seis","treinta seis","без y — помилка"],
+["Сполучник y ставиться між…","десятками та одиницями","сотнями та десятками","ciento veinte — без y!"]
+]},
+{t:"Слово → цифра", lv:1, q:[
+["cuarenta y dos — це…","42","24","24 = veinticuatro"],
+["sesenta y cinco — це…","65","56","56 = cincuenta y seis"],
+["diecisiete — це…","17","70","70 = setenta"],
+["noventa y uno — це…","91","19","19 = diecinueve"],
+["treinta y ocho — це…","38","83","83 = ochenta y tres"],
+["setenta y cuatro — це…","74","47","47 = cuarenta y siete"],
+["veintinueve — це…","29","92","92 = noventa y dos"],
+["cincuenta y tres — це…","53","35","35 = treinta y cinco"],
+["ochenta y seis — це…","86","68","68 = sesenta y ocho"],
+["doce — це…","12","2","2 = dos"]
+]},
+{t:"Цифра → слово", lv:1, q:[
+["33 — це…","treinta y tres","tres y treinta","спочатку десятки"],
+["47 — це…","cuarenta y siete","cuatro y siete","cuarenta = 40"],
+["19 — це…","diecinueve","nuevediez","одним словом"],
+["55 — це…","cincuenta y cinco","cinco cinco","з десятком"],
+["61 — це…","sesenta y uno","sesenta uno","потрібне y"],
+["78 — це…","setenta y ocho","setenta ocho","потрібне y"],
+["84 — це…","ochenta y cuatro","ochentaicuatro","три слова"],
+["92 — це…","noventa y dos","noventidós","три слова"],
+["26 — це…","veintiséis","veintiseís","тильда над É"],
+["15 — це…","quince","diecicinco","особлива форма!"]
+]},
+{t:"Більше чи менше?", lv:1, q:[
+["Що більше: setenta чи sesenta?","setenta","sesenta","70 > 60"],
+["Що менше: doce чи veinte?","doce","veinte","12 < 20"],
+["Що більше: noventa чи diecinueve?","noventa","diecinueve","90 > 19"],
+["Що менше: cinco чи quince?","cinco","quince","5 < 15"],
+["Що більше: cuarenta y uno чи catorce?","cuarenta y uno","catorce","41 > 14"],
+["Що менше: treinta чи trece?","trece","treinta","13 < 30"],
+["Що більше: ochenta чи dieciocho?","ochenta","dieciocho","80 > 18"],
+["Що більше: veintidós чи veinte?","veintidós","veinte","22 > 20"],
+["Що менше: cien чи noventa y nueve?","noventa y nueve","cien","99 < 100"],
+["Що більше: setenta чи sesenta y seis?","setenta","sesenta y seis","70 > 66"]
+]},
+{t:"Скільки? ¿Cuántos?", lv:1, q:[
+["¿Cuántos días tiene una semana?","siete","seis","тиждень = 7 днів"],
+["¿Cuántos meses tiene un año?","doce","diez","рік = 12 місяців"],
+["¿Cuántas horas tiene un día?","veinticuatro","veinte","доба = 24"],
+["¿Cuántos dedos hay en una mano?","cinco","diez","одна рука = 5"],
+["¿Cuántas letras tiene el alfabeto español?","veintisiete","treinta y tres","27 (памʼятаєш Lección 1?)"],
+["¿Cuántos días tiene febrero normalmente?","veintiocho","treinta","28 (29 у високосний)"],
+["¿Cuántas estaciones tiene el año?","cuatro","seis","4 пори року"],
+["Un minuto tiene ___ segundos.","sesenta","setenta","60 секунд"],
+["¿Cuántos ojos tenemos?","dos","tres","двоє очей 👀"],
+["Una hora tiene ___ minutos.","sesenta","cien","60 хвилин"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Сотні 100–900", lv:2, q:[
+["100 — це…","cien","ciento cero","рівно 100 = cien"],
+["200 — це…","doscientos","doscien","dos + cientos"],
+["300 — це…","trescientos","tresciento","trescientos"],
+["400 — це…","cuatrocientos","cuarocientos","cuatro + cientos"],
+["500 — це…","quinientos","cincocientos","неправильна форма!"],
+["600 — це…","seiscientos","seicientos","seis + cientos"],
+["700 — це…","setecientos","sietecientos","неправильна форма!"],
+["800 — це…","ochocientos","ochoscientos","ocho + cientos"],
+["900 — це…","novecientos","nuevecientos","неправильна форма!"],
+["«Неправильні» сотні — це…","500, 700, 900","200, 300, 400","quinientos, setecientos, novecientos"]
+]},
+{t:"CIEN чи CIENTO?", lv:2, q:[
+["Рівно 100 — це…","cien","ciento","cien euros, cien años"],
+["101 — це…","ciento uno","cien uno","101–199 → ciento"],
+["120 — це…","ciento veinte","cien veinte","ciento + число"],
+["«100 євро» — це…","cien euros","ciento euros","рівно сто → cien"],
+["150 — це…","ciento cincuenta","cien cincuenta","ciento"],
+["«100 книг» — це…","cien libros","ciento libros","cien перед іменником"],
+["199 — це…","ciento noventa y nueve","cien noventa y nueve","ciento"],
+["Форма ciento вживається…","у числах 101–199","замість cien завжди","ciento дві, ціле сто — cien"],
+["102 — це…","ciento dos","ciento y dos","без y після ciento!"],
+["Після ciento сполучник y…","не ставиться","ставиться завжди","ciento veinte, ciento uno"]
+]},
+{t:"Сотні: рід", lv:2, q:[
+["200 euros — це…","doscientos euros","doscientas euros","euros ч.р."],
+["200 personas — це…","doscientas personas","doscientos personas","personas ж.р."],
+["300 páginas — це…","trescientas páginas","trescientos páginas","páginas ж.р."],
+["400 coches — це…","cuatrocientos coches","cuatrocientas coches","coches ч.р."],
+["500 palabras — це…","quinientas palabras","quinientos palabras","palabras ж.р."],
+["Сотні узгоджуються за…","родом іменника","першою літерою","-os / -as"],
+["600 alumnas — це…","seiscientas alumnas","seiscientos alumnas","alumnas ж.р."],
+["700 kilómetros — це…","setecientos kilómetros","setecientas kilómetros","kilómetros ч.р."],
+["900 casas — це…","novecientas casas","novecientos casas","casas ж.р."],
+["А cien узгоджується за родом?","ні, незмінне","так","cien casas, cien coches"]
+]},
+{t:"Тисячі та мільйон", lv:2, q:[
+["1000 — це…","mil","un mil","БЕЗ un!"],
+["2000 — це…","dos mil","dos miles","mil не змінюється"],
+["«Тисяча євро» — це…","mil euros","un mil euros","просто mil"],
+["3500 — це…","tres mil quinientos","tres miles quinientos","mil незмінне"],
+["10 000 — це…","diez mil","diez miles","mil"],
+["У складених числах mil…","не змінюється","стає miles","dos mil, cien mil"],
+["«Тисячі людей» (приблизно) — це…","miles de personas","miles personas","miles DE + іменник"],
+["5000 — це…","cinco mil","cincuenta mil","cincuenta mil = 50 000!"],
+["1 000 000 — це…","un millón","un milión","з подвійним l"],
+["«Мільйон євро» — це…","un millón de euros","un millón euros","millón DE + іменник"]
+]},
+{t:"Роки", lv:2, q:[
+["1995 читається…","mil novecientos noventa y cinco","diecinueve noventa y cinco","НЕ парами, як в англійській!"],
+["2024 читається…","dos mil veinticuatro","veinte veinticuatro","повним числом"],
+["Роки іспанською читаються…","як повне число","парами цифр","1995 = тисяча девʼятсот…"],
+["2000 рік — це…","el año dos mil","el año dos miles","dos mil"],
+["1980 — це…","mil novecientos ochenta","mil nuevecientos ochenta","novecientos!"],
+["«Я народилась у 1990» — це…","Nací en mil novecientos noventa","Nací en diecinueve noventa","повне число"],
+["2001 — це…","dos mil uno","dos mil y uno","без y"],
+["Рік 1500 — це…","mil quinientos","quince cientos","mil quinientos"],
+["2025 — це…","dos mil veinticinco","dos mil veintecinco","veinti-"],
+["«У 2010 році» — прийменник…","en","a","en dos mil diez"]
+]},
+{t:"UNO, UN чи UNA?", lv:2, q:[
+["___ libro (одна книга)","un","uno","перед ч.р. іменником → un"],
+["— ¿Cuántos tienes? — ___. (без іменника)","Uno","Un","самостійно → uno"],
+["___ mesa (один стіл)","una","un","mesa ж.р. → una"],
+["21 книга — це…","veintiún libros","veintiuno libros","перед іменником -o відпадає"],
+["31 ніч — це…","treinta y una noches","treinta y uno noches","noches ж.р. → una"],
+["uno скорочується до un…","перед іменником ч.р.","ніколи","un coche, veintiún años"],
+["41 день — це…","cuarenta y un días","cuarenta y uno días","un перед días"],
+["А una скорочується?","ні","так","una mesa, veintiuna mesas"],
+["51 тиждень — це…","cincuenta y una semanas","cincuenta y un semanas","semanas ж.р."],
+["— ¿Tienes hermanos? — Sí, ___.","uno","un","без іменника → uno"]
+]},
+{t:"Тильди в числах", lv:2, q:[
+["21 рік — це…","veintiún años","veintiuno años","veintiún — з тильдою"],
+["veintiún має тильду?","так","ні","наголос на останній склад"],
+["У veintidós тильда над…","ó","e","veintidós"],
+["У veintitrés тильда над…","é","i","veintitrés"],
+["veintiséis має тильду?","так","ні","над é"],
+["veinticuatro: тильда…","не потрібна","над u","наголос за правилом"],
+["veinticinco: тильда…","не потрібна","над i","наголос за правилом"],
+["У dieciséis тильда над…","é","останньою i","dieciséis"],
+["Тильди в числах ставляться за…","загальними правилами наголосу","окремою традицією","ті самі правила з Lección 1!"],
+["treinta y uno: тильда…","не потрібна","над o","три окремі слова за правилами"]
+]},
+{t:"Математика", lv:2, q:[
+["Dos más tres son…","cinco","seis","2+3=5"],
+["Diez menos cuatro son…","seis","cuatro","10−4=6"],
+["«плюс» — це…","más","menos","más = більше/плюс"],
+["«мінус» — це…","menos","menor","menor = менший"],
+["Cuatro por dos son…","ocho","seis","4×2=8"],
+["«Помножити на» виражає слово…","por","para","cuatro POR dos"],
+["Veinte entre cuatro son…","cinco","cuatro","20÷4=5"],
+["«Поділити на» виражає слово…","entre","sobre","veinte ENTRE cuatro"],
+["Siete más ocho son…","quince","dieciséis","7+8=15"],
+["Cien menos uno son…","noventa y nueve","noventa","100−1=99"]
+]},
+{t:"Гроші та ціни", lv:2, q:[
+["Валюта Іспанії — це…","el euro","el dólar","€ з 2002 року"],
+["«Скільки коштує?» — це…","¿Cuánto cuesta?","¿Cuántos cuesta?","cuánto — незмінне тут"],
+["2,50 € розмовно кажуть…","dos cincuenta","dos y cincuenta","просто підряд"],
+["«центи» — це…","céntimos","centímetros","centímetros = сантиметри 📏"],
+["Son quince euros означає…","з вас 15 євро","зараз 15 година","на касі"],
+["«готівкою» — це…","en efectivo","en efecto","en efecto = справді"],
+["«карткою» — це…","con tarjeta","con tarta","tarta = торт 🎂"],
+["¿Me cobra, por favor? означає…","розрахуйте мене, будь ласка","обійміть мене, будь ласка","у барі/кафе"],
+["«решта, здача» — це…","el cambio","el camino","camino = дорога"],
+["Esto cuesta cien euros — cuesta означає…","коштує","рахує","costar = коштувати"]
+]},
+{t:"Великі числа → цифри", lv:2, q:[
+["mil doscientos — це…","1200","1002","1000+200"],
+["tres mil quinientos — це…","3500","3050","3000+500"],
+["ciento uno — це…","101","110","110 = ciento diez"],
+["dos mil veinte — це…","2020","2200","2000+20"],
+["seiscientos sesenta — це…","660","606","600+60"],
+["mil uno — це…","1001","101","1000+1"],
+["cuatro mil cuarenta — це…","4040","4004","4000+40"],
+["novecientos noventa y nueve — це…","999","909","900+90+9"],
+["diez mil cien — це…","10 100","1 010","10 000+100"],
+["un millón doscientos mil — це…","1 200 000","1 000 200","мільйон + 200 тисяч"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Порядкові 1º–10º", lv:3, q:[
+["«перший» — це…","primero","uno","uno = один"],
+["«другий» — це…","segundo","dos","segundo"],
+["«третій» — це…","tercero","tres","tercero"],
+["«четвертий» — це…","cuarto","cuatro","cuarto"],
+["«пʼятий» — це…","quinto","cinco","quinto"],
+["«шостий» — це…","sexto","seisto","sexto"],
+["«сьомий» — це…","séptimo","sietemo","séptimo"],
+["«восьмий» — це…","octavo","ochavo","octavo"],
+["«девʼятий» — це…","noveno","nueveno","noveno"],
+["«десятий» — це…","décimo","diezmo","décimo"]
+]},
+{t:"PRIMER і TERCER", lv:3, q:[
+["el ___ piso (1º)","primer","primero","скорочення перед іменником ч.р.!"],
+["el ___ día (3º)","tercer","tercero","tercer día"],
+["Скорочення primero→primer стається перед…","іменником ч.р. однини","будь-яким словом","el primer piso, але la primera vez"],
+["la primera vez — скорочення є?","ні (жіночий рід)","так","лише ч.р."],
+["Llegó el primero (без іменника далі) — форма…","primero","primer","без іменника не скорочується"],
+["el ___ premio (1º)","primer","primero","перед premio"],
+["«la tercera planta» — це…","правильно","треба tercer","ж.р. → tercera"],
+["У «Es el primero de la clase» primero…","не скорочується","скорочується","іменника після нього немає"],
+["el ___ capítulo (3º)","tercer","tercero","tercer capítulo"],
+["А segundo скорочується?","ні","так","el segundo piso — повна форма"]
+]},
+{t:"Порядкові в житті", lv:3, q:[
+["Vivo en la ___ planta. (2ª)","segunda","segundo","planta ж.р."],
+["Es mi ___ viaje a España. (1º)","primer","primera","viaje ч.р. → primer"],
+["la ___ puerta a la derecha (3ª)","tercera","tercer","puerta ж.р. → повна форма"],
+["el ___ semáforo (2º)","segundo","segunda","semáforo ч.р."],
+["Після 10-го поверху іспанці зазвичай кажуть…","кількісні: el piso once","лише порядкові далі","undécimo — занадто офіційно"],
+["la quinta fila означає…","пʼятий ряд","пʼятдесятий ряд","quinto = 5-й"],
+["el séptimo arte — це…","кіно","сьома картина в музеї","«сьоме мистецтво»"],
+["Felipe VI читається…","Felipe sexto","Felipe seis","королі до X — порядковими"],
+["la Segunda Guerra Mundial — це…","Друга світова війна","Двадцята світова війна","segunda = друга"],
+["el décimo aniversario означає…","десята річниця","сота річниця","décimo = 10-й"]
+]},
+{t:"Дати", lv:3, q:[
+["«1 січня» найчастіше кажуть…","el uno de enero","el primero enero","в Іспанії — el uno de enero"],
+["Формат дати: el 5 ___ mayo","de","en","число DE місяць"],
+["«у березні» — це…","en marzo","a marzo","en + місяць"],
+["Рік у даті приєднується через…","de","y","el 9 de julio de 2025"],
+["«Яке сьогодні число?» — це…","¿Qué día es hoy?","¿Cuánto día es hoy?","qué día"],
+["Hoy es 14 de febrero — 14 читаємо як…","catorce","decimocuarto","у датах — кількісні!"],
+["Місяці іспанською пишуться…","з малої літери","з великої літери","enero, mayo, agosto"],
+["«понеділок, 3 червня» — це…","lunes, tres de junio","lunes, tercero de junio","кількісний числівник"],
+["Mi cumpleaños es ___ 8 de agosto.","el","en","EL + число"],
+["У датах (крім іноді 1-го) вживають…","кількісні числівники","порядкові числівники","el quince de mayo"]
+]},
+{t:"Час: години", lv:3, q:[
+["13:00 — це…","Es la una","Son la una","одна година → ES"],
+["14:00 — це…","Son las dos","Es las dos","дві та більше → SON"],
+["«Котра година?» — це…","¿Qué hora es?","¿Cuánta hora es?","qué hora"],
+["Форма es вживається лише з…","la una","las doce","одна година — однина"],
+["15:00 — це…","Son las tres","Son los tres","horas ж.р. → LAS"],
+["12:00 — це…","Son las doce","Es la doce","12 → son"],
+["Опівдень — це…","el mediodía","la medianoche","medio + día"],
+["Північ — це…","la medianoche","el mediodía","media + noche"],
+["9:00 — це…","Son las nueve","Son las nuevas","nuevas = нові!"],
+["Перед годинами ставиться артикль…","la / las","el / los","la una, las dos"]
+]},
+{t:"Час: хвилини", lv:3, q:[
+["2:15 — це…","las dos y cuarto","las dos menos cuarto","чверть ПО другій → y cuarto"],
+["2:30 — це…","las dos y media","las dos y medio","media (ж.р.!)"],
+["2:45 — це…","las tres menos cuarto","las dos menos cuarto","за чверть ТРЕТЯ"],
+["5:10 — це…","las cinco y diez","las cinco menos diez","10 хв по пʼятій → y"],
+["7:50 — це…","las ocho menos diez","las siete menos diez","за 10 хв восьма"],
+["Після половини години рахуємо…","menos від наступної години","y далі до 59","8:40 = las nueve menos veinte"],
+["«рівно» — це…","en punto","al punto","las tres en punto"],
+["6:30 — це…","las seis y media","las seis y mitad","media, не mitad!"],
+["10:55 — це…","las once menos cinco","las diez menos cinco","за 5 хв ОДИНАДЦЯТА"],
+["«de la mañana» додають, щоб…","уточнити, що це ранок","сказати «завтра»","las siete de la mañana"]
+]},
+{t:"Вік і кількість", lv:3, q:[
+["Tengo 30 ___.","años","anos","БЕЗ тильди значення зовсім інше! 😅"],
+["«Їй 25 років» — це…","Tiene veinticinco años","Es veinticinco años","вік → tener"],
+["На ¿Cuántos años tienes? відповідають…","Tengo…","Soy…","tengo + число + años"],
+["«У класі 20 учнів» — це…","Hay veinte alumnos","Están veinte alumnos","кількість → hay"],
+["unos/unas + число означає…","приблизно","рівно","unos veinte ≈ близько 20"],
+["Hay unas cincuenta personas ≈ …","близько 50 людей","рівно 50 людей","unas = приблизність"],
+["«більше ста» — це…","más de cien","más que cien","з числами → DE!"],
+["«менше десяти» — це…","menos de diez","menos que diez","menos DE + число"],
+["media hora означає…","півгодини","середня година","medio/media = пів-"],
+["una docena — це…","дюжина (12)","десяток (10)","docena de huevos = 12 яєць"]
+]},
+{t:"Числа довкола нас", lv:3, q:[
+["Автобус №24 називають…","el veinticuatro","el vigésimo cuarto","номери — кількісними"],
+["5-й поверх розмовно — це…","el quinto","el cinco","vivo en el quinto"],
+["DNI в Іспанії — це…","документ з ідентифікаційним номером","назва танцю","Documento Nacional de Identidad"],
+["Розмір взуття 38 — це…","el número treinta y ocho","el número tres ocho","повним числом"],
+["Температура 36,6 читається…","treinta y seis coma seis","treinta y seis punto seis","дробова частина через COMA"],
+["50% — це…","el cincuenta por ciento","el cincuenta por cientos","por ciento"],
+["«половина» — це…","la mitad","la mediana","la mitad del pastel"],
+["«чверть» — це…","un cuarto","un cuatro","cuatro = 4"],
+["«подвійний» — це…","doble","duplo","habitación doble"],
+["«Нульовий кілометр» Іспанії — у…","Мадриді (Puerta del Sol)","Барселоні","звідти рахують усі дороги"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«un mil euros» → правильно…","mil euros","unos mil euro","mil без un"],
+["«cincocientos» → правильно…","quinientos","cinquientos","неправильна сотня"],
+["«veintiuno años» → правильно…","veintiún años","veinte y uno años","скорочення + тильда"],
+["«Son la una» → правильно…","Es la una","Son las una","одна година → es"],
+["«diez y seis» (сучасне письмо) → …","dieciséis","dieciseís","разом, тильда над É"],
+["«el primero piso» → правильно…","el primer piso","el piso primero","скорочення!"],
+["«doscientos personas» → правильно…","doscientas personas","doscientos persona","узгодження роду"],
+["«Tengo 30 anos» → правильно…","Tengo 30 años","Tengo 30 annos","тильда обовʼязкова!"],
+["«más que cien euros» → правильно…","más de cien euros","más con cien euros","з числом → de"],
+["«las dos y mitad» → правильно…","las dos y media","las dos media","у часі — media"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["15 — це…","quince","cinco","особлива форма"],
+["500 — це…","quinientos","cincocientos","неправильна сотня"],
+["200 sillas — це…","doscientas sillas","doscientos sillas","sillas ж.р."],
+["13:00 — це…","Es la una","Son las unas","одна → es"],
+["2:45 — це…","las tres menos cuarto","las dos menos cuarto","за чверть третя"],
+["1-й поверх — це…","el primer piso","el primero piso","скорочення"],
+["Вік виражається дієсловом…","tener","ser","tengo X años"],
+["21 день — це…","veintiún días","veintiuno días","veintiún + іменник"],
+["3000 — це…","tres mil","tres miles","mil незмінне"],
+["Рівно 100 — це…","cien","ciento","cien por cien 😉"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Числівники: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 3 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>
