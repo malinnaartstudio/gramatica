@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 1 · Алфавіт і вимова · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 1 · @malinnaartstudio</div>
+    <h1 id="htitle">Алфавіт і вимова: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 1 · Alfabeto y pronunciación.</b>
+      30 вправ по 10 питань — від назв літер до правил наголосу. Складність зростає:
+      почни з ★ і рухайся до ★★★. ¡Buena suerte! 💪
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · базові</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · правила читання</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · наголос і тонкощі</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 1</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Назви літер", lv:1, q:[
+["Літера B називається…","be","uve","uve — це V"],
+["Літера V називається…","uve","ele","ele — це L"],
+["Літера H називається…","hache","jota","jota — це J"],
+["Літера J називається…","jota","ge","ge — це G"],
+["Літера Ñ називається…","eñe","ene","ene — це N"],
+["Літера G називається…","ge","jota","jota — це J"],
+["Літера W називається…","uve doble","equis","equis — це X"],
+["Літера Y називається…","ye","i latina","також i griega"],
+["Літера Z називається…","zeta","seta","seta = гриб 🍄"],
+["Літера Q називається…","cu","que","назва — cu"]
+]},
+{t:"Голосні", lv:1, q:[
+["Скільки голосних звуків в іспанській?","5","6","a, e, i, o, u"],
+["Іспанські голосні — це…","a, e, i, o, u","a, e, i, o, y","y — приголосна/напівголосна"],
+["E звучить як…","чітке [е]","[и]","завжди [е]: mesa"],
+["U у слові luna…","читається [у]","німа","німа лише у que/qui, gue/gui"],
+["I звучить як…","[і]","[ай]","[ай] — це англійська!"],
+["O наприкінці слова (amigo) звучить…","чітко [о]","як [а]","іспанські голосні не редукуються"],
+["A звучить як…","[а]","[е]","завжди чисте [а]"],
+["Іспанські голосні…","завжди звучать однаково чітко","змінюються як в англійській","у цьому легкість іспанської!"],
+["Перший звук у слові uno…","[у]","[ю]","без йотації: [уно]"],
+["E у слові me звучить…","[е]","[і]","me = [ме]"]
+]},
+{t:"Німа літера H", lv:1, q:[
+["hotel звучить як…","[отель]","[хотель]","H ніколи не читається"],
+["hola звучить як…","[ола]","[хола]","класика: [ола]"],
+["hospital звучить як…","[оспіталь]","[хоспіталь]","H німа"],
+["hermano (брат) починається зі звуку…","[е]","[х]","[ермано]"],
+["ahora (зараз) звучить як…","[аора]","[ахора]","H німа і всередині слова"],
+["hablar (говорити) звучить як…","[аблар]","[хаблар]","H німа"],
+["hoy (сьогодні) звучить як…","[ой]","[хой]","[ой]"],
+["hija (донька) звучить як…","[іха]","[хіджа]","H німа, J = [х]"],
+["helado (морозиво) звучить як…","[еладо]","[хеладо]","H німа"],
+["Літера H в іспанській…","ніколи не читається","читається на початку слова","єдина повністю німа літера"]
+]},
+{t:"Літера Ñ", lv:1, q:[
+["Ñ звучить як…","[нь]","[н]","мʼяке [нь]"],
+["España звучить як…","[еспанья]","[еспана]","з мʼяким [нь]"],
+["niño (хлопчик) звучить як…","[ніньйо]","[ніно]","ñ = [нь]"],
+["mañana звучить як…","[маньяна]","[манана]","mañana = завтра/ранок"],
+["año (рік) звучить як…","[аньйо]","[ано]","не переплутай — ano без ñ означає інше! 😅"],
+["señor звучить як…","[сеньйор]","[сенор]","звідси наше «сеньйор»"],
+["У слові pequeño (маленький) є звук…","[нь]","[ч]","peque-ñо"],
+["baño (ванна) звучить як…","[баньйо]","[бано]","ñ = [нь]"],
+["Ñ — окрема літера іспанського алфавіту?","так","ні","гордість іспанської мови!"],
+["montaña (гора) звучить як…","[монтанья]","[монтана]","Montana — це штат США"]
+]},
+{t:"Літера LL", lv:1, q:[
+["llave (ключ) звучить приблизно як…","[йабе]","[ллаве]","ll ≈ [й]"],
+["calle (вулиця) звучить як…","[кайє]","[калле]","ll = [й]"],
+["llamar (кликати) звучить як…","[йамар]","[лламар]","me llamo = [ме йамо]"],
+["lluvia (дощ) звучить як…","[йубія]","[ллювіа]","ll = [й], v = [б]"],
+["pollo (курка) звучить як…","[пойо]","[полло]","pollo ≠ polo!"],
+["ella (вона) звучить як…","[ейя]","[елла]","ll = [й]"],
+["paella звучить як…","[паейя]","[паелла]","так, ми всі кажемо неправильно 😄"],
+["amarillo (жовтий) звучить як…","[амарійо]","[амарілло]","ll = [й]"],
+["llegar (прибувати) починається зі звуку…","[й]","[л]","[йеґар]"],
+["silla (стілець) звучить як…","[сійя]","[сілла]","ll = [й]"]
+]},
+{t:"Літера CH", lv:1, q:[
+["mucho звучить як…","[мучо]","[мукхо]","ch = [ч]"],
+["chico (хлопець) звучить як…","[чіко]","[кіко]","ch = [ч]"],
+["noche (ніч) звучить як…","[ноче]","[нокхе]","buenas noches!"],
+["leche (молоко) звучить як…","[лече]","[леке]","café con leche"],
+["coche (авто) звучить як…","[коче]","[коке]","ch = [ч]"],
+["ocho (8) звучить як…","[очо]","[окхо]","ch = [ч]"],
+["chocolate звучить як…","[чоколате]","[шоколате]","[ч], не [ш]"],
+["escuchar (слухати) містить звук…","[ч]","[ш]","es-cu-char"],
+["ducha (душ) звучить як…","[дуча]","[душа]","ch = [ч]"],
+["CH завжди звучить як…","[ч]","[х]","стабільне правило"]
+]},
+{t:"Літера J", lv:1, q:[
+["jamón звучить як…","[хамон]","[жамон]","j = [х]"],
+["trabajo (робота) звучить як…","[трабахо]","[трабажо]","j = [х]"],
+["hijo (син) звучить як…","[іхо]","[іджо]","h німа + j = [х]"],
+["mujer (жінка) звучить як…","[мухер]","[мужер]","j = [х]"],
+["junio (червень) починається зі звуку…","[х]","[дж]","[хуніо]"],
+["rojo (червоний) звучить як…","[рохо]","[роджо]","j = [х]"],
+["joven (молодий) звучить як…","[ховен]","[жовен]","j = [х]"],
+["ojo (око) звучить як…","[охо]","[ожо]","¡ojo! = увага!"],
+["jardín (сад) звучить як…","[хардін]","[жардін]","j = [х]"],
+["jueves (четвер) починається зі звуку…","[х]","[ж]","[хўебес]"]
+]},
+{t:"B та V", lv:1, q:[
+["B і V в іспанській звучать…","однаково","по-різному","обидві ≈ [б]"],
+["vino (вино) звучить як…","[біно]","[віно]","v = [б]"],
+["vaca (корова) звучить як…","[бака]","[вака]","v = [б]"],
+["verde (зелений) звучить як…","[берде]","[верде]","v = [б]"],
+["У слові invierno V звучить як…","[б]","[в]","[імбʼєрно]"],
+["vivir (жити) звучить як…","[бібір]","[вівір]","обидві v = [б]"],
+["ventana (вікно) звучить як…","[бентана]","[вентана]","v = [б]"],
+["У слові huevo (яйце) V звучить як…","[б]","[в]","[ўебо]"],
+["Слова baca і vaca на слух…","звучать однаково","легко розрізнити","тому іспанці уточнюють написання"],
+["У слові avión (літак) V звучить як…","[б]","[в]","[абйон]"]
+]},
+{t:"Літери K та W", lv:1, q:[
+["Літера K зустрічається переважно у…","запозичених словах","споконвічно іспанських","kilo, kiwi, karate"],
+["kilo звучить як…","[кіло]","[хіло]","k = [к]"],
+["Літера W є у слові…","web","vaso","vaso пишеться через v"],
+["W в іспанській зустрічається…","дуже рідко","у кожному другому слові","лише запозичення"],
+["Іспанська назва літери W:","uve doble","ka doble","«подвійна uve»"],
+["«Кіно» іспанською пишеться…","cine","kine","звук [с] тут дає c"],
+["«Кілометр» найчастіше пишеться…","kilómetro","quilómetro","kilómetro — основний варіант"],
+["Q в іспанській завжди йде разом із…","u","a","que, qui"],
+["que звучить як…","[ке]","[кўе]","u після q німа"],
+["quien (хто) звучить як…","[кʼєн]","[квʼєн]","u німа"]
+]},
+{t:"QU та CU", lv:1, q:[
+["queso (сир) звучить як…","[кесо]","[кўесо]","u у que німа"],
+["quince (15) звучить як…","[кінсе]","[кўінсе]","u у qui німа"],
+["aquí (тут) звучить як…","[акі]","[акўі]","qu = [к]"],
+["У сполученні que літера U…","німа","читається","завжди німа"],
+["У слові cuando (коли) U…","читається [ў]","німа","cu ≠ qu!"],
+["cuatro (4) звучить як…","[кўатро]","[катро]","cu — u звучить"],
+["quiero (хочу) звучить як…","[кʼєро]","[квʼєро]","u німа"],
+["У слові cuenta (рахунок) CU звучить як…","[кў]","[к]","[кўента]"],
+["parque (парк) звучить як…","[парке]","[паркўе]","que = [ке]"],
+["«Хто» (quién) пишеться через…","qu","cu","звук [кʼ] перед e/i → qu"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"C: [к] чи [с]?", lv:2, q:[
+["casa: C звучить як…","[к]","[с]","перед a → [к]"],
+["cena (вечеря): C звучить як…","[с/θ]","[к]","перед e → [с]"],
+["cine: C звучить як…","[с/θ]","[к]","перед i → [с]"],
+["como: C звучить як…","[к]","[с]","перед o → [к]"],
+["cielo (небо): C звучить як…","[с/θ]","[к]","перед i → [с]"],
+["cuchara (ложка): перша C звучить як…","[к]","[с]","перед u → [к]"],
+["gracias: C звучить як…","[с/θ]","[к]","перед i → [с]"],
+["médico: C звучить як…","[к]","[с]","перед o → [к]"],
+["cero (нуль): C звучить як…","[с/θ]","[к]","перед e → [с]"],
+["C = [с/θ] перед літерами…","e, i","a, o, u","перед a/o/u = [к]"]
+]},
+{t:"G: [ґ] чи [х]?", lv:2, q:[
+["gato (кіт): G звучить як…","[ґ]","[х]","перед a → [ґ]"],
+["gente (люди): G звучить як…","[х]","[ґ]","перед e → [х]"],
+["amigo: G звучить як…","[ґ]","[х]","перед o → [ґ]"],
+["gimnasio: G звучить як…","[х]","[ґ]","перед i → [х]"],
+["gustar: G звучить як…","[ґ]","[х]","перед u → [ґ]"],
+["general: G звучить як…","[х]","[ґ]","перед e → [х]"],
+["gordo (товстий): G звучить як…","[ґ]","[х]","перед o → [ґ]"],
+["página (сторінка): G звучить як…","[х]","[ґ]","перед i → [х]"],
+["G = [х] перед літерами…","e, i","a, o, u","як і C, «мʼякне» перед e/i"],
+["lengua (мова): G звучить як…","[ґ]","[х]","перед u → [ґ]"]
+]},
+{t:"GUE, GUI: німа U", lv:2, q:[
+["guitarra звучить як…","[ґітарра]","[ґўітарра]","u в gui німа"],
+["guerra (війна) звучить як…","[ґерра]","[ґўерра]","u в gue німа"],
+["Імʼя Miguel звучить як…","[міґель]","[міґуель]","u німа"],
+["hamburguesa: GU звучить як…","[ґ]","[ґў]","[амбурґеса]"],
+["águila (орел) звучить як…","[аґіла]","[аґўіла]","u німа"],
+["У слові guiso (рагу) U…","німа","читається","gui = [ґі]"],
+["Навіщо U у gue/gui?","щоб G лишалося [ґ]","для краси","без u було б ge = [хе]"],
+["sigue (продовжуй) звучить як…","[сіґе]","[сіґўе]","u німа"],
+["juguete (іграшка): -gue- звучить як…","[ґе]","[хе]","[хуґете]"],
+["llegué (я прибув) звучить як…","[йєґе]","[йєґўе]","u німа"]
+]},
+{t:"GÜE, GÜI: дві крапки", lv:2, q:[
+["pingüino (пінгвін): Ü…","читається [ў]","німа","[пінґўіно]"],
+["vergüenza (сором) звучить як…","[берґўенса]","[берґенса]","ü звучить"],
+["Дві крапки над Ü означають, що…","U читається","склад наголошений","знак ¨ «вмикає» u"],
+["bilingüe (двомовний) звучить як…","[білінґўе]","[білінґе]","ü звучить"],
+["cigüeña (лелека): Ü…","звучить","німа","[сіґўенья]"],
+["lingüística: -güi- звучить як…","[ґўі]","[ґі]","ü читається"],
+["Без крапок (guerra) U…","німа","звучить","порівняй: guerra ≠ vergüenza"],
+["antigüedad (давнина): -güe- звучить як…","[ґўе]","[ґе]","ü звучить"],
+["Знак ¨ (дві крапки) називається…","diéresis","tilde","tilde — це знак наголосу ´"],
+["paragüero (підставка для парасоль): -güe-…","[ґўе]","[ґе]","ü звучить"]
+]},
+{t:"Літера Z", lv:2, q:[
+["zapato (черевик): Z звучить як…","[с/θ]","[з]","дзвінкого [з] немає!"],
+["zumo (сік) звучить як…","[сумо/θумо]","[зумо]","z = [с/θ]"],
+["Дзвінкий звук [з] в іспанській…","відсутній","є у кожному слові","навіть s ніколи не дзвенить"],
+["plaza (площа): Z звучить як…","[с/θ]","[з]","[пласа]"],
+["azul (синій) звучить як…","[асуль]","[азуль]","z = [с]"],
+["corazón (серце) звучить як…","[корасон]","[коразон]","z = [с]"],
+["zanahoria (морква) починається зі звуку…","[с/θ]","[з]","z = [с/θ], h німа"],
+["У Латинській Америці Z звучить як…","[с]","[ц]","seseo — z і c(e,i) = [с]"],
+["diez (10) закінчується звуком…","[с/θ]","[з]","[дʼєс]"],
+["zona звучить як…","[сона/θона]","[зона]","z ніколи не [з]"]
+]},
+{t:"R та RR", lv:2, q:[
+["rosa: R на початку слова…","розкотисте [рр]","мʼяке коротке [р]","початкове r завжди сильне"],
+["pero (але): одинарне R між голосними…","мʼяке коротке","розкотисте","одна вібрація"],
+["perro (пес): RR звучить…","розкотисто й довго","мʼяко","багато вібрацій!"],
+["pero і perro — це…","два різні слова","одне слово","але ≠ пес 🐶"],
+["Enrique: R після N звучить…","сильно [рр]","слабко","після n, l, s → сильне"],
+["caro (дорогий) і carro (віз) розрізняються…","силою вібрації R","наголосом","мінімальна пара"],
+["radio: перше R…","сильне [рр]","слабке","початок слова"],
+["arroz (рис): RR…","довге розкотисте","коротке","[аррос]"],
+["amor: фінальне R…","коротке одинарне","розкотисте довге","в кінці — мʼякше"],
+["alrededor: R після L звучить…","сильно","слабко","після l → сильне"]
+]},
+{t:"Літера Y", lv:2, q:[
+["yo (я) звучить як…","[йо]","[іо]","y = [й]"],
+["Сполучник y (та/і) звучить як…","[і]","[й]","самостійне y = [і]"],
+["playa (пляж) звучить як…","[плайя]","[плаіа]","y між голосними = [й]"],
+["hay (є) звучить як…","[ай]","[аі]","y в кінці = [й]"],
+["Y у слові ayudar (допомагати) звучить як…","[й]","[ж]","[айюдар]"],
+["muy (дуже) звучить як…","[муй]","[муі]","y = [й]"],
+["mayo (травень) звучить як…","[майо]","[мажо]","y = [й]"],
+["rey (король): фінальне Y = …","[й]","[і]","[рей]"],
+["desayuno (сніданок): Y звучить як…","[й]","[дж]","[десайюно]"],
+["Слово «і» (сполучник) пишеться…","y","i","одна з найкоротших літер-слів"]
+]},
+{t:"X та тонкощі приголосних", lv:2, q:[
+["taxi звучить як…","[таксі]","[тахі]","x = [кс]"],
+["examen: X звучить як…","[кс]","[х]","[ексамен]"],
+["México: X у цій назві історично звучить як…","[х]","[кс]","[мехіко] — виняток!"],
+["texto звучить як…","[тексто]","[тешто]","x = [кс]"],
+["D наприкінці слова (Madrid)…","слабшає, майже зникає","звучить дзвінко [д]","[мадрі(д)]"],
+["Іспанське T вимовляється…","без придиху","з сильним придихом","мʼякше за англійське"],
+["Іспанське P вимовляється…","без придиху","з придихом [пх]","як українське"],
+["S в іспанській завжди…","глуха [с]","дзвінка [з]","casa = [каса]"],
+["N перед B/V (un vaso) наближається до…","[м]","[н]","[ум басо]"],
+["éxito (успіх): X звучить як…","[кс]","[с]","[ексіто]"]
+]},
+{t:"Прочитай слово", lv:2, q:[
+["gracias читається як…","[ґрасіас]","[ґракіас]","ci = [сі]"],
+["cerveza (пиво) читається як…","[сербеса]","[кервеза]","ce=[се], v=[б], z=[с]"],
+["jirafa читається як…","[хірафа]","[жірафа]","j = [х]"],
+["guapa (красуня) читається як…","[ґўапа]","[ґапа]","gua — u звучить"],
+["hielo (лід) читається як…","[йєло]","[хʼєло]","h німа, ie = [йє]"],
+["chaqueta (куртка) читається як…","[чакета]","[чакўета]","ch=[ч], que=[ке]"],
+["zapatos читається як…","[сапатос]","[запатос]","z = [с]"],
+["llorar (плакати) читається як…","[йорар]","[льорар]","ll = [й]"],
+["quesadilla читається як…","[кесадійя]","[кўесаділла]","que=[ке], ll=[й]"],
+["veinte (20) читається як…","[бейнте]","[вейнте]","v = [б]"]
+]},
+{t:"Диктант по літерах", lv:2, q:[
+["eme–e–ese–a → …","mesa","musa","стіл"],
+["ce–a–ese–a → …","casa","cosa","хата"],
+["uve–i–ene–o → …","vino","fino","вино"],
+["jota–a–eme–ó–ene → …","jamón","ramón","хамон"],
+["hache–o–ele–a → …","hola","ola","привіт (ola = хвиля!)"],
+["ese–o–ele → …","sol","col","сонце (col = капуста)"],
+["pe–a–ene → …","pan","pin","хліб"],
+["ge–a–te–o → …","gato","dato","кіт"],
+["be–o–ce–a → …","boca","foca","рот (foca = тюлень)"],
+["zeta–u–eme–o → …","zumo","sumo","сік"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Наголос: слова на голосну, N, S", lv:3, q:[
+["casa: наголос на складі…","CA","SA","голосна в кінці → передостанній"],
+["amigo: наголос на…","MI","GO","a-MI-go"],
+["hablan: наголос на…","HA","BLAN","закінчується на n → передостанній"],
+["lunes: наголос на…","LU","NES","закінчується на s → передостанній"],
+["Слова на голосну, N або S мають наголос на…","передостанньому складі","останньому складі","головне правило №1"],
+["mañana: наголос на…","ÑA (середній)","NA (останній)","ma-ÑA-na"],
+["estudiante: наголос на…","AN","TE","es-tu-di-AN-te"],
+["joven: наголос на…","JO","VEN","JO-ven"],
+["zapatos: наголос на…","PA","TOS","za-PA-tos"],
+["comen: наголос на…","CO","MEN","CO-men"]
+]},
+{t:"Наголос: слова на приголосну", lv:3, q:[
+["hotel: наголос на…","TEL","HO","приголосна (не n/s) → останній"],
+["español: наголос на…","ÑOL","PA","es-pa-ÑOL"],
+["comer: наголос на…","MER","CO","інфінітиви на -r → останній склад"],
+["ciudad: наголос на…","DAD","CIU","ciu-DAD"],
+["Слова на приголосну (крім N, S) мають наголос на…","останньому складі","передостанньому","правило №2"],
+["profesor: наголос на…","SOR","FE","pro-fe-SOR"],
+["reloj (годинник): наголос на…","LOJ","RE","re-LOJ"],
+["feliz (щасливий): наголос на…","LIZ","FE","fe-LIZ"],
+["usted: наголос на…","TED","US","us-TED"],
+["actriz (акторка): наголос на…","TRIZ","AC","ac-TRIZ"]
+]},
+{t:"Тильда: знак наголосу", lv:3, q:[
+["У слові café тильда стоїть, бо…","наголос порушує правило","для краси","на голосну → мав би бути на CA"],
+["teléfono: наголос на…","LÉ","NO","тильда завжди показує наголос"],
+["sofá: наголос на…","FÁ","SO","тильда = наголос тут"],
+["Тильда (´) вказує на…","наголошений склад","довгу голосну","читай, де тильда"],
+["música: наголос на…","MÚ","CA","MÚ-si-ca"],
+["inglés: наголос на…","GLÉS","IN","in-GLÉS"],
+["lápiz (олівець): наголос на…","LÁ","PIZ","LÁ-piz — на приголосну, але наголос спереду"],
+["taxi не потребує тильди, бо…","наголос за правилом (TA-xi)","слово коротке","голосна в кінці → передостанній ✓"],
+["médico: наголос на…","MÉ","CO","MÉ-di-co"],
+["sábado: наголос на…","SÁ","DO","SÁ-ba-do"]
+]},
+{t:"Тильда, що розрізняє слова", lv:3, q:[
+["tú = ти, а tu = …","твій","чай","tu casa = твій дім"],
+["él = він, а el = …","артикль","літера L","el libro"],
+["sí = так, а si = …","якщо","сіль","si quieres = якщо хочеш"],
+["té = чай, а te = …","тобі/тебе","театр","te quiero"],
+["mí = мені, а mi = …","мій","тисяча","para mí / mi casa"],
+["sé = я знаю, а se = …","зворотний займенник","число 7","se llama"],
+["qué з тильдою вживається у…","питаннях та вигуках","будь-якому реченні","¿Qué? ¡Qué bien!"],
+["cómo з тильдою означає…","як? (у питанні)","їм (дієслово)","como без тильди = як/їм"],
+["dónde з тильдою вживається…","у питаннях","ніколи","¿Dónde vives?"],
+["más = більше, а mas (без тильди) = …","але (книжне)","маса","рідкісне книжне «але»"]
+]},
+{t:"Склади", lv:3, q:[
+["casa має…","2 склади","3 склади","ca-sa"],
+["teléfono має…","4 склади","3 склади","te-lé-fo-no"],
+["sol має…","1 склад","2 склади","короткі слова — 1 склад"],
+["estudiante має…","4 склади","5 складів","es-tu-dian-te (dian — один склад!)"],
+["paella має…","3 склади","2 склади","pa-e-lla"],
+["ciudad має…","2 склади","3 склади","ciu-dad"],
+["día має…","2 склади","1 склад","dí-a: тильда розбиває дифтонг"],
+["bueno має…","2 склади","3 склади","bue-no"],
+["chocolate має…","4 склади","3 склади","cho-co-la-te"],
+["universidad має…","5 складів","4 склади","u-ni-ver-si-dad"]
+]},
+{t:"Дифтонги", lv:3, q:[
+["Дифтонг — це…","два голосні в одному складі","дві приголосні поспіль","bue-no, sie-te"],
+["bueno містить дифтонг…","ue","eo","b-UE-no"],
+["siete містить дифтонг…","ie","ee","s-IE-te"],
+["aire (повітря) містить дифтонг…","ai","re","AI-re"],
+["Сильні голосні — це…","a, e, o","i, u","i та u — слабкі"],
+["У слові día тильда над í…","руйнує дифтонг","створює дифтонг","тому dí-a = 2 склади"],
+["seis (6) містить дифтонг…","ei","is","s-EI-s"],
+["auto містить дифтонг…","au","to","AU-to"],
+["ciudad містить дифтонг…","iu","da","c-IU-dad"],
+["Europa: перший дифтонг — …","eu","ro","EU-ro-pa"]
+]},
+{t:"Знаки ¿ та ¡", lv:3, q:[
+["Іспанське питання починається знаком…","¿","?","¿Cómo estás?"],
+["У «¡Hola!» знак ¡ ставиться…","на початку","лише в кінці","обрамлення з двох боків"],
+["¿Cómo estás? — записано…","правильно","неправильно","зразкове питання"],
+["Перевернуті знаки ¿ ¡ — особливість…","іспанської мови","усіх романських мов","унікальна риса!"],
+["У фразі «Como estas?» бракує…","¿ і двох тильд","нічого","¿Cómo estás?"],
+["«¡Qué bien!» — записано…","правильно","неправильно","вигук у рамці ¡…!"],
+["Знак ¿ ставиться…","там, де починається питання","завжди на початку речення","Estás bien, ¿verdad?"],
+["«Estás bien, ¿verdad?» — так можна?","так","ні","питальна лише частина"],
+["У неформальних повідомленнях іспанці…","іноді пропускають ¿","ніколи не пропускають ¿","але в офіційному письмі — обовʼязково"],
+["Знак ¡ називається…","відкриваючий знак оклику","тильда","тильда — це ´"]
+]},
+{t:"Алфавіт: порядок і факти", lv:3, q:[
+["Скільки літер в іспанському алфавіті?","27","33","26 латинських + ñ"],
+["Після N в алфавіті йде…","Ñ","O","N, Ñ, O"],
+["Ñ стоїть між…","N та O","M та N","одразу після n"],
+["CH сьогодні вважається…","сполученням двох літер","окремою літерою","з 2010 року — не окрема"],
+["Перша літера алфавіту —","A","B","як і всюди 😊"],
+["Остання літера алфавіту —","Z","Y","…y, z"],
+["Чи входить K до алфавіту?","так","ні","входить, хоч і рідкісна"],
+["Сучасна назва літери Y —","ye","zeta","стара назва — i griega"],
+["RR — окрема літера?","ні","так","це подвоєне r"],
+["Голосних ЛІТЕР в алфавіті…","5","7","a, e, i, o, u"]
+]},
+{t:"Deletreo: диктуємо слова", lv:3, q:[
+["«¿Cómo se escribe?» означає…","Як це пишеться?","Котра година?","питання для спелінгу"],
+["hache — це назва літери…","H","J","J = jota"],
+["Щоб розрізнити B і V, іспанці кажуть…","«b de burro, v de vaca»","«b de uve»","як наше «Б як Борис»"],
+["Імʼя INNA по літерах: …","i, ene, ene, a","i, ene, a","дві ene!"],
+["У імені José тильда стоїть над…","é","o","Jo-SÉ"],
+["Імʼя Guillermo містить…","ll","y","Gui-LLER-mo"],
+["Zaragoza починається з літери…","zeta","seta","z = zeta"],
+["«doble erre» — це…","rr","r","подвійне r"],
+["Питальне qué на письмі має…","тильду","дві крапки","¿Qué?"],
+["LL диктують як…","«elle» або «doble ele»","«ele»","дві ele"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["hola: літера H…","німа","звучить [х]","[ола]"],
+["gente: G звучить як…","[х]","[ґ]","перед e → [х]"],
+["queso читається як…","[кесо]","[кўесо]","u німа"],
+["perro: RR…","розкотисте","мʼяке","багато вібрацій"],
+["canción: наголос на…","CIÓN","CAN","тильда показує"],
+["vaca: V звучить як…","[б]","[в]","v = [б]"],
+["mañana: Ñ звучить як…","[нь]","[н]","мʼяке"],
+["cine: C звучить як…","[с/θ]","[к]","перед i → [с]"],
+["taxi: наголос на…","TA","XI","голосна в кінці → передостанній"],
+["peligro (небезпека): наголос на…","LI","GRO","pe-LI-gro"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Алфавіт і вимова: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 1 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>
