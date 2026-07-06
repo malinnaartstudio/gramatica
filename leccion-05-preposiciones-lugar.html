@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 5 · Прийменники місця · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 5 · @malinnaartstudio</div>
+    <h1 id="htitle">Прийменники місця: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 5 · Preposiciones y adverbios de lugar.</b>
+      30 вправ по 10 питань: debajo, encima, entre, enfrente, aquí–ahí–allí, del/al,
+      орієнтування в кімнаті та місті. Від ★ до ★★★. ¡Vamos a orientarnos! 🧭
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · базові пари</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · конструкції, del/al</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · нюанси й маршрути</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 5</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Базовий переклад", lv:1, q:[
+["«під» — це…","debajo de","encima de","encima = зверху"],
+["«на, зверху» — це…","encima de","debajo de","debajo = під"],
+["«перед» — це…","delante de","detrás de","detrás = позаду"],
+["«позаду» — це…","detrás de","delante de","delante = попереду"],
+["«всередині» — це…","dentro de","fuera de","fuera = зовні"],
+["«зовні» — це…","fuera de","dentro de","dentro = всередині"],
+["«між» — це…","entre","junto","junto a = поруч"],
+["«поруч із» — це…","al lado de","lejos de","lejos = далеко"],
+["«близько від» — це…","cerca de","lejos de","cerca 👍"],
+["«далеко від» — це…","lejos de","cerca de","lejos 🚗"]
+]},
+{t:"ENCIMA чи DEBAJO?", lv:1, q:[
+["El gato está ___ la mesa. (під)","debajo de","encima de","ховається під столом 🐱"],
+["El libro está ___ la mesa. (на)","encima de","debajo de","лежить зверху"],
+["Los zapatos están ___ la cama. (під)","debajo de","delante de","під ліжком"],
+["La caja está ___ la silla. (під)","debajo de","entre","під стільцем"],
+["encima de означає…","зверху, на","знизу, під","en-CIMA = на вершині"],
+["debajo de означає…","знизу, під","зверху, на","de-BAJO = внизу"],
+["El móvil está ___ los papeles. (під паперами)","debajo de","encima de","тому й не знаходиш 😄"],
+["La manta está ___ la cama. (на ліжку)","encima de","debajo de","ковдра зверху"],
+["¿Qué hay ___ la cama? (шукаємо капці)","debajo de","encima de","капці завжди під ліжком"],
+["Антонім encima de — це…","debajo de","detrás de","верх ↔ низ"]
+]},
+{t:"DELANTE чи DETRÁS?", lv:1, q:[
+["El coche está ___ la casa. (перед)","delante de","detrás de","перед будинком"],
+["El jardín está ___ la casa. (за)","detrás de","delante de","сад за будинком"],
+["En el cine no veo nada: hay un señor alto ___ mí.","delante de","detrás de","він попереду мене"],
+["La bici está ___ la puerta. (перед)","delante de","dentro de","перед дверима"],
+["detrás de означає…","позаду","попереду","de-TRÁS"],
+["delante de означає…","попереду","позаду","de-LANTE"],
+["Антонім delante de — це…","detrás de","debajo de","перед ↔ за"],
+["Los niños caminan ___ sus padres. (за)","detrás de","encima de","йдуть слідом"],
+["En la cola yo estoy ___ ti. (перед тобою)","delante de","fuera de","я перша в черзі 😊"],
+["El perro duerme ___ la chimenea. (перед каміном)","delante de","lejos de","гріється біля вогню"]
+]},
+{t:"DENTRO чи FUERA?", lv:1, q:[
+["Las llaves están ___ la mochila. (всередині)","dentro de","fuera de","у рюкзаку"],
+["El perro está ___ la casa: en el jardín.","fuera de","dentro de","надворі, в саду"],
+["dentro de означає…","всередині","зовні","den-TRO"],
+["fuera de означає…","зовні, поза","всередині","FUERA"],
+["La leche está ___ la nevera.","dentro de","debajo de","в холодильнику"],
+["Los niños juegan ___. (надворі)","fuera","dentro","без іменника — без de"],
+["Estamos ___. (усередині приміщення)","dentro","fuera","всередині"],
+["El dinero está ___ la cartera.","dentro de","detrás de","у гаманці"],
+["Антонім dentro — це…","fuera","cerca","всередині ↔ зовні"],
+["¡Qué frío hace ___! (надворі)","fuera","dentro","мерзнемо надворі 🥶"]
+]},
+{t:"CERCA чи LEJOS?", lv:1, q:[
+["Mi casa está ___ la playa. (близько)","cerca de","lejos de","пощастило! 🏖️"],
+["El aeropuerto está ___ la ciudad. (далеко)","lejos de","cerca de","аеропорти зазвичай далеко"],
+["cerca означає…","близько","далеко","CERca"],
+["lejos означає…","далеко","близько","LEjos"],
+["¿Está ___ o lejos?","cerca","luego","luego = потім!"],
+["Vivo muy ___ mi trabajo: voy a pie.","cerca de","lejos de","пішки → близько"],
+["Ucrania está ___ España. (далеко)","lejos de","al lado de","кілька тисяч км"],
+["La farmacia está aquí ___. (зовсім поруч)","cerca","lejos","aquí cerca"],
+["Антонім cerca — це…","lejos","dentro","близько ↔ далеко"],
+["«Está a 5 minutos» означає, що це…","близько","далеко","5 хвилин — поруч"]
+]},
+{t:"AL LADO та ENTRE", lv:1, q:[
+["La silla está ___ la mesa. (поруч)","al lado de","entre","біля столу"],
+["El banco está ___ la farmacia y el súper. (між)","entre","al lado de","між двома"],
+["al lado de означає…","поруч із","між","«біч-о-біч»"],
+["entre означає…","між","під","entre A y B"],
+["Mi casa está ___ dos parques.","entre","encima de","між двома парками 🌳🏠🌳"],
+["Siéntate ___ mí. (поруч зі мною)","al lado de","entre","сідай біля мене"],
+["entre вживається з…","двома (і більше) обʼєктами","лише одним обʼєктом","між чимось І чимось"],
+["La panadería está justo ___ mi casa. (впритул)","al lado de","lejos de","запах свіжого хліба 🥖"],
+["Estoy sentada ___ Ana y Marta.","entre","debajo de","між подругами"],
+["«Поруч» одним словом кажуть також…","al lado","al fondo","al fondo = у глибині"]
+]},
+{t:"ENFRENTE", lv:1, q:[
+["«навпроти» — це…","enfrente de","detrás de","через дорогу"],
+["El bar está ___ la estación. (навпроти)","enfrente de","dentro de","бачиш його з вокзалу"],
+["enfrente de означає…","навпроти, через дорогу","за спиною","en-FRENTE"],
+["La escuela está ___ mi casa: la veo desde la ventana.","enfrente de","debajo de","прямо навпроти вікна"],
+["frente a — це…","синонім enfrente de","антонім enfrente de","frente al mar"],
+["Vivimos ___ mar.","frente al","frente el","frente a + el = frente al"],
+["enfrente і delante — це…","різні слова: навпроти ≠ перед","повністю однакові","delante — впритул попереду"],
+["La parada de bus está ___. (навпроти, без іменника)","enfrente","entre","без іменника — без de"],
+["El hotel está justo ___ la catedral.","enfrente de","dentro de","просто навпроти собору"],
+["«Віч-на-віч» — це…","frente a frente","frente de frente","обличчям до обличчя"]
+]},
+{t:"SOBRE та BAJO", lv:1, q:[
+["sobre ≈ …","encima de","debajo de","на, над"],
+["bajo ≈ …","debajo de","encima de","під"],
+["El libro está ___ la mesa. (на)","sobre","bajo","sobre = на"],
+["El gato duerme ___ la manta. (під)","bajo","sobre","під ковдрою"],
+["sobre і bajo вживаються…","без de","лише з de","sobre la mesa — коротше!"],
+["Los papeles están ___ el escritorio. (на)","sobre","bajo","на столі"],
+["___ la cama hay polvo. (під)","Bajo","Sobre","пил під ліжком 🧹"],
+["Слово sobre також означає…","про (тему)","проти","un libro sobre historia"],
+["Un libro sobre España — це книга…","про Іспанію","що лежить на Іспанії 😄","sobre = про"],
+["bajo el sol означає…","під сонцем","над сонцем","bajo el sol de España ☀️"]
+]},
+{t:"AQUÍ, AHÍ, ALLÍ", lv:1, q:[
+["«тут (біля мене)» — це…","aquí","allí","найближча точка"],
+["«там (біля тебе)» — це…","ahí","aquí","середня відстань"],
+["«там (далеко від обох)» — це…","allí","ahí","найдальша точка"],
+["Ven ___. (іди сюди)","aquí","allí","до мене → aquí"],
+["¿Qué tienes ___? (у тебе там, у руках)","ahí","aquí","біля співрозмовника → ahí"],
+["Mi pueblo está ___, en las montañas. (ген там)","allí","aquí","далеко → allí"],
+["Система aquí–ahí–allí повʼязана з…","відстанню від мовця","часом доби","три ступені відстані"],
+["allá — це…","розмовніший варіант allí","зовсім інше слово","más allá = далі"],
+["¡Estoy ___! (ось я, тут!)","aquí","ahí","я завжди aquí для себе"],
+["Deja el bolso ___, a tu lado.","ahí","allí","біля тебе → ahí"]
+]},
+{t:"ARRIBA та ABAJO", lv:1, q:[
+["«нагорі / вгору» — це…","arriba","abajo","a-RRI-ba ⬆️"],
+["«внизу / вниз» — це…","abajo","arriba","a-BA-jo ⬇️"],
+["El dormitorio está ___. (на 2-му поверсі)","arriba","abajo","спальня нагорі"],
+["La cocina está ___. (на 1-му)","abajo","arriba","кухня внизу"],
+["¡Manos ___! (руки вгору)","arriba","abajo","як у фільмах 🎬"],
+["El ascensor va hacia ___. (вниз)","abajo","arriba","їде вниз"],
+["Vivo en el piso de ___. (верхньому)","arriba","abajo","el piso de arriba"],
+["calle abajo означає…","вниз по вулиці","на вулиці внизу","рух униз вулицею"],
+["Антонім arriba — це…","abajo","adentro","верх ↔ низ"],
+["boca abajo означає…","обличчям донизу, долілиць","рот на підлозі 😄","dormir boca abajo"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Конструкція з DE", lv:2, q:[
+["debajo ___ la mesa","de","a","прийменники місця + DE"],
+["Прийменники місця приєднують іменник через…","de","en","debajo DE, encima DE…"],
+["encima ___ la silla","de","con","encima de"],
+["detrás ___ la puerta","de","por","detrás de"],
+["cerca ___ mi casa","de","a","cerca de"],
+["dentro ___ la caja","de","en","dentro de"],
+["delante ___ ti","de","a","delante de ti"],
+["Без іменника після (El baño está arriba) — de…","не потрібне","обовʼязкове","arriba, cerca, fuera — самі по собі"],
+["lejos ___ aquí","de","desde","lejos de aquí"],
+["al lado ___ la ventana","de","en","al lado de"]
+]},
+{t:"DE + EL = DEL", lv:2, q:[
+["debajo ___ sofá","del","de el","de + el = del, завжди!"],
+["de + el = …","del","dell","обовʼязкове злиття"],
+["encima ___ armario","del","de la","armario ч.р. → del"],
+["detrás ___ edificio","del","de los","edificio однина → del"],
+["cerca ___ centro","del","de el","del centro"],
+["А з жіночим родом: debajo ___ cama","de la","del","la не зливається!"],
+["dentro ___ coche","del","de le","del coche"],
+["delante ___ hotel","del","de el","del hotel"],
+["Злиття del відбувається перед…","іменником ч.р. з артиклем el","будь-яким іменником","лише de + el"],
+["enfrente ___ museo","del","de el","del museo"]
+]},
+{t:"A + EL = AL", lv:2, q:[
+["a + el = …","al","a el","друге обовʼязкове злиття"],
+["___ lado del banco","Al","A el","al lado"],
+["La tienda está ___ final de la calle.","al","a el","al final"],
+["Voy ___ supermercado.","al","a el","al súper"],
+["___ fondo del pasillo","Al","A el","al fondo"],
+["А з жіночим родом (a la derecha) злиття…","не відбувається","дає «ala»","a la — окремо"],
+["El café está ___ otro lado de la calle.","al","a el","al otro lado"],
+["al lado de означає…","поруч із","на протилежному боці","«при боці»"],
+["El baño está ___ fondo.","al","a el","класика: al fondo"],
+["Estamos ___ principio de la calle.","al","a el","al principio"]
+]},
+{t:"У кімнаті", lv:2, q:[
+["La lámpara está ___ la mesita. (на)","encima de","debajo de","лампа на тумбочці 💡"],
+["La alfombra está ___ la mesa. (під)","debajo de","encima de","килим під столом"],
+["El espejo está ___ el sofá. (над)","encima de","entre","дзеркало над диваном"],
+["Los cojines están ___ el sofá. (на)","en","bajo","подушки на дивані"],
+["La tele está ___ la ventana y la puerta.","entre","dentro de","між вікном і дверима"],
+["Las cortinas están ___ la ventana.","en","debajo de","штори на вікні"],
+["El gato duerme ___ el sillón. (у кріслі)","en","entre","у кріслі → en"],
+["Los libros están ___ la estantería.","en","fuera de","на полиці → en"],
+["La papelera está ___ del escritorio. (під)","debajo","encima","смітник під столом"],
+["El cuadro está ___ la pared.","en","dentro de","картина НА стіні → en"]
+]},
+{t:"У місті", lv:2, q:[
+["La farmacia está ___ la esquina.","en","entre","en la esquina = на розі"],
+["El museo está ___ centro.","en el","al","en el centro"],
+["La parada está ___ del cine. (навпроти)","enfrente","dentro","enfrente del cine"],
+["El mercado está ___ la catedral. (за)","detrás de","dentro de","за собором"],
+["Hay un parque ___ mi barrio.","en","a","en mi barrio"],
+["El aeropuerto normalmente está ___ del centro.","lejos","dentro","аеропорти — за містом"],
+["El quiosco está ___ lado de la parada.","al","el","al lado de"],
+["La iglesia está ___ la plaza.","en","encima de","en la plaza"],
+["Mi oficina está ___ un banco y una cafetería.","entre","sobre","між банком і кавʼярнею"],
+["El hospital está ___ las afueras.","en","a","en las afueras = на околиці"]
+]},
+{t:"Де кіт? 🐱", lv:2, q:[
+["El gato está ___ la caja. (у коробці)","dentro de","fuera de","коти люблять коробки!"],
+["Ahora está ___ la caja. (на коробці)","encima de","debajo de","заліз зверху"],
+["Ahora está ___ la caja. (за коробкою)","detrás de","delante de","ховається"],
+["Ahora está ___ la caja. (перед коробкою)","delante de","detrás de","позує 📸"],
+["Ahora está ___ la caja. (під коробкою)","debajo de","encima de","як він туди заліз?!"],
+["Ahora está ___ dos cajas. (між)","entre","dentro de","між двома коробками"],
+["Ahora está ___ la caja. (далеко від)","lejos de","cerca de","образився й пішов"],
+["Ahora está ___ la caja. (близько до)","cerca de","lejos de","повертається"],
+["El gato salió: está ___ la caja.","fuera de","dentro de","вийшов назовні"],
+["¿Dónde está el gato? — ¡___ está! (ось тут)","Aquí","Allí","знайшовся!"]
+]},
+{t:"ENTRE … Y …", lv:2, q:[
+["Estoy sentada entre Ana ___ Marta.","y","o","entre A Y B"],
+["entre A y B означає…","між А і Б","біля А або Б","з обох боків"],
+["El 5 está entre el 4 ___ el 6.","y","con","математика 😊"],
+["La primavera está entre el invierno ___ el verano.","y","de","між зимою і літом"],
+["Mi casa está entre ___ farmacia y el banco.","la","le","la farmacia"],
+["entre nosotros означає…","між нами","над нами","entre nosotros…"],
+["entre semana означає…","у будні","на вихідних","між вихідними 😄"],
+["El café está entre ___ dos tiendas.","las","los","tiendas ж.р. → las"],
+["«Entre tú y yo…» означає…","між нами кажучи…","ми з тобою разом важимо…","вступ до секрету 🤫"],
+["El miércoles está entre el martes ___ el jueves.","y","e","e — лише перед i-/hi-"]
+]},
+{t:"Праворуч і ліворуч", lv:2, q:[
+["«праворуч» — це…","a la derecha","a la izquierda","derecha 👉"],
+["«ліворуч» — це…","a la izquierda","a la derecha","izquierda 👈"],
+["El baño está ___ derecha.","a la","al","a LA derecha (ж.р.)"],
+["La cocina está a la ___.","izquierda","izquierdo","з артиклем la → -a"],
+["Gira ___ la derecha.","a","en","girar A la derecha"],
+["La primera puerta ___ la izquierda.","a","de","a la izquierda"],
+["La derecha — це також…","правий бік / права рука","прямо","mano derecha"],
+["«прямо» — це…","todo recto","toda recta","sigue todo recto"],
+["mano derecha означає…","права рука","пряма рука","ser la mano derecha = бути правою рукою"],
+["El súper está a la derecha ___ cine.","del","de el","de + el = del"]
+]},
+{t:"AL FONDO, EN LA ESQUINA", lv:2, q:[
+["al fondo означає…","у глибині, в кінці","лише на дні моря","al fondo del pasillo"],
+["El baño está ___ fondo del pasillo.","al","en","у кінці коридору"],
+["en la esquina означає…","на розі (вулиці)","у кутку кімнати","esquina — зовнішній ріг!"],
+["«У кутку кімнати» — це…","en el rincón","en la esquina","rincón — внутрішній кут"],
+["en el centro означає…","у центрі","на сцені","en el centro de la ciudad"],
+["La mesa está ___ centro de la sala.","en el","al","en el centro"],
+["La tienda está en la ___ de las calles Mayor y Sol.","esquina","rincón","ріг двох вулиць"],
+["al final de la calle означає…","в кінці вулиці","на початку вулиці","final = кінець"],
+["a mitad de camino означає…","на півдорозі","щосереди","mitad = половина"],
+["en primera fila означає…","у першому ряду","першим у черзі","fila = ряд"]
+]},
+{t:"CERCA чи CERCA DE?", lv:2, q:[
+["Vivo ___. (близько, без уточнення)","cerca","cerca de","без іменника — без de"],
+["Vivo ___ la estación.","cerca de","cerca","з іменником — з de"],
+["Без іменника після прислівника de…","зникає","залишається","está cerca. / está cerca DE casa."],
+["«El mar está lejos» — це…","правильно","треба lejos de","без іменника — ок"],
+["El mar está lejos ___ aquí.","de","con","lejos DE aquí"],
+["«Está muy cerca» — так можна?","так","ні","прислівник сам по собі"],
+["«Detrás hay un jardín» — de потрібне?","ні, без іменника — без de","так, завжди detrás de","detrás hay… — ок"],
+["«La farmacia está enfrente» — це…","правильно","помилка","enfrente без іменника"],
+["«Dentro hace calor» означає…","всередині спекотно","незабаром спека","dentro = всередині"],
+["А dentro de poco означає…","незабаром","усередині малого","de poco = часове значення!"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"DEL, DE LA, DE LOS, DE LAS", lv:3, q:[
+["debajo ___ mesa (la mesa)","de la","del","ж.р. → de la"],
+["encima ___ armario (el armario)","del","de la","ч.р. → del"],
+["detrás ___ árboles (los árboles)","de los","del","мн. ч.р. → de los"],
+["delante ___ ventanas (las ventanas)","de las","de los","мн. ж.р. → de las"],
+["cerca ___ río (el río)","del","de el","del río"],
+["lejos ___ montañas (las montañas)","de las","del","de las montañas"],
+["dentro ___ cajón (el cajón)","del","de lo","del cajón"],
+["enfrente ___ iglesia (la iglesia)","de la","del","de la iglesia"],
+["al lado ___ niños (los niños)","de los","del","de los niños"],
+["fuera ___ oficina (la oficina)","de la","del","de la oficina"]
+]},
+{t:"EN, ENCIMA DE чи SOBRE?", lv:3, q:[
+["El vaso está ___ la mesa. (нейтрально)","en","entre","en — найуніверсальніше"],
+["en la mesa та encima de la mesa — це…","часто взаємозамінні","протилежні за змістом","обидва = на столі"],
+["sobre — за стилем…","трохи формальніше / книжніше","суто вуличний сленг","у пресі й літературі"],
+["«Las llaves están en la mesa» — це…","правильно","помилка","en = на (поверхні)"],
+["El avión vuela ___ la ciudad. (над, не торкаючись)","sobre","en","над містом → sobre"],
+["encima de підкреслює…","положення зверху","приналежність","саме «зверху»"],
+["El cuadro está ___ la pared.","en","encima de","НА стіні → en"],
+["La mosca está ___ techo.","en el","encima el","en el techo 🪰"],
+["«на підлозі» — це…","en el suelo","encima el suelo","en el suelo"],
+["«Понад хмарами» — це…","sobre las nubes","dentro de las nubes","над хмарами ✈️"]
+]},
+{t:"JUNTO A та FRENTE A", lv:3, q:[
+["junto a ≈ …","al lado de","lejos de","поруч, впритул"],
+["frente a ≈ …","enfrente de","detrás de","навпроти"],
+["La casa está junto ___ río.","al","a el","junto a + el = junto al"],
+["Vivimos frente ___ mar.","al","a el","frente al mar 🌊"],
+["junto a mí означає…","поруч зі мною","проти мене","біля мене"],
+["«El hotel está frente a la playa» — готель…","навпроти пляжу","всередині пляжу","першою лінією"],
+["А juntos (без a) означає…","разом","навпроти","juntos = разом; junto a = поруч із"],
+["Pedro y Juan están sentados ___. (разом)","juntos","junto a","сидять разом"],
+["frente a frente означає…","віч-на-віч","чолом до стіни","переговори frente a frente"],
+["Trabajo junto ___ estación.","a la","al","estación ж.р. → a la"]
+]},
+{t:"Обери правильне речення", lv:3, q:[
+["Правильно:","El gato está debajo de la mesa.","El gato está debajo la mesa.","debajo DE"],
+["Правильно:","Las llaves están dentro del bolso.","Las llaves están dentro el bolso.","dentro DEL"],
+["Правильно:","La farmacia está al lado del banco.","La farmacia está al lado el banco.","al lado DEL"],
+["Правильно:","Vivo cerca de la playa.","Vivo cerca la playa.","cerca DE"],
+["Правильно:","El coche está delante de la casa.","El coche está delante la casa.","delante DE"],
+["Правильно:","Estoy enfrente del museo.","Estoy enfrente el museo.","enfrente DEL"],
+["Правильно:","El parque está detrás de la escuela.","El parque está detrás la escuela.","detrás DE"],
+["Правильно:","El baño está al fondo.","El baño está al fondo de.","de без іменника не лишаємо"],
+["Правильно:","Mi casa está entre dos tiendas.","Mi casa está entre de dos tiendas.","entre — БЕЗ de!"],
+["Прийменник entre вживається…","без de","з de, як усі інші","entre dos parques"]
+]},
+{t:"Маршрут містом", lv:3, q:[
+["«прямо» — це…","todo recto","todo redondo","redondo = круглий"],
+["«поверни» — це…","gira","mira","mira = дивись"],
+["Gira a la ___ en el semáforo. (праворуч)","derecha","derecho","a la derecha"],
+["«перейди вулицю» — це…","cruza la calle","cruza el cielo","cruzar = переходити"],
+["Sigue ___ recto.","todo","tan","sigue todo recto"],
+["«перший поворот ліворуч» — це…","la primera a la izquierda","el primero al izquierdo","la primera (calle)"],
+["«está a dos calles» означає…","за дві вулиці звідси","на двох вулицях одночасно","a + відстань"],
+["«світлофор» — це…","el semáforo","el semestre","semestre = семестр"],
+["al llegar a la plaza означає…","діставшись площі","лягаючи на площу","al + інфінітив = коли…"],
+["«Я заблукав/-ла» — це…","Estoy perdido/a","Estoy pedido/a","pedido = замовлений 😄"]
+]},
+{t:"Уточнення місця", lv:3, q:[
+["Está aquí ___. (просто тут, точно тут)","mismo","mucho","aquí mismo"],
+["¿Hay una farmacia ___ aquí? (десь тут)","por","en","por aquí = поблизу"],
+["por aquí означає…","десь тут, поблизу","рівно в цій точці","приблизне місце"],
+["El restaurante está ___ el centro. (десь у центрі)","por","encima de","por el centro"],
+["Está ___ allí. (десь там)","por","del","por allí"],
+["justo enfrente означає…","просто навпроти","справедливо навпроти","justo = точно"],
+["Está ___ la vuelta de la esquina. (за рогом)","a","en","a la vuelta de la esquina"],
+["muy a mano означає…","дуже зручно, під рукою","дуже вручну","todo está a mano"],
+["en plena calle означає…","просто посеред вулиці","на заповненій вулиці","en plena… = у самому…"],
+["«Está donde siempre» означає…","там, де завжди","де завгодно","donde siempre"]
+]},
+{t:"POR AQUÍ, POR ALLÍ", lv:3, q:[
+["¿Hay un cajero ___ aquí?","por","para","por aquí"],
+["por aquí означає…","тут поблизу","для цього місця","неточна локація"],
+["Vive ___ allí, no sé exactamente dónde.","por","de","por allí = десь там"],
+["Pasa ___ aquí. (проходь сюдою)","por","a","рух через → por"],
+["El museo queda ___ el norte de la ciudad.","por","bajo","queda por = десь у районі"],
+["¿Por dónde se va al centro? питає про…","маршрут","причину","яким шляхом?"],
+["por el centro означає…","через центр / десь у центрі","для центру","рух або приблизність"],
+["Ven ___ este camino.","por","entre","іди цією дорогою"],
+["«La estación cae por aquí» — cae означає…","розташована (розмовно)","падає","caer por = бути десь"],
+["por ninguna parte означає…","ніде","через жодну вечірку","no está por ninguna parte"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«El gato está debajo la mesa» → …","debajo de la mesa","debajo en la mesa","бракувало de"],
+["«Está cerca a mi casa» → …","cerca de mi casa","cerca en mi casa","cerca DE"],
+["«delante del de la puerta» → …","delante de la puerta","delante la puerta","одне de, la не зливається"],
+["«Está entre de dos parques» → …","entre dos parques","entre a dos parques","entre без de"],
+["«encima de el sofá» → …","encima del sofá","encima el sofá","de + el = del"],
+["«al lado de el banco» → …","al lado del banco","al lado el banco","del!"],
+["«Vivo lejos la estación» → …","lejos de la estación","lejos a la estación","lejos DE"],
+["enfrente пишеться…","разом: enfrente","лише окремо: en frente","злите написання — основне"],
+["«a el fondo del pasillo» → …","al fondo del pasillo","a al fondo del pasillo","a + el = al"],
+["«dentro en la caja» → …","dentro de la caja","dentro a la caja","dentro DE"]
+]},
+{t:"Опиши кімнату", lv:3, q:[
+["La cama está ___ la ventana. (біля)","al lado de","dentro de","ліжко біля вікна"],
+["___ la cama hay una alfombra. (під)","Debajo de","Encima de","килим під ліжком"],
+["El escritorio está ___ la puerta. (навпроти)","enfrente de","debajo de","стіл навпроти дверей"],
+["___ el escritorio hay un ordenador. (на)","Encima de","Debajo de","компʼютер на столі 💻"],
+["Los libros están ___ la estantería.","en","entre","книжки на полиці"],
+["La estantería está ___ el escritorio y el armario.","entre","sobre","полиця між столом і шафою"],
+["___ del armario está mi ropa.","Dentro","Fuera","одяг усередині шафи"],
+["La lámpara está ___ la mesita.","en","bajo","лампа на тумбочці"],
+["Mis zapatillas están ___ la cama. (під)","debajo de","delante de","капці під ліжком, класика"],
+["El póster está ___ la pared.","en","dentro de","постер НА стіні"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["«під» — це…","debajo de","encima de","база"],
+["de + el = …","del","de el","злиття"],
+["El banco está ___ la farmacia y el bar.","entre","al lado","між двома → entre"],
+["«навпроти» — це…","enfrente de","detrás de","через дорогу"],
+["Las llaves están dentro ___ bolso.","del","de el","de+el=del"],
+["«праворуч» — це…","a la derecha","a la derecho","la derecha"],
+["cerca без іменника вживається…","без de","з de","está cerca"],
+["«там, далеко» — це…","allí","ahí","третій ступінь відстані"],
+["El baño está ___ fondo.","al","en la","al fondo"],
+["entre вживається…","без de","з de","entre dos…"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Прийменники місця: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 5 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>
