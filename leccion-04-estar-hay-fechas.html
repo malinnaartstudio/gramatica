@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 4 · ESTAR, HAY. Дати · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 4 · @malinnaartstudio</div>
+    <h1 id="htitle">ESTAR, HAY. Дати: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 4 · Verbo ESTAR, HAY. Las fechas.</b>
+      30 вправ по 10 питань: форми estar, конструкція hay, дні тижня, місяці, пори року,
+      дати та іспанські свята. Від ★ до ★★★. ¡Adelante! 📅
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · основи</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · вживання</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · контрасти й діалоги</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 4</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"ESTAR: yo, tú, él", lv:1, q:[
+["Yo ___ en casa.","estoy","está","yo → estoy"],
+["¿Tú ___ bien?","estás","estoy","tú → estás"],
+["Él ___ en el trabajo.","está","estás","él → está"],
+["Ella ___ cansada.","está","estoy","ella → está"],
+["Yo ___ muy contenta.","estoy","eres","estar → estoy"],
+["¿Dónde ___ (tú)?","estás","está","tú → estás"],
+["Usted ___ en la lista.","está","estás","usted → 3-тя особа"],
+["Yo no ___ en Madrid.","estoy","estás","yo → estoy"],
+["María ___ en la oficina.","está","estoy","María = ella"],
+["Займеннику yo відповідає…","estoy","está","es-TOY"]
+]},
+{t:"ESTAR: ми, ви, вони", lv:1, q:[
+["Nosotros ___ en clase.","estamos","están","nosotros → estamos"],
+["¿Vosotros ___ listos?","estáis","estamos","vosotros → estáis"],
+["Ellos ___ de vacaciones.","están","está","ellos → están"],
+["Nosotras ___ aquí.","estamos","estáis","nosotras → estamos"],
+["¿Vosotras ___ cansadas?","estáis","están","vosotras → estáis"],
+["Ellas ___ en el parque.","están","estamos","ellas → están"],
+["Ustedes ___ invitados.","están","estáis","ustedes → están"],
+["nosotros → …","estamos","estáis","es-TA-mos"],
+["vosotros → …","estáis","están","es-TÁIS"],
+["ellos → …","están","estamos","es-TÁN"]
+]},
+{t:"ESTAR: місцезнаходження", lv:1, q:[
+["El banco ___ en la plaza.","está","hay","конкретний банк → está"],
+["Mis padres ___ en Ucrania.","están","hay","люди → están"],
+["¿Dónde ___ el baño?","está","es","місце → estar"],
+["Las llaves ___ en la mesa.","están","está","llaves множина → están"],
+["Yo ___ en el supermercado.","estoy","soy","де я → estoy"],
+["La escuela ___ cerca.","está","estás","escuela = ella"],
+["¿Dónde ___ mis gafas?","están","está","gafas множина"],
+["Alicante ___ en España.","está","es","місто ДЕ → está"],
+["Nosotros ___ en el aeropuerto.","estamos","somos","місце → estar"],
+["Місцезнаходження виражає дієслово…","estar","ser","¿dónde está?"]
+]},
+{t:"ESTAR: стани", lv:1, q:[
+["Estoy ___. (втомлена, жінка)","cansada","cansado","ж.р. → -a"],
+["¿Estás ___? (хворий, чоловік)","enfermo","enferma","ч.р. → -o"],
+["Estamos muy ___. (задоволені)","contentos","contento","ми → множина"],
+["Ella está ___. (сумна)","triste","tristo","triste — одна форма для обох родів"],
+["Estoy ___. (зайнятий, чоловік)","ocupado","ocupada","ч.р. → -o"],
+["Los niños están ___. (нервові)","nerviosos","nervioso","множина → -os"],
+["¿Cómo estás? — Estoy ___.","bien","bueno","з estar — прислівник bien"],
+["Estoy un poco ___. (застуджена)","resfriada","resfriado","жінка → -a"],
+["Стан і самопочуття виражає…","estar","ser","як почуваєшся → estar"],
+["Estás muy ___ hoy. (веселий)","alegre","alegro","alegre — незмінне за родом"]
+]},
+{t:"HAY: є, існує", lv:1, q:[
+["En mi calle ___ una farmacia.","hay","está","una farmacia → hay"],
+["¿___ leche?","Hay","Está","наявність → hay"],
+["En el parque ___ niños.","hay","están","просто «є діти» → hay"],
+["___ un problema.","Hay","Es","існує проблема → hay"],
+["En la nevera ___ huevos.","hay","está","huevos без артикля → hay"],
+["Слово hay означає…","є, існує, наявне","він має","незмінна форма"],
+["¿Qué ___ en la caja?","hay","está","що там Є → hay"],
+["En Alicante ___ playas bonitas.","hay","están","існують пляжі → hay"],
+["No ___ pan.","hay","está","немає хліба → no hay"],
+["hay — це особлива форма дієслова…","haber","hacer","haber → hay"]
+]},
+{t:"Дні тижня", lv:1, q:[
+["«понеділок» — це…","lunes","luna","luna = місяць 🌙"],
+["«вівторок» — це…","martes","marzo","marzo = березень!"],
+["«середа» — це…","miércoles","miel","miel = мед 🍯"],
+["«четвер» — це…","jueves","junio","junio = червень"],
+["«пʼятниця» — це…","viernes","verano","verano = літо"],
+["«субота» — це…","sábado","sabádo","тильда над першою a"],
+["«неділя» — це…","domingo","dominó","dominó = доміно"],
+["Іспанський тиждень починається з…","lunes","domingo","з понеділка"],
+["Дні тижня пишуться з…","малої літери","великої літери","lunes, martes…"],
+["«вихідні» — це…","el fin de semana","el final de semana","fin de semana"]
+]},
+{t:"Місяці", lv:1, q:[
+["«січень» — це…","enero","junio","enero"],
+["«лютий» — це…","febrero","fiebre","fiebre = температура 🤒"],
+["«березень» — це…","marzo","martes","martes = вівторок!"],
+["«травень» — це…","mayo","mayor","mayor = старший"],
+["«червень» — це…","junio","julio","junio ↔ julio — не переплутай"],
+["«липень» — це…","julio","junio","julio"],
+["«серпень» — це…","agosto","augusto","agosto"],
+["«жовтень» — це…","octubre","octobre","octUbre"],
+["«грудень» — це…","diciembre","deciembre","dIciembre"],
+["Місяці пишуться з…","малої літери","великої літери","enero, mayo…"]
+]},
+{t:"Пори року", lv:1, q:[
+["«літо» — це…","el verano","el invierno","invierno = зима"],
+["«зима» — це…","el invierno","el infierno","infierno = пекло 😈"],
+["«весна» — це…","la primavera","la primera","primera = перша"],
+["«осінь» — це…","el otoño","el octubre","octubre = жовтень"],
+["Найспекотніша пора в Іспанії —","el verano","el invierno","до +40 °C!"],
+["Різдво в Іспанії припадає на…","el invierno","el verano","грудень = зима"],
+["La primavera — це пора…","квітів","снігу","весна 🌸"],
+["En agosto en España es…","verano","otoño","серпень = розпал літа"],
+["«взимку» — це…","en invierno","a invierno","en + пора року"],
+["Пори року вживаються з артиклем…","el / la","ніколи без артикля не буває… стоп","el verano, la primavera"]
+]},
+{t:"¿Dónde está…?", lv:1, q:[
+["¿Dónde ___ la estación?","está","hay","конкретна станція"],
+["¿Dónde ___ los servicios?","están","está","множина → están"],
+["— ¿Dónde está Juan? — ___ en casa.","Está","Hay","Juan → está"],
+["¿Dónde ___ (tú) ahora?","estás","está","tú → estás"],
+["¿Dónde ___ mis zapatos?","están","hay","мої черевики → están"],
+["Питання про місце — це…","¿Dónde…?","¿Cuándo…?","cuándo = коли"],
+["— ¿Está lejos? — No, está ___.","cerca","tarde","tarde = пізно"],
+["¿Dónde ___ vosotros?","estáis","están","vosotros → estáis"],
+["El museo está ___ la calle Mayor.","en","a","estar EN"],
+["— ¿Dónde estás? — ___ el trabajo.","En","A","en el trabajo"]
+]},
+{t:"Hoy, mañana, ayer", lv:1, q:[
+["«сьогодні» — це…","hoy","hay","hoy ≠ hay! Класична плутанина"],
+["«завтра» — це…","mañana","madrugada","madrugada = досвіток"],
+["«вчора» — це…","ayer","ahora","ahora = зараз"],
+["«зараз» — це…","ahora","ayer","ayer = вчора"],
+["hoy і hay — це…","два різні слова","одне й те саме слово","hoy = сьогодні, hay = є"],
+["«сьогодні ввечері» — це…","esta noche","este noche","noche ж.р. → esta"],
+["«цього тижня» — це…","esta semana","este semana","semana ж.р."],
+["«наступного місяця» — це…","el mes que viene","el mes que va","que viene = що приходить"],
+["pasado mañana означає…","післязавтра","минулого ранку","через день"],
+["anteayer означає…","позавчора","до ранку","день перед учора"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"HAY + un, ESTÁ + el", lv:2, q:[
+["En la plaza hay ___ café.","un","el","hay + неозначений"],
+["___ café está en la plaza.","El","Un","está + означений"],
+["Hay вживається з артиклем…","un / una","el / la","новий обʼєкт"],
+["Está вживається з артиклем…","el / la","un / una","відомий обʼєкт"],
+["En mi barrio hay ___ escuela.","una","la","hay una"],
+["___ escuela está cerca.","La","Una","la escuela está"],
+["¿Hay ___ banco por aquí?","un","el","шукаємо будь-який банк"],
+["___ banco está enfrente.","El","Un","конкретний банк"],
+["«Hay el supermercado» — це…","помилка","норма","hay + el = ❌"],
+["«El parque hay en el centro» — це…","помилка","норма","треба: el parque ESTÁ"]
+]},
+{t:"HAY + кількість", lv:2, q:[
+["Hay ___ sillas. (кілька)","unas","unos","sillas ж.р. → unas"],
+["En clase hay veinte ___.","alumnos","alumno","20 → множина"],
+["¿Cuántos libros ___?","hay","están","кількість → hay"],
+["Hay ___ gente. (багато)","mucha","mucho","gente ж.р."],
+["Hay ___ problemas. (багато)","muchos","muchas","problemas ч.р.!"],
+["«Немає молока» — це…","No hay leche","No está leche","відсутність → no hay"],
+["Hay ___ persona en la sala. (одна)","una","un","persona ж.р."],
+["¿Hay ___ pregunta?","alguna","algún","pregunta ж.р. → alguna"],
+["Hay pocos ___ a esta hora.","taxis","taxíes","taxi → taxis"],
+["З числами (hay tres…) вживається…","hay","están","hay dos, hay veinte…"]
+]},
+{t:"Стани: узгодження", lv:2, q:[
+["Ana está ___.","cansada","cansado","Ana → -a"],
+["Pedro y Luis están ___.","cansados","cansadas","хлопці → -os"],
+["Nosotras estamos ___.","contentas","contentos","nosotras → -as"],
+["El café está ___.","frío","fría","café ч.р."],
+["La sopa está ___.","fría","frío","sopa ж.р."],
+["Las ventanas están ___.","abiertas","abiertos","ventanas ж.р. мн."],
+["El museo está ___.","cerrado","cerrada","museo ч.р."],
+["Los niños están ___.","dormidos","dormidas","niños → -os"],
+["Yo estoy ___. (каже жінка)","lista","listo","готова → lista"],
+["La tienda está ___.","abierta","abierto","tienda ж.р."]
+]},
+{t:"ESTAR EN", lv:2, q:[
+["Estoy ___ casa.","en","a","estar EN casa"],
+["Están ___ el cine.","en","a","en el cine"],
+["¿Estás ___ Madrid?","en","a","en + місто"],
+["Estamos ___ la playa.","en","a","en la playa"],
+["está en означає…","знаходиться в/у","прямує до","місце → en"],
+["Mi hermano está ___ Polonia.","en","de","estar en + країна"],
+["El libro está ___ la mochila.","en","a","всередині → en"],
+["Estoy ___ el trabajo.","en","al","en el trabajo"],
+["¿Está usted ___ la lista?","en","a","en la lista"],
+["А «está a…» вживається для…","відстані: está a 5 km","заміни en у всіх випадках","está a diez minutos"]
+]},
+{t:"¿Qué día es hoy?", lv:2, q:[
+["— ¿Qué día es hoy? — Hoy ___ lunes.","es","está","дні тижня → ser"],
+["Дні тижня вживаються з дієсловом…","ser","estar","hoy es martes"],
+["«Hoy es 15 de mayo» — це…","правильно","обовʼязково потрібен el","артикль тут не обовʼязковий"],
+["«¿A cuántos estamos?» питає про…","дату","ціну","розмовний спосіб спитати число"],
+["Mañana ___ martes.","es","hay","день → es"],
+["Mi cumpleaños es ___ marzo.","en","a","en + місяць"],
+["La fiesta es el ___ de julio. (9)","nueve","noveno","дати — кількісними"],
+["¿Qué fecha es hoy? питає про…","дату","годину","fecha = дата"],
+["Hoy ___ jueves, 5 de diciembre.","es","está","es + день + дата"],
+["«Estamos a 20 de enero» — так кажуть?","так","ні","estar a + дата — жива розмовна форма"]
+]},
+{t:"Формат дати", lv:2, q:[
+["число ___ місяць: el 8 ___ marzo","de","en","8 DE marzo"],
+["Рік приєднується: el 8 de marzo ___ 2026.","de","en","…DE dos mil veintiséis"],
+["05.05 словами — це…","el cinco de mayo","el mayo de cinco","число + de + місяць"],
+["У даті число — це числівник…","кількісний","порядковий","el quince, el veinte"],
+["01.01 — це…","el uno de enero","el enero uno","в Іспанії — el uno"],
+["Формат дати в Іспанії:","день/місяць/рік","місяць/день/рік","05/11 = 5 листопада!"],
+["«24 серпня» — це…","el veinticuatro de agosto","el agosto veinticuatro","число спершу"],
+["Прийменник de стоїть між…","числом і місяцем","днем тижня і числом","cinco DE mayo"],
+["«lunes, 3 de febrero» — кома…","доречна","груба помилка","після дня тижня — кома"],
+["Іспанський запис 09/11 означає…","9 листопада","11 вересня","день/місяць!"]
+]},
+{t:"Вирази з ESTAR", lv:2, q:[
+["estar de vacaciones означає…","бути у відпустці","продавати путівки","estamos de vacaciones 🏖️"],
+["Estamos ___ vacaciones.","de","en","estar DE vacaciones"],
+["estar de acuerdo означає…","погоджуватися","стояти поруч","estoy de acuerdo"],
+["Estoy ___ acuerdo contigo.","de","a","de acuerdo"],
+["estar en casa означає…","бути вдома","йти додому","місце"],
+["estar de camino означає…","бути в дорозі","стояти на дорозі","estoy de camino = вже їду"],
+["estar fuera означає…","бути не вдома / у відʼїзді","бути сердитим","está fuera de la ciudad"],
+["¿Está ___ la cena? (готова)","lista","listo","cena ж.р. → lista"],
+["estar de moda означає…","бути в моді","бути втомленим","está de moda"],
+["Hoy no estoy ___ humor.","de","con","no estar de humor = не в гуморі"]
+]},
+{t:"ESTAR у питаннях", lv:2, q:[
+["Телефон: — ¿___ María? — Sí, un momento.","Está","Es","чи вдома/на місці → está"],
+["— ¿Está el señor Ruiz? — No, no ___.","está","es","короткa відповідь: no está"],
+["¿___ ocupado este asiento?","Está","Hay","конкретне місце → está"],
+["¿___ abierta la farmacia?","Está","Hay","стан аптеки → está"],
+["¿Cómo ___ tus padres?","están","estáis","tus padres = ellos"],
+["¿___ listos, chicos?","Estáis","Sois","готовність → estar"],
+["¿___ alguien en casa?","Hay","Está","хтось = наявність → hay"],
+["— ¿Estás en casa? — Sí, ___.","estoy","está","відповідаю про себе"],
+["¿Dónde ___ aparcado el coche?","está","hay","конкретне авто"],
+["¿___ lejos el centro?","Está","Hay","відстань → está"]
+]},
+{t:"EL lunes чи LOS lunes?", lv:2, q:[
+["___ lunes tengo examen. (цього понеділка)","El","Los","конкретний день → el"],
+["___ lunes voy al gimnasio. (щопонеділка)","Los","El","регулярно → los"],
+["el + день тижня означає…","конкретний найближчий день","щотижня","el viernes = цієї пʼятниці"],
+["los + день тижня означає…","щотижня, регулярно","один конкретний день","los sábados = по суботах"],
+["«У суботу їдемо на пляж» (найближчу):","El sábado vamos a la playa","En sábado vamos a la playa","без en!"],
+["«По неділях відпочиваю»:","Los domingos descanso","En los domingos descanso","без en!"],
+["«En lunes» — так кажуть?","ні","так","прийменник en з днями не вживається"],
+["«щовівторка» — це…","los martes","cada el martes","los martes"],
+["У «Hoy es lunes» артикль…","не потрібен","обовʼязковий","після es — без артикля"],
+["Trabajo de lunes ___ viernes.","a","en","de… a… = з… по…"]
+]},
+{t:"SER для дат, ESTAR для місця", lv:2, q:[
+["Hoy ___ domingo.","es","está","день → ser"],
+["Madrid ___ en España.","está","es","місто ДЕ → estar"],
+["Mi cumpleaños ___ en abril.","es","está","дата події → ser"],
+["Los libros ___ en la estantería.","están","son","місце → estar"],
+["___ las tres de la tarde.","Son","Están","час → ser"],
+["El concierto ___ el viernes.","es","está","коли подія → ser"],
+["¿Dónde ___ el teatro?","está","es","місце будівлі → estar"],
+["Дата й день тижня → …","ser","estar","hoy es, mañana es"],
+["Місце предмета → …","estar","ser","está en…"],
+["Hoy ___ 28 de febrero.","es","está","дата → es"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"HAY чи ESTÁ: контраст", lv:3, q:[
+["En la mesa ___ un vaso.","hay","está","новий обʼєкт → hay"],
+["El vaso ___ en la mesa.","está","hay","конкретний → está"],
+["¿___ un hotel cerca?","Hay","Está","будь-який готель → hay"],
+["¿Dónde ___ el hotel Sol?","está","hay","готель з назвою → está"],
+["En la clase ___ quince sillas.","hay","están","кількість → hay"],
+["Las sillas ___ en la clase.","están","hay","означені стільці → están"],
+["Aquí no ___ nadie.","hay","está","нікого немає → hay"],
+["Mis amigos no ___ aquí.","están","hay","конкретні друзі → están"],
+["¿Qué ___ en la tele esta noche?","hay","está","що Є в програмі → hay"],
+["¿___ tus padres en casa?","Están","Hay","твої батьки → están"]
+]},
+{t:"Іспанські свята", lv:3, q:[
+["Navidad (Різдво) в Іспанії — це…","el 25 de diciembre","el 7 de enero","25 грудня"],
+["Nochevieja — це…","31 грудня","1 листопада","«стара ніч» року"],
+["Los Reyes Magos приносять подарунки…","el 6 de enero","el 24 de diciembre","Три Королі — головне дитяче свято!"],
+["Nochebuena — це…","вечір 24 грудня","спокійна ніч у готелі","святвечір"],
+["Año Nuevo — це…","el 1 de enero","el 14 de enero","Новий рік"],
+["12 виноградин (las uvas) їдять…","у новорічну ніч під бій курантів","на Великдень","по одній на кожен удар!"],
+["La Tomatina відбувається у…","серпні, у місті Buñol","грудні, у Мадриді","томатна битва 🍅"],
+["San Valentín — це…","el 14 de febrero","el 8 de marzo","День закоханих"],
+["El Día de la Hispanidad — це…","el 12 de octubre","el 4 de julio","національне свято Іспанії"],
+["Semana Santa — це…","Великодній (Страсний) тиждень","тиждень моди в Мадриді","процесії по всій Іспанії"]
+]},
+{t:"¿Cuántos hay?", lv:3, q:[
+["¿___ alumnos hay en clase?","Cuántos","Cuánto","alumnos мн. → cuántos"],
+["¿___ leche hay?","Cuánta","Cuánto","leche ж.р. → cuánta"],
+["¿Cuántas ___ hay en tu casa?","habitaciones","habitación","cuántas → множина"],
+["¿Cuánto ___ hay?","dinero","dineros","dinero — незлічуване"],
+["cuánto/-a/-os/-as узгоджується з…","іменником","дієсловом","рід + число"],
+["¿___ días hay en abril?","Cuántos","Cuántas","días ч.р.!"],
+["— ¿Cuántos museos hay? — ___ tres.","Hay","Están","відповідь теж із hay"],
+["¿Cuánta ___ hay en la fiesta?","gente","gentes","gente — однина"],
+["¿___ estaciones de metro hay cerca?","Cuántas","Cuántos","estaciones ж.р."],
+["Слово gente вимагає форми…","cuánta","cuántos","ж.р. однина!"]
+]},
+{t:"Прислівники місця", lv:3, q:[
+["«тут» — це…","aquí","allí","allí = там"],
+["«там (далеко)» — це…","allí","aquí","aquí = тут"],
+["El súper está ___ de mi casa. (близько)","cerca","lejos","cerca de"],
+["La estación está ___. (далеко)","lejos","luego","luego = потім!"],
+["«поруч» — це…","al lado","al lago","lago = озеро 🏞️"],
+["Está aquí ___. (просто тут, зовсім поруч)","mismo","menos","aquí mismo"],
+["«нагорі» — це…","arriba","abajo","abajo = внизу"],
+["«внизу» — це…","abajo","arriba","arriba = нагорі"],
+["ahí означає…","там (недалеко, біля співрозмовника)","вчора","aquí–ahí–allí: три відстані"],
+["— ¿Está lejos? — No, está a cinco minutos, muy ___.","cerca","lejos","5 хвилин = близько"]
+]},
+{t:"День народження", lv:3, q:[
+["«день народження» — це…","el cumpleaños","el año nuevo","cumple + años"],
+["¿Cuándo es tu ___?","cumpleaños","cumpleaño","завжди з -s, навіть один!"],
+["Mi cumpleaños ___ el 3 de junio.","es","está","подія-дата → ser"],
+["«Мені виповнюється 30» — це…","Cumplo treinta años","Estoy treinta años","cumplir años"],
+["¡Feliz ___! 🎂","cumpleaños","cumpleañо","feliz cumpleaños"],
+["— ¿Cuándo naciste? — ___ 1995.","En","A","en + рік"],
+["La fecha de nacimiento — це…","дата народження","дата відпустки","nacimiento = народження"],
+["¿Cuántos años ___?","tienes","estás","вік → tener"],
+["«святкувати» — це…","celebrar","cerebrar","cerebro = мозок 🧠"],
+["Cumpleaños походить від cumplir años, тобто…","«виповнювати роки»","«купувати роки»","cumplir = виповнювати"]
+]},
+{t:"Порядок слів у питаннях", lv:3, q:[
+["Правильно:","¿Dónde está el banco?","¿Dónde el banco está?","питальне слово + дієслово"],
+["Правильно:","¿Cuándo es la fiesta?","¿Cuándo la fiesta es?","cuándo + es"],
+["Після питального слова одразу йде…","дієслово","підмет","¿Dónde ESTÁ…?"],
+["«¿Qué hay en la nevera?» — порядок…","правильний","неправильний","qué + hay"],
+["Правильно:","¿Cómo estás tú?","¿Cómo tú estás?","дієслово перед tú"],
+["Правильно:","¿Dónde están mis llaves?","¿Dónde mis llaves están?","están одразу після dónde"],
+["Знак ¿ ставиться…","на початку питання","лише в кінці","¿…?"],
+["«¿Está en casa María?» — так можна?","так","ні","підмет може йти в кінці"],
+["Правильно:","¿Cuántos años tiene tu madre?","¿Cuántos años tu madre tiene?","tiene перед tu madre"],
+["Питання без питального слова:","¿Estás bien?","Estás bien¿?","знаки обрамляють усе питання"]
+]},
+{t:"Заперечення з HAY", lv:3, q:[
+["No hay ___. (нічого)","nada","algo","no + nada"],
+["No hay ___ en casa. (нікого)","nadie","alguien","no + nadie"],
+["No hay ___ problema. (жодної проблеми)","ningún","ninguno","перед іменником ч.р. → ningún"],
+["— ¿Hay pan? — No, no ___.","hay","está","no hay"],
+["No hay ___ farmacia cerca.","ninguna","ningún","farmacia ж.р."],
+["No hay + іменник зазвичай…","без артикля","завжди з el","no hay leche, no hay tiempo"],
+["«Немає часу» — це…","No hay tiempo","No hay el tiempo","без артикля"],
+["«¿No hay nadie?» — подвійне заперечення…","норма в іспанській","груба помилка","no…nadie, no…nada — стандарт!"],
+["No hay ___ que hacer. (нічого робити)","nada","nadie","nada que hacer"],
+["«Проблем немає!» — це…","¡No hay problema!","¡No está problema!","класична фраза"]
+]},
+{t:"Міні-діалоги", lv:3, q:[
+["— Perdona, ¿___ un cajero por aquí?","hay","está","будь-який банкомат → hay"],
+["— Sí, ___ uno en la esquina.","hay","está","hay uno = є один"],
+["— ¿Y ___ lejos?","está","hay","відстань → está"],
+["— No, ___ a dos minutos.","está","hay","está a + час/відстань"],
+["— ¿Está Rosa? — No, ___ en el trabajo.","está","hay","вона на роботі"],
+["— ¿Cuándo vuelve? — ___ la tarde.","Por","En","por la tarde"],
+["— ¿Qué día es hoy? — ___ miércoles.","Es","Está","es + день"],
+["— ¿A cuántos estamos? — ___ 14 de mayo.","A","En","estamos a 14"],
+["— ¿Dónde estás? — ___ camino, llego en cinco minutos.","De","En","estar de camino"],
+["— ¿Hay algo para cenar? — Sí, ___ tortilla.","hay","está","є тортилья 🍳"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«En la plaza está una fuente» → …","En la plaza hay una fuente","En la plaza es una fuente","una → hay"],
+["«Hay el banco en la esquina» → …","El banco está en la esquina","Hay banco el en la esquina","el → está"],
+["«Hoy está lunes» → …","Hoy es lunes","Hoy hay lunes","день → ser"],
+["«Madrid es en España» → …","Madrid está en España","Madrid hay en España","місце → estar"],
+["«¿Dónde es el baño?» → …","¿Dónde está el baño?","¿Dónde hay el baño?","місце → está"],
+["Жінка каже «Estoy cansado» → …","Estoy cansada","Estoy cansados","узгодження роду"],
+["«No está leche» → …","No hay leche","No es leche","відсутність → hay"],
+["«La fiesta está el sábado» → …","La fiesta es el sábado","La fiesta hay el sábado","подія-дата → ser"],
+["«En mi ciudad están muchos parques» → …","En mi ciudad hay muchos parques","En mi ciudad son muchos parques","кількість → hay"],
+["«Mi cumpleaños está en junio» → …","Mi cumpleaños es en junio","Mi cumpleaños hay en junio","дата → ser"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["En la nevera ___ queso.","hay","está","наявність → hay"],
+["El queso ___ en la nevera.","está","hay","конкретний сир → está"],
+["Hoy ___ viernes.","es","está","день → ser"],
+["«середа» — це…","miércoles","martes","martes = вівторок"],
+["Ana está ___. (втомлена)","cansada","cansado","Ana → -a"],
+["___ lunes voy al gimnasio. (щопонеділка)","Los","El","регулярність → los"],
+["¿Cuántos días ___ en junio? — Treinta.","hay","están","кількість → hay"],
+["Mi cumpleaños es ___ 8 de abril.","el","en","el + число"],
+["«далеко» — це…","lejos","cerca","cerca = близько"],
+["Телефоном: ¿___ María?","Está","Es","чи на місці → está"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "ESTAR, HAY. Дати: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 4 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>
