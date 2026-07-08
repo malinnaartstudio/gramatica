@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 16 · Їжа. Елементи · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 16 · @malinnaartstudio</div>
+    <h1 id="htitle">Їжа. Елементи: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 16 · Comida. Elementos.</b>
+      30 вправ по 10 питань: фрукти, овочі, м'ясо/риба, напої, прийоми їжі, у ресторані.
+      Від ★ до ★★★. ¡Buen provecho! 🍽️
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · базова лексика</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · у контексті</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · нюанси й діалоги</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 16</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Фрукти", lv:1, q:[
+["«яблуко» — це…","la manzana","la naranja","naranja = апельсин"],
+["«банан» — це…","el plátano","el plato","plato = тарілка!"],
+["«полуниця» — це…","la fresa","la fresca","fresca = свіжа"],
+["«виноград» — це…","la uva","la uña","uña = ніготь"],
+["«лимон» — це…","el limón","el melón","melón = диня"],
+["«груша» — це…","la pera","la perra","perra = собака (ж.р.)!"],
+["«персик» — це…","el melocotón","el limón","limón = лимон"],
+["«ківі» — це…","el kiwi","el kiwis","однина без -s"],
+["«кавун» — це…","la sandía","la sardina","sardina = сардина 🐟"],
+["«вишня/черешня» — це…","la cereza","la cerveza","cerveza = пиво! 🍺"]
+]},
+{t:"Овочі", lv:1, q:[
+["«помідор» — це…","el tomate","el tomo","tomo = том (книги)"],
+["«морква» — це…","la zanahoria","la sandía","sandía = кавун"],
+["«картопля» — це…","la patata","la pata","pata = лапа"],
+["«цибуля» — це…","la cebolla","la botella","botella = пляшка"],
+["«часник» — це…","el ajo","el ojo","ojo = око! Класична плутанина"],
+["«перець» — це…","el pimiento","el pimentón","pimentón = паприка (прянощі)"],
+["«огірок» — це…","el pepino","el pepinillo","pepinillo = корнішон"],
+["«салат» (овоч) — це…","la lechuga","la leche","leche = молоко"],
+["«гриб» — це…","el champiñón / la seta","el campo","campo = поле"],
+["«капуста» — це…","la col","el color","color = колір"]
+]},
+{t:"М'ясо і риба", lv:1, q:[
+["«курка» (м'ясо) — це…","el pollo","el polo","polo = морозиво на паличці 🍦"],
+["«яловичина» — це…","la ternera/la carne de vaca","la torera","torera = тореадорка"],
+["«свинина» — це…","el cerdo","el cerebro","cerebro = мозок 🧠"],
+["«риба» — це…","el pescado","el pescador","pescador = рибалка"],
+["«креветки» — це…","las gambas","las gafas","gafas = окуляри"],
+["«шинка» — це…","el jamón","el jabón","jabón = мило 🧼"],
+["«яйце» — це…","el huevo","el hueso","hueso = кістка"],
+["«сосиска» — це…","la salchicha","la salsa","salsa = соус"],
+["«риба» жива (в морі) — це…","el pez","el pescado","pescado — вже спіймана"],
+["«ковбаса/чорізо» — це…","el chorizo","el corazón","corazón = серце ❤️"]
+]},
+{t:"Молочні продукти", lv:1, q:[
+["«молоко» — це…","la leche","el leche","ж.р. → la leche"],
+["«сир» — це…","el queso","el beso","beso = поцілунок 😘"],
+["«йогурт» — це…","el yogur","el yoga","yoga = йога"],
+["«масло» (вершкове) — це…","la mantequilla","la manta","manta = ковдра"],
+["«вершки» — це…","la nata","la nada","nada = нічого"],
+["«морозиво» — це…","el helado","el hielo","hielo = лід ❄️"],
+["Молочні продукти загалом — це…","los lácteos","los líquidos","líquidos = рідини"],
+["«кисломолочний йогурт» звично п'ють…","al desayuno","a la cena","на сніданок"],
+["«вершкове масло» намащують на…","el pan","el pescado","хліб 🍞"],
+["queso manchego — це…","знаменитий іспанський сир","морозиво з Ла-Манчі","традиційний сир з Кастилії"]
+]},
+{t:"Хліб і випічка", lv:1, q:[
+["«хліб» — це…","el pan","el pino","pino = сосна 🌲"],
+["«булочка» — це…","el panecillo/el bollo","el pañuelo","pañuelo = хустинка"],
+["«тістечко/десерт» — це…","el pastel","el pastor","pastor = пастух"],
+["«печиво» — це…","la galleta","la gaviota","gaviota = чайка 🐦"],
+["«тост» — це…","la tostada","la tostadora","tostadora = тостер"],
+["«круасан» — це…","el cruasán","el crucero","crucero = круїз 🚢"],
+["«пиріг» — це…","la tarta","la tarea","tarea = завдання"],
+["Пекарня — це…","la panadería","la papelería","papelería = канцтовари"],
+["«шматок хліба» — це…","un trozo de pan","un trozo de pino","pino = сосна"],
+["«крутони/грінки» — це…","los picatostes","los pistachos","pistachos = фісташки"]
+]},
+{t:"Напої", lv:1, q:[
+["«вода» — це…","el agua","el aire","aire = повітря"],
+["«сік» — це…","el zumo/jugo","el humo","humo = дим"],
+["«кава» — це…","el café","el café con leche… стоп","базове: café"],
+["«чай» — це…","el té","el pie","pie = стопа"],
+["«вино» — це…","el vino","el viento","viento = вітер 💨"],
+["«пиво» — це…","la cerveza","la cereza","cereza = вишня"],
+["«газована вода» — це…","el agua con gas","el agua sin sal","sin sal = без солі"],
+["«безалкогольний напій» — це…","el refresco","el fresco","fresco = свіжий"],
+["«молочний коктейль» — це…","el batido","el bateo","bateo = хрещення"],
+["Слово agua хоч і жіночого роду, але артикль в однині — …","el (через наголошену a)","la","el agua, але las aguas"]
+]},
+{t:"Прийоми їжі", lv:1, q:[
+["«сніданок» — це…","el desayuno","la cena","cena = вечеря"],
+["«обід» — це…","la comida/el almuerzo","la cocina","cocina = кухня"],
+["«вечеря» — це…","la cena","la comida","comida теж «їжа» загалом"],
+["«перекус» — це…","la merienda","la mañana","mañana = ранок"],
+["Обід в Іспанії зазвичай о…","14:00","12:00","пізніше, ніж в Україні"],
+["Merienda — це прийом їжі…","між обідом і вечерею","вранці","полуденок"],
+["«снідати» — це…","desayunar","desaunar","desayunar"],
+["«обідати» — це…","comer/almorzar","comar","comer/almorzar"],
+["«вечеряти» — це…","cenar","cenir","cenar"],
+["desayuno, comida, cena — це три…","основні прийоми їжі","назви напоїв","три головні страви дня"]
+]},
+{t:"Смаки", lv:1, q:[
+["«солодкий» — це…","dulce","dolor","dolor = біль"],
+["«солоний» — це…","salado","salido","salido — інше слово"],
+["«гострий» (пряний) — це…","picante","picado","picado = порізаний"],
+["«кислий» — це…","ácido/agrio","acido — та сама помилка","ácido з тильдою"],
+["«гіркий» — це…","amargo","amar","amar = кохати"],
+["«смачний» — це…","rico/sabroso","seco","seco = сухий"],
+["«несмачний» — це…","soso/insípido","sosegado","sosegado = спокійний"],
+["«свіжий» (про продукти) — це…","fresco","frito","frito = смажений"],
+["«смажений» — це…","frito","frío","frío = холодний"],
+["«варений» — це…","cocido/hervido","cansado","cansado = втомлений"]
+]},
+{t:"Столові прибори й посуд", lv:1, q:[
+["«виделка» — це…","el tenedor","el tendedero","tendedero = сушарка для білизни"],
+["«ніж» — це…","el cuchillo","el cuchitril","cuchitril = комірчина"],
+["«ложка» — це…","la cuchara","la cuchilla","cuchilla = лезо"],
+["«тарілка» — це…","el plato","el plátano","plátano = банан"],
+["«склянка» — це…","el vaso","el vasto","vasto = широкий"],
+["«чашка» — це…","la taza","la tapa","tapa = закуска/кришка"],
+["«серветка» — це…","la servilleta","la silla","silla = стілець"],
+["«скатертина» — це…","el mantel","el manto","manto = мантія"],
+["«сільниця» — це…","el salero","el salón","salón = вітальня"],
+["«піднос» — це…","la bandeja","la banda","banda = гурт/стрічка"]
+]},
+{t:"У продуктовому магазині", lv:1, q:[
+["«кілограм» — це…","el kilo","el kilómetro","kilómetro = кілометр"],
+["«упаковка/пачка» — це…","el paquete","el paquete de… стоп","базове: paquete"],
+["«кошик» — це…","la cesta/el carrito","la cesa","cesa — немає такого слова"],
+["«акція, знижка» — це…","la oferta","la oreja","oreja = вухо"],
+["«свіжі продукти» — це…","productos frescos","productos frescas","productos ч.р. → frescos"],
+["«термін придатності» — це…","la fecha de caducidad","la fecha de nacimiento","nacimiento = народження"],
+["«чек» (у магазині) — це…","el recibo/ticket","el recibimiento","recibimiento = прийом (гостей)"],
+["«черга» (у касі) — це…","la cola","la cola de caballo… стоп","базове: cola"],
+["«скільки коштує» — це…","¿cuánto cuesta?","¿cuánto cuentas?","cuentas = рахунки"],
+["«безкоштовно» — це…","gratis","grande","grande = великий"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"У ресторані: замовлення", lv:2, q:[
+["«Меню, будь ласка» — це…","La carta, por favor","El menú del día, por favor","carta = меню; menú del día = комплексний обід"],
+["«Я хочу замовити» — це…","Quiero pedir","Quiero preguntar","preguntar = запитувати"],
+["De primero quiero ___.","una ensalada","un tenedor","перша страва"],
+["De segundo voy a tomar ___.","pescado","un vaso","друга страва"],
+["«На десерт» — це…","de postre","de primero","postre = десерт"],
+["¿Qué me ___? (порадите)","recomienda","recomiendo","usted → recomienda"],
+["«Для мене, будь ласка…» — це…","Para mí, por favor…","Por mí, por favor…","para mí"],
+["«Без цибулі, будь ласка» — це…","Sin cebolla, por favor","Con cebolla, por favor","sin = без"],
+["¿La casa tiene menú del día?","Чи є комплексний обід?","Чи є домашня їжа?","menú del día = денне меню"],
+["«Ще одну, будь ласка» (напр. воду) — це…","Otra más, por favor","Otro más, por favor","agua ж.р. → otra"]
+]},
+{t:"У ресторані: рахунок", lv:2, q:[
+["«Рахунок, будь ласка» — це…","La cuenta, por favor","La cuota, por favor","cuota = внесок"],
+["«Це включено?» — це…","¿Está incluido?","¿Está incluyendo?","incluido = дієприкметник"],
+["«Роздільно» (платити) — це…","Por separado","Por separación","separado — прикметник тут"],
+["«Разом» (платити) — це…","Todo junto","Todo junta","junto — незмінне тут"],
+["«Чайові» — це…","la propina","el propio","propio = власний"],
+["¿Se puede pagar con tarjeta?","Чи можна оплатити карткою?","Чи можна платити картою за столом?","з tarjeta = картка"],
+["«Решта, здача» — це…","el cambio","el camino","camino = дорога"],
+["«Це за рахунок закладу» — це…","Invita la casa","Invita el dueño","la casa = заклад"],
+["Пропина в Іспанії зазвичай…","невелика, не обов'язкова","дуже велика і обов'язкова","на відміну від США"],
+["«Смачного!» — це…","¡Buen provecho!","¡Buena propina!","provecho = користь"]
+]},
+{t:"Приготування страв", lv:2, q:[
+["«варити» — це…","cocer/hervir","coser","coser = шити!"],
+["«смажити» — це…","freír","frotar","frotar = терти"],
+["«пекти» (в духовці) — це…","hornear/asar","horrear","horrear — немає такого слова"],
+["«різати» — це…","cortar","cantar","cantar = співати"],
+["«мішати/перемішувати» — це…","mezclar/remover","mecer","mecer = гойдати"],
+["«додавати» — це…","añadir/agregar","anidar","anidar = гніздитися"],
+["«наливати» — це…","echar/verter","hechar","hechar — помилкове написання (без h!)"],
+["«солити» — це…","salar","saltar","saltar = стрибати"],
+["«гасити» (тушкувати) — це…","estofar/guisar","estofar… стоп","базове: guisar"],
+["«очищати» (овочі) — це…","pelar","pelear","pelear = битися"]
+]},
+{t:"Іспанські страви", lv:2, q:[
+["Paella традиційно готують з…","рисом і морепродуктами/м'ясом","макаронами","рис — основа"],
+["Tortilla española — це…","омлет з картоплею","тортилья-лаваш","іспанська яєчня з картоплею"],
+["Gazpacho — це…","холодний томатний суп","гарячий суп із м'ясом","літня страва, подається холодною"],
+["Jamón ibérico — це…","знаменита іспанська шинка","звичайна сосиска","делікатес з чорних свиней"],
+["Croquetas — це…","крокети (обсмажені кульки з начинкою)","печиво","популярна закуска"],
+["Churros зазвичай їдять з…","шоколадом","кетчупом","chocolate con churros"],
+["Tapas — це…","маленькі закуски до напою","повний обід","традиція іспанських барів"],
+["Sangría — це…","напій з вина й фруктів","суп","літній напій"],
+["Turrón традиційно їдять на…","Різдво","День незалежності","різдвяні солодощі"],
+["Fideuá схожа на paella, але замість рису — …","макарони (fideos)","картопля","fideos = вермішель"]
+]},
+{t:"Кількість і міра", lv:2, q:[
+["«шматок» — це…","un trozo/una porción","un trazo","trazo = штрих"],
+["«скибка» (хліба) — це…","una rebanada","una rebaja","rebaja = знижка"],
+["«ложка» (кількість) — це…","una cucharada","una cuchara","cuchara = сама ложка (прилад)"],
+["«жменя» — це…","un puñado","un puño","puño = кулак"],
+["«трохи» (продукту) — це…","un poco de","una poca de","poco незмінне тут"],
+["«пляшка» — це…","una botella","una botilla","botella"],
+["«банка» (консерви) — це…","una lata","una lana","lana = вовна"],
+["«пакетик» (чаю, цукру) — це…","un sobrecito/una bolsita","un sobre grande","sobrecito — зменшувальне"],
+["«половина» (кіло) — це…","medio kilo","media kilo","kilo ч.р. → medio"],
+["«дюжина» (яєць) — це…","una docena","una decena","decena = десяток"]
+]},
+{t:"Дієта і харчування", lv:2, q:[
+["«вегетаріанець» — це…","vegetariano/a","vegetal","vegetal = овоч (як іменник/прикм.)"],
+["«веган» — це…","vegano/a","vegetariano… стоп","базове: vegano"],
+["«алергія» — це…","la alergia","la alegría","alegría = радість"],
+["Soy alérgico a los frutos secos.","Я маю алергію на горіхи","Я люблю горіхи","frutos secos = горіхи/сухофрукти"],
+["«без глютену» — це…","sin gluten","con gluten","sin = без"],
+["«здорове харчування» — це…","alimentación saludable","alimentación saludado","saludable — прикметник"],
+["«калорії» — це…","las calorías","las colonias","colonias = колонії"],
+["«збалансований» (про раціон) — це…","equilibrado","equipado","equipado = обладнаний"],
+["No como productos de origen animal.","Я не їм продукти тваринного походження","Я не люблю тварин","типова фраза вегана"],
+["«непереносимість лактози» — це…","intolerancia a la lactosa","intolerancia a la leche","lactosa — точний термін"]
+]},
+{t:"На кухні вдома", lv:2, q:[
+["«холодильник» — це…","la nevera/el frigorífico","la nieve","nieve = сніг"],
+["«духовка» — це…","el horno","el hornillo","hornillo = плитка (маленька)"],
+["«плита» — це…","la cocina/los fogones","la cocción","cocción = приготування (процес)"],
+["«мікрохвильовка» — це…","el microondas","el microbio","microbio = мікроб"],
+["«каструля» — це…","la cazuela/la olla","la casa","casa = дім"],
+["«сковорідка» — це…","la sartén","el sarcasmo","😄 sarcasmo"],
+["«миска» — це…","el bol/el cuenco","el bolso","bolso = сумка"],
+["«блендер» — це…","la batidora","la batalla","batalla = битва"],
+["«обробна дошка» — це…","la tabla de cortar","la tabla de multiplicar","tabla de multiplicar = таблиця множення"],
+["«посудомийна машина» — це…","el lavavajillas","el lavamanos","lavamanos = умивальник"]
+]},
+{t:"Опис страви", lv:2, q:[
+["Esta sopa está muy ___. (гаряча)","caliente","calienta","caliente — незмінна форма"],
+["El postre es ___. (дуже солодкий)","muy dulce","mucho dulce","прикметник → muy"],
+["Esta carne está ___. (пересолена)","muy salada","muy salado","carne ж.р. → salada"],
+["El café está ___. (холодний)","frío","fría","café ч.р. → frío"],
+["Esta ensalada tiene ___ verduras.","muchas","mucho","verduras ж.р. → muchas"],
+["El plato huele muy ___. (добре)","bien","bueno","прислівник → bien"],
+["Esta comida sabe a ___. (часнику)","ajo","ajos","saber a ajo"],
+["El pastel está ___. (свіжий)","recién hecho","recién hecha","pastel ч.р. → hecho"],
+["Esta fruta está ___. (недостигла)","verde","verda","verde — незмінна форма"],
+["El pan está ___. (черствий)","duro","dura","pan ч.р. → duro"]
+]},
+{t:"Діалог у ресторані", lv:2, q:[
+["— Buenas tardes, ¿mesa para ___? (двох)","dos","dos personas… стоп","коротко: para dos"],
+["— ¿Qué van a ___? (замовляти)","tomar/pedir","comprar","у ресторані: tomar/pedir"],
+["— De primero, ___ gazpacho.","quiero","tengo","querer + iменник теж можна"],
+["— ¿Para beber?","— Agua, por favor","— Agua, gracias","обидва ввічливі, але типове: por favor"],
+["— ¿Todo bien? (офіціант питає)","Sí, muy rico, gracias","Sí, muy rica, gracias","todo → rico (незмінне тут)"],
+["— ¿Algo más?","— No, nada más, gracias","— Sí, nada, gracias","nada más = більше нічого"],
+["— La cuenta, por favor.","— Enseguida","— Ensimismo","enseguida = зараз же"],
+["— ¿Se puede pagar con tarjeta?","— Sí, claro","— Sí, claros","claro — незмінне"],
+["— ¿Quiere la comida para llevar?","Хочете їжу з собою?","Хочете їжу занести?","para llevar = на винос"],
+["— Que aproveche.","Смачного","Хай щастить","формула перед їжею"]
+]},
+{t:"Спеції та приправи", lv:2, q:[
+["«сіль» — це…","la sal","el sol","sol = сонце ☀️"],
+["«перець» (спеція) — це…","la pimienta","el pimiento","pimiento = стручковий перець"],
+["«олія» (оливкова) — це…","el aceite (de oliva)","la aceituna","aceituna = оливка (плід)"],
+["«оцет» — це…","el vinagre","el vino agrio","vinagre — окреме слово"],
+["«орегано» — це…","el orégano","el origen","origen = походження"],
+["«кориця» — це…","la canela","la canción","canción = пісня"],
+["«часник у порошку» — це…","el ajo en polvo","el ajo en polo","polo = морозиво на паличці"],
+["«гірчиця» — це…","la mostaza","la mosca","mosca = муха 🪰"],
+["«майонез» — це…","la mayonesa","la manzana","manzana = яблуко"],
+["«кетчуп» — це…","el kétchup/la salsa de tomate","el catálogo","catálogo = каталог"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Мова про алергії та обмеження", lv:3, q:[
+["«Це блюдо містить горіхи?» — це…","¿Este plato lleva frutos secos?","¿Este plato es frutos secos?","llevar = містити (в складі)"],
+["«Я не можу їсти лактозу» — це…","No puedo tomar lactosa","No puedo tener lactosa","tomar = вживати їжу"],
+["«Чи є вегетаріанська опція?» — це…","¿Hay alguna opción vegetariana?","¿Hay alguna opción vegetariano?","opción ж.р. → vegetariana"],
+["«У мене целіакія» (непереносимість глютену) — це…","Soy celíaco/a","Estoy celíaco/a","стан здоров'я → ser"],
+["«Готується без олії?» — це…","¿Se prepara sin aceite?","¿Se prepara con aceite no?","se prepara sin"],
+["«Можна замінити картоплю на салат?» — це…","¿Puedo cambiar la patata por ensalada?","¿Puedo cambiar la patata para ensalada?","cambiar X por Y"],
+["«Це підходить дітям?» — це…","¿Esto es apto para niños?","¿Esto es apto de niños?","apto para"],
+["«без цукру» — це…","sin azúcar","sin azúcares","однина: sin azúcar"],
+["«домашня випічка» — це…","repostería casera","repostería casada","casera = домашня; casada = заміжня 😄"],
+["«органічний, з ферми» — це…","ecológico/de la huerta","económico","económico = дешевий, не те саме!"]
+]},
+{t:"Регіональні страви", lv:3, q:[
+["Fabada asturiana — це…","страва з квасолею й м'ясом з Астурії","десерт з Каталонії","типова для півночі Іспанії"],
+["Pulpo a la gallega — це…","восьминіг по-галісійськи","курка по-галісійськи","pulpo = восьминіг 🐙"],
+["Cocido madrileño — це…","традиційний мадридський суп-рагу","холодний суп","триетапна страва"],
+["Pisto — це…","овочеве рагу (схоже на рататуй)","м'ясний суп","типове для Ла-Манчі"],
+["Migas — це…","страва з хлібних крихт","макарони","migas = крихти"],
+["Escalivada — це…","каталонська страва з печених овочів","десерт","типова для Каталонії"],
+["Bacalao al pil-pil — це…","страва з тріски по-баскськи","салат","класика Країни Басків"],
+["Salmorejo схожий на gazpacho, але густіший, типовий для…","Кордови","Більбао","густіший холодний суп"],
+["Zarzuela — це…","рибно-морепродуктова юшка","назва театру й водночас страва","подвійне значення слова"],
+["Empanada gallega — це…","пиріг з начинкою (Галісія)","десерт","empanada — пиріг"]
+]},
+{t:"Ідіоми з їжею", lv:3, q:[
+["ser pan comido означає…","бути дуже легким (як два пальці)","бути дуже смачним","«з'їдений хліб» = легка справа"],
+["estar como un fideo означає…","бути дуже худим","бути дуже товстим","fideo = вермішель (тонка)"],
+["dar calabazas означає…","відмовити комусь (romantically)","дати гарбузи в подарунок","«дати гарбузи» = відмова"],
+["ponerse como un tomate означає…","почервоніти (від сорому)","стати зеленим","tomate = помідор → червоний"],
+["importar un pepino означає…","бути зовсім байдужим","бути дуже важливим","«не важить і огірка»"],
+["estar en el ajo означає…","бути в курсі справи (часто підозрілої)","готувати часник","дослівно «бути в часнику»"],
+["ser la media naranja означає…","бути другою половинкою (кохання)","бути половиною апельсина","романтичний вираз"],
+["no importar un rábano означає…","бути зовсім байдужим","бути дуже смачним","rábano = редиска"],
+["estar hecho un flan означає…","дуже нервувати, тремтіти","бути дуже спокійним","flan тремтить, як драглі"],
+["dar la vuelta a la tortilla означає…","повністю змінити ситуацію","перевернути яєчню на сковорідці","переносне значення"]
+]},
+{t:"POR і PARA з їжею", lv:3, q:[
+["Este postre es ___ ti.","para","por","призначення → para"],
+["Gracias ___ la cena, estaba genial.","por","para","подяка/причина → por"],
+["Vengo ___ el pan que pedí.","por","para","іти ЗА чимось → por"],
+["Esta receta es ___ cuatro personas.","para","por","розрахунок на когось → para"],
+["Cambio mi postre ___ el tuyo.","por","para","обмін → por"],
+["¿Tienes algo ___ picar?","para","por","мета: щоб перекусити → para"],
+["Pagué diez euros ___ esta botella.","por","para","ціна → por"],
+["Necesito verduras ___ la sopa.","para","por","мета (для супу) → para"],
+["Fui al mercado ___ pescado fresco.","por","para","іти ЗА чимось → por"],
+["Este plato está hecho ___ ti con cariño.","para","por","призначення з любов'ю → para"]
+]},
+{t:"Тонкощі роду й числа", lv:3, q:[
+["el agua fría — чому el, хоча agua ж.р.?","наголошена початкова a вимагає el в однині","це виняток без причини","el agua, las aguas"],
+["las aguas — чому тут las, а не los?","у множині рід іменника «повертається»","множина завжди los","аgua лишається ж.р."],
+["el hambre — чому el?","та сама причина: наголошена a","hambre — ч.р. насправді","el hambre, mucha hambre (ж.р. прикм.!)"],
+["mucha hambre — чому mucha, якщо el hambre?","прикметник узгоджується зі справжнім (ж.р.) родом","помилка, треба mucho","el — лише фонетичний виняток"],
+["el arte — в однині часто ч.р., у множині…","часто las artes (ж.р.)","завжди ч.р.","el arte moderno, las bellas artes"],
+["la leche — рід…","завжди жіночий, без винятків","чоловічий у множині","la leche, la leche fresca"],
+["el pan — рід…","чоловічий","жіночий","el pan, panes ч.р."],
+["la sal — рід…","жіночий","чоловічий","la sal, poca sal"],
+["el aceite — рід…","чоловічий","жіночий","el aceite de oliva"],
+["Такі винятки (el agua, el hambre) трапляються перед…","наголошеною a-/ha- на початку слова","будь-якою a","фонетичне правило, не про рід"]
+]},
+{t:"Culturemas: культурні деталі", lv:3, q:[
+["Сієста в контексті їжі означає…","відпочинок після обіду","назву страви","традиційна пообідня перерва"],
+["Sobremesa — це…","розмова за столом після їжі","перша страва","улюблена традиція после обіду"],
+["Menú del día зазвичай включає…","перше+друге+десерт+напій за фіксовану ціну","лише напій","популярний обідній формат"],
+["Tapear означає…","ходити барами й куштувати tapas","готувати вдома","соціальна традиція"],
+["У багатьох барах tapa до напою…","іноді безкоштовна","завжди платна","залежить від регіону (напр. Гранада)"],
+["«Ir de tapas» найчастіше роблять…","ввечері з друзями","на самоті вранці","соціальна активність"],
+["Comida (обід) в Іспанії триває довше, ніж в Україні, бо…","включає кілька страв і паузу","їдять дуже швидко","культурна відмінність"],
+["Bares de vinos спеціалізуються на…","вині й закусках до нього","лише пиві","винні бари"],
+["«Un café para llevar» — це поняття…","відносно нове в Іспанії (традиційно п'ють на місці)","найпопулярніше історично","традиція змінюється"],
+["Vermú (вермут) традиційно п'ють…","перед обідом як аперитив","на десерт","aperitivo — традиція вихідного дня"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«el leche» → …","la leche","lo leche","leche — ж.р."],
+["«un fruta» → …","una fruta","uno fruta","fruta — ж.р."],
+["«el uva» → …","la uva","lo uva","uva — ж.р."],
+["«el pescado es una» → правильно…","el pescado es uno","el pescado es un pez","узгодження з ч.р."],
+["«esta jamón» → …","este jamón","esta jamon","jamón — ч.р."],
+["«un ensalada» → …","una ensalada","uno ensalada","ensalada — ж.р."],
+["«el mantequilla» → …","la mantequilla","lo mantequilla","mantequilla — ж.р."],
+["«este agua» (без наголосу на a) — правильно?","так, бо el/este agua — фонетичний виняток","ні, треба esta","este agua теж можливо (як el)"],
+["«un aceite» → правильно…","un aceite","una aceite","aceite — ч.р. ✓"],
+["«la pan» → …","el pan","lo pan","pan — ч.р."]
+]},
+{t:"Переклади речення", lv:3, q:[
+["«Мені подобається дуже гострий соус»:","Me gusta la salsa muy picante","Me gusta la salsa muy picanta","picante — незмінне"],
+["«Це блюдо не має глютену»:","Este plato no tiene gluten","Este plato no es gluten","tiene gluten"],
+["«Порекомендуйте мені щось легке»:","Recomiéndeme algo ligero","Recomiéndame algo ligera","ligero — про страву (algo ч.р.)"],
+["«Рахунок окремо, будь ласка»:","La cuenta por separado, por favor","La cuenta separada, por favor","por separado — типова фраза"],
+["«Я алергічний на горіхи»:","Soy alérgico a los frutos secos","Soy alérgico de los frutos secos","alérgico A"],
+["«Це блюдо дуже смачне»:","Este plato está muy rico","Este plato es muy rico","смак у моменті → está"],
+["«Дайте мені, будь ласка, ще хліба»:","Deme un poco más de pan, por favor","Deme un poco más pan, por favor","más DE pan"],
+["«Ця вода без газу»:","Esta agua es sin gas","Esta agua sin gas — просто фраза","обидва можливі, коротка форма типовіша"],
+["«Смачного!» (кажучи іншим)","¡Que aproveche!","¡Que aprovecho!","формула ввічливості"],
+["«Можна мені меню, будь ласка?»:","¿Me trae la carta, por favor?","¿Me trae el menú, por favor?","обидва ок; carta — типовіше в ресторані"]
+]},
+{t:"Рецепт (текст)", lv:3, q:[
+["Primero, hay que ___ las verduras.","cortar","cortan","hay que + inf"],
+["Después, ___ un poco de aceite en la sartén.","echamos","echan","ми → echamos"],
+["Cuando el aceite esté caliente, ___ la cebolla.","añadimos","añaden","ми → añadimos"],
+["___ (freír) durante cinco minutos.","Freímos","Frieron","ми → freímos"],
+["Luego ___ el tomate y la sal.","agregamos","agregan","ми → agregamos"],
+["Dejamos ___ a fuego lento.","cocinar","cocinamos","dejar + inf"],
+["Cuando esté listo, ___ (servir) caliente.","servimos","sirven","ми → servimos"],
+["Se puede ___ con un poco de pan.","acompañar","acompañamos","поєднати з хлібом"],
+["¡___ (buen provecho)!","Buen provecho","Buena provecho","provecho ч.р."],
+["Esta receta es ___ fácil de hacer.","muy","mucho","прикметник → muy"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["«яблуко» — це…","la manzana","la naranja","база"],
+["«часник» — це…","el ajo","el ojo","класична плутанина"],
+["«Рахунок, будь ласка»:","La cuenta, por favor","La cuota, por favor","cuota = внесок"],
+["el agua — чому el?","наголошена початкова a","це ч.р. насправді","фонетичний виняток"],
+["ponerse como un tomate означає…","почервоніти","позеленіти","ідіома"],
+["Gracias ___ la cena.","por","para","подяка → por"],
+["Este postre es ___ ti.","para","por","призначення → para"],
+["Menú del día — це…","комплексний обід за фіксованою ціною","лише напій","типовий іспанський формат"],
+["«без глютену» — це…","sin gluten","con gluten","sin = без"],
+["¡Que aproveche! означає…","Смачного!","На здоров'я! (чхання)","формула перед їжею"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Їжа. Елементи: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 16 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

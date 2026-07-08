@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 27 · Освіта · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 27 · @malinnaartstudio</div>
+    <h1 id="htitle">Освіта: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 27 · Educación.</b>
+      30 вправ по 10 питань: школа, іспити, оцінки, система освіти Іспанії, канцтовари.
+      Від ★ до ★★★. ¡Aprobado con nota! 📚
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · базова лексика</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · у контексті</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · нюанси й діалоги</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 27</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Заклади освіти", lv:1, q:[
+["«школа» — це…","la escuela/el colegio","la empresa","empresa = фірма"],
+["«університет» — це…","la universidad","la universalidad","universalidad — немає такого слова"],
+["«дитячий садок» — це…","la guardería","la guardia","guardia = охорона"],
+["«інститут» (старша школа в Іспанії) — це…","el instituto","el instinto","instinto = інстинкт"],
+["«академія» (мовна школа) — це…","la academia","la academia… стоп","базове"],
+["«коледж» (professional) — це…","la formación profesional","la profesión formal","переставлені слова"],
+["«бібліотека» — це…","la biblioteca","la bibliografía","bibliografía = бібліографія"],
+["«гуртожиток» — це…","la residencia de estudiantes","la resistencia","resistencia = опір"],
+["«приватна школа» — це…","colegio privado","colegio publicado","publicado = опублікований"],
+["«державна школа» — це…","colegio público","colegio publicado","publicado — не те слово"]
+]},
+{t:"Люди в освіті", lv:1, q:[
+["«вчитель/викладач» — це…","el profesor","el profesional","profesional = професіонал"],
+["«учень» — це…","el alumno/estudiante","el alumnio","alumnio — немає такого слова"],
+["«директор школи» — це…","el director","el directorio","directorio = директорія (файлова)"],
+["«однокласник» — це…","el compañero de clase","el campeón de clase","campeón = чемпіон"],
+["«репетитор» — це…","el profesor particular","el profesor particulado","particulado — немає такого слова"],
+["«декан» (факультету) — це…","el decano","el decente","decente = пристойний"],
+["«ректор» — це…","el rector","el recto","recto = прямий"],
+["«випускник» — це…","el graduado","el gradual","gradual = поступовий"],
+["«студент-першокурсник» — це…","estudiante de primer año","estudiante de primera clase","primera clase = перший клас"],
+["«асистент викладача» — це…","el ayudante","el ayudado","ayudado — дієприкметник"]
+]},
+{t:"Шкільне приладдя", lv:1, q:[
+["«зошит» — це…","el cuaderno","el cuadro","cuadro = картина"],
+["«ручка» (кулькова) — це…","el bolígrafo","el bolsillo","bolsillo = кишеня"],
+["«олівець» — це…","el lápiz","el lapicero… теж ок","базове: lápiz"],
+["«гумка» — це…","la goma","la gorra","gorra = кепка"],
+["«лінійка» — це…","la regla","la regla… стоп","базове (regla = і правило, і лінійка)"],
+["«точилка» — це…","el sacapuntas","el saco de puntos","переставлені слова"],
+["«портфель/рюкзак» — це…","la mochila","la manzana","manzana = яблуко"],
+["«дошка» (класна) — це…","la pizarra","la pizza","pizza = піца 🍕"],
+["«крейда» — це…","la tiza","la tela","tela = тканина"],
+["«папка» (для документів) — це…","la carpeta","la carpa","carpa = намет/короп 🐟"]
+]},
+{t:"Предмети навчання", lv:1, q:[
+["«математика» — це…","las matemáticas","los matemáticos","matemáticos = математики (люди)"],
+["«історія» — це…","la historia","la historieta","historieta = комікс"],
+["«географія» — це…","la geografía","la fotografía","fotografía = фотографія"],
+["«фізика» — це…","la física","la ficción","ficción = вигадка"],
+["«хімія» — це…","la química","la quinta","quinta = п'ята"],
+["«біологія» — це…","la biología","la biografía","biografía = біографія"],
+["«література» — це…","la literatura","la letra","letra = літера"],
+["«фізкультура» — це…","la educación física","la educación fósil","fósil = скам'янілість 😄"],
+["«іноземна мова» — це…","el idioma extranjero","el idioma extraño","extraño = дивний"],
+["«інформатика» — це…","la informática","la información","información = інформація"]
+]},
+{t:"Іспити й оцінки: базова лексика", lv:1, q:[
+["«іспит» — це…","el examen","el ejemplo","ejemplo = приклад"],
+["«оцінка» — це…","la nota","la noticia","noticia = новина"],
+["«скласти іспит» — це…","aprobar el examen","aprobar el ejemplo","ejemplo — не те слово"],
+["«провалити іспит» — це…","suspender el examen","suspender el ejemplo","ejemplo — не те слово"],
+["«домашнє завдання» — це…","los deberes/la tarea","los deseos","deseos = бажання"],
+["«тест» (короткий) — це…","el examen corto/la prueba","el error","error = помилка"],
+["«диплом» — це…","el título/diploma","el titular","titular = заголовок"],
+["«стипендія» — це…","la beca","la beca… стоп","базове"],
+["«канікули» — це…","las vacaciones","las vocaciones","vocación = покликання"],
+["«розклад занять» — це…","el horario","el horno","horno = духовка"]
+]},
+{t:"У класі: дії", lv:1, q:[
+["«читати вголос» — це…","leer en voz alta","leer en voz baja","baja = тиха/низька"],
+["«піднімати руку» — це…","levantar la mano","levantar el mano","mano ж.р. → la"],
+["«робити нотатки» — це…","tomar apuntes","tomar apuestas","apuestas = ставки (парі)"],
+["«здавати завдання» — це…","entregar la tarea","entrenar la tarea","entrenar = тренувати"],
+["«ставити питання» — це…","hacer una pregunta","hacer una respuesta","respuesta = відповідь"],
+["«пояснювати» — це…","explicar","explotar","explotar = вибухати 💥"],
+["«повторювати» (матеріал) — це…","repasar","repartir","repartir = роздавати"],
+["«зубрити» (розмовне) — це…","empollar","empolvar","empolvar — немає такого слова"],
+["«списувати» (на іспиті) — це…","copiar","cortar","cortar = різати"],
+["«прогулювати» (заняття) — це…","hacer novillos/faltar a clase","hacer nubes","nubes = хмари"]
+]},
+{t:"Рівні освіти", lv:1, q:[
+["«початкова школа» — це…","educación primaria","educación primera","primera — просте прикметникове"],
+["«середня школа» — це…","educación secundaria","educación segunda","segunda — не термін"],
+["«бакалавр» (в Іспанії) — це…","el bachillerato","el bachiller… теж пов'язане","bachillerato — етап освіти"],
+["«магістратура» — це…","el máster","el maestro","maestro = вчитель"],
+["«докторантура» — це…","el doctorado","el doctor","doctor = лікар/доктор (особа)"],
+["«дошкільна освіта» — це…","educación infantil","educación infantiva","infantiva — немає такого слова"],
+["«професійна освіта» — це…","formación profesional","formación profesión","profesión — іменник тут не той"],
+["«безперервна освіта» — це…","educación continua","educación continuada… теж ок","базове"],
+["«обов'язкова освіта» — це…","educación obligatoria","educación obligada","obligada — інше слово"],
+["«вища освіта» — це…","educación superior","educación superada","superada = подолана"]
+]},
+{t:"Іноземні мови й навчання", lv:1, q:[
+["«рідна мова» — це…","la lengua materna","la lengua maternal","materna — правильний прикметник"],
+["«вивчати іноземну мову» — це…","aprender un idioma extranjero","aprender un idioma exterior","exterior = зовнішній"],
+["«вільно говорити» (мовою) — це…","hablar con fluidez","hablar con fluidad","fluidez — правильна форма"],
+["«переклад» — це…","la traducción","la tradición","tradición = традиція"],
+["«словник» — це…","el diccionario","el dictado","dictado = диктант"],
+["«граматика» — це…","la gramática","la gráfica","gráfica = графік"],
+["«вимова» — це…","la pronunciación","la pronunciación… стоп","базове"],
+["«рівень» (мови, A1, B2…) — це…","el nivel","el nivel… стоп","базове"],
+["«сертифікат» (мовний) — це…","el certificado","el certeza","certeza = впевненість"],
+["«практика розмовної мови» — це…","la práctica oral","la práctica moral","moral = мораль"]
+]},
+{t:"Розклад і дні навчання", lv:1, q:[
+["«урок» (одиничне заняття) — це…","la clase/lección","la lección… стоп","базове"],
+["«перерва» (між уроками) — це…","el recreo","el receso… теж вживається","recreo — типовий термін в Іспанії"],
+["«вступний іспит» — це…","el examen de acceso","el examen de exceso","exceso = надлишок"],
+["«початок навчального року» — це…","el inicio del curso","el inicio del cursor","cursor — комп'ютерний термін"],
+["«семестр» — це…","el semestre","el semáforo","semáforo = світлофор"],
+["«триместр» — це…","el trimestre","el trimestre… стоп","базове"],
+["«навчальний рік» — це…","el curso escolar/año académico","el curso escolarizado","escolarizado — не те слово"],
+["«розклад іспитів» — це…","el calendario de exámenes","el calendario de ejemplos","ejemplos — не те слово"],
+["«останній дзвінок» (символічно) — це…","el último día de clase","el último timbre… теж ок","прямий переклад"],
+["«випускний» (свято) — це…","la graduación","la gradación","gradación = градація"]
+]},
+{t:"Ставлення до навчання", lv:1, q:[
+["«старанний» (учень) — це…","aplicado/estudioso","complicado","complicado = складний"],
+["«ледачий» — це…","perezoso/vago","precioso","precioso = чудовий"],
+["«цікавитися» (предметом) — це…","interesarse por","interesarse para","interesarse POR/EN"],
+["«мотивація» — це…","la motivación","la emoción","emoción = емоція"],
+["«зосереджений» — це…","concentrado","concentrido","concentrido — немає такого слова"],
+["«розсіяний» (неуважний) — це…","distraído","distraído… стоп","базове"],
+["«амбітний» — це…","ambicioso","ambiental","ambiental = екологічний"],
+["«прогрес» (у навчанні) — це…","el progreso","el proceso","proceso = процес"],
+["«здібності» — це…","las capacidades/aptitudes","las capacidades… стоп","базове"],
+["«успіх» (навчальний) — це…","el éxito académico","el éxito académico… стоп","базове"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Іспити: у контексті", lv:2, q:[
+["He aprobado ___ examen de matemáticas.","el","al","el examen"],
+["¿Cuándo es el examen ___ historia?","de","por","examen DE + предмет"],
+["Necesito estudiar mucho ___ el examen final.","para","por","мета → para"],
+["Suspendí ___ examen porque no estudié.","el","al","el examen"],
+["¿Qué nota has sacado ___ el examen?","en","de","sacar nota EN"],
+["Tengo ___ exámenes esta semana.","tres","tres… стоп","базове: tres exámenes"],
+["El examen dura ___ dos horas.","—","de","durar + число, без прийменника"],
+["Estoy nervioso ___ el examen de mañana.","por","para","причина хвилювання → por"],
+["¿Se puede repetir el examen ___ suspender?","si","cuando… теж ок","si suspender — умова"],
+["He estudiado mucho ___ este examen.","para","por","мета → para"]
+]},
+{t:"Оцінки й результати", lv:2, q:[
+["He sacado un diez ___ el examen.","en","de","sacar nota EN"],
+["Mi nota media es ___ notable.","de","un","es un notable"],
+["notable, sobresaliente, aprobado, suspenso — ці слова означають…","типи оцінок в іспанській системі","назви предметів","специфічна шкала оцінок"],
+["sobresaliente означає…","відмінно (найвища оцінка)","незадовільно","найвищий бал"],
+["suspenso означає…","незадовільно, не склав","відмінно","провалений іспит"],
+["¿Qué nota necesitas ___ aprobar?","para","por","мета → para"],
+["He mejorado mis notas ___ mucho.","—","con","прислівник без прийменника тут: mucho"],
+["Mis padres están orgullosos ___ mis notas.","de","por","estar orgulloso DE"],
+["He sacado matrícula de honor означає…","отримав найвищу відзнаку","провалив предмет","найвища академічна відзнака в Іспанії"],
+["¿Cómo se calcula la nota final?","Як розраховується підсумкова оцінка?","Коли видають оцінки?","питання про систему оцінювання"]
+]},
+{t:"Система освіти Іспанії", lv:2, q:[
+["ESO означає…","обов'язкова середня освіта (Educación Secundaria Obligatoria)","іспит для іноземців","абревіатура системи освіти"],
+["Bachillerato триває…","два роки після ESO, перед університетом","чотири роки","підготовка до університету"],
+["Selectividad (EBAU/EvAU) — це…","вступний іспит для університету","випускний іспит школи","загальнонаціональний тест"],
+["Educación Infantil охоплює вік…","від 0 до 6 років","від 6 до 12 років","дошкільна освіта"],
+["Educación Primaria триває…","шість років (6-12 років)","чотири роки","початкова школа"],
+["Formación Profesional (FP) — це…","професійно-технічна освіта","лише мовні курси","альтернатива до університету"],
+["Grado (у виші) відповідає…","бакалаврату (зазвичай 4 роки)","аспірантурі","перший цикл вищої освіти"],
+["Después del Grado, muchos estudiantes hacen un…","Máster","Bachillerato","другий цикл вищої освіти"],
+["MIR — це система для…","іспитів на медичну спеціалізацію","мовних сертифікатів","специфічний іспанський термін"],
+["La nota de corte означає…","прохідний бал для вступу","найнижчу можливу оцінку","конкурсний прохідний бал"]
+]},
+{t:"У бібліотеці", lv:2, q:[
+["Necesito ___ este libro ___ dos semanas.","tomar prestado / durante","tomar prestado / para","взяти на два тижні → durante/por"],
+["¿Hasta cuándo puedo tener el libro?","До коли я можу тримати книгу?","Скільки коштує книга?","термін позики"],
+["Tengo que ___ el libro antes del viernes.","devolver","devolver… стоп","базове: devolver"],
+["¿Se puede ___ este libro?","fotocopiar","fotografiar… теж можливо","fotocopiar — типовіше для документів"],
+["El carné de biblioteca es ___.","gratuito","gratis… обидва можливі","gratuito — прикметник"],
+["¿Hay wifi ___ la biblioteca?","en","a","місце → en"],
+["Necesito silencio ___ estudiar.","para","por","мета → para"],
+["He reservado una sala ___ estudiar en grupo.","para","por","мета → para"],
+["¿Dónde están los libros ___ historia?","de","en","тема → de"],
+["He perdido mi carné ___ biblioteca.","de","en","carné DE biblioteca"]
+]},
+{t:"Домашнє завдання й проєкти", lv:2, q:[
+["Tengo que ___ un trabajo sobre historia.","hacer","hacer… стоп","базове: hacer un trabajo"],
+["El profesor nos ha dado mucha ___ para mañana.","tarea","tareas… обидва можливі","tarea — узагальнено"],
+["He entregado el trabajo ___ tiempo.","a","en","a tiempo = вчасно"],
+["Necesito ___ más información ___ mi proyecto.","buscar / para","buscar / por","мета проєкту → para"],
+["¿Cuándo hay que entregar el ensayo?","Коли треба здати есе?","Де треба здати есе?","питання про термін"],
+["He trabajado ___ este proyecto durante semanas.","en","con","trabajar EN un proyecto"],
+["Mi compañero me ha ayudado ___ el trabajo.","con","en","ayudar CON algo"],
+["He hecho una presentación ___ Power Point.","con","en","con + інструмент"],
+["El plazo ___ entregar el trabajo es el lunes.","para","de","plazo PARA"],
+["He investigado mucho ___ este tema.","sobre","en","investigar SOBRE"]
+]},
+{t:"Стосунки з учителями", lv:2, q:[
+["Mi profesor explica muy ___.","bien","bueno","прислівник → bien"],
+["Le he preguntado ___ mi nota.","por","para","preguntar POR"],
+["El profesor nos ha felicitado ___ el buen trabajo.","por","para","причина → por"],
+["Tengo tutoría ___ mi profesor mañana.","con","de","з викладачем → con"],
+["He pedido ayuda ___ mi profesora.","a","de","pedir A + особа"],
+["El profesor se ha enfadado ___ el ruido en clase.","por","para","причина → por"],
+["Respeto mucho ___ mis profesores.","a","—","особистий a"],
+["Mi profesora está muy ___ conmigo.","contenta","contento","profesora ж.р. → contenta"],
+["He hablado ___ el director sobre el problema.","con","a","con + особа"],
+["Confío ___ mi profesor de matemáticas.","en","a","confiar EN"]
+]},
+{t:"Дискусія в класі", lv:2, q:[
+["¿Alguien tiene ___ pregunta?","alguna","algún","pregunta ж.р. → alguna"],
+["No entiendo ___ de este tema.","nada","algo","заперечення → nada"],
+["¿Puede explicarlo ___ vez, por favor?","otra","otro","vez ж.р. → otra"],
+["Estoy de acuerdo ___ tu opinión.","con","en","estar de acuerdo CON"],
+["No estoy de acuerdo ___ eso.","con","en","estar de acuerdo CON (заперечення теж con)"],
+["¿Puedo dar mi opinión ___ este tema?","sobre","en","opinión SOBRE"],
+["Creo que tienes razón ___ este punto.","en","de","tener razón EN"],
+["Depende ___ el contexto.","de","en","depender DE"],
+["Prefiero trabajar ___ grupo.","en","con","en grupo"],
+["Vamos a debatir ___ este asunto.","sobre","en","debatir SOBRE"]
+]},
+{t:"Освітні технології", lv:2, q:[
+["«онлайн-навчання» — це…","la educación en línea/online","la educación en fila","fila = черга/ряд"],
+["«платформа навчання» — це…","la plataforma educativa","la plataforma educada","educada = вихована (людина)"],
+["«відеоурок» — це…","la videoclase/el vídeo tutorial","la videollamada","videollamada = відеодзвінок"],
+["«електронна пошта викладача» — це…","el correo del profesor","el correo de profesor","del = de+el"],
+["He hecho el examen ___ el ordenador.","en","con","en el ordenador"],
+["«домашнє завдання онлайн» — це…","la tarea online","la tarea en línea del internet","переусклад."],
+["¿Puedo enviar el trabajo ___ correo electrónico?","por","para","por correo"],
+["«електронна дошка» — це…","la pizarra digital","la pizarra digitalizada","зайве подовження"],
+["He perdido la conexión ___ la videollamada.","durante","en","durante = під час"],
+["«додаток для навчання мов» — це…","la aplicación para aprender idiomas","la aplicación de aprender idiomas","para — мета"]
+]},
+{t:"Порівняння систем освіти", lv:2, q:[
+["El sistema educativo español es diferente ___ el ucraniano.","de","que","diferente DE"],
+["En España, el bachillerato dura ___ tiempo que en otros países.","menos","tan","приблизне порівняння — контекстуальне"],
+["La educación superior es más cara ___ algunos países que en otros.","en","por","en algunos países"],
+["Comparado con otros países, el sistema es ___ exigente.","bastante","poco… залежить","bastante — нейтральна оцінка"],
+["Cada país tiene su propio sistema ___ evaluación.","de","en","sistema DE"],
+["La educación pública en España es ___ gratuita.","generalmente","general","прислівник → generalmente"],
+["Los estudiantes internacionales deben adaptarse ___ el nuevo sistema.","a","en","adaptarse A"],
+["El nivel de exigencia depende mucho ___ la universidad.","de","en","depender DE"],
+["Es importante informarse bien ___ los requisitos.","sobre","en","informarse SOBRE"],
+["Cada sistema educativo tiene sus ventajas y ___.","desventajas","desventaja","мн. паралельно ventajas"]
+]},
+{t:"Здобуття диплома", lv:2, q:[
+["Me gradué ___ la universidad hace dos años.","de","en","graduarse DE"],
+["Estudié Filología ___ la Universidad de Madrid.","en","de","місце навчання → en"],
+["Conseguí mi título ___ mucho esfuerzo.","con","por","con esfuerzo"],
+["Estoy muy orgulloso ___ mi diploma.","de","por","orgulloso DE"],
+["Tardé cuatro años ___ terminar la carrera.","en","para","tardar EN"],
+["Me especialicé ___ marketing digital.","en","de","especializarse EN"],
+["Después de graduarme, empecé a buscar trabajo ___ mi campo.","en","de","en mi campo"],
+["Mi tesis trataba ___ inteligencia artificial.","sobre/de","en","tratar SOBRE/DE"],
+["Recibí mi diploma ___ manos del rector.","de","en","de manos de"],
+["Ahora trabajo ___ lo que estudié.","en","de","trabajar EN algo"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Наказовий спосіб у навчанні", lv:3, q:[
+["¡___ (estudiar, tú) más para el examen!","Estudia","Estudias","наказ tú → estudia"],
+["¡No ___ (copiar, tú) en el examen!","copies","copias","заперечний наказ tú → copies"],
+["¡___ (leer, ustedes) el capítulo tres!","Lean","Leen","наказ ustedes → lean"],
+["¡No ___ (llegar, vosotros) tarde a clase!","lleguéis","llegáis","заперечний наказ vosotros → lleguéis"],
+["¡___ (prestar, tú) atención!","Presta","Prestas","наказ tú → presta"],
+["¡___ (entregar, usted) la tarea a tiempo!","Entregue","Entrega","наказ usted → entregue"],
+["¡No ___ (distraerse, tú) en clase!","te distraigas","te distraes","заперечний наказ зворотний tú"],
+["¡___ (repasar, vosotros) antes del examen!","Repasad","Repasáis","наказ vosotros → repasad"],
+["¡___ (levantar, tú) la mano para hablar!","Levanta","Levantas","наказ tú → levanta"],
+["¡No ___ (rendirse, ustedes)!","se rindan","se rinden","заперечний наказ ustedes зворотний"]
+]},
+{t:"Culturemas: освіта в Іспанії", lv:3, q:[
+["Іспити на Selectividad зазвичай проходять…","у червні, після закінчення bachillerato","у січні","важливий момент для вступу"],
+["Нота середня (nota media) в Іспанії використовується для…","конкурсу на вступ до популярних спеціальностей","лише формальності","важлива для nota de corte"],
+["Erasmus — це програма для…","обміну студентами між європейськими університетами","стипендій для магістратури лише в Іспанії","європейська програма мобільності"],
+["У державних школах Іспанії підручники часто…","надаються безкоштовно або через систему допомоги","завжди купуються повністю за свій рахунок","залежить від автономної спільноти"],
+["EOI (Escuela Oficial de Idiomas) — це…","державні мовні школи Іспанії","приватні університети","офіційна мовна освіта"],
+["Selectividad має два компоненти: обов'язкову частину і…","специфічну частину (за вибором, для конкретних спеціальностей)","лише усний іспит","структура іспиту"],
+["У іспанських школах навчальний рік зазвичай починається…","у вересні","у січні","типовий календар"],
+["Дітям в Educación Infantil (0-6 років) навчання…","необов'язкове (хоча дуже поширене з 3 років)","повністю обов'язкове","гнучкість цього етапу"],
+["PISA — це міжнародне тестування, яке оцінює…","рівень освіти учнів у різних країнах","лише мовні навички","порівняльне дослідження освіти"],
+["У іспанських університетах TFG/TFM означають…","випускну кваліфікаційну роботу (бакалавра/магістра)","назви курсів","Trabajo de Fin de Grado/Máster"]
+]},
+{t:"POR і PARA в освіті", lv:3, q:[
+["Estudio ___ ser profesor.","para","por","мета → para"],
+["He suspendido ___ no estudiar lo suficiente.","por","para","причина → por"],
+["Este libro es ___ el curso de historia.","para","por","призначення → para"],
+["Gracias ___ tu ayuda con la tarea.","por","para","подяка → por"],
+["Necesito este trabajo ___ el viernes.","para","por","дедлайн → para"],
+["Me han felicitado ___ mis buenas notas.","por","para","причина → por"],
+["Estudio ___ las noches para el examen.","por","para","por la noche"],
+["Este curso es ___ principiantes.","para","por","призначення → para"],
+["Ha luchado mucho ___ conseguir la beca.","por","para","заради (боротьба) → por"],
+["Trabajo duro ___ aprobar todas las asignaturas.","para","por","мета → para"]
+]},
+{t:"Академічна лексика вищого рівня", lv:3, q:[
+["«дослідження» (наукове) — це…","la investigación","la investidura","investidura = інавгурація"],
+["«гіпотеза» — це…","la hipótesis","la hipoteca","hipoteca = іпотека"],
+["«бібліографія» — це…","la bibliografía","la biografía","biografía = біографія (людини)"],
+["«стипендіат» — це…","el becario","el becado… теж вживається","becario — типовий термін"],
+["«науковий керівник» — це…","el director de tesis","el director de tesa","tesa — не те слово"],
+["«захист дипломної роботи» — це…","la defensa del trabajo","la defensa de trabajo","del = de+el"],
+["«академічна доброчесність» — це…","la integridad académica","la integración académica","integración = інтеграція"],
+["«плагіат» — це…","el plagio","el plagado","plagado — не те слово"],
+["«цитування» (джерел) — це…","la cita bibliográfica","la cita médica","médica = медична (інша cita)"],
+["«рецензування» (наукове) — це…","la revisión por pares","la revisión por partes","partes = частини"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«Estudio para ser profesor por» (зайве por) → …","Estudio para ser profesor","Estudio para ser profesor por залишити","por зайве"],
+["«Tengo examen en historia» → …","Tengo examen de historia","Tengo examen en historia залишити","examen DE + предмет"],
+["«He aprobado en el examen» → …","He aprobado el examen","He aprobado en el examen залишити","aprobar + прямий додаток, без en"],
+["«Sacar nota de examen» → …","Sacar nota en el examen","Sacar nota de el examen залишити","sacar nota EN"],
+["«Estoy orgulloso por mis notas» → …","Estoy orgulloso de mis notas","Estoy orgulloso por mis notas залишити","orgulloso DE"],
+["«Confío a mi profesor» → …","Confío en mi profesor","Confío a mi profesor залишити","confiar EN"],
+["«Depende en el profesor» → …","Depende del profesor","Depende en el profesor залишити","depender DE"],
+["«Estoy de acuerdo en tu opinión» → …","Estoy de acuerdo con tu opinión","Estoy de acuerdo en tu opinión залишити","de acuerdo CON"],
+["«He hablado a el director» → …","He hablado con el director","He hablado a el director залишити","hablar CON особою"],
+["«Trabajo con este proyecto» (правильно чи ні для «trabajar en»?) → …","Trabajo en este proyecto","залишити с con","trabajar EN un proyecto"]
+]},
+{t:"Переклади речення", lv:3, q:[
+["«Я склав іспит з математики»:","He aprobado el examen de matemáticas","He aprobado en el examen de matemáticas","aprobar + прямий додаток"],
+["«Мені потрібно вчитися для завтрашнього іспиту»:","Necesito estudiar para el examen de mañana","Necesito estudiar por el examen de mañana","мета → para"],
+["«Я отримав відмінну оцінку»:","He sacado un sobresaliente","He sacado un suspenso","sobresaliente = відмінно"],
+["«Дякую за допомогу з домашнім завданням»:","Gracias por ayudarme con la tarea","Gracias para ayudarme con la tarea","подяка → por"],
+["«Я довіряю своєму вчителю»:","Confío en mi profesor","Confío a mi profesor","confiar EN"],
+["«Це залежить від викладача»:","Depende del profesor","Depende en el profesor","depender DE"],
+["«Я не згоден з цією думкою»:","No estoy de acuerdo con esa opinión","No estoy de acuerdo en esa opinión","de acuerdo CON"],
+["«Erasmus — програма обміну студентами»:","Erasmus es un programa de intercambio de estudiantes","Erasmus es un programa para intercambio de estudiantes","de intercambio"],
+["«Я вчуся, щоб стати лікарем»:","Estudio para ser médico","Estudio por ser médico","мета → para"],
+["«Він пишається своїми оцінками»:","Está orgulloso de sus notas","Está orgulloso por sus notas","orgulloso DE"]
+]},
+{t:"Дискусія: за і проти онлайн-освіти", lv:3, q:[
+["A favor de la educación online: se puede estudiar ___ cualquier lugar.","desde","en","desde cualquier lugar"],
+["En contra: a veces falta ___ interacción personal.","—","de","falta + іменник, без de тут"],
+["A favor: es más ___ para quien trabaja.","flexible","flexivo","flexible — правильна форма"],
+["En contra: requiere mucha ___.","autodisciplina","autodisciplinar","іменник autodisciplina"],
+["A favor de las clases presenciales: hay más contacto ___ el profesor.","con","de","contacto CON"],
+["En resumen, cada modelo tiene sus ___.","pros y contras","pro y contra","стала множина"],
+["Lo ideal seria combinar ___ métodos.","ambos","los ambos","ambos без артикля"],
+["Depende mucho ___ el estilo de aprendizaje de cada persona.","de","en","depender DE"],
+["Al final, lo importante es ___ aprender bien.","—","de","el objetivo es + inf, без прийменника"],
+["Cada estudiante debe elegir lo que mejor se adapte ___ sus necesidades.","a","en","adaptarse A"]
+]},
+{t:"Мій навчальний рік (текст)", lv:3, q:[
+["Este año ___ (empezar, yo) la universidad.","he empezado","he empezar","he + participio"],
+["___ (elegir) estudiar Filología.","He elegido","He elegir","elegir → elegido"],
+["Al principio ___ (ser) difícil adaptarme.","fue","es","минулий час"],
+["Pero poco a poco ___ (acostumbrarse, yo).","me he acostumbrado","he acostumbrado","зворотне: me he acostumbrado"],
+["He ___ (hacer) muchos amigos nuevos.","hecho","hacido","hacer → hecho"],
+["Mis profesores ___ (ser) muy buenos.","han sido","son sido","han sido — перфект ser"],
+["___ (aprobar, yo) todas mis asignaturas este semestre.","He aprobado","He aprobido","aprobar → aprobado"],
+["Ha ___ (ser) un año lleno de aprendizaje.","sido","siendo","ha sido"],
+["Todavía me queda mucho ___ aprender.","por","para","quedar POR + inf"],
+["¡Estoy muy ___ de mi progreso!","orgulloso/a","orgulloso… стоп","orgulloso DE"]
+]},
+{t:"Діалог: підготовка до іспиту", lv:3, q:[
+["— ¿Cómo va el estudio? — Estoy ___ nervioso por el examen.","muy","mucho","прикметник → muy"],
+["— ¿Has repasado todo? — Casi, me falta ___ tema.","un","uno","tema ч.р. → un"],
+["— ¿A qué hora es el examen? — ___ las nueve de la mañana.","A","En","a las nueve"],
+["— ¿Puedo llevar calculadora? — Sí, ___ permitido.","está","es","estado permitido → está"],
+["— ¿Cuánto dura el examen? — ___ dos horas.","Dura","Tarda… теж ok","durar + число"],
+["— ¿Qué pasa si suspendo? — Puedes ___ en septiembre.","recuperarlo","recuperar eso","recuperarlo — el examen"],
+["— Buena suerte. — Gracias, la voy a ___.","necesitar","necesito","voy a + inf"],
+["— ¿Has dormido bien? — Sí, ___ importante descansar antes.","es","está","es importante"],
+["— ¿Estás listo? — Creo que sí, ___ hecho lo posible.","he","soy","he hecho"],
+["— ¡Que te salga bien! — ___.","Gracias, eso espero","Gracias, eso espera","yo → espero"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["«школа» — це…","la escuela","la empresa","база"],
+["«вчитель» — це…","el profesor","el profesional","profesional = професіонал"],
+["«іспит» — це…","el examen","el ejemplo","ejemplo = приклад"],
+["sobresaliente означає…","відмінно","незадовільно","найвища оцінка"],
+["Estudio ___ ser profesor.","para","por","мета → para"],
+["He aprobado ___ examen.","el","en el","прямий додаток"],
+["Confío ___ mi profesor.","en","a","confiar EN"],
+["Selectividad — це…","вступний іспит до університету","випускний іспит школи","база"],
+["Erasmus — це…","програма обміну студентами","стипендія лише в Іспанії","база"],
+["Estoy orgulloso ___ mis notas.","de","por","orgulloso DE"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Освіта: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 27 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

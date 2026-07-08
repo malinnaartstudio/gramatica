@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 24 · Неправильні дієприкметники · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 24 · @malinnaartstudio</div>
+    <h1 id="htitle">Неправильні дієприкметники: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 24 · Verbos irregulares en el pretérito perfecto.</b>
+      30 вправ по 10 питань: повний список неправильних дієприкметників, похідні дієслова,
+      подвійні форми. Від ★ до ★★★. ¡Ya lo he descubierto! 🔍
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · базові неправильні</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · похідні й контекст</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й діалоги</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 24</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"HACER і похідні", lv:1, q:[
+["hacer → …","hecho","hacido","he hecho"],
+["deshacer → …","deshecho","deshacido","des+hecho"],
+["rehacer → …","rehecho","rehacido","re+hecho"],
+["satisfacer → …","satisfecho","satisfacido","незвичайне, але як hacer"],
+["contrahacer → …","contrahecho","contrahacido","рідкісне, та сама модель"],
+["He ___ (hacer) la tarea.","hecho","hacido","he hecho"],
+["Hemos ___ (deshacer) las maletas.","deshecho","deshacido","hemos deshecho"],
+["¿Has ___ (rehacer) el trabajo?","rehecho","rehacido","has rehecho"],
+["Todos los verbos derivados de hacer дають…","-hecho","-hacido","загальна модель"],
+["Han quedado ___ (satisfacer) con el resultado.","satisfechos","satisfacidos","satisfecho — теж прикметник"]
+]},
+{t:"DECIR і похідні", lv:1, q:[
+["decir → …","dicho","decido","he dicho"],
+["contradecir → …","contradicho","contradecido","contra+dicho"],
+["predecir → …","predicho","predecido","pre+dicho (частіше)"],
+["bendecir → …","bendecido","bendicho","виняток! правильна форма"],
+["maldecir → …","maldecido","maldicho","виняток! правильна форма"],
+["He ___ (decir) la verdad.","dicho","decido","he dicho"],
+["¿Has ___ (contradecir) a tu jefe?","contradicho","contradecido","has contradicho"],
+["Los científicos han ___ (predecir) el resultado.","predicho","predecido","han predicho"],
+["El cura ha ___ (bendecir) la casa.","bendecido","bendicho","bendecir — правильна форма!"],
+["bendecir і maldecir — виняток, бо мають дієприкметник…","правильний (-ido)","неправильний (як decir)","на відміну від інших похідних decir"]
+]},
+{t:"VER, ESCRIBIR і похідні", lv:1, q:[
+["ver → …","visto","veído","he visto"],
+["prever → …","previsto","preveído","pre+visto"],
+["entrever → …","entrevisto","entreveído","entre+visto"],
+["escribir → …","escrito","escribido","he escrito"],
+["describir → …","descrito","describido","de+scrito"],
+["inscribir → …","inscrito","inscribido","in+scrito"],
+["He ___ (ver) esa película.","visto","veído","he visto"],
+["Los expertos habían ___ (prever) el problema.","previsto","preveído","habían previsto"],
+["He ___ (escribir) una carta.","escrito","escribido","he escrito"],
+["¿Has ___ (describir) la situación?","descrito","describido","has descrito"]
+]},
+{t:"PONER і похідні", lv:1, q:[
+["poner → …","puesto","ponido","he puesto"],
+["componer → …","compuesto","componido","com+puesto"],
+["proponer → …","propuesto","proponido","pro+puesto"],
+["suponer → …","supuesto","suponido","su+puesto"],
+["imponer → …","impuesto","imponido","im+puesto"],
+["He ___ (poner) la mesa.","puesto","ponido","he puesto"],
+["El compositor ha ___ (componer) una canción.","compuesto","componido","ha compuesto"],
+["Te he ___ (proponer) una idea.","propuesto","proponido","he propuesto"],
+["He ___ (suponer) que vendrías.","supuesto","suponido","he supuesto"],
+["Todos los derivados de poner dan…","-puesto","-ponido","загальна модель"]
+]},
+{t:"VOLVER і похідні", lv:1, q:[
+["volver → …","vuelto","volvido","he vuelto"],
+["devolver → …","devuelto","devolvido","de+vuelto"],
+["revolver → …","revuelto","revolvido","re+vuelto"],
+["envolver → …","envuelto","envolvido","en+vuelto"],
+["resolver → …","resuelto","resolvido","незвичайне, схоже за структурою"],
+["He ___ (volver) a casa.","vuelto","volvido","he vuelto"],
+["¿Has ___ (devolver) el libro?","devuelto","devolvido","has devuelto"],
+["Hemos ___ (resolver) el problema.","resuelto","resolvido","hemos resuelto"],
+["He ___ (envolver) el regalo.","envuelto","envolvido","he envuelto"],
+["Todos los derivados de volver dan…","-vuelto","-volvido","загальна модель"]
+]},
+{t:"ABRIR, CUBRIR і похідні", lv:1, q:[
+["abrir → …","abierto","abrido","he abierto"],
+["cubrir → …","cubierto","cubrido","he cubierto"],
+["descubrir → …","descubierto","descubrido","des+cubierto"],
+["encubrir → …","encubierto","encubrido","en+cubierto"],
+["recubrir → …","recubierto","recubrido","re+cubierto"],
+["He ___ (abrir) la ventana.","abierto","abrido","he abierto"],
+["Hemos ___ (descubrir) un lugar increíble.","descubierto","descubrido","hemos descubierto"],
+["¿Has ___ (cubrir) la mesa?","cubierto","cubrido","has cubierto"],
+["El detective ha ___ (encubrir) pruebas.","encubierto","encubrido","ha encubierto"],
+["Todos los derivados de abrir/cubrir dan…","-abierto/-cubierto","-abrido/-cubrido","загальна модель"]
+]},
+{t:"MORIR, ROMPER", lv:1, q:[
+["morir → …","muerto","morido","ha muerto"],
+["romper → …","roto","rompido","he roto"],
+["Mi abuelo ha ___ (morir) el año pasado.","muerto","morido","ha muerto"],
+["He ___ (romper) el vaso.","roto","rompido","he roto"],
+["morir і romper — обидва мають…","повністю неправильні дієприкметники","правильні з винятком у наголосі","muerto, roto — окремі форми"],
+["Se ha ___ (romper) el móvil.","roto","rompido","se ha roto"],
+["Han ___ (morir) muchas personas en la guerra.","muerto","morido","han muerto"],
+["He ___ (romper) mi promesa.","roto","rompido","he roto"],
+["morir — дієприкметник вживається частіше з…","estar/ser (falleció, está muerto)","haber завжди","специфіка вживання в контексті смерті"],
+["¿Se ha ___ (romper) algo?","roto","rompido","se ha roto"]
+]},
+{t:"IMPRIMIR: подвійна форма", lv:1, q:[
+["imprimir має…","дві форми: impreso та imprimido","лише одну форму","подвійний дієприкметник"],
+["He ___ (imprimir) el documento. (обидві форми можливі)","impreso/imprimido","imprimido… стоп","обидва варіанти правильні"],
+["impreso — це форма…","більш поширена/традиційна","єдина правильна","обидві існують, impreso частіше"],
+["¿Has ___ (imprimir) las entradas?","impreso/imprimido","imprimido… стоп","обидва можливі"],
+["Дієслова з подвійним дієприкметником — це виняток, бо…","мають і правильну, і неправильну форму","завжди мають лише неправильну","imprimir — приклад"],
+["Hemos ___ (imprimir) todos los documentos.","impreso/imprimido","imprimido… стоп","обидва варіанти вживані"],
+["impreso також функціонує як…","прикметник (materia impresa)","лише дієприкметник","подвійна роль"],
+["El documento está impreso.","Документ надрукований","Документ друкується","impreso як прикметник"],
+["Різниця impreso/imprimido — це…","стилістичний вибір, не помилка","одна форма завжди неправильна","обидві прийнятні"],
+["He ___ (imprimir) el informe ya.","impreso","imprimiendo","impreso (або imprimido)"]
+]},
+{t:"Правильні дієслова: контраст", lv:1, q:[
+["trabajar → …","trabajado","trabecho","правильна форма! (не всі неправильні)"],
+["comer → …","comido","comecho","правильна форма!"],
+["vivir → …","vivido","viecho","правильна форма!"],
+["Більшість дієслів мають дієприкметник…","правильний (-ado/-ido)","неправильний","лише невелика група — виняток"],
+["Список неправильних дієприкметників треба…","вивчити напам'ять","вгадувати щоразу","обмежений список, варто запам'ятати"],
+["estudiar → …","estudiado","estudicho","правильна форма"],
+["Скільки основних неправильних дієприкметників у іспанській?","приблизно 12-15 базових + похідні","понад сто","обмежена кількість"],
+["hablar → …","hablado","habecho","правильна форма"],
+["Похідні від неправильних дієслів (напр. rehacer від hacer) зазвичай…","успадковують неправильність","стають правильними","rehacer → rehecho"],
+["salir → …","salido","salecho","правильна форма (виняток лише у формі yo презенса: salgo)"]
+]},
+{t:"Швидкий огляд: усі неправильні", lv:1, q:[
+["hacer → hecho; decir → …","dicho","decido","decir → dicho"],
+["ver → visto; poner → …","puesto","ponido","poner → puesto"],
+["escribir → escrito; volver → …","vuelto","volvido","volver → vuelto"],
+["abrir → abierto; cubrir → …","cubierto","cubrido","cubrir → cubierto"],
+["morir → muerto; romper → …","roto","rompido","romper → roto"],
+["decir → dicho; hacer → …","hecho","hacido","hacer → hecho"],
+["poner → puesto; ver → …","visto","veído","ver → visto"],
+["volver → vuelto; escribir → …","escrito","escribido","escribir → escrito"],
+["cubrir → cubierto; abrir → …","abierto","abrido","abrir → abierto"],
+["romper → roto; morir → …","muerto","morido","morir → muerto"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Похідні у реченнях", lv:2, q:[
+["He ___ (deshacer) el nudo.","deshecho","deshacido","deshacer → deshecho"],
+["¿Has ___ (devolver) las llaves?","devuelto","devolvido","devolver → devuelto"],
+["Los policías han ___ (descubrir) al culpable.","descubierto","descubrido","descubrir → descubierto"],
+["Hemos ___ (componer) una canción juntos.","compuesto","componido","componer → compuesto"],
+["El médico ha ___ (prever) complicaciones.","previsto","preveído","prever → previsto"],
+["¿Has ___ (describir) tu ciudad?","descrito","describido","describir → descrito"],
+["Han ___ (revolver) toda la habitación.","revuelto","revolvido","revolver → revuelto"],
+["Te he ___ (proponer) un plan.","propuesto","proponido","proponer → propuesto"],
+["He ___ (rehacer) todo el trabajo.","rehecho","rehacido","rehacer → rehecho"],
+["¿Habéis ___ (resolver) el misterio?","resuelto","resolvido","resolver → resuelto"]
+]},
+{t:"У новинах і розповідях", lv:2, q:[
+["Los científicos han ___ (descubrir) una nueva especie.","descubierto","descubrido","descubrir → descubierto"],
+["El gobierno ha ___ (proponer) una nueva ley.","propuesto","proponido","proponer → propuesto"],
+["La policía ha ___ (resolver) el caso.","resuelto","resolvido","resolver → resuelto"],
+["El equipo ha ___ (deshacer) el récord anterior.","deshecho","deshacido","deshacer → deshecho"],
+["Los expertos habían ___ (prever) la crisis.","previsto","preveído","prever → previsto"],
+["El autor ha ___ (describir) la escena con detalle.","descrito","describido","describir → descrito"],
+["Se han ___ (devolver) los impuestos a los ciudadanos.","devuelto","devolvido","devolver → devuelto"],
+["El artista ha ___ (componer) una obra maestra.","compuesto","componido","componer → compuesto"],
+["Han ___ (imponer) nuevas restricciones.","impuesto","imponido","imponer → impuesto"],
+["El edificio ha sido ___ (cubrir) con paneles solares.","cubierto","cubrido","cubrir → cubierto"]
+]},
+{t:"Особисті розповіді з похідними", lv:2, q:[
+["He ___ (descubrir) un nuevo restaurante.","descubierto","descubrido","descubrir → descubierto"],
+["Hemos ___ (rehacer) nuestros planes.","rehecho","rehacido","rehacer → rehecho"],
+["¿Has ___ (devolver) el dinero que te presté?","devuelto","devolvido","devolver → devuelto"],
+["Nunca he ___ (prever) algo así.","previsto","preveído","prever → previsto"],
+["Le he ___ (proponer) matrimonio.","propuesto","proponido","proponer → propuesto"],
+["Hemos ___ (resolver) nuestras diferencias.","resuelto","resolvido","resolver → resuelto"],
+["He ___ (deshacer) las maletas ya.","deshecho","deshacido","deshacer → deshecho"],
+["¿Habéis ___ (componer) alguna canción?","compuesto","componido","componer → compuesto"],
+["Han ___ (descubrir) que me mudo.","descubierto","descubrido","descubrir → descubierto"],
+["He ___ (envolver) todos los regalos.","envuelto","envolvido","envolver → envuelto"]
+]},
+{t:"Заперечення з похідними", lv:2, q:[
+["No he ___ (resolver) el problema todavía.","resuelto","resolvido","no he + participio"],
+["No hemos ___ (descubrir) nada nuevo.","descubierto","descubrido","no hemos + participio"],
+["Ella no ha ___ (devolver) el libro.","devuelto","devolvido","no ha + participio"],
+["No han ___ (proponer) ninguna solución.","propuesto","proponido","no han + participio"],
+["No he ___ (deshacer) mi decisión.","deshecho","deshacido","no he + participio"],
+["Nunca hemos ___ (prever) esta situación.","previsto","preveído","nunca hemos + participio"],
+["No has ___ (describir) bien la situación.","descrito","describido","no has + participio"],
+["No he ___ (componer) nada últimamente.","compuesto","componido","no he + participio"],
+["No habéis ___ (cubrir) todos los gastos.","cubierto","cubrido","no habéis + participio"],
+["No han ___ (imponer) ninguna multa.","impuesto","imponido","no han + participio"]
+]},
+{t:"Питання з похідними", lv:2, q:[
+["¿Has ___ (descubrir) algo interesante?","descubierto","descubrido","has + participio"],
+["¿Habéis ___ (resolver) el examen?","resuelto","resolvido","habéis + participio"],
+["¿Ha ___ (devolver) usted el paquete?","devuelto","devolvido","ha + participio"],
+["¿Qué te ha ___ (proponer)?","propuesto","proponido","ha + participio"],
+["¿Han ___ (prever) algún problema?","previsto","preveído","han + participio"],
+["¿Cómo has ___ (describir) tu experiencia?","descrito","describido","has + participio"],
+["¿Habéis ___ (deshacer) el equipaje ya?","deshecho","deshacido","habéis + participio"],
+["¿Quién ha ___ (componer) esta música?","compuesto","componido","ha + participio"],
+["¿Se ha ___ (cubrir) toda la información?","cubierto","cubrido","se ha + participio"],
+["¿Le han ___ (imponer) una sanción?","impuesto","imponido","han + participio"]
+]},
+{t:"Прикметникове використання (estar/ser)", lv:2, q:[
+["La ventana está ___.","abierta","abierto","ventana ж.р. → abierta"],
+["El problema está ___.","resuelto","resolvido","problema ч.р. → resuelto"],
+["Los documentos están ___.","escritos","escrito","documentos ч.р. мн. → escritos"],
+["Las camas están ___.","deshechas","deshecho","camas ж.р. мн. → deshechas"],
+["El misterio está ___.","descubierto","descubrido","misterio ч.р. → descubierto"],
+["La caja está ___.","cubierta","cubierto","caja ж.р. → cubierta"],
+["Los platos están ___.","rotos","roto","platos ч.р. мн. → rotos"],
+["Дієприкметник як прикметник (з estar/ser) узгоджується за…","родом і числом","нічим","на відміну від перфекту з haber"],
+["El regalo está ___.","envuelto","envuelta","regalo ч.р. → envuelto"],
+["Las propuestas están ___.","hechas","hecho","propuestas ж.р. мн. → hechas"]
+]},
+{t:"Змішана практика: базові + похідні", lv:2, q:[
+["He ___ (ver) y ___ (describir) todo.","visto, descrito","visto, describido","ver→visto, describir→descrito"],
+["Hemos ___ (hacer) y ___ (deshacer) el plan varias veces.","hecho, deshecho","hecho, deshacido","hacer→hecho, deshacer→deshecho"],
+["¿Has ___ (poner) o ___ (proponer) algo nuevo?","puesto, propuesto","puesto, proponido","poner→puesto, proponer→propuesto"],
+["Han ___ (abrir) y ___ (cubrir) la piscina.","abierto, cubierto","abierto, cubrido","abrir→abierto, cubrir→cubierto"],
+["Me han ___ (decir) que han ___ (resolver) todo.","dicho, resuelto","dicho, resolvido","decir→dicho, resolver→resuelto"],
+["He ___ (escribir) y ___ (imprimir) el documento.","escrito, impreso","escrito, imprimido","escribir→escrito, imprimir→impreso"],
+["¿Habéis ___ (volver) y ___ (devolver) todo?","vuelto, devuelto","vuelto, devolvido","volver→vuelto, devolver→devuelto"],
+["Hemos ___ (romper) y luego ___ (rehacer) el jarrón.","roto, rehecho","roto, rehacido","romper→roto, rehacer→rehecho"],
+["¿Has ___ (morir)… эй, espera, eso no aplica a personas vivas! 😄","—","—","гумористична пастка — morir не для nosotros про себе"],
+["He ___ (prever) y ___ (proponer) soluciones.","previsto, propuesto","previsto, proponido","prever→previsto, proponer→propuesto"]
+]},
+{t:"Діалог з похідними дієприкметниками", lv:2, q:[
+["— ¿Has ___ (resolver) el problema? — Sí, ya lo ___ (resolver).","resuelto / he resuelto","resolvido / he resolvido","обидва → resuelto"],
+["— ¿Habéis ___ (descubrir) algo? — Sí, ___ (descubrir) mucho.","descubierto / hemos descubierto","descubrido / hemos descubrido","descubrir → descubierto"],
+["— ¿Le has ___ (devolver) el dinero? — Sí, se lo ___ (devolver) ayer… espera, hoy.","devuelto / he devuelto","devolvido / he devolvido","devolver → devuelto"],
+["— ¿Qué te han ___ (proponer)? — Me ___ (proponer) un ascenso.","propuesto / han propuesto","proponido / han proponido","proponer → propuesto"],
+["— ¿Has ___ (deshacer) las maletas? — No, todavía no las ___ (deshacer).","deshecho / he deshecho","deshacido / he deshacido","deshacer → deshecho"],
+["— ¿Han ___ (imponer) alguna multa? — Sí, les ___ (imponer) una.","impuesto / han impuesto","imponido / han imponido","imponer → impuesto"],
+["— ¿Habéis ___ (componer) la canción? — Sí, la ___ (componer) juntos.","compuesto / hemos compuesto","componido / hemos componido","componer → compuesto"],
+["— ¿Se ha ___ (cubrir) el coste? — Sí, se ___ (cubrir) todo.","cubierto / ha cubierto","cubrido / ha cubrido","cubrir → cubierto"],
+["— ¿Has ___ (prever) esto? — La verdad, no lo ___ (prever).","previsto / he previsto","preveído / he preveído","prever → previsto"],
+["— ¿Habéis ___ (imprimir) los billetes? — Sí, ya los ___ (imprimir).","impreso / hemos impreso","imprimido / hemos imprimido","обидва варіанти правильні для imprimir"]
+]},
+{t:"Порядок і побудова речень", lv:2, q:[
+["Правильний порядок: he + …","participio","інфінітив","he + participio завжди"],
+["«He hacer» — це…","помилка (треба he hecho)","правильно","he + інфінітив = помилка"],
+["Займенник ставиться…","перед he/has/ha…","між he і participio","lo he hecho, не he lo hecho"],
+["«He descubrido» (типова помилка) → …","He descubierto","He descubrido залишити","descubrir → descubierto, не descubrido"],
+["«He resolvido» (типова помилка) → …","He resuelto","He resolvido залишити","resolver → resuelto"],
+["«He rompido» (типова помилка) → …","He roto","He rompido залишити","romper → roto"],
+["«He escribido» (типова помилка) → …","He escrito","He escribido залишити","escribir → escrito"],
+["«He hacido» (типова помилка) → …","He hecho","He hacido залишити","hacer → hecho"],
+["«He decido» (плутанина з decidir!) → якщо малось на увазі decir…","He dicho","He decido залишити","decir → dicho, а не decido (це від decidir)"],
+["«He ponido» (типова помилка) → …","He puesto","He ponido залишити","poner → puesto"]
+]},
+{t:"Похідні у листах і документах", lv:2, q:[
+["He ___ (inscribir) a mi hijo en la escuela.","inscrito","inscribido","inscribir → inscrito"],
+["Hemos ___ (suponer) que estarías de acuerdo.","supuesto","suponido","suponer → supuesto"],
+["¿Han ___ (imponer) alguna condición?","impuesto","imponido","imponer → impuesto"],
+["El jefe ha ___ (contradecir) mi propuesta.","contradicho","contradecido","contradecir → contradicho"],
+["Hemos ___ (entrever) una posible solución.","entrevisto","entreveído","entrever → entrevisto"],
+["¿Le has ___ (bendecir) la casa?","bendecido","bendicho","bendecir → bendecido (виняток!)"],
+["He ___ (recubrir) la mesa con un mantel.","recubierto","recubrido","recubrir → recubierto"],
+["Han ___ (rehacer) todo el documento.","rehecho","rehacido","rehacer → rehecho"],
+["¿Has ___ (prever) todos los gastos?","previsto","preveído","prever → previsto"],
+["Te he ___ (proponer) varias opciones.","propuesto","proponido","proponer → propuesto"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"IMPRIMIR, FREÍR, PROVEER: подвійні форми", lv:3, q:[
+["freír має дві форми дієприкметника:","frito та freído","лише frito","подвійна форма, як imprimir"],
+["He ___ (freír) las patatas.","frito","freído — теж можливо","frito — частіше вживана"],
+["proveer також має дві форми:","provisto та proveído","лише provisto","подвійна форма"],
+["Nos han ___ (proveer) de todo lo necesario.","provisto/proveído","proveído… стоп","обидва варіанти можливі"],
+["У дієслів із подвійною формою неправильна часто вживається як…","прикметник (patatas fritas, texto impreso)","лише в перфекті","прикметникове вживання типовіше для неправильної форми"],
+["«Las patatas están fritas» — тут fritas…","прикметник, узгоджений з patatas","частина перфекту","typical: prикметникове використання"],
+["Правильна форма (freído, imprimido, proveído) частіше вживається…","саме в перфекті з haber","як прикметник","he freído — рідше, але можливо"],
+["bendecir, maldecir — на відміну від decir, мають форму…","правильну (bendecido, maldecido)","неправильну (bendicho, maldicho)","виняток серед похідних decir!"],
+["proveer технічно не є похідним від ver, але має схожість у…","неправильній формі (provisto нагадує puesto/visto)","значенні","цікавий збіг форм"],
+["Список дієслів із подвійними формами обмежений і включає…","imprimir, freír, proveer (і кілька інших)","усі дієслова на -ir","невелика спеціальна група"]
+]},
+{t:"Складні конструкції з перфектом", lv:3, q:[
+["He tenido que ___ (resolver) esto solo.","resolver","resuelto","tener que + інфінітив, не participio!"],
+["Разом з tener que, deber, poder дієприкметник…","не використовується (там інфінітив)","завжди використовується","he tenido que + infinitivo"],
+["He podido ___ (ver) la solución.","ver","visto","poder + інфінітив"],
+["He debido ___ (hacer) esto antes.","hacer","hecho","deber + інфінітив"],
+["Правильно: «He tenido que hacer» чи «He tenido que hecho»?","He tenido que hacer","He tenido que hecho","інфінітив після que"],
+["He querido ___ (decir) la verdad.","decir","dicho","querer + інфінітив"],
+["Дієприкметник (hecho, dicho…) зʼявляється лише одразу після…","he/has/ha/hemos/habéis/han","будь-якого дієслова","тільки прямо після форми haber"],
+["He empezado a ___ (escribir) un libro.","escribir","escrito","empezar a + інфінітив"],
+["He terminado de ___ (hacer) todo.","hacer","hecho","terminar de + інфінітив"],
+["Ключове правило: після haber (he/has…) завжди йде…","дієприкметник (participio)","інфінітив","he + participio, дальші дієслова можуть бути в інфінітиві"]
+]},
+{t:"Дієприкметник у пасивному стані", lv:3, q:[
+["El libro ha sido ___ (escribir) por un autor famoso.","escrito","escribido","пасив: ha sido + participio"],
+["La casa fue ___ (construir) en 1990.","construida","construido","пасив узгоджений: casa ж.р. → construida"],
+["Los documentos han sido ___ (firmar).","firmados","firmado","documentos мн. → firmados"],
+["У пасивному стані (ser + participio) дієприкметник…","узгоджується за родом і числом","завжди -o","на відміну від активного перфекту з haber"],
+["El problema ha sido ___ (resolver).","resuelto","resolvido","resolver → resuelto, ч.р. однина"],
+["Las ventanas fueron ___ (abrir) por el viento.","abiertas","abierto","ventanas ж.р. мн. → abiertas"],
+["El edificio ha sido ___ (cubrir) con una lona.","cubierto","cubrido","cubrir → cubierto"],
+["Активний перфект: he hecho. Пасивний: ha sido…","hecho (узгоджене з підметом)","hecho завжди без змін","ha sido hecho/hecha/hechos/hechas"],
+["La carta fue ___ (escribir) a mano.","escrita","escrito","carta ж.р. → escrita"],
+["Todos los cambios han sido ___ (deshacer).","deshechos","deshecho","cambios мн. → deshechos"]
+]},
+{t:"Виправ помилку (поглиблено)", lv:3, q:[
+["«He descubrido la verdad» → …","He descubierto la verdad","He descubrido залишити","descubrir → descubierto"],
+["«Hemos resolvido el caso» → …","Hemos resuelto el caso","Hemos resolvido залишити","resolver → resuelto"],
+["«Han rompido la promesa» → …","Han roto la promesa","Han rompido залишити","romper → roto"],
+["«He escribido una carta» → …","He escrito una carta","He escribido залишити","escribir → escrito"],
+["«Habéis ponido la mesa» → …","Habéis puesto la mesa","Habéis ponido залишити","poner → puesto"],
+["«Te he propuesto ya» (це правильно чи ні?)","правильно","треба proponido","proponer → propuesto ✓"],
+["«He deshacido las maletas» → …","He deshecho las maletas","He deshacido залишити","deshacer → deshecho"],
+["«Se ha devolvido el paquete» → …","Se ha devuelto el paquete","Se ha devolvido залишити","devolver → devuelto"],
+["«He cubrido la mesa» → …","He cubierto la mesa","He cubrido залишити","cubrir → cubierto"],
+["«Han impuesto» (це правильно?)","так, правильно","треба imponido","imponer → impuesto ✓"]
+]},
+{t:"Переклади речення", lv:3, q:[
+["«Ми відкрили новий магазин»:","Hemos abierto una tienda nueva","Hemos abrido una tienda nueva","abrir → abierto"],
+["«Поліція розкрила справу»:","La policía ha resuelto el caso","La policía ha resolvido el caso","resolver → resuelto"],
+["«Він розбив вазу»:","Ha roto el jarrón","Ha rompido el jarrón","romper → roto"],
+["«Вони запропонували нову ідею»:","Han propuesto una nueva idea","Han proponido una nueva idea","proponer → propuesto"],
+["«Я передбачив цю проблему»:","He previsto este problema","He preveído este problema","prever → previsto"],
+["«Документ надрукований»:","El documento está impreso","El documento está imprimido — теж можливо","impreso типовіше як прикметник"],
+["«Вони повернули гроші»:","Han devuelto el dinero","Han devolvido el dinero","devolver → devuelto"],
+["«Проблему було вирішено» (пасив):","El problema ha sido resuelto","El problema ha sido resolvido","resolver → resuelto"],
+["«Я вже це переробив»:","Ya lo he rehecho","Ya lo he rehacido","rehacer → rehecho"],
+["«Вікна були відкриті вітром»:","Las ventanas fueron abiertas por el viento","Las ventanas fueron abridas por el viento","abrir → abierto, узгоджено"]
+]},
+{t:"Пам'ятка: групи неправильних", lv:3, q:[
+["Група 1 (закінчення -echo): hacer, deshacer, rehacer, satisfacer →","-echo","-uesto","hecho, deshecho, rehecho, satisfecho"],
+["Група 2 (закінчення -icho): decir, contradecir, predecir →","-icho","-ubierto","dicho, contradicho, predicho"],
+["Група 3 (закінчення -isto): ver, prever, entrever →","-isto","-ierto","visto, previsto, entrevisto"],
+["Група 4 (закінчення -rito): escribir, describir, inscribir →","-rito","-uesto","escrito, descrito, inscrito"],
+["Група 5 (закінчення -uesto): poner, componer, proponer, suponer, imponer →","-uesto","-echo","puesto, compuesto, propuesto…"],
+["Група 6 (закінчення -uelto): volver, devolver, revolver, envolver, resolver →","-uelto","-isto","vuelto, devuelto, revuelto…"],
+["Група 7 (закінчення -ierto): abrir, cubrir, descubrir, encubrir, recubrir →","-ierto","-icho","abierto, cubierto, descubierto…"],
+["Винятки з групи decir: bendecir, maldecir →","правильні (-ecido)","неправильні як decir","bendecido, maldecido"],
+["morir і romper — окремі, не входять у групи, дають…","muerto, roto","muerido, rompto","унікальні форми"],
+["Систематизація за групами допомагає…","запам'ятати похідні дієслова швидше","замінити правильні дієслова","патерни повторюються в похідних"]
+]},
+{t:"Розповідь детектива (текст)", lv:3, q:[
+["Los detectives han ___ (descubrir) nuevas pistas.","descubierto","descubrido","descubrir → descubierto"],
+["Han ___ (resolver) el caso finalmente.","resuelto","resolvido","resolver → resuelto"],
+["El sospechoso ha ___ (decir) la verdad.","dicho","decido","decir → dicho"],
+["La policía ha ___ (escribir) un informe detallado.","escrito","escribido","escribir → escrito"],
+["Se ha ___ (devolver) el dinero robado.","devuelto","devolvido","devolver → devuelto"],
+["Han ___ (poner) al culpable bajo arresto.","puesto","ponido","poner → puesto"],
+["El testigo ha ___ (ver) todo lo que pasó.","visto","veído","ver → visto"],
+["Todo el misterio ha sido ___ (descubrir).","descubierto","descubrido","пасив: descubrir → descubierto"],
+["El caso ha ___ (quedar) cerrado.","quedado","quedido","правильне дієслово: quedar → quedado"],
+["¡Por fin, la justicia ha ___ (hacer) su trabajo!","hecho","hacido","hacer → hecho"]
+]},
+{t:"Тест на швидкість: 10 форм", lv:3, q:[
+["satisfacer → …","satisfecho","satisfacido","як hacer"],
+["predecir → …","predicho","predecido","як decir"],
+["entrever → …","entrevisto","entreveído","як ver"],
+["inscribir → …","inscrito","inscribido","як escribir"],
+["suponer → …","supuesto","suponido","як poner"],
+["envolver → …","envuelto","envolvido","як volver"],
+["encubrir → …","encubierto","encubrido","як cubrir"],
+["contradecir → …","contradicho","contradecido","як decir"],
+["recubrir → …","recubierto","recubrido","як cubrir"],
+["imponer → …","impuesto","imponido","як poner"]
+]},
+{t:"Фінальна перевірка: пастки", lv:3, q:[
+["Найчастіша помилка: плутати decir→dicho з decidir→…","decidido (правильне!)","dicho (неправильне для decidir)","decidir — окреме, правильне дієслово!"],
+["decidir у перфекті: he ___.","decidido","decido","decidir — ПРАВИЛЬНЕ дієслово, не decir!"],
+["Не плутай: describir→descrito, але discutir (сперечатися)→…","discutido (правильне)","discrito (неправильне)","discutir — окреме правильне дієслово"],
+["Не плутай: cubrir→cubierto, але descubrir (той самий корінь) — теж…","неправильне (descubierto)","правильне (descubrido)","та сама модель, похідне"],
+["Не плутай: poner→puesto, але posponer (відкладати) — теж…","неправильне (pospuesto)","правильне (posponido)","та сама модель"],
+["morir→muerto стосується лише дієслова «померти»; «мучитися» (sufrir) —…","правильне (sufrido)","неправильне (suerto)","різні дієслова, не плутати"],
+["Ключове правило: похідні успадковують неправильність, але не всі дієслова зі схожим звучанням є похідними!","важливо перевіряти корінь дієслова","усі схожі дієслова автоматично неправильні","обережність з асоціаціями"],
+["decidir, discutir, sufrir — приклади дієслів, які…","звучать схоже на неправильні, але самі правильні","теж неправильні","пастка для тих, хто вчить мову"],
+["Найкраща стратегія — вивчити базовий список 12-15 дієслів і…","розпізнавати лише справжні похідні від них","вважати всі схожі дієслова неправильними","точність важливіша за здогадки"],
+["He decidido (decidir) і he dicho (decir) — це…","два різні дієслова з різними дієприкметниками","одне й те саме дієслово","обов'язково розрізняти!"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["hacer → …","hecho","hacido","база"],
+["decir → …","dicho","decido","база"],
+["deshacer → …","deshecho","deshacido","похідне hacer"],
+["describir → …","descrito","describido","похідне escribir"],
+["componer → …","compuesto","componido","похідне poner"],
+["resolver → …","resuelto","resolvido","незвичайне неправильне"],
+["imprimir має…","дві форми (impreso/imprimido)","лише одну","подвійна форма"],
+["Пасив: El problema ha sido ___.","resuelto","resolvido","пасив узгоджений"],
+["He tenido que ___ (resolver) esto.","resolver","resuelto","tener que + інфінітив"],
+["«He descubrido» — це…","помилка","правильно","треба descubierto"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Неправильні дієприкметники: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 24 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

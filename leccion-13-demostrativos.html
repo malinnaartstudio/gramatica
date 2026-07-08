@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 13 · Вказівні. Згода й незгода · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 13 · @malinnaartstudio</div>
+    <h1 id="htitle">Вказівні. Згода й незгода: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 13 · Demostrativos. Coincidencia y divergencia.</b>
+      30 вправ по 10 питань: este/ese/aquel за родом і числом, esto/eso/aquello,
+      también/tampoco, a mí sí/a mí no. Від ★ до ★★★. ¡Este trenazher es genial! 👉
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · вказівні форми</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · відстань і згода</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й діалоги</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 13</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"ESTE / ESTA (цей/ця)", lv:1, q:[
+["___ libro (цей)","este","esta","libro ч.р. → este"],
+["___ casa (ця)","esta","este","casa ж.р. → esta"],
+["___ coche (цей)","este","esta","coche ч.р. → este"],
+["___ mesa (ця)","esta","este","mesa ж.р. → esta"],
+["___ chico (цей)","este","esta","chico ч.р. → este"],
+["___ silla (ця)","esta","este","silla ж.р. → esta"],
+["este вживається з іменниками…","чоловічого роду","жіночого роду","este libro"],
+["esta вживається з іменниками…","жіночого роду","чоловічого роду","esta casa"],
+["___ día (цей)","este","esta","día ч.р. (виняток на -a!)"],
+["___ mano (ця)","esta","este","mano ж.р. (виняток на -o!)"]
+]},
+{t:"ESTOS / ESTAS (ці)", lv:1, q:[
+["___ libros (ці)","estos","estas","libros ч.р. мн. → estos"],
+["___ casas (ці)","estas","estos","casas ж.р. мн. → estas"],
+["___ zapatos (ці)","estos","estas","zapatos ч.р. → estos"],
+["___ flores (ці)","estas","estos","flores ж.р. → estas"],
+["___ chicos (ці)","estos","estas","chicos ч.р. → estos"],
+["___ ideas (ці)","estas","estos","ideas ж.р. → estas"],
+["estos — це множина від…","este","esta","este → estos"],
+["estas — це множина від…","esta","este","esta → estas"],
+["___ días (ці)","estos","estas","días ч.р. → estos"],
+["___ manos (ці)","estas","estos","manos ж.р. → estas"]
+]},
+{t:"ESE / ESA (той/та)", lv:1, q:[
+["___ libro (той)","ese","esa","libro ч.р. → ese"],
+["___ casa (та)","esa","ese","casa ж.р. → esa"],
+["___ coche (той)","ese","esa","coche ч.р. → ese"],
+["___ chica (та)","esa","ese","chica ж.р. → esa"],
+["ese вживається для…","того, що далі (біля співрозмовника)","того, що поруч зі мною","середня відстань"],
+["___ mesa (та)","esa","ese","mesa ж.р. → esa"],
+["ese/esa означає…","той/та (не зовсім близько)","цей/ця (тут)","este = тут, ese = там"],
+["Різниця este/ese — це…","відстань від мовця","рід іменника","este ближче за ese"],
+["___ señor (той)","ese","esa","señor ч.р. → ese"],
+["___ ventana (та)","esa","ese","ventana ж.р. → esa"]
+]},
+{t:"ESOS / ESAS (ті)", lv:1, q:[
+["___ libros (ті)","esos","esas","libros ч.р. → esos"],
+["___ casas (ті)","esas","esos","casas ж.р. → esas"],
+["___ coches (ті)","esos","esas","coches ч.р. → esos"],
+["___ flores (ті)","esas","esos","flores ж.р. → esas"],
+["esos — множина від…","ese","esa","ese → esos"],
+["esas — множина від…","esa","ese","esa → esas"],
+["___ chicos (ті)","esos","esas","chicos ч.р. → esos"],
+["___ sillas (ті)","esas","esos","sillas ж.р. → esas"],
+["___ días (ті)","esos","esas","días ч.р. → esos"],
+["___ personas (ті)","esas","esos","personas ж.р. → esas"]
+]},
+{t:"AQUEL / AQUELLA (он той)", lv:1, q:[
+["___ libro (он той, далеко)","aquel","aquella","libro ч.р. → aquel"],
+["___ casa (он та, далеко)","aquella","aquel","casa ж.р. → aquella"],
+["aquel вживається для…","далеких обʼєктів","близьких","найдальша відстань"],
+["___ montaña (он та гора)","aquella","aquel","montaña ж.р. → aquella"],
+["aquel ≈ …","«он той» (далеко від обох)","«цей» (тут)","найдальший ступінь"],
+["___ edificio (он та будівля)","aquel","aquella","edificio ч.р. → aquel"],
+["Три ступені: este – ese – …","aquel","esto","este/ese/aquel"],
+["aquel відповідає прислівнику…","allí (там далеко)","aquí (тут)","aquel ↔ allí"],
+["___ árbol (он те дерево)","aquel","aquella","árbol ч.р. → aquel"],
+["___ nube (он та хмара)","aquella","aquel","nube ж.р. → aquella"]
+]},
+{t:"AQUELLOS / AQUELLAS", lv:1, q:[
+["___ libros (он ті)","aquellos","aquellas","libros ч.р. → aquellos"],
+["___ casas (он ті)","aquellas","aquellos","casas ж.р. → aquellas"],
+["aquellos — множина від…","aquel","aquella","aquel → aquellos"],
+["aquellas — множина від…","aquella","aquel","aquella → aquellas"],
+["___ montañas (он ті гори)","aquellas","aquellos","montañas ж.р. → aquellas"],
+["___ árboles (он ті дерева)","aquellos","aquellas","árboles ч.р. → aquellos"],
+["___ días (он ті часи)","aquellos","aquellas","días ч.р. → aquellos"],
+["___ flores (он ті квіти)","aquellas","aquellos","flores ж.р. → aquellas"],
+["aquellos tiempos означає…","ті давні часи","ці дні","aquel про далеке в часі теж"],
+["___ personas (он ті люди)","aquellas","aquellos","personas ж.р. → aquellas"]
+]},
+{t:"Три ступені відстані", lv:1, q:[
+["este — це…","цей (тут, біля мене)","он той (далеко)","aquí"],
+["ese — це…","той (біля тебе)","цей (тут)","середня відстань"],
+["aquel — це…","он той (далеко)","цей (тут)","найдальший"],
+["este ↔ прислівник…","aquí","allí","este/aquí — тут"],
+["ese ↔ прислівник…","ahí","aquí","ese/ahí — там (недалеко)"],
+["aquel ↔ прислівник…","allí","aquí","aquel/allí — там далеко"],
+["Найближчий ступінь — це…","este","aquel","este = тут"],
+["Найдальший ступінь — це…","aquel","este","aquel = ген там"],
+["Порядок за віддаленням:","este – ese – aquel","aquel – ese – este","від близького до далекого"],
+["Проміжний ступінь — це…","ese","este","ese = посередині"]
+]},
+{t:"У реченнях", lv:1, q:[
+["___ libro es mío. (цей)","Este","Esta","libro → este"],
+["Me gusta ___ casa. (ця)","esta","este","casa → esta"],
+["___ zapatos son bonitos. (ці)","Estos","Estas","zapatos → estos"],
+["¿Ves ___ montaña? (он ту)","aquella","aquel","montaña → aquella"],
+["___ chico es mi hermano. (цей)","Este","Esta","chico → este"],
+["Quiero ___ flores. (ці)","estas","estos","flores → estas"],
+["___ coche es de Juan. (той)","Ese","Esa","coche → ese"],
+["___ días fueron felices. (он ті)","Aquellos","Aquellas","días → aquellos"],
+["Prefiero ___ mesa. (цю)","esta","este","mesa → esta"],
+["___ señora es mi profesora. (та)","Esa","Ese","señora → esa"]
+]},
+{t:"У магазині", lv:1, q:[
+["¿Cuánto cuesta ___ camiseta? (ця)","esta","este","camiseta → esta"],
+["Me llevo ___ zapatos. (ці)","estos","estas","zapatos → estos"],
+["¿Me enseña ___ reloj? (той)","ese","esa","reloj → ese"],
+["Prefiero ___ color. (цей)","este","esta","color → este"],
+["¿Tiene ___ vestido en azul? (цю сукню)","este","esta","vestido ч.р. → este"],
+["No me gustan ___ pantalones. (ці)","estos","estas","pantalones → estos"],
+["¿Qué precio tiene ___ bolso? (той)","ese","esa","bolso → ese"],
+["Quiero ___ gafas. (ці)","estas","estos","gafas → estas"],
+["___ chaqueta es muy cara. (ця)","Esta","Este","chaqueta → esta"],
+["¿Puedo probarme ___ botas? (ці)","estas","estos","botas → estas"]
+]},
+{t:"ESTO, ESO, AQUELLO (нейтральні)", lv:1, q:[
+["¿Qué es ___? (це — невідомий предмет)","esto","este","нейтральне → esto"],
+["___ no me gusta. (це загалом)","Esto","Este","нейтральне → esto"],
+["esto/eso/aquello вживають, коли…","не знаємо роду предмета","точно знаємо іменник","¿Qué es esto?"],
+["¿Qué es ___? (те, у тебе)","eso","ese","нейтральне → eso"],
+["___ es increíble. (це все)","Esto","Este","абстрактне → esto"],
+["Нейтральні форми esto/eso/aquello…","не мають роду й множини","змінюються за родом","¿Qué es esto?"],
+["¿Ves ___ allí a lo lejos? (он те)","aquello","aquel","нейтральне далеке → aquello"],
+["«Що це таке?» — це…","¿Qué es esto?","¿Qué es este?","нейтральне esto"],
+["esto пишеться…","без наголосу","з наголосом","нейтральні — без тильди"],
+["___ de estudiar es difícil. (оце все)","Eso","Ese","абстрактне → eso"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"ESTE чи ESE?", lv:2, q:[
+["Toma ___ libro (у моїй руці).","este","ese","у мене → este"],
+["Pásame ___ libro (там, біля тебе).","ese","este","біля тебе → ese"],
+["___ móvil que tengo aquí es nuevo.","Este","Ese","тут → este"],
+["___ móvil que tienes tú es viejo.","Ese","Este","у тебе → ese"],
+["Mira ___ cuadro (на дальній стіні).","aquel","este","далеко → aquel"],
+["¿Me das ___ boli (що поруч зі мною)?","este","ese","поруч зі мною → este"],
+["¿Qué es ___ (що ти тримаєш)?","eso","esto","у тебе → eso"],
+["___ zapatos (на мені) son cómodos.","Estos","Esos","на мені → estos"],
+["¿De quién es ___ coche (он там)?","aquel","este","далеко → aquel"],
+["Prueba ___ tarta (яку я тобі даю).","esta","aquella","даю тобі → esta (в моїй руці)"]
+]},
+{t:"Вказівне без іменника", lv:2, q:[
+["Este libro y ___ (той). (без слова libro)","ese","eso","ese замінює el libro"],
+["No quiero esta camiseta, quiero ___.","esa","eso","esa (camiseta) — рід зберігається"],
+["Вказівне може стояти без іменника, замінюючи його:","Me gusta este (coche)","Me gusta esto coche","este сам = «цей»"],
+["Estos zapatos son caros; prefiero ___.","esos","eso","esos (zapatos)"],
+["Me gusta esta casa, pero no ___.","esa","eso","esa (casa)"],
+["Коли вказівне замінює іменник, воно…","зберігає рід і число","стає нейтральним","este/esa/aquellos"],
+["¿Cuál prefieres, este o ___?","ese","eso","ese (варіант)"],
+["Esta falda o ___, ¿cuál te gusta más?","esa","eso","esa (falda)"],
+["No me gustan estos, me gustan ___.","aquellos","aquello","aquellos (ті предмети)"],
+["Раніше писали éste/ése з наголосом, тепер…","наголос не обовʼязковий","обовʼязковий","RAE скасувала обовʼязковість"]
+]},
+{t:"TAMBIÉN / TAMPOCO", lv:2, q:[
+["— Me gusta el café. — A mí ___. (мені теж)","también","tampoco","згода зі «+» → también"],
+["— No me gusta. — A mí ___. (мені теж ні)","tampoco","también","згода зі «−» → tampoco"],
+["— Tengo hambre. — Yo ___.","también","tampoco","ствердження → también"],
+["— No tengo dinero. — Yo ___.","tampoco","también","заперечення → tampoco"],
+["también вживається після…","ствердження","заперечення","«теж так»"],
+["tampoco вживається після…","заперечення","ствердження","«теж ні»"],
+["— Voy al cine. — Nosotros ___.","también","tampoco","+ → también"],
+["— No como carne. — Yo ___.","tampoco","también","− → tampoco"],
+["— Soy de Ucrania. — Yo ___.","también","tampoco","+ → también"],
+["— No entiendo. — Yo ___.","tampoco","también","− → tampoco"]
+]},
+{t:"A MÍ SÍ / A MÍ NO", lv:2, q:[
+["— Me gusta el café. — A mí ___. (а мені ні)","no","tampoco","незгода зі «+» → a mí no"],
+["— No me gusta. — A mí ___. (а мені так!)","sí","también","незгода зі «−» → a mí sí"],
+["a mí no вживають, коли…","не згоден зі ствердженням","згоден","+ → a mí no"],
+["a mí sí вживають, коли…","не згоден із запереченням","згоден","− → a mí sí"],
+["— Me encanta bailar. — A mí ___. (а мені ні)","no","tampoco","+ → a mí no"],
+["— No me gusta madrugar. — A mí ___. (а мені так)","sí","también","− → a mí sí"],
+["Згода зі ствердженням → también; незгода → …","a mí no","a mí sí","«+» незгода = a mí no"],
+["Згода із запереченням → tampoco; незгода → …","a mí sí","a mí no","«−» незгода = a mí sí"],
+["— Tengo frío. — Yo ___. (а я ні)","no","tampoco","+ незгода → yo no"],
+["— No quiero salir. — Yo ___. (а я хочу)","sí","también","− незгода → yo sí"]
+]},
+{t:"Чотири реакції", lv:2, q:[
+["+ згода: — Me gusta. — A mí ___.","también","tampoco","+ згода → también"],
+["+ незгода: — Me gusta. — A mí ___.","no","sí","+ незгода → a mí no"],
+["− згода: — No me gusta. — A mí ___.","tampoco","también","− згода → tampoco"],
+["− незгода: — No me gusta. — A mí ___.","sí","no","− незгода → a mí sí"],
+["Реакція на «Me encanta» (я згоден):","A mí también","A mí tampoco","+ → también"],
+["Реакція на «No me gusta» (я теж ні):","A mí tampoco","A mí también","− → tampoco"],
+["Реакція на «Me gusta» (а я ні):","A mí no","A mí sí","+ незгода → no"],
+["Реакція на «No me gusta» (а мені так):","A mí sí","A mí no","− незгода → sí"],
+["Ключ: también/a mí no — після…","ствердження","заперечення","+ речення"],
+["Ключ: tampoco/a mí sí — після…","заперечення","ствердження","− речення"]
+]},
+{t:"YO también / YO tampoco", lv:2, q:[
+["Для дієслів БЕЗ gustar кажуть…","Yo también / Yo tampoco","A mí también","— Trabajo mucho. — Yo también"],
+["— Trabajo los sábados. — Yo ___.","también","tampoco","+ → yo también"],
+["— No trabajo hoy. — Yo ___.","tampoco","también","− → yo tampoco"],
+["— Vivo en Madrid. — Yo ___.","también","tampoco","+ → yo también"],
+["— No tengo coche. — Yo ___.","tampoco","también","− → yo tampoco"],
+["Різниця: з gustar → «a mí», зі звичайним дієсловом → …","«yo»","«a mí» теж","Yo también (не A mí)"],
+["— Hablo español. — Yo ___.","también","tampoco","+ → yo también"],
+["— No fumo. — Yo ___.","tampoco","también","− → yo tampoco"],
+["— Estudio por la noche. — Yo ___.","también","tampoco","+ → yo también"],
+["— No como carne. — Yo ___.","tampoco","también","− → yo tampoco"]
+]},
+{t:"Вказівні + this/that логіка", lv:2, q:[
+["«ця книга тут» — це…","este libro","ese libro","тут → este"],
+["«та книга там (у тебе)» — це…","ese libro","este libro","у тебе → ese"],
+["«он та книга далеко» — це…","aquel libro","este libro","далеко → aquel"],
+["este año означає…","цей рік","той рік","поточний"],
+["esta mañana означає…","цього ранку","того ранку","este/esta про поточне"],
+["en aquella época означає…","у ту (давню) добу","цієї доби","aquel про далеке в часі"],
+["esta semana означає…","цього тижня","минулого тижня","поточний"],
+["ese día означає…","того дня (про який мова)","цього дня","ese про згаданий раніше"],
+["«en estos días» означає…","цими днями","у ті дні","поточний період"],
+["aquellos años означає…","ті (давні) роки","ці роки","aquel = давнє минуле"]
+]},
+{t:"Опис фото", lv:2, q:[
+["___ es mi hermana (показую фото). (це)","Esta","Este","hermana → esta"],
+["Y ___ es mi hermano. (це)","este","esta","hermano → este"],
+["___ son mis padres. (це)","Estos","Estas","padres → estos"],
+["___ de aquí es mi abuela. (ця)","esta","este","abuela → esta"],
+["Y ___ señores son mis tíos. (ці)","estos","estas","señores → estos"],
+["___ niña es mi prima. (ця)","Esta","Este","niña → esta"],
+["___ chicos son mis primos. (ці)","Estos","Estas","chicos → estos"],
+["Y ___ casa es la de mis abuelos. (ця)","esta","este","casa → esta"],
+["___ perro se llama Max. (цей)","Este","Esta","perro → este"],
+["¡Y ___ soy yo de pequeña! (це)","esta","este","я (дівчинка) → esta"]
+]},
+{t:"Питання-відповіді", lv:2, q:[
+["— ¿Es tuyo ___ boli? — Sí. (цей)","este","esta","boli → este"],
+["— ¿Cuál? ¿___ o ese? (цей)","Este","Esta","este замінює boli"],
+["— ¿Te gusta ___ vestido? (ця сукня)","este","esta","vestido ч.р. → este"],
+["— ¿Quién es ___ señor? (той)","ese","esa","señor → ese"],
+["— ¿De quién son ___ llaves? (ці)","estas","estos","llaves → estas"],
+["— ¿Qué es ___? (це в тебе)","eso","ese","нейтральне → eso"],
+["— ¿Ves ___ pájaro allí? (он того)","aquel","este","далеко → aquel"],
+["— ¿Prefieres esta o ___? (ту)","esa","eso","esa (річ)"],
+["— ¿Son tuyos ___ zapatos? (ці)","estos","estas","zapatos → estos"],
+["— ¿Qué significa ___? (це слово загалом)","esto","este","нейтральне → esto"]
+]},
+{t:"Жести та вказівні", lv:2, q:[
+["Показуючи на щось у своїй руці: «___ es mi teléfono».","Este","Ese","у своїй руці → este"],
+["Показуючи на щось у руках співрозмовника: «¿Qué es ___?»","eso","esto","у нього → eso"],
+["Показуючи вдалину: «Mira ___ pájaro».","aquel","ese","далеко → aquel"],
+["«Dame ___» (простягаючи руку до предмета біля тебе)","eso","esto","біля тебе → eso"],
+["«Toma ___» (даючи щось із своєї руки)","esto","eso","у моїй руці → esto"],
+["Вказуючи на людину поруч із собою: «___ es mi amiga».","Esta","Esa","поруч зі мною → esta"],
+["Вказуючи на людину біля співрозмовника: «___ es tu amiga, ¿no?»","Esa","Esta","біля тебе → esa"],
+["Вказуючи на щось на протилежному кінці кімнати: «¿Ves ___ cuadro?»","aquel","este","далеко → aquel"],
+["Жест «ось» (простягаючи) супроводжує форма…","esto/este/esta","aquello","найближче до мовця"],
+["Жест «он там» супроводжує форма…","aquel/aquello","este","найдальше"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Виняткові роди", lv:3, q:[
+["___ día (цей)","este","esta","día — ч.р.! (виняток на -a)"],
+["___ mano (ця)","esta","este","mano — ж.р.! (виняток на -o)"],
+["___ problema (цей)","este","esta","problema — ч.р. (грецьке -ma)"],
+["___ foto (ця)","esta","este","foto — ж.р. (від fotografía)"],
+["___ mapa (цей)","este","esta","mapa — ч.р."],
+["___ moto (ця)","esta","este","moto — ж.р. (від motocicleta)"],
+["___ tema (цей)","este","esta","tema — ч.р."],
+["___ agua (ця)","esta","este","agua — ж.р. (esta agua)"],
+["Іменники на -ma грецького походження часто…","чоловічого роду","жіночого роду","el problema, el tema"],
+["___ programa (цей)","este","esta","programa — ч.р."]
+]},
+{t:"Нейтральні: без роду", lv:3, q:[
+["esto/eso/aquello вживають, коли…","предмет невідомий або абстрактний","точно знаємо іменник","¿Qué es esto?"],
+["¿Qué es ___? (показуючи незнайому річ)","esto","este","нейтральне"],
+["___ que dices es verdad. (те, що)","Eso","Ese","абстрактна ідея → eso"],
+["Нейтральні форми…","не мають множини й роду","змінюються","esto — тільки так"],
+["«Все це» (загалом) — це…","todo esto","todo este","нейтральне esto"],
+["Не можна сказати «esto libro», бо…","перед іменником → este","esto завжди можна","esto — без іменника!"],
+["Перед іменником вживається…","este/esta (esto — ні)","esto","este libro, не esto libro"],
+["por eso означає…","тому, через це","для того предмета","por eso = ось чому"],
+["¡___ es! (саме так!)","Eso","Ese","¡Eso es! = точно!"],
+["esto, eso, aquello пишуться…","без тильди завжди","з тильдою","нейтральні — без наголосу"]
+]},
+{t:"Наголос: éste vs este", lv:3, q:[
+["Сучасна норма RAE: наголос на éste…","не обовʼязковий","обовʼязковий","este — можна без тильди"],
+["Нейтральні esto/eso/aquello…","НІКОЛИ не мають тильди","завжди з тильдою","це правило незмінне"],
+["«Me gusta este» (без іменника) — тильда…","не потрібна за новою нормою","обовʼязкова","RAE 2010"],
+["Плутати este (вказівне) можна лише з…","нічим суттєвим","дієсловом","на відміну від esto"],
+["¿Qué es esto? — esto тут…","завжди без тильди","з тильдою","нейтральне"],
+["Історично тильду ставили, щоб…","відрізнити займенник від прикметника","прикрасити","éste (він) vs este (цей)"],
+["За сучасною нормою можна писати…","este і в ролі займенника","лише éste","спрощення"],
+["Форми este/ese/aquel + іменник — тильди…","ніколи не мали","завжди мали","este libro — без тильди"],
+["Головне правило сьогодні:","esto/eso/aquello — без тильди, решта — необовʼязково","усе з тильдою","спрощена норма"],
+["«Prefiero este» сьогодні пишуть…","este (без тильди — ок)","лише éste","норма пomʼякшена"]
+]},
+{t:"Coincidencia: складніше", lv:3, q:[
+["— A mí me gusta. — A mí también. — А третій (не згоден):","A mí no","A mí sí","+ незгода → a mí no"],
+["— No tengo tiempo. — Yo tampoco. — А хтось має:","Yo sí","Yo también","− незгода → yo sí"],
+["«І я так само» (повна згода зі «+») — це…","Yo también / A mí también","Yo tampoco","+ → también"],
+["«Я так само (не роблю)» — це…","Yo tampoco","Yo también","− → tampoco"],
+["Відповідь на «Me encanta» від того, хто НЕ любить:","A mí no","A mí tampoco","+ незгода → no"],
+["Відповідь на «No me gusta nada» від того, хто любить:","A mí sí","A mí también","− незгода → sí"],
+["— Estoy cansado. — Yo ___. (я теж)","también","tampoco","+ → también"],
+["— No he dormido bien. — Yo ___. (я теж ні)","tampoco","también","− → tampoco"],
+["Ключ вибору — знак попереднього речення:","+ → también/no; − → tampoco/sí","навпаки","полярність важлива"],
+["— Me da igual. — A mí ___. (мені теж байдуже)","también","tampoco","«me da igual» — ствердна форма → también"]
+]},
+{t:"Вказівні в часі", lv:3, q:[
+["este año означає…","цей рік","минулий рік","este = поточне"],
+["aquel año означає…","той (давній) рік","цей рік","aquel = далеке минуле"],
+["ese día (про згаданий раніше день) — …","той день","цей день","ese про вже названий"],
+["«en aquella época» означає…","у ту давню добу","цієї доби","aquel про давнину"],
+["esta vez означає…","цього разу","того разу","esta = поточний"],
+["por aquel entonces означає…","тоді, у ті часи","цими днями","aquel entonces = давнє тоді"],
+["«estos días» означає…","цими днями","у ті дні","estos = поточні"],
+["Для далекого минулого («ті часи») беруть…","aquel/aquella","este/esta","aquellos tiempos"],
+["ese momento (у розповіді) — …","той момент","цей момент","ese про згаданий"],
+["«en este momento» означає…","цієї миті, зараз","у ту мить","este = теперішнє"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«esta libro» → …","este libro","esto libro","libro ч.р. → este"],
+["«este casa» → …","esta casa","esto casa","casa ж.р. → esta"],
+["«esto libro» → …","este libro","esta libro","esto — без іменника!"],
+["«estos flores» → …","estas flores","esto flores","flores ж.р. → estas"],
+["«este día» → це…","правильно","esta día","día ч.р. ✓"],
+["«esta mano» → це…","правильно","este mano","mano ж.р. ✓"],
+["«¿Qué es este?» (незнайома річ) → …","¿Qué es esto?","¿Qué es esta?","нейтральне → esto"],
+["«A mí también» після «No me gusta» → …","A mí tampoco","A mí sí","− → tampoco"],
+["«A mí tampoco» після «Me gusta» (згода) → …","A mí también","A mí no","+ згода → también"],
+["«aquel montaña» → …","aquella montaña","aquel montañas","montaña ж.р. → aquella"]
+]},
+{t:"Діалог у кафе", lv:3, q:[
+["— Me apetece ___ tarta de aquí. (ця)","esta","este","tarta → esta"],
+["— A mí me gusta más ___ de allí. (он та)","aquella","esta","далеко → aquella"],
+["— ¿Y ___ pasteles? (ці, поруч)","estos","esos","поруч зі мною → estos"],
+["— Me gusta el café solo. — A mí ___. (а мені ні)","no","tampoco","+ незгода → a mí no"],
+["— No me gusta el azúcar. — A mí ___. (теж ні)","tampoco","también","− → tampoco"],
+["— ¿Qué es ___? (те, у тебе на тарілці)","eso","esto","у тебе → eso"],
+["— ___ es un flan. (це)","Esto","Este","нейтральне → esto"],
+["— ¿Probamos ___ postres? (ці)","estos","esos","estos"],
+["— A mí me encanta este sitio. — A mí ___. (теж)","también","tampoco","+ → también"],
+["— ¿Volvemos ___ finde? (цих вихідних)","este","esta","fin de semana ч.р. → este"]
+]},
+{t:"Переклади речення", lv:3, q:[
+["«Ця книга моя»:","Este libro es mío","Esta libro es mío","libro → este"],
+["«Мені подобається ця пісня»:","Me gusta esta canción","Me gusta este canción","canción → esta"],
+["«Той будинок (він там) старий»:","Aquella casa es vieja","Aquel casa es vieja","casa → aquella"],
+["«Що це таке?»:","¿Qué es esto?","¿Qué es este?","нейтральне → esto"],
+["«Мені теж подобається» (після «+»):","A mí también","A mí tampoco","+ → también"],
+["«А мені ні» (після «Me gusta»):","A mí no","A mí sí","+ незгода → no"],
+["«Ці туфлі зручні»:","Estos zapatos son cómodos","Estas zapatos son cómodos","zapatos → estos"],
+["«Мені теж ні» (після «No…»):","A mí tampoco","A mí también","− → tampoco"],
+["«Той день був особливий» (згаданий):","Ese día fue especial","Eso día fue especial","día → ese"],
+["«Ця вода холодна»:","Esta agua está fría","Este agua está fría","agua ж.р. → esta"]
+]},
+{t:"PERO, SINO і згода/незгода", lv:3, q:[
+["— Me gusta el café. — A mí también, ___ prefiero el té.","pero","sino","pero = але (протиставлення)"],
+["No es difícil, ___ fácil.","sino","pero","заперечення + альтернатива → sino"],
+["sino вживається після…","заперечення, коли йде повна заміна","ствердження","no es esto, sino aquello"],
+["No quiero este, ___ ese.","sino","pero","no + sino = заміна"],
+["Me gusta, ___ no mucho.","pero","sino","pero = уточнення без заміни"],
+["No es aquel coche, ___ este.","sino","pero","заміна → sino"],
+["pero додає…","контраст без заперечення першої частини","повну заміну","es caro pero bueno"],
+["No fue ayer, ___ hoy.","sino","pero","заміна дня → sino"],
+["A mí me gusta esto, ___ no aquello.","pero","sino","протиставлення двох речень"],
+["No como carne, ___ pescado sí.","pero","sino","заміна продукту → sino"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["___ libro (цей)","este","esta","libro → este"],
+["___ casa (ця)","esta","este","casa → esta"],
+["___ zapatos (ці)","estos","estas","zapatos → estos"],
+["___ montaña (он та, далеко)","aquella","esta","далеко ж.р. → aquella"],
+["¿Qué es ___? (незнайома річ)","esto","este","нейтральне"],
+["— Me gusta. — A mí ___. (теж так)","también","tampoco","+ → también"],
+["— No me gusta. — A mí ___. (теж ні)","tampoco","también","− → tampoco"],
+["— Me gusta. — A mí ___. (а мені ні)","no","sí","+ незгода → a mí no"],
+["___ día (цей)","este","esta","día ч.р.!"],
+["Три ступені: este – ese – …","aquel","esto","за віддаленням"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Вказівні. Згода й незгода: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 13 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

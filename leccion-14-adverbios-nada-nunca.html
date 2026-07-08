@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 14 · Прислівники. NADA, NUNCA · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 14 · @malinnaartstudio</div>
+    <h1 id="htitle">Прислівники. Nada, nunca: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 14 · Adverbios. Construcciones negativas con nada y nunca.</b>
+      30 вправ по 10 питань: прислівники частоти й способу, nada/nadie/ninguno/nunca,
+      подвійне заперечення. Від ★ до ★★★. ¡Nunca dejes de practicar! 💪
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · прислівники, основи</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · заперечення в контексті</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й діалоги</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 14</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Прислівники частоти", lv:1, q:[
+["«завжди» — це…","siempre","nunca","nunca = ніколи"],
+["«ніколи» — це…","nunca","siempre","siempre = завжди"],
+["«зазвичай» — це…","normalmente","raramente","raramente = рідко"],
+["«іноді» — це…","a veces","a menudo","a menudo = часто"],
+["«часто» — це…","a menudo","a veces","a veces = іноді"],
+["«рідко» — це…","raras veces","muchas veces","muchas veces = часто"],
+["«щодня» — це…","todos los días","todo el día","todo el día = увесь день"],
+["«кожного тижня» — це…","cada semana","esta semana","esta semana = цього тижня"],
+["Siempre llego temprano.","Я завжди приходжу рано","Я ніколи не приходжу рано","siempre = завжди"],
+["Nunca como carne.","Я ніколи не їм м'яса","Я завжди їм м'ясо","nunca = ніколи"]
+]},
+{t:"Прислівники способу дії", lv:1, q:[
+["«добре» — це…","bien","mal","mal = погано"],
+["«погано» — це…","mal","bien","bien = добре"],
+["«швидко» — це…","rápido/rápidamente","despacio","despacio = повільно"],
+["«повільно» — це…","despacio","rápido","rápido = швидко"],
+["«легко» — це…","fácilmente","difícilmente","difícilmente = важко"],
+["Прислівники на -mente утворюються від…","прикметника жіночого роду + mente","дієслова","clara + mente = claramente"],
+["rápida + mente = …","rápidamente","rápidomente","жіночий рід + mente"],
+["fácil + mente = …","fácilmente","fácilamente","fácil без зміни + mente"],
+["«погано» (mal) — це…","коротка форма без -mente","з -mente","виняток: mal, bien"],
+["Habla claramente означає…","говорить чітко","говорить темно","claro → claramente"]
+]},
+{t:"NADA: нічого", lv:1, q:[
+["No veo ___.","nada","algo","заперечення → nada"],
+["nada означає…","нічого","щось","протилежність algo"],
+["No tengo ___ que decir.","nada","algo","nada que decir"],
+["No hay ___ en la nevera.","nada","algo","нічого немає"],
+["No entiendo ___.","nada","algo","нічого не розумію"],
+["antónimo (протилежність) nada — це…","algo","nunca","algo = щось"],
+["No como ___ por la mañana.","nada","algo","нічого не їм"],
+["¿Quieres algo? — No, ___.","nada","algo","відповідь: nada"],
+["No me gusta ___ de esto.","nada","algo","нічого з цього"],
+["nada стосується…","речей","людей","nadie = про людей"]
+]},
+{t:"NADIE: ніхто", lv:1, q:[
+["No hay ___ en casa.","nadie","alguien","нікого немає"],
+["nadie означає…","ніхто","хтось","протилежність alguien"],
+["No conozco a ___ aquí.","nadie","alguien","нікого не знаю"],
+["antónimo nadie — це…","alguien","algo","alguien = хтось"],
+["No viene ___ hoy.","nadie","alguien","ніхто не прийде"],
+["¿Hay alguien? — No, no hay ___.","nadie","alguien","відповідь: nadie"],
+["nadie стосується…","людей","речей","nada = про речі"],
+["No he visto a ___.","nadie","nada","особистий a + nadie"],
+["No llama ___ a esta hora.","nadie","nada","ніхто не дзвонить"],
+["No hablo con ___ de esto.","nadie","nada","ні з ким"]
+]},
+{t:"NUNCA: ніколи", lv:1, q:[
+["No voy ___ al gimnasio.","nunca","siempre","ніколи не ходжу"],
+["nunca означає…","ніколи","завжди","протилежність siempre"],
+["No como carne ___.","nunca","siempre","ніколи не їм"],
+["antónimo nunca — це…","siempre","a veces","siempre = завжди"],
+["No llega tarde ___.","nunca","siempre","ніколи не спізнюється"],
+["¿Vas al cine? — No, ___ voy.","nunca","siempre","відповідь: nunca"],
+["No he estado ___ en España.","nunca","siempre","ніколи не бував"],
+["nunca jamás означає…","абсолютно ніколи","завжди й скрізь","підсилення"],
+["No fumo ___.","nunca","a veces","ніколи не курю"],
+["No miento ___.","nunca","siempre","ніколи не брешу"]
+]},
+{t:"NINGUNO: жодний", lv:1, q:[
+["No tengo ___ problema.","ningún","ninguno","перед іменником ч.р. → ningún"],
+["No hay ___ solución.","ninguna","ningún","solución ж.р. → ninguna"],
+["ningún — скорочення від…","ninguno","ninguna","перед іменником ч.р."],
+["No queda ___ pan.","ningún","ninguna","pan ч.р. → ningún"],
+["No tengo ___ duda.","ninguna","ningún","duda ж.р. → ninguna"],
+["antónimo ninguno — це…","alguno","nadie","alguno = якийсь"],
+["— ¿Tienes hermanos? — No, ___.","ninguno","ningún","без іменника → ninguno"],
+["No hay ___ problema con eso.","ningún","ninguno","perед problema → ningún"],
+["ninguno вживається для…","речей і людей у переліку","лише людей","«жоден з»"],
+["No veo ___ error aquí.","ningún","ninguna","error ч.р. → ningún"]
+]},
+{t:"Подвійне заперечення: база", lv:1, q:[
+["No veo nada — скільки заперечень тут?","два (no + nada)","одне","подвійне — норма!"],
+["В іспанській подвійне заперечення…","нормальне явище","помилка","no…nada, no…nadie"],
+["No como nunca carne.","Я ніколи не їм м'яса","Я завжди їм м'ясо","no + nunca = ніколи"],
+["No conozco a nadie.","Я нікого не знаю","Я знаю всіх","no + nadie"],
+["No tengo nada que hacer.","Мені нічого робити","Мені є що робити","no + nada"],
+["Формула: no + дієслово + …","заперечне слово","ствердне слово","no veo nada"],
+["No hay ningún problema.","Немає жодної проблеми","Є одна проблема","no + ningún"],
+["Українською подвійне заперечення теж є, напр…","«нікого не бачу»","«когось бачу»","та сама логіка!"],
+["No hago nada los domingos.","Нічого не роблю по неділях","Щось роблю по неділях","no + nada"],
+["No viene nunca a tiempo.","Ніколи не приходить вчасно","Завжди приходить вчасно","no + nunca"]
+]},
+{t:"Прислівники місця й часу", lv:1, q:[
+["«тепер, зараз» — це…","ahora","antes","antes = раніше"],
+["«раніше» — це…","antes","después","después = потім"],
+["«потім» — це…","después","antes","antes = раніше"],
+["«ще» (досі) — це…","todavía","ya","ya = вже"],
+["«вже» — це…","ya","todavía","todavía = ще"],
+["Todavía no he comido.","Я ще не їв","Я вже поїв","todavía no = ще не"],
+["Ya he terminado.","Я вже закінчив","Я ще не закінчив","ya = вже"],
+["«зараз же, негайно» — це…","ahora mismo","alguna vez","alguna vez = колись"],
+["«колись» (питання про досвід) — це…","alguna vez","nunca","¿Has estado alguna vez…?"],
+["¿Has estado alguna vez en Madrid?","Ти колись бував у Мадриді?","Ти ніколи не бував у Мадриді?","alguna vez = колись"]
+]},
+{t:"Прислівники кількості", lv:1, q:[
+["«багато» — це…","mucho","poco","poco = мало"],
+["«мало» — це…","poco","mucho","mucho = багато"],
+["«достатньо» — це…","bastante","demasiado","demasiado = забагато"],
+["«забагато» — це…","demasiado","poco","poco = мало"],
+["Trabajo demasiado означає…","працюю забагато","працюю мало","demasiado = надмір"],
+["Duermo muy poco означає…","сплю дуже мало","сплю дуже багато","poco = мало"],
+["«майже» — це…","casi","apenas","apenas = ледве"],
+["«ледве» — це…","apenas","casi","casi = майже"],
+["Casi termino означає…","майже закінчив","ледве почав","casi = майже"],
+["Apenas duermo означає…","ледве сплю (майже не сплю)","сплю багато","apenas = ледве"]
+]},
+{t:"Прислівники ствердження/заперечення", lv:1, q:[
+["«так» — це…","sí","no","no = ні"],
+["«ні» — це…","no","sí","sí = так"],
+["«можливо» — це…","quizás/tal vez","seguro","seguro = точно"],
+["«точно, напевно» — це…","seguro/seguramente","quizás","quizás = можливо"],
+["«звичайно» — це…","claro/por supuesto","tal vez","tal vez = можливо"],
+["Quizás venga mañana.","Можливо, прийде завтра","Точно прийде завтра","quizás = можливо"],
+["Por supuesto означає…","звичайно","можливо","ствердна впевненість"],
+["también означає…","також","ні також","tampoco = теж ні"],
+["tampoco означає…","теж ні","також","tampoco про заперечення"],
+["«зовсім ні» — це…","en absoluto","en general","en general = загалом"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"NADA у реченнях", lv:2, q:[
+["No hay ___ que hacer aquí.","nada","algo","nada que hacer"],
+["Esta película no vale ___.","nada","algo","не варта нічого"],
+["No sé ___ de este tema.","nada","algo","нічого не знаю"],
+["nada de nada означає…","геть нічого (підсилення)","щось мале","подвійне підсилення"],
+["No queda ___ de comida.","nada","algo","нічого не лишилось"],
+["¿Necesitas algo? — No, gracias, ___.","nada","algo","nada — відповідь"],
+["No pasa ___.","nada","algo","«нічого страшного»"],
+["¡No pasa nada! означає…","Нічого страшного!","Щось трапилось!","заспокійлива фраза"],
+["No hay ___ más que decir.","nada","algo","нічого більше"],
+["De nada означає…","нема за що","нічого немає","відповідь на gracias"]
+]},
+{t:"NUNCA: позиція", lv:2, q:[
+["Nunca voy solo. (перед дієсловом, без no)","правильно","треба no nunca","nunca ПЕРЕД дієсловом — без no!"],
+["No voy nunca solo. (після дієслова)","також правильно","помилка","обидва варіанти вірні"],
+["Якщо nunca стоїть ПЕРЕД дієсловом…","no не потрібне","no обов'язкове","Nunca como carne"],
+["Якщо nunca стоїть ПІСЛЯ дієслова…","потрібне no перед дієсловом","no не потрібне","No como nunca carne"],
+["Nunca he estado en Asia.","Я ніколи не бував в Азії","Я завжди бував в Азії","nunca перед дієсловом"],
+["Casi nunca salgo de noche.","Майже ніколи не виходжу вночі","Завжди виходжу вночі","casi nunca = майже ніколи"],
+["Nunca jamás vuelvo allí.","Ніколи в житті туди не повернусь","Завжди повертаюсь туди","подвійне підсилення"],
+["«Я туди більше ніколи не піду» — це…","No voy nunca más allí","No voy siempre más allí","nunca más"],
+["nunca can стояти…","до або після дієслова","лише до","гнучка позиція"],
+["Nunca digo mentiras.","Я ніколи не брешу","Я завжди брешу","nunca перед дієсловом"]
+]},
+{t:"NADIE у реченнях", lv:2, q:[
+["No hay ___ en la sala.","nadie","alguien","нікого в залі"],
+["Nadie sabe la respuesta. (без no)","правильно","треба no nadie","nadie перед дієсловом — без no"],
+["No lo sabe ___.","nadie","alguien","ніхто не знає"],
+["No he hablado con ___ hoy.","nadie","alguien","ні з ким"],
+["A nadie le importa.","Нікому не важливо","Комусь важливо","nadie про людей + le importa"],
+["No confío en ___.","nadie","alguien","нікому не довіряю"],
+["No hay ___ como tú.","nadie","alguien","ніхто такий, як ти"],
+["Nadie llama a esta hora.","Ніхто не дзвонить о цій годині","Хтось дзвонить","nadie перед дієсловом"],
+["No se lo digas a ___.","nadie","alguien","нікому не кажи"],
+["casi nadie означає…","майже ніхто","майже всі","casi + nadie"]
+]},
+{t:"NINGUNO/NINGUNA: узгодження", lv:2, q:[
+["No hay ___ tienda cerca.","ninguna","ningún","tienda ж.р. → ninguna"],
+["No tengo ___ interés en esto.","ningún","ninguna","interés ч.р. → ningún"],
+["No hay ___ manera de hacerlo.","ninguna","ningún","manera ж.р. → ninguna"],
+["No veo ___ problema.","ningún","ninguna","problema ч.р. → ningún"],
+["De ninguna manera означає…","у жодному разі","якимось чином","рішуче заперечення"],
+["No tengo ___ duda al respecto.","ninguna","ningún","duda ж.р. → ninguna"],
+["ninguno/ninguna майже завжди вживається в…","однині","множині","ningún problema (не ningunos)"],
+["No hay ___ excusa válida.","ninguna","ningún","excusa ж.р. → ninguna"],
+["— ¿Tienes alguna pregunta? — No, ___.","ninguna","ningún","відповідь узгоджена з pregunta"],
+["No encuentro ___ solución.","ninguna","ningún","solución ж.р. → ninguna"]
+]},
+{t:"TODAVÍA / YA у заперечних", lv:2, q:[
+["Todavía no ___ (llegar, él).","ha llegado","llega","ще не прийшов"],
+["Ya no ___ (vivir, yo) aquí.","vivo","viví","вже не живу тут"],
+["todavía no означає…","ще не (досі не сталось)","вже не (закінчилось)","todavía no he comido"],
+["ya no означає…","вже не (перестало бути)","ще не","ya no fumo = кинув курити"],
+["Todavía no sé qué hacer.","Я ще не знаю, що робити","Я вже знаю","todavía no = ще не"],
+["Ya no como carne.","Я вже (більше) не їм м'яса","Я ще не їм м'яса","ya no = більше не"],
+["¿Todavía vives en Madrid?","Ти ще живеш у Мадриді?","Ти вже живеш у Мадриді?","todavía = ще (питання)"],
+["Ya no me gusta este grupo.","Мені вже не подобається ця група","Мені ще не подобається","ya no = перестало подобатись"],
+["Todavía tengo tiempo.","У мене ще є час","У мене вже немає часу","todavía = ще (маю)"],
+["¿Ya has terminado?","Ти вже закінчив?","Ти ще не закінчив?","ya = вже (питання)"]
+]},
+{t:"Прислівники в описі людини", lv:2, q:[
+["Habla muy ___. (швидко)","rápido","rápida","прислівник — незмінна форма"],
+["Trabaja ___. (наполегливо)","duro","dura","незмінна форма прислівника"],
+["Canta ___. (гарно)","bien","buen","прислівник bien"],
+["Conduce muy ___. (обережно)","despacio","despacia","незмінна форма"],
+["Escribe ___. (чітко)","claramente","clarasmente","clara + mente"],
+["Responde siempre ___. (чесно)","honestamente","honestomente","honesta + mente"],
+["Прислівники на -mente…","не змінюються за родом/числом","змінюються","завжди одна форма"],
+["Estudia ___. (регулярно)","regularmente","regularomente","regular + mente (без зміни)"],
+["Actúa ___. (природно)","naturalmente","naturalomente","natural + mente"],
+["Se viste ___. (елегантно)","elegantemente","elegantomente","elegante + mente"]
+]},
+{t:"Заперечення дієслів", lv:2, q:[
+["No quiero ___ ir.","nada","tampoco","no quiero nada"],
+["No puedo hacer ___ más.","nada","nadie","нічого більше"],
+["No hay ___ que perder.","nada","nadie","нічого втрачати"],
+["No necesito ___ de ti.","nada","nadie","нічого від тебе"],
+["No me importa ___.","nada","algo","мені байдуже (нічого не важливо)"],
+["No queda ___ por hacer.","nada","nadie","нічого лишилось робити"],
+["No he comido ___ hoy.","nada","nadie","нічого не їв сьогодні"],
+["No entiendo ___ de esto.","nada","nadie","нічого не розумію"],
+["No gano ___ con esto.","nada","nadie","нічого не виграю"],
+["No tengo ganas de ___.","nada","tampoco","бажання ні до чого"]
+]},
+{t:"Три заперечення разом", lv:2, q:[
+["No veo a ___ y no oigo ___.","nadie / nada","alguien / algo","nadie (люди) / nada (речі)"],
+["Nunca hablo con ___ de ___.","nadie / nada","alguien / algo","подвійна структура"],
+["No hay ___ problema y no conozco a ___.","ningún / nadie","alguno / alguien","problema → ningún; люди → nadie"],
+["Nunca compro ___ aquí porque no hay ___.","nada / nada","algo / algo","подвійне nada"],
+["No tengo ___ amigo aquí, no conozco a ___.","ningún / nadie","alguno / alguien","ningún + nadie"],
+["No hago ___ los domingos, no veo a ___.","nada / nadie","algo / alguien","nada (дії) / nadie (люди)"],
+["Nunca hay ___ en esta calle a estas horas.","nadie","nada","вулиця → людей нема → nadie"],
+["No queda ___ pan y no hay ___ más para comer.","ningún / nada","alguno / algo","pan → ningún; їжа → nada"],
+["No conozco ___ restaurante bueno por aquí.","ningún","nada","restaurante ч.р. → ningún"],
+["Nunca le digo ___ a ___.","nada / nadie","algo / alguien","nada (що) / nadie (кому)"]
+]},
+{t:"Діалог заперечень", lv:2, q:[
+["— ¿Comes carne? — No, ___ como.","nunca","siempre","ніколи не їм"],
+["— ¿Conoces a alguien aquí? — No, no conozco a ___.","nadie","alguien","нікого не знаю"],
+["— ¿Tienes algo que decir? — No, no tengo ___.","nada","algo","нічого не маю сказати"],
+["— ¿Hay algún problema? — No, no hay ___.","ninguno","alguno","жодної проблеми"],
+["— ¿Vienes a veces aquí? — No, ___ vengo.","nunca","siempre","ніколи не приходжу"],
+["— ¿Has estado en Japón? — No, ___.","nunca","siempre","ніколи не бував"],
+["— ¿Ya terminaste? — No, ___ no.","todavía","ya","ще ні"],
+["— ¿Sigues viviendo allí? — No, ___ no vivo allí.","ya","todavía","вже не живу"],
+["— ¿Te gusta algo de esto? — No, ___ me gusta.","nada","algo","нічого не подобається"],
+["— ¿Alguien puede ayudarme? — No, no puede ___.","nadie","alguien","ніхто не може"]
+]},
+{t:"Прислівники у розповіді", lv:2, q:[
+["Antes vivía en Kyiv, ___ vivo en Alicante.","ahora","antes","протиставлення часу"],
+["Primero estudié Filología, ___ Marketing.","después","antes","послідовність"],
+["___ trabajaba en una oficina, ahora trabajo desde casa.","Antes","Después","раніше vs зараз"],
+["Todavía recuerdo aquel día.","Я досі пам'ятаю той день","Я вже забув той день","todavía = досі"],
+["Ya no vivo allí.","Я вже там не живу","Я ще там живу","ya no = більше не"],
+["Al principio fue difícil.","Спочатку було важко","Наприкінці було важко","al principio = спочатку"],
+["Al final todo salió bien.","Врешті-решт усе вийшло добре","Спочатку все вийшло добре","al final = наприкінці"],
+["De repente empezó a llover.","Раптом почав дощ","Повільно почав дощ","de repente = раптом"],
+["Poco a poco fui mejorando.","Поступово я покращувався","Одразу я став кращим","poco a poco = поступово"],
+["Mientras tanto, ella esperaba.","Тим часом вона чекала","Після цього вона чекала","mientras tanto = тим часом"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Наголос у прислівниках", lv:3, q:[
+["rápido має тильду?","так","ні","rápido"],
+["fácil має тильду?","так","ні","fácil"],
+["difícil має тильду?","так","ні","difícil"],
+["claramente має тильду?","ні","так","прислівники на -mente рідко мають"],
+["Прикметник із тильдою (fácil) при +mente…","зберігає тильду","втрачає","fácilmente"],
+["rápidamente пишеться…","з тильдою над á","без тильди","rápida + mente"],
+["ágilmente має тильду над…","á","e","ágil + mente"],
+["cortés + mente = …","cortésmente","cortesmente","тильда зберігається"],
+["Прикметники без тильди (clara) при +mente…","лишаються без тильди","отримують тильду","claramente"],
+["Правило: -mente зберігає…","наголос прикметника","власний наголос","похідне від прикметника"]
+]},
+{t:"NUNCA HE + participio", lv:3, q:[
+["Nunca he estado en China.","Я ніколи не бував у Китаї","Я завжди бував у Китаї","nunca he + participio"],
+["¿Alguna vez has probado el sushi?","Ти колись куштував суші?","Ти ніколи не куштував суші?","alguna vez = колись"],
+["Nunca he visto esa película.","Я ніколи не бачив цей фільм","Я вже бачив цей фільм","nunca he visto"],
+["No he estado nunca en Roma.","Я ніколи не був у Римі","Я був у Римі","nunca після дієслова"],
+["Розповідь про досвід життя частіше йде з…","pretérito perfecto (he + participio)","презенсом","nunca he hecho esto"],
+["¿Has mentido alguna vez?","Ти колись брехав?","Ти ніколи не брехав?","alguna vez = колись, у питанні"],
+["Nunca jamás he visto algo así.","Ніколи в житті не бачив нічого подібного","Завжди бачу таке","подвійне nunca jamás"],
+["No he hecho nunca algo tan difícil.","Я ніколи не робив нічого такого важкого","Я завжди роблю важке","nunca після дієслова"],
+["Nunca he mentido a mis padres.","Я ніколи не брехав батькам","Я завжди кажу правду батькам","розповідь-заперечення"],
+["¿Nunca has estado enamorado?","Ти ніколи не був закоханий?","Ти завжди закоханий?","nunca has + participio"]
+]},
+{t:"Заперечення + сполучники", lv:3, q:[
+["No como carne ni pescado.","Не їм ні м'яса, ні риби","Їм і м'ясо, і рибу","ni…ni = ні…ні"],
+["ni…ni означає…","ні…, ні…","і…, і…","подвійне заперечення переліку"],
+["No fumo ni bebo.","Не курю і не п'ю","Курю і п'ю","ni після заперечення"],
+["No conozco ni a Juan ni a Ana.","Не знаю ні Хуана, ні Ани","Знаю обох","ni + особистий a"],
+["Ni siquiera me ha llamado.","Він мені навіть не подзвонив","Він мені подзвонив","ni siquiera = навіть не"],
+["ni siquiera підсилює…","заперечення (навіть не)","ствердження","найсильніша форма"],
+["No tengo tiempo ni ganas.","Немає ні часу, ні бажання","Є і час, і бажання","ni…ni"],
+["Ni idea означає…","гадки не маю","чудова ідея","розмовний вираз"],
+["No quiero ni verlo.","Не хочу його навіть бачити","Хочу його бачити","ni = навіть"],
+["No me lo dijo ni una vez.","Він мені цього не сказав жодного разу","Він казав це багато разів","ni una vez"]
+]},
+{t:"POCO, ALGO, DEMASIADO", lv:3, q:[
+["Estoy ___ cansado. (трохи)","un poco","poco","un poco = трохи; poco = мало"],
+["Es ___ difícil. (доволі)","algo","poco","algo = дещо/доволі перед прикметником"],
+["Trabaja ___. (забагато)","demasiado","poco","demasiado = надмірно"],
+["Habla ___ rápido. (занадто)","demasiado","poco","demasiado rápido"],
+["poco (без un) перед прикметником означає…","недостатньо/мало","трохи","poco interesante = малоцікавий"],
+["un poco перед прикметником означає…","трохи (легке підсилення)","зовсім ні","un poco cansado = трохи втомлений"],
+["Es poco probable.","Малоймовірно","Дуже ймовірно","poco = недостатньо"],
+["Esto es algo raro.","Це дещо дивно","Це зовсім не дивно","algo = дещо"],
+["Duermo demasiado poco.","Сплю занадто мало","Сплю забагато","demasiado + poco разом"],
+["Es un poco caro, pero bueno.","Трохи дорого, але добре","Дуже дешево","un poco = трохи"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«No veo algo» (заперечення) → …","No veo nada","No veo ningún","nada — правильне заперечення"],
+["«Nadie no viene» → …","Nadie viene / No viene nadie","Nadie no viene","лише одне no потрібне"],
+["«No tengo ningunos problemas» → …","No tengo ningún problema","No tengo ninguno problema","однина + ningún"],
+["«No conozco nadie» → …","No conozco a nadie","No conozco de nadie","особистий a обов'язковий"],
+["«Nunca no como carne» → …","Nunca como carne","No nunca como carne","лише одне заперечення на позицію"],
+["«No hay ningunas soluciones» → …","No hay ninguna solución","No hay ningunos soluciones","однина solución + ninguna"],
+["«Siempre no voy» (заперечення) → …","Nunca voy","No siempre voy (інший сенс)","siempre не заперечується так"],
+["«No quiero nada no» → …","No quiero nada","No quiero no nada","одне заперечення"],
+["«Ya no más» (незалежно) → правильно кажуть…","Ya no / nunca más","Ya no más разом так не кажуть","розділяються за контекстом"],
+["«No hablo ni español ni no inglés» → …","No hablo ni español ni inglés","No hablo ni español ni no inglés","друге ni без no"]
+]},
+{t:"Тон і ввічливість", lv:3, q:[
+["«En absoluto» у відповідь на «¿Te molesta?» означає…","Зовсім ні, не заважає","Так, дуже заважає","рішуче заперечення ввічливо"],
+["«Para nada» розмовно означає…","Зовсім ні / анітрохи","Для нічого","підсилене заперечення"],
+["— ¿Te importa? — Para nada.","Мені зовсім байдуже (не проти)","Мені дуже важливо","para nada = зовсім ні"],
+["«Nada de nada» підсилює…","повну відсутність","маленьку кількість","подвоєння nada"],
+["Ввічливе «Ні, дякую, нічого не треба»:","No, gracias, nada más","No, gracias, algo más","nada más = більше нічого"],
+["«¡Ni hablar!» означає…","Ні в якому разі!","Звісно, говорімо!","рішуча відмова"],
+["«Nunca digas nunca» означає…","Ніколи не кажи ніколи","Завжди кажи завжди","приказка"],
+["Más vale tarde que nunca означає…","краще пізно, ніж ніколи","краще ніколи, ніж пізно","приказка"],
+["«Casi nunca» пом'якшує заперечення до…","майже ніколи (рідко)","повністю ніколи","м'якша форма"],
+["«Ahora o nunca» означає…","зараз або ніколи","завжди або ніколи","рішучість дії"]
+]},
+{t:"Прислівники в діалозі", lv:3, q:[
+["— ¿Cómo conduces? — Muy ___.","despacio","despacia","незмінна форма"],
+["— ¿Trabajas mucho? — Sí, ___.","demasiado","demasiada","прислівник — незмінний"],
+["— ¿Vienes a menudo? — No, ___.","raras veces","muchas veces","рідко"],
+["— ¿Ya has comido? — Sí, ___.","ya","todavía","вже"],
+["— ¿Sigues estudiando ruso? — No, ___ no.","ya","todavía","вже не"],
+["— ¿Alguna vez has mentido? — ___.","Nunca","Siempre no","ніколи"],
+["— ¿Hay algo que puedas hacer? — No, ___.","nada","algo","нічого"],
+["— ¿Conoces a alguien allí? — No, a ___.","nadie","alguien","нікого"],
+["— ¿Cuánto trabajas? — ___.","Bastante","Bastantemente","bastante — незмінне"],
+["— ¿Vas siempre en bici? — ___, a veces en coche.","Casi siempre","Casi nunca no","майже завжди"]
+]},
+{t:"Прислівники сумніву й впевненості", lv:3, q:[
+["Quizás llueva mañana означає…","можливо, завтра піде дощ","точно піде дощ","quizás = невпевненість"],
+["Seguramente viene означає…","напевно, він прийде","можливо, прийде","seguramente = більша впевненість"],
+["A lo mejor voy означає…","можливо, піду","точно піду","a lo mejor = розмовне «можливо»"],
+["Sin duda es la mejor opción.","Безсумнівно, це найкращий варіант","Сумнівно, це найкращий варіант","sin duda = без сумніву"],
+["Probablemente llegue tarde.","Ймовірно, прийду пізно","Точно прийду вчасно","probablemente = ймовірно"],
+["Desde luego que sí означає…","звісно, що так","сумнівно, що так","desde luego = звичайно"],
+["Tal vez tengas razón.","Можливо, ти маєш рацію","Ти точно не маєш рації","tal vez = можливо"],
+["Ni idea означає…","гадки не маю","точно знаю","повна невпевненість"],
+["Найвища впевненість серед: quizás, seguro, tal vez —","seguro","quizás","seguro = найточніше"],
+["A lo mejor no viene означає…","можливо, не прийде","точно не прийде","a lo mejor = можливо"]
+]},
+{t:"Мій характер (текст)", lv:3, q:[
+["___ soy muy puntual.","Normalmente","Normal","прислівник → normalmente"],
+["___ llego tarde.","Casi nunca","Casi nada","до дії → casi nunca"],
+["Trabajo ___ y con cuidado.","despacio","despacia","незмінна форма"],
+["___ digo mentiras.","Nunca","Siempre no","nunca про заперечення"],
+["No tengo ___ secretos.","ningún","ninguno","secretos → ningún"],
+["___ confío en la gente nueva.","Poco","Un poco","poco = мало (загалом)"],
+["Pero ___ soy muy sociable.","también","tampoco","+ → también"],
+["No necesito ___ para ser feliz.","mucho","poco","«не потребую багато»"],
+["___ ayudo a mis amigos.","Siempre","Nunca","siempre = завжди"],
+["Y ___ me arrepiento de ser así.","nunca","siempre","ніколи не шкодую"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["«завжди» — це…","siempre","nunca","база"],
+["No veo ___.","nada","algo","заперечення"],
+["No conozco a ___.","nadie","alguien","про людину"],
+["No tengo ___ problema.","ningún","ninguno","перед ч.р. іменником"],
+["rápida + mente = …","rápidamente","rápidomente","прислівник на -mente"],
+["Todavía no означає…","ще не","вже не","протилежність ya no"],
+["Nunca перед дієсловом вимагає no?","ні","так","Nunca voy (без no)"],
+["No como ni carne ni pescado.","Не їм ні м'яса, ні риби","Їм і те, і те","ni…ni"],
+["Para nada означає…","зовсім ні","для нічого","підсилене заперечення"],
+["Прислівники на -mente за родом…","не змінюються","змінюються","одна форма завжди"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Прислівники. Nada, nunca: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 14 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

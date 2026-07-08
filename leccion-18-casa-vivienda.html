@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 18 · Дім і житло · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 18 · @malinnaartstudio</div>
+    <h1 id="htitle">Дім і житло: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 18 · Tu casa. Tipos de vivienda.</b>
+      30 вправ по 10 питань: кімнати, меблі, типи житла, оренда/купівля, опис дому.
+      Від ★ до ★★★. ¡Mi casa es tu casa! 🏠
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · базова лексика</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · у контексті</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · нюанси й діалоги</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 18</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Типи житла", lv:1, q:[
+["«квартира» (в Іспанії) — це…","el piso","el pueblo","pueblo = село"],
+["«будинок» (окремий) — це…","la casa","la caza","caza = полювання"],
+["«студія» (квартира) — це…","el estudio","el estudiante","estudiante = студент"],
+["«таунхаус/зблокований будинок» — це…","el adosado","el asador","asador = гриль"],
+["«село» — це…","el pueblo","el pelo","pelo = волосся"],
+["«місто» — це…","la ciudad","la cita","cita = зустріч"],
+["«район» (міста) — це…","el barrio","el bar","bar (скорочено) — не те саме"],
+["«новобудова» — це…","la vivienda nueva/obra nueva","la ropa nueva","ropa = одяг"],
+["«вілла» — це…","el chalet","el chaleco","chaleco = жилет"],
+["«гуртожиток» — це…","la residencia","la resistencia","resistencia = опір"]
+]},
+{t:"Кімнати", lv:1, q:[
+["«кухня» — це…","la cocina","el baño","baño = ванна"],
+["«спальня» — це…","el dormitorio","el salón","salón = вітальня"],
+["«вітальня» — це…","el salón","la cocina","cocina = кухня"],
+["«ванна кімната» — це…","el baño","el balcón","balcón = балкон"],
+["«коридор» — це…","el pasillo","el pastillero","pastillero = коробочка для пігулок"],
+["«кабінет» (робочий) — це…","el despacho/estudio","el desperdicio","desperdicio = відходи"],
+["«гардеробна» — це…","el vestidor","el vestido","vestido = сукня"],
+["«тераса» — це…","la terraza","la tierra","tierra = земля"],
+["«балкон» — це…","el balcón","el bolsón","bolsón = великий мішок"],
+["«комора» — це…","la despensa/el trastero","la defensa","defensa = захист"]
+]},
+{t:"Меблі й предмети", lv:1, q:[
+["«стіл» — це…","la mesa","el mes","mes = місяць"],
+["«стілець» — це…","la silla","la sella","sella — немає такого слова"],
+["«диван» — це…","el sofá","el sofoco","sofoco = задуха"],
+["«ліжко» — це…","la cama","la cámara","cámara = камера"],
+["«шафа» — це…","el armario","el armado","armado = озброєний"],
+["«полиця» — це…","la estantería","la estación","estación = станція"],
+["«дзеркало» — це…","el espejo","el espacio","espacio = простір"],
+["«лампа» — це…","la lámpara","la lámina","lámina = лист/пластина"],
+["«килим» — це…","la alfombra","la sombra","sombra = тінь"],
+["«штори» — це…","las cortinas","las cortezas","cortezas = кірка/шкурка"]
+]},
+{t:"Кухонне приладдя", lv:1, q:[
+["«холодильник» — це…","la nevera/el frigorífico","la nieve","nieve = сніг"],
+["«плита» — це…","la cocina/los fogones","la cocción","cocción = приготування"],
+["«духовка» — це…","el horno","el hornillo","hornillo = плитка"],
+["«мийка» (кухонна) — це…","el fregadero","el fregado","fregado — дієприкметник"],
+["«кран» — це…","el grifo","el grifo… стоп","базове: grifo"],
+["«витяжка» — це…","la campana extractora","la campaña","campaña = кампанія"],
+["«шафка» (кухонна) — це…","el armario de cocina","el armado","armado = озброєний"],
+["«стільниця» — це…","la encimera","la encima","encima = зверху (прислівник)"],
+["«посудомийна машина» — це…","el lavavajillas","el lavamanos","lavamanos = умивальник"],
+["«тостер» — це…","la tostadora","la tostada","tostada = тост (сам продукт)"]
+]},
+{t:"Двері, вікна, підлога", lv:1, q:[
+["«двері» — це…","la puerta","el puerto","puerto = порт"],
+["«вікно» — це…","la ventana","la ventaja","ventaja = перевага"],
+["«підлога» — це…","el suelo","el sueldo","sueldo = зарплата!"],
+["«стеля» — це…","el techo","el techo… стоп","базове: techo"],
+["«стіна» — це…","la pared","la pareja","pareja = пара (партнер)"],
+["«сходи» — це…","las escaleras","las escuelas","escuelas = школи"],
+["«ключ» — це…","la llave","la llama","llama = полум'я/лама 🦙"],
+["«замок» (дверний) — це…","la cerradura","la cerveza","cerveza = пиво"],
+["«ліфт» — це…","el ascensor","el asesor","asesor = консультант"],
+["«ручка» (дверей) — це…","el pomo/la manija","el pomo… стоп","базове: pomo"]
+]},
+{t:"Прикметники про дім", lv:1, q:[
+["«просторий» — це…","espacioso","especioso","especioso — немає такого слова"],
+["«тісний/малий» — це…","pequeño/estrecho","pesado","pesado = важкий"],
+["«світлий» (про кімнату) — це…","luminoso","lujoso","lujoso = розкішний"],
+["«темний» — це…","oscuro","oxidado","oxidado = іржавий"],
+["«затишний» — це…","acogedor","asador","asador = гриль"],
+["«зручний» — це…","cómodo","cómico","cómico = комічний"],
+["«новий» — це…","nuevo","nube","nube = хмара"],
+["«старий» (про будинок) — це…","antiguo/viejo","antiguamente","antiguamente = колись"],
+["«тихий» (про район) — це…","tranquilo","tranquilizante","tranquilizante = заспокійливий засіб"],
+["«галасливий» — це…","ruidoso","rutinario","rutinario = рутинний"]
+]},
+{t:"Оренда й купівля", lv:1, q:[
+["«орендувати» — це…","alquilar","alcalde","alcalde = мер"],
+["«орендна плата» — це…","el alquiler","el alcohol","alcohol — не те саме"],
+["«купувати» — це…","comprar","comparar","comparar = порівнювати"],
+["«продавати» — це…","vender","vivir","vivir = жити"],
+["«іпотека» — це…","la hipoteca","la hipótesis","hipótesis = гіпотеза"],
+["«агент з нерухомості» — це…","el agente inmobiliario","el agente imaginario","imaginario = уявний"],
+["«застава/депозит» — це…","la fianza","la finanza","finanza (як окреме слово тут не те)"],
+["«договір оренди» — це…","el contrato de alquiler","el contrario","contrario = протилежний"],
+["«власник» (житла) — це…","el propietario/dueño","el propio","propio = власний (прикметник)"],
+["«орендар» — це…","el inquilino","el inquieto","inquieto = неспокійний"]
+]},
+{t:"У ванній кімнаті", lv:1, q:[
+["«туалет» — це…","el váter/inodoro","el vaso","vaso = склянка"],
+["«раковина» (у ванній) — це…","el lavabo","el lavado","lavado = прання/миття"],
+["«душ» — це…","la ducha","la duda","duda = сумнів"],
+["«ванна» (сама ємність) — це…","la bañera","la banda","banda = гурт"],
+["«рушник» — це…","la toalla","la tortilla","tortilla = омлет 🍳"],
+["«мило» — це…","el jabón","el jamón","jamón = шинка"],
+["«зубна щітка» — це…","el cepillo de dientes","el cepo","cepo = капкан"],
+["«шампунь» — це…","el champú","el champiñón","champiñón = гриб 🍄"],
+["«дзеркало у ванній» так само — це…","el espejo","el especio","especio — немає такого слова"],
+["«шафка під раковиною» — це…","el mueble de baño","el mueble de vino","звучить схоже, різні слова"]
+]},
+{t:"Побутова техніка", lv:1, q:[
+["«пральна машина» — це…","la lavadora","la lavandería","lavandería = пральня (заклад)"],
+["«сушарка» (для одягу) — це…","la secadora","la secretaria","secretaria = секретарка"],
+["«праска» — це…","la plancha","la planta","planta = рослина/поверх"],
+["«пилосос» — це…","la aspiradora","la aspirina","aspirina = аспірин 💊"],
+["«кондиціонер» — це…","el aire acondicionado","el aire libre","aire libre = свіже повітря"],
+["«обігрівач» — це…","la calefacción/el calefactor","la calefacción… стоп","базове: calefacción"],
+["«телевізор» — це…","el televisor/la tele","el teléfono","teléfono = телефон"],
+["«вентилятор» — це…","el ventilador","el ventanal","ventanal = велике вікно"],
+["«годинник» (настінний) — це…","el reloj","el relojero","relojero = годинникар"],
+["«router/маршрутизатор» — це…","el router","la ruta","ruta = маршрут"]
+]},
+{t:"Опис свого дому", lv:1, q:[
+["Mi casa ___ tres habitaciones.","tiene","es","tener = мати кімнати"],
+["Vivo en un piso ___ el tercero.","en","del","en el tercero (третій поверх)"],
+["Mi habitación es muy ___. (маленька)","pequeña","pequeño","habitación ж.р. → pequeña"],
+["El salón está ___ la cocina.","al lado de","dentro de","поруч → al lado de"],
+["Mi casa tiene ___ balcones.","dos","dos… стоп","базове: dos balcones"],
+["Vivo en el ___ piso.","quinto","cinco","порядкове → quinto"],
+["Mi cocina es ___ y luminosa.","grande","grando","cocina ж.р. → grande (незмінне)"],
+["Tengo un jardín ___ mi casa.","detrás de","dentro de","за будинком → detrás de"],
+["¿En qué piso vives? — Vivo en el ___.","segundo","dos","порядкове → segundo"],
+["Mi casa está ___ del centro.","cerca","cerco","cerca de = близько від"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Опис розташування в домі", lv:2, q:[
+["El sofá está ___ la tele.","enfrente de","dentro de","навпроти телевізора"],
+["La lámpara está ___ la mesa.","encima de","debajo de","на столі"],
+["Los libros están ___ la estantería.","en","fuera de","на полиці"],
+["La cama está ___ la ventana.","al lado de","detrás de","біля вікна"],
+["El armario está ___ la habitación.","en","entre","у кімнаті"],
+["La alfombra está ___ el sofá y la tele.","entre","dentro de","між диваном і телевізором"],
+["El espejo está ___ la pared.","en","sobre… теж ок","НА стіні → en"],
+["La nevera está ___ de la cocina.","dentro","fuera","всередині кухні"],
+["Las cortinas están ___ la ventana.","en","debajo de","на вікні"],
+["El garaje está ___ de la casa.","fuera","dentro","гараж поза домом"]
+]},
+{t:"Пошук квартири", lv:2, q:[
+["Busco un piso ___ alquilar.","para","por","мета → para"],
+["¿Cuánto cuesta el alquiler ___ mes?","al","el","al mes = на місяць"],
+["Necesito un piso ___ dos habitaciones.","de","con","con dos habitaciones"],
+["¿El piso está ___ o sin amueblar?","amueblado","amueblada","piso ч.р. → amueblado"],
+["Prefiero un piso ___ ascensor.","con","sin","з ліфтом → con"],
+["¿Se admiten ___?","mascotas","musculatura","mascotas = домашні тварини"],
+["El piso está bien ___.","comunicado","comunicando","comunicado = зі зручним транспортом"],
+["¿Cuántos metros cuadrados ___ el piso?","tiene","es","piso tiene X m²"],
+["Busco algo ___ el centro.","cerca de","cerco de","близько від центру"],
+["¿Incluye los gastos de ___?","comunidad","comunidades","gastos de comunidad = комунальні"]
+]},
+{t:"У новому домі", lv:2, q:[
+["Acabamos de ___ a esta casa.","mudarnos","mudarse","mudarse — nosotros → mudarnos"],
+["Tenemos que ___ los muebles.","colocar","coloco","tener que + inf"],
+["Voy a ___ las cajas primero.","abrir","abro","ir a + inf"],
+["Hay que ___ las paredes de otro color.","pintar","pinta","hay que + inf"],
+["Necesitamos ___ más estanterías.","comprar","compramos","necesitar + inf"],
+["¿Dónde vamos a ___ el sofá?","poner","ponemos","ir a + inf"],
+["Todavía no hemos ___ las cortinas.","puesto","poniendo","haber + participio"],
+["Falta ___ la cocina.","organizar","organiza","faltar + inf"],
+["Es importante ___ bien el espacio.","aprovechar","aprovecha","es importante + inf"],
+["¡Por fin nos sentimos ___ en casa!","como en casa","como una casa","como en casa = як удома"]
+]},
+{t:"Проблеми з домом", lv:2, q:[
+["Se ha roto ___.","el grifo","la agua","grifo ч.р."],
+["Hay una gotera en ___.","el techo","el suelo","gotera — протікання зі стелі"],
+["No funciona ___.","la calefacción","el calefacción","calefacción ж.р."],
+["Hay ___ en la pared. (тріщина)","una grieta","un grito","grito = крик!"],
+["El ascensor está ___.","averiado","avergonzado","avergonzado = засоромлений"],
+["Necesito llamar a un ___.","fontanero","fonético","fontanero = сантехнік"],
+["Se ha ido ___.","la luz","el luz","luz ж.р."],
+["Hay humedad en ___.","el baño","la baña","baña — немає такого слова"],
+["El vecino hace mucho ___.","ruido","ruedo","ruedo = арена"],
+["Hay que llamar a ___ para el aire acondicionado.","un técnico","un tecnológico","técnico = технік"]
+]},
+{t:"Прибирання й порядок", lv:2, q:[
+["«прибирати» (загалом) — це…","limpiar/ordenar","limpio","limpio — прикметник тут"],
+["«мити посуд» — це…","fregar/lavar los platos","frotar los platos","frotar = терти (загалом)"],
+["«підмітати» — це…","barrer","barrera","barrera = бар'єр"],
+["«пилососити» — це…","pasar la aspiradora","pasar el aspirador","aspiradora — правильний рід тут"],
+["«витирати пил» — це…","quitar el polvo","quitar el polo","polo = морозиво"],
+["«застеляти ліжко» — це…","hacer la cama","hacer la cuna","cuna = колиска"],
+["«прасувати» — це…","planchar","plantar","plantar = садити"],
+["«складати одяг» — це…","doblar la ropa","doblar el papel","ropa = одяг"],
+["«викидати сміття» — це…","sacar la basura","sacar la mesa","basura = сміття"],
+["«провітрювати» (кімнату) — це…","ventilar","ventar","ventar — немає такого слова"]
+]},
+{t:"Сусіди й будинок", lv:2, q:[
+["«сусід» — це…","el vecino","el vencido","vencido = переможений"],
+["«спільнота сусідів» (кондомініум) — це…","la comunidad de vecinos","la comunidad de vencidos","comunidad de vecinos — типова структура"],
+["«збори мешканців» — це…","la reunión de vecinos","la reunión de veces","veces = рази"],
+["«швейцар/консьєрж» — це…","el portero","el puerto","puerto = порт"],
+["«поштова скринька» — це…","el buzón","el botón","botón = кнопка"],
+["«домофон» — це…","el portero automático/el telefonillo","el teléfono automático","telefonillo — типовий термін"],
+["«під'їзд» (будинку) — це…","el portal","el retrato","retrato = портрет"],
+["«внутрішній дворик» — це…","el patio","el pato","pato = качка 🦆"],
+["«гараж» — це…","el garaje","el garrafa","garrafa = велика пляшка"],
+["Los vecinos hacen ___ por la noche.","ruido","el ruido de la casa","ruido = шум (без зайвого)"]
+]},
+{t:"Обери правильне речення", lv:2, q:[
+["«Моя кухня простора»:","Mi cocina es espaciosa","Mi cocina está espaciosa","постійна риса → ser"],
+["«У кімнаті зараз безлад»:","La habitación está desordenada","La habitación es desordenada","тимчасовий стан → estar"],
+["«Мій дім близько від центру»:","Mi casa está cerca del centro","Mi casa es cerca del centro","місце → estar"],
+["«Це старий будинок»:","Es una casa antigua","Está una casa antigua","постійна ознака → ser"],
+["«Двері зараз відчинені»:","La puerta está abierta","La puerta es abierta","стан → estar"],
+["«Квартира новая»:","El piso es nuevo","El piso está nuevo","постійна ознака → ser"],
+["«У ванній зараз волого»:","El baño está húmedo","El baño es húmedo","тимчасовий стан → estar"],
+["«Моя спальня велика»:","Mi dormitorio es grande","Mi dormitorio está grande","постійна ознака → ser"],
+["«Стіни щойно пофарбовані»:","Las paredes están recién pintadas","Las paredes son recién pintadas","результат дії → estar"],
+["«Цей район тихий»:","Este barrio es tranquilo","Este barrio está tranquilo","постійна характеристика → ser"]
+]},
+{t:"Плани на дім", lv:2, q:[
+["Queremos ___ la cocina.","reformar","reformamos","querer + inf"],
+["Vamos a ___ un piso más grande.","comprar","compramos","ir a + inf"],
+["Pensamos ___ el salón.","pintar","pintamos","pensar + inf"],
+["Tenemos que ___ el contrato antes de fin de mes.","renovar","renovamos","tener que + inf"],
+["Nos gustaría ___ a otro barrio.","mudarnos","nos mudar","gustaría + inf"],
+["Hay que ___ el tejado pronto.","arreglar","arregla","hay que + inf"],
+["Estamos pensando en ___ una terraza.","construir","construimos","pensar en + inf"],
+["Queremos ___ más luz natural.","tener","tenemos","querer + inf"],
+["Vamos a ___ los muebles viejos.","cambiar","cambiamos","ir a + inf"],
+["Nos encantaría ___ un jardín.","tener","tenemos","encantaría + inf"]
+]},
+{t:"Порівняння типів житла", lv:2, q:[
+["Un piso suele ser ___ que una casa.","más pequeño","más grande","квартира зазвичай менша"],
+["Vivir en el campo es más ___ que en la ciudad.","tranquilo","ruidoso","село тихіше"],
+["Un chalet normalmente tiene ___ que un piso.","más espacio","menos espacio","вілла — більше простору"],
+["En el centro los pisos son ___ caros.","más","menos","центр — дорожче"],
+["Un estudio es ___ que un piso de tres habitaciones.","más pequeño","más grande","студія менша"],
+["Vivir en un pueblo suele ser ___ que en la capital.","más barato","más caro","село дешевше"],
+["Un ático (mansarda) suele tener ___.","terraza","garaje","ático часто з терасою"],
+["Comparado con alquilar, comprar es una decisión más ___.","a largo plazo","a corto plazo","купівля — довгостроково"],
+["Un piso interior es ___ ruidoso que uno exterior.","menos","más","внутрішній тихіший"],
+["Vivir cerca del centro es normalmente ___ práctico.","más","menos","близько до центру — зручніше"]
+]},
+{t:"Меблі за кімнатами", lv:2, q:[
+["У вітальні зазвичай стоїть…","el sofá","la cama","cama = ліжко (для спальні)"],
+["У спальні зазвичай стоїть…","la cama","el fregadero","fregadero = мийка (кухня)"],
+["На кухні зазвичай стоїть…","la nevera","el armario ropero","armario ropero = шафа для одягу"],
+["У ванній зазвичай стоїть…","la bañera","la estantería de libros","estantería de libros = книжкова полиця"],
+["У кабінеті зазвичай стоїть…","el escritorio","la cuna","cuna = колиска"],
+["У дитячій кімнаті часто стоїть…","la cuna/la cama pequeña","el fregadero","fregadero — кухня"],
+["На терасі часто стоять…","las plantas y sillas","los electrodomésticos","electrodomésticos — побутова техніка (в кухні)"],
+["У коридорі зазвичай є…","un perchero","una bañera","perchero = вішак для одягу"],
+["У гаражі зазвичай зберігають…","herramientas y el coche","la vajilla","vajilla = посуд"],
+["У коморі (despensa) зазвичай зберігають…","comida","ropa","despensa — для їжі"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"SER vs ESTAR з домом", lv:3, q:[
+["El piso ___ en el centro. (місце)","está","es","місце → estar"],
+["El piso ___ de mis padres. (належність)","es","está","належність → ser"],
+["La puerta ___ de madera. (матеріал)","es","está","матеріал → ser"],
+["La puerta ___ cerrada. (стан)","está","es","стан → estar"],
+["Mi casa ___ grande. (постійна ознака)","es","está","постійне → ser"],
+["La casa ___ sucia hoy. (тимчасовий стан)","está","es","тимчасове → estar"],
+["¿Dónde ___ tu casa?","está","es","місце → estar"],
+["¿De quién ___ esta casa?","es","está","належність → ser"],
+["El salón ___ muy luminoso normalmente.","es","está","постійна риса → ser"],
+["Hoy el salón ___ muy oscuro porque está nublado.","está","es","тимчасова причина → estar"]
+]},
+{t:"Culturemas: типи житла в Іспанії", lv:3, q:[
+["У великих іспанських містах більшість людей живе в…","pisos (квартирах)","chalets (віллах)","типова міська забудова"],
+["El patio interior у традиційних будинках Андалусії служить для…","прохолоди й світла","паркування","архітектурна традиція"],
+["«Comunidad de vecinos» відповідає за…","спільні витрати й ремонт будинку","особисті борги мешканців","ОСББ по-іспанськи"],
+["Piso compartido означає…","квартиру, де живуть кілька orendarів разом","власну квартиру","типово для студентів"],
+["El «casco antiguo» міста — це…","історичний центр","новий район","найстаріша частина"],
+["Alquiler de temporada означає…","короткострокову оренду (напр. на літо)","довічну оренду","сезонна оренда"],
+["IBI (impuesto) — це…","податок на нерухомість","страховка на авто","щорічний податок власників"],
+["«Piso piloto» при продажу новобудов — це…","демонстраційна квартира","пілотна кабіна","показова квартира для покупців"],
+["У багатьох іспанських будинках немає ліфта, якщо…","будинок старий і невисокий","будинок новий","типово для історичних будівель"],
+["«Fianza» при оренді зазвичай становить…","один-два місяці орендної плати","половину вартості житла","застава-депозит"]
+]},
+{t:"Прийменники з домом", lv:3, q:[
+["Vivo ___ un piso pequeño.","en","a","місце проживання → en"],
+["Mi casa está ___ la playa.","cerca de","cerca a","cerca DE"],
+["El sofá es ___ cuero.","de","en","матеріал → de"],
+["Voy ___ casa de mis padres.","a","en","напрямок → a"],
+["Estoy ___ casa.","en","a","перебування вдома → en"],
+["La mesa está hecha ___ madera.","de","en","матеріал → de"],
+["Salgo ___ casa a las ocho.","de","desde","вихід ЗВІДКИ → de"],
+["Vivo ___ el tercer piso.","en","al","поверх → en"],
+["Mi habitación da ___ el jardín.","a","en","вікно виходить НА → dar a"],
+["La casa está construida ___ el año 1950.","desde","en","рік побудови → en"]
+]},
+{t:"Ідіоми про дім", lv:3, q:[
+["estar como en casa означає…","почуватися дуже комфортно","бути точно вдома","гостинна фраза"],
+["ser de andar por casa означає…","бути простим/невигадливим","бути будівельником","розмовний вираз"],
+["poner la casa patas arriba означає…","влаштувати повний безлад","прибрати ідеально","«поставити дім догори лапами»"],
+["Cada uno en su casa. (приказка) означає…","кожному своє (не втручайся)","гостинність для всіх","натяк на приватність"],
+["«mudarse de casa» означає…","переїжджати","міняти меблі","переїзд"],
+["quedarse en casa означає…","залишатися вдома","поспішати з дому","протилежність salir"],
+["ser la dueña/el dueño de la casa означає…","бути господарем дому","бути гостем","власник"],
+["hacer las maletas para mudarse означає…","пакувати речі для переїзду","розпаковувати речі","приготування до переїзду"],
+["No hay nada como estar en casa. означає…","Немає нічого кращого, ніж бути вдома","Вдома нічого немає","улюблена приказка"],
+["Casa por casa означає…","прочісувати будинок за будинком","міняти будинок на будинок","пошук від дверей до дверей"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«Mi casa está bonita» (постійна ознака) → …","Mi casa es bonita","Mi casa son bonita","постійне → ser"],
+["«La puerta es cerrada» (стан зараз) → …","La puerta está cerrada","La puerta ser cerrada","стан → estar"],
+["«Vivo a un piso» → …","Vivo en un piso","Vivo al piso","місце проживання → en"],
+["«La mesa es en madera» → …","La mesa es de madera","La mesa está de madera","матеріал → de, не en"],
+["«Mi casa está de mis padres» → …","Mi casa es de mis padres","Mi casa está a mis padres","належність → ser + de"],
+["«El sofá está grande» (постійна ознака) → …","El sofá es grande","El sofá son grande","постійне → ser"],
+["«Salgo a casa» (вихід звідки) → …","Salgo de casa","Salgo en casa","вихід ЗВІДКИ → de"],
+["«El baño está húmedo siempre» (постійна риса) → …","El baño es húmedo","El baño está húmedo завжди — теж ок якщо тимчасово","якщо завжди — постійне → es"],
+["«Mi habitación da a en el jardín» → …","Mi habitación da al jardín","Mi habitación da en el jardín","dar A + el = AL"],
+["«Vivo en el tercero piso» → …","Vivo en el tercer piso","Vivo en el tercero de piso","tercer перед іменником (скорочення)"]
+]},
+{t:"Переклади речення", lv:3, q:[
+["«Я живу в квартирі на третьому поверсі»:","Vivo en un piso en el tercer piso","Vivo en un piso al tercer piso","en + tercer"],
+["«Моя кімната виходить вікнами на сад»:","Mi habitación da al jardín","Mi habitación da en el jardín","dar al"],
+["«Ми щойно переїхали в новий будинок»:","Acabamos de mudarnos a una casa nueva","Acabamos de mudar a una casa nueva","mudarse — зворотне"],
+["«Стіл зроблений з дерева»:","La mesa es de madera","La mesa está de madera","матеріал → de"],
+["«Тут дуже затишно»:","Aquí se está muy a gusto","Aquí es muy a gusto","«почуватися» → estar"],
+["«Квартира здається без меблів»:","El piso se alquila sin amueblar","El piso se alquila sin amueblado","sin + прикметник узгоджений з piso"],
+["«У нас зламався кран»:","Se nos ha roto el grifo","Se nos ha roto la agua","grifo ч.р."],
+["«Сусіди дуже галасливі»:","Los vecinos son muy ruidosos","Los vecinos están muy ruidosos","постійна риса → ser"],
+["«Будинок побудований у 1980 році»:","La casa está construida en 1980","La casa es construida en 1980","результат дії → estar + participio"],
+["«Немає нічого кращого, ніж бути вдома»:","No hay nada como estar en casa","No hay nada como ser en casa","стан перебування → estar"]
+]},
+{t:"HABER: описати наявність", lv:3, q:[
+["En mi casa hay ___ habitaciones.","tres","tercera","кількісне → tres"],
+["¿Cuántos baños hay ___ tu piso?","en","de","en + місце"],
+["Hay una terraza ___ el salón.","al lado de","de","поруч → al lado de"],
+["En el edificio hay ___ ascensor.","un","uno","перед іменником → un"],
+["No hay ___ garaje en este edificio.","ningún","ninguno","garaje ч.р. → ningún"],
+["hay вживається для…","наявності, існування","конкретного місцезнаходження","hay un piso libre"],
+["Hay muchas ___ en este barrio.","tiendas","tienda","муж/жін узгодження → tiendas"],
+["¿Hay algo que arreglar en la casa?","Чи є щось, що треба полагодити?","Чи щось уже полагоджено?","hay algo que + inf"],
+["En esta zona hay poca ___.","vida nocturna","vidas nocturnas","vida — незлічуване тут"],
+["Hay ___ parques cerca de aquí.","varios","varias","parques ч.р. → varios"]
+]},
+{t:"Опис ідеального дому (текст)", lv:3, q:[
+["Mi casa ideal ___ grande y luminosa.","sería","es","умовний спосіб (мрія) — сьогодні спрощено: es теж ок"],
+["___ un jardín con árboles.","Tendría","Tiene","бажаний дім — умовний, або спрощено: tiene"],
+["La cocina ___ moderna y espaciosa.","sería/es","está","постійна ознака → ser"],
+["Me encantaría ___ cerca del mar.","vivir","vivo","encantaría + inf"],
+["___ muchas ventanas para tener luz natural.","Habría/Hay","Es","наявність → hay/habría"],
+["El salón ___ una chimenea.","tendría/tiene","es","мати щось → tener"],
+["Todas las habitaciones ___ vistas bonitas.","tendrían/tienen","serían","мати вигляд → tener vistas"],
+["Me gustaría que ___ tranquilo el barrio.","fuera/sea","esté","якість району → ser"],
+["___ un balcón grande para tomar el sol.","Habría/Hay","Sería","наявність → hay"],
+["En resumen, sería mi lugar ___ en el mundo.","favorito","favorita","lugar ч.р. → favorito"]
+]},
+{t:"Оренда: діалог", lv:3, q:[
+["— ¿Cuánto es el alquiler? — Son ___ euros al mes.","seiscientos","seiscientas","euros ч.р. → seiscientos"],
+["— ¿Está amueblado? — Sí, ___ todo lo necesario.","tiene","es","piso tiene = має"],
+["— ¿Cuándo puedo verlo? — ___ cuando quieras.","Puedes venir","Puede venir","tú → puedes"],
+["— ¿Hay que pagar fianza? — Sí, ___ dos meses.","de","por","fianza de dos meses"],
+["— ¿Los gastos están incluidos? — No, se pagan ___.","aparte","separado — теж ок","pagar aparte = окремо"],
+["— ¿Cuánto tiempo es el contrato? — ___ un año.","Por","Para","contrato por un año"],
+["— ¿Se puede fumar dentro? — No, ___ prohibido.","está","es","estado actual → está"],
+["— ¿Hay ascensor? — Sí, ___ nuevo.","es","está","постійна ознака → es"],
+["— ¿Cuándo puedo mudarme? — ___ desde el día uno.","Puedes","Puedo","tú → puedes"],
+["— Me lo quedo. — ¡___! Firmamos mañana.","Perfecto","Perfecta","вигук — незмінне"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["«квартира» (в Іспанії) — це…","el piso","el pueblo","база"],
+["«спальня» — це…","el dormitorio","el salón","salón = вітальня"],
+["El piso ___ en el centro.","está","es","місце → estar"],
+["Mi casa ___ de mis padres.","es","está","належність → ser"],
+["«орендувати» — це…","alquilar","alcalde","alcalde = мер"],
+["estar como en casa означає…","почуватися комфортно","бути точно вдома","гостинна фраза"],
+["La mesa es ___ madera.","de","en","матеріал → de"],
+["«зламався кран» — це…","Se ha roto el grifo","Se ha roto la grifa","grifo ч.р."],
+["Vivo en el tercer piso — tercer стоїть тут тому що…","скорочення перед іменником","завжди так пишеться","tercero → tercer"],
+["Los vecinos son muy ___. (галасливі)","ruidosos","ruidosas","vecinos ч.р. → ruidosos"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Дім і житло: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 18 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 22 · Надзвичайні ситуації · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 22 · @malinnaartstudio</div>
+    <h1 id="htitle">Надзвичайні ситуації: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 22 · Emergencias y seguridad.</b>
+      30 вправ по 10 питань: лексика небезпеки, виклик служб, фрази для термінових ситуацій,
+      безпека вдома й на вулиці. Від ★ до ★★★. ¡Mantén la calma! 🚨
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · базова лексика</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · у контексті</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · нюанси й діалоги</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 22</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Екстрені служби", lv:1, q:[
+["Єдиний номер екстрених служб в Іспанії:","112","911","911 — це США"],
+["«Допоможіть!» — це…","¡Socorro!/¡Ayuda!","¡Salud!","¡Salud! = Будьмо!"],
+["«поліція» — це…","la policía","la política","política = політика"],
+["«пожежники» — це…","los bomberos","los bombillas","bombilla = лампочка 💡"],
+["«швидка допомога» (машина) — це…","la ambulancia","la abundancia","abundancia = достаток"],
+["«пожежа» — це…","el incendio","el ascensor","ascensor = ліфт"],
+["«злочин» — це…","el delito/crimen","el deleite","deleite = насолода"],
+["«крадіжка» — це…","el robo","el ropero","ropero = шафа для одягу"],
+["«нещасний випадок» — це…","el accidente","el accidental","accidental — прикметник"],
+["«небезпека» — це…","el peligro","el peligre","peligro"]
+]},
+{t:"Виклик допомоги", lv:1, q:[
+["«Обережно!» — це…","¡Cuidado!","¡Claro!","¡Claro! = Звісно!"],
+["«Це терміново!» — це…","¡Es urgente!","¡Es urbano!","urbano = міський"],
+["Llama a la policía.","Подзвони в поліцію","Подзвони другові","типова команда"],
+["«Виклич швидку!» — це…","¡Llama a una ambulancia!","¡Llama a un taxi!","taxi ≠ ambulancia"],
+["«Мені потрібна допомога» — це…","Necesito ayuda","Necesito una cita","cita = запис"],
+["¡Fuego! означає…","Пожежа!","Вогонь у переносному сенсі!","попередження про пожежу"],
+["«Є хтось поранений?» — це…","¿Hay algún herido?","¿Hay algún hilo?","hilo = нитка"],
+["«Викликати екстрену допомогу» — це…","llamar a emergencias","llamar a la agencia","agencia = агентство"],
+["¡Alerta! означає…","Увага!/Тривога!","Алергія!","alerta ≠ alergia"],
+["«План евакуації» — це…","el plan de evacuación","el plan de vacaciones","vacaciones = відпустка"]
+]},
+{t:"Небезпека вдома", lv:1, q:[
+["«вогнегасник» — це…","el extintor","el extinto","extinto — прикметник"],
+["«витік газу» — це…","la fuga de gas","la fuga de agua… стоп","базове: fuga de gas"],
+["«коротке замикання» — це…","el cortocircuito","el corto plazo","corto plazo = короткий термін"],
+["«димова сигналізація» — це…","el detector de humo","el detector de humor","humor = гумор 😄"],
+["«аптечка першої допомоги» — це…","el botiquín","el botín","botín = здобич/чобіток"],
+["«отруєння» — це…","la intoxicación","la intoxicación… стоп","базове: intoxicación"],
+["«ключ від газу» (вентиль) — це…","la llave de gas","la llave de casa","casa = будинок"],
+["«запасний вихід» — це…","la salida de emergencia","la entrada de emergencia","entrada = вхід"],
+["«електричний удар» — це…","la descarga eléctrica","la carga eléctrica","carga = завантаження"],
+["«витік води» — це…","la fuga de agua","el fuego de agua","fuego = вогонь"]
+]},
+{t:"Безпека на вулиці", lv:1, q:[
+["«гаманець» (можна вкрасти) — це…","la cartera/el monedero","la carta","carta = лист/меню"],
+["«кишеньковий злодій» — це…","el carterista","el cartero","cartero = листоноша"],
+["«безпечний» — це…","seguro","segundo","segundo = другий"],
+["«небезпечний» — це…","peligroso","perezoso","perezoso = ледачий"],
+["«загублена дитина» — це…","un niño perdido","un niño perdonado","perdonado = прощений"],
+["«загубитися» — це…","perderse","perdonarse","perdonarse = прощати себе"],
+["«світлофор» — це…","el semáforo","el semestre","semestre = семестр"],
+["«зона під камерами» — це…","zona vigilada","zona vengada","vengada = помщена"],
+["«підозрілий» — це…","sospechoso","sospechado","sospechado — не прикметник"],
+["«свідок» — це…","el testigo","el testamento","testamento = заповіт"]
+]},
+{t:"Медична термінова допомога", lv:1, q:[
+["«непритомний» — це…","inconsciente","inconsecuente","inconsecuente = непослідовний"],
+["«кровотеча» — це…","la hemorragia","la memoria","memoria = пам'ять"],
+["«опік» — це…","la quemadura","la quemazón… теж ок","базове: quemadura"],
+["«перелом» (кістки) — це…","la fractura","la factura","factura = рахунок/чек"],
+["«задуха» (не може дихати) — це…","la asfixia","la asfixia… стоп","базове: asfixia"],
+["«зупинка серця» — це…","el paro cardíaco","el paro laboral","laboral = трудовий"],
+["«алергічна реакція» — це…","la reacción alérgica","la reacción alegre","alegre = веселий"],
+["«штучне дихання» — це…","el boca a boca/respiración artificial","el boca a boca… стоп","базове"],
+["«шок» (медичний) — це…","el shock/choque","el chiste","chiste = жарт 😄"],
+["«викликати швидку негайно» — це…","llamar a la ambulancia inmediatamente","llamar a la ambulancia eventualmente","eventualmente = можливо, колись"]
+]},
+{t:"Стихійні лиха", lv:1, q:[
+["«землетрус» — це…","el terremoto","el terrero","terrero — не те слово"],
+["«повінь» — це…","la inundación","la inundación… стоп","базове"],
+["«буря/шторм» — це…","la tormenta","la torta","torta = торт 🎂"],
+["«ураган» — це…","el huracán","el hurón","hurón = тхір"],
+["«посуха» — це…","la sequía","la secuencia","secuencia = послідовність"],
+["«лавина» — це…","la avalancha","la balanza","balanza = ваги (терези)"],
+["«зсув ґрунту» — це…","el desprendimiento de tierra","el desprendimiento… стоп","базове"],
+["«евакуювати» — це…","evacuar","evaluar","evaluar = оцінювати"],
+["«притулок» (укриття) — це…","el refugio","el refugiado… теж пов'язане","базове: refugio"],
+["«природна катастрофа» — це…","el desastre natural","el desastre nacional","nacional = національний"]
+]},
+{t:"Документи й особисті дані", lv:1, q:[
+["«загублений паспорт» — це…","el pasaporte perdido","el pasaporte prestado","prestado = позичений"],
+["«вкрадені документи» — це…","documentos robados","documentos rotos","rotos = зламані/порвані"],
+["«посольство» — це…","la embajada","la embajadora… теж ок як жінка","базове: embajada"],
+["«консул» — це…","el cónsul","el consuelo","consuelo = розрада"],
+["«заявити про крадіжку» (в поліцію) — це…","denunciar el robo","denunciar el ruido","ruido = шум"],
+["«протокол» (поліцейський) — це…","el atestado/informe policial","el testamento","testamento = заповіт"],
+["«ідентифікаційний номер» — це…","el número de identificación","el número de identidad… теж ок","базове: identificación"],
+["«свідчення» (у поліції) — це…","la declaración","la declamación","declamación = декламація"],
+["«страховий поліс» — це…","la póliza de seguro","la política de seguro","política = політика"],
+["«блокувати картку» (після крадіжки) — це…","bloquear la tarjeta","bloquear la tarea","tarea = завдання"]
+]},
+{t:"Дії в надзвичайній ситуації", lv:1, q:[
+["«зберігати спокій» — це…","mantener la calma","mantener la casa","casa = будинок"],
+["«тікати» (від небезпеки) — це…","huir/escapar","huir… стоп","базове: huir"],
+["«ховатися» — це…","esconderse","encenderse","encenderse = вмикатися"],
+["«попереджати» (про небезпеку) — це…","advertir","anunciar… теж ок, менш точно","advertir — типовіше для попередження"],
+["«реагувати швидко» — це…","reaccionar rápido","reaccionar rico","rico = смачний/багатий 😄"],
+["«захищати себе» — це…","protegerse","proteger… стоп","базове: protegerse"],
+["«не панікувати» — це…","no entrar en pánico","no entrar en el pan","pan = хліб"],
+["«шукати вихід» — це…","buscar la salida","buscar la entrada","entrada = вхід"],
+["«зателефонувати родині» — це…","llamar a la familia","llamar a la familiar","familiar — прикметник"],
+["«чекати на допомогу» — це…","esperar ayuda","esperar ayudar","esperar + інфінітив тут не те"]
+]},
+{t:"Попереджувальні знаки", lv:1, q:[
+["«Заборонено» — це…","Prohibido","Permitido","permitido = дозволено"],
+["«Небезпека!» (напис) — це…","¡Peligro!","¡Perdón!","perdón = вибачте"],
+["«Обережно, слизько» — це…","Cuidado, resbaladizo","Cuidado, resbalón — теж пов'язане","resbaladizo — прикметник для напису"],
+["«Аварійний вихід» (табличка) — це…","Salida de emergencia","Entrada de emergencia","entrada = вхід"],
+["«Не входити» — це…","No entrar","No entrada","граматично: no entrar (інфінітив)"],
+["«Високовольтна напруга» — це…","Alto voltaje","Alta velocidad","velocidad = швидкість"],
+["«Вогненебезпечно» — це…","Inflamable","Inflable","inflable = надувний 🎈"],
+["«Зона під наглядом» — це…","Zona vigilada por cámaras","Zona vengada por cámaras","vengada = помщена"],
+["«Тримайте дистанцію» — це…","Mantenga la distancia","Mantenga la distinción","distinción = розрізнення"],
+["«Використовуйте засоби захисту» — це…","Use equipo de protección","Use equipo de proyección","proyección = проєкція"]
+]},
+{t:"Перша допомога: базові дії", lv:1, q:[
+["«Перша допомога» — це…","los primeros auxilios","las primeras ayudas","auxilios — типовий термін"],
+["«зупинити кровотечу» — це…","detener la hemorragia","detener la memoria","memoria = пам'ять"],
+["«покласти в стабільне положення» — це…","poner en posición estable","poner en posesión estable","posesión = володіння"],
+["«перевірити пульс» — це…","comprobar el pulso","comprobar el pulpo","pulpo = восьминіг 🐙"],
+["«накласти пов'язку» — це…","poner una venda","poner una vela","vela = свічка"],
+["«викликати швидку» — це…","llamar a una ambulancia","llamar a un ambulante","ambulante = мандрівний"],
+["«не рухати пораненого» — це…","no mover al herido","no mover el herido","herido = особа → al"],
+["«тримати спокій» (для потерпілого) — це…","mantener la calma","mantener el calor","calor = тепло"],
+["«накрити ковдрою» — це…","cubrir con una manta","cubrir con una menta","menta = м'ята 🌿"],
+["«чекати на прибуття допомоги» — це…","esperar la llegada de ayuda","esperar la llamada de ayuda","llamada = дзвінок"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Дзвінок на 112", lv:2, q:[
+["— Emergencias, ¿dígame? — Necesito ___ urgentemente.","una ambulancia","un taxi","типовий виклик"],
+["— ¿Cuál es su ubicación? означає…","Де ви перебуваєте?","Хто ви?","ubicación = місцезнаходження"],
+["— ¿Qué ha pasado? означає…","Що сталося?","Хто це зробив?","питання диспетчера"],
+["— Hay un accidente ___ la calle Mayor.","en","a","en + вулиця"],
+["— ¿Hay heridos? означає…","Чи є поранені?","Чи є свідки?","herido = поранений"],
+["— No cuelgue, por favor. означає…","Не кладіть слухавку, будь ласка","Не кричіть, будь ласка","colgar = класти слухавку"],
+["— La ambulancia va en camino. означає…","Швидка вже в дорозі","Швидка вже приїхала","ir en camino = бути в дорозі"],
+["— ¿Puede describir la situación? означає…","Чи можете описати ситуацію?","Чи можете заспокоїтись?","прохання про опис"],
+["Dar la dirección exacta означає…","назвати точну адресу","дати вказівки водію","важливо для швидкого прибуття"],
+["Mantenga la calma y espere означає…","Зберігайте спокій і чекайте","Тікайте якнайшвидше","порада диспетчера"]
+]},
+{t:"Розповідь про подію", lv:2, q:[
+["El incendio empezó ___ la cocina.","en","a","en + місце"],
+["Vi el accidente ___ mis propios ojos.","con","de","con mis propios ojos"],
+["El ladrón huyó ___ la escena.","de","en","huir DE"],
+["Alguien llamó a la policía ___ seguida.","en","de","en seguida = негайно"],
+["El fuego se extendió ___ rápidamente.","muy","mucho","прислівник → muy"],
+["Todo pasó ___ unos segundos.","en","dentro","en + час"],
+["La gente empezó a ___ del edificio.","salir","salgo","empezar a + inf"],
+["Los bomberos llegaron ___ diez minutos.","en","dentro de","en diez minutos (тривалість)"],
+["Nadie resultó herido, ___ suerte.","por","para","por suerte = на щастя"],
+["El edificio quedó completamente ___.","destruido","destruyendo","дієприкметник"]
+]},
+{t:"Попередження й поради з безпеки", lv:2, q:[
+["Es importante ___ un extintor en casa.","tener","tienes","es importante + inf"],
+["Hay que ___ los detectores de humo cada año.","revisar","revisa","hay que + inf"],
+["No se debe ___ velas encendidas solas.","dejar","deja","no se debe + inf"],
+["Debes ___ el gas si sales de casa mucho tiempo.","cerrar","cierras","deber + inf"],
+["Es recomendable ___ un botiquín siempre a mano.","tener","tienes","es recomendable + inf"],
+["No hay que ___ el pánico en una emergencia.","perder","pierdes","no hay que + inf"],
+["Conviene ___ los números de emergencia.","memorizar","memoriza","conviene + inf"],
+["Es fundamental ___ dónde están las salidas de emergencia.","saber","sabes","es fundamental + inf"],
+["Hay que ___ atención a las señales de alerta.","prestar","presta","hay que + inf"],
+["Se recomienda ___ un plan familiar de emergencia.","tener","tienes","se recomienda + inf"]
+]},
+{t:"У поліцейському відділку", lv:2, q:[
+["Quiero ___ un robo.","denunciar","denunciar… стоп","базове: denunciar"],
+["Me han robado ___ el móvil.","— (нічого)","a","robar + прямий обʼєкт, без a тут"],
+["¿Puede describir al ladrón?","Чи можете описати злодія?","Чи можете покарати злодія?","опис підозрюваного"],
+["Necesito hacer una denuncia.","Мені потрібно подати заяву","Мені потрібно отримати штраф","denuncia = заява/скарга"],
+["¿A qué hora ocurrió?","О котрій годині це сталося?","О котрій годині ви прийшли?","питання про час події"],
+["Firme aquí, por favor.","Підпишіть тут, будь ласка","Прочитайте тут, будь ласка","firmar = підписувати"],
+["Le daremos una copia de la denuncia.","Ми дамо вам копію заяви","Ми заберемо вашу заяву","типова процедура"],
+["¿Tiene algún testigo?","Чи маєте свідка?","Чи маєте документ?","testigo = свідок"],
+["Necesito esta denuncia para el seguro.","Мені потрібна ця заява для страховки","Мені потрібна ця заява для паспорта","типова причина"],
+["El agente tomó nota de todo.","Поліцейський записав усе","Поліцейський забув усе","tomar nota = записувати"]
+]},
+{t:"Безпека для туристів", lv:2, q:[
+["No dejes tu bolso ___ vigilancia.","sin","con","sin vigilancia = без нагляду"],
+["Es mejor no llevar ___ dinero en efectivo.","mucho","poco","mucho — обережність"],
+["Guarda una copia de tu pasaporte ___.","por separado","por separada","separado — незмінне тут"],
+["Evita zonas poco ___ por la noche.","iluminadas","iluminados","zonas ж.р. мн. → iluminadas"],
+["Ten cuidado con los carteristas ___ el transporte público.","en","a","en + місце"],
+["No compartas tu ubicación con ___ desconocidos.","personas","persona","personas мн."],
+["Lleva siempre contigo el número de la embajada.","Завжди носи із собою номер посольства","Завжди дзвони в посольство","практична порада"],
+["Es recomendable contratar un seguro de viaje.","Рекомендується оформити туристичну страховку","Рекомендується не страхуватися","seguro de viaje"],
+["Avisa a alguien de tus planes de viaje.","Повідом комусь свої плани подорожі","Не повідомляй нікому свої плани","безпечна практика"],
+["Mantente alerta en lugares muy concurridos.","Будь пильним у людних місцях","Розслабся в людних місцях","concurrido = людний"]
+]},
+{t:"Реакція на небезпеку", lv:2, q:[
+["Si hay un incendio, no ___ el ascensor.","uses","usas","заперечний наказ → no uses"],
+["Si tiembla la tierra, ___ debajo de una mesa.","ponte","te pon","наказ tú → ponte"],
+["Si te pierdes, ___ a un policía.","pregunta","preguntas","наказ → pregunta"],
+["Si ves un incendio, ___ inmediatamente a los bomberos.","llama","llamas","наказ → llama"],
+["Si alguien se desmaya, ___ ayuda.","pide","pides","наказ → pide"],
+["Si hueles a gas, ___ las ventanas.","abre","abres","наказ → abre"],
+["Si estás en peligro, ___ a un lugar seguro.","ve","vas","наказ ir → ve"],
+["Si ves un accidente, ___ a emergencias.","llama","llamas","наказ → llama"],
+["Si hay humo, ___ agachado.","camina","caminas","наказ → camina"],
+["Si no puedes salir, ___ en la ventana.","asómate","te asoma","наказ зворотний → asómate"]
+]},
+{t:"Пожежна безпека", lv:2, q:[
+["No uses el ascensor ___ un incendio.","durante","dentro de","durante = під час"],
+["El extintor está ___ la pared.","en","dentro de","на стіні → en"],
+["Antes de abrir una puerta, toca ___.","el pomo","el techo","pomo = ручка дверей"],
+["Si la puerta está caliente, no la ___.","abras","abre","заперечний наказ tú → no abras"],
+["Sal por la salida de emergencia, no por ___.","el ascensor","la ventana","ascensor заборонений під час пожежі"],
+["Agáchate si hay ___.","humo","fuego","якщо дим — нахилися нижче"],
+["El punto de encuentro está ___ del edificio.","fuera","dentro","за межами будівлі"],
+["No vuelvas a entrar ___ el edificio.","en","a","volver a entrar EN"],
+["Los simulacros de incendio son importantes ___ practicar.","para","por","para = мета"],
+["Revisa el extintor cada ___.","año","año… стоп","базове: cada año"]
+]},
+{t:"Крадіжка й шахрайство", lv:2, q:[
+["Me han robado ___ cartera.","la","el","cartera ж.р. → la"],
+["Alguien intentó ___ mi tarjeta.","clonar","clonarse","clonar la tarjeta"],
+["No compartas tu PIN ___ nadie.","con","a","compartir con"],
+["Este es un correo de ___.","phishing","fricción","phishing — англіцизм, укорінений в іспанській"],
+["Bloquea la tarjeta ___ posible.","lo antes","el antes","lo antes posible = якнайшвидше"],
+["No hagas clic en enlaces ___.","sospechosos","sospechados","прикметник sospechoso"],
+["Cambia tu contraseña ___.","inmediatamente","inmediato","прислівник → inmediatamente"],
+["Nunca des tus datos bancarios ___ teléfono.","por","en","por teléfono"],
+["Denuncia cualquier actividad ___.","sospechosa","sospechada","actividad ж.р. → sospechosa"],
+["Revisa tus cuentas ___ regularmente.","bancarias","bancario","cuentas ж.р. → bancarias"]
+]},
+{t:"Землетрус і природні лиха: дії", lv:2, q:[
+["Durante un terremoto, ___ debajo de algo resistente.","ponte","te pones","наказ → ponte"],
+["Aléjate de las ___.","ventanas","ventanillas","ventanas = вікна"],
+["Después del terremoto, revisa si hay ___ de gas.","fugas","huidas","fuga = витік"],
+["En caso de inundación, sube a un lugar ___.","alto","altos","lugar ч.р. → alto"],
+["No uses el coche durante una ___.","inundación","invitación","invitación = запрошення"],
+["Ten preparada una mochila de ___.","emergencia","emergente","прикметник тут не потрібен"],
+["Sigue las instrucciones de las autoridades ___.","locales","local","autoridades мн. → locales"],
+["Guarda agua y comida para varios ___.","días","día","varios días"],
+["Mantente informado a través de la ___.","radio","radia","radio — правильне слово"],
+["Ayuda a tus vecinos si ___ seguro hacerlo.","es","está","es + прикметник (постійна оцінка)"]
+]},
+{t:"Безпека на роботі", lv:2, q:[
+["Es obligatorio usar ___ en la obra.","casco","gorro","casco = каска (не gorro — шапка)"],
+["Hay que ___ las salidas de emergencia despejadas.","mantener","mantiene","hay que + inf"],
+["No se puede ___ sin el equipo de protección.","trabajar","trabaja","no se puede + inf"],
+["«гарнітура/захисні окуляри» — це…","las gafas de protección","las gafas de sol","de sol = сонцезахисні"],
+["Es importante ___ los simulacros de evacuación.","hacer","hace","es importante + inf"],
+["«аварійна кнопка» (на обладнанні) — це…","el botón de emergencia","el botón de encendido","encendido = увімкнення"],
+["Debes ___ cualquier riesgo a tu supervisor.","reportar","reportas","deber + inf"],
+["«захисні рукавиці» — це…","los guantes de protección","los guantes de invierno","invierno = зима"],
+["No ignores las señales de ___.","peligro","perdón","perdón = вибачте"],
+["Es fundamental conocer el plan de ___ del edificio.","evacuación","vacaciones","vacaciones = відпустка"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Наказовий спосіб у надзвичайних ситуаціях", lv:3, q:[
+["¡___ (correr, tú)!","Corre","Corres","наказ tú → corre"],
+["¡No ___ (entrar, vosotros)!","entréis","entráis","заперечний наказ vosotros → entréis"],
+["¡___ (llamar, usted) a emergencias!","Llame","Llama","наказ usted → llame"],
+["¡No ___ (tocar, tú) eso!","toques","toca","заперечний наказ tú → toques"],
+["¡___ (salir, todos) ahora mismo!","Salgan","Salen","наказ ustedes → salgan"],
+["¡No ___ (correr, usted) por las escaleras!","corra","corre","заперечний наказ usted → corra"],
+["¡___ (mantener, vosotros) la calma!","Mantened","Mantenéis","наказ vosotros → mantened"],
+["¡No ___ (usar, ustedes) el ascensor!","usen","usan","заперечний наказ ustedes → usen"],
+["¡___ (ayudarme, tú)!","Ayúdame","Me ayuda","наказ + займенник у кінець"],
+["¡No ___ (moverse, tú)!","te muevas","muévete","заперечний наказ зворотний → no te muevas"]
+]},
+{t:"Culturemas: безпека в Іспанії", lv:3, q:[
+["112 в Іспанії обслуговує…","усі види екстреної допомоги (поліція, швидка, пожежники)","лише поліцію","єдиний універсальний номер"],
+["У разі крадіжки в Іспанії треба подати…","una denuncia в комісаріаті поліції","лише скаргу онлайн без відвідин","denuncia — офіційна заява"],
+["Guardia Civil в Іспанії відповідає переважно за…","сільську місцевість і дороги","лише великі міста","специфіка іспанської поліцейської системи"],
+["Policía Local відповідає за…","місцевий порядок у містах","міжнародні справи","муніципальна поліція"],
+["У разі стихійного лиха Protección Civil координує…","евакуацію та допомогу населенню","лише лікарняну допомогу","цивільний захист"],
+["На пляжах Іспанії прапори (banderas) сигналізують про…","безпеку купання (зелений/жовтий/червоний)","погоду","система сигналізації для плавців"],
+["Червоний прапор на пляжі означає…","купання заборонено","можна купатися вільно","попередження про небезпеку"],
+["У разі втрати документів іноземцю варто звернутися до…","консульства/посольства своєї країни","лише готелю","embajada/consulado"],
+["SOS Turista — це послуги…","допомоги туристам у надзвичайних ситуаціях","бронювання готелів","туристична підтримка в деяких регіонах"],
+["У поїздах і метро Іспанії кнопка з написом «alarma»…","викликає екстрену зупинку/допомогу","вмикає музику","аварійна сигналізація"]
+]},
+{t:"POR і PARA в контексті небезпеки", lv:3, q:[
+["Llama ___ ayuda.","para pedir","por pedir","мета → para"],
+["Gracias ___ avisarme del peligro.","por","para","подяка/причина → por"],
+["Este extintor es ___ incendios eléctricos.","para","por","призначення → para"],
+["Corrí ___ miedo.","por","para","причина → por"],
+["Vine ___ ayudarte.","para","por","мета → para"],
+["Nos escondimos ___ el ruido.","por","para","причина → por"],
+["Este botón es ___ emergencias.","para","por","призначення → para"],
+["Todo pasó ___ la tormenta.","por","para","причина → por"],
+["Preparamos un plan ___ estar seguros.","para","por","мета → para"],
+["Gracias ___ salvarme la vida.","por","para","подяка/причина → por"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«Llama al policía» (одна особа-професія без артикля перед a) → …","Llama a la policía (установа, не особа)","Llama al policía залишити","la policía = установа, el policía = особа"],
+["«Necesito ayuda de la policía» — це…","правильно","треба «un policía»","la policía тут = установа"],
+["«Hay un accidente a la calle» → …","Hay un accidente en la calle","Hay un accidente a la calle залишити","en + вулиця"],
+["«No entra en pánico» (наказ собі, tú) → …","No entres en pánico","No entra en pánico залишити","наказ tú → entres"],
+["«Llamame a emergencias» (бракує наголосу) → …","Llámame a emergencias","Llamame — без тильди помилка","наказ + займенник = тильда"],
+["«El fuego se extendió rápido mucho» (порядок слів) → …","El fuego se extendió muy rápido","залишити як є","muy перед прислівником"],
+["«Denuncia un robo a la policía» (зайвий a) → …","Denuncia un robo en la policía / a la policía — обидва можливі","однозначна помилка","насправді обидва варіанти вживані"],
+["«Ten cuidado con los carteristas a el metro» → …","Ten cuidado con los carteristas en el metro","en el metro залишити без змін","в метро → en"],
+["«Bloquea la tarjeta lo más antes posible» (подвійне підсилення) → …","Bloquea la tarjeta lo antes posible","залишити як є","lo antes posible — стала фраза"],
+["«Si hay incendio no uso el ascensor» (неправильна особа) → …","Si hay incendio no uses el ascensor","залишити як є","наказ tú → uses"]
+]},
+{t:"Переклади речення", lv:3, q:[
+["«Терміново подзвони в поліцію!»:","¡Llama a la policía urgentemente!","¡Llama la policía urgentemente!","llamar A la policía"],
+["«У мене вкрали гаманець»:","Me han robado la cartera","Me han robado a la cartera","robar + прямий додаток, без a для речей"],
+["«Зберігайте спокій і виходьте повільно»:","Mantengan la calma y salgan despacio","Mantengan la calma y salen despacio","наказовий спосіб ustedes"],
+["«Де найближчий аварійний вихід?»:","¿Dónde está la salida de emergencia más cercana?","¿Dónde está la entrada de emergencia más cercana?","salida, не entrada"],
+["«Мені потрібно подати заяву про крадіжку»:","Necesito poner una denuncia por robo","Necesito poner una denuncia para robo","denuncia POR robo"],
+["«Не заходьте, там небезпечно!»:","¡No entren, es peligroso!","¡No entran, es peligroso!","наказовий спосіб ustedes"],
+["«Дякую, що попередили мене вчасно»:","Gracias por avisarme a tiempo","Gracias para avisarme a tiempo","gracias POR"],
+["«У разі землетрусу сховайтеся під столом»:","En caso de terremoto, escóndete debajo de la mesa","En caso de terremoto, esconde debajo de la mesa","зворотне дієслово escóndete"],
+["«Швидка вже в дорозі»:","La ambulancia va de camino","La ambulancia va en el camino","de camino — стала фраза"],
+["«Це заборонена зона, не можна входити»:","Es una zona prohibida, no se puede entrar","Es una zona prohibida, no se puede entra","інфінітив після poder"]
+]},
+{t:"SI + subjuntivo для гіпотез (вступ)", lv:3, q:[
+["Si hubiera un incendio, ___ (salir) inmediatamente.","saldría","salgo","умовний спосіб — гіпотетична ситуація"],
+["Ця конструкція (si + минулий умовний) виражає…","гіпотетичну, малоймовірну ситуацію","реальну, звичну ситуацію","на відміну від si + presente"],
+["Si tuviera que elegir, ___ (llamar) primero a la policía.","llamaría","llamo","гіпотетичний вибір"],
+["Порівняй: «Si hay un incendio, sal» (реально) vs «Si hubiera…» (…)","гіпотетично, менш імовірно","однаково ймовірно","різні рівні ймовірності"],
+["Si me perdiera en una ciudad nueva, ___ (buscar) un policía.","buscaría","busco","гіпотетична ситуація"],
+["Ця тема (umовний спосів) належить до…","вищих рівнів (В1+), тут лише ознайомлення","базового A1","попереднє знайомство"],
+["Si no supiera nadar, no ___ (nadar) en el mar abierto.","nadaría","nado","гіпотеза"],
+["Si viera algo sospechoso, ___ (avisar) a la policía.","avisaría","aviso","гіпотеза"],
+["Найпростіший (реальний) варіант того самого: Si ves algo sospechoso, ___.","avisa","avisarías","si + presente + наказ = реально"],
+["На рівні A1 достатньо розпізнавати цю структуру, а не…","активно її будувати","взагалі не бачити","пасивне ознайомлення"]
+]},
+{t:"Розповідь про подію (текст)", lv:3, q:[
+["Ayer ___ (haber) un pequeño incendio en mi edificio.","hubo","hay","минула форма hay = hubo"],
+["___ (empezar) en la cocina de un vecino.","Empezó","Empieza","минулий час у розповіді"],
+["Alguien ___ (oler) a humo y ___ (llamar) a los bomberos.","olió, llamó","huele, llama","минулий час розповіді"],
+["Todos ___ (salir) del edificio rápidamente.","salimos","salen","nosotros у розповіді"],
+["Los bomberos ___ (llegar) en pocos minutos.","llegaron","llegan","минулий час"],
+["___ (apagar) el fuego sin problemas.","Apagaron","Apagan","минулий час"],
+["Nadie ___ (resultar) herido, por suerte.","resultó","resulta","минулий час"],
+["Después, todos ___ (poder) volver a casa.","pudimos","podemos","минулий час nosotros"],
+["Fue un buen recordatorio de ___ preparados.","estar","ser","estar preparados"],
+["Desde entonces, siempre ___ (revisar) el extintor.","reviso","revisé","звичка з того часу — теперішній"]
+]},
+{t:"Діалог: свідчення в поліції", lv:3, q:[
+["— ¿Qué pasó exactamente? — ___ un robo en mi coche.","Hubo","Hay","минула форма → hubo"],
+["— ¿A qué hora fue? — ___ sobre las diez de la noche.","Fue","Es","минулий час → fue"],
+["— ¿Vio al ladrón? — Sí, ___ verlo bien.","pude","puedo","минулий час → pude"],
+["— ¿Puede describirlo? — Era ___ y llevaba una chaqueta negra.","alto","alta","persona ч.р. тут → alto"],
+["— ¿Qué le robaron? — Me robaron ___ cartera y el móvil.","la","el","cartera ж.р. → la"],
+["— ¿Tiene algún testigo? — Sí, mi vecino lo ___ todo.","vio","ve","минулий час → vio"],
+["— Vamos a abrir ___.","una investigación","una invitación","invitación = запрошення"],
+["— ¿Necesita algo más? — Sí, ___ una copia para el seguro.","necesito","necesita","я → necesito"],
+["— Aquí tiene el número de ___.","atestado","atesorado","atesorado — не те слово"],
+["— Gracias por su ___.","colaboración","colonización","colonización = колонізація 😄"]
+]},
+{t:"Прикмети надзвичайних служб", lv:3, q:[
+["Машини швидкої допомоги в Іспанії зазвичай мають написи…","дзеркально (щоб читалось у дзеркалі заднього виду)","звичайно зліва направо завжди","типова практика для екстреного транспорту"],
+["Поліцейська машина Guardia Civil традиційно…","зелено-біла","повністю чорна","типовий колір"],
+["«Código rojo» у лікарні означає…","найвищий рівень тривоги/термінову ситуацію","звичайний прийом","медичний протокол"],
+["«Triaje» у невідкладній допомозі означає…","сортування пацієнтів за терміновістю","реєстрацію документів","медичний термін з французької"],
+["112 можна набрати навіть…","без сім-картки в телефоні","лише з активним тарифом","екстрений номер завжди доступний"],
+["У метро Мадрида в разі надзвичайної ситуації діють інструкції…","персоналу станції та гучномовця","лише письмові вказівки","голосові оголошення важливі"],
+["«Punto de encuentro» (у школах, офісах) — це…","місце збору після евакуації","місце зустрічі з друзями","специфічний термін для навчань з евакуації"],
+["Simulacro de incendio означає…","навчальну пожежну тривогу","справжню пожежу","практика для готовності"],
+["У випадку хибної тривоги важливо…","дочекатися офіційного сигналу «все чисто»","одразу повертатися в будівлю","безпека понад усе"],
+["DYA, Cruz Roja — це приклади…","організацій швидкої допомоги в Іспанії","назв аптек","волонтерські/медичні організації"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["Єдиний номер екстрених служб в Іспанії:","112","911","база"],
+["«пожежники» — це…","los bomberos","los bombillas","bombilla = лампочка"],
+["Me han robado ___ cartera.","la","el","cartera ж.р."],
+["¡___ (correr, tú)!","Corre","Corres","наказ tú"],
+["Gracias ___ avisarme.","por","para","подяка → por"],
+["112 обслуговує…","усі види екстреної допомоги","лише поліцію","універсальний номер"],
+["«аварійний вихід» — це…","la salida de emergencia","la entrada de emergencia","entrada = вхід"],
+["Si hay incendio, no ___ (usar, tú) el ascensor.","uses","usas","заперечний наказ"],
+["«заявити про крадіжку» — це…","denunciar el robo","denunciar el ruido","ruido = шум"],
+["Ayer ___ (haber) un incendio.","hubo","hay","минула форма"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Надзвичайні ситуації: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 22 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

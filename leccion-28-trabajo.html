@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 28 · Робота · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 28 · @malinnaartstudio</div>
+    <h1 id="htitle">Робота: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 28 · Trabajo.</b>
+      30 вправ по 10 питань: професії, пошук роботи, співбесіда, офісна лексика,
+      контракти й зарплата. Від ★ до ★★★. ¡A por ese trabajo! 💼
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · базова лексика</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · у контексті</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · нюанси й діалоги</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 28</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Професії", lv:1, q:[
+["«лікар» — це…","el médico/la médica","el medio","medio = середина"],
+["«вчитель» — це…","el profesor","el profesional","profesional = професіонал"],
+["«інженер» — це…","el ingeniero","el genio","genio = геній"],
+["«адвокат» — це…","el abogado","el aguacate","aguacate = авокадо 🥑"],
+["«офіціант» — це…","el camarero","el camino","camino = дорога"],
+["«кухар» — це…","el cocinero","la cocina","cocina = кухня"],
+["«медсестра» — це…","la enfermera","la enferma","enferma = хвора"],
+["«продавець» — це…","el vendedor","el ganador","ganador = переможець"],
+["«водій» — це…","el conductor","el condutor","condutor — помилка написання"],
+["«програміст» — це…","el programador","el programa","programa = програма (річ)"]
+]},
+{t:"Пошук роботи: лексика", lv:1, q:[
+["«робота» (як заняття) — це…","el trabajo/empleo","el descanso","descanso = відпочинок"],
+["«вакансія» — це…","la vacante/oferta de empleo","la vacación","vacación = відпустка"],
+["«резюме» — це…","el currículum (vitae)","el carné","carné = посвідчення"],
+["«супровідний лист» — це…","la carta de presentación","la carta de menú","menú = меню"],
+["«співбесіда» — це…","la entrevista","la ventana","ventana = вікно"],
+["«роботодавець» — це…","el empleador","el empleado","empleado = працівник"],
+["«кандидат» (на посаду) — це…","el candidato","el candado","candado = замок (навісний)"],
+["«шукати роботу» — це…","buscar trabajo","buscar el trabajado","trabajado — дієприкметник"],
+["«подавати заявку» (на вакансію) — це…","postularse/aplicar","postar","postar — не те слово"],
+["«кадрове агентство» — це…","la agencia de empleo","la agencia de emperador","emperador = імператор"]
+]},
+{t:"На співбесіді", lv:1, q:[
+["«Розкажіть про себе» — це…","Hábleme de usted","Hábleme de su casa","про себе, не про дім"],
+["«досвід роботи» — це…","la experiencia laboral","la experiencia local","local = місцевий"],
+["«сильні сторони» — це…","los puntos fuertes","los puntos débiles","débiles = слабкі"],
+["«слабкі сторони» — це…","los puntos débiles","los puntos fuertes","fuertes = сильні"],
+["«очікувана зарплата» — це…","el salario esperado","el salario especial","especial = особливий"],
+["«графік роботи» — це…","el horario laboral","el horno laboral","horno = духовка"],
+["«випробувальний термін» — це…","el período de prueba","el período de prueba… стоп","базове"],
+["«запитання до роботодавця» — це…","preguntas para el empleador","preguntas por el empleador","para — мета/адресат"],
+["«Дякую за можливість» — це…","Gracias por la oportunidad","Gracias para la oportunidad","подяка → por"],
+["«Коли я дізнаюся результат?» — це…","¿Cuándo sabré el resultado?","¿Cuándo sé el resultado?","майбутнє sabré"]
+]},
+{t:"В офісі: лексика", lv:1, q:[
+["«офіс» — це…","la oficina","la oficio","oficio = ремесло"],
+["«колега» — це…","el compañero de trabajo","el camarero","camarero = офіціант"],
+["«начальник» — це…","el jefe","el jefatura","jefatura = керівництво (абстрактне)"],
+["«зустріч/нарада» — це…","la reunión","la reunión… стоп","базове"],
+["«електронна пошта» — це…","el correo electrónico","el correo eléctrico","eléctrico = електричний прилад"],
+["«дедлайн» — це…","el plazo/la fecha límite","el plazo de vacaciones","vacaciones = відпустка"],
+["«принтер» — це…","la impresora","la impresión","impresión = друк (процес)"],
+["«робочий стіл» (меблі) — це…","el escritorio","el escrito","escrito = написаний текст"],
+["«перерва на каву» — це…","la pausa para el café","la pausa por el café","para — мета"],
+["«робочий день» — це…","la jornada laboral","la jornalera","jornalera — не те слово"]
+]},
+{t:"Контракт і зарплата", lv:1, q:[
+["«зарплата» — це…","el salario/sueldo","el suelo","suelo = підлога!"],
+["«трудовий договір» — це…","el contrato de trabajo","el contrario de trabajo","contrario = протилежний"],
+["«постійна робота» — це…","trabajo fijo/indefinido","trabajo finido","finido — не те слово"],
+["«тимчасова робота» — це…","trabajo temporal","trabajo temperamental","temperamental = темпераментний"],
+["«повний робочий день» — це…","jornada completa","jornada completada","completada — дієприкметник"],
+["«неповний робочий день» — це…","media jornada/tiempo parcial","medio jornada","jornada ж.р. → media"],
+["«підвищення» (посади) — це…","el ascenso","el descenso","descenso = спуск"],
+["«звільнення» (з роботи) — це…","el despido","el desprecio","desprecio = зневага"],
+["«безробіття» — це…","el paro/desempleo","el paro… стоп","базове"],
+["«лікарняний» — це…","la baja por enfermedad","la baja por vacaciones","vacaciones — не хвороба"]
+]},
+{t:"Дії на роботі: дієслова", lv:1, q:[
+["«працювати» — це…","trabajar","trabajo","trabajo — іменник"],
+["«наймати» (когось) — це…","contratar","contratarse","contratarse — зворотне, інше значення"],
+["«звільняти» (когось) — це…","despedir","despedirse","despedirse = прощатися"],
+["«керувати» (командою) — це…","dirigir/gestionar","dirigirse","dirigirse = прямувати"],
+["«співпрацювати» — це…","colaborar","colaborarse","colaborarse — немає такого слова"],
+["«вирішувати проблеми» — це…","resolver problemas","resolver problemos","problemas — правильна форма"],
+["«організовувати» — це…","organizar","organizarse… теж є","organizar — базове"],
+["«презентувати» (проєкт) — це…","presentar","presentarse","presentarse = представитися"],
+["«домовлятися» — це…","negociar","negarse","negarse = відмовлятися"],
+["«звітувати» (перед начальником) — це…","informar/reportar","informarse","informarse = дізнаватися"]
+]},
+{t:"Види зайнятості", lv:1, q:[
+["«фрилансер» — це…","el/la autónomo/a/freelance","el/la automático/a","automático = автоматичний"],
+["«стажування» — це…","las prácticas","las práctica","однина/множина: las prácticas"],
+["«стажер» — це…","el/la becario/a","el/la becado/a… теж вживається","becario — типовий термін"],
+["«дистанційна робота» — це…","el teletrabajo/trabajo remoto","el trabajo telefónico","telefónico = телефонний"],
+["«робота на дому» — це…","trabajo desde casa","trabajo de casa","desde = з (місця)"],
+["«підробіток» — це…","el trabajo extra/segundo empleo","el trabajo extremo","extremo = екстремальний"],
+["«самозайнятий» — це…","autónomo","autonomía","autonomía = автономія (абстрактне)"],
+["«гнучкий графік» — це…","horario flexible","horario flexivo","flexible — правильна форма"],
+["«сезонна робота» — це…","trabajo de temporada","trabajo de temperatura","temperatura = температура"],
+["«волонтерство» — це…","el voluntariado","el voluntario… (особа)","voluntariado = сама діяльність"]
+]},
+{t:"Компанія й структура", lv:1, q:[
+["«компанія/фірма» — це…","la empresa","la empeza","empeza — не те слово"],
+["«відділ» (компанії) — це…","el departamento","el apartamento","apartamento = квартира"],
+["«генеральний директор» — це…","el director general/CEO","el director genial","genial = чудовий"],
+["«акціонер» — це…","el accionista","el accidental","accidental — прикметник"],
+["«клієнт» — це…","el cliente","el clima","clima = клімат"],
+["«постачальник» — це…","el proveedor","el probador","probador = примірочна"],
+["«конкурент» (бізнесу) — це…","el competidor","el competitivo","competitivo = конкурентний (прикм.)"],
+["«штаб-квартира» — це…","la sede","la seda","seda = шовк"],
+["«філія» (компанії) — це…","la sucursal","la sucesión","sucesión = спадкоємність"],
+["«стартап» — це…","la startup/empresa emergente","la empresa urgente","urgente = терміновий"]
+]},
+{t:"Розмова про роботу", lv:1, q:[
+["«Чим ти займаєшся?» (професія) — це…","¿A qué te dedicas?","¿A qué te duchas?","duchas = приймаєш душ 🚿"],
+["«Я працюю в…» — це…","Trabajo en…","Trabajo a…","trabajar EN"],
+["«Мені подобається моя робота» — це…","Me gusta mi trabajo","Me gusto mi trabajo","gustar: me gusta"],
+["«Я багато працюю» — це…","Trabajo mucho","Trabajo muy","прислівник → mucho"],
+["«У мене вихідний» — це…","Tengo el día libre","Tengo el día liberado","liberado — інше значення"],
+["«Скільки годин ти працюєш?» — це…","¿Cuántas horas trabajas?","¿Cuántos horas trabajas?","horas ж.р. → cuántas"],
+["«Я втомився від роботи» — це…","Estoy cansado del trabajo","Estoy cansado del trabajo… стоп","базове"],
+["«Мені потрібна відпустка» — це…","Necesito vacaciones","Necesito vacación","vacaciones — завжди множина"],
+["«Я задоволений своєю роботою» — це…","Estoy contento con mi trabajo","Estoy contento de mi trabajo… теж ок","contento con — типовіше"],
+["«Моя робота стресова» — це…","Mi trabajo es estresante","Mi trabajo está estresante","постійна риса → ser"]
+]},
+{t:"Обов'язки на роботі", lv:1, q:[
+["«обов'язки» (посадові) — це…","las responsabilidades","las responsables","responsable — прикметник/особа"],
+["«завдання» (робоче) — це…","la tarea","la tarifa","tarifa = тариф"],
+["«проєкт» — це…","el proyecto","el prospecto","prospecto = проспект (документ)"],
+["«команда» (робоча) — це…","el equipo","el equipaje","equipaje = багаж"],
+["«керівник проєкту» — це…","el jefe de proyecto","el jefe de proyección","proyección = проєкція"],
+["«робочий процес» — це…","el flujo de trabajo","el flojo de trabajo","flojo = слабкий/ледачий"],
+["«якість роботи» — це…","la calidad del trabajo","la cantidad del trabajo","cantidad = кількість"],
+["«продуктивність» — це…","la productividad","la producción","producción = виробництво"],
+["«ефективність» — це…","la eficiencia","la eficacia… теж вживається","обидва можливі, eficiencia типовіше тут"],
+["«робоче навантаження» — це…","la carga de trabajo","la carga del trabajado","trabajado — дієприкметник"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Резюме і заявка", lv:2, q:[
+["Adjunto mi currículum ___ este correo.","a","en","adjuntar A"],
+["Tengo experiencia ___ marketing digital.","en","de","experiencia EN"],
+["Estoy interesado ___ este puesto.","en","de","interesado EN"],
+["Me gustaría postularme ___ esta vacante.","a","para","postularse A"],
+["Estoy disponible ___ empezar de inmediato.","para","por","мета → para"],
+["He trabajado ___ esta empresa durante tres años.","en","con","trabajar EN una empresa"],
+["Mi experiencia se centra ___ ventas.","en","de","centrarse EN"],
+["Quedo a la espera ___ su respuesta.","de","en","a la espera DE"],
+["Gracias ___ considerar mi candidatura.","por","para","подяка → por"],
+["Espero tener la oportunidad ___ conocerles.","de","en","oportunidad DE"]
+]},
+{t:"Співбесіда: діалог", lv:2, q:[
+["— ¿Por qué quiere trabajar ___ nosotros? — Porque me interesa mucho la empresa.","con","para","trabajar CON"],
+["— ¿Cuáles son sus puntos fuertes? — Soy muy ___ y organizado.","responsable","responsablemente","прикметник → responsable"],
+["— ¿Tiene experiencia ___ este sector? — Sí, cinco años.","en","de","experiencia EN"],
+["— ¿Por qué dejó su trabajo anterior? — Busco nuevos ___.","retos","retados","іменник retos"],
+["— ¿Disponibilidad ___ empezar? — Inmediata.","para","por","мета → para"],
+["— ¿Tiene alguna pregunta ___ nosotros? — Sí, sobre el horario.","para","por","питання ДО когось → para"],
+["— ¿Cuál es su salario esperado? — Depende ___ las condiciones.","de","en","depender DE"],
+["— ¿Sabe trabajar ___ equipo? — Sí, me encanta.","en","con","trabajar EN equipo"],
+["— Gracias ___ venir. — Gracias a ustedes ___ la oportunidad.","por / por","para / para","подяка → por обидва рази"],
+["— Nos pondremos en contacto ___ usted pronto.","con","a","ponerse en contacto CON"]
+]},
+{t:"Робочий день: розповідь", lv:2, q:[
+["Empiezo a trabajar ___ las nueve.","a","en","час → a"],
+["Trabajo ___ una oficina en el centro.","en","a","місце → en"],
+["Tengo una reunión ___ las diez.","a","en","час → a"],
+["Almuerzo ___ mis compañeros.","con","de","з ким → con"],
+["Termino de trabajar ___ las seis.","a","en","час → a"],
+["Envío correos ___ toda la mañana.","por","durante… теж ок","por la mañana"],
+["Hablo ___ mi jefe cada semana.","con","a","hablar CON"],
+["Me reúno ___ el equipo los lunes.","con","a","reunirse CON"],
+["Reviso mi correo ___ llegar a la oficina.","al","a","al + inf = коли…"],
+["Vuelvo a casa ___ las siete de la tarde.","a","en","час → a"]
+]},
+{t:"Проблеми на роботі", lv:2, q:[
+["Estoy estresado ___ el exceso de trabajo.","por","para","причина → por"],
+["No estoy de acuerdo ___ esta decisión.","con","en","de acuerdo CON"],
+["He tenido un conflicto ___ un compañero.","con","de","conflicto CON"],
+["Me quejé ___ las condiciones de trabajo.","de","por","quejarse DE"],
+["Estoy preocupado ___ mi futuro laboral.","por","para","причина хвилювання → por"],
+["El proyecto se ha retrasado ___ falta de recursos.","por","para","причина → por"],
+["Necesito hablar ___ mi jefe sobre esto.","con","a","hablar CON"],
+["Estoy pensando ___ cambiar de trabajo.","en","de","pensar EN"],
+["Renuncié ___ el mal ambiente laboral.","por","para","причина → por"],
+["Voy a buscar otro trabajo ___ estar más contento.","para","por","мета → para"]
+]},
+{t:"Кар'єрне зростання", lv:2, q:[
+["Quiero ascender ___ un puesto mejor.","a","en","ascender A + посада"],
+["Me han ofrecido un ascenso ___ mi buen trabajo.","por","para","причина → por"],
+["Estoy trabajando ___ conseguir un ascenso.","para","por","мета → para"],
+["Necesito más experiencia ___ ser gerente.","para","por","мета → para"],
+["Mi objetivo es llegar ___ ser director.","a","en","llegar A ser"],
+["Estoy orgulloso ___ mi progreso profesional.","de","por","orgulloso DE"],
+["He aprendido mucho ___ este trabajo.","en","de","en este trabajo (durante)"],
+["Me han felicitado ___ mi ascenso.","por","para","причина → por"],
+["Estoy comprometido ___ mi carrera.","con","a","comprometido CON"],
+["Cada año fijo nuevos objetivos ___ mi carrera.","para","por","мета → para"]
+]},
+{t:"Пільги й умови роботи", lv:2, q:[
+["Mi empresa ofrece seguro médico ___ los empleados.","para","por","для когось → para"],
+["Tengo derecho ___ 22 días de vacaciones.","a","de","derecho A"],
+["La empresa paga ___ mis gastos de transporte.","por","para","paga POR"],
+["Tenemos flexibilidad ___ elegir nuestro horario.","para","por","мета → para"],
+["Recibo un bono ___ Navidad.","por","en","en Navidad (час)"],
+["Mi contrato incluye ___ beneficios adicionales.","—","de","beneficios — прямий додаток"],
+["Trabajamos ___ objetivos, no por horas.","por","para","por objetivos"],
+["La empresa invierte ___ la formación de sus empleados.","en","para","invertir EN"],
+["Tengo un buen equilibrio ___ trabajo y vida personal.","entre","con","equilibrio ENTRE"],
+["Estoy satisfecho ___ mis condiciones laborales.","con","de","satisfecho CON"]
+]},
+{t:"Опис компанії", lv:2, q:[
+["La empresa se dedica ___ la tecnología.","a","en","dedicarse A"],
+["Cuenta ___ más de mil empleados.","con","de","contar CON"],
+["Se especializa ___ software educativo.","en","de","especializarse EN"],
+["La empresa ha crecido mucho ___ los últimos años.","en","durante… теж ok","en los últimos años"],
+["Colaboramos ___ varias universidades.","con","de","colaborar CON"],
+["La sede está ubicada ___ el centro de la ciudad.","en","a","ubicado EN"],
+["La empresa se fundó ___ 2010.","en","de","рік → en"],
+["Tiene sucursales ___ varios países.","en","de","en varios países"],
+["Está comprometida ___ la sostenibilidad.","con","en","comprometido CON"],
+["Se enfoca ___ la satisfacción del cliente.","en","de","enfocarse EN"]
+]},
+{t:"Порівняння роботи", lv:2, q:[
+["Este trabajo es más estresante ___ el anterior.","que","de","порівняння → que"],
+["Gano menos ___ mil euros al mes.","de","que","перед числом → de"],
+["Mi jefe actual es tan exigente ___ el anterior.","como","que","рівність → como"],
+["Prefiero este trabajo ___ el otro.","a","que","preferir A (об'єкт)"],
+["Este puesto ofrece mejor salario ___ el anterior.","que","de","порівняння → que"],
+["Trabajo tantas horas ___ mis compañeros.","como","que","tantas… COMO"],
+["El ambiente aquí es mejor ___ en mi trabajo anterior.","que","de","mejor + que"],
+["Tengo más responsabilidades ___ antes.","que","de","порівняння → que"],
+["Este es el mejor trabajo ___ he tenido.","que","de","que he tenido"],
+["Cobro más ___ lo que esperaba.","de","que","más de lo que"]
+]},
+{t:"Дистанційна робота", lv:2, q:[
+["Trabajo ___ casa tres días a la semana.","desde","de","trabajar DESDE casa"],
+["Tengo una videollamada ___ las tres.","a","en","час → a"],
+["Necesito buena conexión ___ internet.","a","de","conexión A internet"],
+["Me organizo mejor ___ trabajar solo en casa.","al","a","al + inf = коли"],
+["Echo de menos el contacto ___ mis compañeros.","con","de","contacto CON"],
+["El teletrabajo me permite ahorrar tiempo ___ transporte.","en","de","ahorrar tiempo EN"],
+["Es importante crear un espacio dedicado ___ trabajar.","para","por","мета → para"],
+["A veces es difícil separar el trabajo ___ la vida personal.","de","con","separar X DE Y"],
+["Prefiero el teletrabajo ___ la oficina.","a","que","preferir A"],
+["Estoy acostumbrado ___ trabajar de forma independiente.","a","de","acostumbrado A"]
+]},
+{t:"Обов'язки і завдання команди", lv:2, q:[
+["Soy responsable ___ el marketing.","de","en","responsable DE"],
+["Me encargo ___ las redes sociales.","de","en","encargarse DE"],
+["Colaboro estrechamente ___ el equipo de ventas.","con","en","colaborar CON"],
+["Superviso ___ tres empleados.","a","de","особистий a (перед людьми)"],
+["Coordino los proyectos ___ toda la empresa.","de","en","proyectos DE"],
+["Delego tareas ___ mi equipo.","a","en","delegar A alguien"],
+["Reporto directamente ___ el director.","a","con","reportar A"],
+["Participo ___ varias reuniones cada semana.","en","de","participar EN"],
+["Contribuyo ___ el éxito del proyecto.","a","en","contribuir A"],
+["Me ocupo ___ las quejas de los clientes.","de","en","ocuparse DE"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Наказовий спосіб у роботі", lv:3, q:[
+["¡___ (enviar, usted) el informe hoy!","Envíe","Envía","наказ usted → envíe"],
+["¡No ___ (llegar, tú) tarde a la reunión!","llegues","llegas","заперечний наказ tú → llegues"],
+["¡___ (revisar, ustedes) los datos antes de enviar!","Revisen","Revisan","наказ ustedes → revisen"],
+["¡No ___ (olvidar, vosotros) la reunión de mañana!","olvidéis","olvidáis","заперечний наказ vosotros → olvidéis"],
+["¡___ (confirmar, tú) tu asistencia!","Confirma","Confirmas","наказ tú → confirma"],
+["¡___ (ser, usted) puntual, por favor!","Sea","Es","наказ usted → sea"],
+["¡No ___ (preocuparse, tú) tanto!","te preocupes","te preocupas","заперечний наказ зворотний tú"],
+["¡___ (avisar, ustedes) si hay algún problema!","Avisen","Avisan","наказ ustedes → avisen"],
+["¡___ (terminar, tú) el proyecto a tiempo!","Termina","Terminas","наказ tú → termina"],
+["¡No ___ (rendirse, usted)!","se rinda","se rinde","заперечний наказ зворотний usted"]
+]},
+{t:"Culturemas: робота в Іспанії", lv:3, q:[
+["Contrato indefinido в Іспанії означає…","безстроковий (постійний) трудовий договір","тимчасовий контракт","найбільш стабільна форма зайнятості"],
+["SMI (Salario Mínimo Interprofesional) — це…","мінімальна заробітна плата в Іспанії","середня зарплата","державний норматив"],
+["ERTE — це механізм…","тимчасового призупинення трудового договору (напр. під час кризи)","звільнення без компенсації","антикризовий інструмент"],
+["Paga extra в Іспанії зазвичай виплачують…","двічі на рік (літня й різдвяна)","щомісяця","традиційна система бонусів"],
+["INEM/SEPE — це…","державна служба зайнятості Іспанії","приватне кадрове агентство","реєстрація безробітних"],
+["У Іспанії стандартний робочий тиждень зазвичай…","40 годин","60 годин","законодавчо встановлена норма"],
+["Convenio colectivo означає…","колективний трудовий договір галузі","індивідуальний контракт","регулює умови праці в секторі"],
+["Finiquito при звільненні — це…","остаточний розрахунок з працівником","штраф працівнику","документ при завершенні контракту"],
+["У багатьох іспанських компаніях traditional «hora del café»…","соціальна перерва в середині ранку","заборонена","культурна традиція"],
+["Autónomo в Іспанії щомісяця сплачує…","внески до соціального страхування (cuota de autónomos)","лише податок на прибуток","обов'язковий внесок самозайнятих"]
+]},
+{t:"POR і PARA на роботі", lv:3, q:[
+["Trabajo ___ ganar dinero ___ mi familia.","para / para","por / por","обидва para: мета"],
+["Me pagan ___ hora, no ___ proyecto.","por / por","para / para","por hora, por proyecto"],
+["Este informe es ___ el jefe.","para","por","призначення → para"],
+["Gracias ___ la oportunidad de trabajar aquí.","por","para","подяка → por"],
+["Renuncié ___ no estar de acuerdo con la empresa.","por","para","причина → por"],
+["Estudio de noche ___ mejorar mi carrera.","para","por","мета → para"],
+["Me contrataron ___ mi experiencia.","por","para","причина найму → por"],
+["Necesito este contrato firmado ___ mañana.","para","por","дедлайн → para"],
+["Trabajamos duro ___ conseguir nuestras metas.","para","por","мета → para"],
+["Cambié de trabajo ___ un mejor salario.","por","para","причина зміни → por"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«Trabajo a una empresa» → …","Trabajo en una empresa","Trabajo a una empresa залишити","місце роботи → en"],
+["«Estoy interesado de este puesto» → …","Estoy interesado en este puesto","Estoy interesado de este puesto залишити","interesado EN"],
+["«Tengo experiencia de marketing» → …","Tengo experiencia en marketing","Tengo experiencia de marketing залишити","experiencia EN"],
+["«Confío a mi jefe» → …","Confío en mi jefe","Confío a mi jefe залишити","confiar EN"],
+["«Estoy de acuerdo en la decisión» → …","Estoy de acuerdo con la decisión","Estoy de acuerdo en la decisión залишити","de acuerdo CON"],
+["«Depende en las condiciones» → …","Depende de las condiciones","Depende en las condiciones залишити","depender DE"],
+["«Me quejé por las condiciones» → …","Me quejé de las condiciones","Me quejé por las condiciones залишити","quejarse DE"],
+["«Ascendí en un puesto mejor» → …","Ascendí a un puesto mejor","Ascendí en un puesto mejor залишити","ascender A"],
+["«Colaboro a varias empresas» → …","Colaboro con varias empresas","Colaboro a varias empresas залишити","colaborar CON"],
+["«Estoy comprometido a mi trabajo» → …","Estoy comprometido con mi trabajo","Estoy comprometido a mi trabajo залишити","comprometido CON"]
+]},
+{t:"Переклади речення", lv:3, q:[
+["«Я працюю в технологічній компанії»:","Trabajo en una empresa de tecnología","Trabajo a una empresa de tecnología","місце роботи → en"],
+["«У мене співбесіда завтра»:","Tengo una entrevista mañana","Tengo un entrevisto mañana","entrevista — правильне слово"],
+["«Я хочу подати заявку на цю вакансію»:","Quiero postularme a esta vacante","Quiero postularme para esta vacante — теж вживається","обидва прийнятні, a типовіше"],
+["«Мій начальник дуже вимогливий»:","Mi jefe es muy exigente","Mi jefe está muy exigente","постійна риса → ser"],
+["«Я задоволений своєю зарплатою»:","Estoy contento con mi salario","Estoy contento en mi salario","contento CON"],
+["«Компанія спеціалізується на маркетингу»:","La empresa se especializa en marketing","La empresa se especializa de marketing","especializarse EN"],
+["«Дякую за можливість»:","Gracias por la oportunidad","Gracias para la oportunidad","подяка → por"],
+["«Мені потрібно закінчити цей проєкт до п'ятниці»:","Necesito terminar este proyecto para el viernes","Necesito terminar este proyecto por el viernes","дедлайн → para"],
+["«Я звільнився через стрес»:","Renuncié por el estrés","Renuncié para el estrés","причина → por"],
+["«Я довіряю своїй команді»:","Confío en mi equipo","Confío a mi equipo","confiar EN"]
+]},
+{t:"Діалог: переговори про зарплату", lv:3, q:[
+["— ¿Cuál es su expectativa salarial? — Espero ganar ___ menos treinta mil al año.","al","a lo","al menos"],
+["— Podemos ofrecerle ___ euros al mes.","dos mil","dos miles","mil незмінне"],
+["— ¿Incluye eso el seguro médico? — Sí, ___ incluido.","está","es","стан включення → está"],
+["— ¿Hay posibilidad de ___ en el futuro?","ascenso","ascendencia","ascenso — правильне слово"],
+["— Me gustaría negociar ___ un poco más.","por","—","negociar без прийменника перед сумою"],
+["— ¿Qué tal ___ días de vacaciones adicionales?","unos","unas","días ч.р. → unos"],
+["— Necesito pensarlo ___ un par de días.","durante","por… теж ок","durante — тривалість"],
+["— ¿Cuándo necesita mi respuesta? — ___ el viernes como máximo.","Para","Por","дедлайн → para"],
+["— Gracias ___ su flexibilidad en esto.","por","para","подяка → por"],
+["— Espero que lleguemos ___ un acuerdo.","a","en","llegar A un acuerdo"]
+]},
+{t:"Ідіоми й розмовні вирази про роботу", lv:3, q:[
+["estar hasta el cuello de trabajo означає…","бути дуже перевантаженим роботою","стояти до шиї у воді","дослівно «по шию в роботі»"],
+["ganarse el pan означає…","заробляти на життя","виграти хліб","дослівно «заробляти хліб»"],
+["no dar palo al agua означає…","нічого не робити, ледарювати","бити по воді","розмовний вислів про лінь"],
+["romperse la cabeza означає…","ламати голову над проблемою","розбити собі голову буквально","переносне значення"],
+["estar a dos velas означає…","бути без грошей","мати дві свічки","розмовний фінансовий вислів"],
+["tener mano izquierda означає…","мати дипломатичність/такт","бути лівшею","переносне значення"],
+["dar en el clavo означає…","влучити в точку, вгадати правильно","забити цвях","дослівно «влучити в цвях»"],
+["poner las cartas sobre la mesa означає…","говорити відверто, викласти все начистоту","грати в карти","ділова ідіома"],
+["Estoy a tope означає…","я дуже зайнятий/завантажений","я на вершині","розмовний вислів"],
+["Írsele a alguien la mano означає…","перестаратися, перегнути палицю","втратити руку","переносне значення"]
+]},
+{t:"Мій робочий досвід (текст)", lv:3, q:[
+["Llevo ___ (trabajar) en esta empresa desde hace dos años.","trabajando","trabajado","llevar + герундій = тривалість"],
+["He ___ (aprender) mucho durante este tiempo.","aprendido","aprender","he + participio"],
+["Al principio, ___ (ser) difícil adaptarme al equipo.","fue","es","минулий час"],
+["Pero poco a poco ___ (ganar, yo) la confianza de mis compañeros.","gané","gano","минулий час"],
+["He ___ (tener) la oportunidad de liderar varios proyectos.","tenido","tenir","tener → tenido"],
+["Mi jefe ___ (confiar) mucho en mi trabajo.","confía","confié","теперішній стан"],
+["___ (aprender, yo) a trabajar bajo presión.","He aprendido","He aprender","he + participio"],
+["Espero poder ___ (crecer) más profesionalmente aquí.","crecer","crecido","poder + inf"],
+["Estoy muy ___ de mi progreso.","orgulloso/a","orgulloso… стоп","orgulloso DE"],
+["¡___ (ser) una experiencia muy enriquecedora!","Ha sido","Es sido","ha sido"]
+]},
+{t:"Виправ помилку (частина 2)", lv:3, q:[
+["«Superviso de tres empleados» → …","Superviso a tres empleados","Superviso de tres empleados залишити","особистий a перед людьми"],
+["«Reporto con el director» → …","Reporto al director","Reporto con el director залишити","reportar A"],
+["«Delego tareas en mi equipo» → …","Delego tareas a mi equipo","Delego tareas en mi equipo залишити","delegar A"],
+["«Participo de reuniones» → …","Participo en reuniones","Participo de reuniones залишити","participar EN"],
+["«Contribuyo en el éxito» → …","Contribuyo al éxito","Contribuyo en el éxito залишити","contribuir A"],
+["«Me ocupo en las quejas» → …","Me ocupo de las quejas","Me ocupo en las quejas залишити","ocuparse DE"],
+["«Espero llegar en un acuerdo» → …","Espero llegar a un acuerdo","Espero llegar en un acuerdo залишити","llegar A"],
+["«Estoy a tope de trabajo» (правильно чи ні?)","правильно","треба «con trabajo»","estar a tope — стала фраза"],
+["«Me encargo en las redes sociales» → …","Me encargo de las redes sociales","Me encargo en las redes sociales залишити","encargarse DE"],
+["«Soy responsable en el marketing» → …","Soy responsable del marketing","Soy responsable en el marketing залишити","responsable DE"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["«лікар» — це…","el médico","el medio","база"],
+["«резюме» — це…","el currículum","el carné","carné = посвідчення"],
+["«зарплата» — це…","el salario","el suelo","suelo = підлога!"],
+["Estoy interesado ___ este puesto.","en","de","interesado EN"],
+["Trabajo ___ ganar dinero.","para","por","мета → para"],
+["Renuncié ___ el estrés.","por","para","причина → por"],
+["Contrato indefinido означає…","безстроковий договір","тимчасовий договір","база"],
+["Confío ___ mi equipo.","en","a","confiar EN"],
+["¡___ (enviar, usted) el informe!","Envíe","Envía","наказ usted"],
+["Llevo ___ (trabajar) aquí dos años.","trabajando","trabajado","llevar + герундій"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Робота: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 28 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

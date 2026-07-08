@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 26 · Прийменники A, DE, EN, POR, PARA · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 26 · @malinnaartstudio</div>
+    <h1 id="htitle">Прийменники A, DE, EN, POR, PARA: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 26 · Preposiciones a, de, en, por, para.</b>
+      30 вправ по 10 питань: систематизація п'яти головних прийменників за значеннями —
+      напрямок, походження, місце, причина, мета. Від ★ до ★★★. ¡Vamos a por todas! 💪
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · основні значення</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · контраст і контекст</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й діалоги</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 26</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"A: напрямок і час", lv:1, q:[
+["Voy ___ Madrid.","a","en","напрямок → a"],
+["Llego ___ las ocho.","a","en","час → a"],
+["Vamos ___ la playa.","a","en","напрямок → a"],
+["La clase empieza ___ las nueve.","a","en","час → a"],
+["Miro ___ mi hermano.","a","—","особистий a перед людиною"],
+["a вживається для…","напрямку та точного часу","місцезнаходження","voy A, a las ocho"],
+["Llamo ___ mi madre.","a","—","особистий a"],
+["Subo ___ autobús.","al","en el","subir A (al = a+el)"],
+["Llegamos ___ tiempo.","a","en","a tiempo = вчасно"],
+["Conozco ___ tu hermana.","a","—","особистий a перед особою"]
+]},
+{t:"DE: походження й належність", lv:1, q:[
+["Soy ___ Ucrania.","de","en","походження → de"],
+["El libro es ___ Ana.","de","en","належність → de"],
+["La mesa es ___ madera.","de","en","матеріал → de"],
+["Vengo ___ trabajar.","de","en","звідки (дія) → de"],
+["de вживається для…","походження, належності, матеріалу","місця перебування","soy de, es de Ana"],
+["Salgo ___ casa.","de","en","вихід ЗВІДКИ → de"],
+["¿De quién es esto?","Чиє це?","Де це?","питання про власника"],
+["Este anillo es ___ oro.","de","en","матеріал → de"],
+["Soy ___ Kyiv.","de","en","походження → de"],
+["El coche ___ mi padre.","de","en","належність → de"]
+]},
+{t:"EN: місце й засіб", lv:1, q:[
+["Vivo ___ Madrid.","en","a","перебування → en"],
+["El libro está ___ la mesa.","en","a","місце → en"],
+["Voy ___ tren.","en","a","засіб транспорту → en"],
+["Trabajo ___ una oficina.","en","a","місце → en"],
+["en вживається для…","місцезнаходження і способу пересування","напрямку","estoy en, voy en tren"],
+["Estamos ___ casa.","en","a","перебування → en"],
+["Pienso ___ ti.","en","a","pensar EN"],
+["El dinero está ___ el banco.","en","a","місце → en"],
+["Confío ___ ti.","en","a","confiar EN"],
+["Estudio ___ la universidad.","en","a","місце → en"]
+]},
+{t:"POR: причина і рух через", lv:1, q:[
+["Gracias ___ tu ayuda.","por","para","причина/подяка → por"],
+["Paso ___ el parque.","por","para","рух ЧЕРЕЗ → por"],
+["Lo hago ___ ti.","por","para","заради (причина) → por"],
+["Pagué diez euros ___ el libro.","por","para","ціна/обмін → por"],
+["por вживається для…","причини, ціни, руху через щось","мети, призначення","gracias por, por el parque"],
+["Lo siento ___ llegar tarde.","por","para","причина вибачення → por"],
+["Camino ___ la calle.","por","para","рух ПО вулиці → por"],
+["Te llamo ___ teléfono.","por","para","por teléfono"],
+["Cambio esto ___ aquello.","por","para","обмін → por"],
+["Gracias ___ venir.","por","para","подяка → por"]
+]},
+{t:"PARA: мета й призначення", lv:1, q:[
+["Este regalo es ___ ti.","para","por","призначення → para"],
+["Estudio ___ aprender.","para","por","мета → para"],
+["Salgo ___ Madrid mañana.","para","por","напрямок призначення → para"],
+["Necesito esto ___ mañana.","para","por","термін → para"],
+["para вживається для…","мети, призначення, терміну","причини, обміну","es para ti, para aprender"],
+["Trabajo ___ vivir mejor.","para","por","мета → para"],
+["Este curso es ___ principiantes.","para","por","призначення → para"],
+["¿Para qué sirve esto?","Для чого це служить?","Через що це?","питання про призначення"],
+["Compro esto ___ mi madre.","para","por","для когось → para"],
+["Necesito más tiempo ___ terminar.","para","por","мета → para"]
+]},
+{t:"A чи EN: напрямок vs місце", lv:1, q:[
+["Voy ___ la escuela.","a","en","напрямок КУДИ → a"],
+["Estoy ___ la escuela.","en","a","перебування ДЕ → en"],
+["Llego ___ casa a las seis.","a","en","прибуття КУДИ → a"],
+["Estoy ___ casa.","en","a","перебування У → en"],
+["Ключова різниця: a — рух до…, en — …","перебування в","рух через","напрямок vs місце"],
+["Entro ___ la habitación.","en","a","входжу У кімнату → en (або a — обидва можливі для entrar)"],
+["Voy ___ el médico.","al","en el","al = a+el, напрямок"],
+["El médico está ___ su consulta.","en","a","перебування → en"],
+["Subo ___ el coche.","al","en el","subir A, al"],
+["Estoy ___ el coche.","en","a","перебування У → en"]
+]},
+{t:"POR чи PARA: база", lv:1, q:[
+["Esto es ___ ti. (подарунок для тебе)","para","por","призначення → para"],
+["Gracias ___ el regalo.","por","para","подяка → por"],
+["Trabajo ___ ganar dinero.","para","por","мета → para"],
+["Lo hice ___ amor.","por","para","причина → por"],
+["para відповідає на питання…","«для чого?»","«чому?»","мета vs причина"],
+["por відповідає на питання…","«чому?»","«для чого?»","причина vs мета"],
+["Necesito este libro ___ el examen.","para","por","мета/термін → para"],
+["Estoy triste ___ la noticia.","por","para","причина → por"],
+["Voy a estudiar ___ ser médico.","para","por","мета → para"],
+["Te doy las gracias ___ todo.","por","para","подяка → por"]
+]},
+{t:"Прийменники + займенник", lv:1, q:[
+["Es ___ mí.","para","por","para mí"],
+["Vienes ___ mí.","a","con","a mí"],
+["Hablo ___ ti.","de","a","hablar DE"],
+["Pienso ___ ti.","en","de","pensar EN"],
+["Voy ___ ti.","con","a","con — разом"],
+["Es ___ él.","de","para","de él = його (належність)"],
+["Confío ___ ella.","en","a","confiar EN"],
+["Trabajo ___ ellos.","para","por","para ellos"],
+["Vengo ___ vosotros.","con","a","con vosotros"],
+["Esto es ___ nosotros.","para","por","para nosotros"]
+]},
+{t:"Прийменники + означений артикль", lv:1, q:[
+["a + el = …","al","a el","обов'язкове злиття"],
+["de + el = …","del","de el","обов'язкове злиття"],
+["a + la = …","a la","al","НЕ зливається!"],
+["de + la = …","de la","del","НЕ зливається!"],
+["Voy ___ cine.","al","a el","al = a+el"],
+["Vengo ___ trabajo.","del","de el","del = de+el"],
+["Voy ___ playa.","a la","al","playa ж.р. → a la"],
+["Vengo ___ escuela.","de la","del","escuela ж.р. → de la"],
+["El libro ___ profesor.","del","de el","del profesor"],
+["Vamos ___ parque.","al","a la","parque ч.р. → al"]
+]},
+{t:"Базові стійкі вирази", lv:1, q:[
+["por favor означає…","будь ласка","на користь","стійкий вираз"],
+["de nada означає…","нема за що","нічого немає","відповідь на gracias"],
+["en general означає…","загалом","у генерала","стійкий вираз"],
+["a veces означає…","іноді","до разів","стійкий вираз"],
+["por ejemplo означає…","наприклад","для прикладу","стійкий вираз"],
+["a menudo означає…","часто","до менюшки 😄","стійкий вираз"],
+["en seguida означає…","негайно","в наступному","стійкий вираз"],
+["por supuesto означає…","звичайно","через передбачення","стійкий вираз"],
+["de repente означає…","раптом","з повторення","стійкий вираз"],
+["para siempre означає…","назавжди","для завжди… стоп","базовий переклад"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"POR: причина в реченнях", lv:2, q:[
+["No fui a la fiesta ___ estar enfermo.","por","para","причина (через хворобу) → por"],
+["Llegué tarde ___ el tráfico.","por","para","причина → por"],
+["Está preocupada ___ los exámenes.","por","para","причина хвилювання → por"],
+["Lo compré ___ curiosidad.","por","para","мотив/причина → por"],
+["Se disculpó ___ su error.","por","para","причина вибачення → por"],
+["No pude dormir ___ el ruido.","por","para","причина → por"],
+["Estudio español ___ interés personal.","por","para","мотив → por"],
+["Lloró ___ la película triste.","por","para","причина → por"],
+["Se enfadó ___ la broma.","por","para","причина → por"],
+["Renunció al trabajo ___ el estrés.","por","para","причина → por"]
+]},
+{t:"PARA: мета в реченнях", lv:2, q:[
+["Ahorro dinero ___ comprar una casa.","para","por","мета → para"],
+["Estudio mucho ___ aprobar el examen.","para","por","мета → para"],
+["Voy al gimnasio ___ estar en forma.","para","por","мета → para"],
+["Uso gafas ___ ver mejor.","para","por","мета → para"],
+["Trabajo horas extra ___ ganar más.","para","por","мета → para"],
+["Llamo ___ confirmar la cita.","para","por","мета → para"],
+["Necesito una bolsa ___ el pan.","para","por","призначення → para"],
+["Compro flores ___ mi madre.","para","por","для когось → para"],
+["Practico cada día ___ mejorar.","para","por","мета → para"],
+["Guardo dinero ___ el futuro.","para","por","мета/термін → para"]
+]},
+{t:"POR vs PARA: часові відтінки", lv:2, q:[
+["Necesito el informe ___ el lunes. (дедлайн)","para","por","термін виконання → para"],
+["Trabajé ___ dos horas. (тривалість)","por","durante… теж ок","por/durante — тривалість"],
+["Voy a estar allí ___ la mañana. (частина дня)","por","para","por la mañana"],
+["El proyecto es ___ marzo. (дедлайн)","para","por","термін → para"],
+["Estuvimos de vacaciones ___ una semana.","por","para","тривалість → por (або durante)"],
+["Necesito esto listo ___ el viernes.","para","por","дедлайн → para"],
+["Nos vemos ___ la tarde.","por","para","por la tarde"],
+["El regalo es ___ su cumpleaños. (привід)","para","por","привід/призначення → para"],
+["Ha estado aquí ___ tres años.","por","para","тривалість → por"],
+["La tarea es ___ mañana.","para","por","дедлайн → para"]
+]},
+{t:"DE: різні значення", lv:2, q:[
+["Hablamos ___ política.","de","en","тема розмови → de"],
+["Se trata ___ un problema serio.","de","en","tratarse DE"],
+["Estoy cansado ___ trabajar tanto.","de","por","причина втоми → de (estar cansado de)"],
+["El vaso está lleno ___ agua.","de","en","lleno DE"],
+["Depende ___ ti.","de","en","depender DE"],
+["Me acuerdo ___ ese día.","de","en","acordarse DE"],
+["Esta clase es ___ historia.","de","en","тема → de"],
+["Se ríe ___ todo.","de","en","reírse DE"],
+["Estoy seguro ___ eso.","de","en","estar seguro DE"],
+["Me olvidé ___ las llaves.","de","en","olvidarse DE"]
+]},
+{t:"EN: різні значення", lv:2, q:[
+["Insisto ___ mi idea.","en","de","insistir EN"],
+["Estoy interesado ___ ese tema.","en","de","interesado EN"],
+["Creo ___ ti.","en","de","creer EN"],
+["Consiste ___ tres partes.","en","de","consistir EN"],
+["Tarda mucho ___ responder.","en","de","tardar EN"],
+["Piensa ___ el futuro.","en","de","pensar EN"],
+["Se especializa ___ derecho.","en","de","especializarse EN"],
+["Basado ___ hechos reales.","en","de","basado EN"],
+["Está de acuerdo ___ el plan.","en","con","estar de acuerdo CON (виняток!)"],
+["Fíjate ___ los detalles.","en","de","fijarse EN"]
+]},
+{t:"A: особистий та інші випадки", lv:2, q:[
+["Ayudo ___ mi hermano.","a","—","особистий a"],
+["Espero ___ mis amigos.","a","—","особистий a"],
+["Veo ___ Ana en la calle.","a","—","особистий a"],
+["Busco ___ mi gato.","a","—","улюбленець → a"],
+["Busco ___ un piso.","—","a","річ — без a"],
+["Personal a вживається перед…","прямим додатком-особою","будь-яким додатком","conozco A Juan"],
+["Invito ___ mis vecinos a la fiesta.","a","—","особистий a"],
+["Escucho ___ la radio.","—","a","річ — без a (виняток за звичкою)"],
+["Llamo ___ mi jefe.","a","—","особистий a"],
+["Visito ___ mis abuelos.","a","—","особистий a"]
+]},
+{t:"Дієслова зі сталим прийменником", lv:2, q:[
+["soñar ___ (мріяти про)","con","de","soñar CON"],
+["casarse ___ (одружуватися з)","con","a","casarse CON"],
+["preocuparse ___ (турбуватися про)","por","de","preocuparse POR"],
+["enamorarse ___ (закохатися в)","de","en","enamorarse DE"],
+["quedar ___ (домовитися з)","con","de","quedar CON alguien"],
+["contar ___ (розраховувати на)","con","en","contar CON"],
+["parecerse ___ (бути схожим на)","a","con","parecerse A"],
+["asistir ___ (відвідувати)","a","en","asistir A"],
+["renunciar ___ (відмовитися від)","a","de","renunciar A"],
+["dedicarse ___ (присвячувати себе)","a","en","dedicarse A"]
+]},
+{t:"Комбінації в реченнях", lv:2, q:[
+["Voy ___ ir ___ pie ___ la escuela.","a / a / a","a / en / a","voy a ir a pie a la escuela"],
+["Trabajo ___ una empresa ___ Madrid.","en / en","a / en","en la empresa, en Madrid"],
+["Vengo ___ trabajar ___ hablar contigo.","de / para","a / por","vengo de trabajar para hablar"],
+["Compro esto ___ mi hijo ___ su cumpleaños.","para / para","por / por","para mi hijo, para su cumpleaños"],
+["Estudio ___ la universidad ___ ser abogado.","en / para","a / por","en la universidad, para ser"],
+["Salgo ___ casa ___ las ocho ___ ir al trabajo.","de / a / para","en / de / por","de casa, a las ocho, para ir"],
+["Hablamos ___ teléfono ___ dos horas.","por / durante… теж por","a / en","por teléfono, дві години"],
+["Este regalo es ___ ti, ___ tu cumpleaños.","para / para","por / por","обидва para тут"],
+["Vivo ___ España desde hace ___ años.","en / —","a / de","en España, hace X años"],
+["Gracias ___ venir ___ mi fiesta.","por / a","para / en","gracias por venir, a mi fiesta"]
+]},
+{t:"Питання з прийменниками", lv:2, q:[
+["¿___ dónde vas?","A","En","напрямок → a"],
+["¿___ quién hablas?","Con","A","з ким → con"],
+["¿___ qué hora llegas?","A","En","час → a"],
+["¿___ qué es esto?","Para","Por","для чого → para"],
+["¿___ qué lloras?","Por","Para","чому → por"],
+["¿___ dónde eres?","De","En","звідки → de"],
+["¿___ quién es este libro?","De","Para","чий → de"],
+["¿___ qué trabajas?","En","A","де працюєш → en"],
+["¿___ cuánto tiempo vas a quedarte?","Por","Para","тривалість → por"],
+["¿___ qué piensas?","En","A","про що думаєш → en (pensar en)"]
+]},
+{t:"Дієслова з прийменником A", lv:2, q:[
+["aprender ___ (вчитися чогось)","a","de","aprender A + inf"],
+["empezar ___ (починати)","a","de","empezar A + inf"],
+["ayudar ___ (допомагати)","a","de","ayudar A + inf"],
+["enseñar ___ (навчати)","a","de","enseñar A + inf"],
+["atreverse ___ (наважитися)","a","de","atreverse A + inf"],
+["acostumbrarse ___ (звикати)","a","de","acostumbrarse A"],
+["invitar ___ (запрошувати до)","a","de","invitar A + inf"],
+["volver ___ (робити знову)","a","de","volver A + inf"],
+["negarse ___ (відмовлятися)","a","de","negarse A + inf"],
+["decidirse ___ (зважитися)","a","de","decidirse A + inf"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"POR vs PARA: складні контрасти", lv:3, q:[
+["Lo hice ___ ti. (заради тебе, з любові)","por","para","мотив, причина → por"],
+["Lo hice ___ ti. (щоб тобі було краще, з метою)","para","por","мета для тебе → para"],
+["Ambos варіанти можливі залежно від…","чи це причина, чи мета дії","завжди однаково","por = чому, para = навіщо"],
+["Trabajo ___ mi familia. (заради, через них)","por","para","мотив → por"],
+["Trabajo ___ mi familia. (щоб забезпечити їх)","para","por","мета забезпечення → para"],
+["Estudio ___ mi madre. (тому що вона просить)","por","para","причина → por"],
+["Estudio ___ mi madre. (щоб зробити її гордою)","para","por","мета → para"],
+["Різниця тонка й залежить від…","наміру мовця","завжди фіксованого правила","контекстуальний нюанс"],
+["Voy ___ ti. (замість тебе)","por","para","заміна → por"],
+["Voy ___ ti. (щоб побачити тебе)","para","por","мета зустрічі → para"]
+]},
+{t:"Стійкі вирази з POR", lv:3, q:[
+["por lo menos означає…","принаймні","найменше з усього","стійкий вираз"],
+["por lo visto означає…","очевидно, судячи з усього","за виглядом","стійкий вираз"],
+["por si acaso означає…","про всяк випадок","через якийсь випадок","стійкий вираз"],
+["por cierto означає…","до речі","звичайно точно","стійкий вираз"],
+["por desgracia означає…","на жаль","через нещастя","стійкий вираз"],
+["por casualidad означає…","випадково","через випадок","стійкий вираз"],
+["por fin означає…","нарешті","через кінець","стійкий вираз"],
+["por lo tanto означає…","отже, тому","за стільки","логічний зв'язок"],
+["por su cuenta означає…","самостійно, на свій розсуд","через рахунок","стійкий вираз"],
+["por ahora означає…","поки що","через зараз","стійкий вираз"]
+]},
+{t:"Стійкі вирази з PARA", lv:3, q:[
+["para colmo означає…","на довершення всього (негативно)","для верху","стійкий вираз"],
+["para variar (іронічно) означає…","як завжди (для різноманіття)","щоб змінити","іронічний вислів"],
+["no es para tanto означає…","це не так серйозно","це не для стільки","заспокійлива фраза"],
+["para siempre означає…","назавжди","для завжди буквально","стійкий вираз"],
+["para nada означає…","зовсім ні","для нічого","підсилене заперечення"],
+["estar para означає…","бути готовим щось зробити (за мить)","стояти для чогось","estoy para salir"],
+["¿para qué? запитує про…","мету/призначення","причину","на відміну від ¿por qué?"],
+["para que + subjunctivo означає…","щоб (мета з іншим підметом)","тому що","складна конструкція (ознайомчо)"],
+["para mí (que) розмовно означає…","на мою думку","для мене одного","para mí que va a llover"],
+["no estar para bromas означає…","бути не в настрої для жартів","стояти для жартів","ідіоматичний вираз"]
+]},
+{t:"Прийменники з дієсловами руху", lv:3, q:[
+["ir ___ (кудись)","a","en","ir A + місце"],
+["venir ___ (звідкись)","de","a","venir DE + місце"],
+["entrar ___ (куди, в Іспанії частіше)","en","a","entrar EN (варіативно з a)"],
+["salir ___ (звідки)","de","a","salir DE"],
+["llegar ___ (куди)","a","en","llegar A"],
+["pasar ___ (через щось)","por","para","pasar POR"],
+["acercarse ___ (наближатися до)","a","en","acercarse A"],
+["alejarse ___ (віддалятися від)","de","a","alejarse DE"],
+["dirigirse ___ (прямувати до)","a","en","dirigirse A"],
+["volver ___ (повертатися куди)","a","en","volver A + місце"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«Voy en Madrid» (напрямок) → …","Voy a Madrid","Voy en Madrid залишити","напрямок → a"],
+["«Vivo a Madrid» (перебування) → …","Vivo en Madrid","Vivo a Madrid залишити","перебування → en"],
+["«Es por ti» (подарунок, призначення) → …","Es para ti","Es por ti залишити","призначення → para"],
+["«Gracias para tu ayuda» → …","Gracias por tu ayuda","Gracias para tu ayuda залишити","подяка → por"],
+["«Pienso de ti» → …","Pienso en ti","Pienso de ti залишити","pensar EN"],
+["«Voy a el cine» → …","Voy al cine","Voy a el cine залишити","al обов'язкове"],
+["«Vengo a el trabajo» → …","Vengo del trabajo","Vengo a el trabajo залишити","del обов'язкове (якщо звідки)"],
+["«Espero a el autobús» (річ, не особа) → …","Espero el autobús","Espero a el autobús залишити","без особистого a для речей"],
+["«Confío a ti» → …","Confío en ti","Confío a ti залишити","confiar EN"],
+["«Trabajo para tres horas» (тривалість) → …","Trabajo por tres horas / durante tres horas","Trabajo para tres horas залишити","тривалість → por/durante"]
+]},
+{t:"Переклади речення", lv:3, q:[
+["«Цей подарунок для тебе»:","Este regalo es para ti","Este regalo es por ti","призначення → para"],
+["«Дякую за допомогу»:","Gracias por la ayuda","Gracias para la ayuda","подяка → por"],
+["«Я думаю про тебе»:","Pienso en ti","Pienso de ti","pensar EN"],
+["«Я довіряю тобі»:","Confío en ti","Confío a ti","confiar EN"],
+["«Мені потрібно це до понеділка»:","Necesito esto para el lunes","Necesito esto por el lunes","дедлайн → para"],
+["«Я запізнився через затор»:","Llegué tarde por el atasco","Llegué tarde para el atasco","причина → por"],
+["«Я йду до лікаря»:","Voy al médico","Voy en el médico","al = a+el, напрямок"],
+["«Я з України»:","Soy de Ucrania","Soy en Ucrania","походження → de"],
+["«Я живу в Мадриді»:","Vivo en Madrid","Vivo a Madrid","перебування → en"],
+["«Я вчуся, щоб стати лікарем»:","Estudio para ser médico","Estudio por ser médico","мета → para"]
+]},
+{t:"Дієслова з прийменником DE, EN, CON", lv:3, q:[
+["darse cuenta ___ (усвідомити)","de","en","darse cuenta DE"],
+["tratarse ___ (йтися про)","de","en","tratarse DE"],
+["quejarse ___ (скаржитися на)","de","en","quejarse DE"],
+["consistir ___ (полягати в)","en","de","consistir EN"],
+["fijarse ___ (звертати увагу на)","en","de","fijarse EN"],
+["contar ___ (розраховувати на)","con","de","contar CON"],
+["soñar ___ (мріяти про)","con","en","soñar CON"],
+["cumplir ___ (виконати щось, обіцянку)","con","de","cumplir CON"],
+["acabar ___ (щойно зробити)","de","con","acabar DE + inf"],
+["Дієслова з фіксованим прийменником треба…","запам'ятовувати як стійкі сполучення","вгадувати з контексту завжди","певний список для вивчення"]
+]},
+{t:"Регіональні й стилістичні нюанси", lv:3, q:[
+["У розмовній мові іноді чути «quedamos a las cinco» замість «a las cinco» — обидва…","правильні, це один і той же прийменник","різні","просто повтор для прикладу"],
+["«Cerca de aquí» і «cerca aquí» (без de, розмовно) — друге…","розмовний варіант, не завжди нормативний","єдиний правильний","de зазвичай зберігається нормативно"],
+["У Латинській Америці іноді «en la mañana» замість іспанського «por la mañana» — це…","регіональна відмінність, обидва зрозумілі","помилка в одному з варіантів","плюрицентричність мови"],
+["«Enfrente de» і «frente a» — це…","синонімічні вирази","антоніми","обидва означають «навпроти»"],
+["Формальний стиль частіше використовує повні прийменникові конструкції, а розмовний…","іноді їх скорочує","завжди довший","стилістична різниця"],
+["«Distinto a» і «distinto de» — обидва вживані, means…","«відмінний від»","різні значення","варіативність прийменника"],
+["На письмі (формальний реєстр) прийменникові конструкції зазвичай…","повніші й точніші","скорочені","стилістична відмінність"],
+["Розуміння регіональних варіацій важливе, бо…","іспанська — плюрицентрична мова багатьох країн","існує лише один правильний варіант","гнучкість розуміння"],
+["На рівні A1 найважливіше…","засвоїти стандартні (пенінсулярні) форми, які подано в курсі","вивчити всі регіональні варіанти одразу","базовий фокус курсу"],
+["Ключовий висновок теми прийменників:","точні значення закріплюються практикою й повторенням, а не завжди логікою","усе можна вивести логічно","прийменники часто вимагають запам'ятовування"]
+]},
+{t:"Лист другу (текст)", lv:3, q:[
+["Querido amigo, te escribo ___ contarte mis noticias.","para","por","мета листа → para"],
+["Vivo ___ Madrid desde hace un año.","en","a","перебування → en"],
+["Trabajo ___ una empresa de tecnología.","en","a","місце → en"],
+["Estudio español ___ las tardes.","por","para","por la tarde"],
+["Este fin de semana voy ___ la playa.","a","en","напрямок → a"],
+["Gracias ___ tu última carta.","por","para","подяка → por"],
+["Espero verte pronto, ___ hablar más.","para","por","мета → para"],
+["Pienso mucho ___ nuestros viejos tiempos.","en","de","pensar EN"],
+["Este mensaje es ___ ti y toda tu familia.","para","por","призначення → para"],
+["Un abrazo ___ todos.","para","por","para todos"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["Voy ___ Madrid.","a","en","напрямок → a"],
+["Soy ___ Ucrania.","de","en","походження → de"],
+["Vivo ___ Madrid.","en","a","перебування → en"],
+["Gracias ___ tu ayuda.","por","para","подяка → por"],
+["Esto es ___ ti.","para","por","призначення → para"],
+["Pienso ___ ti.","en","de","pensar EN"],
+["Confío ___ ti.","en","a","confiar EN"],
+["Necesito esto ___ el lunes.","para","por","дедлайн → para"],
+["Llegué tarde ___ el tráfico.","por","para","причина → por"],
+["por lo menos означає…","принаймні","найменше","стійкий вираз"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Прийменники A, DE, EN, POR, PARA: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 26 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

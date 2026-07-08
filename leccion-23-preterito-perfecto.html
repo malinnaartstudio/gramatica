@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 23 · El pretérito perfecto · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 23 · @malinnaartstudio</div>
+    <h1 id="htitle">El pretérito perfecto: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 23 · El pretérito perfecto.</b>
+      30 вправ по 10 питань: haber (he/has/ha/hemos/habéis/han) + participio,
+      правильні дієприкметники, маркери часу (hoy, ya, todavía no). Від ★ до ★★★. ¡Ya lo he aprendido! ✅
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · форми й основи</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · у контексті</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й діалоги</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 23</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"HABER: форми", lv:1, q:[
+["yo → …","he","has","he"],
+["tú → …","has","ha","has"],
+["él/ella/usted → …","ha","han","ha"],
+["nosotros → …","hemos","habéis","hemos"],
+["vosotros → …","habéis","han","habéis"],
+["ellos/ellas/ustedes → …","han","hemos","han"],
+["Yo ___ hablado con Ana.","he","ha","yo → he"],
+["¿Tú ___ comido ya?","has","ha","tú → has"],
+["Nosotros ___ llegado tarde.","hemos","habéis","nosotros → hemos"],
+["Ellos ___ estudiado mucho.","han","hemos","ellos → han"]
+]},
+{t:"Дієприкметники -AR → -ADO", lv:1, q:[
+["hablar → …","hablado","hablido","-ar → -ado"],
+["trabajar → …","trabajado","trabajido","-ar → -ado"],
+["estudiar → …","estudiado","estudiido","-ar → -ado"],
+["comprar → …","comprado","compraido","-ar → -ado"],
+["viajar → …","viajado","viajido","-ar → -ado"],
+["Дієприкметник дієслів на -AR утворюється закінченням…","-ado","-ido","hablar→hablado"],
+["cantar → …","cantado","cantido","-ar → -ado"],
+["llegar → …","llegado","llegido","-ar → -ado"],
+["bailar → …","bailado","bailido","-ar → -ado"],
+["escuchar → …","escuchado","escuchido","-ar → -ado"]
+]},
+{t:"Дієприкметники -ER/-IR → -IDO", lv:1, q:[
+["comer → …","comido","comado","-er → -ido"],
+["vivir → …","vivido","vivado","-ir → -ido"],
+["beber → …","bebido","bebado","-er → -ido"],
+["salir → …","salido","salado","-ir → -ido"],
+["aprender → …","aprendido","aprendado","-er → -ido"],
+["Дієприкметник дієслів на -ER/-IR утворюється закінченням…","-ido","-ado","comer→comido"],
+["dormir → …","dormido","dormado","-ir → -ido"],
+["correr → …","corrido","corrado","-er → -ido"],
+["recibir → …","recibido","recibado","-ir → -ido"],
+["entender → …","entendido","entendado","-er → -ido"]
+]},
+{t:"HE + participio: yo", lv:1, q:[
+["Yo he ___ (hablar) con Ana.","hablado","hablando","haber + participio: -ado"],
+["Yo he ___ (comer) ya.","comido","comiendo","-er → -ido"],
+["Yo he ___ (vivir) aquí un año.","vivido","viviendo","-ir → -ido"],
+["Yo he ___ (trabajar) mucho hoy.","trabajado","trabajando","-ar → -ado"],
+["Yo he ___ (estudiar) español.","estudiado","estudiando","-ar → -ado"],
+["Yo ya he ___ (terminar) el proyecto.","terminado","terminando","-ar → -ado"],
+["Hoy he ___ (correr) cinco kilómetros.","corrido","corriendo","-er → -ido"],
+["Ya he ___ (leer) este libro.","leído","leyendo","leer → leído (з тильдою!)"],
+["He ___ (salir) temprano hoy.","salido","saliendo","-ir → -ido"],
+["He ___ (aprender) mucho este año.","aprendido","aprendiendo","-er → -ido"]
+]},
+{t:"HAS + participio: tú", lv:1, q:[
+["¿Has ___ (comer) ya?","comido","comiendo","tú → has + participio"],
+["¿Has ___ (estar) en Madrid?","estado","estando","estar → estado"],
+["¿Has ___ (hacer) los deberes?","hecho","hacido","hacer → hecho (неправильне!)"],
+["¿Has ___ (ver) esa película?","visto","veído","ver → visto (неправильне!)"],
+["¿Has ___ (terminar) el trabajo?","terminado","terminando","-ar → -ado"],
+["¿Has ___ (dormir) bien?","dormido","durmiendo","-ir → -ido"],
+["¿Ya has ___ (llegar)?","llegado","llegando","-ar → -ado"],
+["¿Has ___ (escribir) el correo?","escrito","escribido","escribir → escrito (неправильне!)"],
+["¿Has ___ (probar) esta comida?","probado","probando","-ar → -ado"],
+["¿Has ___ (decir) la verdad?","dicho","decido","decir → dicho (неправильне!)"]
+]},
+{t:"HA + participio: él/ella", lv:1, q:[
+["Ella ha ___ (trabajar) todo el día.","trabajado","trabajando","-ar → -ado"],
+["Él ha ___ (comer) ya.","comido","comiendo","-er → -ido"],
+["María ha ___ (vivir) en Francia.","vivido","viviendo","-ir → -ido"],
+["Ella ha ___ (llegar) tarde.","llegado","llegando","-ar → -ado"],
+["Él ha ___ (estudiar) medicina.","estudiado","estudiando","-ar → -ado"],
+["Ella ha ___ (salir) ya.","salido","saliendo","-ir → -ido"],
+["El profesor ha ___ (explicar) el tema.","explicado","explicando","-ar → -ado"],
+["Mi madre ha ___ (cocinar) paella.","cocinado","cocinando","-ar → -ado"],
+["Él ha ___ (aprender) mucho.","aprendido","aprendiendo","-er → -ido"],
+["Ella ha ___ (viajar) por Europa.","viajado","viajando","-ar → -ado"]
+]},
+{t:"HEMOS + participio: nosotros", lv:1, q:[
+["Nosotros hemos ___ (comer) juntos.","comido","comiendo","-er → -ido"],
+["Hemos ___ (viajar) mucho este año.","viajado","viajando","-ar → -ado"],
+["Hemos ___ (vivir) aquí cinco años.","vivido","viviendo","-ir → -ido"],
+["Hemos ___ (terminar) el proyecto.","terminado","terminando","-ar → -ado"],
+["Hemos ___ (estudiar) toda la tarde.","estudiado","estudiando","-ar → -ado"],
+["Hemos ___ (ver) esa serie.","visto","veído","ver → visto"],
+["Hemos ___ (hacer) todo lo posible.","hecho","hacido","hacer → hecho"],
+["Hemos ___ (llegar) a tiempo.","llegado","llegando","-ar → -ado"],
+["Hemos ___ (aprender) mucho juntos.","aprendido","aprendiendo","-er → -ido"],
+["Hemos ___ (decidir) mudarnos.","decidido","decidiendo","-ir → -ido"]
+]},
+{t:"HABÉIS / HAN: vosotros й ellos", lv:1, q:[
+["Vosotros habéis ___ (llegar) tarde.","llegado","llegando","-ar → -ado"],
+["¿Habéis ___ (comer) ya?","comido","comiendo","-er → -ido"],
+["Ellos han ___ (viajar) a España.","viajado","viajando","-ar → -ado"],
+["Ellas han ___ (estudiar) toda la noche.","estudiado","estudiando","-ar → -ado"],
+["Ustedes han ___ (llegar) a tiempo.","llegado","llegando","-ar → -ado"],
+["¿Habéis ___ (ver) esta película?","visto","veído","ver → visto"],
+["Ellos han ___ (hacer) un buen trabajo.","hecho","hacido","hacer → hecho"],
+["¿Vosotros habéis ___ (terminar)?","terminado","terminando","-ar → -ado"],
+["Mis padres han ___ (vivir) aquí toda la vida.","vivido","viviendo","-ir → -ido"],
+["Ellos han ___ (decir) que sí.","dicho","decido","decir → dicho"]
+]},
+{t:"Маркери часу перфекту", lv:1, q:[
+["«сьогодні» — це…","hoy","ayer","ayer = вчора"],
+["«вже» — це…","ya","todavía","todavía = ще"],
+["«ще не» — це…","todavía no","ya no","ya no = вже не"],
+["«цього тижня» — це…","esta semana","la semana pasada","pasada = минулого"],
+["«цього ранку» — це…","esta mañana","aquella mañana","aquella = того (давнього)"],
+["«ніколи» (з перфектом) — це…","nunca","siempre","nunca he estado"],
+["«вже» вживається для…","підтвердження виконаної дії","заперечення","ya lo he hecho"],
+["«colas года» — це…","este año","el año pasado","pasado = минулий"],
+["«коли-небудь» (питання про досвід) — це…","alguna vez","nunca","¿Has estado alguna vez…?"],
+["Типові маркери перфекту стосуються…","незавершеного періоду (сьогодні, цей тиждень)","завершеного минулого (вчора)","hoy, esta semana, este año"]
+]},
+{t:"Змішана практика: усі особи", lv:1, q:[
+["yo + hablar → …","he hablado","has hablado","he + participio"],
+["tú + comer → …","has comido","ha comido","has + participio"],
+["él + vivir → …","ha vivido","he vivido","ha + participio"],
+["nosotros + trabajar → …","hemos trabajado","habéis trabajado","hemos + participio"],
+["vosotros + ver → …","habéis visto","han visto","habéis + participio"],
+["ellos + hacer → …","han hecho","hemos hecho","han + participio"],
+["yo + ver → …","he visto","he veído","ver → visto"],
+["tú + hacer → …","has hecho","has hacido","hacer → hecho"],
+["nosotros + decir → …","hemos dicho","hemos decido","decir → dicho"],
+["ellos + escribir → …","han escrito","han escribido","escribir → escrito"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Заперечення з перфектом", lv:2, q:[
+["No he ___ (comer) todavía.","comido","comiendo","no he + participio"],
+["Частка no ставиться…","перед he/has/ha…","після participio","no he hecho"],
+["Ella no ha ___ (llegar) todavía.","llegado","llegando","no ha + participio"],
+["No hemos ___ (terminar) el trabajo.","terminado","terminando","no hemos + participio"],
+["¿No has ___ (ver) mis llaves?","visto","veído","no has + participio"],
+["Todavía no he ___ (decidir).","decidido","decidiendo","todavía no he + participio"],
+["Ellos no han ___ (llamar).","llamado","llamando","no han + participio"],
+["No he ___ (hacer) nada hoy.","hecho","hacido","no he + participio"],
+["Nunca he ___ (estar) en Asia.","estado","estando","nunca he + participio"],
+["No hemos ___ (empezar) todavía.","empezado","empezando","no hemos + participio"]
+]},
+{t:"Питання з перфектом", lv:2, q:[
+["¿Qué has ___ (hacer) hoy?","hecho","hacido","qué has + participio"],
+["¿Has ___ (estar) alguna vez en Italia?","estado","estando","has estado alguna vez"],
+["¿Dónde has ___ (poner) las llaves?","puesto","ponido","poner → puesto"],
+["¿Ya habéis ___ (comer)?","comido","comiendo","ya habéis + participio"],
+["¿Alguna vez has ___ (mentir)?","mentido","mintiendo","has mentido"],
+["¿Qué le has ___ (decir)?","dicho","decido","le has + participio"],
+["¿Habéis ___ (terminar) los deberes?","terminado","terminando","habéis + participio"],
+["¿Cuántas veces has ___ (viajar) a España?","viajado","viajando","cuántas veces has"],
+["¿Han ___ (llegar) tus amigos?","llegado","llegando","han + participio"],
+["¿Todavía no has ___ (empezar)?","empezado","empezando","todavía no has"]
+]},
+{t:"Досвід життя: alguna vez", lv:2, q:[
+["¿Has estado alguna vez en París?","Ти колись бував у Парижі?","Ти завжди бував у Парижі?","питання про досвід"],
+["Nunca he probado el sushi.","Я ніколи не куштував суші","Я завжди куштую суші","розповідь про (не)досвід"],
+["He viajado mucho en mi vida.","Я багато подорожував у своєму житті","Я подорожую щодня зараз","досвід життя загалом"],
+["¿Alguna vez has mentido a tus padres?","Ти колись брехав батькам?","Ти завжди брешеш батькам?","досвід"],
+["He leído ese libro dos veces.","Я читав цю книгу двічі","Я читаю цю книгу зараз","кількість разів у житті"],
+["Nunca hemos estado en Asia.","Ми ніколи не були в Азії","Ми завжди в Азії","заперечення досвіду"],
+["¿Has probado la comida picante alguna vez?","Ти коли-небудь куштував гостру їжу?","Ти завжди їси гостру їжу?","досвід"],
+["He conocido a mucha gente interesante.","Я познайомився з багатьма цікавими людьми","Я знайомлюся зараз","досвід життя"],
+["Todavía no he visitado ese museo.","Я ще не відвідував цей музей","Я вже відвідав цей музей","незавершений досвід"],
+["¿Han estado ustedes aquí antes?","Ви тут бували раніше?","Ви тут будете?","питання про досвід"]
+]},
+{t:"Неправильні дієприкметники: базові", lv:2, q:[
+["hacer → …","hecho","hacido","he hecho"],
+["decir → …","dicho","decido","he dicho"],
+["ver → …","visto","veído","he visto"],
+["poner → …","puesto","ponido","he puesto"],
+["escribir → …","escrito","escribido","he escrito"],
+["volver → …","vuelto","volvido","he vuelto"],
+["abrir → …","abierto","abrido","he abierto"],
+["romper → …","roto","rompido","he roto"],
+["morir → …","muerto","morido","ha muerto"],
+["cubrir → …","cubierto","cubrido","he cubierto"]
+]},
+{t:"Неправильні дієприкметники: похідні", lv:2, q:[
+["descubrir → …","descubierto","descubrido","як abrir → abierto"],
+["devolver → …","devuelto","devolvido","як volver → vuelto"],
+["deshacer → …","deshecho","deshacido","як hacer → hecho"],
+["describir → …","descrito","describido","як escribir → escrito"],
+["componer → …","compuesto","componido","як poner → puesto"],
+["prever → …","previsto","preveído","як ver → visto"],
+["resolver → …","resuelto","resolvido","незвичайне неправильне"],
+["satisfacer → …","satisfecho","satisfacido","як hacer → hecho"],
+["imponer → …","impuesto","imponido","як poner → puesto"],
+["revolver → …","revuelto","revolvido","як volver → vuelto"]
+]},
+{t:"Дії сьогодні (перфект)", lv:2, q:[
+["Hoy me he ___ (levantar) temprano.","levantado","levantando","зворотне + -ar → -ado"],
+["Esta mañana he ___ (desayunar) fruta.","desayunado","desayunando","-ar → -ado"],
+["Hoy hemos ___ (trabajar) mucho.","trabajado","trabajando","-ar → -ado"],
+["Esta tarde he ___ (hacer) la compra.","hecho","hacido","hacer → hecho"],
+["Hoy no he ___ (comer) carne.","comido","comiendo","no he + participio"],
+["Esta semana hemos ___ (tener) mucho trabajo.","tenido","teniendo","tener → tenido"],
+["Hoy he ___ (ver) a mi amiga.","visto","veído","ver → visto"],
+["Este mes he ___ (leer) tres libros.","leído","leyendo","leer → leído"],
+["Hoy hemos ___ (decidir) el menú.","decidido","decidiendo","-ir → -ido"],
+["Esta mañana he ___ (escribir) un correo.","escrito","escribido","escribir → escrito"]
+]},
+{t:"HABER + participio у розповіді", lv:2, q:[
+["Este año he ___ (aprender) mucho español.","aprendido","aprendiendo","-er → -ido"],
+["Hemos ___ (cambiar) de casa recientemente.","cambiado","cambiando","-ar → -ado"],
+["¿Habéis ___ (visitar) el museo nuevo?","visitado","visitando","-ar → -ado"],
+["Este mes han ___ (abrir) una tienda nueva.","abierto","abrido","abrir → abierto"],
+["He ___ (empezar) un curso de cocina.","empezado","empezando","-ar → -ado"],
+["Últimamente he ___ (dormir) mal.","dormido","durmiendo","-ir → -ido"],
+["Recientemente hemos ___ (descubrir) un restaurante genial.","descubierto","descubrido","descubrir → descubierto"],
+["Últimamente ha ___ (llover) mucho.","llovido","lloviendo","llover → llovido"],
+["Este trimestre han ___ (mejorar) mucho las ventas.","mejorado","mejorando","-ar → -ado"],
+["Recientemente me he ___ (mudar) de barrio.","mudado","mudando","-ar → -ado (зворотне)"]
+]},
+{t:"Різні особи разом", lv:2, q:[
+["Yo he ___ (terminar), pero tú no ___ (terminar) todavía.","terminado / has terminado","terminado / has termine","he… / has…"],
+["Ella ha ___ (llegar), pero nosotros no ___ (llegar).","llegado / hemos llegado","llegado / habéis llegado","ha… / hemos…"],
+["Vosotros habéis ___ (comer), pero ellos no ___ (comer).","comido / han comido","comido / hemos comido","habéis… / han…"],
+["¿Tú has ___ (ver) esto? Yo no lo ___ (ver).","visto / he visto","visto / has visto","has… / he…"],
+["Nosotros hemos ___ (decidir), pero ella no ___ (decidir).","decidido / ha decidido","decidido / hemos decidido","hemos… / ha…"],
+["Yo he ___ y ella también ___ (hacer) lo mismo.","hecho / ha hecho","hecho / he hecho","he… / ha…"],
+["¿Vosotros habéis ___ o todavía no ___ (empezar)?","empezado / habéis empezado","empezado / han empezado","habéis… / habéis…"],
+["Ellos han ___ (llamar), pero yo no ___ (llamar) todavía.","llamado / he llamado","llamado / ha llamado","han… / he…"],
+["Tú has ___ mucho, y yo también ___ (trabajar) mucho.","trabajado / he trabajado","trabajado / has trabajado","has… / he…"],
+["Nosotros hemos ___ y vosotros también ___ (aprender) mucho.","aprendido / habéis aprendido","aprendido / hemos aprendido","hemos… / habéis…"]
+]},
+{t:"Діалог: що ти вже зробив?", lv:2, q:[
+["— ¿Has hecho la compra? — Sí, ya la ___.","he hecho","has hecho","я → he hecho"],
+["— ¿Habéis comido? — No, todavía no ___.","hemos comido","habéis comido","ми → hemos comido"],
+["— ¿Ha llegado tu hermano? — Sí, ya ___.","ha llegado","he llegado","él → ha llegado"],
+["— ¿Has visto la nueva película? — No, no la ___ visto.","he","has","я → he"],
+["— ¿Habéis empezado el proyecto? — Sí, ya lo ___.","hemos empezado","habéis empezado","ми → hemos empezado"],
+["— ¿Han llamado los clientes? — No, no ___ llamado todavía.","han","hemos","ellos → han"],
+["— ¿Has terminado los deberes? — Casi, ___ terminado la mitad.","he","has","я → he"],
+["— ¿Habéis decidido algo? — Sí, ___ decidido ir a la playa.","hemos","habéis","ми → hemos"],
+["— ¿Ha llamado el médico? — Sí, ya ___ llamado.","ha","he","él → ha"],
+["— ¿Has probado esto? — No, nunca lo ___ probado.","he","has","я → he"]
+]},
+{t:"Перфект зі зворотними дієсловами", lv:2, q:[
+["Me he ___ (levantar) temprano.","levantado","levantando","me he + participio"],
+["¿Te has ___ (duchar) ya?","duchado","duchando","te has + participio"],
+["Se ha ___ (vestir) rápido.","vestido","vistiendo","se ha + participio"],
+["Nos hemos ___ (quedar) en casa.","quedado","quedando","nos hemos + participio"],
+["¿Os habéis ___ (divertir) hoy?","divertido","divirtiendo","os habéis + participio"],
+["Se han ___ (mudar) de piso.","mudado","mudando","se han + participio"],
+["Me he ___ (sentir) mejor hoy.","sentido","sintiendo","me he + participio"],
+["¿Te has ___ (acostar) tarde?","acostado","acostando","te has + participio"],
+["Se ha ___ (dormir) enseguida.","dormido","durmiendo","se ha + participio"],
+["Nos hemos ___ (despertar) tarde.","despertado","despertando","nos hemos + participio"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Позиція займенника з перфектом", lv:3, q:[
+["Lo he ___ (hacer) ya.","hecho","hacido","займенник ПЕРЕД he, не всередині!"],
+["«Я вже це зробив» — це…","Lo he hecho ya","He lo hecho ya","займенник перед he"],
+["Займенник НІКОЛИ не стає між…","he і participio","підметом і he","he lo hecho — помилка!"],
+["Me lo ha dicho.","Він мені це сказав","Я йому це сказав","me lo — два займенники перед ha"],
+["¿Lo has visto?","Ти це бачив?","Ти бачив його завтра?","lo перед has"],
+["Se lo hemos explicado.","Ми йому це пояснили","Він нам це пояснив","se lo перед hemos"],
+["«He la hecho» — це…","помилка (треба la he hecho)","правильно","займенник завжди перед he"],
+["Nos lo han contado.","Нам це розповіли","Ми це розповіли","nos lo перед han"],
+["Займенники завжди стоять…","безпосередньо перед формою haber","між haber і participio","he/has/ha + participio нерозривні"],
+["¿Se lo has dicho ya?","Ти вже це йому сказав?","Він тобі це вже сказав?","se lo перед has"]
+]},
+{t:"Дієприкметник як прикметник (узгодження)", lv:3, q:[
+["La puerta está ___. (зачинена, дієприкметник як прикметник)","cerrada","cerrado","puerta ж.р. → cerrada"],
+["Los documentos están ___.","firmados","firmado","documentos ч.р. мн. → firmados"],
+["У складі перфекту (he/has/ha + participio) дієприкметник…","НЕ змінюється за родом/числом","змінюється завжди","he trabajado (завжди -o)"],
+["Ella ha trabajado mucho. — trabajado тут…","незмінне, бо це складова перфекту","мало б бути trabajada","правило перфекту"],
+["Але «la carta está escrita» — тут escrita…","прикметник, узгоджений з carta","частина перфекту","estar + participio-прикметник"],
+["Los platos están ___. (вимиті)","lavados","lavado","platos ч.р. мн. → lavados"],
+["Ellas han comido. — comido тут…","незмінне (частина перфекту)","мало б бути comidas","he/has/ha/hemos/habéis/han + -o завжди"],
+["La ventana está ___. (відкрита)","abierta","abierto","ventana ж.р. → abierta"],
+["Ключове правило: з haber дієприкметник завжди закінчується на…","-o","-o/-a/-os/-as","he hablado, ha hablado — завжди -o"],
+["Las tiendas están ___. (зачинені)","cerradas","cerrado","tiendas ж.р. мн. → cerradas"]
+]},
+{t:"Перфект vs простий минулий (ознайомлення)", lv:3, q:[
+["He comido hoy. — маркер hoy указує на…","незавершений період (сьогодні ще триває)","повністю завершений давній час","перфект + hoy"],
+["Comí ayer. (простий минулий, інша тема) — ayer вказує на…","завершений, минулий день","сьогоднішній день","контраст із перфектом"],
+["Перфект типово вживається для дій у зв'язку з…","теперішнім моментом/незавершеним періодом","чітко відділеним минулим","hoy, esta semana, ya"],
+["He estudiado mucho este año. (рік ще не закінчився) — тому доречний…","perfecto","простий минулий","este año — незавершений період"],
+["Esta semana he trabajado mucho.","Цього тижня я багато працював (тиждень ще триває)","Минулого тижня я багато працював","perfecto + esta semana"],
+["В Іспанії (особливо в центрі) перфект вживається частіше, ніж…","у деяких країнах Латинської Америки","завжди й скрізь однаково","регіональна варіативність"],
+["He estado allí muchas veces. — muchas veces вказує на…","повторюваний досвід життя","одну конкретну дату","досвід без конкретної дати"],
+["Nunca he visto esto. — nunca з перфектом означає…","ніколи (у моєму досвіді)","колись у майбутньому","досвід життя"],
+["Ya lo he hecho. — ya підкреслює…","що дія вже виконана","що дія ще не почалась","ya + перфект = вже зроблено"],
+["Todavía no he terminado. — todavía no підкреслює…","що дія ще не відбулась (очікується)","що дія завершена","контраст із ya"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«Yo ha comido» → …","Yo he comido","Yo ha comido залишити","yo → he, не ha"],
+["«Hacido» (дієприкметник hacer) → …","hecho","hacido залишити","hacer → hecho (неправильне)"],
+["«He la hecho» → …","La he hecho","He la hecho залишити","займенник перед he"],
+["«Nosotros han comido» → …","Nosotros hemos comido","Nosotros han comido залишити","nosotros → hemos"],
+["«Ha trabajado mucho» (про ella, узгоджено як trabajada) → …","Ha trabajado (незмінне)","Ha trabajada","перфект — завжди -o"],
+["«Veído» (дієприкметник ver) → …","visto","veído залишити","ver → visto (неправильне)"],
+["«Vosotros ha comido» → …","Vosotros habéis comido","Vosotros ha comido залишити","vosotros → habéis"],
+["«Decido» (дієприкметник decir) → …","dicho","decido залишити","decir → dicho (неправильне)"],
+["«Yo he ver la película» (інфінітив замість participio) → …","Yo he visto la película","Yo he ver la película залишити","he + participio, не інфінітив"],
+["«Escribido» (дієприкметник escribir) → …","escrito","escribido залишити","escribir → escrito (неправильне)"]
+]},
+{t:"Переклади речення", lv:3, q:[
+["«Я вже поїв»:","Ya he comido","Ya soy comido","he comido"],
+["«Ти коли-небудь був у Японії?»:","¿Has estado alguna vez en Japón?","¿Eres estado alguna vez en Japón?","has estado"],
+["«Ми ще не вирішили»:","Todavía no hemos decidido","Todavía no somos decidido","hemos decidido"],
+["«Вона вже це сказала»:","Ella ya lo ha dicho","Ella ya lo he dicho","ella → ha"],
+["«Що ти зробив сьогодні?»:","¿Qué has hecho hoy?","¿Qué tienes hecho hoy?","has hecho"],
+["«Вони ніколи не бачили це»:","Nunca lo han visto","Nunca lo han ver","han visto"],
+["«Ми відкрили нову крамницю»:","Hemos abierto una tienda nueva","Hemos abrido una tienda nueva","abrir → abierto"],
+["«Ти написав листа?»:","¿Has escrito la carta?","¿Has escribido la carta?","escribir → escrito"],
+["«Я ще не почав»:","Todavía no he empezado","Todavía no soy empezado","he empezado"],
+["«Вони вже прийшли»:","Ellos ya han llegado","Ellos ya son llegado","han llegado"]
+]},
+{t:"HABER безособове: HAY vs HA HABIDO", lv:3, q:[
+["Hoy hay un problema. → У перфекті це буде…","Hoy ha habido un problema","Hoy ha habido un problema… стоп","hay → ha habido"],
+["ha habido — це перфектна форма…","hay (є, існує)","he (я маю)","безособове haber"],
+["Ha habido muchos cambios este año.","Цього року відбулося багато змін","Цього року є багато змін просто зараз","ha habido = відбулося (перфект)"],
+["ha habido НЕ змінюється за числом, тому…","«ha habido problemas» (множина теж ha habido)","«han habido problemas»","завжди ha habido, навіть у множині!"],
+["«Han habido muchos accidentes» — це…","поширена помилка (треба ha habido)","правильна форма","ha habido — незмінне"],
+["Ha habido una fiesta en el barrio.","Було свято в районі","Є свято зараз у районі","ha habido = відбулося"],
+["Правильно: «___ dos incidentes hoy.»","Ha habido","Han habido","завжди однина ha habido"],
+["No ha habido ningún problema.","Не було жодної проблеми","Немає жодної проблеми зараз","ha habido заперечення"],
+["¿Ha habido alguna novedad?","Чи було щось нове?","Чи є щось нове просто зараз?","питання про те, що сталося"],
+["Ha habido — вживається для…","подій, що відбулися (перфект від hay)","людей, які мають щось","безособова конструкція"]
+]},
+{t:"Регіональні відмінності вживання", lv:3, q:[
+["В Іспанії (особливо в центрі й на півночі) перфект вживають…","часто, навіть для нещодавніх завершених дій","рідко, віддають перевагу простому минулому","регіональна норма"],
+["У багатьох країнах Латинської Америки для «hoy he comido» частіше кажуть…","Hoy comí (простий минулий)","Hoy he comido — однаково всюди","регіональна варіативність"],
+["Ця відмінність — це питання…","регіональної норми вживання, а не помилки","абсолютної граматичної помилки","обидва варіанти існують у різних регіонах"],
+["Для складання іспанських іспитів (DELE) типово орієнтуються на…","стандарт Іспанії (напівострівний)","лише латиноамериканський варіант","залежить від типу іспиту, але частіше пенінсулярний"],
+["На практиці розуміти обидва варіанти важливо, бо…","іспаномовний світ дуже великий і різноманітний","існує лише один правильний варіант","іспанська — плюрицентрична мова"],
+["В Мексиці частіше про сьогоднішній сніданок скажуть…","Desayuné (простий минулий)","He desayunado","регіональна перевага"],
+["Це не означає, що перфект «неправильний» в Латинській Америці — він…","вживається, але рідше для нещодавніх подій","повністю відсутній","обидві форми існують"],
+["Ключовий висновок для учня A1:","розуміти обидві норми, активно використовувати ту, що вчить викладач","вибрати одну назавжди без винятків","гнучкість у розумінні"],
+["В Іспанії частіше запитають «¿Qué has hecho hoy?», а не…","¿Qué hiciste hoy?","¿Qué haces hoy?","регіональна перевага перфекту"],
+["Обидва варіанти — це приклад того, що іспанська…","має регіональні граматичні варіанти, а не лише лексичні","абсолютно однакова скрізь","різноманітність — природна риса мови"]
+]},
+{t:"Діалог: підсумок дня", lv:3, q:[
+["— ¿Qué tal el día? — ___ (tener) mucho trabajo.","He tenido","He tener","he + participio"],
+["— ¿Has comido algo? — Sí, ___ (comer) un sándwich.","he comido","he comer","he + participio"],
+["— ¿Y tu hermana? — Ella también ___ (trabajar) mucho.","ha trabajado","he trabajado","ella → ha"],
+["— ¿Habéis hablado con el jefe? — Sí, ___ (hablar) esta mañana.","hemos hablado","habéis hablado","nosotros → hemos"],
+["— ¿Qué han decidido? — ___ (decidir) esperar hasta mañana.","Han decidido","Han decidir","han + participio"],
+["— ¿Has visto las noticias? — No, todavía no las ___.","he visto","he ver","he + participio, займенник перед"],
+["— ¿Se ha resuelto el problema? — Sí, ya se ___.","ha resuelto","ha resolvido","resolver → resuelto"],
+["— ¿Cómo te has sentido hoy? — Me ___ (sentir) bien.","he sentido","he sentir","me he + participio"],
+["— ¿Habéis descansado? — Un poco, ___ (descansar) una hora.","hemos descansado","habéis descansado","nosotros → hemos"],
+["— En resumen, ¿ha sido un buen día? — Sí, ___ (ser) un día productivo.","ha sido","he sido","impersonal → ha sido"]
+]},
+{t:"Мій рік (текст)", lv:3, q:[
+["Este año ___ (aprender, yo) mucho español.","he aprendido","he aprender","he + participio"],
+["___ (viajar, yo) a tres países nuevos.","He viajado","He viajando","he + participio"],
+["Mi hermana y yo ___ (visitar) a nuestros abuelos.","hemos visitado","hemos visitar","nosotros → hemos"],
+["___ (empezar, yo) un nuevo trabajo.","He empezado","He empezar","he + participio"],
+["Mis amigos ___ (mudarse) de ciudad.","se han mudado","han mudado se","зворотне: se han mudado"],
+["___ (leer, yo) más de diez libros.","He leído","He leer","leer → leído"],
+["___ (hacer, nosotros) muchos cambios en casa.","Hemos hecho","Hemos hacer","hacer → hecho"],
+["Todavía no ___ (terminar) todos mis planes.","he terminado","he terminando","he + participio"],
+["Pero ya ___ (conseguir) mucho este año.","he conseguido","he conseguir","he + participio"],
+["¡___ (ser) un año increíble!","Ha","He","impersonal ha sido"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["yo → …","he","has","база"],
+["hablar → …","hablado","hablido","-ar → -ado"],
+["comer → …","comido","comado","-er → -ido"],
+["hacer → …","hecho","hacido","неправильне"],
+["ver → …","visto","veído","неправильне"],
+["No he ___ (comer) todavía.","comido","comiendo","no he + participio"],
+["¿Has estado alguna vez en Italia?","Ти колись бував в Італії?","Ти завжди в Італії","досвід"],
+["«Lo he hecho» — займенник стоїть…","перед he","між he і hecho","завжди перед haber"],
+["Ha trabajado — це форма для…","незмінна (перфект)","узгоджена (прикметник)","he/has/ha завжди -o"],
+["Ya lo he hecho означає…","я вже це зробив","я ще не зробив це","ya + перфект"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "El pretérito perfecto: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 23 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

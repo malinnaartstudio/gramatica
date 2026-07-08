@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 21 · Порівняння · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 21 · @malinnaartstudio</div>
+    <h1 id="htitle">Порівняння: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 21 · La comparación.</b>
+      30 вправ по 10 питань: más/menos… que, tan/tanto… como, найвищий ступінь,
+      неправильні форми (mejor, peor, mayor, menor). Від ★ до ★★★. ¡Cuanto más practiques, mejor! 📈
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · основні структури</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · у контексті</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й діалоги</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 21</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"MÁS…QUE: більше", lv:1, q:[
+["Madrid es ___ grande que Alicante.","más","tan","перевага → más… que"],
+["Este libro es ___ interesante que ese.","más","menos","más = більше"],
+["Ella es ___ alta que su hermano.","más","tan","más… que"],
+["El tren es ___ rápido que el autobús.","más","menos","más = швидший"],
+["Tengo ___ trabajo que ayer.","más","tan","más + іменник"],
+["más…que виражає…","перевагу («більше, ніж»)","рівність","asymetric comparison"],
+["Este año hace ___ calor que el pasado.","más","menos","más calor"],
+["Ana estudia ___ que Pedro.","más","tan","más + дієслово"],
+["El café es ___ caro que el té.","más","menos","más caro"],
+["Between más and que стоїть…","прикметник/іменник/прислівник","дієслово завжди","más + X + que"]
+]},
+{t:"MENOS…QUE: менше", lv:1, q:[
+["Este piso es ___ caro que aquel.","menos","más","menos = менше"],
+["Hoy hace ___ frío que ayer.","menos","tan","menos frío"],
+["Ella trabaja ___ horas que yo.","menos","más","menos horas"],
+["El tren es ___ lento que el avión.","menos","tanto","menos lento"],
+["Tengo ___ tiempo que tú.","menos","tan","menos tiempo"],
+["menos…que виражає…","нижчий ступінь («менше, ніж»)","рівність","протилежність más… que"],
+["Esta ciudad es ___ ruidosa que la capital.","menos","más","menos ruidosa"],
+["Bebo ___ café que antes.","menos","tanto","menos café"],
+["El examen fue ___ difícil de lo que pensaba.","menos","tan","menos difícil"],
+["Antónimo de más… que — це…","menos… que","tan… como","протилежні структури"]
+]},
+{t:"TAN…COMO: рівність (прикм.)", lv:1, q:[
+["Mi casa es ___ grande como la tuya.","tan","más","рівність → tan… como"],
+["Él es ___ simpático como su padre.","tan","menos","tan… como"],
+["Esta ciudad es ___ bonita como aquella.","tan","tanta","tan (незмінне перед прикметником)"],
+["tan…como виражає…","рівність («такий самий, як»)","перевагу","symmetric comparison"],
+["El libro es ___ interesante como la película.","tan","tanto","tan + прикметник"],
+["Ana es ___ alta como Marta.","tan","tanto","tan + прикметник"],
+["Hoy no hace ___ frío como ayer.","tan","tanto","tan + прикметник (навіть у запереченні)"],
+["El hotel es ___ caro como el otro.","tan","tantos","tan + прикметник"],
+["Mi hermano es ___ trabajador como yo.","tan","tan… стоп","базове: tan"],
+["tan вживається перед…","прикметником або прислівником","іменником","tan + прикм./присл."]
+]},
+{t:"TANTO/-A/-OS/-AS…COMO", lv:1, q:[
+["Tengo ___ dinero como tú.","tanto","tan","dinero → tanto"],
+["Ella tiene ___ paciencia como su madre.","tanta","tanto","paciencia ж.р. → tanta"],
+["Tengo ___ libros como tú.","tantos","tanto","libros мн. ч.р. → tantos"],
+["Hay ___ personas como el año pasado.","tantas","tantos","personas ж.р. мн. → tantas"],
+["tanto узгоджується за…","родом і числом іменника","нічим","tanto/-a/-os/-as"],
+["No tengo ___ tiempo como quisiera.","tanto","tan","tiempo → tanto"],
+["Bebe ___ agua como necesita.","tanta","tanto","agua ж.р. → tanta"],
+["Compramos ___ fruta como pudimos.","tanta","tantas","fruta однина → tanta"],
+["Tiene ___ amigos como yo.","tantos","tanta","amigos мн. → tantos"],
+["Різниця tan і tanto: tan — перед…","прикметником/присл.; tanto — перед іменником","завжди однаково","tan bonito / tanto dinero"]
+]},
+{t:"Найвищий ступінь: EL MÁS", lv:1, q:[
+["Madrid es ___ ciudad más grande de España.","la","el","ciudad ж.р. → la"],
+["Este es ___ libro más interesante.","el","la","libro ч.р. → el"],
+["Ella es ___ más inteligente de la clase.","la","el","ella → la"],
+["найвищий ступінь будується як…","el/la + más + прикметник","tan + прикметник","el más alto"],
+["Es el restaurante más caro ___ la ciudad.","de","en","superlativo + DE"],
+["Son ___ chicos más simpáticos del grupo.","los","las","chicos ч.р. мн. → los"],
+["Ella es la persona más amable ___ conozco.","que","de","que conozco (відносне)"],
+["El Everest es la montaña más alta ___ mundo.","del","de el","de+el=del"],
+["найвищий ступінь відповідає українському…","«найбільший/найкращий»","«такий самий»","el más grande = найбільший"],
+["Es el día más feliz ___ mi vida.","de","en","superlativo + de"]
+]},
+{t:"Найвищий: EL MENOS", lv:1, q:[
+["Es ___ opción menos cara.","la","el","opción ж.р. → la"],
+["Este es el hotel ___ caro de todos.","menos","más… теж можливо, тут менш","menos = найдешевший тут"],
+["найнижчий ступінь: el/la + menos + …","прикметник","дієслово","el menos caro"],
+["Es la ciudad menos conocida ___ la región.","de","en","superlativo + de"],
+["Es el estudiante menos puntual ___ clase.","de","en","de la clase"],
+["найменше з групи виражає…","el/la menos + прикметник","el/la más + прикметник","протилежне до el más"],
+["Este examen es el menos difícil ___ todos.","de","en","de todos"],
+["Son los días menos ocupados ___ la semana.","de","en","de la semana"],
+["El menos caro не означає…","найдорожчий","найдешевший","навпаки — найдешевший"],
+["Es la solución menos complicada ___ todas.","de","entre","de todas"]
+]},
+{t:"Неправильні: MEJOR / PEOR", lv:1, q:[
+["«кращий» — це…","mejor","más bueno","неправильна форма!"],
+["«гірший» — це…","peor","más malo","неправильна форма!"],
+["Este libro es ___ que aquel.","mejor","más bueno","mejor замінює más bueno"],
+["Mi día fue ___ que el tuyo.","peor","más malo","peor замінює más malo"],
+["mejor і peor…","не змінюються за родом","змінюються","mejor/peor — одна форма"],
+["Esta comida es ___ que la de ayer.","mejor","más buena","mejor"],
+["El tiempo hoy es ___ que ayer.","peor","más malo","peor"],
+["Cambiar más bueno на…","mejor","peor","обов'язкова заміна"],
+["Cambiar más malo на…","peor","mejor","обов'язкова заміна"],
+["Es la mejor decisión que ___ tomado.","he","soy","he tomado (перфект)"]
+]},
+{t:"Неправильні: MAYOR / MENOR", lv:1, q:[
+["«старший» (вік) — це…","mayor","más viejo… теж можливо, але","mayor — типовіше про вік людей"],
+["«молодший» — це…","menor","más joven… теж можливо","menor — типовіше про вік"],
+["Mi hermano es ___ que yo.","mayor","más viejo","mayor = старший"],
+["Mi hermana es ___ que yo.","menor","más joven","menor = молодша"],
+["mayor і menor також можуть означати…","більший/менший (абстрактно)","колір","mayor importancia = більша важливість"],
+["Es un problema de mayor ___.","importancia","importante","іменник після mayor"],
+["Tiene menor interés en esto.","Має менший інтерес до цього","Має більший інтерес до цього","menor = менший"],
+["mayor de edad означає…","повнолітній","неповнолітній","юридичний термін"],
+["menor de edad означає…","неповнолітній","повнолітній","юридичний термін"],
+["Mi abuelo es la persona ___ de la familia.","mayor","más grande","el/la mayor — найстарший"]
+]},
+{t:"Прикметники: рід у порівнянні", lv:1, q:[
+["Ana es más alta que ___. (Pedro)","Pedro","Pedro… стоп","базове: без зміни за родом самого прикметника тут"],
+["Esta casa es más ___ que aquella.","grande","grando","casa ж.р., але grande незмінне"],
+["Estos libros son más ___ que esos.","caros","cara","libros ч.р. мн. → caros"],
+["Estas flores son más ___ que esas.","bonitas","bonito","flores ж.р. мн. → bonitas"],
+["El coche es tan ___ como la moto.","rápido","rápida","coche ч.р. → rápido"],
+["Прикметник у порівнянні узгоджується з…","іменником, який він описує","іменником другого обʼєкта","як завжди в іспанській"],
+["Mi hermana es tan ___ como mi madre.","trabajadora","trabajador","hermana ж.р. → trabajadora"],
+["Los pisos son más ___ en el centro.","caros","cara","pisos ч.р. мн. → caros"],
+["La comida aquí es más ___ que en casa.","sabrosa","sabroso","comida ж.р. → sabrosa"],
+["Estos zapatos son menos ___ que aquellos.","cómodos","cómoda","zapatos ч.р. → cómodos"]
+]},
+{t:"Порівняння: база", lv:1, q:[
+["«більше, ніж» — це…","más que","tan como","más… que"],
+["«менше, ніж» — це…","menos que","tanto como","menos… que"],
+["«такий самий, як» (прикметник) — це…","tan… como","más… que","рівність"],
+["«стільки ж, скільки» (іменник) — це…","tanto/-a… como","tan… que","узгоджений tanto"],
+["«найкращий» — це…","el mejor","el más bueno","неправильна форма"],
+["«найгірший» — це…","el peor","el más malo","неправильна форма"],
+["«старший» — це…","mayor","más viejo","типово про людей"],
+["«молодший» — це…","menor","más joven","типово про людей"],
+["Три типи порівняння: перевага, рівність і…","найвищий ступінь","заперечення","superlativo"],
+["Порівняння завжди супроводжується парою слів, як…","que/como","de/en","más…QUE, tan…COMO"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"MÁS QUE чи MÁS DE?", lv:2, q:[
+["Tengo más ___ cien libros.","de","que","перед числом → de"],
+["Este libro es más interesante ___ aquel.","que","de","порівняння двох речей → que"],
+["Hay más ___ veinte personas aquí.","de","que","перед числом → de"],
+["Ella es más alta ___ su hermana.","que","de","порівняння → que"],
+["перед конкретним числом вживається…","más de","más que","más de cien"],
+["Cuesta más ___ lo que pensaba.","de","que","more DE + lo que"],
+["Trabajo más ___ ocho horas al día.","de","que","перед числом → de"],
+["Es más difícil ___ el anterior examen.","que","de","порівняння двох іспитів → que"],
+["Gano más ___ mil euros al mes.","de","que","перед числом → de"],
+["más de + число, але más que + …","обʼєкт порівняння","завжди число","que — при порівнянні двох речей"]
+]},
+{t:"NO TAN…COMO: заперечення", lv:2, q:[
+["Este hotel no es ___ caro como el otro.","tan","más","заперечення рівності → tan"],
+["No trabajo ___ como antes.","tanto","tan","дієслово → tanto"],
+["Ella no es tan alta ___ su madre.","como","que","tan… COMO навіть у запереченні"],
+["No tengo tanto tiempo ___ quisiera.","como","que","tanto… COMO"],
+["No hace tanto frío ___ ayer.","como","que","tan(to)… COMO"],
+["No es tan difícil ___ parece.","como","que","tan… COMO"],
+["заперечення структур tan/tanto…como означає…","менше/не так само, як","більше","м'яке применшення"],
+["Esta ciudad no es tan grande ___ la capital.","como","que","tan… COMO"],
+["No bebo tanto café ___ solía.","como","que","tanto… COMO"],
+["No es tan complicado ___ crees.","como","que","tan… COMO"]
+]},
+{t:"Порівняння якостей у житті", lv:2, q:[
+["Vivir en el campo es más tranquilo ___ vivir en la ciudad.","que","de","порівняння дій → que"],
+["El transporte público es menos caro ___ el coche propio.","que","de","порівняння → que"],
+["Trabajar desde casa es tan cómodo ___ trabajar en la oficina.","como","que","рівність → como"],
+["Esta receta es más fácil ___ la anterior.","que","de","порівняння рецептів → que"],
+["El español es tan difícil ___ el inglés para mí.","como","que","рівність → como"],
+["Viajar en tren es menos estresante ___ viajar en avión.","que","de","порівняння → que"],
+["Estudiar por la mañana es mejor ___ estudiar por la noche para mí.","que","de","mejor + que"],
+["Comer en casa es más barato ___ comer fuera.","que","de","порівняння → que"],
+["Hacer ejercicio es tan importante ___ dormir bien.","como","que","рівність → como"],
+["Vivir solo es menos económico ___ compartir piso.","que","de","порівняння → que"]
+]},
+{t:"Порівняння міст і країн", lv:2, q:[
+["Barcelona tiene más turistas ___ Sevilla en verano.","que","de","порівняння → que"],
+["Madrid es la capital más grande ___ España.","de","en","superlativo + de"],
+["Ucrania es más grande ___ España en territorio.","que","de","порівняння → que"],
+["Kyiv es tan histórica ___ Roma, aunque diferente.","como","que","рівність → como"],
+["El coste de vida en el pueblo es menor ___ en la capital.","que","de","порівняння → que"],
+["Alicante tiene mejor clima ___ Londres.","que","de","порівняння → que"],
+["Es la ciudad más antigua ___ toda la región.","de","en","superlativo + de"],
+["Valencia no es tan grande ___ Madrid.","como","que","рівність → como"],
+["Este país tiene más playas ___ montañas.","que","de","порівняння → que"],
+["Es uno de los países más visitados ___ mundo.","del","de el","de+el=del"]
+]},
+{t:"Порівняння в покупках", lv:2, q:[
+["Este modelo es más caro ___ el anterior.","que","de","порівняння → que"],
+["Cuesta más ___ cien euros.","de","que","перед числом → de"],
+["Esta talla es más pequeña ___ la otra.","que","de","порівняння → que"],
+["Prefiero la opción menos cara ___ las dos.","de","entre","de las dos"],
+["Este color es tan bonito ___ el otro.","como","que","рівність → como"],
+["Hay menos ___ diez unidades en stock.","de","que","перед числом → de"],
+["La calidad es mejor ___ el precio anterior.","que","de","mejor + que"],
+["Este producto tiene tantas reseñas ___ el otro.","como","que","tantas… COMO"],
+["Es el más barato ___ todos los modelos.","de","entre","de todos"],
+["No es tan bueno ___ esperaba.","como","que","tan… COMO"]
+]},
+{t:"Порівняння в навчанні", lv:2, q:[
+["Este curso es más difícil ___ el anterior.","que","de","порівняння → que"],
+["Estudio más ___ cinco horas al día.","de","que","перед числом → de"],
+["Ella saca mejores notas ___ yo.","que","de","порівняння → que"],
+["Este profesor explica tan bien ___ el otro.","como","que","рівність → como"],
+["Tengo menos exámenes ___ el semestre pasado.","que","de","порівняння → que"],
+["Es el estudiante más aplicado ___ la clase.","de","en","superlativo + de"],
+["No estudio tanto ___ debería.","como","que","tanto… COMO"],
+["Este libro tiene más páginas ___ trescientas.","de","que","перед числом → de"],
+["La universidad es tan exigente ___ dicen.","como","que","рівність → como"],
+["Aprendo mejor ___ escuchando que leyendo.","—","que… не тут","краще без que тут: aprendo mejor escuchando"]
+]},
+{t:"Питання з порівнянням", lv:2, q:[
+["¿Quién es ___ alto de la familia?","el más","más","el más alto — найвищий"],
+["¿Cuál es ___ barato de los dos?","el más","más","el más barato"],
+["¿Es tu ciudad tan grande ___ la mía?","como","que","tan… como"],
+["¿Tienes más experiencia ___ yo?","que","de","порівняння → que"],
+["¿Cuál es el país más grande ___ mundo?","del","de el","de+el=del"],
+["¿Qué opción es mejor ___ la otra?","que","de","mejor + que"],
+["¿Trabajas tanto ___ antes?","como","que","tanto… como"],
+["¿Cuál es el problema más urgente ___ todos?","de","en","de todos"],
+["¿Eres mayor ___ menor que tu hermano?","o","que","mayor O menor — вибір"],
+["¿Cuesta más ___ cincuenta euros?","de","que","перед числом → de"]
+]},
+{t:"Порівняльні прислівники", lv:2, q:[
+["Corre más ___ que yo.","rápido","rápida","прислівник — незмінне"],
+["Habla tan ___ como un nativo.","bien","buen","прислівник bien"],
+["Trabaja menos ___ que antes.","eficazmente","eficaz","прислівник на -mente"],
+["Llega más ___ que nunca.","tarde","tarda","прислівник tarde"],
+["Estudia tan ___ como puede.","seriamente","serio","прислівник на -mente"],
+["Conduce peor ___ que su hermano.","—","que… зайве","peor вже включає порівняння"],
+["Escribe mejor ___ que habla.","—","que… зайве","mejor саме включає порівняння"],
+["Corre tan rápido ___ un atleta.","como","que","рівність → como"],
+["Duerme menos ___ que debería.","—","que зайве тут","menos horas de las que debería — складніше"],
+["Llega tan puntual ___ siempre.","como","que","рівність → como"]
+]},
+{t:"Порівняння характеру й емоцій", lv:2, q:[
+["Es más paciente ___ su hermano.","que","de","порівняння → que"],
+["Es tan generosa ___ su madre.","como","que","рівність → como"],
+["Tiene menos paciencia ___ yo.","que","de","порівняння → que"],
+["Es la persona más amable ___ conozco.","que","de","que conozco (відносне речення)"],
+["Es tan divertido ___ siempre.","como","que","рівність → como"],
+["Está menos nervioso ___ ayer.","que","de","порівняння станів → que"],
+["Es más tímida ___ su hermana.","que","de","порівняння → que"],
+["Se siente tan feliz ___ nunca.","como","que","tan feliz como nunca = щасливий, як ніколи"],
+["Es el más simpático ___ todos mis amigos.","de","entre","de todos"],
+["Está tan preocupado ___ su madre.","como","que","рівність → como"]
+]},
+{t:"Порівняння роботи й зарплати", lv:2, q:[
+["Este trabajo paga más ___ el anterior.","que","de","порівняння → que"],
+["Gano menos ___ dos mil euros al mes.","de","que","перед числом → de"],
+["Mi jefe es tan exigente ___ el anterior.","como","que","рівність → como"],
+["Tengo más responsabilidades ___ antes.","que","de","порівняння → que"],
+["Este puesto es mejor ___ el que tenía.","que","de","mejor + que"],
+["Trabajo tantas horas ___ mis compañeros.","como","que","tantas… COMO"],
+["El ambiente aquí es menos estresante ___ en mi trabajo anterior.","que","de","порівняння → que"],
+["Es el empleo más estable ___ he tenido.","que","de","que he tenido"],
+["Cobro más de ___ esperaba.","lo que","que","más de lo que"],
+["Mi salario es tan bueno ___ pensaba.","como","que","tan bueno como"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"CUANTO MÁS…MÁS", lv:3, q:[
+["Cuanto más practicas, ___ aprendes.","más","tan","паралельне зростання"],
+["Cuanto más…más виражає…","чим більше…, тим більше…","чим менше…, тим більше…","кореляція"],
+["Cuanto más estudias, mejor ___.","te va","vas","te va (idiomatic)"],
+["Cuanto menos duermes, ___ cansado estás.","más","menos","обернена кореляція теж можлива"],
+["Cuanto más caro, ___ calidad (не завжди правда, але структура).","mejor","peor","приклад структури"],
+["Cuanto más rápido corras, antes ___.","llegarás","llegas","майбутнє в другій частині — типово"],
+["Cuanto más lo pienso, menos ___ entiendo.","lo","le","lo — прямий додаток"],
+["Ця структура типова для…","прислів'їв і повчальних фраз","лише наукових текстів","cuanto más… más — жива мова"],
+["Cuanto antes, mejor.","Чим раніше, тим краще","Чим пізніше, тим краще","поширена приказка"],
+["Cuanto más tienes, más ___.","quieres","quiero","узагальнене «ти» (безособове)"]
+]},
+{t:"Складні порівняльні конструкції", lv:3, q:[
+["Es más de lo que esperaba.","Це більше, ніж я очікував","Це менше, ніж я очікував","más de lo que"],
+["más/menos de lo que вживається, коли…","порівнюємо з очікуванням/думкою, а не іменником","завжди перед числом","es mejor de lo que pensaba"],
+["Es mejor de lo que pensaba.","Це краще, ніж я думав","Це гірше, ніж я думав","mejor de lo que"],
+["Cuesta menos de lo que creía.","Коштує менше, ніж я гадав","Коштує більше, ніж я гадав","menos de lo que"],
+["lo que тут функціонує як…","«те, що» (номіналізація)","питальне слово","lo que pensaba = те, що я думав"],
+["Es tan tarde como pensábamos.","Це так само пізно, як ми думали","Це раніше, ніж ми думали","tan… como + речення"],
+["Trabaja más de lo debido.","Працює більше, ніж належить","Працює менше, ніж належить","lo debido = належне"],
+["Es más complicado de lo normal.","Це складніше, ніж звично","Це простіше, ніж звично","de lo normal"],
+["Llegamos antes de lo previsto.","Прибули раніше запланованого","Прибули пізніше запланованого","de lo previsto"],
+["Sabe más de lo que dice.","Знає більше, ніж говорить","Знає менше, ніж говорить","de lo que + дієслово"]
+]},
+{t:"IGUAL DE / IGUAL QUE", lv:3, q:[
+["Es igual de alto ___ su padre.","que","como","igual DE + прикм. + QUE"],
+["igual de + прикметник + que означає…","такий самий, як","зовсім інший, ніж","альтернатива tan…como"],
+["Ella es igual de inteligente ___ su hermana.","que","como","igual de… QUE"],
+["Este coche es igual ___ el mío.","que","de","igual QUE (без прикметника)"],
+["igual que (без de) порівнює…","цілі обʼєкти/особи напряму","лише прикметники","es igual que el otro"],
+["Cocina igual ___ su madre.","que","como","igual QUE"],
+["Es igual de importante ___ el dinero.","que","como","igual de + прикм. + que"],
+["Al igual que su hermano, es muy alto.","Так само, як його брат, він дуже високий","На відміну від брата, він високий","al igual que = так само, як"],
+["Lo hago igual ___ tú.","que","como","igual QUE"],
+["igual de/que — стилістична альтернатива до…","tan/tanto…como","más/menos…que","синонімічна структура"]
+]},
+{t:"Абсолютний найвищий: -ÍSIMO", lv:3, q:[
+["Es facilísimo. означає…","дуже-дуже легко (абсолютний ступінь)","трохи легко","-ísimo підсилює максимально"],
+["fácil + ísimo = …","facilísimo","facilísimo… стоп","базове утворення"],
+["-ísimo додається до основи прикметника замість…","закінчення (fácil→facilísimo, alto→altísimo)","нічого не змінюючи","facil-ísimo"],
+["Está buenísimo este pastel.","Цей пиріг дуже-дуже смачний","Цей пиріг несмачний","абсолютний найвищий ступінь"],
+["-ísimo — це альтернатива до…","muy + прикметник (підсилена)","el más + прикметник","muy fácil ≈ facilísimo, але сильніше"],
+["rico + ísimo = …","riquísimo","ricísimo","орфографічна зміна c→qu"],
+["Es una película buenísima.","Це дуже-дуже хороший фільм","Це посередній фільм","абсолютна оцінка"],
+["largo + ísimo = …","larguísimo","largoísimo","орфографічна зміна g→gu"],
+["-ísimo НЕ порівнює з іншими, а виражає…","абсолютно високий ступінь якості","порівняння з кимось конкретним","на відміну від el más"],
+["feliz + ísimo = …","felicísimo","felizísimo","орфографічна зміна z→c"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«más bueno» → …","mejor","más buen","неправильна форма"],
+["«más malo» → …","peor","más mal","неправильна форма"],
+["«tan bueno que» (рівність) → …","tan bueno como","tan bueno que","como, не que для рівності"],
+["«más grande de mi hermano» (порівняння двох осіб) → …","más grande que mi hermano","más grande de mi hermano залишити","que для порівняння обʼєктів"],
+["«más de cien euros» (перед числом) — це…","правильно","треба que","de перед числом ✓"],
+["«tanto dinero que tú» → …","tanto dinero como tú","tanto dinero que tú залишити","tanto… COMO"],
+["«el más mejor» (подвійне підсилення) → …","el mejor","el más mejor залишити","mejor вже вищий ступінь, más зайве"],
+["«más viejo de mi padre» (вік родича, порівняння двох) → …","mayor que mi padre / más viejo que mi padre","más viejo de mi padre","que для порівняння"],
+["«tan alto que su hermano» → …","tan alto como su hermano","tan alto que su hermano залишити","como для рівності"],
+["«menos que veinte» (перед числом) → …","menos de veinte","menos que veinte залишити","de перед числом"]
+]},
+{t:"Переклади речення", lv:3, q:[
+["«Мадрид більший, ніж Валенсія»:","Madrid es más grande que Valencia","Madrid es más grande de Valencia","que для порівняння"],
+["«У мене більше ста книг»:","Tengo más de cien libros","Tengo más que cien libros","de перед числом"],
+["«Цей фільм такий самий цікавий, як той»:","Esta película es tan interesante como esa","Esta película es tan interesante que esa","tan… como"],
+["«Це найкращий ресторан у місті»:","Es el mejor restaurante de la ciudad","Es el más bueno restaurante de la ciudad","mejor замінює más bueno"],
+["«Мій брат старший за мене»:","Mi hermano es mayor que yo","Mi hermano es más viejo de yo","mayor + que"],
+["«Чим більше я вчуся, тим краще розумію»:","Cuanto más estudio, mejor entiendo","Cuanto más estudio, más bien entiendo","mejor замінює más bien"],
+["«Це коштує менше, ніж я думав»:","Cuesta menos de lo que pensaba","Cuesta menos que pensaba","de lo que + дієслово"],
+["«Вона така сама тямуща, як її сестра»:","Es igual de inteligente que su hermana","Es igual inteligente que su hermana","igual DE + прикметник"],
+["«Це дуже-дуже легко» (абсолютний ступінь):","Es facilísimo","Es muy fácilísimo","-ísimo не поєднується з muy"],
+["«Він не такий високий, як його батько»:","No es tan alto como su padre","No es tan alto que su padre","tan… como навіть у запереченні"]
+]},
+{t:"DE LO QUE: складна структура", lv:3, q:[
+["Es más caro de lo que pensaba означає…","Це дорожче, ніж я думав","Це дорожче за те, що купив","de lo que + дієслово думки"],
+["de lo que замінює просте que, коли…","порівнюємо з думкою/очікуванням, а не предметом","завжди без винятків","es mejor DE LO QUE esperaba"],
+["Es peor de lo que parece.","Це гірше, ніж здається","Це краще, ніж здається","peor de lo que"],
+["Trabaja más de lo que debería.","Працює більше, ніж повинен","Працює менше, ніж повинен","más de lo que + дієслово"],
+["Sabe menos de lo que dice.","Знає менше, ніж каже","Знає більше, ніж каже","menos de lo que"],
+["Llegamos más tarde de lo previsto.","Прибули пізніше запланованого","Прибули раніше запланованого","de lo previsto"],
+["Es más fácil de lo que parece.","Це легше, ніж здається","Це важче, ніж здається","de lo que parece"],
+["Cuesta menos de lo esperado.","Коштує менше очікуваного","Коштує більше очікуваного","de lo esperado"],
+["Después de comparar, es mejor de lo que creíamos.","Це краще, ніж ми гадали","Це гірше, ніж ми гадали","de lo que creíamos"],
+["Ця структура (de lo que) типова після…","прикметників порівняння (más, menos, mejor, peor)","лише іменників","más/menos/mejor/peor + de lo que"]
+]},
+{t:"Порівняння у щоденному житті (текст)", lv:3, q:[
+["Mi nueva casa es ___ grande que la anterior.","más","tan","порівняння з попереднім домом"],
+["Pero el barrio es ___ tranquilo como el otro.","tan","más","рівність тут"],
+["Tengo ___ vecinos simpáticos como antes.","tantos","tanto","vecinos мн. ч.р. → tantos"],
+["El alquiler es ___ que en mi antigua zona.","menor","menos… стоп","menor підходить тут як «менший» абстрактно, але менее стандартно 'más bajo/menor coste' — оберемо menos"],
+["De hecho, pago ___ que antes.","menos","tan","менша сума → menos"],
+["Es la mejor decisión que ___ tomado en años.","he","soy","he tomado"],
+["Cuanto más vivo aquí, ___ me gusta.","más","menos","паралельне зростання"],
+["Es tan cómodo ___ esperaba.","como","que","tan… como"],
+["No es tan caro ___ pensaba al principio.","como","que","tan… como"],
+["En resumen, esta mudanza fue ___ que un acierto.","más","menos","más que un acierto = більше, ніж успіх"]
+]},
+{t:"Порівняння: діалог", lv:3, q:[
+["— ¿Cuál es mejor, este o ese? — Este es ___ que ese.","mejor","más bueno","mejor замінює más bueno"],
+["— ¿Eres mayor que tu hermana? — No, soy ___.","menor","más joven — теж ок","menor — типовіше"],
+["— ¿Cuesta mucho? — Sí, más ___ cien euros.","de","que","перед числом → de"],
+["— ¿Es tan difícil como dicen? — No, es ___ difícil de lo que parece.","menos","tan","menos difícil de lo que"],
+["— ¿Trabajas tanto como antes? — No, ___ menos.","trabajo","trabajar","дієслово → trabajo"],
+["— ¿Cuál es el más caro? — Este es ___ caro de todos.","el más","más","el más caro"],
+["— ¿Sois iguales de altos? — Sí, soy igual de alto ___ él.","que","como","igual de… que"],
+["— ¿Cuánto mejora cuanto más practicas? — Cuanto más practico, ___ mejoro.","más","menos","паралельне зростання"],
+["— ¿Es tan bueno como dicen? — Sí, es buenísimo, incluso ___ de lo que esperaba.","mejor","más bueno","mejor de lo que"],
+["— En resumen, ¿qué opción recomiendas? — La ___ de todas.","mejor","más buena","mejor — неправильна форма"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["Madrid es ___ grande que Alicante.","más","tan","база"],
+["Mi casa es ___ grande como la tuya.","tan","más","рівність"],
+["«кращий» — це…","mejor","más bueno","неправильна форма"],
+["Es ___ ciudad más grande de España.","la","el","ciudad ж.р."],
+["Tengo más ___ cien libros.","de","que","перед числом"],
+["No es tan difícil ___ parece.","como","que","tan… como"],
+["Cuanto más practicas, ___ aprendes.","más","tan","кореляція"],
+["Es facilísimo означає…","дуже-дуже легко","трохи легко","-ísimo"],
+["«старший» (про родича) — це…","mayor","más viejo","типовий термін"],
+["Es igual de alto ___ su padre.","que","como","igual de… que"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Порівняння: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 21 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

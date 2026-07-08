@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 15 · Дієслово + інфінітив · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 15 · @malinnaartstudio</div>
+    <h1 id="htitle">Дієслово + інфінітив: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 15 · Verbos + infinitivos.</b>
+      30 вправ по 10 питань: querer/poder/saber + inf, tener que/hay que, ir a, empezar a,
+      dejar de, acabar de. Від ★ до ★★★. ¡Vamos a empezar! 🚀
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · базові конструкції</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · прийменники, контекст</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й діалоги</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 15</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"QUERER + інфінітив", lv:1, q:[
+["Quiero ___ español.","aprender","aprendo","querer + інфінітив"],
+["¿Quieres ___ conmigo?","venir","vienes","querer + інфінітив"],
+["Queremos ___ a España.","viajar","viajamos","querer + інфінітив"],
+["Ella quiere ___ un café.","tomar","toma","querer + інфінітив"],
+["No quiero ___ hoy.","salir","salgo","querer + інфінітив"],
+["Після querer йде…","інфінітив","дієслово у презенсі","quiero comer"],
+["Quiero ___ este libro.","leer","leo","querer + інфінітив"],
+["¿Queréis ___ algo?","comer","coméis","querer + інфінітив"],
+["Quieren ___ pronto.","dormir","duermen","querer + інфінітив"],
+["Quiero ___ contigo.","hablar","hablo","querer + інфінітив"]
+]},
+{t:"PODER + інфінітив", lv:1, q:[
+["¿Puedes ___ la puerta?","abrir","abres","poder + інфінітив"],
+["No puedo ___ hoy.","venir","vengo","poder + інфінітив"],
+["Podemos ___ mañana.","empezar","empezamos","poder + інфінітив"],
+["¿Puede usted ___ más despacio?","hablar","habla","poder + інфінітив"],
+["No pueden ___ el problema.","resolver","resuelven","poder + інфінітив"],
+["Після poder йде…","інфінітив","дієприкметник","puedo ayudar"],
+["Puedo ___ contigo si quieres.","ir","voy","poder + інфінітив"],
+["¿Podéis ___ un momento?","esperar","esperáis","poder + інфінітив"],
+["No puede ___ bien sin gafas.","ver","ve","poder + інфінітив"],
+["Puedes ___ aquí si quieres.","sentarte","te sientas","poder + інфінітив"]
+]},
+{t:"SABER + інфінітив", lv:1, q:[
+["Sé ___.","nadar","nado","saber + інфінітив = вміти"],
+["¿Sabes ___?","cocinar","cocinas","saber + інфінітив"],
+["No sabemos ___ salsa.","bailar","bailamos","saber + інфінітив"],
+["Sabe ___ el piano.","tocar","toca","saber + інфінітив"],
+["saber + інфінітив означає…","уміти","знати факт","sé nadar"],
+["¿Sabéis ___?","esquiar","esquiáis","saber + інфінітив"],
+["No sé ___ en bici.","montar","monto","saber + інфінітив"],
+["Saben ___ muy bien.","cocinar","cocinan","saber + інфінітив"],
+["Mi abuela sabe ___.","coser","cose","saber + інфінітив"],
+["¿Sabes ___?","conducir","conduces","saber + інфінітив"]
+]},
+{t:"TENER QUE + інфінітив", lv:1, q:[
+["Tengo que ___ ahora.","irme","me voy","tener que + інфінітив"],
+["¿Tienes que ___ hoy?","trabajar","trabajas","tener que + інфінітив"],
+["Tenemos que ___.","estudiar","estudiamos","tener que + інфінітив"],
+["tener que виражає…","особистий обов'язок","загальне правило","tengo que hacerlo"],
+["Tiene que ___ al médico.","ir","va","tener que + інфінітив"],
+["¿Tenéis que ___ pronto?","salir","salís","tener que + інфінітив"],
+["Tienen que ___ la tarea.","terminar","terminan","tener que + інфінітив"],
+["Entre tener y que та інфінітивом стоїть слово…","que","de","tener QUE"],
+["Tengo que ___ dinero.","ahorrar","ahorro","tener que + інфінітив"],
+["No tengo que ___ eso.","hacer","hago","tener que + інфінітив"]
+]},
+{t:"HAY QUE + інфінітив", lv:1, q:[
+["Hay que ___ las manos antes de comer.","lavarse","lavarnos","hay que + інфінітив"],
+["hay que виражає…","загальний обов'язок (безособовий)","особистий обов'язок","hay que estudiar (загалом)"],
+["Hay que ___ temprano hoy.","levantarse","levantarnos","hay que + інфінітив"],
+["Para aprobar, hay que ___.","estudiar","estudia","hay que + інфінітив"],
+["Hay que ___ reglas.","respetar","respeta","hay que + інфінітив"],
+["hay que не змінюється за…","особами (завжди hay que)","часом","безособова форма"],
+["Hay que ___ con cuidado.","conducir","conduce","hay que + інфінітив"],
+["Для здоров'я hay que ___.","dormir bien","duerme bien","hay que + інфінітив"],
+["No hay que ___ tanto.","preocuparse","preocupa","hay que + інфінітив"],
+["Hay que ___ paciencia.","tener","tiene","hay que + інфінітив"]
+]},
+{t:"IR A + інфінітив (майбутнє)", lv:1, q:[
+["Voy a ___ mañana.","viajar","viajo","ir a + інфінітив = майбутнє"],
+["¿Vas a ___ la fiesta?","venir a","vienes a","ir a + інфінітив"],
+["Vamos a ___ una película.","ver","vemos","ir a + інфінітив"],
+["ir a + інфінітив виражає…","заплановану дію в майбутньому","дію в минулому","voy a estudiar"],
+["Va a ___ tarde.","llegar","llega","ir a + інфінітив"],
+["¿Vais a ___ con nosotros?","venir","venís","ir a + інфінітив"],
+["Van a ___ una casa nueva.","comprar","compran","ir a + інфінітив"],
+["Voy a ___ español este año.","estudiar","estudio","ir a + інфінітив"],
+["¿Qué vas a ___ hoy?","hacer","haces","ir a + інфінітив"],
+["Va a ___ pronto.","llover","llueve","ir a + інфінітив"]
+]},
+{t:"EMPEZAR A + інфінітив", lv:1, q:[
+["Empiezo a ___ español.","entender","entiendo","empezar a + інфінітив"],
+["¿Cuándo empiezas a ___?","trabajar","trabajas","empezar a + інфінітив"],
+["Empieza a ___.","llover","llueve","empezar a + інфінітив"],
+["empezar a виражає…","початок дії","кінець дії","empiezo a estudiar"],
+["Empezamos a ___ las clases en septiembre.","tener","tenemos","empezar a + інфінітив"],
+["Entre empezar та інфінітивом стоїть…","a","que","empezar A"],
+["Empiezan a ___ el nuevo proyecto.","desarrollar","desarrollan","empezar a + інфінітив"],
+["Empiezo a ___ hambre.","tener","tengo","empezar a + інфінітив"],
+["¿Empezáis a ___ pronto?","notarlo","lo notáis","empezar a + інфінітив"],
+["Empieza a ___ más frío.","hacer","hace","empezar a + інфінітив"]
+]},
+{t:"ACABAR DE + інфінітив", lv:1, q:[
+["Acabo de ___.","llegar","llego","acabar de = щойно"],
+["acabar de + інфінітив означає…","щойно зробити","збиратися зробити","acabo de comer = щойно поїв"],
+["Acaba de ___ la llamada.","terminar","termina","acabar de + інфінітив"],
+["Entre acabar та інфінітивом стоїть…","de","a","acabar DE"],
+["Acabamos de ___.","llegar","llegamos","acabar de + інфінітив"],
+["¿Acabas de ___?","comer","comes","acabar de + інфінітив"],
+["Acaban de ___ la casa.","vender","venden","acabar de + інфінітив"],
+["Acabo de ___ la noticia.","escuchar","escucho","acabar de + інфінітив"],
+["Acabáis de ___ a tiempo.","llegar","llegáis","acabar de + інфінітив"],
+["Acabo de ___ con él.","hablar","hablo","acabar de + інфінітив"]
+]},
+{t:"DEJAR DE + інфінітив", lv:1, q:[
+["Dejo de ___.","fumar","fumo","dejar de = переставати"],
+["dejar de + інфінітив означає…","переставати щось робити","почати щось робити","dejo de fumar = кидаю курити"],
+["¿Por qué dejaste de ___?","estudiar","estudias","dejar de + інфінітив"],
+["Entre dejar та інфінітивом стоїть…","de","a","dejar DE"],
+["Dejamos de ___ carne.","comer","comemos","dejar de + інфінітив"],
+["No dejes de ___.","escribirme","me escribes","dejar de + інфінітив"],
+["Deja de ___, por favor.","gritar","gritas","dejar de + інфінітив"],
+["Dejó de ___ hace un año.","fumar","fuma","dejar de + інфінітив"],
+["Dejaron de ___ juntos.","trabajar","trabajan","dejar de + інфінітив"],
+["No dejo de ___ en ti.","pensar","pienso","dejar de + інфінітив"]
+]},
+{t:"Порівняй конструкції", lv:1, q:[
+["«Хочу» — це…","quiero + inf","puedo + inf","querer = хотіти"],
+["«Можу» — це…","puedo + inf","quiero + inf","poder = могти"],
+["«Мушу (особисто)» — це…","tengo que + inf","hay que + inf","tener que = особисто"],
+["«Треба (загалом)» — це…","hay que + inf","tengo que + inf","hay que = безособово"],
+["«Збираюся» (майбутнє) — це…","voy a + inf","acabo de + inf","ir a = майбутнє"],
+["«Щойно» — це…","acabo de + inf","voy a + inf","acabar de = щойно"],
+["«Починаю» — це…","empiezo a + inf","dejo de + inf","empezar a = початок"],
+["«Перестаю» — це…","dejo de + inf","empiezo a + inf","dejar de = кінець"],
+["«Умію» — це…","sé + inf","puedo + inf","saber = вміння"],
+["Усі ці конструкції поєднує…","дієслово + інфінітив","два інфінітиви","базова модель уроку"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Прийменники: A, QUE, DE чи нічого?", lv:2, q:[
+["querer ___ інфінітив","— (нічого)","a","querer + inf напряму"],
+["poder ___ інфінітив","— (нічого)","que","poder + inf напряму"],
+["tener ___ інфінітив","que","a","tener QUE"],
+["ir ___ інфінітив","a","que","ir A"],
+["empezar ___ інфінітив","a","de","empezar A"],
+["acabar ___ інфінітив","de","a","acabar DE"],
+["dejar ___ інфінітив","de","a","dejar DE"],
+["saber ___ інфінітив","— (нічого)","a","saber + inf напряму"],
+["hay ___ інфінітив","que","a","hay QUE"],
+["Дієслова querer, poder, saber йдуть з інфінітивом…","без прийменника","завжди з прийменником","прямий звʼязок"]
+]},
+{t:"TENER QUE у контексті", lv:2, q:[
+["Tengo que ___ antes de las nueve.","salir","salgo","особистий обов'язок"],
+["Mañana tengo que ___ al dentista.","ir","voy","tener que + inf"],
+["Tenemos que ___ la reunión.","preparar","preparamos","tener que + inf"],
+["¿Tienes que ___ este fin de semana?","trabajar","trabajas","tener que + inf"],
+["Tiene que ___ la medicina cada día.","tomar","toma","tener que + inf"],
+["Tenéis que ___ más atención.","poner","ponéis","tener que + inf"],
+["Antes de viajar, tengo que ___ la maleta.","hacer","hago","tener que + inf"],
+["No tengo que ___ hoy, es festivo.","trabajar","trabajo","tener que + inf"],
+["Tienen que ___ el contrato antes del viernes.","firmar","firman","tener que + inf"],
+["Para aprobar, tienes que ___ mucho.","estudiar","estudias","tener que + inf"]
+]},
+{t:"HAY QUE у контексті", lv:2, q:[
+["Para vivir bien, hay que ___ sano.","comer","come","hay que + inf"],
+["Hay que ___ las normas.","respetar","respeta","hay que + inf"],
+["En este trabajo hay que ___ mucho.","viajar","viaja","hay que + inf"],
+["Hay que ___ paciencia con los niños.","tener","tiene","hay que + inf"],
+["Para aprender un idioma, hay que ___ cada día.","practicar","practica","hay que + inf"],
+["Hay que ___ antes de actuar.","pensar","piensa","hay que + inf"],
+["No hay que ___ tan rápido.","conducir","conduce","hay que + inf"],
+["Hay que ___ los documentos antes de las cinco.","entregar","entrega","hay que + inf"],
+["Para estar sano, hay que ___ agua.","beber","bebe","hay que + inf"],
+["Hay que ___ cuidado con el fuego.","tener","tiene","hay que + inf"]
+]},
+{t:"TENER QUE vs HAY QUE", lv:2, q:[
+["«Я особисто мушу вчитися» — це…","Tengo que estudiar","Hay que estudiar","особистий → tener que"],
+["«Загалом треба вчитися» — це…","Hay que estudiar","Tengo que estudiar","безособовий → hay que"],
+["Різниця tener que / hay que — це…","хто саме зобов'язаний / загальне правило","часова форма","особисто vs загалом"],
+["«У школі треба носити форму» (загальне правило):","Hay que llevar uniforme","Tengo que llevar uniforme","загальне правило → hay que"],
+["«Я мушу подзвonити мамі» (особисто):","Tengo que llamar a mi madre","Hay que llamar a mi madre","особисто → tener que"],
+["hay que не змінюється за особами, бо…","підмета немає (безособове)","завжди 3-тя особа","hay — безособова форма haber"],
+["tener que змінюється за особами, бо…","підмет виражений (yo tengo, tú tienes…)","це стале сполучення","особисте зобов'язання"],
+["«Тут не можна курити» (загальне правило) — можна сказати…","No se puede fumar aquí / Aquí no hay que fumar","Tengo que no fumar","загальне правило"],
+["«Ти маєш здати цей звіт» (особисто):","Tienes que entregar este informe","Hay que entregar este informe","особисто → tienes que"],
+["Обидва вирази перекладаються українською як…","«треба/мушу»","«хочу»","modальність необхідності"]
+]},
+{t:"IR A: розклад дня", lv:2, q:[
+["Esta tarde voy a ___ con mis amigos.","quedar","quedo","ir a + inf"],
+["Mañana vamos a ___ temprano.","levantarnos","nos levantamos","ir a + inf"],
+["¿A qué hora vas a ___?","salir","sales","ir a + inf"],
+["El sábado van a ___ una fiesta.","organizar","organizan","ir a + inf"],
+["Esta noche voy a ___ una película.","ver","veo","ir a + inf"],
+["¿Qué vais a ___ de cena?","preparar","preparáis","ir a + inf"],
+["El lunes voy a ___ al gimnasio.","empezar","empiezo","ir a + inf"],
+["Vamos a ___ a las ocho.","cenar","cenamos","ir a + inf"],
+["¿Vas a ___ este verano?","viajar","viajas","ir a + inf"],
+["Va a ___ un nuevo proyecto.","empezar","empieza","ir a + inf"]
+]},
+{t:"EMPEZAR A / DEJAR DE: пари", lv:2, q:[
+["Empiezo a ___ mejor el español.","entender","entiendo","empezar a"],
+["Dejo de ___ azúcar.","tomar","tomo","dejar de"],
+["Empezó a ___ hace un mes.","estudiar","estudia","empezar a"],
+["Dejó de ___ carne por salud.","comer","come","dejar de"],
+["Empezamos a ___ el proyecto en enero.","desarrollar","desarrollamos","empezar a"],
+["Dejamos de ___ hace tiempo.","fumar","fumamos","dejar de"],
+["¿Cuándo empezaste a ___ español?","aprender","aprendes","empezar a"],
+["¿Por qué dejaste de ___?","escribir","escribes","dejar de"],
+["Empieza a ___ frío por las noches.","hacer","hace","empezar a"],
+["Deja de ___ tanto, por favor.","preocuparte","te preocupas","dejar de"]
+]},
+{t:"ACABAR DE: щойно сталось", lv:2, q:[
+["Acabo de ___ tu mensaje.","leer","leo","acabar de = щойно"],
+["Acaban de ___ a casa.","llegar","llegan","acabar de + inf"],
+["Acabamos de ___ la cena.","terminar","terminamos","acabar de + inf"],
+["¿Acabas de ___?","despertarte","te despiertas","acabar de + inf"],
+["Acaba de ___ el examen.","aprobar","aprueba","acabar de + inf"],
+["Acabo de ___ con ella por teléfono.","hablar","hablo","acabar de + inf"],
+["Acaban de ___ una nueva película.","estrenar","estrenan","acabar de + inf"],
+["Acabáis de ___ justo a tiempo.","llegar","llegáis","acabar de + inf"],
+["Acabo de ___ la decisión.","tomar","tomo","acabar de + inf"],
+["Acaba de ___ el trabajo.","empezar","empieza","acabar de + inf"]
+]},
+{t:"Заперечення конструкцій", lv:2, q:[
+["No quiero ___ hoy.","salir","salgo","no + querer + inf"],
+["No puedo ___ ahora.","hablar","hablo","no + poder + inf"],
+["No tengo que ___ nada hoy.","hacer","hago","no + tener que + inf"],
+["No sé ___.","bailar","bailo","no + saber + inf"],
+["No voy a ___ esa película.","ver","veo","no + ir a + inf"],
+["No dejo de ___ en ti.","pensar","pienso","no + dejar de + inf"],
+["No hay que ___ tan rápido.","conducir","conduce","no + hay que + inf"],
+["No empiezo a ___ hasta mañana.","trabajar","trabajo","no + empezar a + inf"],
+["No acabo de ___ esta idea.","entender","entiendo","no + acabar de + inf"],
+["No podemos ___ contigo hoy.","venir","venimos","no + poder + inf"]
+]},
+{t:"Питання з інфінітивом", lv:2, q:[
+["¿Puedes ___ un momento?","esperar","esperas","poder + inf"],
+["¿Quieres ___ conmigo al cine?","venir","vienes","querer + inf"],
+["¿Sabes ___ este documento?","traducir","traduces","saber + inf"],
+["¿Tienes que ___ hoy?","trabajar","trabajas","tener que + inf"],
+["¿Vas a ___ la fiesta?","organizar","organizas","ir a + inf"],
+["¿Cuándo empiezas a ___?","estudiar","estudias","empezar a + inf"],
+["¿Acabas de ___?","llegar","llegas","acabar de + inf"],
+["¿Por qué dejaste de ___?","llamarme","me llamas","dejar de + inf"],
+["¿Hay que ___ algo especial?","traer","trae","hay que + inf"],
+["¿Podéis ___ mañana?","venir","venís","poder + inf"]
+]},
+{t:"NECESITAR, PREFERIR + інфінітив", lv:2, q:[
+["Necesito ___ dinero.","ahorrar","ahorro","necesitar + inf"],
+["¿Necesitas ___ algo?","comprar","compras","necesitar + inf"],
+["Prefiero ___ en casa.","quedarme","me quedo","preferir + inf"],
+["¿Prefieres ___ o salir?","descansar","descansas","preferir + inf"],
+["Necesitamos ___ más tiempo.","tener","tenemos","necesitar + inf"],
+["Prefiere ___ por la mañana.","estudiar","estudia","preferir + inf"],
+["No necesito ___ ayuda.","pedir","pido","necesitar + inf"],
+["¿Preferís ___ ahora o después?","comer","coméis","preferir + inf"],
+["Necesitan ___ el problema pronto.","resolver","resuelven","necesitar + inf"],
+["Estos verbos, como querer y poder, van con infinitivo…","sin preposición","con preposición","directamente"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"VOLVER A + інфінітив", lv:3, q:[
+["Vuelvo a ___ el mismo error.","cometer","cometo","volver a = знову"],
+["volver a + інфінітив означає…","робити щось знову","повертатися додому","volver a intentarlo"],
+["Vuelve a ___ tarde.","llegar","llega","volver a + inf"],
+["Volvemos a ___ el mismo tema.","hablar de","hablamos de","volver a + inf"],
+["¿Vas a volver a ___?","intentarlo","lo intentas","volver a + inf"],
+["Vuelven a ___ juntos.","trabajar","trabajan","volver a + inf"],
+["No quiero volver a ___ esto.","repetir","repito","volver a + inf"],
+["Volví a ___ la misma película.","ver","veo","volver a + inf"],
+["Vuelve a ___lo, por favor.","intentar","intentas","volver a + inf"],
+["«Знову зробити те саме» — це…","volver a hacer lo mismo","hacer a volver lo mismo","volver a + inf"]
+]},
+{t:"SOLER + інфінітив", lv:3, q:[
+["Suelo ___ a las siete.","levantarme","me levanto","soler = зазвичай"],
+["soler + інфінітив означає…","зазвичай робити щось","ніколи не робити","suelo comer aquí"],
+["¿Sueles ___ los fines de semana?","salir","sales","soler + inf"],
+["Solemos ___ en verano.","viajar","viajamos","soler + inf"],
+["Suele ___ tarde los sábados.","dormir","duerme","soler + inf"],
+["Suelen ___ juntos.","cenar","cenan","soler + inf"],
+["soler має чергування…","o→ue (suelo)","e→ie","sUElo"],
+["Soléis ___ mucho café.","tomar","tomáis","soler + inf"],
+["No suelo ___ carne.","comer","como","soler + inf"],
+["«Зазвичай я гуляю ввечері» — це…","Suelo pasear por la tarde","Voy a pasear por la tarde","soler = звичка"]
+]},
+{t:"PENSAR + інфінітив", lv:3, q:[
+["Pienso ___ a España este verano.","viajar","viajo","pensar + inf = планувати"],
+["pensar + infinitivo означає…","планувати, мати намір","думати про минуле","pienso estudiar más"],
+["¿Piensas ___ la universidad?","terminar","terminas","pensar + inf"],
+["Pensamos ___ una casa.","comprar","compramos","pensar + inf"],
+["Piensa ___ a Madrid.","mudarse","se muda","pensar + inf"],
+["No pienso ___ nada de esto.","decir","digo","pensar + inf"],
+["¿Pensáis ___ pronto?","casaros","os casáis","pensar + inf"],
+["Piensan ___ el negocio.","vender","venden","pensar + inf"],
+["Різниця pensar + inf і ir a + inf:","обидва про наміри, pensar менш конкретне","повністю різні часи","обидва майбутні наміри"],
+["Pienso ___ más deporte este año.","hacer","hago","pensar + inf"]
+]},
+{t:"Ланцюжки дієслів", lv:3, q:[
+["Quiero poder ___ español bien.","hablar","hablo","три дієслова поспіль: quiero + poder + inf"],
+["Tengo que empezar a ___ ya.","estudiar","estudio","tener que + empezar a + inf"],
+["Voy a dejar de ___.","fumar","fumo","ir a + dejar de + inf"],
+["¿Puedes dejar de ___?","gritar","gritas","poder + dejar de + inf"],
+["Quiero volver a ___lo.","intentar","intento","querer + volver a + inf"],
+["У ланцюжку кожне наступне дієслово теж…","в інфінітиві","у презенсі","накопичуються інфінітиви"],
+["Tengo que poder ___ esto solo.","hacer","hago","tener que + poder + inf"],
+["Va a tener que ___ más.","trabajar","trabaja","ir a + tener que + inf"],
+["No quiero tener que ___ dos veces.","repetirlo","lo repito","querer + tener que + inf"],
+["Puedo empezar a ___ mañana.","ayudarte","te ayudo","poder + empezar a + inf"]
+]},
+{t:"Займенник у ланцюжку", lv:3, q:[
+["Voy a ___ (levantarse) temprano.","levantarme","me levantar","займенник у кінець інфінітива"],
+["Або можна: ___ voy a levantar.","Me","Se","займенник перед першим дієсловом"],
+["Quiero ___ (ducharse).","ducharme","me duchar","ducharme"],
+["Tengo que ___ (irse) ya.","irme","me ir","irme"],
+["Puedo ___ (sentarse) aquí.","sentarme","me sentar","sentarme"],
+["При двох дієсловах займенник може стояти…","в кінці інфінітива АБО перед першим дієсловом","лише в кінці","обидва варіанти правильні"],
+["Voy a lavarme las manos = ___ voy a lavar las manos.","Me","Te","обидва варіанти = те саме"],
+["No quiero ___ (levantarse) todavía.","levantarme","me levantar","levantarme"],
+["¿Puedes ___ (sentarte) aquí?","sentarte","te sentar","sentarte (tú → te)"],
+["Vamos a ___ (relajarse) un poco.","relajarnos","nos relajar","relajarnos"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«Quiero a estudiar» → …","Quiero estudiar","Quiero de estudiar","querer БЕЗ прийменника"],
+["«Tengo estudiar» → …","Tengo que estudiar","Tengo a estudiar","tener QUE обов'язкове"],
+["«Voy estudiar» → …","Voy a estudiar","Voy que estudiar","ir A обов'язкове"],
+["«Empiezo estudiar» → …","Empiezo a estudiar","Empiezo de estudiar","empezar A"],
+["«Acabo estudiar» → …","Acabo de estudiar","Acabo a estudiar","acabar DE"],
+["«Dejo estudiar» (кидаю навчання) → …","Dejo de estudiar","Dejo a estudiar","dejar DE"],
+["«Puedo a nadar» → …","Puedo nadar","Puedo de nadar","poder БЕЗ прийменника"],
+["«Hay a estudiar» → …","Hay que estudiar","Hay de estudiar","hay QUE"],
+["«Sé a nadar» → …","Sé nadar","Sé de nadar","saber БЕЗ прийменника"],
+["«Voy a puedo ayudarte» → …","Voy a poder ayudarte","Voy poder a ayudarte","друге дієслово теж в inf"]
+]},
+{t:"Переклади речення", lv:3, q:[
+["«Я хочу вивчити іспанську»:","Quiero aprender español","Quiero a aprender español","querer + inf"],
+["«Я мушу йти» (особисто):","Tengo que irme","Hay que irme","особисто → tener que"],
+["«Тут треба бути тихо» (загалом):","Aquí hay que estar en silencio","Aquí tengo que estar en silencio","загалом → hay que"],
+["«Я збираюся подорожувати»:","Voy a viajar","Empiezo a viajar","ir a = намір"],
+["«Я щойно поїв»:","Acabo de comer","Voy a comer","acabar de = щойно"],
+["«Я кидаю курити»:","Dejo de fumar","Empiezo a fumar","dejar de = переставати"],
+["«Я вмію плавати»:","Sé nadar","Puedo nadar","saber = вміння"],
+["«Я знову це роблю»:","Vuelvo a hacerlo","Voy a hacerlo otra vez","volver a = знову"],
+["«Зазвичай я встаю рано»:","Suelo levantarme temprano","Voy a levantarme temprano","soler = звичка"],
+["«Я думаю переїхати»:","Pienso mudarme","Tengo que mudarme","pensar = намір"]
+]},
+{t:"DECIDIR, INTENTAR + інфінітив", lv:3, q:[
+["Decido ___ un cambio.","hacer","hago","decidir + inf"],
+["decidir + infinitivo означає…","вирішити зробити щось","намагатися зробити","decido cambiar de trabajo"],
+["Intento ___ todos los días.","practicar","practico","intentar + inf"],
+["intentar + infinitivo означає…","намагатися","вирішувати","intento aprender más"],
+["Decidimos ___ juntos.","viajar","viajamos","decidir + inf"],
+["¿Intentas ___ algo nuevo?","cocinar","cocinas","intentar + inf"],
+["Decidió ___ de ciudad.","mudarse","se muda","decidir + inf"],
+["Intentamos ___ el problema.","resolver","resolvemos","intentar + inf"],
+["No decido ___ todavía.","irme","me voy","decidir + inf"],
+["Intentan ___ más tiempo juntos.","pasar","pasan","intentar + inf"]
+]},
+{t:"Мої плани (текст)", lv:3, q:[
+["Este año quiero ___ mucho.","viajar","viajo","querer + inf"],
+["Primero voy a ___ a Italia.","ir","voy","ir a + inf"],
+["Tengo que ___ el pasaporte antes.","renovar","renuevo","tener que + inf"],
+["También quiero empezar a ___ italiano.","aprender","aprendo","empezar a + inf"],
+["Sé ___ un poco de inglés y francés.","hablar","hablo","saber + inf"],
+["Voy a dejar de ___ tanto tiempo en el móvil.","perder","pierdo","dejar de + inf"],
+["Suelo ___ mis vacaciones con tiempo.","planear","planeo","soler + inf"],
+["Acabo de ___ mi próximo destino.","decidir","decido","acabar de + inf"],
+["Pienso ___ mucho durante el viaje.","descansar","descanso","pensar + inf"],
+["¡Y no voy a ___ de disfrutar!","dejar","dejo","dejar de + inf"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["Quiero ___ español.","aprender","aprendo","querer + inf"],
+["Tengo que ___ ahora.","irme","me voy","tener que + inf"],
+["Hay que ___ las normas.","respetar","respeta","hay que + inf"],
+["Voy a ___ mañana.","viajar","viajo","ir a + inf"],
+["Acabo de ___.","llegar","llego","acabar de + inf"],
+["Dejo de ___.","fumar","fumo","dejar de + inf"],
+["Sé ___.","nadar","nado","saber + inf"],
+["Suelo ___ temprano.","levantarme","me levanto","soler + inf"],
+["Vuelvo a ___ lo mismo.","hacer","hago","volver a + inf"],
+["tener que виражає…","особистий обов'язок","загальне правило","на відміну від hay que"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Дієслово + інфінітив: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 15 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

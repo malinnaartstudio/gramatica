@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 29 · Займенники-додатки · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 29 · @malinnaartstudio</div>
+    <h1 id="htitle">Займенники-додатки: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 29 · Pronombres de objeto.</b>
+      30 вправ по 10 питань: прямий додаток (lo/la/los/las), непрямий додаток (le/les),
+      подвійні займенники (se lo). Від ★ до ★★★. ¡Te lo explico! 🎯
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · прямий додаток</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · непрямий і разом</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й діалоги</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 29</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"LO/LA: прямий додаток однини", lv:1, q:[
+["¿Ves el libro? — Sí, ___ veo.","lo","la","libro ч.р. → lo"],
+["¿Lees la carta? — Sí, ___ leo.","la","lo","carta ж.р. → la"],
+["¿Compras el pan? — Sí, ___ compro.","lo","la","pan ч.р. → lo"],
+["¿Tienes la llave? — Sí, ___ tengo.","la","lo","llave ж.р. → la"],
+["lo замінює іменник…","чоловічого роду однини","жіночого роду однини","el libro → lo"],
+["la замінює іменник…","жіночого роду однини","чоловічого роду однини","la carta → la"],
+["¿Conoces a Juan? — Sí, ___ conozco.","lo","la","Juan ч.р. → lo"],
+["¿Ves a María? — Sí, ___ veo.","la","lo","María ж.р. → la"],
+["¿Quieres el café? — Sí, ___ quiero.","lo","la","café ч.р. → lo"],
+["¿Necesitas la información? — Sí, ___ necesito.","la","lo","información ж.р. → la"]
+]},
+{t:"LOS/LAS: прямий додаток множини", lv:1, q:[
+["¿Ves los libros? — Sí, ___ veo.","los","las","libros ч.р. мн. → los"],
+["¿Lees las cartas? — Sí, ___ leo.","las","los","cartas ж.р. мн. → las"],
+["¿Compras los pasteles? — Sí, ___ compro.","los","las","pasteles ч.р. мн. → los"],
+["¿Tienes las llaves? — Sí, ___ tengo.","las","los","llaves ж.р. мн. → las"],
+["los замінює іменник…","чоловічого роду множини","жіночого роду множини","los libros → los"],
+["las замінює іменник…","жіночого роду множини","чоловічого роду множини","las cartas → las"],
+["¿Conoces a mis padres? — Sí, ___ conozco.","los","las","padres ч.р. мн. → los"],
+["¿Ves a las niñas? — Sí, ___ veo.","las","los","niñas ж.р. мн. → las"],
+["¿Quieres los zapatos? — Sí, ___ quiero.","los","las","zapatos ч.р. мн. → los"],
+["¿Necesitas las fotos? — Sí, ___ necesito.","las","los","fotos ж.р. мн. → las"]
+]},
+{t:"Позиція: перед дієсловом", lv:1, q:[
+["Lo veo. — займенник стоїть…","перед дієсловом","після дієслова","типова позиція"],
+["No lo veo.","Я цього не бачу","Я це бачу","заперечення + займенник"],
+["¿Lo tienes?","Ти це маєш?","Маєш це?","питання"],
+["Занменник у стверджувальному реченні (звичайний час) стоїть…","перед дієсловом","в кінці слова","lo tengo, la veo"],
+["La quiero mucho.","Я дуже її люблю","Я дуже його люблю","la → жіночий рід"],
+["No los conozco.","Я їх не знаю","Я їх знаю","заперечення"],
+["¿Las tienes?","Чи маєш ти їх? (ж.р.)","Чи маєш ти його?","las → жіночий рід мн."],
+["Lo hago ahora.","Я роблю це зараз","Я зробив це вчора","теперішній час"],
+["No la veo desde ayer.","Я не бачив її з учора","Я бачив її вчора","заперечення + прислівник"],
+["Los necesito para mañana.","Мені вони потрібні на завтра","Мені він потрібен на завтра","los → множина"]
+]},
+{t:"Позиція: з інфінітивом", lv:1, q:[
+["Voy a ___ (comprarlo).","comprarlo","lo comprar","займенник у кінець інфінітива"],
+["Quiero ___ (verla).","verla","la ver","займенник у кінець інфінітива"],
+["Puedo ___ (hacerlo) mañana.","hacerlo","lo hacer","займенник у кінець інфінітива"],
+["Або можна сказати: ___ voy a comprar.","Lo","La… залежить","займенник перед дієсловом — теж ок"],
+["Necesito ___ (leerlo) hoy.","leerlo","lo leer","займенник у кінець інфінітива"],
+["Both варіанти правильні:","Voy a verlo / Lo voy a ver","Лише перший","обидва рівноцінні"],
+["Tengo que ___ (terminarlo).","terminarlo","lo terminar","займенник у кінець"],
+["Quiero ___ (ayudarte).","ayudarte","te ayudar","займенник у кінець (te = тобі/тебе)"],
+["Voy a ___ (llamarla) esta tarde.","llamarla","la llamar","займенник у кінець"],
+["Puedo ___ (explicarlo) mejor.","explicarlo","lo explicar","займенник у кінець"]
+]},
+{t:"Позиція: з герундієм", lv:1, q:[
+["Estoy ___ (haciéndolo).","haciéndolo","lo haciendo","займенник у кінець герундія + тильда"],
+["Estamos ___ (viéndola).","viéndola","la viendo","займенник у кінець + тильда"],
+["Або можна: ___ estoy haciendo.","Lo","La","займенник перед estar — теж ок"],
+["При приєднанні до герундія з'являється…","тильда","нічого не змінюється","haciÉndolo"],
+["Están ___ (comprándolos).","comprándolos","los comprando","займенник у кінець + тильда"],
+["Estoy ___ (escribiéndola).","escribiéndola","la escribiendo","займенник у кінець + тильда"],
+["Both варіанти правильні:","Estoy haciéndolo / Lo estoy haciendo","Лише перший","обидва рівноцінні"],
+["Sigo ___ (esperándolo).","esperándolo","lo esperando","займенник у кінець + тильда"],
+["Estamos ___ (buscándola).","buscándola","la buscando","займенник у кінець + тильда"],
+["Continúo ___ (estudiándolo).","estudiándolo","lo estudiando","займенник у кінець + тильда"]
+]},
+{t:"Позиція: з наказовим способом", lv:1, q:[
+["¡Hazlo!","Зроби це!","Не роби це!","стверджувальний наказ → приєднати"],
+["¡Cómelo!","З'їж це!","Не їж це!","займенник у кінець наказу"],
+["У стверджувальному наказі займенник…","приєднується в кінець","стоїть перед дієсловом","¡Hazlo!"],
+["¡No lo hagas!","Не роби це!","Зроби це!","заперечний наказ → перед дієсловом"],
+["У заперечному наказі займенник…","стоїть перед дієсловом","приєднується в кінець","no lo hagas"],
+["¡Cómpralo!","Купи це!","Не купуй це!","стверджувальний наказ"],
+["¡No lo compres!","Не купуй це!","Купи це!","заперечний наказ"],
+["¡Léela!","Прочитай її (книгу)!","Не читай її!","стверджувальний наказ"],
+["¡No la leas!","Не читай її!","Прочитай її!","заперечний наказ"],
+["Ключова різниця: стверджувальний наказ — займенник у кінці; заперечний — …","перед дієсловом","теж у кінці","протилежні правила"]
+]},
+{t:"Базові дієслова + LO/LA/LOS/LAS", lv:1, q:[
+["¿Tienes el libro? — Sí, ___ tengo.","lo","la","libro → lo"],
+["¿Compraste la casa? — Sí, ___ compré.","la","lo","casa → la"],
+["¿Viste a tus padres? — Sí, ___ vi.","los","las","padres → los"],
+["¿Escribiste las cartas? — Sí, ___ escribí.","las","los","cartas → las"],
+["¿Terminaste el trabajo? — Sí, ___ terminé.","lo","la","trabajo → lo"],
+["¿Cerraste la puerta? — Sí, ___ cerré.","la","lo","puerta → la"],
+["¿Encontraste tus llaves? — Sí, ___ encontré.","las","los","llaves → las"],
+["¿Hiciste la tarea? — Sí, ___ hice.","la","lo","tarea → la"],
+["¿Compraste los billetes? — Sí, ___ compré.","los","las","billetes → los"],
+["¿Leíste el periódico? — Sí, ___ leí.","lo","la","periódico → lo"]
+]},
+{t:"Уникнення повторення іменника", lv:1, q:[
+["Замінюючи іменник займенником, ми уникаємо…","повторення","заперечення","¿Tienes el libro? — Sí, lo tengo"],
+["«María compra flores. María las pone en un vaso.» — краще сказати…","María compra flores. Las pone en un vaso.","María compra flores. María pone flores en un vaso.","уникнення повторення"],
+["Займенник lo/la/los/las завжди узгоджується з…","іменником, який замінює","підметом речення","el libro → lo (ч.р. одн.)"],
+["¿Dónde compraste esos zapatos? — ___ compré en el centro.","Los","Las","zapatos ч.р. мн. → los"],
+["Esta canción es bonita. ¿La conoces?","Ця пісня гарна. Ти її знаєш?","Ця пісня гарна. Ти знаєш його?","canción ж.р. → la"],
+["Este libro es interesante. ¿Lo has leído?","Ця книга цікава. Ти її читав?","Ця книга цікава. Ти читаєш його?","libro ч.р. → lo"],
+["Sin pronombres, repetiríamos…","el mismo sustantivo muchas veces","nada especial","повторення слів"],
+["Los pronombres hacen el habla más…","natural y fluida","confusa","природніша мова"],
+["¿Necesitas ayuda? — No, gracias, no ___ necesito.","la","lo","ayuda ж.р. → la"],
+["¿Sabes la respuesta? — Sí, ___ sé.","la","lo","respuesta ж.р. → la"]
+]},
+{t:"Прямий додаток: базовий підсумок", lv:1, q:[
+["Прямий додаток відповідає на питання…","«кого? що?»","«кому? для кого?»","прямий = кого/що"],
+["lo, la, los, las — це…","займенники прямого додатка","займенники непрямого додатка","le, les — непрямий"],
+["Прямий додаток узгоджується з іменником за…","родом і числом","лише числом","lo/la/los/las"],
+["¿Ves televisión? — Sí, ___ veo.","la","lo","televisión ж.р. → la"],
+["¿Escuchas música? — Sí, ___ escucho.","la","lo","música ж.р. → la"],
+["¿Bebes agua? — Sí, ___ bebo.","la","lo","agua ж.р. → la (незважаючи на el agua!)"],
+["¿Comes fruta? — Sí, ___ como.","la","lo","fruta ж.р. → la"],
+["¿Traes el paraguas? — Sí, ___ traigo.","lo","la","paraguas ч.р. → lo"],
+["¿Usas gafas? — Sí, ___ uso.","las","los","gafas ж.р. мн. → las"],
+["¿Tienes hijos? — Sí, ___ tengo.","los","las","hijos ч.р. мн. → los"]
+]},
+{t:"Мікс: обери правильний займенник", lv:1, q:[
+["¿Tienes el pasaporte? — Sí, ___ tengo.","lo","la","pasaporte ч.р. → lo"],
+["¿Compraste las entradas? — Sí, ___ compré.","las","los","entradas ж.р. мн. → las"],
+["¿Ves a tu hermana? — Sí, ___ veo.","la","lo","hermana ж.р. → la"],
+["¿Conoces a mis amigos? — Sí, ___ conozco.","los","las","amigos ч.р. мн. → los"],
+["¿Tienes las fotos? — Sí, ___ tengo.","las","los","fotos ж.р. мн. → las"],
+["¿Ves el coche? — Sí, ___ veo.","lo","la","coche ч.р. → lo"],
+["¿Escribiste la carta? — Sí, ___ escribí.","la","lo","carta ж.р. → la"],
+["¿Compraste los billetes? — Sí, ___ compré.","los","las","billetes ч.р. мн. → los"],
+["¿Tienes la dirección? — Sí, ___ tengo.","la","lo","dirección ж.р. → la"],
+["¿Ves a los niños? — Sí, ___ veo.","los","las","niños ч.р. мн. → los"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"LE/LES: непрямий додаток", lv:2, q:[
+["___ doy un regalo a mi madre.","Le","La","непрямий → le (кому)"],
+["___ digo la verdad a mis padres.","Les","Los","непрямий мн. → les"],
+["¿Qué ___ regalas a tu hermano?","le","lo","непрямий → le"],
+["___ escribo una carta a mi amiga.","Le","La","непрямий → le"],
+["le/les відповідають на питання…","«кому? для кого?»","«кого? що?»","непрямий додаток"],
+["___ presto mi coche a mis vecinos.","Les","Los","непрямий мн. → les"],
+["¿___ has dado las gracias?","Le","Lo","непрямий → le"],
+["___ enseño español a los estudiantes.","Les","Los","непрямий мн. → les"],
+["le і les НЕ змінюються за…","родом","числом","le — і чоловік, і жінка"],
+["___ pido un favor a mi jefe.","Le","Lo","непрямий → le"]
+]},
+{t:"Прямий vs непрямий: контраст", lv:2, q:[
+["Veo a Juan. → ___ veo. (прямий)","Lo","Le","бачу ЙОГО → прямий → lo"],
+["Doy el libro a Juan. → ___ doy el libro. (непрямий)","Le","Lo","даю ЙОМУ → непрямий → le"],
+["Llamo a María. → ___ llamo. (прямий)","La","Le","телефоную ЇЙ (як дію) → пряма дія дзвінка → la"],
+["Escribo una carta a María. → ___ escribo una carta. (непрямий)","Le","La","пишу (кому) ЇЙ → непрямий → le"],
+["Прямий додаток — це те, на що дія спрямована напряму (кого/що бачу, кличу).","так","ні","veo A Juan = прямий"],
+["Непрямий додаток — це той, кому/для кого щось робиться.","так","ні","doy algo A alguien = непрямий"],
+["Ayudo a mi hermano. → ___ ayudo. (в іспанській ayudar трактується як прямий)","Lo","Le","ayudar A + прямий (традиційно lo/la)"],
+["Compro un regalo para mi madre. → ___ compro un regalo.","Le","La","купую (для кого) → непрямий → le"],
+["Veo la película. → ___ veo. (прямий)","La","Le","бачу ЩО → прямий → la"],
+["Explico la lección a los alumnos. → ___ explico la lección.","Les","Las","пояснюю (кому) → непрямий → les"]
+]},
+{t:"Дієслова типово з LE/LES", lv:2, q:[
+["dar (давати кому) — типово з…","le/les","lo/la","непрямий додаток"],
+["decir (казати кому) — типово з…","le/les","lo/la","непрямий додаток"],
+["escribir (писати кому) — типово з…","le/les","lo/la","непрямий додаток"],
+["explicar (пояснювати кому) — типово з…","le/les","lo/la","непрямий додаток"],
+["preguntar (питати в кого) — типово з…","le/les","lo/la","непрямий додаток"],
+["enseñar (навчати кого) — типово з…","le/les","lo/la","непрямий додаток (кому викладаю)"],
+["prestar (позичати кому) — типово з…","le/les","lo/la","непрямий додаток"],
+["regalar (дарувати кому) — типово з…","le/les","lo/la","непрямий додаток"],
+["pedir (просити в кого) — типово з…","le/les","lo/la","непрямий додаток"],
+["mostrar (показувати кому) — типово з…","le/les","lo/la","непрямий додаток"]
+]},
+{t:"Два займенники разом: SE LO", lv:2, q:[
+["Le doy el libro a María. → ___ doy.","Se lo","Le lo","le+lo → SE lo (обов'язкова заміна!)"],
+["le/les перед lo/la/los/las завжди стають…","se","залишаються le/les","правило SE LO"],
+["Le explico la lección. → ___ explico.","Se la","Le la","le+la → se la"],
+["Les doy los regalos. → ___ doy.","Se los","Les los","les+los → se los"],
+["Le escribo las cartas. → ___ escribo.","Se las","Le las","le+las → se las"],
+["Чому не можна сказати «le lo»?","фонетично незручно, замінюється на se","граматично можна","історичне милозвучне правило"],
+["Le compro el regalo a mi hijo. → ___ compro.","Se lo","Le lo","se lo"],
+["Порядок двох займенників: непрямий (se) + прямий (lo/la/los/las) — …","завжди в такому порядку","можна міняти місцями","se lo, se la, se los, se las"],
+["Les mando el correo. → ___ mando.","Se lo","Les lo","se lo (les → se)"],
+["Le doy mi número. → ___ doy.","Se lo","Le lo","se lo"]
+]},
+{t:"SE LO у різних часах і формах", lv:2, q:[
+["Se lo voy a explicar. / Voy a ___.","explicárselo","explicarselo","тильда обов'язкова!"],
+["Se lo estoy diciendo. / Estoy ___.","diciéndoselo","diciendoselo","тильда обов'язкова"],
+["¡Dáselo! означає…","Дай це йому/їй!","Не давай це йому!","стверджувальний наказ"],
+["¡No se lo des!","Не давай це йому/їй!","Дай це йому!","заперечний наказ"],
+["Se lo he dado ya.","Я вже дав це йому/їй","Я ще не дав це","перфект"],
+["Quiero dárselo hoy.","Хочу дати це йому сьогодні","Хочу дати це вчора","займенники в кінці інфінітива"],
+["¿Se lo has contado?","Ти розповів це йому?","Ти розповіси це йому?","перфект — питання"],
+["Se lo voy a decir mañana.","Я скажу це йому завтра","Я сказав це вчора","майбутнє з ir a"],
+["Están explicándoselo ahora.","Вони пояснюють це йому зараз","Вони пояснили це вчора","герундій з двома займенниками"],
+["¡Explícaselo bien!","Поясни це йому добре!","Не пояснюй це йому!","наказовий спосіб"]
+]},
+{t:"Займенники у відповідях", lv:2, q:[
+["— ¿Me quieres? — Sí, ___ quiero.","te","me","я → tú, тому te"],
+["— ¿Nos ayudas? — Sí, ___ ayudo.","os","nos","вас двох/групу → os"],
+["— ¿Te veo mañana? — Sí, ___ ves.","me","te","мене → me"],
+["— ¿Los llamas? — Sí, ___ llamo.","los","las","los (ч.р. мн., щойно згадані)"],
+["— ¿Le compraste algo? — Sí, ___ compré un regalo.","le","lo","le — непрямий, кому"],
+["— ¿Nos invitas? — Sí, ___ invito.","os","nos","вас → os"],
+["— ¿Te escribió? — Sí, ___ escribió.","me","te","мені → me"],
+["— ¿Las conoces? — Sí, ___ conozco.","las","los","las — щойно згадані (ж.р.)"],
+["— ¿Me esperas? — Sí, ___ espero.","te","me","тебе → te"],
+["— ¿Les dijiste la verdad? — Sí, ___ dije la verdad.","les","los","les — непрямий, кому"]
+]},
+{t:"Займенники me/te/nos/os", lv:2, q:[
+["___ llama mi madre cada día. (мене)","Me","Te","мене → me"],
+["___ veo mañana. (тебе)","Te","Me","тебе → te"],
+["¿___ ayudas con esto? (мені)","Me","Te","мені → me"],
+["___ visitan mis padres los domingos. (нас)","Nos","Os","нас → nos"],
+["¿___ escribís a menudo? (вам, vosotros)","Os","Nos","вам → os"],
+["Ellos ___ conocen bien. (нас)","nos","os","нас → nos"],
+["___ duele la cabeza. (мені)","Me","Te","doler — me duele"],
+["¿___ gusta esto? (тобі)","Te","Me","gustar — te gusta"],
+["___ parece buena idea. (нам)","Nos","Os","parecer — nos parece"],
+["¿___ molesta el ruido? (вам)","Os","Nos","molestar — os molesta"]
+]},
+{t:"Займенники у складних реченнях", lv:2, q:[
+["Quiero que ___ ayudes. (мені)","me","te","мені → me"],
+["Espero que ___ vea pronto. (тебе)","te","me","тебе → te"],
+["Dile que ___ llame. (мені)","me","te","скажи йому, щоб мені подзвонив"],
+["No creo que ___ conozca. (її)","la","le","la — прямий додаток"],
+["Es importante que ___ escuches. (мене)","me","te","важливо, щоб мене послухав"],
+["Cuando ___ veas, salúdala. (її)","la","le","коли її побачиш"],
+["Si ___ necesitas, llámame. (мене)","me","te","якщо тобі потрібен я"],
+["Aunque no ___ creas, es verdad. (мені)","me","te","хоч і не віриш мені"],
+["Aunque no lo creas — тут lo means…","це (загалом, абстрактно)","його","нейтральне lo"],
+["Quiero decirte algo — тут te means…","тобі","тебе","непрямий додаток"]
+]},
+{t:"Займенники з питаннями", lv:2, q:[
+["¿Me quieres ayudar?","Ти хочеш мені допомогти?","Ти хочеш тобі допомогти?","мені → me"],
+["¿Nos puedes explicar esto?","Ти можеш пояснити нам це?","Ти можеш пояснити собі це?","нам → nos"],
+["¿Lo has visto?","Ти це/його бачив?","Ти це/його побачиш?","перфект"],
+["¿La conoces bien?","Ти добре її знаєш?","Ти добре його знаєш?","la → жіночий"],
+["¿Les has llamado?","Ти їм подзвонив?","Ти йому подзвонив?","les → множина"],
+["¿Se lo has dicho?","Ти сказав це йому/їй?","Ти скажеш це йому?","перфект + два займенники"],
+["¿Me entiendes?","Ти мене розумієш?","Ти себе розумієш?","мене → me"],
+["¿Os veis a menudo?","Ви часто бачитесь? (між собою)","Ви часто бачите нас?","взаємне os"],
+["¿Te lo ha explicado?","Він пояснив це тобі?","Ти пояснив це йому?","te lo"],
+["¿Nos vamos a ver mañana?","Ми побачимось завтра?","Ми бачились учора?","nos — взаємне/зворотне"]
+]},
+{t:"Дублювання з непрямим додатком (вступ)", lv:2, q:[
+["A mi madre le regalo flores. — le тут…","обов'язкове дублювання (a mi madre = le)","зайве","звична конструкція"],
+["A los niños les gusta jugar. — les дублює…","a los niños","gusta","стандартна структура gustar"],
+["Le doy un beso a mi hijo.","Цілую свого сина","Мій син цілує мене","звична структура з дублюванням"],
+["A ti te queda muy bien este color.","Тобі дуже личить цей колір","Тобі не подобається цей колір","queda bien + дублювання te"],
+["Коли непрямий додаток стоїть після дієслова, дублювання…","часто теж є, особливо в розмовній мові","ніколи не буває","le/les часто дублюють a + особа"],
+["A Juan le encanta el fútbol.","Хуан обожнює футбол","Хуан не любить футбол","дублювання з encantar"],
+["A nosotros nos parece bien la idea.","Нам ідея здається доброю","Ідея нам не подобається","дублювання nos"],
+["A vosotros os toca pagar hoy.","Вам випадає платити сьогодні","Нам випадає платити","дублювання os"],
+["Дублювання непрямого додатка типове для дієслів…","gustar, encantar, doler, parecer","лише decir","«зворотна» група дієслів"],
+["A mis abuelos les encanta recibir visitas.","Моїм дідусю й бабусі дуже подобається приймати гостей","Мої дідусь і бабуся не люблять гостей","дублювання les"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"LEÍSMO: регіональне явище", lv:3, q:[
+["Leísmo — це вживання…","le замість lo для чоловіка-особи","lo замість le завжди","розповсюджене в центральній Іспанії"],
+["«Le veo» (кажучи про чоловіка) замість «Lo veo» — це приклад…","leísmo","laísmo","le для прямого додатка-чоловіка"],
+["Стандартна (рекомендована) форма для «Я його бачу» (про чоловіка) — це…","Lo veo","Le veo","академічна норма, хоча leísmo дуже поширений"],
+["Leísmo для чоловіків-осіб вважається…","прийнятним у мовній практиці Іспанії (хоч не є суворою нормою)","повністю забороненим","толерована варіативність"],
+["Laísmo (вживання la замість le) вважається…","менш прийнятним, часто виправляється","абсолютно нормативним","«La dije» замість «Le dije» — helaísmo, засуджується"],
+["«La dije que viniera» (замість «Le dije») — це приклад…","laísmo (стигматизований)","leísmo (прийнятний)","часта помилка, яку варто уникати"],
+["На рівні A1 найкраще…","дотримуватися стандарту lo/la (прямий), le/les (непрямий)","одразу практикувати всі регіоналізми","базова чіткість важливіша"],
+["Ці варіації — приклад того, що іспанська граматика…","має живі регіональні відтінки","абсолютно однакова скрізь","природна мовна варіативність"],
+["Loísmo (вживання lo замість le для непрямого) також вважається…","нестандартним","повністю нормативним","рідше явище, теж нестандартне"],
+["Розуміти ці явища важливо, щоб…","розпізнавати їх у мовленні носіїв, навіть дотримуючись стандарту","самому їх активно використовувати","пасивне розуміння важливіше"]
+]},
+{t:"Дублювання займенника", lv:3, q:[
+["A María la vi ayer. — дублювання la тут…","підсилює/уточнює, коли додаток винесено на початок","є помилкою","типова конструкція"],
+["Коли прямий/непрямий додаток стоїть ПЕРЕД дієсловом, займенник…","обов'язково дублюється","ніколи не дублюється","A Juan lo conozco bien"],
+["A mis padres los quiero mucho.","Своїх батьків я дуже люблю (з підсиленням)","Я не люблю батьків","дублювання los"],
+["A ella le encanta bailar.","Їй дуже подобається танцювати","Вона дуже любить танцювати","дублювання le для підсилення"],
+["Це дублювання типове, коли особа/предмет…","згадується на початку речення для акценту","ніколи не згадується","стилістичний акцент"],
+["A mi hermano le regalé un libro.","Своєму брату я подарував книгу","Мій брат подарував мені книгу","дублювання le"],
+["Без дублювання: «A María vi ayer» — це…","неправильно (бракує la)","правильно","дублювання обов'язкове тут"],
+["A los niños les gusta jugar.","Дітям подобається грати","Діти люблять грати самі","дублювання les з gustar (майже завжди)"],
+["З дієсловом gustar дублювання le/les…","майже завжди присутнє, навіть без винесення наперед","ніколи не буває","a mí me gusta — типова структура"],
+["Ця конструкція (a + особа, потім займенник) допомагає…","уникнути двозначності та підкреслити","заплутати слухача","прояснює, про кого йдеться"]
+]},
+{t:"Займенники з дієсловами почуттів", lv:3, q:[
+["Me encanta esta canción. — me тут — це…","непрямий додаток (кому подобається)","прямий додаток","структура як gustar"],
+["Le duele la cabeza. — le тут — це…","непрямий додаток (кому болить)","прямий додаток","doler як gustar"],
+["Nos interesa mucho este tema. — nos — це…","непрямий додаток","прямий додаток","interesar як gustar"],
+["Дієслова типу gustar, doler, interesar завжди використовують…","непрямий додаток (me/te/le/nos/os/les)","прямий додаток","структура «навпаки»"],
+["Le molesta el ruido.","Йому заважає шум","Він заважає шуму","molestar як gustar"],
+["Nos falta tiempo.","Нам бракує часу","Ми бракуємо часу","faltar як gustar"],
+["¿Te apetece un café?","Тобі хочеться кави?","Ти хочеш каву (прямо)?","apetecer як gustar"],
+["Les preocupa la situación.","Їх турбує ситуація","Вони турбують ситуацію","preocupar як gustar"],
+["A mí me parece bien.","Мені це здається добре","Я здаюся добрим","parecer як gustar"],
+["Ці дієслова структурно нагадують…","англійське I like (але навпаки за логікою)","звичайні перехідні дієслова","особлива група дієслів"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«La doy el libro a María» (непрямий, має бути le) → …","Le doy el libro a María","La doy el libro залишити","доручення КОМУ → le"],
+["«Le veo a Juan» (стандартна норма) → …","Lo veo a Juan","Le veo a Juan залишити (leísmo)","стандарт: lo для прямого додатка"],
+["«Le lo doy» (заборонена комбінація) → …","Se lo doy","Le lo doy залишити","le+lo → se lo"],
+["«Quiero explicarlo se» (неправильний порядок) → …","Quiero explicárselo","Quiero explicarlo se залишити","se перед lo, разом у кінці"],
+["«¡No me lo lo digas!» (зайвий займенник) → …","¡No me lo digas!","залишити з двома lo","один прямий займенник"],
+["«¡Hazlo no!» (неправильна позиція заперечення) → …","¡No lo hagas!","¡Hazlo no! залишити","заперечний наказ — інша форма і порядок"],
+["«Vi a María, y le saludé» (le для прямого привітання — точніше la) → …","la saludé","le saludé залишити","saludar — перехідне, прямий додаток"],
+["«Les' compré un regalo (a mis padres) — если before verb, добавить дублювання» → правильно…","A mis padres, les compré un regalo","Мати лишень les compré","дублювання при винесенні наперед"],
+["«¿Los ayudas?» (про сестру, жіночий рід) → …","¿Las ayudas?","¿Los ayudas? залишити","якщо про неї — las"],
+["«Me lo ha explicado a mí» (зайве повторення) — стилістично…","надлишкове, але не помилка (для підсилення)","завжди помилка","a mí — підсилення, допустиме"]
+]},
+{t:"Переклади речення", lv:3, q:[
+["«Я його бачу»:","Lo veo","Le veo (leísmo, менш стандартно)","стандарт → lo"],
+["«Я дав це йому»:","Se lo di","Le lo di","le+lo → se lo"],
+["«Ти мене розумієш?»:","¿Me entiendes?","¿Te entiendo?","мене → me"],
+["«Скажи мені правду»:","Dime la verdad","Dime la verdad… стоп","наказ + займенник у кінець"],
+["«Не кажи їй цього»:","No se lo digas","No le lo digas","le+lo → se lo"],
+["«Я купив їй подарунок»:","Le compré un regalo","La compré un regalo","непрямий → le"],
+["«Я їх знаю добре» (про друзів)»:","Los conozco bien","Les conozco bien","прямий додаток → los"],
+["«Поясни це мені, будь ласка»:","Explícamelo, por favor","Me lo explica, por favor","наказ + займенники в кінець"],
+["«Вона мені подобається»:","Me gusta ella / Ella me gusta","La gusto","gustar структура — me gusta"],
+["«Я вже сказав їм правду»:","Ya les dije la verdad","Ya los dije la verdad","непрямий → les"]
+]},
+{t:"Діалог із займенниками", lv:3, q:[
+["— ¿Has visto mi móvil? — Sí, ___ vi en la mesa.","lo","le","móvil ч.р. → lo"],
+["— ¿Le diste el mensaje a Ana? — Sí, ___ di.","se lo","le lo","se lo"],
+["— ¿Nos puedes ayudar? — Claro, ___ ayudo ahora mismo.","os","nos","вам двом → os"],
+["— ¿Conoces a mis padres? — Sí, ___ conozco desde hace años.","los","les","прямий додаток → los"],
+["— ¿Le compraste algo a tu madre? — Sí, ___ compré flores.","le","la","непрямий → le"],
+["— ¿Me puedes explicar esto? — Sí, ___ explico ahora.","te","me","тобі → te"],
+["— ¿Se lo has contado a tu jefe? — Sí, ya ___ conté.","se lo","le lo","se lo"],
+["— ¿Las invitaste a la fiesta? — Sí, ___ invité.","las","los","прямий → las"],
+["— ¿Te ha llamado? — Sí, ___ llamó ayer.","me","te","мені → me"],
+["— Perfecto, gracias por explicár___.","melo","me lo","приєднано: explicármelo"]
+]},
+{t:"Займенники з ставленням особи (usted)", lv:3, q:[
+["¿___ puedo ayudar, señor? (Вам)","Le","Te","usted → le (ввічливо)"],
+["___ agradezco su tiempo, doctora. (Вам)","Le","Te","ввічливо → le"],
+["¿___ traigo algo de beber, señores? (Вам, мн.)","Les","Los","ustedes → les"],
+["Con gusto ___ ayudo, señora.","la","le","прямий додаток (допомагаю ЇЙ) → la, хоча в ввічливому контексті часто теж le спостерігається"],
+["___ escucho con atención, profesor.","Le","Lo","непрямий (слухаю щось ЙОМУ)? Насправді escuchar — прямий: тут краще lo"],
+["Ввічлива форма займенника для usted у прямому додатку — …","lo/la (як для él/ella)","le завжди","usted граматично як 3-тя особа"],
+["¿___ puedo hacer una pregunta? (Вам)","Le","Te","ввічливо → le"],
+["Perdone, ¿___ he entendido bien?","le","lo","непряме розуміння Вас → le (частий leísmo для ввічливості, толерується)"],
+["Формальний реєстр (usted) впливає на вибір…","займенника відповідно до тієї ж логіки (le/lo/la)","зовсім іншу систему займенників","та сама система, лише ввічливіший підмет"],
+["___ agradezco mucho, señor director.","Le","Lo","непрямий (дякую ЙОМУ) → le"]
+]},
+{t:"Розповідь з усіма займенниками (текст)", lv:3, q:[
+["Ayer vi a mi amiga y ___ saludé.","la","le","прямий додаток → la"],
+["___ conté sobre mi nuevo trabajo.","Le","La","непрямий → le (розповіла ЇЙ)"],
+["Ella ___ dijo que estaba muy contenta por mí.","me","te","мені → me"],
+["___ pregunté si quería tomar un café.","Le","La","непрямий → le"],
+["Dijo que sí, así que ___ invité a la cafetería.","la","le","прямий додаток (запросила ЇЇ) → la"],
+["Allí, ___ conté todos mis planes.","le","la","непрямий → le"],
+["Ella ___ escuchó con mucha atención.","me","te","мене → me"],
+["Al final, ___ dimos las gracias mutuamente.","nos","os","взаємне → nos"],
+["Fue un momento muy bonito, ___ voy a recordar siempre.","lo","le","нейтральне lo (момент) → прямий"],
+["¡___ recomiendo quedar con amigos así de vez en cuando!","Os","—","рекомендую ВАМ (читачам)"]
+]},
+{t:"Виправ помилку (частина 2)", lv:3, q:[
+["«¿Los ayudas?» (про подруг, ж.р. мн.) → …","¿Las ayudas?","¿Los ayudas? залишити","подруги → las"],
+["«Se la doy el consejo» (плутанина роду) → …","Se lo doy (el consejo)","Se la doy залишити","consejo ч.р. → lo"],
+["«¿Te lo explico bien?» (правильно чи ні?)","правильно","треба te la explico","lo — нейтральне/загальне пояснення ✓"],
+["«Quiero decirlo te» (неправильний порядок) → …","Quiero decírtelo","Quiero decirlo te залишити","непрямий+прямий разом у кінці"],
+["«¡Explícame lo!» (окремо, без злиття) → …","¡Explícamelo!","¡Explícame lo! залишити","злите написання обов'язкове"],
+["«A Juan gusta el fútbol» (бракує le) → …","A Juan le gusta el fútbol","A Juan gusta el fútbol залишити","gustar завжди з le/les"],
+["«Les' compré regalos, a ellos» — порядок кращий…","A ellos les compré regalos","Les compré regalos, a ellos… теж можна","дублювання при винесенні"],
+["«Lo la veo» (два прямих займенники помилково) → …","La veo","Lo la veo залишити","лише один займенник на додаток"],
+["«¿Me lo puedes explicar?» — це…","правильно","треба ¿Me la puedes explicar?","me lo — нейтральне 'це'"],
+["«Se lo van a dar mañana» — займенники стоять…","правильно, перед дієсловом (або в кінці інфінітива: van a dárselo)","неправильно","обидва варіанти ок"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["¿Ves el libro? — Sí, ___ veo.","lo","la","libro → lo"],
+["¿Lees la carta? — Sí, ___ leo.","la","lo","carta → la"],
+["___ doy un regalo a mi madre.","Le","La","непрямий → le"],
+["Le doy el libro. → ___ doy.","Se lo","Le lo","se lo"],
+["¡Hazlo!","Зроби це!","Не роби це!","стверджувальний наказ"],
+["¡No lo hagas!","Не роби це!","Зроби це!","заперечний наказ"],
+["Me encanta esta canción. — me — це…","непрямий додаток","прямий додаток","як gustar"],
+["Leísmo — це вживання…","le замість lo для чоловіка","lo замість le","регіональне явище"],
+["A María la vi ayer. — дублювання la тут…","підсилює при винесенні наперед","помилка","типова конструкція"],
+["Voy a ___ (comprarlo).","comprarlo","lo comprar","займенник у кінець інфінітива"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Займенники-додатки: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 29 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 17 · Вираження обов'язку · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 17 · @malinnaartstudio</div>
+    <h1 id="htitle">Вираження обов'язку: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 17 · Expresión de obligación.</b>
+      30 вправ по 10 питань: tener que, hay que, deber, no se puede, es necesario/importante.
+      Від ★ до ★★★. ¡Hay que practicar cada día! 📚
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · базові конструкції</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · у контексті</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й діалоги</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 17</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"TENER QUE: форми", lv:1, q:[
+["Yo ___ que estudiar.","tengo","tienes","yo → tengo"],
+["Tú ___ que trabajar.","tienes","tiene","tú → tienes"],
+["Él ___ que salir.","tiene","tienes","él → tiene"],
+["Nosotros ___ que esperar.","tenemos","tienen","nosotros → tenemos"],
+["Vosotros ___ que venir.","tenéis","tienen","vosotros → tenéis"],
+["Ellos ___ que irse.","tienen","tenemos","ellos → tienen"],
+["tener que + інфінітив виражає…","особистий обов'язок","загальне правило","tengo que hacerlo"],
+["Yo tengo que ___ temprano.","levantarme","me levanto","tener que + інфінітив"],
+["¿___ que trabajar hoy? (ти)","Tienes","Tiene","tú → tienes"],
+["Entre tener і інфінітивом стоїть слово…","que","de","tener QUE"]
+]},
+{t:"HAY QUE: безособове", lv:1, q:[
+["Hay que ___ las reglas.","respetar","respeta","hay que + інфінітив"],
+["hay que виражає…","загальний обов'язок (безособовий)","особистий обов'язок","однакове для всіх"],
+["Hay que ___ temprano para llegar a tiempo.","salir","sale","hay que + інфінітив"],
+["hay que не змінюється за…","особами","часом","завжди hay que"],
+["Para aprender, hay que ___.","practicar","practica","hay que + інфінітив"],
+["Hay que ___ con cuidado.","conducir","conduce","hay que + інфінітив"],
+["No hay que ___ tanto.","preocuparse","preocupa","hay que + інфінітив"],
+["Hay que ___ paciencia.","tener","tiene","hay que + інфінітив"],
+["hay — це форма дієслова…","haber","hacer","haber → hay"],
+["Hay que ___ agua todos los días.","beber","bebe","hay que + інфінітив"]
+]},
+{t:"DEBER + інфінітив", lv:1, q:[
+["Yo ___ estudiar más.","debo","debe","yo → debo"],
+["Tú ___ descansar.","debes","debe","tú → debes"],
+["Ella ___ ir al médico.","debe","debo","ella → debe"],
+["Nosotros ___ ser puntuales.","debemos","deben","nosotros → debemos"],
+["deber + інфінітив виражає…","обов'язок/пораду","бажання","схоже на tener que, трохи м'якше"],
+["Vosotros ___ escuchar.","debéis","deben","vosotros → debéis"],
+["Ellos ___ terminar hoy.","deben","debemos","ellos → deben"],
+["Debo ___ la verdad.","decir","digo","deber + інфінітив"],
+["¿Debo ___ algo?","hacer","hago","deber + інфінітив"],
+["deber часто перекладається як…","«повинен/має»","«хоче»","м'якший за tener que"]
+]},
+{t:"NO SE PUEDE: заборона", lv:1, q:[
+["No se puede ___ aquí.","fumar","fuma","no se puede + інфінітив"],
+["no se puede виражає…","заборону/неможливість","дозвіл","загальна заборона"],
+["No se puede ___ sin billete.","entrar","entra","no se puede + інфінітив"],
+["No se puede ___ en esta zona.","aparcar","aparca","no se puede + інфінітив"],
+["se puede (без no) означає…","дозволено/можна","заборонено","¿Se puede pasar?"],
+["¿Se puede ___ fotos aquí?","hacer","haces","se puede + інфінітив"],
+["No se puede ___ comida en la biblioteca.","comer","come","no se puede + інфінітив"],
+["se puede вживається безособово, як…","hay que","tengo que","обидва безособові"],
+["No se puede ___ el móvil en clase.","usar","usa","no se puede + інфінітив"],
+["Aquí no se puede ___.","nadar","nada","no se puede + інфінітив"]
+]},
+{t:"ES NECESARIO / IMPORTANTE", lv:1, q:[
+["Es necesario ___ mucho.","practicar","practica","es necesario + інфінітив"],
+["Es importante ___ a tiempo.","llegar","llega","es importante + інфінітив"],
+["es necesario виражає…","необхідність","заборону","es necesario estudiar"],
+["Es importante ___ agua cada día.","beber","bebe","es importante + інфінітив"],
+["No es necesario ___ tanto dinero.","gastar","gasta","es necesario + інфінітив"],
+["Es fundamental ___ bien.","dormir","duerme","es fundamental + інфінітив"],
+["es importante que + …","subjuntivo (пізніше в курсі)","індикатив завжди","поки що: es importante + inf"],
+["Es necesario ___ el formulario.","completar","completa","es necesario + інфінітив"],
+["Para la salud, es importante ___.","descansar","descansa","es importante + інфінітив"],
+["Es esencial ___ las instrucciones.","seguir","sigue","es esencial + інфінітив"]
+]},
+{t:"Модальність: порівняй", lv:1, q:[
+["«Я особисто мушу» — це…","tengo que","hay que","особисто"],
+["«Загалом треба» — це…","hay que","tengo que","безособово"],
+["«Я повинен (порада/м'якше)» — це…","debo","tengo que… стоп","deber = м'якша форма"],
+["«Не можна» — це…","no se puede","se puede","заборона"],
+["«Необхідно» — це…","es necesario","es posible","es posible = можливо"],
+["Найсильніший обов'язок серед tener que / deber:","tener que","deber","tener que — категоричніше"],
+["Найввічливіша порада серед цих конструкцій:","deber","tener que","deber — м'якше"],
+["Заборону виражає…","no se puede","hay que","заборона ≠ обов'язок"],
+["Усі ці конструкції відповідають на питання…","Що треба/можна робити?","Що я хочу робити?","модальність обов'язку"],
+["deber + інфінітив і tener que + інфінітив…","схожі, але tener que сильніше","повністю різні","обидва про обов'язок"]
+]},
+{t:"Заперечення обов'язку", lv:1, q:[
+["No tengo que ___ hoy.","trabajar","trabajo","no + tener que + inf"],
+["No debo ___ tanto café.","tomar","tomo","no + deber + inf"],
+["No hay que ___ prisa.","tener","tiene","no + hay que + inf"],
+["No es necesario ___ ahora.","decidir","decide","no + es necesario + inf"],
+["«Я не мушу» (особисто) — це…","No tengo que","No hay que","особисто → tener que"],
+["No debemos ___ tarde.","llegar","llegamos","no + deber + inf"],
+["No tenéis que ___ nada.","hacer","hacéis","no + tener que + inf"],
+["No es obligatorio ___.","venir","viene","no es obligatorio + inf"],
+["No hace falta ___ tanto.","preocuparse","preocupa","no hace falta + inf"],
+["No debes ___ eso.","decir","dices","no + deber + inf"]
+]},
+{t:"Питання про обов'язок", lv:1, q:[
+["¿Tengo que ___ algo?","traer","traigo","tener que + inf"],
+["¿Hay que ___ con antelación?","reservar","reserva","hay que + inf"],
+["¿Debo ___ mi pasaporte?","llevar","llevo","deber + inf"],
+["¿Se puede ___ aquí?","aparcar","aparca","se puede + inf"],
+["¿Es necesario ___ una cita?","pedir","pide","es necesario + inf"],
+["¿Tenemos que ___ ahora?","irnos","nos vamos","tener que + inf"],
+["¿Qué tengo que ___ para el examen?","estudiar","estudio","tener que + inf"],
+["¿Hace falta ___ algo especial?","traer","trae","hacer falta + inf"],
+["¿Hay que ___ zapatos especiales?","llevar","lleva","hay que + inf"],
+["¿Debemos ___ antes de las diez?","llegar","llegamos","deber + inf"]
+]},
+{t:"HACE FALTA + інфінітив", lv:1, q:[
+["Hace falta ___ más tiempo.","tener","tienes","hace falta + inf"],
+["hace falta виражає…","необхідність (потрібно)","заборону","hace falta estudiar"],
+["No hace falta ___ tan rápido.","correr","corre","hace falta + inf"],
+["Hace falta ___ paciencia.","tener","tiene","hace falta + inf"],
+["Para este trabajo hace falta ___ inglés.","saber","sabe","hace falta + inf"],
+["hace falta схоже за змістом на…","es necesario","es posible","обидва про потребу"],
+["Hace falta ___ más información.","buscar","busca","hace falta + inf"],
+["¿Hace falta ___ algo más?","traer","trae","hace falta + inf"],
+["No hace falta ___, ya lo tengo.","comprarlo","lo compro","hace falta + inf"],
+["Hace falta ___ con calma.","pensar","piensa","hace falta + inf"]
+]},
+{t:"Лексика правил і обов'язків", lv:1, q:[
+["«правило» — це…","la regla","la regla de… стоп","базове: regla"],
+["«обов'язок» — це…","el deber/la obligación","el deseo","deseo = бажання"],
+["«заборона» — це…","la prohibición","la prohibida","прикметник — інше"],
+["«дозвіл» — це…","el permiso","el permanente","permanente = постійний"],
+["«необхідність» — це…","la necesidad","la necesitad","необхідність — necesidad"],
+["«обов'язково» (прислівник) — це…","obligatoriamente","obligado","obligado — прикметник"],
+["«заборонено» — це…","prohibido","permitido","permitido = дозволено"],
+["«дозволено» — це…","permitido","prohibido","prohibido = заборонено"],
+["«вимога» — це…","el requisito","el requerido","requerido — дієприкметник"],
+["«штраф» (за порушення) — це…","la multa","la multitud","multitud = натовп"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"У школі: правила", lv:2, q:[
+["En la escuela hay que ___ silencio.","guardar","guarda","hay que + inf"],
+["Los alumnos tienen que ___ los deberes.","hacer","hacen","tener que + inf"],
+["No se puede ___ durante el examen.","hablar","habla","no se puede + inf"],
+["Es obligatorio ___ el uniforme.","llevar","lleva","es obligatorio + inf"],
+["Los profesores deben ___ puntuales.","ser","son","deber + inf"],
+["No está permitido ___ el móvil en clase.","usar","usa","no está permitido + inf"],
+["Hay que ___ la mano para hablar.","levantar","levanta","hay que + inf"],
+["Los estudiantes tienen que ___ a tiempo.","llegar","llegan","tener que + inf"],
+["No se puede ___ chicle en clase.","masticar","mastica","no se puede + inf"],
+["Es necesario ___ un examen final.","aprobar","aprueba","es necesario + inf"]
+]},
+{t:"На роботі: правила", lv:2, q:[
+["En la oficina hay que ___ formal.","vestirse","viste","hay que + inf"],
+["Tengo que ___ el informe antes del viernes.","entregar","entrego","tener que + inf"],
+["No se puede ___ tarde a las reuniones.","llegar","llega","no se puede + inf"],
+["Debemos ___ los plazos.","respetar","respetamos","deber + inf"],
+["Es importante ___ con el equipo.","comunicarse","se comunica","es importante + inf"],
+["No está permitido ___ durante el trabajo.","fumar","fuma","no está permitido + inf"],
+["Hay que ___ el correo cada día.","revisar","revisa","hay que + inf"],
+["Tienes que ___ tu contraseña.","cambiar","cambias","tener que + inf"],
+["Es obligatorio ___ un curso de seguridad.","hacer","hace","es obligatorio + inf"],
+["No hace falta ___ el fin de semana.","trabajar","trabaja","hace falta + inf"]
+]},
+{t:"У подорожі: правила", lv:2, q:[
+["En el aeropuerto hay que ___ con antelación.","llegar","llega","hay que + inf"],
+["Tienes que ___ el pasaporte.","enseñar","enseñas","tener que + inf"],
+["No se puede ___ líquidos en la cabina.","llevar","lleva","no se puede + inf"],
+["Es necesario ___ el equipaje antes.","facturar","factura","es necesario + inf"],
+["Debemos ___ las normas de seguridad.","seguir","seguimos","deber + inf"],
+["No está permitido ___ durante el despegue.","levantarse","se levanta","no está permitido + inf"],
+["Hay que ___ el cinturón de seguridad.","abrocharse","se abrocha","hay que + inf"],
+["Es obligatorio ___ el visado para algunos países.","tener","tiene","es obligatorio + inf"],
+["¿Hace falta ___ una vacuna para viajar?","ponerse","se pone","hace falta + inf"],
+["No se puede ___ objetos punzantes.","facturar","factura","no se puede + inf"]
+]},
+{t:"У домі: правила співжиття", lv:2, q:[
+["En este piso hay que ___ silencio después de las diez.","guardar","guarda","hay que + inf"],
+["Tenemos que ___ la basura los martes.","sacar","sacamos","tener que + inf"],
+["No se puede ___ mascotas en este edificio.","tener","tiene","no se puede + inf"],
+["Debéis ___ las zonas comunes limpias.","mantener","mantenéis","deber + inf"],
+["Es importante ___ bien con los vecinos.","llevarse","se lleva","es importante + inf"],
+["No está permitido ___ música alta por la noche.","poner","pone","no está permitido + inf"],
+["Hay que ___ el alquiler antes del día 5.","pagar","paga","hay que + inf"],
+["Tienes que ___ las llaves si sales.","llevar","llevas","tener que + inf"],
+["Es obligatorio ___ un seguro de hogar.","tener","tiene","es obligatorio + inf"],
+["No hace falta ___ la puerta con dos llaves.","cerrar","cierra","hace falta + inf"]
+]},
+{t:"На дорозі: правила", lv:2, q:[
+["Hay que ___ el cinturón de seguridad.","ponerse","se pone","hay que + inf"],
+["No se puede ___ usando el móvil.","conducir","conduce","no se puede + inf"],
+["Es obligatorio ___ el casco en moto.","llevar","lleva","es obligatorio + inf"],
+["Debes ___ el límite de velocidad.","respetar","respetas","deber + inf"],
+["No está permitido ___ en doble fila.","aparcar","aparca","no está permitido + inf"],
+["Hay que ___ en el semáforo rojo.","parar","para","hay que + inf"],
+["Tienes que ___ el carné de conducir.","llevar","llevas","tener que + inf"],
+["Es necesario ___ el seguro del coche.","renovar","renueva","es necesario + inf"],
+["No se puede ___ alcohol antes de conducir.","beber","bebe","no se puede + inf"],
+["Hace falta ___ atención en la carretera.","prestar","presta","hace falta + inf"]
+]},
+{t:"Здоров'я: поради лікаря", lv:2, q:[
+["Debe ___ más agua.","beber","bebe","deber + inf"],
+["Tiene que ___ ejercicio regularmente.","hacer","hace","tener que + inf"],
+["Es importante ___ bien por las noches.","dormir","duerme","es importante + inf"],
+["No debe ___ tanto azúcar.","comer","come","deber + inf"],
+["Hay que ___ las medicinas a tiempo.","tomar","toma","hay que + inf"],
+["Es necesario ___ un chequeo cada año.","hacerse","se hace","es necesario + inf"],
+["No se puede ___ sin receta.","comprar esta medicina","compra esta medicina","no se puede + inf"],
+["Debe ___ de fumar.","dejar","deja","deber + inf"],
+["Hace falta ___ más fruta y verdura.","comer","come","hace falta + inf"],
+["Es fundamental ___ relajado.","mantenerse","se mantiene","es fundamental + inf"]
+]},
+{t:"POR QUÉ + пояснення обов'язку", lv:2, q:[
+["Tengo que estudiar ___ mañana hay examen.","porque","por qué","porque = тому що"],
+["¿___ tienes que irte tan pronto?","Por qué","Porque","питання"],
+["Debo ir al médico ___ me duele la cabeza.","porque","por qué","причина"],
+["Hay que reservar ___ el restaurante está lleno.","porque","por qué","причина"],
+["¿Por qué no se puede fumar aquí? — ___ es una zona pública.","Porque","Por qué","відповідь"],
+["No tengo que trabajar hoy ___ es festivo.","porque","por qué","причина"],
+["¿Por qué debemos llegar temprano?","Чому ми маємо прийти рано?","Тому що ми маємо прийти рано","питання"],
+["Es necesario descansar ___ mañana es un día largo.","porque","por qué","причина"],
+["¿Por qué hay que llevar casco?","Чому треба носити шолом?","Тому що треба носити шолом","питання"],
+["Tienes que venir ___ te necesitamos.","porque","por qué","причина"]
+]},
+{t:"Обов'язок у минулому (контекст)", lv:2, q:[
+["Ayer tuve que ___ hasta tarde.","trabajar","trabajo","tener que в минулому теж + inf"],
+["De niño, tenía que ___ los deberes antes de jugar.","hacer","hago","звичний обов'язок у дитинстві"],
+["Tuvimos que ___ el vuelo por la tormenta.","cancelar","cancelamos","tener que + inf"],
+["Antes había que ___ carta para comunicarse.","escribir","escribe","había que (безособове в минулому)"],
+["Tuve que ___ dos horas en la cola.","esperar","espero","tener que + inf"],
+["había que — це минула форма…","hay que","tengo que","hay→hubo/había"],
+["Tuvo que ___ al médico de urgencia.","ir","va","tener que + inf"],
+["De pequeño, tenía que ___ temprano.","acostarme","me acuesto","tenía que + inf"],
+["Tuvieron que ___ la casa por el ruido.","abandonar","abandonan","tener que + inf"],
+["Antes había que ___ en persona para todo.","ir","va","había que + inf"]
+]},
+{t:"Порівняй ситуації", lv:2, q:[
+["Загальне правило в бібліотеці: «___ guardar silencio.»","Hay que","Tengo que","загальне → hay que"],
+["Особисто тобі сьогодні: «___ terminar este informe.»","Tengo que","Hay que","особисто → tengo que"],
+["Порада лікаря: «___ dormir más.»","Debes","Tienes que… теж ок, але тут м'якше","порада → deber"],
+["Заборона в музеї: «___ tocar las obras.»","No se puede","No hay que","заборона конкретної дії"],
+["Загальна необхідність: «___ cuidar el medioambiente.»","Es necesario/Hay que","Tengo que","загальне → hay que/es necesario"],
+["Особистий обов'язок на роботі: «___ enviar el email hoy.»","Tengo que","Hay que","особисто"],
+["М'яка рекомендація другу: «___ descansar un poco.»","Deberías","Tienes que","умовний спосіб теж м'якший (згадаємо пізніше)"],
+["Правило дорожнього руху (загальне): «___ respetar el límite.»","Hay que","Tengo que","загальне правило"],
+["Твій особистий дедлайн: «___ acabar esto antes de las cinco.»","Tengo que","Hay que","особисто"],
+["Заборона в літаку: «___ usar el móvil durante el despegue.»","No se puede","No tengo que","заборона (загальна)"]
+]},
+{t:"У громадських місцях", lv:2, q:[
+["En el museo no se puede ___ con flash.","hacer fotos","haces fotos","no se puede + inf"],
+["En el cine hay que ___ el móvil.","apagar","apaga","hay que + inf"],
+["En la piscina es obligatorio ___ gorro.","llevar","lleva","es obligatorio + inf"],
+["No se puede ___ en las zonas verdes.","pisar el césped","pisas el césped","no se puede + inf"],
+["En la biblioteca hay que ___ en voz baja.","hablar","habla","hay que + inf"],
+["Es necesario ___ para entrar al parque nacional.","pagar entrada","pagas entrada","es necesario + inf"],
+["No está permitido ___ animales en el restaurante.","traer","trae","no está permitido + inf"],
+["En el hospital hay que ___ silencio.","guardar","guarda","hay que + inf"],
+["Debes ___ la cola como todos.","hacer","haces","deber + inf"],
+["No se puede ___ basura al suelo.","tirar","tira","no se puede + inf"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"DEBER DE (припущення) vs DEBER", lv:3, q:[
+["Debe ___ las ocho ya. (припущення про час)","de ser","ser","deber DE = припущення"],
+["deber + inf (без de) виражає…","обов'язок","припущення","debo estudiar = обов'язок"],
+["deber DE + inf виражає…","припущення (мабуть)","обов'язок","debe de ser tarde = мабуть, пізно"],
+["Debe de ___ mucho dinero para comprar eso.","tener","tener que… стоп","припущення про наявність"],
+["На практиці в розмовній мові різницю…","часто не роблять","завжди строго дотримують","у нормативній — є, у побуті — змішують"],
+["Debes estudiar más. (без de)","Обов'язок: маєш вчитися","Припущення: мабуть, вчишся","чистий обов'язок"],
+["Debe de estar en casa. (з de)","Мабуть, він удома","Він мусить бути вдома","припущення"],
+["No debe de ser fácil.","Мабуть, це нелегко","Це не має бути легко","припущення (заперечне)"],
+["Deben de haber llegado ya.","Мабуть, вони вже прийшли","Вони мусять прийти","припущення"],
+["Головна відмінність: deber (обов'язок) vs deber de (припущення) — це…","семантичний нюанс з de","одне й те саме","важливо для точності"]
+]},
+{t:"Ввічливі форми обов'язку", lv:3, q:[
+["«Ви маєте заповнити форму» (ввічливо) — це…","Tiene que rellenar el formulario","Tienes que rellenar el formulario","usted → tiene"],
+["Ввічливе прохання-обов'язок часто пом'якшують словом…","por favor","porque","tiene que…, por favor"],
+["«Будь ласка, зачекайте» (обов'язок ввічливо) — це…","Tiene que esperar, por favor","Debes esperar, tío","формальний реєстр"],
+["Найввічливіша форма поради — часто…","умовний спосіб (debería)","наказовий спосіб","debería — «мали б» (передбачення курсу)"],
+["Debería descansar más. (умовний)","Вам варто б відпочивати більше","Ви мусите відпочивати більше","м'якша порада"],
+["З клієнтом краще сказати…","Tiene que firmar aquí, por favor","Firma aquí ya","ввічливий реєстр"],
+["Формальний обов'язок у документах часто виражають…","es obligatorio/deberá","tienes que","офіційний стиль"],
+["El usuario deberá aceptar los términos. (офіційний стиль)","Користувач повинен прийняти умови","Користувач хоче прийняти умови","формальне deberá"],
+["У розмові з другом простіше сказати…","Tienes que venir","Deberá usted venir","неформальний реєстр"],
+["Офіційні інструкції часто починаються з…","Es obligatorio…/Se debe…","Quiero…","безособовий офіційний стиль"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«Tengo estudiar» → …","Tengo que estudiar","Tengo a estudiar","бракує que"],
+["«Hay estudiar» → …","Hay que estudiar","Hay a estudiar","бракує que"],
+["«Debo a estudiar» → …","Debo estudiar","Debo de a estudiar","deber БЕЗ прийменника (для обов'язку)"],
+["«No puede fumar aquí» (загальна заборона) → природніше…","No se puede fumar aquí","No puedes fumar aquí","безособове se puede"],
+["«Es necesario a estudiar» → …","Es necesario estudiar","Es necesario de estudiar","без прийменника"],
+["«Hace falta a tener» → …","Hace falta tener","Hace falta de tener","без прийменника"],
+["«Tenemos que a salir» → …","Tenemos que salir","Tenemos a que salir","que, а не a"],
+["«No hay que a preocuparse» → …","No hay que preocuparse","No hay a que preocuparse","que без a"],
+["«Debe de estudiar» (як обов'язок, не припущення) → …","Debe estudiar","Debe de estudiar залишити","без de для чистого обов'язку"],
+["«Es obligatorio a llevar» → …","Es obligatorio llevar","Es obligatorio de llevar","без прийменника"]
+]},
+{t:"Контекст і відтінки значення", lv:3, q:[
+["Найкатегоричніший вислів обов'язку серед: hay que, debería, tengo que —","tengo que","debería","tengo que — найсильніше особисто"],
+["Найм'якша порада серед: tienes que, deberías, no se puede —","deberías","tienes que","умовний спосіб — м'якше"],
+["«Ти повинен це зробити негайно!» (категорично) — це…","Tienes que hacerlo ahora mismo","Deberías hacerlo cuando puedas","категоричність → tienes que"],
+["«Було б непогано, якби ти відпочив» (порада) — це…","Deberías descansar","Tienes que descansar ya","порада → deberías"],
+["no tener que відрізняється від no deber тим, що…","no tener que = не обов'язково (є вибір)","однакові за змістом","важлива різниця!"],
+["No tienes que venir si no quieres. означає…","Не обов'язково приходити (маєш вибір)","Забороняється приходити","відсутність обов'язку, не заборона"],
+["No debes mentir. означає…","Не повинен брехати (моральний обов'язок)","Не обов'язково брехати","заперечення deber = моральна заборона"],
+["Різниця «no tener que» (немає потреби) і «no deber» (не можна) — це…","ключова пастка для тих, хто вчить іспанську","одне й те саме","часта помилка"],
+["No tienes que pagar ahora, puedes pagar después.","Не обов'язково платити зараз","Не можна платити зараз","відсутність обов'язку"],
+["No debes hablar así a tus padres.","Не варто/не можна так говорити з батьками","Не обов'язково говорити з батьками","моральна заборона"]
+]},
+{t:"Розмовні вирази обов'язку", lv:3, q:[
+["Más vale que + subjuntivo (попереду) — розмовно означає…","краще б…","гірше б…","попередження"],
+["«No te queda otra» означає…","У тебе немає вибору","У тебе багато варіантів","розмовний вислів обов'язку"],
+["«Toca + інфінітив» (розмовне) означає…","настав час/доводиться зробити щось","торкатися чогось","toca limpiar = час прибирати"],
+["Nos toca limpiar la casa.","Нам випадає прибирати будинок","Ми торкаємось будинку","toca = випадає/доводиться"],
+["«Es cuestión de + інфінітив» означає…","питання того, щоб…","заборонено щось","es cuestión de tiempo"],
+["«No hay más remedio que + інфінітив» означає…","немає іншого виходу, крім як…","є багато виходів","категоричне визнання необхідності"],
+["No hay más remedio que aceptarlo.","Немає іншого виходу, крім як прийняти це","Можна не приймати це","стійкий вираз"],
+["«Ni modo» (Лат. Америка) розмовно означає…","нічого не вдієш","дуже добре","прийняття неминучого"],
+["«A la fuerza» означає…","примусово/через необхідність","з радістю","obligado a la fuerza"],
+["«Por narices» (дуже розмовне) означає…","хоч-не-хоч, силоміць","приємно й легко","грубувато-розмовний вислів"]
+]},
+{t:"Обов'язок у майбутньому", lv:3, q:[
+["Mañana voy a tener que ___ temprano.","levantarme","me levanto","ir a tener que + inf"],
+["Vas a tener que ___ una decisión pronto.","tomar","tomas","ir a tener que + inf"],
+["Va a haber que ___ más recursos.","invertir","invierte","ir a haber que + inf"],
+["El año que viene tendremos que ___ de casa.","mudarnos","nos mudamos","tener que в майбутньому: tendremos"],
+["Vamos a tener que ___ este problema pronto.","resolver","resolvemos","ir a tener que + inf"],
+["tendré que — це форма tener que в…","простому майбутньому","минулому","-é закінчення майбутнього"],
+["Tendrás que ___ paciencia.","tener","tienes","tendrás que + inf"],
+["Habrá que ___ cambios importantes.","hacer","hace","habrá que — майбутнє від hay que"],
+["Deberás ___ el formulario antes de esa fecha.","enviar","envías","deberás + inf"],
+["habrá que — це майбутня форма…","hay que","tengo que","haber → habrá"]
+]},
+{t:"Обов'язок і зворотні дієслова", lv:3, q:[
+["Tengo que ___ (levantarse) temprano mañana.","levantarme","me levantar","займенник у кінець інфінітива"],
+["Hay que ___ (lavarse) las manos antes de comer.","lavarse","se lavar","hay que + lavarse"],
+["Debes ___ (relajarse) un poco.","relajarte","te relajar","tú → relajarte"],
+["No se puede ___ (quejarse) de todo.","quejarse","se quejar","no se puede + quejarse"],
+["Tenemos que ___ (acostarse) antes hoy.","acostarnos","nos acostar","nosotros → acostarnos"],
+["Es importante ___ (cuidarse) bien.","cuidarse","se cuidar","es importante + cuidarse"],
+["¿Tienes que ___ (irse) ya?","irte","te ir","tú → irte"],
+["Hay que ___ (ducharse) antes de la piscina.","ducharse","se duchar","hay que + ducharse"],
+["No debes ___ (preocuparse) tanto.","preocuparte","te preocupar","tú → preocuparte"],
+["Debemos ___ (organizarse) mejor.","organizarnos","nos organizar","nosotros → organizarnos"]
+]},
+{t:"Переклади речення", lv:3, q:[
+["«Я особисто мушу закінчити це сьогодні»:","Tengo que terminar esto hoy","Hay que terminar esto hoy","особисто → tengo que"],
+["«Загалом треба берегти природу»:","Hay que cuidar la naturaleza","Tengo que cuidar la naturaleza","загальне → hay que"],
+["«Тут не можна курити»:","Aquí no se puede fumar","Aquí no tengo que fumar","заборона → no se puede"],
+["«Тобі варто б відпочити» (порада):","Deberías descansar","Tienes que descansar","м'яка порада → deberías"],
+["«Необхідно подати документи до пʼятниці»:","Es necesario presentar los documentos antes del viernes","Hay que de presentar los documentos","без прийменника"],
+["«Не обов'язково приходити, якщо не хочеш»:","No tienes que venir si no quieres","No debes venir si no quieres","відсутність обов'язку → no tener que"],
+["«Не варто так з ним розмовляти»:","No debes hablarle así","No tienes que hablarle así","моральна заборона → no deber"],
+["«Мабуть, вже пізно» (припущення):","Debe de ser tarde ya","Debe ser tarde ya","припущення → deber de"],
+["«У нас немає іншого виходу, крім як почекати»:","No nos queda más remedio que esperar","No tenemos remedio que esperar","стійкий вираз"],
+["«Доводиться прибирати щосуботи» (розмовно):","Toca limpiar los sábados","Hay que a limpiar los sábados","toca = випадає"]
+]},
+{t:"Правила клубу (текст)", lv:3, q:[
+["Para entrar, hay que ___ socio.","ser","es","hay que + inf"],
+["Los socios tienen que ___ la cuota mensual.","pagar","pagan","tener que + inf"],
+["No se puede ___ invitados sin avisar.","traer","trae","no se puede + inf"],
+["Es obligatorio ___ el carné en la entrada.","mostrar","muestra","es obligatorio + inf"],
+["Debes ___ las normas del gimnasio.","respetar","respetas","deber + inf"],
+["No está permitido ___ comida dentro.","llevar","lleva","no está permitido + inf"],
+["Hay que ___ una toalla para las duchas.","traer","trae","hay que + inf"],
+["Si cancelas, tienes que ___ con 24 horas de antelación.","avisar","avisas","tener que + inf"],
+["No hace falta ___ para las clases grupales.","reservar","reserva","hace falta + inf"],
+["¡Y no ___ olvidar de disfrutar! 😊","hay que","tienes que… ambos ok","hay que olvidar — насправді треба «no hay que olvidar»"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["«Я особисто мушу» — це…","tengo que","hay que","особисто"],
+["«Загалом треба» — це…","hay que","tengo que","безособово"],
+["«Не можна» — це…","no se puede","se puede","заборона"],
+["Debe de ser tarde. означає…","Мабуть, пізно","Мусить бути пізно","припущення з de"],
+["No tienes que venir. означає…","Не обов'язково приходити","Забороняється приходити","відсутність обов'язку"],
+["No debes mentir. означає…","Не варто брехати (заборона)","Не обов'язково брехати","моральна заборона"],
+["«Toca limpiar» розмовно означає…","час прибирати (доводиться)","заборонено прибирати","toca = випадає"],
+["No hay más remedio que + inf означає…","немає іншого виходу","є багато виходів","стійкий вираз"],
+["Найм'якша форма поради:","debería","tengo que","умовний спосіб"],
+["hace falta схоже за змістом на…","es necesario","no se puede","обидва про потребу"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Вираження обов'язку: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 17 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

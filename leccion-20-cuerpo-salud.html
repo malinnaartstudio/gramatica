@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 20 · Тіло людини. Здоров'я · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 20 · @malinnaartstudio</div>
+    <h1 id="htitle">Тіло людини. Здоров'я: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 20 · Cuerpo humano. Citas médicas y salud.</b>
+      30 вправ по 10 питань: частини тіла, симптоми, аптека, запис до лікаря,
+      система охорони здоров'я Іспанії. Від ★ до ★★★. ¡Que te mejores! 🩺
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · базова лексика</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · у контексті</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · нюанси й діалоги</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 20</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Голова й обличчя", lv:1, q:[
+["«голова» — це…","la cabeza","la cabaña","cabaña = хатина"],
+["«око» — це…","el ojo","el ajo","ajo = часник! 🧄"],
+["«ніс» — це…","la nariz","la naranja","naranja = апельсин"],
+["«рот» — це…","la boca","la bota","bota = чобіт"],
+["«вухо» — це…","la oreja","la oveja","oveja = вівця 🐑"],
+["«зуб» — це…","el diente","el dedo","dedo = палець"],
+["«волосся» — це…","el pelo","el peso","peso = вага"],
+["«обличчя» — це…","la cara","la cara… стоп","базове: cara"],
+["«шия» — це…","el cuello","el cielo","cielo = небо"],
+["«язик» — це…","la lengua","la legua","legua = ліга (міра відстані)"]
+]},
+{t:"Тулуб і руки", lv:1, q:[
+["«рука» (вся) — це…","el brazo","el brasero","brasero = жаровня"],
+["«кисть руки» — це…","la mano","el mono","mono = мавпа 🐒"],
+["«палець» — це…","el dedo","el dado","dado = кубик (гральний)"],
+["«плече» — це…","el hombro","el hombre","hombre = чоловік"],
+["«спина» — це…","la espalda","la espada","espada = меч ⚔️"],
+["«груди» — це…","el pecho","el techo","techo = стеля"],
+["«живіт» — це…","el vientre/la barriga","el viento","viento = вітер"],
+["«лікоть» — це…","el codo","el coco","coco = кокос 🥥"],
+["«зап'ястя» — це…","la muñeca","la muñeca… стоп","базове: muñeca (теж = лялька!)"],
+["«серце» — це…","el corazón","el corral","corral = загін для тварин"]
+]},
+{t:"Ноги", lv:1, q:[
+["«нога» (вся) — це…","la pierna","la piedra","piedra = камінь"],
+["«стопа» — це…","el pie","el pino","pino = сосна 🌲"],
+["«коліно» — це…","la rodilla","la rueda","rueda = колесо"],
+["«стегно» — це…","el muslo","el musgo","musgo = мох"],
+["«кісточка» (щиколотка) — це…","el tobillo","el bolsillo","bolsillo = кишеня"],
+["«п'ята» — це…","el talón","el tapón","tapón = корок/затичка"],
+["«палець ноги» — це…","el dedo del pie","el dado del pie","dado = кубик"],
+["«литка» — це…","la pantorrilla","la pantalla","pantalla = екран"],
+["Ноги (обидві, для ходьби) — це…","las piernas","las pinturas","pinturas = картини"],
+["Стопи (обидві) — це…","los pies","los peces","peces = риби 🐟"]
+]},
+{t:"Внутрішні органи", lv:1, q:[
+["«мозок» — це…","el cerebro","el cerdo","cerdo = свиня 🐷"],
+["«легені» — це…","los pulmones","los pulmones… стоп","базове: pulmones"],
+["«шлунок» — це…","el estómago","el estanque","estanque = ставок"],
+["«печінка» — це…","el hígado","el helado","helado = морозиво 🍦"],
+["«нирки» — це…","los riñones","los rincones","rincones = кутки"],
+["«кров» — це…","la sangre","la sangría","sangría = напій (хоч і схоже слово!)"],
+["«кістка» — це…","el hueso","el huevo","huevo = яйце 🥚"],
+["«м'яз» — це…","el músculo","el musgo","musgo = мох"],
+["«шкіра» — це…","la piel","la pila","pila = батарейка"],
+["Скелет — це…","el esqueleto","el escalón","escalón = сходинка"]
+]},
+{t:"Симптоми хвороби", lv:1, q:[
+["«головний біль» — це…","dolor de cabeza","dolor de cabaña","cabaña = хатина"],
+["«лихоманка» (температура) — це…","la fiebre","la fibra","fibra = волокно"],
+["«кашель» — це…","la tos","la tostada","tostada = тост"],
+["«чхання» — це…","el estornudo","el estanque","estanque = ставок"],
+["«біль у горлі» — це…","dolor de garganta","dolor de gato","gato = кіт 🐱"],
+["«запаморочення» — це…","el mareo","el marido","marido = чоловік (у шлюбі)"],
+["«нудота» — це…","las náuseas","las noticias","noticias = новини"],
+["«втома» — це…","la fatiga/el cansancio","la fábrica","fábrica = фабрика"],
+["«закладеність носа» — це…","la congestión nasal","la congelación","congelación = заморожування"],
+["«м'язовий біль» — це…","dolor muscular","dolor musical","musical = музичний 😄"]
+]},
+{t:"У аптеці: базові слова", lv:1, q:[
+["«аптека» — це…","la farmacia","la fábrica","fábrica = фабрика"],
+["«ліки» — це…","el medicamento","el medioambiente","medioambiente = довкілля"],
+["«таблетки» — це…","las pastillas","las pastas","pastas = макарони 🍝"],
+["«сироп» — це…","el jarabe","el jabón","jabón = мило"],
+["«крем» — це…","la crema","la crítica","crítica = критика"],
+["«краплі» — це…","las gotas","las botas","botas = чоботи"],
+["«бинт» — це…","la venda","la vida","vida = життя"],
+["«марля» — це…","la gasa","la casa","casa = будинок"],
+["«рецепт лікаря» — це…","la receta médica","la receta de cocina… стоп","базове: receta médica"],
+["¿Tienen algo para el dolor de cabeza? означає…","У вас є щось від головного болю?","У вас болить голова?","питання в аптеці"]
+]},
+{t:"Дієслово DOLER", lv:1, q:[
+["Me ___ la cabeza.","duele","duelen","cabeza однина → duele"],
+["Me ___ los pies.","duelen","duele","pies множина → duelen"],
+["doler працює як…","gustar (me duele/duelen)","звичайне дієслово","непрямий додаток"],
+["¿Te ___ el estómago?","duele","duelen","estómago → duele"],
+["Le ___ las muelas.","duelen","duele","muelas множина → duelen"],
+["Nos ___ la espalda.","duele","duelen","espalda однина → duele"],
+["doler має чергування…","o→ue (duele)","e→ie","dUEle"],
+["Me duele todo el cuerpo.","У мене болить усе тіло","У мене нічого не болить","типова фраза хворого"],
+["¿Qué te duele?","Що в тебе болить?","Що ти любиш?","питання лікаря"],
+["Me ___ mucho la garganta.","duele","duelo","garganta → duele"]
+]},
+{t:"У лікаря: базові фрази", lv:1, q:[
+["«лікар» — це…","el médico/la médica","el medio","medio = середина"],
+["«прийом/запис до лікаря» — це…","la cita médica","la cita… стоп","базове: cita médica"],
+["«Мені потрібно записатися до лікаря» — це…","Necesito pedir una cita","Necesito pedir una casa","cita ≠ casa"],
+["«У мене температура» — це…","Tengo fiebre","Soy fiebre","tener fiebre"],
+["«Я застуджений» — це…","Estoy resfriado","Soy resfriado","стан → estar"],
+["«У мене болить усе тіло» — це…","Me duele todo el cuerpo","Tengo todo el cuerpo","doler"],
+["«скільки часу» (тривалість симптому) — це…","desde hace","hace desde","desde hace tres días"],
+["Me duele la garganta desde hace tres días.","У мене болить горло вже три дні","У мене болітиме горло через три дні","тривалість симптому"],
+["«У мене алергія на…» — це…","Soy alérgico/a a…","Tengo alérgico a…","ser alérgico"],
+["«побічні ефекти» (ліків) — це…","efectos secundarios","efectos primarios","secundarios = побічні"]
+]},
+{t:"Поради лікаря", lv:1, q:[
+["«Вам треба відпочивати» — це…","Debe descansar","Debe descanso","deber + інфінітив"],
+["«Важливо пити воду» — це…","Es importante beber agua","Es importante bebida agua","es importante + інфінітив"],
+["«Сьогодні не можна займатись спортом» — це…","No se puede hacer deporte hoy","No se puede el deporte hoy","no se puede + інфінітив"],
+["«Вам варто б відпочити» (порада) — це…","Debería descansar","Debe descansar… теж ок, трохи інакше","умовний спосіб — м'якше"],
+["«Приймайте ці таблетки двічі на день» — це…","Tome estas pastillas dos veces al día","Toma estas pastillas dos veces al día — теж ок ввічливо","формальний наказовий спосіб (usted)"],
+["¿Cómo debo tomar estas pastillas? означає…","Як мені приймати ці таблетки?","Чому мені призначили ці таблетки?","питання про спосіб прийому"],
+["«Це серйозно?» — це…","¿Es grave?","¿Es grande?","grande = великий"],
+["«Не хвилюйтеся» — це…","No se preocupe","No se ocupe","ocupe — не те слово"],
+["«Вам треба здати аналізи» — це…","Tiene que hacerse unas pruebas","Tiene que hacer unas pruebas… теж ок","pruebas = аналізи/тести"],
+["«Одужуйте!» — це…","¡Que te mejores!","¡Que te mejor!","формула побажання"]
+]},
+{t:"Здоровий спосіб життя", lv:1, q:[
+["«здоров'я» — це…","la salud","el saludo","saludo = привітання"],
+["«здоровий» — це…","sano/saludable","salado","salado = солоний"],
+["«хворий» — це…","enfermo/a","enfadado/a","enfadado = сердитий"],
+["«хвороба» — це…","la enfermedad","la enfermería","enfermería = медпункт"],
+["«вправи/спорт» — це…","el ejercicio","el ejemplo","ejemplo = приклад"],
+["«збалансоване харчування» — це…","alimentación equilibrada","alimentación equipada","equipada = оснащена"],
+["«стрес» — це…","el estrés","el estreno","estreno = прем'єра"],
+["«відпочинок» — це…","el descanso","el desayuno","desayuno = сніданок"],
+["«імунітет» — це…","el sistema inmunológico","el sistema informático","informático = комп'ютерний"],
+["«піклуватися про себе» — це…","cuidarse","cansarse","cansarse = втомлюватися"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Система охорони здоров'я Іспанії", lv:2, q:[
+["SNS означає…","Sistema Nacional de Salud (нацсистема охорони здоров'я)","Sistema Nacional de Seguridad","Salud = здоров'я"],
+["SIP — це…","медична картка автономної спільноти","страховий поліс приватної клініки","tarjeta sanitaria"],
+["Centro de salud — це…","поліклініка/центр здоров'я в районі","приватна клініка","базовий рівень медицини"],
+["Médico de familia означає…","сімейний лікар","лікар для дітей","перший контакт у системі"],
+["Pediatra — це…","дитячий лікар","лікар для літніх людей","педіатр"],
+["Derivación означає…","направлення до спеціаліста","відмову в лікуванні","через сімейного лікаря"],
+["Especialista — це…","вузький фахівець (отоларинголог тощо)","загальний лікар","часто потрібне direvación"],
+["Urgencias означає…","невідкладна допомога","звичайний прийом","24/7 або денна"],
+["112 — це…","європейський номер екстреної допомоги","номер довідкової служби","єдиний екстрений номер"],
+["Seguro privado означає…","приватну страховку","державну страховку","зі своїми клініками"]
+]},
+{t:"В аптеці: деталі", lv:2, q:[
+["Receta electrónica означає…","електронний рецепт","електронну аптеку","сучасна система рецептів в Іспанії"],
+["Farmacia de guardia — це…","чергова аптека (вночі/у свята)","звичайна аптека","працює цілодобово по черзі"],
+["«без рецепта» — це…","sin receta","con receta","sin = без"],
+["Necesito comprar un jarabe para la tos.","Мені потрібен сироп від кашлю","Мені потрібні пігулки від кашлю","jarabe = сироп"],
+["Tengo una receta médica para este medicamento.","У мене є рецепт на ці ліки","У мене немає рецепта на ці ліки","розуміння фрази"],
+["¿Cómo debo tomar estas pastillas?","Як мені приймати ці таблетки?","Скільки коштують ці таблетки?","питання про дозування"],
+["«ефективний» (про ліки) — це…","eficaz","eficiente… теж схоже, але тут краще","eficaz — типовий термін для ліків"],
+["«дозування» — це…","la dosis","la dosificación… теж ок, довше","коротко: dosis"],
+["Antes o después de comer? означає…","До чи після їжі?","Замість їжі?","питання про прийом ліків"],
+["«термін придатності» (ліків) — це…","la fecha de caducidad","la fecha de nacimiento","nacimiento = народження"]
+]},
+{t:"Опис симптомів у лікаря", lv:2, q:[
+["Tengo fiebre y me duele todo el cuerpo.","У мене температура, і болить усе тіло","У мене немає температури","типовий опис"],
+["Estoy resfriado, tengo tos y congestión nasal.","Я застуджений, кашляю і маю закладений ніс","Я здоровий і не кашляю","опис застуди"],
+["Me siento mareado y con náuseas.","Я відчуваю запаморочення і нудоту","Я почуваюся чудово","опис нездужання"],
+["Me duele la garganta desde hace tres días.","Горло болить уже три дні","Горло болітиме три дні","desde hace = тривалість у минулому до тепер"],
+["No puedo dormir bien por la tos.","Я не можу добре спати через кашель","Я сплю добре завдяки кашлю","причина проблеми"],
+["Tengo náuseas después de comer.","У мене нудота після їжі","У мене нудота перед їжею","después de = після"],
+["Me duele mucho la cabeza desde esta mañana.","Голова сильно болить із самого ранку","Голова болітиме завтра вранці","тривалість симптому"],
+["Tengo la garganta irritada.","У мене подразнене горло","У мене здорове горло","опис стану"],
+["No tengo apetito desde hace unos días.","У мене немає апетиту вже кілька днів","У мене чудовий апетит","desde hace + тривалість"],
+["Me cuesta respirar bien.","Мені важко дихати нормально","Мені легко дихати","costar = бути важким для"]
+]},
+{t:"Запис на прийом", lv:2, q:[
+["Quisiera pedir una cita para mañana.","Я хотів би записатися на завтра","Я хотів би скасувати запис на завтра","quisiera = ввічливе «хотів би»"],
+["quisiera pedir / cambiar / anular una cita означає…","хотів би записатися / перенести / скасувати запис","хотів би заплатити / отримати чек","три дії із записом"],
+["¿Me puede confirmar la cita del martes a las 10:30?","Чи можете підтвердити запис у вівторок о 10:30?","Чи можете скасувати запис у вівторок?","прохання підтвердити"],
+["«скасувати запис» — це…","anular la cita","anular la casa","casa — не те слово"],
+["«перенести запис» — це…","cambiar la cita","cambiar la casa","cita = запис"],
+["¿Tiene hueco esta semana?","Чи є вільне віконце цього тижня?","Чи є діра в стіні цього тижня?","hueco = вільний час (розмовне)"],
+["«черга (список очікування)» — це…","la lista de espera","la lista de compras","compras = покупки"],
+["He recibido un mensaje confirmando mi cita.","Я отримав повідомлення з підтвердженням запису","Я відправив повідомлення про скасування","розуміння SMS-нагадувань"],
+["¿Puedo pedir cita por internet?","Чи можу я записатися онлайн?","Чи можу я подзвонити по інтернету?","poder pedir cita — типова фраза"],
+["Llego con antelación a mi cita.","Я приходжу заздалегідь на прийом","Я запізнююсь на прийом","con antelación = завчасно"]
+]},
+{t:"Alergias y advertencias", lv:2, q:[
+["Soy alérgico/a a…","Я маю алергію на…","Мені подобається…","ser alérgico a"],
+["¿Este medicamento tiene efectos secundarios?","Чи мають ці ліки побічні ефекти?","Чи ці ліки допомагають швидко?","efectos secundarios"],
+["Soy alérgico a la penicilina.","У мене алергія на пеніцилін","Я люблю пеніцилін","типова важлива фраза"],
+["«непереносимість» — це…","la intolerancia","la intolerancia… стоп","базове: intolerancia"],
+["No puedo tomar este medicamento porque soy alérgico.","Я не можу приймати ці ліки, бо в мене алергія","Я можу приймати будь-які ліки","причина обмеження"],
+["«застереження» (на упаковці ліків) — це…","la advertencia","la aventura","aventura = пригода"],
+["Antes de tomarlo, consulte a su médico.","Перед прийомом проконсультуйтесь із лікарем","Прийміть це перед консультацією з лікарем","типовий напис на упаковці"],
+["«ризик» (побічної реакції) — це…","el riesgo","el riego","riego = полив"],
+["Es importante decir al médico si eres alérgico a algo.","Важливо сказати лікарю, якщо в тебе на щось алергія","Не важливо говорити про алергії","важливість повідомлення"],
+["«взаємодія» (ліків) — це…","la interacción","la interrupción","interrupción = переривання"]
+]},
+{t:"У лікарні", lv:2, q:[
+["«лікарня» — це…","el hospital","el hostal","hostal = хостел (готель)"],
+["«швидка допомога» (машина) — це…","la ambulancia","la abundancia","abundancia = достаток"],
+["«операція» — це…","la operación/cirugía","la ópera","ópera = опера 🎭"],
+["«медсестра» — це…","la enfermera","la enferma","enferma = хвора жінка"],
+["«палата» (лікарняна) — це…","la habitación","la habilidad","habilidad = навичка"],
+["«аналіз крові» — це…","el análisis de sangre","el análisis de azúcar","конкретно про кров"],
+["«рентген» — це…","la radiografía","la fotografía","fotografía = звичайне фото"],
+["«гіпс» (на переломі) — це…","la escayola/el yeso","la escalera","escalera = сходи"],
+["«шов» (хірургічний) — це…","la sutura/el punto","el puno","puno — немає такого слова"],
+["«виписка» (з лікарні) — це…","el alta","la salida","alta — специфічний медичний термін"]
+]},
+{t:"Прикметники стану здоров'я", lv:2, q:[
+["Estoy ___. (хворий)","enfermo","enfermado","прикметник enfermo"],
+["Me siento ___. (краще)","mejor","bueno","mejor = краще (порівняльна форма)"],
+["Estoy ___. (втомлений)","cansado","cansando","cansado — прикметник"],
+["Me encuentro ___. (погано)","mal","malo","прислівник → mal"],
+["Estoy ___ del todo. (одужав)","recuperado","recuperando","recuperado — результат"],
+["El paciente está ___. (стабільний)","estable","establecido","estable = стабільний"],
+["Estoy ___ hoy. (краще, ніж учора)","mejor","mal","mejor de salud"],
+["Sigo ___ un poco.","mareado","mareo","прикметник mareado"],
+["Ya no estoy ___.","enfermo","enfermedad","enfermedad — іменник"],
+["Me siento mucho ___ que ayer.","mejor","peor — обидва можливі, тут mejor логічніше","одужання → mejor"]
+]},
+{t:"Поради й рекомендації", lv:2, q:[
+["Debe beber mucha agua.","Вам треба пити багато води","Вам не можна пити воду","deber + inf"],
+["Es importante dormir bien.","Важливо добре спати","Неважливо спати добре","es importante + inf"],
+["No se puede conducir con estos medicamentos.","Не можна керувати авто з цими ліками","Можна керувати авто з цими ліками","попередження"],
+["Debería tomarse unos días libres.","Вам варто б взяти кілька вихідних днів","Вам заборонено брати вихідні","умовний спосіб — порада"],
+["Es recomendable hacer ejercicio moderado.","Рекомендується помірна фізична активність","Рекомендується уникати будь-якого руху","recomendable = рекомендований"],
+["Tiene que evitar el estrés.","Вам треба уникати стресу","Вам треба шукати стрес","evitar = уникати"],
+["Es mejor que descanse unos días.","Краще, щоб ви відпочили кілька днів","Краще, щоб ви працювали кілька днів","порада лікаря"],
+["No conviene salir con fiebre.","Не варто виходити з дому з температурою","Варто вийти з дому з температурою","conviene = варто"],
+["Hay que seguir el tratamiento completo.","Треба пройти повний курс лікування","Можна перервати лікування","hay que + inf"],
+["Le aconsejo hacerse un chequeo anual.","Я раджу вам робити щорічний медогляд","Я забороняю вам медогляд","aconsejar = радити"]
+]},
+{t:"Ліки і побічні ефекти", lv:2, q:[
+["Este medicamento puede causar ___.","somnolencia","el sueño… теж ок, менш точно","somnolencia = сонливість (медичний термін)"],
+["«нудота як побічний ефект» — це…","náuseas como efecto secundario","náuseas como causa principal","efecto secundario"],
+["Tome el medicamento con comida.","Приймайте ліки з їжею","Приймайте ліки замість їжі","типова інструкція"],
+["No mezcle este medicamento con alcohol.","Не поєднуйте ці ліки з алкоголем","Поєднуйте ці ліки з алкоголем","попередження"],
+["«Може викликати сонливість» — це…","Puede causar somnolencia","Puede causar somnolencia… стоп","базове формулювання"],
+["Consulte a su médico antes de tomarlo.","Проконсультуйтесь із лікарем перед прийомом","Проконсультуйтесь із лікарем після прийому","antes de = перед"],
+["«передозування» — це…","la sobredosis","la subdosis","sobre- = над-"],
+["No exceda la dosis recomendada.","Не перевищуйте рекомендовану дозу","Перевищуйте дозу за потреби","excedar = перевищувати"],
+["Manténgalo fuera del alcance de los niños.","Тримайте подалі від дітей","Дайте дітям спробувати","типовий напис на упаковці"],
+["«взаємодія з іншими ліками» — це…","interacción con otros medicamentos","reacción sin otros medicamentos","interacción — точний термін"]
+]},
+{t:"У черзі в поліклініці", lv:2, q:[
+["«номерок» (черга) — це…","el número","el nombre","nombre = ім'я"],
+["¿Quién es el último?","Хто останній у черзі?","Хто перший у черзі?","типове питання в іспанських чергах"],
+["Estoy esperando mi turno.","Я чекаю своєї черги","Я вже пройшов свою чергу","turno = черга/зміна"],
+["«зала очікування» — це…","la sala de espera","la sala de estar","sala de estar = вітальня"],
+["Llevo esperando media hora.","Я чекаю вже півгодини","Я чекатиму півгодини","llevo + герундій = тривалість"],
+["¿Falta mucho para mi turno?","Довго ще чекати моєї черги?","Моя черга вже пройшла?","типове питання"],
+["El médico me atenderá enseguida.","Лікар прийме мене незабаром","Лікар уже мене прийняв","atender = прийняти пацієнта"],
+["«записаний на прийом» — це…","tener cita","tener prisa","prisa = поспіх"],
+["Perdone, ¿está ocupado este asiento?","Вибачте, це місце зайняте?","Вибачте, де вихід?","типове ввічливе питання"],
+["Ya me toca a mí.","Тепер моя черга","Ще не моя черга","tocar a alguien = бути чиєюсь чергою"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Формули у лікаря: діалог", lv:3, q:[
+["— ¿Qué le pasa? — Me duele ___.","la cabeza","el cabeza","cabeza ж.р. → la"],
+["— ¿Desde cuándo? — ___ tres días.","Desde hace","Hace desde","desde hace + тривалість"],
+["— ¿Tiene fiebre? — Sí, ___ 38 grados.","tengo","soy","tener fiebre"],
+["— ¿Es alérgico a algo? — Sí, ___ a la penicilina.","soy alérgico","tengo alérgico","ser alérgico a"],
+["— Voy a recetarle ___.","unas pastillas","un pastillas","pastillas ж.р. → unas"],
+["— ¿Cómo debo tomarlas? — ___ dos veces al día.","Tómelas","Toma ellas","формальний наказ (usted)"],
+["— ¿Necesito hacer algo más? — Sí, ___ mucho.","descanse","descansa","формальний наказ usted"],
+["— ¿Cuándo vuelvo si no mejoro? — ___ en una semana.","Vuelva","Vuelve","формальний наказ usted"],
+["— Gracias, doctor. — ___.","Que se mejore","Que te mejores — теж ок, менш формально","usted → se mejore"],
+["— ¿Puedo hacer deporte? — No, ___ unos días.","evite el esfuerzo","evita el esfuerzo","формальний usted → evite"]
+]},
+{t:"POR і PARA в медичному контексті", lv:3, q:[
+["Necesito algo ___ el dolor de cabeza.","para","por","мета/призначення → para"],
+["Vengo ___ una receta.","por","para","прийти ЗА чимось → por"],
+["Este jarabe es ___ la tos.","para","por","призначення → para"],
+["Gracias ___ su ayuda, doctor.","por","para","подяка/причина → por"],
+["Tomo esta pastilla ___ la mañana.","por","para","por la mañana = вранці"],
+["Este tratamiento es ___ tres semanas.","para","por","тривалість запланована → para"],
+["Vine ___ el dolor que tengo.","por","para","причина → por"],
+["¿Tiene algo ___ el mareo?","para","por","мета → para"],
+["Pago la consulta ___ adelantado.","por","para","por adelantado = наперед"],
+["Este medicamento es ___ niños mayores de 6 años.","para","por","призначення → para"]
+]},
+{t:"Culturemas: медицина в Іспанії", lv:3, q:[
+["В Іспанії перший контакт із системою охорони здоров'я — це…","médico de familia у centro de salud","одразу спеціаліст","базовий рівень системи"],
+["Щоб потрапити до спеціаліста, зазвичай потрібне…","derivación (направлення) від сімейного лікаря","нічого, можна напряму завжди","типова процедура SNS"],
+["Farmacia de guardia змінюється…","по черзі між аптеками міста","ніколи, є одна постійна","ротаційна система"],
+["SIP (тарту sanitaria) — це…","персональна медична картка регіону","міжнародна страховка","регіональний документ"],
+["Приватна страховка (seguro privado) дозволяє…","записатися напряму до спеціаліста без direvación","отримати ліки безкоштовно завжди","швидший доступ"],
+["112 в Іспанії працює як…","єдиний загальноєвропейський номер екстреної допомоги","лише номер поліції","універсальний номер"],
+["Urgencias можна знайти…","у центрі здоров'я (вдень) або в лікарні (24/7)","лише в приватних клініках","два рівні невідкладної допомоги"],
+["Рецепти в Іспанії часто видаються у форматі…","receta electrónica (електронний рецепт)","лише паперовому","сучасна система"],
+["SNS фінансується переважно…","державою через податки","приватними компаніями","суспільна система"],
+["Для іноземців без картки SIP часто потрібно…","мати приватну страховку або оплачувати консультації","нічого, все безкоштовно завжди","залежить від статусу перебування"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«Me duele mis pies» → …","Me duelen los pies","Me duele mis pies","pies мн. + артикль, не присвійне"],
+["«Tengo alérgico a…» → …","Soy alérgico a…","Tengo alérgico a…","ser alérgico"],
+["«Necesito una cita a mañana» → …","Necesito una cita para mañana","Necesito una cita a mañana","para + час"],
+["«Me siento mal desde tres días» → …","Me siento mal desde hace tres días","Me siento mal hace tres días","desde hace"],
+["«No se puede el deporte» → …","No se puede hacer deporte","No se puede el deporte","потрібен інфінітив"],
+["«Estoy alérgico» (без a + причина) — треба доповнити…","Estoy alérgico A algo/alguna sustancia","залишити без a","alérgico A"],
+["«Tomo las pastillas para tres veces» → …","Tomo las pastillas tres veces al día","Tomo las pastillas para tres veces","без para тут"],
+["«Me duele la cabeza desde ayer hace» → …","Me duele la cabeza desde ayer","Me duele la cabeza desde hace ayer","desde ayer (без hace тут)"],
+["«Necesito jarabe para tos» (без артикля) → …","Necesito jarabe para la tos","залишити без la","з означеним симптомом — la tos"],
+["«Voy a hospital» → …","Voy al hospital","Voy a hospital","a+el=al обов'язково"]
+]},
+{t:"Переклади речення", lv:3, q:[
+["«У мене болить горло вже три дні»:","Me duele la garganta desde hace tres días","Me duele la garganta para tres días","desde hace"],
+["«Мені потрібно записатися до лікаря»:","Necesito pedir una cita con el médico","Necesito pedir una casa con el médico","cita, не casa"],
+["«У мене алергія на арахіс»:","Soy alérgico/a a los cacahuetes","Tengo alérgico a los cacahuetes","ser alérgico a"],
+["«Скільки разів на день треба приймати ці ліки?»:","¿Cuántas veces al día debo tomar este medicamento?","¿Cuántas veces al día debo tomar esta medicina para?","без зайвого para"],
+["«Лікар порадив мені більше відпочивати»:","El médico me aconsejó descansar más","El médico me aconsejó a descansar más","aconsejar + inf без a"],
+["«У мене немає температури, але болить голова»:","No tengo fiebre, pero me duele la cabeza","No soy fiebre, pero me duele la cabeza","tener fiebre"],
+["«Одужуйте швидше!»:","¡Que te mejores pronto!","¡Que te mejor pronto!","mejorarse — дієслово"],
+["«Чи є в аптеці щось від нудоти?»:","¿Hay algo en la farmacia para las náuseas?","¿Hay algo en la farmacia por las náuseas?","para = призначення"],
+["«Треба здати аналіз крові»:","Hay que hacerse un análisis de sangre","Hay que hacer un análisis de sangre — теж ок","hacerse (собі) — типовіше з аналізами"],
+["«Лікарня знаходиться недалеко звідси»:","El hospital está cerca de aquí","El hospital es cerca de aquí","місце → estar"]
+]},
+{t:"DESDE HACE vs HACE", lv:3, q:[
+["Me duele la cabeza ___ dos días.","desde hace","hace","тривалість до тепер → desde hace"],
+["___ dos días tuve fiebre, pero ya se me pasó.","Hace","Desde hace","одноразова дія в минулому → hace"],
+["desde hace виражає…","дію, що триває й досі","дію, завершену в минулому","me dueleDESDE HACE = і досі болить"],
+["hace (без desde) виражає…","скільки часу тому щось відбулося","тривалість, що продовжується","hace tres días = три дні тому"],
+["Estoy resfriado desde hace una semana.","Застуджений уже тиждень (і досі)","Застудився тиждень тому (вже пройшло)","desde hace = і досі триває"],
+["Fui al médico hace una semana.","Ходив до лікаря тиждень тому","Ходжу до лікаря вже тиждень","hace = завершена дія"],
+["Tengo esta tos desde hace tres días.","Маю цей кашель уже три дні","Мав кашель три дні тому","desde hace = досі триває"],
+["Me operaron hace dos años.","Мене прооперували два роки тому","Мене оперують уже два роки","hace = момент у минулому"],
+["No como bien desde hace semanas.","Погано їм уже кілька тижнів","Погано їв кілька тижнів тому","desde hace = і досі"],
+["¿Desde hace cuánto tiempo tiene estos síntomas?","Відколи у вас ці симптоми?","Коли у вас були ці симптоми?","питання про тривалість до тепер"]
+]},
+{t:"Наказовий спосіб лікаря (usted)", lv:3, q:[
+["___ (tomar) estas pastillas dos veces al día.","Tome","Toma","формальний наказ usted → tome"],
+["___ (descansar) unos días.","Descanse","Descansa","usted → descanse"],
+["___ (beber) mucha agua.","Beba","Bebe","usted → beba"],
+["___ (venir) la semana que viene para revisión.","Venga","Ven","usted → venga"],
+["No ___ (hacer) esfuerzo físico.","haga","hagas","заперечний наказ usted → haga"],
+["___ (evitar) el alcohol con este tratamiento.","Evite","Evita","usted → evite"],
+["___ (llamar) si empeora.","Llame","Llama","usted → llame"],
+["No ___ (preocuparse), es algo leve.","se preocupe","te preocupes","usted → se preocupe"],
+["___ (seguir) el tratamiento completo.","Siga","Sigue","usted → siga"],
+["Наказовий спосіб для usted часто закінчується на…","-e/-a (протилежне звичайному)","як презенс","tome, beba, siga — специфічні закінчення"]
+]},
+{t:"Опис болю: інтенсивність", lv:3, q:[
+["«легкий біль» — це…","un dolor leve","un dolor ligero… теж ок","leve — типовий медичний термін"],
+["«сильний біль» — це…","un dolor fuerte/intenso","un dolor grande","intenso — точніший термін"],
+["«гострий біль» (раптовий) — це…","un dolor agudo","un dolor agrio","agrio = кислий!"],
+["«хронічний біль» — це…","un dolor crónico","un dolor crudo","crudo = сирий"],
+["«пульсуючий біль» — це…","un dolor punzante/pulsátil","un dolor puntual","puntual = точний/пунктуальний"],
+["Es un dolor que va y viene.","Це біль, що з'являється й зникає","Це постійний біль","переривчастий біль"],
+["El dolor se irradia hacia el brazo.","Біль віддає в руку","Біль лише в руці","irradiar = поширюватися"],
+["«нестерпний біль» — це…","un dolor insoportable","un dolor incomparable","incomparable = незрівнянний"],
+["En una escala del uno al diez, ¿cuánto te duele?","За шкалою від 1 до 10, наскільки сильно болить?","За шкалою від 1 до 10, скільки часу болить?","типове питання лікаря"],
+["El dolor empeora por la noche.","Біль посилюється вночі","Біль зникає вночі","empeorar = погіршуватися"]
+]},
+{t:"Мій візит до лікаря (текст)", lv:3, q:[
+["Ayer ___ (sentirse) muy mal.","me sentí","me siento","розповідь у минулому (для контексту достатньо розпізнати сенс)"],
+["___ (tener) fiebre y dolor de cabeza.","Tenía","Tengo","опис стану вчора"],
+["Por eso ___ (pedir) una cita con mi médico de familia.","pedí","pido","минулий запис на прийом"],
+["El médico me ___ (preguntar) desde cuándo tenía síntomas.","preguntó","pregunta","лікар питав"],
+["Le dije que ___ (sentirme) mal desde hace dos días.","me sentía","me siento","опис тривалості"],
+["Me ___ (recetar) unas pastillas y un jarabe.","recetó","receta","лікар призначив"],
+["Me dijo que ___ (deber) descansar unos días.","debía","debo","порада лікаря"],
+["También me ___ (aconsejar) beber mucha agua.","aconsejó","aconseja","порада"],
+["Ahora ___ (sentirme) mucho mejor.","me siento","me sentía","зараз — теперішній час"],
+["¡Menos mal que ___ (ir) al médico a tiempo!","fui","voy","вчасно пішов"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["«голова» — це…","la cabeza","la cabaña","база"],
+["Me ___ la cabeza.","duele","duelen","однина → duele"],
+["Me ___ los pies.","duelen","duele","множина → duelen"],
+["«лихоманка» — це…","la fiebre","la fibra","fibra = волокно"],
+["Soy alérgico ___ la penicilina.","a","de","alérgico A"],
+["SNS означає…","Sistema Nacional de Salud","Sistema Nacional de Seguridad","держ. система охорони здоров'я"],
+["Centro de salud — це…","поліклініка району","приватна клініка","базовий рівень"],
+["Este jarabe es ___ la tos.","para","por","призначення → para"],
+["¡Que te ___!","mejores","mejor","формула побажання"],
+["Necesito pedir una cita ___ mañana.","para","a","para + час"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Тіло людини. Здоров'я: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 20 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

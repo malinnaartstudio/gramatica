@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 19 · Майбутнє: IR A + інфінітив · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 19 · @malinnaartstudio</div>
+    <h1 id="htitle">Майбутнє: IR A + інфінітив: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 19 · Expresar una acción futura. Ir + a + infinitivo.</b>
+      30 вправ по 10 питань: форми ir по особах, маркери часу, плани й наміри, прогнози,
+      обіцянки. Від ★ до ★★★. ¡Vamos a por ello! 🚀
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · форми й маркери</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · у контексті</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й діалоги</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 19</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"IR: форми дієслова", lv:1, q:[
+["yo → …","voy","vas","voy"],
+["tú → …","vas","va","vas"],
+["él/ella/usted → …","va","van","va"],
+["nosotros → …","vamos","vais","vamos"],
+["vosotros → …","vais","van","vais"],
+["ellos/ellas/ustedes → …","van","vamos","van"],
+["Yo ___ a estudiar.","voy","va","yo → voy"],
+["¿Tú ___ a venir?","vas","va","tú → vas"],
+["Nosotros ___ a comer.","vamos","van","nosotros → vamos"],
+["Ellos ___ a descansar.","van","vais","ellos → van"]
+]},
+{t:"Структура IR A + інфінітив", lv:1, q:[
+["Voy ___ estudiar.","a","que","ir A + інфінітив"],
+["¿Vas ___ venir?","a","de","ir A"],
+["Va ___ llover.","a","que","прогноз погоди теж"],
+["Vamos ___ cenar.","a","en","ir A"],
+["Entre ir і інфінітивом стоїть слово…","a","de","ir + A + inf"],
+["a + el зливається в…","al","a el","Voy al cine"],
+["Voy ___ cine. (al)","al","a el","al = a+el"],
+["Структура ir a + inf виражає…","заплановану дію в майбутньому","дію в минулому","voy a estudiar"],
+["Vais ___ trabajar mañana.","a","que","vosotros → vais a"],
+["Після ir йде дієслово у формі…","інфінітива","презенса","voy a comer, не voy a como"]
+]},
+{t:"Маркери часу: сьогодні", lv:1, q:[
+["«сьогодні» — це…","hoy","ayer","ayer = вчора"],
+["«сьогодні ввечері» — це…","esta noche","esa noche","esta = ця (сьогоднішня)"],
+["«по обіді» (сьогодні) — це…","por la tarde","por la mañana","tarde = друга половина дня"],
+["«зараз» — це…","ahora","luego","luego = потім"],
+["«негайно» — це…","ahora mismo","hace un rato","hace un rato = нещодавно (минуле)"],
+["Hoy voy a estudiar.","Сьогодні я збираюсь вчитися","Вчора я вчився","hoy = сьогодні"],
+["Esta tarde voy a descansar.","Сьогодні по обіді я відпочину","Вчора я відпочивав","esta tarde = сьогодні по обіді"],
+["«цього ранку» — це…","esta mañana","este mañana","mañana ж.р. → esta"],
+["Esta noche vamos a cenar fuera.","Сьогодні ввечері ми повечеряємо не вдома","Вчора ввечері ми вечеряли не вдома","esta noche = сьогодні ввечері"],
+["hoy стосується…","поточного дня","майбутнього тижня","базовий маркер"]
+]},
+{t:"Маркери часу: завтра і далі", lv:1, q:[
+["«завтра» — це…","mañana","ayer","ayer = вчора"],
+["«післязавтра» — це…","pasado mañana","antes de ayer","antes de ayer = позавчора"],
+["«наступного тижня» — це…","la semana que viene","la semana pasada","pasada = минула"],
+["«на цих вихідних» — це…","este fin de semana","el fin de semana pasado","pasado = минулий"],
+["«через (кілька) днів» — це…","dentro de (x) días","hace (x) días","hace = тому"],
+["Mañana voy a viajar.","Завтра я поїду в подорож","Вчора я їздив у подорож","mañana = завтра"],
+["Pasado mañana vamos a mudarnos.","Післязавтра ми переїдемо","Позавчора ми переїхали","pasado mañana"],
+["La semana que viene voy a empezar un curso.","Наступного тижня я почну курс","Минулого тижня я почав курс","que viene = наступний"],
+["Dentro de tres días vamos a viajar.","Через три дні ми поїдемо","Три дні тому ми поїхали","dentro de = через"],
+["Este fin de semana voy a descansar.","На цих вихідних я відпочину","Минулого вихідного я відпочивав","este = цей (майбутній)"]
+]},
+{t:"Маркери: luego, pronto", lv:1, q:[
+["«потім» — це…","luego","antes","antes = раніше"],
+["«скоро» — це…","pronto","tarde","tarde = пізно"],
+["Luego voy a llamar a mi madre.","Потім я подзвоню мамі","Раніше я дзвонив мамі","luego = потім"],
+["Voy a terminar esto pronto.","Я скоро закінчу це","Я вже закінчив це","pronto = скоро"],
+["luego в контексті плану означає…","після цього, далі","до цього","послідовність дій"],
+["Primero voy a comer, luego voy a trabajar.","Спочатку поїм, потім попрацюю","Спочатку попрацюю, потім поїм","послідовність: primero…luego"],
+["pronto означає…","незабаром","дуже пізно","найближчим часом"],
+["Vamos a llegar pronto.","Ми скоро прибудемо","Ми вже прибули","pronto = скоро"],
+["luego і pronto — обидва маркери…","майбутнього","минулого","для планів"],
+["Nos vemos pronto.","Побачимось скоро","Побачились давно","формула прощання"]
+]},
+{t:"Прості речення з IR A", lv:1, q:[
+["Yo voy a ___ español.","estudiar","estudio","voy a + інфінітив"],
+["Tú vas a ___ la película.","ver","ves","vas a + інфінітив"],
+["Ella va a ___ un café.","tomar","toma","va a + інфінітив"],
+["Nosotros vamos a ___ a la playa.","ir","vamos","vamos a IR (два різних дієслова!)"],
+["Vosotros vais a ___ pronto.","llegar","llegáis","vais a + інфінітив"],
+["Ellos van a ___ una fiesta.","organizar","organizan","van a + інфінітив"],
+["Voy a ___ temprano mañana.","levantarme","me levanto","voy a + інфінітив (зворотне)"],
+["¿Vas a ___ conmigo?","venir","vienes","vas a + інфінітив"],
+["Vamos a ___ juntos.","cenar","cenamos","vamos a + інфінітив"],
+["Van a ___ una casa nueva.","comprar","compran","van a + інфінітив"]
+]},
+{t:"Питання з IR A", lv:1, q:[
+["¿Qué vas a ___ hoy?","hacer","haces","питальне + vas a + inf"],
+["¿Adónde vais a ___?","ir","vais","vais a + inf"],
+["¿Cuándo va a ___ la fiesta?","empezar","empieza","va a + inf"],
+["¿A qué hora vas a ___?","llegar","llegas","vas a + inf"],
+["¿Quién va a ___ la cena?","preparar","prepara","va a + inf"],
+["¿Vais a ___ con nosotros?","venir","venís","vais a + inf"],
+["¿Qué van a ___ de postre?","tomar","toman","van a + inf"],
+["¿Vas a ___ mañana?","trabajar","trabajas","vas a + inf"],
+["¿Cuánto tiempo vas a ___ allí?","quedarte","te quedas","vas a + inf (зворотне)"],
+["¿Con quién vas a ___?","hablar","hablas","vas a + inf"]
+]},
+{t:"Заперечення з IR A", lv:1, q:[
+["No voy a ___ hoy.","salir","salgo","no voy a + inf"],
+["Частка no ставиться…","перед voy/vas/va…","після інфінітива","no voy a…"],
+["Ella no va a ___ la fiesta.","venir a","viene a","no va a + inf"],
+["No vamos a ___ nada especial.","hacer","hacemos","no vamos a + inf"],
+["¿Vas a venir? — No, no ___.","voy a venir","va a venir","yo → voy"],
+["Ellos no van a ___ este fin de semana.","viajar","viajan","no van a + inf"],
+["No voy a ___ ese error otra vez.","cometer","cometo","no voy a + inf"],
+["Vosotros no vais a ___ a tiempo.","llegar","llegáis","no vais a + inf"],
+["«Я не буду це робити» — це…","No voy a hacerlo","No hago a esto","no voy a + inf"],
+["No va a ___ fácil.","ser","es","no va a + inf (навіть з ser)"]
+]},
+{t:"IR A: прогнози й обіцянки", lv:1, q:[
+["(Дивлячись на хмари) Va a ___.","llover","llueve","прогноз з очевидною ознакою"],
+["ir a + inf вживається також для…","прогнозів з видимою ознакою","лише планів","va a llover — небо хмарне"],
+["Lo siento, voy a ___ tarde.","llegar","llego","обіцянка/повідомлення"],
+["«Обіцяю, що зроблю це» — це…","Voy a hacerlo, lo prometo","Hago esto, lo prometo","ir a для рішень моменту"],
+["Mira esas nubes, va a ___ tormenta.","haber","hay","прогноз погоди"],
+["Рішення моменту: «Мені набридло, я звільнюсь» — це…","Voy a dejar el trabajo","Dejaré el trabajo (теж можливо, формальніше)","ir a — розмовне рішення"],
+["Va a caerse ese vaso, ¡cuidado!","Ця склянка зараз впаде, обережно!","Ця склянка вже впала","прогноз з очевидною ознакою"],
+["ir a для обіцянок звучить…","природно й розмовно","занадто формально","voy a llamarte"],
+["Creo que va a ___ un examen sorpresa.","haber","hay","передбачення"],
+["Prometo que no voy a ___ tarde otra vez.","llegar","llego","обіцянка"]
+]},
+{t:"IR A чи просто IR?", lv:1, q:[
+["Voy a la playa. (без інфінітива після)","Я йду на пляж","Я збираюсь на пляж","просто ir A + місце, не майбутнє"],
+["Voy a nadar. (з інфінітивом)","Я збираюсь плавати","Я йду до плавання (місце)","ir A + інфінітив = майбутнє"],
+["Різниця: ir a + місце ≠ ir a + …","інфінітив","іменник завжди","за інфінітивом — дія"],
+["Vamos al cine. (без інфінітива)","Ми йдемо в кіно","Ми збираємось у кіно (дія)","al cine = місце"],
+["Vamos a ver una película. (з інфінітивом)","Ми подивимось фільм","Ми йдемо до фільму (місце)","інфінітив ver = дія"],
+["Voy a Madrid.","Я їду до Мадрида","Я збираюсь Мадрид (дія)","Madrid — місце, не дія"],
+["Voy a trabajar en Madrid.","Я збираюсь працювати в Мадриді","Я їду до «trabajar» (місце)","trabajar — інфінітив-дія"],
+["Ключ розрізнення: після a йде іменник (місце) чи…","інфінітив (дія)","завжди однаково","розрізняє граматично"],
+["Van a casa.","Вони йдуть додому","Вони збираються (дія) додому","casa — місце, без інфінітива"],
+["Van a descansar en casa.","Вони збираються відпочити вдома","Вони йдуть до «descansar»","descansar — інфінітив-дія"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Плани на сьогодні", lv:2, q:[
+["Hoy voy a ___ mi rutina.","cambiar","cambio","voy a + inf"],
+["Primero voy a ___ mi mesa.","ordenar","ordeno","voy a + inf"],
+["Por la tarde voy a ___ a mi amiga.","llamar","llamo","voy a + inf"],
+["Esta noche vamos a ___ algo nuevo.","cocinar","cocinamos","vamos a + inf"],
+["Después de cenar, vamos a ___ una película.","ver","vemos","vamos a + inf"],
+["Voy a ___ una lista de planes.","preparar","preparo","voy a + inf"],
+["¿Qué vas a ___ esta noche?","cocinar","cocinas","vas a + inf"],
+["Ella va a ___ pasta y tomates.","comprar","compra","va a + inf"],
+["Nada de dramas, vamos a ver algo ___.","ligero","ligera","algo ч.р. → ligero"],
+["Voy a ___ mi rutina — decido hoy mismo.","cambiar","cambio","рішення моменту"]
+]},
+{t:"Плани на завтра", lv:2, q:[
+["Mañana voy a ___ temprano.","levantarme","me levanto","voy a + зворотний inf"],
+["Voy a ___ a caminar pronto.","salir","salgo","voy a + inf"],
+["En el parque voy a ___ música.","escuchar","escucho","voy a + inf"],
+["Voy a ___ en mis metas.","pensar","pienso","voy a + inf"],
+["¿A qué hora vas a ___ mañana?","levantarte","te levantas","vas a + inf зворотний"],
+["Mañana tengo más energía: voy a ___ mucho.","caminar","camino","voy a + inf"],
+["Vamos a ___ el barrio juntos.","explorar","exploramos","vamos a + inf"],
+["Si llueve, vamos a ___ a cartas en casa.","jugar","jugamos","vamos a + inf"],
+["Plan B: vamos a ___ en casa si hace mal tiempo.","quedarnos","nos quedamos","vamos a + inf зворотний"],
+["Mi hermano va a ___ de visita mañana.","llegar","llega","va a + inf"]
+]},
+{t:"Плани на вихідні", lv:2, q:[
+["Este fin de semana voy a ___ el móvil unas horas.","apagar","apago","voy a + inf"],
+["Voy a ___ en el balcón.","leer","leo","voy a + inf"],
+["Voy a ___ tres frases en mi diario.","escribir","escribo","voy a + inf"],
+["Si me siento valiente, voy a ___ una receta fácil.","aprender","aprendo","voy a + inf"],
+["La idea de este finde es clara y voy a ___.","desconectar","desconecto","voy a + inf"],
+["Vamos a ___ tranquilos este fin de semana.","estar","estamos","vamos a + inf (навіть з estar)"],
+["¿Qué vais a ___ este fin de semana?","hacer","hacéis","vais a + inf"],
+["Voy a ___ del móvil un rato.","desconectarme","me desconecto","voy a + inf зворотний"],
+["Vamos a ___ algo relajante.","hacer","hacemos","vamos a + inf"],
+["Este finde no voy a ___ nada de trabajo.","hacer","hago","заперечення + voy a + inf"]
+]},
+{t:"Плани на наступний тиждень", lv:2, q:[
+["La semana que viene voy a ___ el museo.","visitar","visito","voy a + inf"],
+["Allí voy a ___ fotos.","sacar","saco","voy a + inf"],
+["Voy a ___ por talleres.","preguntar","pregunto","voy a + inf"],
+["Quizá voy a ___ a un taller de dibujo.","apuntarme","me apunto","voy a + inf зворотний"],
+["Dentro de dos días voy a ___ a mis padres.","llamar","llamo","voy a + inf"],
+["Voy a ___ contándoles mis planes.","seguir","sigo","voy a + inf"],
+["La semana que viene quiero algo diferente: voy a ___.","cambiar de plan","cambio de plan","voy a + inf"],
+["Vamos a ___ con nuestra lista, paso a paso.","seguir","seguimos","vamos a + inf"],
+["Un paso pequeño cada día: eso voy a ___.","hacer","hago","voy a + inf"],
+["¿Vas a ___ el museo la semana que viene?","visitar","visitas","vas a + inf"]
+]},
+{t:"Прогноз погоди", lv:2, q:[
+["Mira esas nubes negras, va a ___.","llover","llueve","прогноз з ознакою"],
+["Con este viento, va a ___ frío.","hacer","hace","va a hacer frío"],
+["El cielo está despejado, no va a ___.","llover","llueva","заперечення прогнозу"],
+["Con tanto sol, va a ___ mucho calor.","hacer","hace","va a hacer calor"],
+["Parece que va a ___ tormenta.","haber","hay","va a haber"],
+["¿Va a ___ mañana?","llover","llueve","питання про прогноз"],
+["Según el pronóstico, va a ___ nublado.","estar","está","va a estar nublado"],
+["Va a ___ un día perfecto para la playa.","hacer","hace","va a hacer un día…"],
+["Con estas nubes, no va a ___ un buen día.","hacer","haga","va a hacer"],
+["Creo que va a ___ nieve este fin de semana.","haber","hay","va a haber nieve"]
+]},
+{t:"Al чи A la?", lv:2, q:[
+["Voy ___ cine.","al","a la","cine ч.р. → al"],
+["Vamos ___ playa.","a la","al","playa ж.р. → a la"],
+["¿Vas ___ gimnasio?","al","a la","gimnasio ч.р. → al"],
+["Van ___ montaña.","a la","al","montaña ж.р. → a la"],
+["a + el = …","al","a el","обов'язкове злиття"],
+["a + la = …","a la","al","НЕ зливається!"],
+["Voy ___ museo mañana.","al","a la","museo ч.р. → al"],
+["Vamos ___ escuela.","a la","al","escuela ж.р. → a la"],
+["Va ___ trabajo cada día.","al","a la","trabajo ч.р. → al"],
+["Van ___ universidad.","a la","al","universidad ж.р. → a la"]
+]},
+{t:"IR A: зворотні дієслова", lv:2, q:[
+["Voy a ___ (levantarse) temprano.","levantarme","me levantar","займенник у кінець"],
+["Vas a ___ (ducharse) ahora.","ducharte","te duchar","tú → ducharte"],
+["Va a ___ (vestirse) rápido.","vestirse","se vestir","él/ella → vestirse"],
+["Vamos a ___ (quedarnos) en casa.","quedarnos","nos quedar","nosotros → quedarnos"],
+["Vais a ___ (relajaros) este finde.","relajaros","os relajar","vosotros → relajaros"],
+["Van a ___ (mudarse) pronto.","mudarse","se mudar","ellos → mudarse"],
+["Або можна: ___ voy a levantar. (me)","Me","Se","займенник перед ir теж можливий"],
+["Voy a ___ (acostarse) pronto hoy.","acostarme","me acostar","voy a + acostarme"],
+["¿Vas a ___ (peinarte) antes de salir?","peinarte","te peinar","tú → peinarte"],
+["Van a ___ (divertirse) mucho.","divertirse","se divertir","ellos → divertirse"]
+]},
+{t:"Порядок слів у питаннях", lv:2, q:[
+["Правильно:","¿Qué vas a hacer?","¿Qué tú vas a hacer?","без зайвого tú"],
+["Правильно:","¿Adónde va a ir Ana?","¿Adónde Ana va a ir?","va a ir перед Ana"],
+["Правильно:","¿Cuándo vais a llegar?","¿Cuándo llegar vais a?","vais a перед llegar"],
+["Правильно:","¿Con quién vas a cenar?","¿Con quién a cenar vas?","vas a разом"],
+["Правильно:","¿A qué hora van a empezar?","¿A qué hora empezar van a?","van a перед empezar"],
+["Питальне слово + …","дієслово ir","підмет спочатку","¿Qué VAS a hacer?"],
+["Правильно:","¿Dónde vamos a comer?","¿Dónde comer vamos a?","vamos a перед comer"],
+["Правильно:","¿Por qué no vas a venir?","¿Por qué no venir vas a?","vas a перед venir"],
+["Правильно:","¿Cómo vas a resolverlo?","¿Cómo resolverlo vas a?","vas a перед resolverlo"],
+["Правильно:","¿Quién va a pagar la cuenta?","¿Quién pagar va a la cuenta?","va a перед pagar"]
+]},
+{t:"Діалог про плани", lv:2, q:[
+["— ¿Qué vas a hacer hoy? — Voy a ___.","estudiar","estudio","voy a + inf"],
+["— ¿Y esta noche? — Vamos a ___ una peli.","ver","vemos","vamos a + inf"],
+["— ¿Vas a venir a la fiesta? — Sí, ___.","voy a ir","voy ir","voy a ir (з ir після a)"],
+["— ¿Cuándo vas a llamarme? — ___ luego.","Voy a llamarte","Te voy a llamar… теж ок","обидва варіанти правильні"],
+["— ¿Qué vais a comer? — Vamos a ___ paella.","preparar","preparamos","vamos a + inf"],
+["— ¿Va a llover? — Creo que sí, va a ___.","llover","llueve","прогноз"],
+["— ¿Vas a trabajar mañana? — No, no ___.","voy a trabajar","trabajo mañana","заперечення voy a"],
+["— ¿Cuándo vais a mudaros? — ___ el mes que viene.","Vamos a mudarnos","Mudamos","vamos a + inf"],
+["— ¿Qué van a hacer este verano? — Van a ___.","viajar","viajan","van a + inf"],
+["— ¿A qué hora va a empezar? — Va a ___ a las ocho.","empezar","empieza","va a + inf"]
+]},
+{t:"Плани друзів разом", lv:2, q:[
+["Mis amigos y yo vamos a ___ un viaje.","organizar","organizamos","vamos a + inf"],
+["¿Vosotros vais a ___ con nosotros?","venir","venís","vais a + inf"],
+["Ana y Luis van a ___ juntos este verano.","viajar","viajan","van a + inf"],
+["Nosotros vamos a ___ una barbacoa el sábado.","hacer","hacemos","vamos a + inf"],
+["¿Qué vais a ___ para la fiesta?","traer","traéis","vais a + inf"],
+["Mis padres van a ___ a visitarnos pronto.","venir","vienen","van a + inf"],
+["Vamos a ___ todos juntos al concierto.","ir","vamos","vamos a + IR"],
+["¿Tus amigos van a ___ también?","venir","vienen","van a + inf"],
+["Este finde vamos a ___ una excursión.","hacer","hacemos","vamos a + inf"],
+["Todos vamos a ___ muy felices ese día.","estar","estamos","vamos a + inf (навіть з estar)"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"IR A чи презенс для розкладу?", lv:3, q:[
+["El tren sale a las 8. (розклад)","El tren va a salir a las 8 — теж можливо, менш природно","Обов'язково va a salir","для фіксованих розкладів природніше — презенс!"],
+["Для розкладів (потяг, кіно, заняття) типовіше вживати…","презенс","ir a + inf","El tren sale a las 8 — природніше"],
+["La película empieza a las 18:00.","Природна фраза про розклад сеансу","Неприродна, треба ir a","розклад → презенс"],
+["«La película va a empezar a las 18:00» — це…","прийнятно, але менш природно","єдиний правильний варіант","презенс тут природніший"],
+["Клас починається о 9-й (розклад, регулярно) — кажуть…","La clase empieza a las nueve","La clase va a empezar a las nueve (менш типово)","фіксований розклад → презенс"],
+["ir a + inf найбільш типове для…","планів, намірів, найближчого майбутнього","розкладів транспорту","розклади — окремий випадок"],
+["El avión despega a las 10.","Літак вилітає о 10-й (розклад)","Літак збирається вилетіти о 10-й","презенс для розкладу"],
+["El museo abre a las nueve.","Музей відкривається о 9-й (розклад роботи)","Музей збирається відкритися","розклад роботи → презенс"],
+["Чому презенс для розкладів звучить природніше?","бо це фіксований, регулярний факт, а не намір","бо ir a граматично заборонено тут","tren, cine, clase = факт розкладу"],
+["Mi tren sale en 10 minutos.","Мій потяг вирушає через 10 хвилин (факт розкладу)","Мій потяг збирається вирушити (менш типово)","факт розкладу"]
+]},
+{t:"IR A vs Futuro simple: реєстр", lv:3, q:[
+["У повсякденній розмові плани найчастіше виражають…","ir a + infinitivo","futuro simple","voy a llamar — розмовніше"],
+["Futuro simple (напр. llamaré) звучить…","більш формально/віддалено","завжди неформально","«Llamaré mañana» — офіційніше"],
+["«Mañana voy a llamar» vs «Llamaré mañana» — різниця…","стилістична (розмовне/формальне)","граматична помилка в другому","обидва правильні, різний реєстр"],
+["Для найближчих конкретних планів природніше…","voy a + inf","futuro simple","ir a — «тут і зараз» плани"],
+["Futuro simple частіше зустрічається в…","офіційних текстах, прогнозах, обіцянках дистанційних","повсякденних розмовах про сьогодні","формальний реєстр"],
+["«El próximo año viajaré a España» звучить…","дещо формальніше, ніж voy a viajar","абсолютно неформально","формальне майбутнє"],
+["Розмовна фраза плану на сьогодні ввечері швидше буде…","Voy a cenar fuera","Cenaré fuera (теж можливо, формальніше)","розмовний вибір — ir a"],
+["Обидві форми (ir a і futuro simple) граматично…","правильні, різниця в стилі й нюансі","одна з них помилкова","стилістичний вибір"],
+["У художній літературі частіше зустрічається…","futuro simple","ir a + inf","літературний стиль"],
+["У неформальному чаті з другом природніше написати…","Voy a llegar tarde","Llegaré tarde (теж ок, трохи інакше)","розмовний стиль → ir a"]
+]},
+{t:"AL зі злиттям: пастка", lv:3, q:[
+["«Voy a el cine» — це…","помилка (треба voy al cine)","правильно","a + el ЗАВЖДИ зливається!"],
+["Правильно писати…","Voy al cine","Voy a el cine","al = a+el обов'язково"],
+["a + el = …","al (без винятків)","a el (можна окремо)","обов'язкове злиття, як del"],
+["«Vamos a el museo» → виправлення…","Vamos al museo","Vamos a el museo — теж можна","обов'язково al"],
+["Це та сама логіка, що й у…","de + el = del","que + el","del і al — парні правила"],
+["«Voy a el trabajo» містить помилку, бо…","a+el має зливатися в al","trabajo неправильне слово","al обов'язкове"],
+["А з жіночим родом (a la playa) злиття…","не відбувається","теж обов'язкове","лише ч.р. зливається"],
+["«Van a el parque» → правильно…","Van al parque","Van a el parque — прийнятно","al обов'язково"],
+["Найчастіша помилка початківців у цій темі — це…","забути злиття a+el → al","забути ir","саме al забувають найчастіше"],
+["«Vas a al gimnasio» (подвійне a) — це…","помилка (зайве a)","правильно","треба просто: vas al gimnasio"]
+]},
+{t:"Порядок слів: складніші питання", lv:3, q:[
+["¿Qué vas a hacer esta noche? — тут esta noche стоїть…","в кінці питання","на початку обов'язково","гнучке розташування маркера часу"],
+["Esta noche, ¿qué vas a hacer? — так теж можна?","так, маркер може йти на початку","ні, це помилка","гнучкість порядку слів"],
+["¿Vas a venir mañana a la fiesta? — тут mañana…","уточнює час дії","не має сенсу тут","гнучке розміщення"],
+["¿A qué hora vais a llegar mañana?","Питання про час прибуття завтра","Питання лише про завтра без часу","поєднання питального слова й маркера"],
+["¿Dónde vas a estar pasado mañana?","Де ти будеш післязавтра?","Де ти був післязавтра?","майбутнє з маркером"],
+["Правильний порядок: питальне слово + ir (спряжене) + a + …","інфінітив","підмет","¿Qué VAS A hacer?"],
+["¿Con quién vas a ir al cine el sábado?","З ким ти підеш у кіно в суботу?","З ким ти ходив у кіно в суботу?","майбутнє питання"],
+["Маркер часу в питанні можна ставити…","на початку або в кінці","лише в середині","гнучкість — риса іспанської"],
+["¿Qué vais a hacer este fin de semana vosotros?","Що ви збираєтесь робити на цих вихідних?","Що ви робили минулого вихідного?","vais a — майбутнє"],
+["Подвійне уточнення часу і місця в питанні — це…","нормально й часто трапляється","граматично неможливо","¿Dónde vas a estar mañana por la tarde?"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«Voy estudiar» (бракує a) → …","Voy a estudiar","Voy que estudiar","ir A обов'язкове"],
+["«Voy a el cine» → …","Voy al cine","Voy a el cine залишити","al обов'язкове злиття"],
+["«Yo va a comer» → …","Yo voy a comer","Yo va comer a","yo → voy"],
+["«Vamos a comemos» (інфінітив зіпсовано) → …","Vamos a comer","Vamos comemos a","після a — інфінітив"],
+["«¿Qué tú vas a hacer?» → природніше…","¿Qué vas a hacer?","¿Qué vas tú a hacer?","займенник зайвий"],
+["«No voy a no venir» (подвійне заперечення) → …","No voy a venir","No no voy a venir","одне заперечення"],
+["«Van a al parque» (подвійне a) → …","Van al parque","Van a al parque залишити","одне a, обов'язково al"],
+["«Ella va a levantarse me» → …","Ella va a levantarse","Ella va a me levantar","займенник — se, у кінці інфінітива"],
+["«Vais ir a venir» (зайве ir) → …","Vais a venir","Vais a ir a venir","одне дієслово ir"],
+["«Voy a el trabajo mañana» → …","Voy al trabajo mañana","Voy a el trabajo mañana — прийнятно","al обов'язкове"]
+]},
+{t:"Переклади речення", lv:3, q:[
+["«Я збираюсь вивчити іспанську цього року»:","Voy a aprender español este año","Voy aprender español este año","бракує a в другому варіанті"],
+["«Завтра ми підемо в музей»:","Mañana vamos a ir al museo","Mañana vamos ir al museo","бракує a"],
+["«Що ти будеш робити на вихідних?»:","¿Qué vas a hacer el fin de semana?","¿Qué vas hacer el fin de semana?","бракує a"],
+["«Здається, буде дощ»:","Parece que va a llover","Parece que va llover","бракує a"],
+["«Я обіцяю, що подзвоню тобі»:","Prometo que voy a llamarte","Prometo que voy llamarte","бракує a"],
+["«Вони не збираються приходити»:","No van a venir","No van venir","бракує a"],
+["«Потяг вирушає о восьмій» (розклад):","El tren sale a las ocho","El tren va a salir a las ocho (менш природно)","розклад → презенс природніший"],
+["«Через два дні ми поїдемо»:","Dentro de dos días vamos a viajar","Dentro de dos días vamos viajar","бракує a"],
+["«Я збираюсь лягти рано сьогодні»:","Voy a acostarme temprano hoy","Voy acostarme temprano hoy","бракує a"],
+["«Куди ви підете в суботу?»:","¿Adónde vais a ir el sábado?","¿Adónde vais ir el sábado?","бракує a"]
+]},
+{t:"IR A з умовними реченнями", lv:3, q:[
+["Si llueve, no vamos a ___ al parque.","ir","vamos","si + presente, vamos a + inf"],
+["Si tengo tiempo, voy a ___ un libro.","leer","leo","si + presente, voy a + inf"],
+["Si hace sol, vamos a ___ a la playa.","ir","vamos","si + presente, vamos a + inf"],
+["Умовне речення типу «якщо…, то (майбутнє)» будується як…","si + презенс, voy a + inf","si + voy a, presente","стандартна модель"],
+["Si no llueve, van a ___ en el jardín.","comer","comen","si + presente, van a + inf"],
+["Si me siento mal, no voy a ___ a trabajar.","ir","voy","si + presente, voy a + inf"],
+["Si tienes tiempo, ¿vas a ___ conmigo?","venir","vienes","si + presente, vas a + inf"],
+["Si todo va bien, vamos a ___ a tiempo.","llegar","llegamos","si + presente, vamos a + inf"],
+["Si hace mal tiempo, no van a ___ la excursión.","hacer","hacen","si + presente, van a + inf"],
+["Si puedo, voy a ___ te esta tarde.","llamar","llamo","si + presente, voy a + inf"]
+]},
+{t:"IR A: підсумкові пастки", lv:3, q:[
+["«Voy a hacer lo mismo que ayer» — логічно, бо hoy…","планую повторити дію","вже зробив учора","майбутнє на основі минулого"],
+["Найчастіша помилка: забути a після ir —","«Voy estudiar» замість «Voy a estudiar»","«Voy a el cine» замість «Voy al cine»","обидві типові, але ця найпоширеніша"],
+["Друга часта помилка: забути злиття al —","«Voy a el cine» замість «Voy al cine»","«Voy studiar»","al обов'язкове"],
+["Третя пастка: плутати ir a + місце і ir a + …","інфінітив (дія)","дієслово в презенсі","розрізняємо за контекстом"],
+["«Va a ser difícil» означає…","Це буде важко (прогноз)","Це вже було важко","прогноз через ir a + ser"],
+["Чи можна поєднати ir a з іншими модальними (voy a tener que)?","так, дієслова можуть накопичуватись","ні, лише одне дієслово","ланцюжки дієслів (Lección 15)"],
+["Voy a tener que estudiar más.","Мені доведеться більше вчитися (у майбутньому)","Мені довелося вчитися більше","ir a + tener que + inf"],
+["ir a — один із найчастіше вживаних способів говорити про…","найближче майбутнє в розмові","минулі події","базова конструкція для планів"],
+["Підсумок уроку: ir + a + інфінітив = …","дієслово ir (спряжене) + a + інфінітив","дієслово ir + інфінітив без a","ключова формула"],
+["Найкращий спосіб запам'ятати конструкцію — практикувати…","щоденні плани (hoy, mañana, luego)","лише граматичні правила","практика з маркерами часу"]
+]},
+{t:"Моя ідеальна неділя (текст)", lv:3, q:[
+["Mañana ___ (despertarme) sin despertador.","voy a despertarme","voy despertarme","voy a + inf зворотний"],
+["Primero ___ (desayunar) con calma.","voy a desayunar","voy desayunar","voy a + inf"],
+["Después ___ (dar) un paseo por el parque.","voy a dar","voy dar","voy a + inf"],
+["Por la tarde ___ (quedar) con unos amigos.","voy a quedar","voy quedar","voy a + inf"],
+["___ (tomar) un café juntos.","Vamos a tomar","Vamos tomar","vamos a + inf"],
+["Luego quizás ___ (ir) al cine.","vamos a ir","vamos ir","vamos a + inf"],
+["Por la noche ___ (cocinar) algo especial.","voy a cocinar","voy cocinar","voy a + inf"],
+["No ___ (mirar) el móvil todo el día.","voy a mirar","voy mirar","заперечення + voy a"],
+["Al final del día, ___ (sentirme) muy bien.","voy a sentirme","voy sentirme","voy a + inf зворотний"],
+["¡Este domingo ___ (ser) perfecto!","va a ser","va ser","va a + inf"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["yo → …","voy","va","voy"],
+["Voy ___ estudiar.","a","que","ir A"],
+["«завтра» — це…","mañana","ayer","база"],
+["Voy ___ cine.","al","a la","al = a+el"],
+["Mira esas nubes, va a ___.","llover","llueve","прогноз"],
+["Для розкладу (потяг) типовіше…","презенс","ir a + inf","El tren sale a las 8"],
+["«Voy a el cine» — це…","помилка","правильно","треба al"],
+["Найближчі плани природніше виражають…","ir a + inf","futuro simple","розмовний вибір"],
+["Voy a ___ (levantarse) temprano.","levantarme","me levantar","займенник у кінець"],
+["«через два дні» — це…","dentro de dos días","hace dos días","hace = тому"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Майбутнє: IR A + інфінітив: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 19 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

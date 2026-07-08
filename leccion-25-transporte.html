@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 25 · Транспорт · Español українською</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A1 · Lección 25 · @malinnaartstudio</div>
+    <h1 id="htitle">Транспорт: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 25 · Transporte.</b>
+      30 вправ по 10 питань: види транспорту, квитки, розклад, на вокзалі й в аеропорту,
+      водіння. Від ★ до ★★★. ¡Buen viaje! 🚆
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · базова лексика</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · у контексті</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · нюанси й діалоги</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · Lección 25</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Види транспорту", lv:1, q:[
+["«потяг» — це…","el tren","el tren… стоп","базове: tren"],
+["«автобус» — це…","el autobús","el autobuso","autobús з тильдою"],
+["«літак» — це…","el avión","el avión… стоп","базове: avión"],
+["«машина» — це…","el coche","el cocho","cocho — немає такого слова"],
+["«велосипед» — це…","la bicicleta","la vicicleta","vicicleta — помилкове написання"],
+["«мотоцикл» — це…","la moto/motocicleta","la mota","mota = порошинка"],
+["«метро» — це…","el metro","el metrónomo","metrónomo = метроном 🎵"],
+["«таксі» — це…","el taxi","el taxo","taxo — немає такого слова"],
+["«трамвай» — це…","el tranvía","el tranvía… стоп","базове: tranvía"],
+["«корабель» — це…","el barco","el banco","banco = банк"]
+]},
+{t:"У поїзді/на вокзалі", lv:1, q:[
+["«вокзал» (поїзда) — це…","la estación de tren","la estancia de tren","estancia = перебування"],
+["«квиток» — це…","el billete/boleto","el billón","billón = мільярд"],
+["«перон/платформа» — це…","el andén","el andar","andar = ходити (дієслово)"],
+["«вагон» — це…","el vagón","el vagabundo","vagabundo = бродяга"],
+["«місце» (сидяче) — це…","el asiento","el asunto","asunto = справа"],
+["«квиток в одну сторону» — це…","billete de ida","billete de ido","ido — дієприкметник"],
+["«квиток туди-назад» — це…","billete de ida y vuelta","billete de ida y vuelo","vuelo = політ"],
+["«запізнення» (поїзда) — це…","el retraso","el rescate","rescate = порятунок"],
+["«контролер» (квитків) — це…","el revisor","el revisador","revisador — немає такого слова"],
+["«камера схову» — це…","la consigna","la insignia","insignia = значок"]
+]},
+{t:"В аеропорту", lv:1, q:[
+["«аеропорт» — це…","el aeropuerto","el aeropuerta","puerto = порт (ч.р.)"],
+["«виліт» — це…","la salida/el despegue","la subida","subida = підйом"],
+["«приліт» — це…","la llegada/el aterrizaje","la llamada","llamada = дзвінок"],
+["«посадковий талон» — це…","la tarjeta de embarque","la tarjeta de desembarque","desembarque = висадка"],
+["«валіза» — це…","la maleta","la maldad","maldad = зло"],
+["«ручна поклажа» — це…","el equipaje de mano","el equipo de mano","equipo = команда/обладнання"],
+["«реєстрація» (на рейс) — це…","el check-in/la facturación","la fabricación","fabricación = виробництво"],
+["«виліт затримується» — це…","el vuelo se retrasa","el vuelo se retira","retirar = вилучати/забирати"],
+["«паспортний контроль» — це…","el control de pasaportes","el control de pasos","paso = крок"],
+["«скасований рейс» — це…","vuelo cancelado","vuelo cansado","cansado = втомлений"]
+]},
+{t:"На автобусній зупинці", lv:1, q:[
+["«зупинка автобуса» — це…","la parada de autobús","la parada de autobuso","autobús з тильдою"],
+["«наступна зупинка» — це…","la próxima parada","la próxima paraba","paraba — не те слово"],
+["«сісти в автобус» — це…","subir al autobús/coger el autobús","subir el autobús","subir A + транспорт"],
+["«вийти з автобусу» — це…","bajar del autobús","bajar el autobús","bajar DE"],
+["«водій автобуса» — це…","el conductor","el condutor","condutor — помилкове написання"],
+["«проїзний квиток» (багаторазовий) — це…","el abono/bono de transporte","el abandono","abandono = покинення"],
+["«переповнений» (автобус) — це…","lleno/abarrotado","llano","llano = рівнина"],
+["«прохід» (в автобусі) — це…","el pasillo","el pasado","pasado = минуле"],
+["«кнопка зупинки» (на вимогу) — це…","el botón de parada","el botín de parada","botín = здобич"],
+["«розклад» (автобусів) — це…","el horario","el horno","horno = духовка"]
+]},
+{t:"Водіння авто", lv:1, q:[
+["«водійські права» — це…","el carné de conducir","el carné de conductor","типова фраза — conducir"],
+["«кермо» — це…","el volante","el voluntario","voluntario = волонтер"],
+["«гальмо» — це…","el freno","el fresno","fresno = ясен (дерево)"],
+["«педаль газу» — це…","el acelerador","el ascensor","ascensor = ліфт"],
+["«бензин» — це…","la gasolina","la gaseosa","gaseosa = газований напій"],
+["«заправна станція» — це…","la gasolinera","la gasolina… стоп","базове: gasolinera"],
+["«шини» — це…","los neumáticos/las ruedas","los numéricos","numérico = числовий"],
+["«ремінь безпеки» — це…","el cinturón de seguridad","el cinturón de segundad","segundad — немає такого слова"],
+["«паркування» — це…","el aparcamiento/parking","el aparcimiento","aparcimiento — помилкове написання"],
+["«штраф» (за порушення) — це…","la multa","la mula","mula = мул (тварина) 🐴"]
+]},
+{t:"Дорожні знаки й правила", lv:1, q:[
+["«світлофор» — це…","el semáforo","el semestre","semestre = семестр"],
+["«пішохідний перехід» — це…","el paso de peatones","el paso de patatas","patatas = картопля 😄"],
+["«швидкість» (обмеження) — це…","la velocidad","la validad","validad — немає такого слова"],
+["«кільцева розв'язка» — це…","la rotonda","la redonda","redonda — прикметник тут"],
+["«знак СТОП» — це…","la señal de stop","la señal de stopo","stop — англіцизм"],
+["«пробка» (затор) — це…","el atasco","el atado","atado = звʼязаний"],
+["«зона обгону заборонена» — це…","zona sin adelantamiento","zona sin adelanto","adelanto = аванс"],
+["«автомагістраль» — це…","la autopista/autovía","la autopisa","autopisa — помилка написання"],
+["«платна дорога» — це…","carretera de peaje","carretera de peajo","peaje — правильне слово"],
+["«обгін» — це…","el adelantamiento","el adelanto","adelanto = аванс"]
+]},
+{t:"Дії пересування: дієслова", lv:1, q:[
+["«їхати» (загалом) — це…","ir","irse","irse = йти геть"],
+["«прибувати» — це…","llegar","llevar","llevar = нести"],
+["«вирушати» — це…","salir/partir","saltar","saltar = стрибати"],
+["«сідати» (в транспорт) — це…","subir a","subir de","subir A"],
+["«виходити» (з транспорту) — це…","bajar de","bajar a","bajar DE"],
+["«пересідати» (на інший транспорт) — це…","hacer transbordo","hacer transporte","transbordo — точний термін"],
+["«водити» (авто) — це…","conducir","conductir","conducir — правильне написання"],
+["«летіти» — це…","volar","volver","volver = повертатися"],
+["«запізнюватися» — це…","llegar tarde","llegar tarda","прислівник tarde"],
+["«чекати» (транспорт) — це…","esperar","esperanza","esperanza = надія"]
+]},
+{t:"Квитки й бронювання", lv:1, q:[
+["«забронювати квиток» — це…","reservar un billete","reservar un bollo","bollo = булочка"],
+["«знижка» (на квиток) — це…","el descuento","el desconecto","desconecto — не те слово"],
+["«місце біля вікна» — це…","asiento de ventanilla","asiento de ventana","ventanilla — типово для транспорту"],
+["«клас» (перший/другий) — це…","la clase","la clave","clave = ключ (переносне)"],
+["«електронний квиток» — це…","el billete electrónico","el billete eléctrico","eléctrico = електричний прилад"],
+["«обмін квитка» — це…","el cambio de billete","el cambio de bollete","billete, не bollete"],
+["«повернення квитка» — це…","la devolución del billete","la devolución del bollete","billete"],
+["«резервація місця» — це…","la reserva de asiento","la reserva de asiento","reserva без s"],
+["«черга на посадку» — це…","la cola de embarque","la cola de desembarque","embarque = посадка"],
+["«гнучкий квиток» (можна змінити) — це…","billete flexible","billete flexivo","flexible — правильне слово"]
+]},
+{t:"Морський і водний транспорт", lv:1, q:[
+["«пором» — це…","el ferry/transbordador","el ferrocarril","ferrocarril = залізниця"],
+["«порт» — це…","el puerto","el puesto","puesto = пост/посада"],
+["«круїз» — це…","el crucero","el crucifijo","crucifijo = розп'яття"],
+["«каюта» — це…","el camarote","el camarero","camarero = офіціант"],
+["«якір» — це…","el ancla","el ángel","ángel = ангел"],
+["«капітан» — це…","el capitán","el capital","capital = столиця/капітал"],
+["«морська хвороба» — це…","el mareo","el marisco","marisco = морепродукти 🦐"],
+["«рятувальний жилет» — це…","el chaleco salvavidas","el chaleco salvavías","помилкове слово"],
+["«причал» — це…","el muelle","el mueble","mueble = меблі"],
+["«палуба» — це…","la cubierta","la cobertura","cobertura = покриття (переносне)"]
+]},
+{t:"Питання про транспорт", lv:1, q:[
+["«Як мені дістатися до…?» — це…","¿Cómo llego a…?","¿Cómo llevo a…?","llegar = дістатися"],
+["«О котрій відправляється потяг?» — це…","¿A qué hora sale el tren?","¿A qué hora sube el tren?","salir = вирушати"],
+["«Це місце вільне?» — це…","¿Está libre este asiento?","¿Está libro este asiento?","libro = книга"],
+["«Скільки коштує квиток?» — це…","¿Cuánto cuesta el billete?","¿Cuánto cuenta el billete?","cuesta = коштує"],
+["«Де найближча зупинка?» — це…","¿Dónde está la parada más cercana?","¿Dónde está la parada más cercada?","cercada — не те слово"],
+["«Цей автобус їде до центру?» — це…","¿Este autobús va al centro?","¿Este autobús es al centro?","va = їде"],
+["«Скільки часу триває поїздка?» — це…","¿Cuánto dura el viaje?","¿Cuánto dure el viaje?","dura — правильна форма"],
+["«Чи є прямий рейс?» — це…","¿Hay un vuelo directo?","¿Hay un vuelo derecho?","derecho = прямий (не про рейс)"],
+["«Де можна купити квиток?» — це…","¿Dónde puedo comprar el billete?","¿Dónde puedo comprar el bollete?","billete"],
+["«Мені потрібна пересадка?» — це…","¿Necesito hacer transbordo?","¿Necesito hacer transporte?","transbordo"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"На вокзалі: діалог", lv:2, q:[
+["— Un billete a Madrid, por favor. — ¿De ida ___ vuelta?","o","y","o = чи (вибір)"],
+["— De ida y vuelta, por favor. — ¿Para ___ fecha?","qué","cuál","qué fecha"],
+["— ¿A qué hora sale el próximo tren? — Sale ___ las diez.","a","en","a las diez"],
+["— ¿De qué andén sale? — Del andén ___.","número cinco","el cinco número","número cinco"],
+["— ¿Cuánto tarda el viaje? — ___ dos horas.","Tarda","Dura… теж ок","tardar — типове дієслово"],
+["— ¿Hay wifi en el tren? — Sí, ___ gratuito.","es","está","es (постійна характеристика)"],
+["— ¿Puedo cambiar mi billete? — Sí, con ___ adicional.","un coste","una gasolina","coste = вартість"],
+["— ¿El tren para en Zaragoza? — Sí, ___ diez minutos.","para","pasa","parar = зупинятися"],
+["— ¿Dónde está la consigna? — Está ___ la entrada.","cerca de","cerco de","cerca DE"],
+["— Que tengas buen viaje. — ___.","Gracias, igualmente","Gracias, iguales","igualmente = навзаєм"]
+]},
+{t:"В аеропорту: діалог", lv:2, q:[
+["— ¿Dónde está el mostrador de facturación? — ___ allí.","Está","Es","місце → está"],
+["— ¿Cuántas maletas puedo facturar? — ___ una gratis.","Puede facturar","Puede factura","poder + інфінітив"],
+["— Mi vuelo ___ retrasado.","está","es","тимчасовий стан → está"],
+["— ¿A qué hora embarca el vuelo? — ___ las ocho y media.","A","En","a las ocho"],
+["— ¿Cuál es la puerta de embarque? — La puerta ___ 15.","número","el número","número + цифра"],
+["— He perdido mi vuelo. — ¿Puede ___ otro billete?","comprar","compra","poder + інфінітив"],
+["— ¿Necesito visado para este país? — ___ depende de tu pasaporte.","Eso","Este","eso — нейтральне"],
+["— ¿Cuánto pesa el equipaje de mano? — No más ___ diez kilos.","de","que","перед числом → de"],
+["— El vuelo ha sido cancelado. — ¡Qué ___!","mala suerte","malo suerte","suerte ж.р. → mala"],
+["— Bienvenido a bordo. означає…","Ласкаво просимо на борт","Ласкаво просимо на землю","типова фраза екіпажу"]
+]},
+{t:"Оренда авто", lv:2, q:[
+["Quiero ___ un coche para el fin de semana.","alquilar","alquilarse","alquilar + прямий обʼєкт"],
+["¿El seguro está ___ en el precio?","incluido","incluida","precio ч.р. → incluido"],
+["Necesito el carné de conducir y ___.","una tarjeta de crédito","una tarjeta de crédito… стоп","базове"],
+["¿Hay algún ___ por kilómetros extra?","cargo","carga","cargo = плата, carga = вантаж"],
+["Debo ___ el coche con el depósito lleno.","devolver","devolver… стоп","базове: devolver"],
+["¿El coche tiene ___ automático?","cambio","cambia","cambio automático"],
+["Voy a necesitar un GPS o ___.","un mapa","una mapa","mapa ч.р."],
+["¿Cuál es la política de ___?","cancelación","cancelamiento","cancelación — правильна форма"],
+["El coche viene con ___ completo.","depósito","deportivo","deportivo = спортивний"],
+["¿Incluye kilometraje ___?","ilimitado","ilimitada","kilometraje ч.р. → ilimitado"]
+]},
+{t:"Опис поїздки: перфект", lv:2, q:[
+["He ___ (viajar) en tren muchas veces.","viajado","viajido","viajar → viajado"],
+["¿Has ___ (volar) alguna vez en primera clase?","volado","volido","volar → volado"],
+["Hemos ___ (perder) el autobús.","perdido","perdiendo","perder → perdido"],
+["¿Habéis ___ (llegar) a tiempo?","llegado","llegido","llegar → llegado"],
+["Han ___ (cancelar) mi vuelo.","cancelado","cancelido","cancelar → cancelado"],
+["Nunca he ___ (conducir) en otro país.","conducido","conducido… стоп","базове"],
+["He ___ (hacer) este viaje cien veces.","hecho","hacido","hacer → hecho"],
+["¿Has ___ (coger) el tren de las diez?","cogido","cogido… стоп","базове: cogido"],
+["Hemos ___ (reservar) los billetes online.","reservado","reservido","reservar → reservado"],
+["¿Ha ___ (volver) ya de su viaje?","vuelto","volvido","volver → vuelto"]
+]},
+{t:"Правила дорожнього руху", lv:2, q:[
+["Hay que ___ el límite de velocidad.","respetar","respeta","hay que + inf"],
+["No se puede ___ hablando por teléfono.","conducir","conduce","no se puede + inf"],
+["Es obligatorio ___ el cinturón de seguridad.","llevar","lleva","es obligatorio + inf"],
+["Debes ___ en el semáforo rojo.","parar","paras","deber + inf"],
+["No está permitido ___ en doble fila.","aparcar","aparca","no está permitido + inf"],
+["Hay que ___ el casco en moto.","llevar","lleva","hay que + inf"],
+["Está prohibido ___ alcohol antes de conducir.","beber","bebe","estar prohibido + inf"],
+["Es necesario ___ el coche cada año.","revisar","revisa","es necesario + inf"],
+["No se debe ___ demasiado cerca de otro coche.","conducir","conduce","no se debe + inf"],
+["Hay que ___ atención en los cruces.","prestar","presta","hay que + inf"]
+]},
+{t:"Затримки й проблеми в дорозі", lv:2, q:[
+["El vuelo se ha retrasado ___ dos horas.","—","de","retrasarse + прямо число, без прийменника тут"],
+["Hay mucho tráfico ___ la autopista.","en","a","en + місце"],
+["El tren está parado ___ una avería.","por","para","причина → por"],
+["Hemos perdido la conexión ___ el retraso.","por","para","причина → por"],
+["¿Hay algún autobús alternativo ___ llegar antes?","para","por","мета → para"],
+["El accidente ha causado un atasco ___ kilómetros.","de","en","de kilómetros"],
+["Debido ___ la niebla, el vuelo se ha cancelado.","a","de","debido A"],
+["Vamos a llegar tarde ___ el atasco.","por","para","причина → por"],
+["¿Hay algún reembolso ___ el retraso?","por","para","por + причина"],
+["Siento las molestias causadas ___ el retraso.","por","para","por + причина"]
+]},
+{t:"На заправній станції", lv:2, q:[
+["Lleno, por favor. означає…","Повний бак, будь ласка","Порожній бак, будь ласка","lleno = повний"],
+["¿Cuál es el precio ___ litro?","por","para","por litro"],
+["Necesito ___ aire a las ruedas.","echar","hechar","echar (без h!)"],
+["¿Aceptan tarjeta o solo ___?","efectivo","efectividad","efectivo = готівка"],
+["Voy a ___ el coche antes del viaje.","revisar","revisor","revisar — дієслово"],
+["¿Dónde está el ___ de aire?","surtidor","sultador","surtidor — правильне слово"],
+["El depósito está casi ___.","vacío","vaciado","vacío — прикметник"],
+["¿Puede limpiar el ___, por favor?","parabrisas","parasol","parabrisas = лобове скло"],
+["Necesito revisar el nivel de ___.","aceite","aceituna","aceituna = оливка!"],
+["¿Tienen servicio de ___ de coches?","lavado","lavabo","lavabo = раковина"]
+]},
+{t:"Громадський транспорт міста", lv:2, q:[
+["¿Este autobús para ___ la plaza mayor?","en","a","parar EN"],
+["Necesito un abono ___ todo el mes.","para","por","мета → para"],
+["¿Cuántas paradas hay ___ aquí y el centro?","entre","de","entre A y B"],
+["El metro pasa cada ___ minutos.","diez","diez… стоп","базове: cada diez minutos"],
+["¿A qué hora cierra el ___ de metro?","servicio","serviciо… стоп","базове"],
+["Hay que validar el billete al ___.","subir","subida","subir — дієслово"],
+["¿El billete sirve ___ el autobús y el metro?","para","por","мета → para"],
+["En hora punta, el metro va muy ___.","lleno","lleno… стоп","базове: lleno"],
+["¿Hay descuento ___ estudiantes?","para","por","para + категорія людей"],
+["El autobús nocturno sale cada ___ hora.","media","medio","hora ж.р. → media"]
+]},
+{t:"Порівняння видів транспорту", lv:2, q:[
+["El AVE es más rápido ___ el autobús.","que","de","порівняння → que"],
+["Viajar en avión es más caro ___ en tren, normalmente.","que","de","порівняння → que"],
+["El metro es tan práctico ___ el autobús en la ciudad.","como","que","рівність → como"],
+["Ir en bici es menos contaminante ___ ir en coche.","que","de","порівняння → que"],
+["El tren de alta velocidad es el ___ rápido de todos.","más","tan","найвищий ступінь"],
+["Coger un taxi es más cómodo pero también más ___.","caro","barato","caro = дорожче"],
+["Caminar es la opción más ___ para distancias cortas.","económica","económico","opción ж.р. → económica"],
+["El avión es mejor ___ distancias largas.","para","por","мета → para"],
+["Ir en tren es tan seguro ___ ir en avión.","como","que","рівність → como"],
+["Para el medioambiente, la bici es ___ mejor opción.","la","el","opción ж.р. → la"]
+]},
+{t:"Планування подорожі", lv:2, q:[
+["Estoy planeando ___ a Italia el próximo mes.","viajar","viajo","planear + inf"],
+["Voy a comparar precios ___ reservar.","antes de","después de","antes de + inf"],
+["Necesito decidir si voy en avión o ___ tren.","en","por","en + транспорт"],
+["¿Cuánto tiempo hay que reservar ___ antelación?","con","de","con antelación"],
+["Prefiero volar por la mañana ___ por la noche.","en vez de","en lugar… теж ок, довше","en vez de = замість"],
+["Voy a comprobar si necesito ___ para entrar al país.","visado","visaje","visaje — немає такого слова"],
+["Es mejor reservar el hotel ___ el vuelo.","junto con","junto a… теж ок","junto con = разом з"],
+["¿Hay que hacer ___ antes de viajar?","seguro de viaje","seguro para viaje","seguro de viaje"],
+["Voy a hacer una lista de todo lo que ___ llevar.","tengo que","tengo de","tener que + inf"],
+["Espero que el viaje ___ perfecto.","sea","es","бажання → subjuntivo (ознайомчо)"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Наказовий спосіб на дорозі", lv:3, q:[
+["¡___ (parar, tú) el coche!","Para","Paras","наказ tú → para"],
+["¡No ___ (adelantar, usted) aquí!","adelante","adelanta","заперечний наказ usted → adelante"],
+["¡___ (girar, tú) a la derecha!","Gira","Giras","наказ tú → gira"],
+["¡No ___ (aparcar, ustedes) en esta zona!","aparquen","aparcan","заперечний наказ ustedes → aparquen"],
+["¡___ (frenar, tú) despacio!","Frena","Frenas","наказ tú → frena"],
+["¡___ (abrocharse, todos) el cinturón!","Abróchense","Abrochan","наказ ustedes зворотний → abróchense"],
+["¡No ___ (conducir, tú) tan rápido!","conduzcas","conduces","заперечний наказ tú → conduzcas"],
+["¡___ (seguir, usted) todo recto!","Siga","Sigue","наказ usted → siga"],
+["¡___ (ceder, tú) el paso!","Cede","Cedes","наказ tú → cede"],
+["¡No ___ (cruzar, vosotros) con el semáforo rojo!","crucéis","cruzáis","заперечний наказ vosotros → crucéis"]
+]},
+{t:"Culturemas: транспорт в Іспанії", lv:3, q:[
+["AVE — це…","іспанський високошвидкісний потяг","назва аеропорту","Alta Velocidad Española"],
+["RENFE — це…","національний оператор залізниць Іспанії","приватна авіакомпанія","державна компанія"],
+["У великих іспанських містах поширена система прокату…","велосипедів (Bicing у Барселоні тощо)","лише скутерів","муніципальні системи оренди"],
+["Metro de Madrid — одна з…","найбільших мереж метро в Європі","найменших мереж у Європі","розгалужена мережа"],
+["Для проїзду в громадському транспорті Мадрида використовують…","Tarjeta Multi/Abono transporte","лише паперові квитки","електронна картка"],
+["Іспанські автомагістралі поділяються на…","безкоштовні (autovías) і платні (autopistas de peaje)","лише платні","дві категорії"],
+["У багатьох іспанських містах в центрі діють зони…","обмеженого руху (низьких викидів)","необмеженого руху","екологічні обмеження"],
+["Blablacar — популярний сервіс…","спільних поїздок на авто (carpooling)","прокату яхт","поширений у Європі"],
+["На вокзалах Іспанії перед посадкою на потяг далекого сполучення часто є…","контроль багажу (як в аеропорту)","паспортний контроль завжди","специфіка AVE"],
+["Іспанські номерні знаки авто мають формат…","цифри + літери (напр. 1234 ABC)","лише цифри","стандартний формат ЄС"]
+]},
+{t:"POR і PARA у транспорті", lv:3, q:[
+["Este billete es ___ Madrid.","para","por","напрямок призначення → para"],
+["Viajamos ___ toda España en tren.","por","para","рух ПО території → por"],
+["Pagué cien euros ___ el billete.","por","para","ціна → por"],
+["Salimos ___ Barcelona mañana.","para","por","напрямок → para"],
+["Pasamos ___ Valencia de camino a Alicante.","por","para","проїжджаємо ЧЕРЕЗ → por"],
+["Este tren es ___ pasajeros con destino a Sevilla.","para","por","призначення → para"],
+["Gracias ___ esperar, el vuelo saldrá pronto.","por","para","подяка → por"],
+["Necesito un billete ___ dos personas.","para","por","для когось → para"],
+["Vamos ___ la autopista para llegar antes.","por","para","рух ПО дорозі → por"],
+["Este asiento es ___ mí.","para","por","призначення → para"]
+]},
+{t:"Тонкощі прийменників у місці", lv:3, q:[
+["El tren llega ___ la estación central.","a","en","прибуття КУДИ → a"],
+["El tren está ___ la estación ahora.","en","a","знаходження ДЕ → en"],
+["Vamos ___ la estación a pie.","a","en","напрямок КУДИ → a"],
+["Espero el autobús ___ la parada.","en","a","перебування У місці → en"],
+["Llegamos ___ Madrid por la tarde.","a","en","прибуття КУДИ (місто) → a"],
+["Vivo ___ Madrid desde hace años.","en","a","перебування У місці → en"],
+["El vuelo aterriza ___ las tres.","a","en","час → a"],
+["El avión está ___ el aire.","en","a","перебування (в повітрі) → en"],
+["Subimos ___ el tren en el último momento.","a","en","subir A (напрямок дії)"],
+["Ключове правило: a — напрямок/час; en — перебування/спосіб.","так","навпаки","загальне правило прийменників"]
+]},
+{t:"Виправ помилку", lv:3, q:[
+["«Voy en el tren» (правильно чи ні для базового способу пересування?) — типовіше…","Voy en tren (без el)","Voy en el tren залишити","загальний спосіб пересування — без артикля"],
+["«Subo en el autobús» → …","Subo al autobús","Subo en el autobús залишити","subir A, не en"],
+["«Bajo en el tren» (виходжу з потяга) → …","Bajo del tren","Bajo en el tren залишити","bajar DE"],
+["«Voy a pie andando» (плеоназм) → …","Voy a pie / Voy andando","залишити обидва разом","обирати щось одне"],
+["«El vuelo ha retrasado» (бракує зворотного se) → …","El vuelo se ha retrasado","El vuelo ha retrasado залишити","retrasarse — зворотне"],
+["«He perdido el tren» — це…","правильно","треба he perdido al tren","perder + прямий додаток, без a"],
+["«Voy a subir en el taxi» → природніше…","Voy a coger un taxi","залишити як є","coger — типовіше для таксі"],
+["«El billete cuesta de veinte euros» → …","El billete cuesta veinte euros","залишити з de","costar без прийменника перед сумою"],
+["«Aparco el coche a la calle» → …","Aparco el coche en la calle","залишити з a","en la calle"],
+["«Hay mucho tráfico a la autopista» → …","Hay mucho tráfico en la autopista","залишити з a","en + місце"]
+]},
+{t:"Переклади речення", lv:3, q:[
+["«Мій потяг запізнюється на 20 хвилин»:","Mi tren lleva 20 minutos de retraso","Mi tren tiene 20 minutos de retraso — теж ок","llevar de retraso — типова фраза"],
+["«Мені потрібно пересісти в Мадриді»:","Necesito hacer transbordo en Madrid","Necesito hacer transporte en Madrid","transbordo"],
+["«Рейс скасовано через погоду»:","El vuelo ha sido cancelado por el mal tiempo","El vuelo ha sido cancelado para el mal tiempo","por = причина"],
+["«Де я можу взяти в оренду авто?»:","¿Dónde puedo alquilar un coche?","¿Dónde puedo alquilar un coche… стоп","базовий переклад"],
+["«Цей квиток дійсний на автобус і метро»:","Este billete sirve para el autobús y el metro","Este billete sirve por el autobús y el metro","para = мета/призначення"],
+["«Ми застрягли в заторі»:","Estamos atascados en un atasco","Estamos atascados con un atasco","en el atasco"],
+["«Скільки коштує квиток в один бік?»:","¿Cuánto cuesta el billete de ida?","¿Cuánto cuesta el billete de ida… стоп","базовий переклад"],
+["«Не забудьте пристебнути ремінь безпеки»:","No olviden abrocharse el cinturón","No olviden abrochar el cinturón","зворотне — abrocharse"],
+["«Автобус приходить кожні 15 хвилин»:","El autobús pasa cada 15 minutos","El autobús pasa por 15 minutos","cada + інтервал"],
+["«Я запізнився на рейс»:","Perdí el vuelo","Perdí al vuelo","perder + прямий додаток, без a"]
+]},
+{t:"EN, POR, A з видами транспорту", lv:3, q:[
+["Voy ___ tren. (загальний спосіб)","en","por","en + вид транспорту"],
+["Viajamos ___ toda la costa en coche.","por","en","рух ПО території → por"],
+["Vamos ___ pie hasta la estación.","a","en","a pie — виняток!"],
+["Prefiero viajar ___ avión para distancias largas.","en","por","en + вид транспорту"],
+["¿Vienes ___ coche o en autobús?","en","por","en + транспорт"],
+["Caminamos ___ el parque de camino a casa.","por","en","рух ЧЕРЕЗ/ПО → por"],
+["Nunca he viajado ___ barco.","en","por","en + транспорт"],
+["Nos movemos ___ toda la ciudad en bici.","por","en","рух ПО місту → por"],
+["nunca кажемо «voy a coche», а завжди…","voy en coche","voy a coche","en для способу пересування"],
+["Nos vamos ___ moto hasta la playa.","en","por","en + транспорт"]
+]},
+{t:"Подорож (текст)", lv:3, q:[
+["El mes pasado ___ (viajar, yo) a Portugal.","viajé","he viajado","минулий час подорожі (для контексту достатньо розпізнати сенс)"],
+["___ (coger) el AVE desde Madrid.","Cogí","Cojo","минулий час"],
+["El viaje ___ (durar) casi tres horas.","duró","dura","минулий час"],
+["___ (llegar) a tiempo, sin ningún retraso.","Llegué","Llego","минулий час"],
+["En Lisboa, ___ (alquilar) un coche pequeño.","alquilé","alquilo","минулий час"],
+["___ (conducir) por la costa varios días.","Conduje","Conduzco","минулий час нерегулярного дієслова"],
+["El paisaje ___ (ser) espectacular.","fue","es","минулий час ser"],
+["Al final, ___ (devolver) el coche sin problemas.","devolví","devuelvo","минулий час"],
+["___ (volver) a España en avión.","Volví","Vuelvo","минулий час"],
+["¡___ (ser) un viaje inolvidable!","Fue","Es","минулий час"]
+]},
+{t:"Діалог: скасований рейс", lv:3, q:[
+["— Su vuelo ha sido cancelado. — ¿___ opciones tengo?","Qué","Cuál","питальне слово → qué"],
+["— Podemos ofrecerle otro vuelo o ___ el dinero.","devolverle","devolver a","devolverle — займенник le"],
+["— ¿Cuándo ___ el próximo vuelo disponible?","sale","salga","реальний факт → sale (не subjuntivo)"],
+["— Necesito llegar ___ tarde de esta noche.","antes de","antes que","antes de + іменник"],
+["— ¿Me pueden dar alojamiento mientras ___?","espero","esperaré","поки чекаю → espero"],
+["— ¿Tengo derecho a una ___ por la cancelación?","compensación","compensamiento","compensación — правильна форма"],
+["— Sí, según la ley, ___ derecho a compensación.","tiene","tenga","реальний факт → tiene"],
+["— ¿Puede darme esto ___ escrito?","por","en","por escrito — стала фраза"],
+["— Aquí tiene el ___ del nuevo vuelo.","comprobante","comprobación","comprobante = підтвердження (документ)"],
+["— Gracias ___ su paciencia.","por","para","подяка → por"]
+]},
+{t:"Підсумковий мікс", lv:3, q:[
+["«потяг» — це…","el tren","el tren… стоп","база"],
+["«квиток» — це…","el billete","el billón","billón = мільярд"],
+["Subo ___ autobús.","al","en el","subir A"],
+["Bajo ___ tren.","del","en el","bajar DE"],
+["AVE — це…","іспанський високошвидкісний потяг","назва аеропорту","база"],
+["Este billete es ___ Madrid.","para","por","напрямок → para"],
+["¡___ (parar, tú) el coche!","Para","Paras","наказ tú"],
+["«Мій потяг запізнюється» — типово кажуть…","Mi tren lleva retraso","Mi tren tiene retraso… теж ок","llevar retraso"],
+["El vuelo ha sido cancelado ___ el mal tiempo.","por","para","причина → por"],
+["Загальний спосіб пересування (в потязі) — типово без…","артикля (voy en tren)","дієслова","voy en tren, не en el tren"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "Транспорт: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 25 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>
