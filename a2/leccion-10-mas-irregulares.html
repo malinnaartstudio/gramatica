@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 10 · Más verbos irregulares en indefinido · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 10 · @malinnaartstudio</div>
+    <h1 id="htitle">MÁS IRREGULARES: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 10 · Más verbos irregulares en indefinido.</b>
+      30 вправ по 10 питань: anduve, dije, traje, conduje, hizo, pidió, durmió, leyó,
+      конектори розповіді (de repente, por fin…), lo pasé genial, вікенд у Толедо. Від ★ до ★★★. ¡Hiciste un gran trabajo! 🏰
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · групи неправильних</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · текст і вправи книги</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й помилки</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 10</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Група -UV-: andar, mantener, detener", lv:1, q:[
+["andar → yo ___","anduve","andé","з книги: -uv-!"],
+["andar → ellos ___","anduvieron","andaron","anduvieron"],
+["mantener → yo ___","mantuve","mantení","як tener"],
+["detener → él ___","detuvo","detenió","як tener"],
+["estar → nosotros ___","estuvimos","estamos","-uv-"],
+["tener → vosotros ___","tuvisteis","tenisteis","-uv-"],
+["Anduvimos por las calles (з тексту). andar = …","ходити пішки","їздити верхи","прогулянка"],
+["mantener = …","тримати, зберігати","брехати","з книги"],
+["detener = …","зупиняти, затримувати","тримати десять","з книги"],
+["La policía ___ al ladrón. (затримала)","detuvo","detenió","🚔"]
+]},
+{t:"HACER: hice, hizo…", lv:1, q:[
+["hacer → yo ___","hice","hací","hic-"],
+["hacer → tú ___","hiciste","hicistes","без s"],
+["hacer → él ___","hizo","hició","з z!"],
+["hacer → nosotros ___","hicimos","hacimos","hic-"],
+["hacer → vosotros ___","hicisteis","hacisteis","hic-"],
+["hacer → ellos ___","hicieron","hizieron","з c"],
+["Чому hizo з z? Щоб…","зберегти звук перед o","для краси","hico читалось би [іко]"],
+["___ muchas fotos. (ми зробили)","Hicimos","Hacimos","з тексту"],
+["¿Qué ___ ayer? (ти)","hiciste","hacistes","класичне питання"],
+["Ayer ___ frío. (було — погода)","hizo","hació","закритий день"]
+]},
+{t:"Група -J-: decir, traer", lv:1, q:[
+["decir → yo ___","dije","decí","dij-"],
+["decir → él ___","dijo","dició","dijo"],
+["decir → ellos ___","dijeron","dijieron","-eron, НЕ -ieron!"],
+["traer → yo ___","traje","traí","traj-"],
+["traer → ella ___","trajo","trayó","trajo"],
+["traer → ellos ___","trajeron","trajieron","-eron!"],
+["Yo no ___ nada porque estaba cansado.","dije","decí","з вправи книги"],
+["¿Qué te ___ ella? (сказала)","dijo","dició","dijo"],
+["Nos ___ regalos. (принесли)","trajeron","trajieron","-eron"],
+["traje — це також…","костюм (омонім!)","дерево","el traje 🤵"]
+]},
+{t:"Група -J-: traducir, conducir, producir", lv:1, q:[
+["traducir → yo ___","traduje","traducí","з книги"],
+["conducir → yo ___","conduje","conducí","з книги"],
+["producir → él ___","produjo","produció","з книги"],
+["conducir → ellos ___","condujeron","condujieron","-eron!"],
+["traducir → nosotros ___","tradujimos","traducimos","traduj-"],
+["Дієслова на -ucir отримують…","-j-","-y-","conduje"],
+["3-тя мн. групи -j-: закінчення…","-eron","-ieron","dijeron, trajeron"],
+["Ayer ___ tres horas. (я вів авто)","conduje","conducí","🚗"],
+["Ella ___ el texto al español.","tradujo","tradució","📖"],
+["La empresa ___ mucho vino. (виробила)","produjo","produció","🍷"]
+]},
+{t:"E→I у 3-й особі: pedir, preferir, sentirse", lv:1, q:[
+["pedir → yo ___","pedí","pidí","yo — без зміни!"],
+["pedir → él ___","pidió","pedió","e→i у 3-й"],
+["pedir → ellos ___","pidieron","pedieron","з тексту"],
+["preferir → ella ___","prefirió","preferió","e→i"],
+["preferir → yo ___","preferí","prefirí","без зміни"],
+["sentirse → él ___","se sintió","se sentió","e→i"],
+["sentirse → yo ___","me sentí","me sintí","без зміни"],
+["Yo ___ carcamusas. (замовив, з тексту)","pedí","pidí","yo!"],
+["Mis amigos ___ sopa castellana. (з тексту)","pidieron","pedieron","3-тя мн."],
+["Зміна e→i відбувається у…","3-й особі (одн. і мн.)","1-й особі","pidió, pidieron"]
+]},
+{t:"Група -Y-: leer, oír, creer, construir", lv:1, q:[
+["leer → él ___","leyó","leió","y!"],
+["leer → yo ___","leí","leyé","leí"],
+["oír → ellos ___","oyeron","oieron","y"],
+["creer → él ___","creyó","creió","y"],
+["caerse → él ___","se cayó","se caió","y"],
+["construir → ellos ___","construyeron","construieron","y"],
+["destruir → él ___","destruyó","destruió","y"],
+["leer → nosotros ___","leímos","leimos","з тильдою"],
+["oír → yo ___","oí","oyé","oí"],
+["Чому y? Бо i опиняється…","між голосними","на початку слова","le-ió → leyó"]
+]},
+{t:"HABER, CABER та повторення", lv:1, q:[
+["haber → 3-тя особа: ___","hubo","habió","hubo"],
+["hubo = …","було, сталося","мав","hubo un accidente"],
+["caber → yo ___","cupe","cabí","з книги: cupe!"],
+["caber = …","вміщатися","копати","no cupe en el coche 😄"],
+["satisfacer → él ___","satisfizo","satisfació","як hacer"],
+["querer → nosotros ___","quisimos","querimos","quis-"],
+["poner → tú ___","pusiste","poniste","pus-"],
+["saber → él ___","supo","sabió","sup-"],
+["poder → yo ___","pude","podí","pud-"],
+["venir → ellos ___","vinieron","venieron","vin-"]
+]},
+{t:"Конектори розповіді", lv:1, q:[
+["por fin = …","нарешті","спочатку","🎉"],
+["de repente = …","раптом","повільно","⚡"],
+["entonces = …","тоді","звідти","tоді"],
+["después / luego = …","потім","до того","послідовність"],
+["primero = …","спочатку","найперший приз","порядок"],
+["al final = …","наприкінці","на фініші марафону","фінал"],
+["una vez = …","один раз","одна ваза","vez = раз"],
+["varias veces = …","кілька разів","різні вази","мн."],
+["luego = синонім…","después","antes","потім"],
+["Конектори роблять розповідь…","зв'язною","довшою без сенсу","primero → después → al final"]
+]},
+{t:"Словник подорожей", lv:1, q:[
+["el viaje = …","подорож","в'їзд","🧳"],
+["la aventura = …","пригода","авантюра погана","🗺️"],
+["el recuerdo = …","спогад / сувенір","рекорд","🎁"],
+["el paisaje = …","пейзаж","паспорт","🏞️"],
+["la comida típica = …","традиційна страва","типова їдальня","🥘"],
+["disfrutar = …","насолоджуватися","руйнувати","😊"],
+["quedarse / alojarse = …","залишатися / зупинятися (в готелі)","загубитися","🏨"],
+["perder ↔ …","encontrar","esconder","загубити ↔ знайти"],
+["conocer / descubrir = …","знайомитися / відкривати","ховати / закривати","🔎"],
+["pasar un día = …","провести день","пропустити день","час"]
+]},
+{t:"LO PASÉ GENIAL: враження", lv:1, q:[
+["Lo pasé ___ = чудово провів час","genial","generoso","з книги"],
+["Lo pasé ___ = жахливо провів час","fatal","final","з книги"],
+["lo pasé bien = …","добре провів час","пройшов повз","ідіома"],
+["Fue ___ = було неймовірно","increíble","increíblemente","прикметник"],
+["«Це було особливо» = Fue ___.","especial","especialidad","прикметник"],
+["¿Qué tal el viaje? — ¡Lo pasé ___! 🎉","genial","fatal","контекст 🎉"],
+["Не спав, заснув на іспиті… Lo pasé ___. 😅","fatal","genial","😅"],
+["pasarlo bien дослівно ≈ …","«проводити це добре»","«проходити повз добре»","ідіома"],
+["Fue bonito = …","було гарно","було дешево","bonito"],
+["«¿Qué tal la fiesta?» — «___»","¡Lo pasamos genial!","¡Somos geniales!","про вечірку"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Вправа 1 з книги", lv:2, q:[
+["Ayer yo ___ (tener) un día muy largo.","tuve","tenía","з книги"],
+["Mis padres ___ (venir) a visitarme desde Sevilla.","vinieron","venieron","з книги"],
+["Nosotros ___ (hacer) muchas fotos en la excursión.","hicimos","hacimos","з книги"],
+["El tren ___ (salir) con retraso.","salió","salía","з книги"],
+["¿Dónde ___ (poner, tú) las llaves?","pusiste","poniste","з книги"],
+["con retraso = …","із запізненням","з поверненням","🚂"],
+["Yo ___ (andar) mucho ayer.","anduve","andé","-uv-"],
+["Ella ___ (decir) la verdad.","dijo","deció","dij-"],
+["Ellos ___ (traer) vino.","trajeron","trajieron","-eron"],
+["Nosotros ___ (pedir) la cuenta.","pedimos","pidimos","nosotros — без зміни!"]
+]},
+{t:"Вправа 2 з книги: виправ форми", lv:2, q:[
+["❌ Hicimoses un pastel → ✅ …","Hicimos un pastel.","Hacimos un pastel.","з книги"],
+["❌ Ellos andieron mucho → ✅ …","Ellos anduvieron mucho.","Ellos andaron mucho.","з книги"],
+["❌ Nosotros supemos la respuesta → ✅ …","Nosotros supimos la respuesta.","Nosotros sabimos la respuesta.","з книги"],
+["❌ Yo pudí terminar → ✅ …","Yo pude terminar.","Yo podí terminar.","з книги"],
+["❌ Yo dijé → ✅ …","dije","decí","без тильди"],
+["❌ Ella trayó → ✅ …","trajo","traió","traj-"],
+["❌ Ellos dijieron → ✅ …","dijeron","dicieron","-eron"],
+["❌ Él hació → ✅ …","hizo","hizó","z"],
+["❌ Nosotros venimos ayer → ✅ …","vinimos","venímos","vin-"],
+["❌ Yo andé → ✅ …","anduve","andí","-uv-"]
+]},
+{t:"Вправа 3 з книги: обери опцію", lv:2, q:[
+["Ayer Marta ___ tarde a casa.","vino","venía","з книги"],
+["Nosotros ___ una carta al hotel.","escribimos","escribíamos","з книги"],
+["Ellos no ___ entrar porque no tenían billete.","pudieron","podían","з книги"],
+["Yo no ___ nada porque estaba cansado.","dije","decía","з книги"],
+["¿Qué ___ vosotros el fin de semana pasado?","hicisteis","hacíais","з книги"],
+["«no tenían billete» — tenían це…","imperfecto (причина-тло)","indefinido","тло"],
+["«estaba cansado» — estaba це…","imperfecto (стан-тло)","indefinido","тло"],
+["Головна дія розповіді → …","indefinido","imperfecto","vino, dije…"],
+["Тло і причини → …","imperfecto","indefinido","tenían, estaba"],
+["el fin de semana pasado → …","indefinido","perfecto","pasado!"]
+]},
+{t:"Текст «Un fin de semana en Toledo» (1)", lv:2, q:[
+["El sábado pasado ___ hacer un viaje a Toledo.","decidí","decidía","початок"],
+["Salimos temprano y ___ el tren.","tomamos","tomábamos","сіли на потяг"],
+["Cuando llegamos, el sol ___. (тло!)","brillaba","brilló","imperfecto — тло"],
+["La ciudad ___ un museo al aire libre.","parecía","pareció","тло-опис"],
+["Primero visitamos la ___, que fue impresionante.","catedral","catarata","⛪"],
+["Después ___ por las calles estrechas.","anduvimos","andamos","anduvimos!"],
+["…donde ___ tiendas pequeñas.","vimos","veíamos","побачили"],
+["Subimos al mirador del río ___.","Tajo","Tejo","річка Тахо"],
+["Desde allí ___ una vista espectacular.","tuvimos","teníamos","з тексту: tuvimos"],
+["Toledo — ciudad llena de ___ y encanto.","historia","histeria","historia! 😄"]
+]},
+{t:"Текст «Un fin de semana en Toledo» (2)", lv:2, q:[
+["Por la tarde ___ probar la comida típica.","quisimos","queríamos","з тексту"],
+["Yo ___ carcamusas.","pedí","pidí","yo"],
+["Mis amigos ___ sopa castellana.","pidieron","pedieron","3-тя мн."],
+["Todo ___ delicioso.","estuvo","estaba","з тексту: estuvo"],
+["Más tarde ___ muchas fotos.","hicimos","hacimos","hic-"],
+["___ gente simpática. (познайомилися)","Conocimos","Conocíamos","знайомство = момент"],
+["Al final del día ___ cansados pero felices.","volvimos","volvíamos","повернулися"],
+["___ que no hace falta viajar lejos. (зрозуміли)","Supimos","Sabíamos","supimos!"],
+["___ volver pronto. (пообіцяли)","Prometimos","Prometíamos","обіцянка"],
+["Cada rincón de España tiene su ___.","magia","magía","без тильди ✨"]
+]},
+{t:"Питання до тексту", lv:2, q:[
+["¿A qué ciudad viajaron?","A Toledo","A Sevilla","з питань книги"],
+["¿Cómo llegaron?","En tren","En coche","🚄"],
+["¿Qué tiempo hacía al llegar?","El sol brillaba","Llovía mucho","тло"],
+["¿Qué visitaron primero?","La catedral","El estadio","⛪"],
+["¿Qué comió el narrador?","Carcamusas","Paella","страва Толедо"],
+["¿Qué pidieron los amigos?","Sopa castellana","Gazpacho","🍲"],
+["¿Qué vieron desde el mirador?","Una vista espectacular","Un partido de fútbol","річка Тахо"],
+["¿Cómo volvieron?","Cansados pero felices","Enfadados","класика 😄"],
+["¿Qué aprendieron?","No hace falta viajar lejos","Toledo es aburrido","мудрість"],
+["¿Por qué prometieron volver?","Cada rincón tiene su magia","Perdieron las maletas","✨"]
+]},
+{t:"Змішане відмінювання", lv:2, q:[
+["andar: tú ___","anduviste","andaste","-uv-"],
+["decir: nosotros ___","dijimos","decimos","dij-"],
+["hacer: ella ___","hizo","hació","z"],
+["traer: yo ___","traje","traí","traj-"],
+["pedir: ellos ___","pidieron","pedieron","e→i"],
+["leer: ella ___","leyó","leió","y"],
+["conducir: tú ___","condujiste","conduciste","-j-"],
+["oír: yo ___","oí","oyé","oí"],
+["mantener: ellos ___","mantuvieron","mantenieron","-uv-"],
+["construir: nosotros ___","construimos","construyimos","nosotros без y"]
+]},
+{t:"HIZO та -ERON: тонкощі", lv:2, q:[
+["Чому hizo з z, а hice з c?","щоб зберегти звук перед o","випадково","правопис"],
+["dijeron чи dijieron?","dijeron","dijieron","після j → -eron"],
+["trajeron чи trajieron?","trajeron","trajieron","-eron"],
+["condujeron чи condujieron?","condujeron","condujieron","-eron"],
+["А comieron — чому -ieron?","бо основа без j","помилка","звичайне дієслово"],
+["hizo: інші форми hacer мають…","c (hice, hiciste…)","z всюди","лише hizo"],
+["satisfizo — за зразком…","hizo","dijo","satisfacer як hacer"],
+["Група -j-: 3-тя мн. втрачає…","i (→ -eron)","наголос","особливість!"],
+["oyeron — тут y, бо…","i між голосними","о + j","правопис"],
+["andar — неправильне, а hablar — …","правильне","теж неправильне","не плутай!"]
+]},
+{t:"Конектори в розповіді", lv:2, q:[
+["___ visitamos la catedral. (спочатку)","Primero","Al final","порядок"],
+["___ anduvimos por el casco antiguo. (потім)","Después","Primero","далі"],
+["___ del día volvimos a casa. (наприкінці)","Al final","De repente","фінал"],
+["___ empezó a llover. (раптом)","De repente","Por fin","☔"],
+["___ llegó el tren. (нарешті!)","Por fin","Entonces","довго чекали"],
+["___ decidimos entrar. (тоді)","Entonces","Una vez","тоді"],
+["Visité Toledo ___ vez. (один раз)","una","primera de","una vez"],
+["He estado allí varias ___.","veces","vez","мн.: veces"],
+["luego = …","потім","далеко","= después"],
+["casco antiguo = …","старе місто","старий шолом","🏰 і шолом теж, але тут місто 😄"]
+]},
+{t:"Інтерв'ю (домашка з книги)", lv:2, q:[
+["— ¿Dónde ___? (народився)","naciste","nacistes","з домашки"],
+["— ___ en Kyiv.","Nací","Nasí","nacer → nací"],
+["— ¿Cuándo ___ de vacaciones por última vez?","fuiste","ibas","з домашки"],
+["— ¿Qué ___ ayer? (їв)","comiste","comías","з домашки"],
+["— ¿Qué ___ el fin de semana pasado?","hiciste","hacías","з домашки"],
+["— ¿Con quién ___ anoche?","hablaste","hablastes","з домашки"],
+["por última vez = …","востаннє","вперше","última"],
+["¿Dónde naciste? — питання про…","місце народження","місце роботи","nacer"],
+["— Fui a la playa ___ julio.","en","a","місяць"],
+["Питання + відповідь в indefinido — це…","формат домашки","іспит DELE лише","практика!"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Виправ помилку", lv:3, q:[
+["❌ Yo fui en casa todo el día → ✅ …","Estuve en casa todo el día.","Fui a casa todo el día.","з культ. нотаток!"],
+["«fui en casa» — помилка, бо…","перебування = estar","fui завжди неправильне","estuve en casa"],
+["❌ Hicimoses → ✅ …","hicimos","hicimosen","з вправи книги"],
+["❌ andieron → ✅ …","anduvieron","andaron","-uv-"],
+["❌ supemos → ✅ …","supimos","supamos","sup + imos"],
+["❌ pudí → ✅ …","pude","pudé","pude"],
+["❌ él pedió → ✅ …","pidió","pedío","e→i"],
+["❌ Ellos leieron → ✅ …","leyeron","leiron","y"],
+["❌ Marta venió tarde → ✅ …","vino","vinió","vino"],
+["❌ ¿Qué hacisteis? → ✅ …","hicisteis","hicistes","hic-"]
+]},
+{t:"Культура: розповіді по-іспанськи", lv:3, q:[
+["Іспанці розповідають в indefinido навіть про…","дрібниці","лише історичні події","з культ. нотаток"],
+["«El otro día ___ a una chica simpática».","conocí","conocía","з культ. нотаток"],
+["«Ayer me quedé dormido y ___ el tren».","perdí","perdía","з культ. нотаток"],
+["me quedé dormido = …","заспав","ліг спати навмисно","😴"],
+["peli = …","película (розмовне)","пелікан","скорочення!"],
+["«Fui al cine, vi una peli y ___ fuera».","cené","cenaba","з культ. нотаток"],
+["cenar fuera = …","повечеряти не вдома","вечеряти на балконі","у ресторані"],
+["«¿Qué hiciste ayer?» скорочують до…","«¿Qué hiciste?»","«¿Qué?»","розмовне"],
+["Стиль розповіді: прості речення в…","indefinido","subjuntivo","fui, vi, cené"],
+["Історія про вихідні за кавою — час…","indefinido","futuro","☕"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Вчора в мене був довгий день»","Ayer tuve un día muy largo.","Ayer tenía un día muy largo.","з вправи"],
+["«Батьки приїхали з Севільї»","Mis padres vinieron desde Sevilla.","Mis padres venieron desde Sevilla.","vin-"],
+["«Ми пройшлися вузькими вуличками»","Anduvimos por las calles estrechas.","Andamos por las calles estrechas.","-uv-"],
+["«Я замовив традиційну страву»","Pedí un plato tradicional.","Pidí un plato tradicional.","yo → pedí"],
+["«Вони замовили суп»","Pidieron sopa.","Pedieron sopa.","3-тя → pidieron"],
+["«Він сказав правду»","Dijo la verdad.","Deció la verdad.","dijo"],
+["«Ми зрозуміли, що не треба їхати далеко»","Supimos que no hace falta viajar lejos.","Supemos que no hace falta viajar lejos.","з тексту"],
+["«Все було смачно»","Todo estuvo delicioso.","Todo estuve delicioso.","3-тя"],
+["«Я нічого не сказав»","No dije nada.","No dijé nada.","без тильди"],
+["«Що ви робили минулих вихідних?»","¿Qué hicisteis el fin de semana pasado?","¿Qué hacisteis el fin de semana pasado?","hic-"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«Anduvimos por Toledo» — …","правильно ✓","помилка","✓"],
+["«Andamos por Toledo ayer» — …","помилка (anduvimos)","правильно","-uv-"],
+["«Dijeron la verdad» — …","правильно ✓","помилка","✓"],
+["«Dijieron la verdad» — …","помилка (dijeron)","правильно","-eron"],
+["«Él pidió pizza» — …","правильно ✓","помилка","✓"],
+["«Yo pidí pizza» — …","помилка (pedí)","правильно","yo без зміни"],
+["«Leyó el libro» — …","правильно ✓","помилка","✓"],
+["«Hubo un problema» — …","правильно ✓","помилка","hubo ✓"],
+["«Yo fui en casa» — …","помилка (estuve en casa)","правильно","з книги!"],
+["«Condujeron toda la noche» — …","правильно ✓","помилка","✓"]
+]},
+{t:"Третя особа: тонкощі", lv:3, q:[
+["pedir: ella ___ un café.","pidió","pedió","e→i"],
+["dormir: el bebé ___.","durmió","dormió","o→u"],
+["sentirse: él ___ mal.","se sintió","se sentió","e→i"],
+["preferir: ella ___ quedarse.","prefirió","preferió","e→i"],
+["morir: la planta ___. 🥀","murió","morió","o→u"],
+["leer: él ___ la carta.","leyó","leió","y"],
+["oír: ella ___ un ruido.","oyó","oió","y"],
+["caerse: el niño ___.","se cayó","se caió","y"],
+["construir: la empresa ___ un puente.","construyó","construió","y"],
+["creer: nadie le ___.","creyó","creió","y"]
+]},
+{t:"SENTIRSE в indefinido", lv:3, q:[
+["yo ___ (sentirse)","me sentí","me sintí","без зміни"],
+["tú ___","te sentiste","te sintiste","без зміни"],
+["él ___","se sintió","se sentió","e→i!"],
+["nosotros ___","nos sentimos","nos sintimos","без зміни"],
+["vosotros ___","os sentisteis","os sintisteis","без зміни"],
+["ellos ___","se sintieron","se sentieron","e→i"],
+["Me ___ genial en Toledo. (почувався)","sentí","sintí","yo"],
+["Ella se ___ cansada después del viaje.","sintió","sentió","3-тя"],
+["sentirse — зворотне, тому…","me/te/se обов'язкові","можна без займенника","SE"],
+["¿Cómo te ___ ayer?","sentiste","sintiste","tú без зміни"]
+]},
+{t:"FUI чи ESTUVE?", lv:3, q:[
+["«Я був удома» = ___ en casa.","Estuve","Fui","перебування → estar"],
+["«Я пішов додому» = ___ a casa.","Fui","Estuve","рух → ir"],
+["fui a + місце = …","пішов кудись","був десь","рух"],
+["estuve en + місце = …","перебував десь","пішов","перебування"],
+["«Вчора я був у кіно» = Ayer ___ en el cine.","estuve","fui en","estar en"],
+["«Вчора я пішов у кіно» = Ayer ___ al cine.","fui","estuve","ir a"],
+["❌ Fui en Barcelona → ✅ …","Estuve en Barcelona.","Fui Barcelona.","класика"],
+["ir + a, estar + …","en","a","прийменники!"],
+["«Ми пробули день у Толедо» = ___ un día en Toledo.","Estuvimos","Fuimos","перебування"],
+["«Ми поїхали в Толедо» = ___ a Toledo.","Fuimos","Estuvimos","рух"]
+]},
+{t:"Класифікація: яка група?", lv:3, q:[
+["andar → група…","-uv-","-j-","anduve"],
+["decir → група…","-j-","-uv-","dije"],
+["conducir → група…","-j-","-y-","conduje"],
+["pedir → зміна…","e→i у 3-й особі","-uv-","pidió"],
+["dormir → зміна…","o→u у 3-й особі","-j-","durmió"],
+["leer → група…","-y- у 3-й особі","-uv-","leyó"],
+["hacer → особливість…","hice, hizo (c→z)","-y-","голосна + z"],
+["caber → форма yo:","cupe","cabí","рідкісне, але є в книзі!"],
+["haber → 3-тя особа:","hubo","habió","hubo"],
+["Скільки груп неправильних у цьому уроці?","п'ять","дві","-uv-, -j-, голосна, e→i/o→u, -y-"]
+]},
+{t:"Розкажи свою історію", lv:3, q:[
+["El sábado ___ al mercado. (пішов)","fui","iba","з прикладу книги"],
+["___ frutas y verduras. (купив)","Compré","Compraba","дія"],
+["___ a mis amigos allí. (побачив)","Vi","Veía","зустріч"],
+["___ mucho y comimos juntos. (поговорили)","Hablamos","Hablábamos","з прикладу книги"],
+["El domingo ___ la casa. (прибрав)","limpié","limpiaba","з прикладу книги"],
+["…y ___ una película. (подивився)","vi","veía","peli 🎬"],
+["De repente ___ a llover. (почало)","empezó","empezaba","раптом"],
+["Por fin ___ el sol. (вийшло)","salió","salía","нарешті ☀️"],
+["___ un día genial. (це був)","Fue","Era","підсумок"],
+["Мінімум неправильних дієслів в історії (домашка):","5","50","fui, tuve, supe, quise, hice…"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["andar: yo ___","anduve","andé","-uv-"],
+["decir: ellos ___","dijeron","dijieron","-eron"],
+["hacer: él ___","hizo","hació","z"],
+["pedir: ella ___","pidió","pedió","e→i"],
+["leer: él ___","leyó","leió","y"],
+["❌ Fui en casa → ✅ …","Estuve en casa.","Fui casa.","з книги"],
+["Lo pasé ___ en Toledo. (чудово)","genial","fatal","🎉"],
+["traer: nosotros ___","trajimos","traimos","traj-"],
+["De repente = …","раптом","нарешті","конектор"],
+["Урок 10 готово! ¡___ un trabajo increíble! (ти зробив)","Hiciste","Haciste","hic- 🎉"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "MÁS IRREGULARES: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 10 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

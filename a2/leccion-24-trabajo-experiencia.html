@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 24 · Mi trabajo y mi experiencia profesional · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 24 · @malinnaartstudio</div>
+    <h1 id="htitle">MI TRABAJO: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+<main>
+  <div id="home">
+    <div class="intro">
+            <b style="color:var(--rasp)">Lección 24 · Mi trabajo y mi experiencia profesional.</b>
+      30 вправ по 10 питань: Pretérito Perfecto vs Pretérito Indefinido — коли «he trabajado», а коли
+      «trabajé», словник професій і резюме, і чому в Іспанії досвід цінніший за дипломи.
+      Від ★ до ★★★. De camarero a diseñador — todo es posible. 💼
+
+    </div>
+    <div class="legend">
+            <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · Perfecto vs Indefinido + словник роботи</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · текст, таблиця вибору часу, CV</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · культура праці й типові помилки</span>
+
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 24</footer>
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Pretérito Perfecto: коли вживається", lv:1, q:[
+["Pretérito Perfecto вживається для…","досвіду минулого, повʼязаного із теперішнім","дій, повністю завершених без звʼязку з теперішнім","з книги"],
+["Describir acciones que aún tienen conexión con «ahora» — переклад…","описати дії, що досі повʼязані з «зараз»","описати дії з далекого минулого","з книги"],
+["He trabajado en varios países — переклад…","Я працював у кількох країнах (досвід)","Я працюватиму в кількох країнах","досвід, повʼязаний із теперішнім"],
+["Este año he cambiado de trabajo — переклад…","Цього року я змінив роботу","Минулого року я змінив роботу","este año — ще не закінчився"],
+["He terminado el informe — переклад…","Я закінчив звіт (щойно, є результат зараз)","Я закінчу звіт колись","результат видно зараз"],
+["Urok 24 називається…","Mi trabajo y mi experiencia profesional","Vivir bien","з підручника"],
+["Pretérito Perfecto будується з двох частин:","haber + participio","tener + gerundio","аналітична форма"],
+["He enviado el correo hace una hora — переклад…","Я надіслав листа годину тому","Я надішлю листа за годину","дія недавно завершена, звʼязок із зараз"],
+["Загальна ідея Perfecto: минуле, яке…","«ще не зовсім минуле» — відчувається зараз","повністю відрізане від теперішнього","ключова відмінність від Indefinido"],
+["Perfecto активно вживається, коли період часу (сьогодні, цей тиждень…)","ще не закінчився","вже закінчився","часовий критерій"]
+]},
+{t:"Pretérito Perfecto: структура", lv:1, q:[
+["yo ___ trabajado","he","ha","1 особа"],
+["tú ___ trabajado","has","he","2 особа"],
+["él/ella ___ trabajado","ha","has","3 особа"],
+["nosotros ___ trabajado","hemos","habéis","1 особа мн."],
+["vosotros ___ trabajado","habéis","hemos","2 особа мн."],
+["ellos ___ trabajado","han","ha","3 особа мн."],
+["haber у цій структурі — це…","допоміжне дієслово","основне дієслово, що перекладається","аналітична структура, як в англ. have"],
+["Порядок слів: haber + …","participio","infinitivo","he trabajado, не he trabajar"],
+["Between haber і participio НЕ можна вставляти…","інші слова (напр., no)","нічого — це правило справджується завжди","he TRABAJADO — одразу за haber"],
+["No he trabajado hoy — заперечення no ставиться…","перед haber","між haber і participio","стандартне заперечення"]
+]},
+{t:"Participio regular: -ADO / -IDO", lv:1, q:[
+["trabajar → …","trabajado","trabajido","-ar → -ado"],
+["comer → …","comido","comado","-er → -ido"],
+["vivir → …","vivido","vivado","-ir → -ido"],
+["hablar → …","hablado","hablido","-ar → -ado"],
+["aprender → …","aprendido","aprendado","-er → -ido"],
+["escribir → …","escribido (насправді нерегулярне: escrito, тут для тренування закінчення -ir)","escribado","за правилом було б -ido, та це виняток!"],
+["cambiar → …","cambiado","cambido","-ar → -ado"],
+["conocer → …","conocido","conocado","-er → -ido"],
+["Participio regular для -AR дієслів завжди закінчується на…","-ado","-ido","правило"],
+["Participio regular для -ER/-IR дієслів завжди закінчується на…","-ido","-ado","правило"]
+]},
+{t:"Pretérito Perfecto: приклади з книги", lv:1, q:[
+["He trabajado en varios países — форма участия «trabajado» від дієслова…","trabajar","trabajo","-ar → -ado"],
+["He enviado el correo hace una hora — форма «enviado» від…","enviar","envío","-ar → -ado"],
+["Este año he cambiado de trabajo — форма «cambiado» від…","cambiar","cambio","-ar → -ado"],
+["He terminado el informe — форма «terminado» від…","terminar","término","-ar → -ado"],
+["Ці чотири приклади з книги ілюструють вживання Perfecto для…","недавніх дій, звʼязаних із теперішнім","подій у далекому минулому","тема граматики"],
+["He trabajado — переклад одним словом неможливий, бо це…","складна (аналітична) дієслівна форма","проста форма","he + participio"],
+["Habéis cambiado de trabajo? — форма для…","vosotros","nosotros","2 особа мн."],
+["Han terminado el proyecto — форма для…","ellos/ellas/ustedes","tú","3 особа мн."],
+["Hemos aprendido mucho — форма для…","nosotros","yo","1 особа мн."],
+["Ha trabajado como profesor — форма для…","él/ella/usted","tú","3 особа одн."]
+]},
+{t:"Pretérito Indefinido: нагадування", lv:1, q:[
+["Pretérito Indefinido вживається для…","завершених дій без звʼязку з теперішнім","дій, повʼязаних із «зараз»","з книги"],
+["Hechos concretos en un momento exacto del pasado — переклад…","конкретні факти в точний момент минулого","загальні звички в минулому","з книги"],
+["Trabajé en 2019 en Madrid — переклад…","Я працював у 2019 в Мадриді","Я працюю з 2019 в Мадриді","конкретний завершений момент"],
+["Trabajó como profesor — переклад…","Він/вона працював(ла) вчителем (завершено)","Він/вона працює вчителем","закінчена дія"],
+["Indefinido — форма для дій, які…","закриті, без звʼязку із сьогоденням","досі актуальні","контраст з Perfecto"],
+["trabajé, trabajaste, trabajó… — це відмінювання…","Pretérito Indefinido","Pretérito Perfecto","проста (синтетична) форма"],
+["На відміну від Perfecto, Indefinido — це…","одне слово (проста форма)","дві частини (аналітична форма)","trabajé, а не he trabajado"],
+["Trabajaron durante tres años — переклад…","Вони працювали протягом трьох років (закінчено)","Вони працюють вже три роки","закінчена дія в минулому"],
+["Indefinido типово вживають з чіткими датами, як…","en 2019, el año pasado","hoy, este año","часові маркери"],
+["Урок 24 повторює й контрастує Indefinido з новою темою…","Pretérito Perfecto","Futuro Simple","мета уроку"]
+]},
+{t:"Pretérito Indefinido: структура (regular)", lv:1, q:[
+["yo trabaj___","é","o","trabajé"],
+["tú trabaja___","ste","stes","trabajaste"],
+["él/ella trabaj___","ó","o","trabajó"],
+["nosotros trabaja___","mos","ron","trabajamos"],
+["vosotros trabaja___","steis","ron","trabajasteis"],
+["ellos trabaja___","ron","ren","trabajaron"],
+["Наголос у trabajó падає на…","останній склад (з тильдою)","передостанній","важливо для вимови й письма"],
+["trabajamos (Indefinido) виглядає так само, як…","Presente (nosotros)","Futuro","омонімічна форма!"],
+["Indefinido — проста форма, тобто…","одне слово, без допоміжного дієслова","дві частини","на відміну від Perfecto"],
+["Regular Indefinido для -AR дієслів має закінчення…","-é, -aste, -ó, -amos, -asteis, -aron","-í, -iste, -ió, -imos, -isteis, -ieron","специфічний набір для -ar"]
+]},
+{t:"Часові маркери: Pretérito Perfecto", lv:1, q:[
+["hoy → зазвичай вживається з…","Pretérito Perfecto","Pretérito Indefinido","незакінчений період"],
+["esta semana → …","Pretérito Perfecto","Pretérito Indefinido","«цей тиждень» ще не закінчився"],
+["este mes → …","Pretérito Perfecto","Pretérito Indefinido","«цей місяць» ще триває"],
+["este año → …","Pretérito Perfecto","Pretérito Indefinido","«цей рік» ще триває"],
+["últimamente → …","Pretérito Perfecto","Pretérito Indefinido","«останнім часом»"],
+["alguna vez → …","Pretérito Perfecto","Pretérito Indefinido","«колись» (досвід)"],
+["nunca → …","Pretérito Perfecto","Pretérito Indefinido","«ніколи» (досвід)"],
+["¿Has estado alguna vez en España? — типове питання про…","досвід","конкретну дату","Perfecto"],
+["Esta semana he trabajado mucho — переклад…","Цього тижня я багато працював (тиждень ще триває)","Минулого тижня я багато працював","Perfecto"],
+["Nunca he comido paella — переклад…","Я ніколи не їв паелью","Я не їв паелью вчора","досвід, Perfecto"]
+]},
+{t:"Часові маркери: Pretérito Indefinido", lv:1, q:[
+["ayer → …","Pretérito Indefinido","Pretérito Perfecto","«вчора» — закінчений день"],
+["la semana pasada → …","Pretérito Indefinido","Pretérito Perfecto","«минулого тижня»"],
+["el mes pasado → …","Pretérito Indefinido","Pretérito Perfecto","«минулого місяця»"],
+["el año pasado → …","Pretérito Indefinido","Pretérito Perfecto","«минулого року»"],
+["en 2010 / en marzo → …","Pretérito Indefinido","Pretérito Perfecto","конкретна дата"],
+["una vez / un día → …","Pretérito Indefinido","Pretérito Perfecto","конкретний момент"],
+["aquel día → …","Pretérito Indefinido","Pretérito Perfecto","«того дня» — закінчений момент"],
+["Ayer fui a la oficina — переклад…","Вчора я пішов в офіс","Сьогодні я пішов в офіс","Indefinido, ayer"],
+["El año pasado trabajé mucho — переклад…","Минулого року я багато працював","Цього року я багато працював","Indefinido, конкретний рік"],
+["En 2021 trabajé en una tienda — переклад…","У 2021 я працював у магазині","Цього року я працюю в магазині","конкретна дата → Indefinido"]
+]},
+{t:"Резюме модуля 1", lv:1, q:[
+["Pretérito Perfecto будується як…","haber (presente) + participio","dίєслово + -aba/-ía","he/has/ha… + participio"],
+["Pretérito Indefinido — форма…","проста, одне слово (trabajé)","аналітична, дві частини","на відміну від Perfecto"],
+["Perfecto вживається для дій, звʼязаних із…","теперішнім (незакінчений період, досвід)","конкретною закритою датою","ключова відмінність"],
+["Indefinido вживається для дій…","завершених, без звʼязку із «зараз»","що ще тривають","ключова відмінність"],
+["hoy, esta semana, nunca, alguna vez → …","Perfecto","Indefinido","маркери Perfecto"],
+["ayer, en 2019, el mes pasado → …","Indefinido","Perfecto","маркери Indefinido"],
+["-ar → participio на …","-ado","-ido","правило"],
+["-er/-ir → participio на …","-ido","-ado","правило"],
+["Урок 24 логічно продовжує уроки 7–10 (Indefinido) і 13 (Imperfecto), додаючи…","Pretérito Perfecto","Futuro Simple","нова тема"],
+["Тема уроку 24 — професійний досвід, тому граматика й лексика поєднують…","розповідь про кар'єру з правильним вибором минулого часу","лише список професій","мета уроку"]
+]},
+{t:"Словник: професії й місця роботи", lv:1, q:[
+["el jefe / la jefa = …","начальник / начальниця","колега","базове"],
+["el empleado / la empleada = …","працівник / працівниця","клієнт","базове"],
+["el compañero de trabajo = …","колега","начальник","базове"],
+["el cliente = …","клієнт","працівник","базове"],
+["la empresa = …","компанія","фабрика","базове"],
+["la oficina = …","офіс","магазин","базове"],
+["la fábrica = …","фабрика","школа","базове"],
+["la tienda = …","магазин","лікарня","базове"],
+["el colegio / la escuela = …","школа","ресторан","синоніми"],
+["el hospital = …","лікарня","ресторан","базове"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Словник: дієслова робочого світу", lv:2, q:[
+["trabajar = …","працювати","відпочивати","базове"],
+["ganar dinero = …","заробляти гроші","витрачати гроші","базове"],
+["buscar empleo = …","шукати роботу","знайти роботу","процес пошуку"],
+["tener experiencia = …","мати досвід","не мати досвіду","базове"],
+["cambiar de trabajo = …","змінити роботу","залишити роботу назавжди","базове"],
+["contratar = …","наймати","звільняти","протилежність despedir"],
+["despedir = …","звільняти","наймати","протилежність contratar"],
+["enviar el currículum = …","надіслати резюме","отримати резюме","базове"],
+["hacer prácticas = …","проходити стажування","керувати компанією","базове"],
+["dirigir un equipo = …","керувати командою","бути частиною команди без керівництва","базове"]
+]},
+{t:"Словник: вирази про роботу", lv:2, q:[
+["Estoy buscando trabajo — переклад…","Я шукаю роботу","Я знайшов роботу","з книги"],
+["He trabajado como camarero — переклад…","Я працював офіціантом","Я працюю офіціантом зараз","з книги, Perfecto"],
+["Trabajé en una empresa internacional — переклад…","Я працював у міжнародній компанії (закінчено)","Я працюю в міжнародній компанії","з книги, Indefinido"],
+["Tengo experiencia en ventas — переклад…","Маю досвід у продажах","Не маю досвіду в продажах","з книги"],
+["He aprendido mucho en mi último trabajo — переклад…","Я багато навчився на останній роботі","Я нічого не навчився","з книги, Perfecto"],
+["Dejé mi trabajo el año pasado — переклад…","Я залишив роботу минулого року","Я залишу роботу наступного року","з книги, Indefinido"],
+["Ahora trabajo por mi cuenta — переклад…","Зараз я працюю на себе (самозайнятий)","Зараз я працюю на компанію","з книги"],
+["asistir a reuniones = …","відвідувати збори","пропускати збори","базове"],
+["hacer horas extra = …","працювати понаднормово","працювати менше норми","базове"],
+["conseguir un trabajo = …","отримати роботу","втратити роботу","базове"]
+]},
+{t:"Вправа 1 з книги: Perfecto чи Indefinido", lv:2, q:[
+["Yo ___ (trabajar) en una tienda el año pasado.","trabajé","he trabajado","el año pasado → Indefinido"],
+["Este año ___ (tener) una entrevista en inglés.","he tenido","tuve","este año → Perfecto"],
+["En 2018 ___ (empezar) mi primer trabajo.","empecé","he empezado","en 2018 → Indefinido"],
+["Últimamente ___ (mejorar) mi español.","he mejorado","mejoré","últimamente → Perfecto"],
+["Ayer ___ (enviar) el currículum a tres empresas.","envié","he enviado","ayer → Indefinido"],
+["Nunca ___ (trabajar) en el extranjero.","he trabajado","trabajé","nunca → Perfecto (досвід)"],
+["En 2020 ___ (cambiar) de trabajo.","cambié","he cambiado","en 2020 → Indefinido"],
+["Esta semana ___ (recibir) una oferta nueva.","he recibido","recibí","esta semana → Perfecto"],
+["Hace dos años ___ (conocer) a mi jefe actual.","conocí","he conocido","hace dos años → Indefinido"],
+["Hoy ___ (terminar) un proyecto importante.","he terminado","terminé","hoy → Perfecto"]
+]},
+{t:"Вправа 2 з книги: виправ помилки", lv:2, q:[
+["He trabajado en 2018 en una tienda. → правильно:","Trabajé en 2018 en una tienda.","He trabajaba en 2018 en una tienda.","дата → Indefinido"],
+["Trabajé este mes en una oficina. → правильно:","He trabajado este mes en una oficina.","Trabajaba este mes en una oficina.","este mes → Perfecto"],
+["He comí ayer con mis compañeros. → правильно:","Comí ayer con mis compañeros.","He comido ayer con mis compañeros.","ayer → просто Indefinido, без he!"],
+["Nunca trabajé en una empresa internacional. → правильно:","Nunca he trabajado en una empresa internacional.","Nunca trabajaba en una empresa internacional.","nunca (досвід) → Perfecto"],
+["Trabajé ya en tres restaurantes. → правильно:","He trabajado ya en tres restaurantes.","Trabajaba ya en tres restaurantes.","ya (досвід до тепер) → Perfecto"],
+["Ключова помилка у прикладі 1:","дата 2018 вимагає Indefinido, не Perfecto","все було правильно","конкретний рік"],
+["Ключова помилка у прикладі 3:","«he comí» — це змішання двох форм (he + дієвідмінена форма, а не participio)","все було правильно","граматична плутанина"],
+["Ключова помилка у прикладі 4:","nunca (досвід) типово вимагає Perfecto","все було правильно","часовий маркер"],
+["Ця вправа вчить розпізнавати…","невідповідність часового маркера і дієслівної форми","рід іменника","мета вправи 2"],
+["Виправлення таких помилок допомагає закріпити…","різницю Perfecto/Indefinido","минулий незакінчений час","підсумок"]
+]},
+{t:"Perfecto/Indefinido: питання-відповіді", lv:2, q:[
+["¿Has trabajado alguna vez en el extranjero? — …","Sí, he trabajado en Francia.","Sí, trabajé en Francia el año pasado nunca.","alguna vez → Perfecto"],
+["¿Cuándo empezaste tu primer trabajo? — …","Empecé en 2015.","He empezado en 2015.","cuándo + дата → Indefinido"],
+["¿Qué has hecho hoy en el trabajo? — …","He terminado un proyecto importante.","Terminé un proyecto importante hoy ya.","hoy → Perfecto"],
+["¿Dónde trabajaste el año pasado? — …","Trabajé en una tienda.","He trabajado en una tienda el año pasado.","el año pasado → Indefinido"],
+["¿Has enviado ya el currículum? — …","Sí, lo he enviado esta mañana.","Sí, lo envié esta mañana ya mismo.","esta mañana (сьогодні) → Perfecto"],
+["¿Cuántos años trabajaste en esa empresa? — …","Trabajé allí cinco años.","He trabajado allí cinco años ya en total.","закінчений період → Indefinido"],
+["¿Has tenido muchas entrevistas últimamente? — …","Sí, he tenido tres esta semana.","Sí, tuve tres esta semana ya antes.","últimamente/esta semana → Perfecto"],
+["¿Cuándo conociste a tu jefe actual? — …","Lo conocí hace dos años.","Lo he conocido hace dos años ya.","hace + час конкретний → Indefinido"],
+["Ця вправа тренує…","розпізнавання часу за питанням і відповідне дієслово","лише словник професій","практика вибору часу"],
+["Питання з cuándo (коли, конкретно) частіше очікують відповідь у…","Indefinido","Perfecto","логіка питання"]
+]},
+{t:"Текст: De camarero a diseñador (1)", lv:2, q:[
+["Cuando tenía veinte años, ___ (trabajar) en un pequeño restaurante.","trabajé","he trabajado","конкретний період у минулому, Indefinido"],
+["No era mi trabajo soñado, pero fue una buena escuela — переклад…","Це не була робота мрії, але це була добра школа","Це була робота мрії","з тексту"],
+["Aprendí a ser responsable — переклад…","Я навчився бути відповідальним","Я забув бути відповідальним","з тексту, Indefinido"],
+["Cada día empezaba temprano, servía cafés — часова форма (empezaba, servía):","Pretérito Imperfecto (звичка в минулому)","Pretérito Perfecto","повторювана дія в минулому"],
+["A veces terminaba cansado, pero siempre con una sonrisa — переклад «sonrisa»…","усмішка","сум","з тексту"],
+["Después de dos años, decidí cambiar de rumbo — переклад «rumbo»…","напрямок (курс)","гроші","переносне значення"],
+["Siempre me había gustado dibujar — ця форма (había gustado) — це…","Pluscuamperfecto (ще передминулий час)","Presente","нова форма для контексту, не з основної граматики уроку"],
+["empecé a estudiar diseño gráfico por las tardes — форма empecé:","Pretérito Indefinido","Pretérito Perfecto","конкретний момент рішення"],
+["Durante el día trabajaba y por la noche estudiaba — це опис…","паралельних звичок у минулому (Imperfecto)","одноразової дії","звичний розпорядок"],
+["conseguí una beca y terminé mis estudios — форма conseguí/terminé:","Pretérito Indefinido","Pretérito Perfecto","завершені конкретні досягнення"]
+]},
+{t:"Текст: De camarero a diseñador (2)", lv:2, q:[
+["Desde entonces, he trabajado en varios lugares — форма he trabajado, бо…","йдеться про досвід до сьогодні (desde entonces)","йдеться про конкретну дату","Perfecto для досвіду"],
+["He colaborado con marcas internacionales — переклад…","Я співпрацював з міжнародними брендами","Я ніколи не працював з брендами","Perfecto, досвід"],
+["he aprendido a usar programas de inteligencia artificial — переклад…","я навчився користуватися програмами штучного інтелекту","я забув, як користуватися програмами","Perfecto"],
+["Este año he abierto mi propio estudio online — форма he abierto, бо…","este año — період, що ще триває","рік уже закінчився","часовий маркер este año"],
+["Lo mejor de mi trabajo actual es la libertad — переклад…","Найкраще в моїй теперішній роботі — це свобода","Найгірше в роботі — це графік","з тексту"],
+["A veces he tenido semanas muy estresantes — форма he tenido…","Perfecto, бо йдеться про період до тепер","Indefinido, бо це один конкретний день","загальний досвід за період"],
+["En estos años he crecido profesionalmente — переклад…","За ці роки я виріс професійно","За ці роки я нічого не досяг","Perfecto, підсумок періоду"],
+["Ya no trabajo solo por dinero, sino porque me gusta lo que hago — головна ідея…","робота стала покликанням, не лише заробітком","гроші — єдина мотивація","фінал тексту"],
+["Miro atrás y sonrío — переклад…","Озираюся назад і посміхаюся","Дивлюся вперед зі страхом","підсумок тексту"],
+["Todo comenzó sirviendo cafés — форма comenzó:","Pretérito Indefinido (початок історії, конкретний момент)","Pretérito Perfecto","початкова точка кар'єри"]
+]},
+{t:"Питання до тексту", lv:2, q:[
+["¿Dónde trabajó el protagonista cuando tenía veinte años?","En un pequeño restaurante en Madrid","En una empresa de moda","з тексту"],
+["¿Qué aprendió en ese primer trabajo?","A ser responsable y trabajar en equipo","A programar","з тексту"],
+["¿Por qué decidió cambiar de rumbo?","Porque siempre le había gustado dibujar","Porque odiaba trabajar","з тексту"],
+["¿Qué estudió y cómo organizaba su tiempo?","Diseño gráfico; trabajaba de día y estudiaba de noche","Marketing; solo estudiaba","з тексту"],
+["¿Qué consiguió gracias a su esfuerzo?","Una beca y terminó sus estudios con buenas notas","Un coche nuevo","з тексту"],
+["¿Dónde ha trabajado después de terminar sus estudios?","En una agencia de publicidad, una empresa de moda y como freelance","Solo en un restaurante","з тексту"],
+["¿Qué hace actualmente?","Tiene su propio estudio de diseño online","Trabaja de camarero todavía","з тексту"],
+["¿Qué ventajas tiene su trabajo actual?","Libertad para organizar su tiempo y elegir proyectos","Un sueldo fijo muy alto solamente","з тексту"],
+["¿Qué valores ha aprendido durante su experiencia profesional?","El valor del esfuerzo y la paciencia","Nada en especial","з тексту"],
+["¿Qué reflexión hace al final del texto?","Que todo comenzó sirviendo cafés y ahora vive de su creatividad","Que se arrepiente de todo","з тексту"]
+]},
+{t:"Perfecto vs Indefinido: таблиця ситуацій", lv:2, q:[
+["Acción con tiempo no terminado (este mes) → …","Pretérito Perfecto","Pretérito Indefinido","з таблиці"],
+["El mes pasado trabajé mucho — приклад…","tiempo terminado (Indefinido)","tiempo no terminado (Perfecto)","з таблиці"],
+["Experiencia general (he trabajado en marketing) → …","Pretérito Perfecto","Pretérito Indefinido","з таблиці"],
+["Momento concreto del pasado (en 2021 trabajé…) → …","Pretérito Indefinido","Pretérito Perfecto","з таблиці"],
+["Resultado visible hoy (he aprendido mucho) → …","Pretérito Perfecto","Pretérito Indefinido","з таблиці"],
+["Acción ya cerrada (ayer fui a la oficina) → …","Pretérito Indefinido","Pretérito Perfecto","з таблиці"],
+["«He aprendido mucho» показує результат, який…","відчутний зараз","стосується лише минулого","logика Perfecto"],
+["«Ayer fui a la oficina» — це дія…","закрита, конкретний день","що триває й досі","Indefinido"],
+["Таблиця з книги допомагає…","візуально систематизувати вибір часу","запам'ятати дієвідмінювання","мета таблиці"],
+["Ключове питання для вибору часу: чи період/дія…","ще «відкриті» психологічно для мовця, чи вже «закриті»","чоловічого чи жіночого роду","підсумок теми"]
+]},
+{t:"Словник поглиблено: CV і співбесіда", lv:2, q:[
+["el currículum = …","резюме","контракт","базове"],
+["la entrevista (de trabajo) = …","співбесіда","розмова по телефону","базове"],
+["la oferta (de trabajo) = …","пропозиція роботи","замовлення в ресторані","базове"],
+["el sueldo / el salario = …","зарплата","премія","синоніми"],
+["el contrato = …","контракт","резюме","базове"],
+["freelance = …","фрилансер, незалежний працівник","працівник фабрики","англіцизм, вживається і в іспанській"],
+["trabajar por cuenta propia = …","працювати на себе (самозайнятість)","працювати в компанії","з тексту"],
+["la beca = …","стипендія / грант","зарплата","з тексту"],
+["colaborar con = …","співпрацювати з","конкурувати з","з тексту"],
+["el ambiente de trabajo = …","робоча атмосфера","робоче приміщення буквально","з культ. нотаток"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки", lv:3, q:[
+["❌ He trabajado en 2018 → ✅ …","Trabajé en 2018.","He trabajé en 2018.","конкретна дата → Indefinido!"],
+["❌ Trabajé este mes → ✅ …","He trabajado este mes.","He trabajé este mes.","este mes ще триває → Perfecto!"],
+["❌ He comí ayer → ✅ …","Comí ayer.","He comido ayer ya.","ayer → просто Indefinido!"],
+["❌ Nunca trabajé en el extranjero (маючи на увазі досвід) → природніше ✅ …","Nunca he trabajado en el extranjero.","Nunca he trabajé en el extranjero.","досвід → Perfecto"],
+["❌ He trabajaba mucho → ✅ …","He trabajado mucho.","Trabajaba he mucho.","participio, не Imperfecto після he!"],
+["❌ Yo ha trabajado → ✅ …","Yo he trabajado.","Yo has trabajado.","he для yo, не ha!"],
+["❌ Ellos han trabajaron → ✅ …","Ellos han trabajado.","Ellos ha trabajaron.","participio після han, не Indefinido!"],
+["❌ No he not trabajado (калька з англ.) → ✅ …","No he trabajado.","No not he trabajado.","просте іспанське заперечення no!"],
+["❌ He trabajado la semana pasada → ✅ …","Trabajé la semana pasada.","He trabajé la semana pasada.","la semana pasada → Indefinido!"],
+["❌ Trabajaron ayer ellos mismos ya antes (зайве) → простіше ✅ …","Ellos trabajaron ayer.","однаково довге речення","стилістична економія"]
+]},
+{t:"Культура: la experiencia vale más que los títulos", lv:3, q:[
+["В іспанських резюме типово писати…","«He trabajado en…», навіть якщо робота була тимчасовою","лише офіційні дипломи","з культ. нотаток"],
+["Найбільше цінується…","ставлення, відповідальність і комунікація","лише диплом престижного університету","з культ. нотаток"],
+["«La experiencia vale más que los títulos» означає…","досвід цінніший за формальні звання/дипломи","дипломи важливіші за досвід","дослівний переклад"],
+["Це культурне спостереження пояснює, чому текст уроку описує кар'єру, що почалася з…","роботи офіціантом (без формальної освіти в дизайні спочатку)","одразу престижної посади","з тексту уроку"],
+["Компанії в Іспанії, згідно з нотатками, цінують…","«soft skills» (ставлення, комунікацію) поряд з досвідом","лише формальні сертифікати","з культ. нотаток"],
+["Ця культурна риса корисна знати, готуючи…","резюме та історію кар'єри іспанською","лише граматичні вправи","практичне застосування"],
+["У світлі цієї норми фраза «He trabajado en un restaurante» у резюме — це…","цілком гідний досвід, який варто вказати","те, що краще приховати","культурна порада"],
+["Підсумок: іспанський підхід до резюме більш…","орієнтований на реальний досвід і особисті якості","орієнтований виключно на дипломи","головний висновок"],
+["Ключове слово нотатки — actitud, що означає…","ставлення","заголовок","термін з нотаток"],
+["Це узгоджується з текстом уроку, де протагоніст…","почав з простої роботи і виріс завдяки зусиллям","одразу отримав ідеальну роботу","паралель тексту й культури"]
+]},
+{t:"Культура: робочий графік і атмосфера", lv:3, q:[
+["Багато іспанців працюють з…","9:00 до 19:00","8:00 до 16:00 без перерви","з культ. нотаток"],
+["Перерва на обід зазвичай триває…","2–3 години","15 хвилин","«pausas sagradas» — священні паузи"],
+["«Horarios largos, pero pausas sagradas» означає…","довгий робочий день, але недоторкані перерви","короткий робочий день без перерв","з культ. нотаток"],
+["Робота в Іспанії описується як дуже…","соціальна (social)","ізольована","з культ. нотаток"],
+["У багатьох офісах люди…","розмовляють, жартують і п'ють каву разом","працюють у повній тиші завжди","з культ. нотаток"],
+["Атмосфера на роботі зазвичай…","тепла й людяна (cercano y humano)","формальна й дистанційна","з культ. нотаток"],
+["Довга перерва на обід культурно повʼязана з…","традицією не поспішати з їжею (як в уроці 23!)","відсутністю роботи","логічний звʼязок з попереднім уроком"],
+["Розуміння цієї культури допомагає при…","переїзді або роботі в Іспанії","лише складанні іспиту","практична мета"],
+["Соціальний аспект роботи означає, що колеги часто стають…","майже друзями","суто формальними контактами","культурна риса"],
+["Підсумок культурних нотаток уроку 24:","досвід і людяність цінуються понад формальності","формальності найважливіші","головний висновок"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Я працював у Мадриді у 2019»","Trabajé en Madrid en 2019.","He trabajado en Madrid en 2019.","конкретна дата → Indefinido"],
+["«Цього року я змінив роботу»","Este año he cambiado de trabajo.","Este año cambié de trabajo ya.","este año → Perfecto"],
+["«Я ніколи не працював за кордоном»","Nunca he trabajado en el extranjero.","Nunca trabajé en el extranjero ya.","досвід → Perfecto"],
+["«Вчора я надіслав резюме»","Ayer envié el currículum.","Ayer he enviado el currículum.","ayer → Indefinido"],
+["«Останнім часом я покращив свою іспанську»","Últimamente he mejorado mi español.","Últimamente mejoré mi español.","últimamente → Perfecto"],
+["«У 2020 я змінив роботу»","En 2020 cambié de trabajo.","En 2020 he cambiado de trabajo.","конкретна дата → Indefinido"],
+["«Сьогодні я закінчив важливий проєкт»","Hoy he terminado un proyecto importante.","Hoy terminé un proyecto importante ya.","hoy → Perfecto"],
+["«Два роки тому я познайомився зі своїм начальником»","Hace dos años conocí a mi jefe.","Hace dos años he conocido a mi jefe.","hace dos años → Indefinido"],
+["«Я багато навчився на останній роботі»","He aprendido mucho en mi último trabajo.","Aprendí mucho en mi último trabajo ya ahora.","досвід, звʼязок з теперішнім → Perfecto"],
+["«Він працював учителем три роки» (закінчено)","Trabajó como profesor durante tres años.","Ha trabajado como profesor durante tres años ya.","закінчений період → Indefinido"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«He trabajado este mes» — …","правильно ✓","помилка","✓ este mes → Perfecto"],
+["«He trabajado en 2018» — …","помилка (Trabajé)","правильно","дата → Indefinido"],
+["«Trabajé la semana pasada» — …","правильно ✓","помилка","✓"],
+["«He trabajado la semana pasada» — …","помилка (Trabajé)","правильно","la semana pasada → Indefinido"],
+["«Nunca he comido paella» — …","правильно ✓","помилка","✓ досвід → Perfecto"],
+["«Nunca comí paella» (маючи на увазі досвід) — …","зазвичай гірше, краще he comido","завжди правильно і природно","досвід типово Perfecto"],
+["«Ayer fui a la oficina» — …","правильно ✓","помилка","✓"],
+["«Ayer he ido a la oficina» — …","помилка (fui)","правильно","ayer → Indefinido"],
+["«Este año he tenido una entrevista» — …","правильно ✓","помилка","✓"],
+["«Este año tuve una entrevista» — …","зазвичай гірше, краще he tenido","завжди правильно","este año ще триває → Perfecto"]
+]},
+{t:"Виправ помилки: поглиблена практика", lv:3, q:[
+["He trabajado el año pasado en Londres. → правильно:","Trabajé el año pasado en Londres.","Trabajaba el año pasado en Londres.","дата → Indefinido"],
+["Empezé mi carrera hace diez años. → правильно (орфографія + час):","Empecé mi carrera hace diez años.","He empecé mi carrera hace diez años.","empecé, не empezé; hace diez años → Indefinido"],
+["Este mes trabajé quince días. → природніше:","Este mes he trabajado quince días.","Este mes trabajaba quince días.","este mes ще триває → Perfecto"],
+["He conocido a mi jefe en 2015. → правильно:","Conocí a mi jefe en 2015.","He conocí a mi jefe en 2015.","конкретний рік → Indefinido"],
+["Siempre trabajé mucho (маючи на увазі загальний досвід усього життя) → природніше:","Siempre he trabajado mucho.","Siempre trabajaba mucho ya.","загальний досвід до сьогодні → Perfecto"],
+["Esta semana trabajé cuarenta horas. → природніше:","Esta semana he trabajado cuarenta horas.","Esta semana trabajaba cuarenta horas.","esta semana ще триває → Perfecto"],
+["Ha trabajado allí en 2010. → правильно:","Trabajó allí en 2010.","Trabajaba allí en 2010 mismo.","конкретний рік → Indefinido"],
+["Типова помилка — вживати Perfecto з конкретною минулою датою:","так, найпоширеніша помилка теми","ні, це рідкісна помилка","підсумок вправи"],
+["Друга типова помилка — вживати Indefinido, коли період (este mes, hoy) ще…","триває","закінчився","логіка помилки"],
+["Головне правило для уникнення обох помилок:","перевіряти часовий маркер перед вибором форми","запам'ятати всі форми напам'ять без логіки","практична стратегія"]
+]},
+{t:"Побудуй речення логічно", lv:3, q:[
+["Цього тижня я мав дві співбесіди →","Esta semana he tenido dos entrevistas.","Esta semana tuve dos entrevistas ya.","esta semana → Perfecto"],
+["Минулого року я змінив професію →","El año pasado cambié de profesión.","El año pasado he cambiado de profesión.","el año pasado → Indefinido"],
+["Я ніколи не працював у фабриці →","Nunca he trabajado en una fábrica.","Nunca trabajé en una fábrica ya.","досвід → Perfecto"],
+["У 2015 я почав свою першу роботу →","En 2015 empecé mi primer trabajo.","En 2015 he empezado mi primer trabajo.","дата → Indefinido"],
+["Останнім часом я отримав кілька пропозицій роботи →","Últimamente he recibido varias ofertas de trabajo.","Últimamente recibí varias ofertas de trabajo.","últimamente → Perfecto"],
+["Вчора начальник провів зустріч →","Ayer el jefe tuvo una reunión.","Ayer el jefe ha tenido una reunión.","ayer → Indefinido"],
+["Сьогодні я відправив три резюме →","Hoy he enviado tres currículums.","Hoy envié tres currículums ya hoy.","hoy → Perfecto"],
+["Два роки тому я закінчив університет →","Hace dos años terminé la universidad.","Hace dos años he terminado la universidad.","hace dos años → Indefinido"],
+["Я багато навчився за ці роки →","He aprendido mucho en estos años.","Aprendí mucho en estos años ya.","досвід періоду до тепер → Perfecto"],
+["Того дня я отримав першу зарплату →","Aquel día recibí mi primer sueldo.","Aquel día he recibido mi primer sueldo.","aquel día → Indefinido"]
+]},
+{t:"CV vocabulario: практика", lv:3, q:[
+["«Маю п'ятирічний досвід у продажах» = Tengo cinco años de ___ en ventas.","experiencia","currículum","базове"],
+["«Надіслав резюме на три вакансії» = Envié ___ a tres ofertas.","el currículum","la entrevista","резюме"],
+["«У мене співбесіда завтра» = Tengo ___ mañana.","una entrevista","un contrato","базове"],
+["«Компанія найняла п'ятьох нових працівників» = La empresa ___ a cinco empleados nuevos.","contrató","despidió","contratar ≠ despedir"],
+["«Він керує командою з десяти осіб» = Él ___ un equipo de diez personas.","dirige","asiste","dirigir"],
+["«Я працюю на себе» = Trabajo ___.","por mi cuenta","por su cuenta","freelance"],
+["«Отримав стипендію на навчання» = Conseguí ___ para estudiar.","una beca","un sueldo","з тексту"],
+["«У мене підписаний контракт на рік» = Tengo ___ firmado por un año.","un contrato","un currículum","базове"],
+["«Компанія пропонує хорошу зарплату» = La empresa ofrece un buen ___.","sueldo","cliente","базове"],
+["«Проходжу стажування в лікарні» = Estoy haciendo ___ en un hospital.","prácticas","reuniones","hacer prácticas"]
+]},
+{t:"«Mi primer trabajo» (домашка)", lv:3, q:[
+["Mi primer trabajo ___ (ser) en una tienda pequeña.","fue","ha sido","конкретна завершена подія → Indefinido"],
+["___ (aprender) mucho sobre el servicio al cliente.","Aprendí","He aprendido","з домашки, конкретний період"],
+["Desde entonces, ___ (trabajar) en varios lugares.","he trabajado","trabajé","desde entonces → Perfecto, досвід"],
+["Для домашки: описати «Mi primer trabajo» — що це було, чого навчився і…","що запам'яталося","скільки грошей заробив тільки","з підручника"],
+["Друге завдання — створити mini CV з досвідом роботи, який може бути…","реальним або вигаданим","лише реальним","з підручника"],
+["Фраза для роздумів: «El trabajo no solo da dinero, también enseña quién ___».","eres","es","з підручника, цитата"],
+["У mini CV варто використати структуру…","he trabajado como… / trabajé en…","лише Presente","поєднання обох часів"],
+["Приклад із тексту для натхнення: «Todo comenzó sirviendo cafés» — форма comenzó:","Pretérito Indefinido","Pretérito Perfecto","початок історії"],
+["Мета домашки уроку 24 — практика…","Perfecto/Indefinido у розповіді про кар'єру","минулого незакінченого часу","підсумок"],
+["Los deberes уроку 24 завершуються, як завжди,…","тестовим завданням (link test)","усним іспитом","стандартна структура"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["He trabajado en varios países — форма для…","досвіду, звʼязаного з теперішнім","конкретної минулої дати","Perfecto"],
+["Trabajé en 2019 en Madrid — форма для…","конкретного завершеного моменту","незакінченого періоду","Indefinido"],
+["hoy, esta semana, este año → …","Pretérito Perfecto","Pretérito Indefinido","незакінчені періоди"],
+["ayer, el año pasado, en 2010 → …","Pretérito Indefinido","Pretérito Perfecto","закінчені моменти"],
+["❌ He trabajado en 2018 → ✅ …","Trabajé en 2018.","обидва варіанти правильні","типова помилка"],
+["participio для -AR: trabajar → …","trabajado","trabajido","-ado"],
+["participio для -ER/-IR: comer/vivir → …","comido / vivido","comado / vivado","-ido"],
+["la experiencia vale más que los títulos — головна ідея…","досвід цінніший за дипломи","дипломи найважливіші","з культ. нотаток"],
+["Robota в Іспанії описується як дуже…","соціальна, з довгими перервами","ізольована, без перерв","з культ. нотаток"],
+["Урок 24 готово! En estos meses ___ (aprender) mucho español. 🎓","he aprendido","aprendí","Perfecto, період до тепер"]
+]}
+
+];
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "MI TRABAJO: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 24 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

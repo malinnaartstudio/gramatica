@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 11 · Los indefinidos · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 11 · @malinnaartstudio</div>
+    <h1 id="htitle">INDEFINIDOS: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 11 · Los indefinidos.</b>
+      30 вправ по 10 питань: algo/nada, alguien/nadie, alguno/ninguno, todo el mundo,
+      подвійне заперечення, словник шопінгу (rebajas, ganga, datáfono) і день покупок. Від ★ до ★★★. ¡Nadie te puede parar! 🛍️
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · займенники й словник</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · текст і вправи книги</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й помилки</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 11</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Основи: alguien, nadie, algo, nada", lv:1, q:[
+["alguien = …","хтось","щось","особа"],
+["nadie = …","ніхто","нічого","особа"],
+["algo = …","щось","хтось","річ"],
+["nada = …","нічого","ніхто","річ"],
+["___ llamó a la puerta. (хтось)","Alguien","Algo","з книги"],
+["No hay ___ en casa. (нікого)","nadie","nada","особа"],
+["He oído ___, pero no estoy seguro.","algo","alguien","з книги"],
+["No he comido ___ hoy.","nada","nadie","з книги"],
+["alguien/nadie — лише для…","осіб","речей","з книги"],
+["algo/nada — лише для…","речей","осіб","з книги"]
+]},
+{t:"ALGUNO / NINGUNO та апокопа", lv:1, q:[
+["¿Tienes ___ libro?","algún","alguno","з книги: апокопа"],
+["No tengo ___ libro.","ningún","ninguno","з книги"],
+["— ¿Te gusta alguno? — No, no me gusta ___.","ninguno","ningún","без іменника"],
+["alguno перед чол. одн. → …","algún","alguna","апокопа"],
+["ninguno перед чол. одн. → …","ningún","ninguna","апокопа"],
+["___ personas compran online. (деякі)","Algunas","Algunos","personas → жін."],
+["alguno/ninguno узгоджуються в…","роді й числі","лише числі","з книги"],
+["¿Hay ___ farmacia cerca?","alguna","algún","farmacia → жін."],
+["No veo ___ oferta buena.","ninguna","ningún","oferta → жін."],
+["algunos de mis amigos = …","деякі з моїх друзів","усі мої друзі","частина"]
+]},
+{t:"TODO, TODOS, TODO EL MUNDO", lv:1, q:[
+["___ está en orden. (усе)","Todo","Todos","з книги"],
+["___ el mundo busca ofertas. (усі)","Todo","Todos","todo el mundo!"],
+["todo el mundo означає…","усі (люди)","весь світ буквально","з культ. нотаток"],
+["___ mis amigos vinieron. (усі)","Todos","Todo","мн."],
+["___ las tiendas están abiertas.","Todas","Todos","жін. мн."],
+["todo el mundo + дієслово в…","однині","множині","está, busca"],
+["«Усе добре» = ___ bien.","Todo","Todos","загал"],
+["todos/todas = …","усі","дехто","totalidad"],
+["Todo el mundo ___ aquí.","está","están","однина!"],
+["«весь день» = ___ el día","todo","todos","одн."]
+]},
+{t:"ALGO DE / NADA DE + іменник", lv:1, q:[
+["Queda ___ de leche.","algo","nada","з книги: трохи є"],
+["No hace ___ de frío.","nada","algo","з книги: зовсім не"],
+["algo de + іменник = …","трохи, якась кількість","нічого","з книги"],
+["nada de + іменник = …","зовсім нічого","трохи","повне заперечення"],
+["¿Queda ___ de pan?","algo","alguien","з культ. нотаток!"],
+["No tengo ___ de tiempo.","nada","nadie","зовсім нема часу"],
+["¿Quieres ___ de agua?","algo","alguna","трохи води 💧"],
+["algo de найчастіше вживають про…","їжу","людей","з культ. нотаток"],
+["No sé ___ de eso.","nada","nadie","річ"],
+["«трохи молока» = ___ leche","algo de","alguien de","algo de"]
+]},
+{t:"Ствердження ↔ заперечення", lv:1, q:[
+["alguien ↔ …","nadie","nada","особа"],
+["algo ↔ …","nada","nadie","річ"],
+["alguno ↔ …","ninguno","nadie","узгоджувані"],
+["Hay alguien en casa ↔ No hay ___ en casa.","nadie","alguien","пара"],
+["Tengo algo ↔ No tengo ___.","nada","algo","пара"],
+["Alguien me llamó ↔ ___ me llamó.","Nadie","Nada","особа"],
+["¿Compraste algo? — No, ___.","nada","nadie","річ"],
+["¿Vino alguien? — No, ___.","nadie","ninguno","особа"],
+["Algún día ↔ ___ día","ningún","ninguna","апокопа"],
+["Todo ↔ …","nada","nadie","все ↔ ніщо"]
+]},
+{t:"Словник: магазини", lv:1, q:[
+["la zapatería = …","взуттєвий магазин","сапоги-скороходи","zapatos"],
+["la joyería = …","ювелірний","магазин іграшок","💍"],
+["la librería = …","книгарня","бібліотека","фальшивий друг!"],
+["la papelería = …","канцтовари","фабрика паперу","✏️"],
+["el estanco = …","тютюновий кіоск","ставок","іспанська реалія"],
+["la panadería = …","пекарня","панамський магазин","🥖"],
+["la frutería = …","фруктово-овочевий","фритюрниця","🍎"],
+["la perfumería = …","парфумерія","пральня","🌸"],
+["el centro comercial = …","торговий центр","центр міста","🏬"],
+["la farmacia = …","аптека","ферма","💊"]
+]},
+{t:"Словник: одяг і покупки", lv:1, q:[
+["la talla = …","розмір (одягу)","талія","з тексту"],
+["el probador = …","примірочна","дегустатор","🚪"],
+["las rebajas = …","знижки","штрафи","🏷️"],
+["una ganga = …","вигідна покупка","банда","з книги"],
+["el escaparate = …","вітрина","шафа для втечі","👀"],
+["devolver = …","повернути (товар)","обертатися","з книги"],
+["cambiar = …","обміняти","замовкнути","заміна"],
+["el recibo = …","чек","прийом","доказ покупки"],
+["la etiqueta = …","етикетка","етикет","на ній ціна"],
+["el abrigo = …","пальто","абрикос","🧥"]
+]},
+{t:"Словник: оплата", lv:1, q:[
+["pagar en efectivo = …","платити готівкою","платити ефективно","💵"],
+["pagar con tarjeta = …","платити карткою","платити листівкою","💳"],
+["el cambio = …","решта","камбіо-бар","здача"],
+["la caja = …","каса","коробка передач","до каси!"],
+["el cajero / la cajera = …","касир / касирка","шухляда","людина"],
+["el importe / el total = …","сума","імпорт","до сплати"],
+["el código PIN = …","PIN-код","код сосни","🔢"],
+["el datáfono = …","термінал для оплати","дата телефоном","з тексту!"],
+["hacer una devolución = …","зробити повернення","зробити революцію","↩️"],
+["hacer una reclamación = …","подати скаргу","зробити рекламу","з книги"]
+]},
+{t:"Подвійне заперечення", lv:1, q:[
+["No hay ___ en casa.","nadie","alguien","no + nadie"],
+["Подвійне заперечення в іспанській — …","норма","груба помилка","no…nadie ✓"],
+["No compré ___.","nada","algo","no + nada"],
+["Якщо nadie ПЕРЕД дієсловом → …","без no","з no","Nadie vino"],
+["___ nos atendió al principio. (з тексту)","Nadie","No nadie","на початку — без no"],
+["___ vino a la fiesta. (ніхто)","Nadie","No nadie","без no"],
+["No vi a ___.","nadie","alguien","заперечення"],
+["No encontré ___ abrigo.","ningún","algún","з вправи книги"],
+["No quiero ___ más.","nada","algo","з вправи книги"],
+["«Я нічого не знаю» = No sé ___.","nada","algo","no…nada"]
+]},
+{t:"Особа чи річ?", lv:1, q:[
+["alguien — про…","особу","річ","хтось"],
+["nada — про…","річ","особу","ніщо"],
+["nadie — про…","особу","річ","ніхто"],
+["algo — про…","річ","особу","щось"],
+["alguno — може бути про…","осіб і речі","лише речі","algún libro, alguno de ellos"],
+["todo el mundo — про…","осіб","планету","усі"],
+["«Хтось щось сказав» = ___ dijo ___.","Alguien / algo","Algo / alguien","порядок!"],
+["ninguna — рід…","жіночий","чоловічий","-a"],
+["algunos — число…","множина","однина","-s"],
+["Indefinidos говорять про речі…","неточно, загально","дуже конкретно","з книги"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Вправа 1 з книги", lv:2, q:[
+["En la tienda no había ___ que me ayudara.","nadie","nada","з книги"],
+["¿Has visto ___ interesante en el escaparate?","algo","alguien","з книги"],
+["No quiero comprar ___ más.","nada","nadie","з книги"],
+["___ de mis amigos fue a las rebajas conmigo.","Ninguno","Ningún","без іменника"],
+["En el centro comercial había ___: familias, niños, turistas…","todo el mundo","nadie","з книги"],
+["No encontré ___ abrigo que me gustara.","ningún","ninguno","перед іменником"],
+["Hoy he visto ___ muy especial para ti.","algo","alguien","з книги"],
+["___ me saludó, pero no recuerdo quién.","Alguien","Nadie","з книги"],
+["No había ___ en la zapatería, estaba vacía.","nadie","nada","з книги"],
+["___ el mundo busca ofertas en enero.","Todo","Todos","з книги"]
+]},
+{t:"Вправа 2 з книги: трансформації", lv:2, q:[
+["Compré cosas interesantes → ❌ …","No compré nada interesante.","No compré nadie.","з книги"],
+["Hay personas en la tienda → ❌ …","No hay nadie en la tienda.","No hay nada en la tienda.","особи"],
+["No tengo libros nuevos → ✅ …","Tengo algunos libros nuevos.","Tengo nadie libros.","ствердження"],
+["Conozco a una persona simpática → ❌ …","No conozco a nadie simpático.","No conozco nada simpático.","особа"],
+["No tengo planes para hoy → ✅ …","Tengo algunos planes para hoy.","Tengo ningunos planes.","ствердження"],
+["No encontré ningún abrigo → ✅ …","Encontré algún abrigo.","Encontré ninguno abrigo.","ствердження"],
+["¿Tienes algo para mí? → ❌ …","No tengo nada para ti.","No tengo alguien para ti.","річ"],
+["No había nada en la mesa → ✅ …","Había algo en la mesa.","Había nadie en la mesa.","річ"],
+["Todos mis amigos fueron → ❌ …","Ninguno de mis amigos fue.","Nadie de mis amigos fueron.","ninguno de + одн."],
+["No saludé a ninguna persona → ✅ …","Saludé a algunas personas.","Saludé nadie.","ствердження"]
+]},
+{t:"Текст: день покупок (1)", lv:2, q:[
+["Este sábado fui al centro comercial con mi amiga ___.","Lucía","María","👭"],
+["Ella necesitaba comprar ___ de ropa.","algo","nada","з тексту"],
+["Todo el mundo buscaba ___ oferta.","alguna","ninguna","з тексту"],
+["Ya habían empezado las ___ de verano.","rebajas","rebanadas","rebanada — це скибка!"],
+["«¿Tienen esta falda en otra ___?»","talla","toalla","toalla — це рушник!"],
+["Lucía se probó varias prendas, pero ___ le gustó.","ninguna","ninguno","prenda → жін."],
+["Yo vi ___ interesante: una chaqueta.","algo","alguien","з тексту"],
+["La chaqueta estaba al 50 % de ___.","descuento","cuento","cuento — це казка 😄"],
+["«¿Desea bolsa?» — «No, gracias, tengo la ___».","mía","mío","la bolsa → mía"],
+["prenda = …","предмет одягу","подарунок","ropa"]
+]},
+{t:"Текст: день покупок (2)", lv:2, q:[
+["___ nos atendió al principio en la zapatería.","Nadie","Alguien","з тексту"],
+["«¿Puedo ___ estos zapatos?»","probarme","probarse yo","приміряти"],
+["«Están en oferta, son los ___».","últimos","ultimos","з наголосом"],
+["Al final no compré ___ más.","nada","nadie","з тексту"],
+["El ___ no funcionaba.","datáfono","teléfono","термінал!"],
+["Lucía tuvo que pagar en ___.","efectivo","tarjeta","готівка"],
+["«Puede devolverlos en ___ días».","quince","cinco","15 днів"],
+["Algunas personas tomaban ___.","helado","helada","🍦"],
+["___ parecía tener prisa.","Nadie","Nada","з тексту"],
+["Saludamos a ___ conocido.","alguien","algo","особа"]
+]},
+{t:"Питання до тексту", lv:2, q:[
+["¿Por qué fueron al centro comercial?","Lucía necesitaba ropa","Para trabajar allí","з питань"],
+["¿Qué quería mirar la narradora?","Cosas para su casa","Un coche nuevo","з тексту"],
+["¿Qué compró la narradora?","Una chaqueta con descuento","Una falda azul","50 %"],
+["V/F: Lucía encontró la falda perfecta en la primera tienda.","Falso","Verdadero","ninguna le gustó"],
+["¿Qué encontró Lucía al final?","Unos zapatos preciosos","Un abrigo de piel","👠"],
+["¿Cómo pagó Lucía?","En efectivo","Con tarjeta","датафон зламався"],
+["V/F: El centro comercial estaba vacío.","Falso","Verdadero","lleno de gente"],
+["¿Qué hicieron antes de irse?","Tomaron un café","Fueron al cine","☕"],
+["¿Gastaron mucho dinero?","No mucho","Muchísimo","з тексту"],
+["¿Hubo algo que las decepcionara?","No, nada","Sí, todo","фінал тексту"]
+]},
+{t:"Діалоги в магазині", lv:2, q:[
+["Питаєш розмір: «¿Tienen esta falda en otra ___?»","talla","tela","з тексту"],
+["Хочеш приміряти: «¿Puedo ___?»","probármelo","probarlo yo me","приміряти"],
+["«¿Dónde está el ___?» (примірочна)","probador","aprobador","🚪"],
+["Питаєш ціну: «¿Cuánto ___?»","cuesta","costa","коштує"],
+["Каса: «¿Paga en efectivo o con ___?»","tarjeta","maleta","💳"],
+["«¿Desea ___?» (пакет)","bolsa","bolso","bolsa = пакет, bolso = сумка!"],
+["Повернути: «Quiero ___ esta camiseta».","devolver","revolver","revolver = перемішувати!"],
+["«¿Tiene el ___?» (чек)","ticket","boleto de lotería","чек"],
+["Знижка: «¿Está en ___?»","oferta","apuesta","apuesta — це ставка"],
+["«Son los últimos» = …","останні (такі)","найгірші","з тексту"]
+]},
+{t:"Узгодження: рід і число", lv:2, q:[
+["___ tienda estaba abierta. (жодна)","Ninguna","Ningún","жін."],
+["¿Hay ___ problema? (якась)","algún","alguna","problema — чол.!"],
+["___ zapatos me gustan. (деякі)","Algunos","Algunas","чол. мн."],
+["No me queda bien ___ falda.","ninguna","ningún","жін."],
+["___ de ellas vino. (жодна)","Ninguna","Ninguno","жін."],
+["¿Tienes ___ pregunta?","alguna","algún","pregunta → жін."],
+["___ día te lo contaré. (колись)","Algún","Alguno","апокопа"],
+["No hay ___ camisa limpia.","ninguna","ningún","жін."],
+["___ clientes pagaron con tarjeta. (деякі)","Algunos","Alguno","мн."],
+["ningunos/ningunas майже…","не вживаються","обов'язкові","зазвичай однина"]
+]},
+{t:"Rebajas і шопінг-реалії", lv:2, q:[
+["rebajas = …","сезонні знижки","штрафи","🏷️"],
+["una ganga = …","вигідна покупка","злочинне угруповання","з книги"],
+["el escaparate = …","вітрина","шафа для валіз","👀"],
+["devolver ↔ …","cambiar","comprar","повернути / обміняти"],
+["50 % de descuento = …","половина ціни","подвійна ціна","🎉"],
+["Las rebajas de verano починаються…","в липні","в березні","з тексту: літні"],
+["«¡Es una ganga!» — річ…","дешева й класна","дорога","вигода"],
+["la etiqueta = …","етикетка","етикет","ціна на ній"],
+["Для повернення потрібен…","el ticket / el recibo","el pasaporte","чек!"],
+["mirar escaparates = …","роздивлятися вітрини","мити вікна","віконний шопінг 😄"]
+]},
+{t:"Оплата на касі", lv:2, q:[
+["Платити готівкою = pagar en ___.","efectivo","efecto","efectivo"],
+["Платити карткою = pagar con ___.","tarjeta","carta","carta — це лист!"],
+["Решта = el ___.","cambio","canje","здача"],
+["El datáfono no funcionaba → платимо…","en efectivo","con sonrisa","з тексту"],
+["PIN-код = el código ___.","PIN","pino","pino — це сосна 🌲"],
+["el importe = …","сума до сплати","імпорт","total"],
+["Касир дає…","el recibo","la receta","receta = рецепт!"],
+["Продали браковане → hago una ___.","reclamación","celebración","скарга"],
+["compra mínima = …","мінімальна сума для картки","найменша покупка життя","з книги"],
+["«¿Me cobras?» на касі = …","«порахуєш мені?»","«обіймеш мене?»","cobrar = стягувати"]
+]},
+{t:"Персональне A: a alguien, a nadie", lv:2, q:[
+["No vi a ___.","nadie","nada","a + особа"],
+["Vi a ___ conocido.","alguien","algo","особа"],
+["Перед alguien/nadie як додатком ставимо…","a","de","персональне a!"],
+["Saludamos ___ alguien conocido. (з тексту)","a","para","a"],
+["¿Conoces ___ alguien aquí?","a","con","conocer a"],
+["No conozco ___ nadie en esta ciudad.","a","de","a nadie"],
+["«Я нікого не бачив» = No vi ___.","a nadie","nadie a","порядок"],
+["Але з речами: Vi ___ interesante.","algo","a algo","без a!"],
+["Персональне a — лише для…","осіб","речей","людина = a"],
+["¿Esperas ___? (когось)","a alguien","alguien","esperar a"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки", lv:3, q:[
+["❌ No vi alguien → ✅ …","No vi a nadie.","No vi a alguien.","з культ. нотаток!"],
+["❌ Todos persona → ✅ …","Todas las personas / todo el mundo","Todos personas","з культ. нотаток!"],
+["❌ No compré algo → ✅ …","No compré nada.","No compré alguien.","заперечення → nada"],
+["❌ Nadie no vino → ✅ …","Nadie vino.","No nadie vino.","nadie попереду — без no"],
+["❌ Ninguno libro → ✅ …","Ningún libro","Ninguna libro","апокопа"],
+["❌ Hay nadie en casa → ✅ …","No hay nadie en casa.","Hay a nadie en casa.","no + nadie"],
+["❌ Alguien cosa → ✅ …","Alguna cosa / algo","Alguien de cosa","річ ≠ особа"],
+["❌ Todo el mundo están → ✅ …","Todo el mundo está","Todos el mundo está","однина!"],
+["❌ No tengo ningunos amigos → краще…","No tengo ningún amigo.","No tengo ningunas amigos.","однина"],
+["❌ ¿Has visto a algo? → ✅ …","¿Has visto algo?","¿Has visto a nada?","без a для речей"]
+]},
+{t:"Культурні нотатки", lv:3, q:[
+["Todo el mundo буквально «весь світ», а означає…","усі","планету","з культ. нотаток"],
+["Todo el mundo está aquí — дієслово в…","однині","множині","з культ. нотаток"],
+["¿Queda algo de pan? — питають про…","їжу вдома","пекарню за рогом","з культ. нотаток"],
+["algo de + їжа вживається…","дуже часто","ніколи","з культ. нотаток"],
+["El estanco продає…","тютюн, марки, квитки","естонські сувеніри","іспанська реалія!"],
+["Rebajas в Іспанії — сезони:","січень і липень","щотижня","розпродажі"],
+["У примірочній часто обмежують…","кількість речей","час дихання","prendas"],
+["«¿Le atienden?» у магазині = …","«Вас обслуговують?»","«Ви уважні?»","ввічливість"],
+["Повернення зазвичай протягом…","15–30 днів","1 року","з тексту: 15 днів"],
+["mirar escaparates — це…","безкоштовне задоволення 😄","заборонено","вітрини"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Хтось постукав у двері»","Alguien llamó a la puerta.","Algo llamó a la puerta.","з книги"],
+["«Немає нікого вдома»","No hay nadie en casa.","No hay nada en casa.","з книги"],
+["«Я сьогодні нічого не їв»","No he comido nada hoy.","No he comido nadie hoy.","з книги"],
+["«Усе в порядку»","Todo está en orden.","Todos está en orden.","з книги"],
+["«Мені не подобається жоден»","No me gusta ninguno.","No me gusta ningún.","без іменника"],
+["«Залишилося трохи молока»","Queda algo de leche.","Queda nada de leche.","з книги"],
+["«Зовсім не холодно»","No hace nada de frío.","No hace algo de frío.","з книги"],
+["«У тебе є якась книга?»","¿Tienes algún libro?","¿Tienes alguno libro?","з книги"],
+["«Я щось чув»","He oído algo.","He oído alguien.","з книги"],
+["«Ніхто не поспішав»","Nadie tenía prisa.","Nada tenía prisa.","з тексту"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«No vi a nadie» — …","правильно ✓","помилка","✓"],
+["«No vi alguien» — …","помилка (a nadie)","правильно","з книги"],
+["«¿Tienes algún libro?» — …","правильно ✓","помилка","✓"],
+["«No tengo ninguno libro» — …","помилка (ningún)","правильно","апокопа"],
+["«Todo el mundo está aquí» — …","правильно ✓","помилка","✓"],
+["«Nadie vino» — …","правильно ✓","помилка","✓"],
+["«No compré nada» — …","правильно ✓","помилка","✓"],
+["«Hay nadie aquí» — …","помилка (No hay nadie)","правильно","no!"],
+["«Algunas tiendas» — …","правильно ✓","помилка","✓"],
+["«Queda algo de leche» — …","правильно ✓","помилка","✓"]
+]},
+{t:"NINGUNO без іменника", lv:3, q:[
+["— ¿Cuál te gusta? — ___.","Ninguno","Ningún","без іменника — повна форма"],
+["— ¿Tienes algún plan? — No, ___.","ninguno","ningún","без іменника"],
+["¿Alguno de vosotros lo sabe? — ___.","Ninguno","Ningún","самостійно"],
+["No me gusta ___ de estos.","ninguno","ningún","de estos"],
+["___ de las faldas le quedó bien.","Ninguna","Ningún","faldas → жін."],
+["ningún вживається лише…","перед чол. іменником","самостійно","апокопа"],
+["ninguno вживається, коли…","іменника немає поруч","завжди","самостійне"],
+["— ¿Compraste alguna? — No, ___.","ninguna","ningún","коротко"],
+["Ninguno de mis amigos ___. (прийшов)","vino","vinieron","ninguno → однина!"],
+["ninguno de + мн. → дієслово в…","однині","множині","ninguno vino"]
+]},
+{t:"Індефініди в тексті", lv:3, q:[
+["«todo el mundo buscaba…» — todo el mundo = …","усі","весь ТЦ","з тексту"],
+["«ninguna le gustó» — ninguna про…","речі (prendas)","подруг","жін."],
+["«vi algo interesante» — algo = …","щось","хтось","річ"],
+["«Nadie nos atendió» — nadie = …","ніхто","ніщо","особа"],
+["«no compré nada más» — nada = …","нічого","ніхто","річ"],
+["«algunas personas tomaban helado» — algunas = …","деякі","усі","частина"],
+["«saludamos a alguien conocido» — alguien = …","когось","щось","особа"],
+["«compramos algunas cosas» = …","купили деякі речі","нічого не купили","ствердження"],
+["«no hubo nada que nos decepcionara» = …","ніщо не розчарувало","все розчарувало","фінал 😊"],
+["Фінальний підсумок тексту містить…","algo, alguien, algunas, nada","лише nada","питання 10 книги"]
+]},
+{t:"Повне заперечення: ni, tampoco, nunca", lv:3, q:[
+["«No compré nada, no vi a nadie» — стиль…","нормальна іспанська","подвійна помилка","заперечення множаться"],
+["No tengo ___ plan ___ idea. (ані… ані)","ningún / ninguna","algún / alguna","повне ні"],
+["ni…ni = …","ані…ані","і…і","ni pan ni leche"],
+["No quiero ni café ni té = …","не хочу ні кави, ні чаю","хочу все","ni…ni"],
+["nunca + nada разом:","No compro nunca nada.","No compro siempre nada.","можна разом!"],
+["«Ніхто ніколи нічого не знає» 😄 = Nadie sabe ___ ___.","nunca nada","siempre algo","потрійне!"],
+["tampoco = …","теж ні","теж так","заперечне «теж»"],
+["— No compré nada. — Yo ___.","tampoco","también","теж ні"],
+["también ↔ …","tampoco","nunca","пара"],
+["Що більше заперечень в іспанській…","то сильніше заперечення","то більша помилка","не як в англійській!"]
+]},
+{t:"Моя шопінг-історія", lv:3, q:[
+["El sábado fui de ___ al centro comercial.","compras","comprar","ir de compras"],
+["Busqué ___ oferta interesante.","alguna","alguien","жін."],
+["No encontré ___ en la primera tienda.","nada","nadie","річ"],
+["Pero ___ me recomendó otra tienda. (хтось)","alguien","algo","особа"],
+["Allí ___ las cosas estaban rebajadas. (усі)","todas","todos","cosas → жін."],
+["Compré ___ camisetas. (кілька)","algunas","algunos","жін."],
+["No compré ___ zapato.","ningún","ninguno","перед іменником"],
+["Pagué con ___ porque no tenía efectivo.","tarjeta","etiqueta","💳"],
+["La cajera me dio el ___.","recibo","recibidor","чек"],
+["¡Fue una ___! (вигідна покупка)","ganga","banda","🎉"]
+]},
+{t:"Ситуації в магазині", lv:3, q:[
+["Річ не підійшла → …","la devuelvo","la escondo","повернути"],
+["Хочу інший колір → …","¿Lo tienen en otro color?","¿Usted es de otro color?","модель"],
+["Термінал зламався → плачу…","en efectivo","con una sonrisa","готівка"],
+["Оплатити → йду до…","la caja","el probador","каса"],
+["Приміряти → йду в…","el probador","el escaparate","примірочна"],
+["Задорого → чекаю на…","las rebajas","el lunes para llorar","знижки"],
+["Мало готівки → питаю про…","la compra mínima con tarjeta","una reclamación","мінімалка"],
+["Продали браковане → hago una ___.","reclamación","fiesta","скарга"],
+["Дешево і класно → ¡Qué ___!","ganga","vergüenza","вигода!"],
+["Nada me queda bien → настрій…","fatal 😅","genial","життєве"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["хтось = …","alguien","algo","особа"],
+["нічого = …","nada","nadie","річ"],
+["¿Tienes ___ libro?","algún","alguno","апокопа"],
+["No vi ___ nadie.","a","de","персональне a"],
+["___ el mundo está aquí.","Todo","Todos","однина"],
+["Queda ___ de leche.","algo","nada","трохи є"],
+["— ¿Cuál te gusta? — ___.","Ninguno","Ningún","без іменника"],
+["No compré ___.","nada","algo","заперечення"],
+["una ganga = …","вигідна покупка","банда","🛍️"],
+["Урок 11 готово! ___ te puede parar. (ніхто!)","Nadie","Nada","💪"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "INDEFINIDOS: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 11 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

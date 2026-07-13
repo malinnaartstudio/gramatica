@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 18 · El futuro simple · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 18 · @malinnaartstudio</div>
+    <h1 id="htitle">FUTURO SIMPLE: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+<main>
+  <div id="home">
+    <div class="intro">
+            <b style="color:var(--rasp)">Lección 18 · El futuro simple.</b>
+      30 вправ по 10 питань: утворення (-ar/-er/-ir + é,ás,á,emos,éis,án), 10 неправильних коренів
+      (dir-, har-, podr-, pondr-, querr-, sabr-, saldr-, tendr-, vendr-, habr-), і головне — futuro
+      як план та як здогад про теперішнє. Від ★ до ★★★. ¡El futuro no está escrito! 🔮
+
+    </div>
+    <div class="legend">
+            <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · утворення, неправильні корені, здогад</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · текст, ir a + infinitivo, план vs здогад</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · типові помилки й тонкощі</span>
+
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 18</footer>
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Навіщо Futuro Simple", lv:1, q:[
+["El Futuro Simple вживається для…","планів, прогнозів, обіцянок","дій у минулому","«що я зроблю»"],
+["Mañana trabajaré desde casa — це…","план на майбутнє","здогад","приклад із книги"],
+["Futuro Simple також виражає…","припущення про теперішнє/майбутнє","минулі звички","¿Dónde está Juan? — Estará en casa"],
+["¿Dónde está Juan? – No sé, estará en casa — тут estará означає…","мабуть, він удома","він точно вдома","здогад, не факт"],
+["Ahora serán las diez — переклад…","Зараз, мабуть, десята","Зараз рівно десята","приблизність"],
+["Futuro Simple = «що я зроблю» + …","«напевно щось відбувається»","«що я вже зробив»","дві функції"],
+["El próximo año viajaré a Italia — приклад…","плану","здогаду","з книги"],
+["Головна ідея уроку 18:","один час, дві функції — план і здогад","лише плани на майбутнє","el futuro simple"],
+["Промиса (обіцянка) — теж приклад вживання…","futuro simple","pretérito","«я зроблю це завтра»"],
+["Урок 18 називається…","Futuro Simple","Pretérito Imperfecto","з підручника"]
+]},
+{t:"Утворення: -AR дієслова (hablar)", lv:1, q:[
+["yo hablar___","é","o","hablaré"],
+["tú hablar___","ás","as","hablarás"],
+["él hablar___","á","a","hablará"],
+["nosotros hablar___","emos","amos","hablaremos"],
+["vosotros hablar___","éis","áis","hablaréis"],
+["ellos hablar___","án","an","hablarán"],
+["Futuro utворюється від…","повного інфінітива (без відкидання -ar)","основи без -ar","hablar + é, не habl + é"],
+["yo trabajaré — інфінітив:","trabajar","trabajo","дієслово на -ar"],
+["Закінчення futuro однакові для…","всіх трьох дієвідмін (-ar/-er/-ir)","лише -ar","universal endings"],
+["Наголос у futuro завжди падає на…","останній склад закінчення","корінь","-é, -ás, -á…"]
+]},
+{t:"Утворення: -ER/-IR дієслова (comer, vivir)", lv:1, q:[
+["yo comer___","é","o","comeré"],
+["tú comer___","ás","es","comerás"],
+["nosotros vivir___","emos","imos","viviremos"],
+["ellos vivir___","án","en","vivirán"],
+["yo viviré — інфінітив:","vivir","vivo","дієслово на -ir"],
+["comeremos — особа:","nosotros","vosotros","-emos"],
+["viviréis — особа:","vosotros","nosotros","-éis"],
+["comerán — особа:","ellos/ellas/ustedes","yo","-án"],
+["-er і -ir дієслова у futuro мають…","однакові закінчення","різні закінчення","é, ás, á, emos, éis, án — для всіх"],
+["Regla: до інфінітива просто…","додаємо закінчення","відкидаємо -r","без зміни основи!"]
+]},
+{t:"Визнач особу за закінченням", lv:1, q:[
+["hablar___ (-é) — особа:","yo","tú","закінчення -é"],
+["hablar___ (-ás) — особа:","tú","yo","закінчення -ás"],
+["hablar___ (-á) — особа:","él/ella/usted","nosotros","закінчення -á"],
+["hablar___ (-emos) — особа:","nosotros/as","vosotros/as","закінчення -emos"],
+["hablar___ (-éis) — особа:","vosotros/as","ellos/as","закінчення -éis"],
+["hablar___ (-án) — особа:","ellos/ellas/ustedes","él/ella","закінчення -án"],
+["comeré — особа:","yo","tú","-é"],
+["vivirás — особа:","tú","yo","-ás"],
+["comerá — особа:","él/ella/usted","nosotros","-á"],
+["vivirán — особа:","ellos/ellas/ustedes","vosotros/as","-án"]
+]},
+{t:"Неправильні корені 1", lv:1, q:[
+["decir → корінь…","dir-","dic-","diré, dirás…"],
+["hacer → корінь…","har-","hac-","haré, harás…"],
+["poder → корінь…","podr-","pod-","podré, podrás…"],
+["poner → корінь…","pondr-","pon-","pondré, pondrás…"],
+["querer → корінь…","querr-","quer-","querré, querrás…"],
+["Mañana ___ (hacer) la compra.","haré","haceré","з книги"],
+["Ellos ___ (tener) una reunión importante.","tendrán","teneránn","з книги"],
+["No ___ (poder) venir al cine.","podremos","poderemos","з книги"],
+["¿Qué ___ (decir) Marta cuando lo sepa?","dirá","decirá","з книги"],
+["Неправильні дієслова у futuro втрачають…","голосну e/i перед r","весь корінь","podr-, tendr-, saldr-…"]
+]},
+{t:"Неправильні корені 2", lv:1, q:[
+["saber → корінь…","sabr-","sab-","sabré, sabrás…"],
+["salir → корінь…","saldr-","sal-","saldré, saldrás…"],
+["tener → корінь…","tendr-","ten-","tendré, tendrás…"],
+["venir → корінь…","vendr-","ven-","vendré, vendrás…"],
+["haber → корінь…","habr-","hab-","habrá (безособова форма)"],
+["Mis padres ___ (venir) a verme el domingo.","vendrán","veniránn","з книги"],
+["Nosotros ___ (vivir) en otra ciudad. (правильне дієслово!)","viviremos","vivremos","regular -ir"],
+["habrá вживається…","безособово (є, буде)","лише з nosotros","«буде»"],
+["¿Qué hora ___ (ser)?","será","será","з книги, ser - регулярне у futuro!"],
+["Всі неправильні корені закінчуються на…","-r перед закінченнями","-e","dir-, har-, podr-…"]
+]},
+{t:"Ймовірність або здогад", lv:1, q:[
+["¿Dónde está Ana? – ___ en el trabajo. (мабуть)","Estará","Está","здогад"],
+["¿Qué hora es? – ___ las ocho. (приблизно)","Serán","Son","приблизність"],
+["No contesta al teléfono, ___ el móvil apagado.","tendrá","tiene","припущення"],
+["Estará cansado, ha trabajado mucho — переклад…","Мабуть, він втомлений","Він точно втомлений","здогад"],
+["Futuro для здогаду відповідає українською на…","мабуть / напевно / здається","точно / безсумнівно","з книги"],
+["Ahora serán las diez y media — тут serán означає…","приблизно десята тридцять","рівно десята тридцять","приблизність часу"],
+["¿Dónde está Pepe? – Estará en el bar — переклад…","Мабуть, він у барі","Він точно в барі","з культ. нотаток"],
+["Tendrás hambre ahora — переклад…","Ти, мабуть, голодний зараз","Ти будеш голодним колись","здогад про теперішнє!"],
+["Futuro для здогаду говорить про…","теперішній момент (незважаючи на форму майбутнього)","лише про майбутнє","важлива особливість!"],
+["No sabe, estará en casa = …","Не знає, мабуть, він удома","Не знає, він точно вдома","невпевненість"]
+]},
+{t:"Словник: часові маркери", lv:1, q:[
+["mañana = …","завтра","вчора","базове слово"],
+["pasado mañana = …","післязавтра","позавчора","pasado + mañana"],
+["la semana que viene = …","наступного тижня","минулого тижня","que viene = «що йде»"],
+["el mes que viene = …","наступного місяця","цього місяця","que viene"],
+["el año que viene = …","наступного року","минулого року","que viene"],
+["dentro de dos días = …","через два дні","два дні тому","dentro de = «через»"],
+["dentro de un mes = …","через місяць","місяць тому","dentro de"],
+["pronto = …","скоро","пізно","незабаром"],
+["algún día = …","колись","ніколи","невизначене майбутнє"],
+["más tarde = …","пізніше","раніше","пізніший момент"]
+]},
+{t:"Словник: імовірність", lv:1, q:[
+["en el futuro = …","у майбутньому","у минулому","загальний вираз"],
+["probablemente = …","мабуть","точно","імовірність"],
+["seguramente = …","напевно","можливо","вища впевненість, ніж probablemente"],
+["quizás / tal vez = …","можливо","обов'язково","синоніми невпевненості"],
+["cuando sea mayor = …","коли виросту","коли був малим","дитяча мрія"],
+["en unos años = …","за кілька років","кілька років тому","майбутній період"],
+["Найвища впевненість серед trio: probablemente / seguramente / quizás →","seguramente","quizás","за шкалою певності"],
+["Найнижча впевненість серед trio →","quizás","seguramente","найбільш невпевнене"],
+["«Колись поїду до Японії» = ___ iré a Japón.","Algún día","Pasado mañana","невизначений момент"],
+["«За кілька років matimemos» = ___ nos casaremos.","En unos años","Dentro de dos días","довший строк"]
+]},
+{t:"Резюме модуля 1", lv:1, q:[
+["Futuro Simple твориться від…","повного інфінітива + закінчення","основи дієслова","без відкидання -ar/-er/-ir"],
+["Закінчення однакові для…","всіх трьох дієвідмін","лише -ar","é, ás, á, emos, éis, án"],
+["Неправильні корені: decir, hacer, poder, poner, querer, saber, salir, tener, venir, haber — усі втрачають…","голосну перед -r","приголосну","dir-, har-, podr-…"],
+["Futuro Simple має дві функції:","план/прогноз + здогад","лише план","подвійна роль!"],
+["¿Dónde está Juan? — Estará en casa — це приклад…","здогаду","плану","припущення"],
+["El próximo año viajaré — це приклад…","плану","здогаду","майбутня дія"],
+["haber у futuro — форма habrá вживається…","безособово","з усіма особами","лише «є/буде»"],
+["ser у futuro — регулярне чи неправильне дієслово?","регулярне (seré, serás…)","неправильне","serás, será… за правилом!"],
+["Урок 18 у книзі — це…","Futuro Simple","Imperativo","з підручника"],
+["Наступний крок після Futuro Simple у підручнику — урок про…","вираження сумніву й невпевненості","минулий час","Lección 19"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Вправа 1 з книги: доповни", lv:2, q:[
+["Mañana yo ___ (ir) al médico.","iré","iraré","з книги"],
+["Dentro de poco nosotros ___ (tener) vacaciones.","tendremos","teneremos","з книги"],
+["¿Qué hora ___ (ser)?","será","será","з книги"],
+["Tú ___ (poder) viajar el próximo mes.","podrás","poderás","з книги"],
+["Mis padres ___ (venir) a verme el domingo.","vendrán","veniránn","з книги"],
+["Ellos ___ (hacer) los deberes más tarde.","harán","haceránn","з книги"],
+["Nosotros ___ (vivir) en otra ciudad.","viviremos","vivremos","з книги"],
+["¿Qué ___ (decir) Marta cuando lo sepa?","dirá","decirá","з книги"],
+["ir у futuro — форма yo:","iré","voy","регулярне!"],
+["ser у futuro — форма tú:","serás","eres","регулярне!"]
+]},
+{t:"Вправа 2 з книги: трансформуй у майбутнє", lv:2, q:[
+["Ahora trabajo. → Mañana ___.","trabajaré","trabajo","з книги"],
+["Ellos están en casa. → Mañana ___.","estarán en casa","están en casa","estar irregular"],
+["Tenemos examen. → Mañana ___.","tendremos examen","tenemos examen","tener irregular"],
+["Tú haces la cena. → Mañana ___.","harás la cena","haces la cena","hacer irregular"],
+["Vamos al cine. → Mañana ___.","iremos al cine","vamos al cine","ir regular у futuro"],
+["Приклад із книги: Hoy estudio mucho. → Mañana ___.","estudiaré mucho","estudio mucho","зразок трансформації"],
+["estar у futuro — форма ellos:","estarán","estan","irregular корінь estar-"],
+["tener у futuro — форма nosotros:","tendremos","tenemos","tendr-"],
+["hacer у futuro — форма tú:","harás","haces","har-"],
+["Трансформація «hoy → mañana» змінює час дієслова з presente на…","futuro","pretérito","логіка вправи"]
+]},
+{t:"Вправа 3 з книги: futuro для здогаду", lv:2, q:[
+["¿Dónde está tu jefe? → ___ en una reunión.","Estará","Está","здогад"],
+["No contesta al teléfono. → ___ ocupado.","Estará","Está","припущення"],
+["¿Qué hora es? → ___ las tres.","Serán","Son","приблизно"],
+["No tiene hambre. → Ya ___ comido.","habrá","ha","здогад про минуле дію = habrá + participio"],
+["Está muy cansado. → ___ trabajado mucho.","Habrá","Ha","припущення"],
+["Приклад із книги: ¿Dónde está Laura? → ___ en el gimnasio.","Estará","Está","зразок"],
+["Futuro для здогаду про теперішнє замінює вираз…","«мабуть, є…»","«точно є…»","припущення"],
+["Habrá trabajado mucho — це футуро…","складне (Futuro Compuesto), для здогаду про минуле","просте, для майбутнього","habrá + participio"],
+["¿Dónde está Ana? — Estará trabajando — тут дія…","триває зараз (припущення)","відбудеться завтра","прогресивний здогад"],
+["Здогад завжди можна перекласти словом…","«мабуть»","«вчора»","ключове слово"]
+]},
+{t:"Текст: Mi vida dentro de diez años (1)", lv:2, q:[
+["Dentro de diez años ___ (vivir) en una casa cerca del mar.","viviré","vivo","з тексту"],
+["___ (tener) un trabajo que me apasione.","Tendré","Tengo","з тексту"],
+["Quizás ___ (tener) un perro grande.","tendré","tengo","з тексту"],
+["Mis amigos y yo ___ (seguir) viéndonos los fines de semana.","seguiremos","seguimos","з тексту"],
+["Mis padres ya ___ (estar) jubilados.","estarán","están","з тексту"],
+["así que los ___ (visitar) más a menudo.","visitaré","visito","з тексту"],
+["No sé cómo ___ (ser) el mundo.","será","es","з тексту"],
+["___ (usar) más energía solar.","Usaremos","Usamos","з тексту"],
+["la gente ___ (viajar) más.","viajará","viaja","з тексту"],
+["El futuro no está escrito, pero estoy segura de que ___ (ser) interesante.","será","es","з тексту"]
+]},
+{t:"Текст: Mi vida dentro de diez años (2)", lv:2, q:[
+["apasione (від apasionar) означає…","захоплювати, викликати пристрасть","пасувати за розміром","un trabajo que me apasione"],
+["plantaré un jardín = …","посаджу сад","заплáную подорож","plantar = садити"],
+["a menudo = …","часто","рідко","los visitaré más a menudo"],
+["jubilados = …","на пенсії","одружені","estarán jubilados"],
+["entenderá mejor otras culturas — переклад…","краще зрозуміє інші культури","навчить інші культури","entender = розуміти"],
+["El futuro no está escrito означає…","майбутнє не визначене наперед","майбутнє вже написане в книзі","переносний вираз"],
+["seguiremos viéndonos — це…","продовжимо бачитися","перестанемо бачитися","seguir + gerundio"],
+["cambiaremos muchas cosas — переклад…","змінимо багато речей","не змінимо нічого","futuro plural"],
+["aprenderá idiomas nuevos — суб'єкт тут…","la gente (люди загалом)","лише автор тексту","узагальнення"],
+["Головна ідея тексту:","мрії й прогнози про особисте й загальне майбутнє","опис минулого життя","Mi vida dentro de diez años"]
+]},
+{t:"Питання до тексту", lv:2, q:[
+["¿Dónde vivirá el narrador dentro de diez años?","En una casa cerca del mar","En una gran ciudad","з тексту"],
+["¿Qué tipo de trabajo tendrá?","Uno que le apasione","Cualquier trabajo","з тексту"],
+["¿Qué hará con sus amigos?","Seguirá viéndolos los fines de semana","No los verá más","з тексту"],
+["¿Qué cosas cambiarán en el mundo, según el texto?","Más energía solar, más trabajo desde casa","Menos tecnología","з тексту"],
+["¿Qué idea principal transmite el texto?","Optimismo sobre el futuro","Miedo al futuro","загальна ідея"],
+["¿Tendrá una mascota el narrador?","Quizás, un perro grande","No, ningún animal","з тексту: quizás"],
+["¿Cómo estarán sus padres dentro de diez años?","Jubilados","Todavía trabajando","з тексту"],
+["¿Viajará más o menos la gente, según el texto?","Más","Menos","з тексту"],
+["¿El narrador está seguro de cómo será el mundo?","No, pero cree que será interesante","Sí, completamente seguro","з тексту"],
+["¿Qué hará el narrador con el jardín?","Plantará uno","Lo venderá","з тексту"]
+]},
+{t:"Futuro vs IR A + infinitivo", lv:2, q:[
+["Mañana iré al médico. = …","Mañana voy a ir al médico.","Mañana fui al médico.","еквівалент, з культ. нотаток"],
+["Обидва варіанти (futuro / ir a + inf.) — …","правильні","лише перший правильний","з культ. нотаток"],
+["Який варіант звучить розмовніше?","ir a + infinitivo","futuro simple","з культ. нотаток"],
+["Voy a estudiar esta noche — це…","ir a + infinitivo (план, розмовне)","futuro simple","конструкція"],
+["Estudiaré esta noche — це…","futuro simple (більш нейтральне/письмове)","ir a + infinitivo","конструкція"],
+["У щоденній розмові іспанці частіше вживають…","ir a + infinitivo","лише futuro simple","розмовна перевага"],
+["Для здогадок (не планів) типово вживають…","лише futuro simple","ir a + infinitivo","estará, serán…"],
+["«Я збираюся подорожувати» — розмовний варіант:","Voy a viajar.","Viajaré a lo mejor.","ir a + inf."],
+["«Я подорожуватиму» — нейтральний/письмовий варіант:","Viajaré.","Voy a viajaré.","futuro simple"],
+["Обидві конструкції взаємозамінні для…","планів і намірів","здогадок про теперішнє","лише для майбутніх дій"]
+]},
+{t:"Futuro для здогадки vs плану: різниця", lv:2, q:[
+["❌ Estará lloviendo mañana → ✅ …","Lloverá mañana.","Estará mañana lloviendo.","з культ. нотаток!"],
+["Estará lloviendo — прогресивна дія, означає…","припущення про те, що відбувається зараз","план на завтра","не план!"],
+["Lloverá mañana — це…","простий прогноз на майбутнє","здогад про теперішнє","futuro simple, plan"],
+["Tendrás hambre ahora — правильно, бо виражає…","здогад про теперішній стан","план на завтра","ahora = зараз, тому здогад"],
+["Розрізняти план і здогад допомагає…","контекст (чи йдеться про майбутнє, чи про зараз)","форма дієслова (вона однакова!)","ключовий момент помилки"],
+["Estará cansado, ha trabajado mucho — це…","здогад про теперішній стан","план на майбутнє","зараз, не завтра"],
+["Mañana estaré cansado — це…","прогноз на завтра","здогад про зараз","mañana = майбутнє"],
+["«Ahora» + futuro = зазвичай…","здогад про теперішнє","план","часовий маркер"],
+["«Mañana» + futuro = зазвичай…","план на майбутнє","здогад про зараз","часовий маркер"],
+["Один і той самий дієслівний час (futuro) — …","дві різні функції залежно від контексту","завжди одна функція","ключовий висновок"]
+]},
+{t:"Неправильні дієслова поглиблено", lv:2, q:[
+["poner → pondr-: yo ___","pondré","poneré","irregular"],
+["salir → saldr-: tú ___","saldrás","saliras","irregular"],
+["venir → vendr-: nosotros ___","vendremos","veniremos","irregular"],
+["querer → querr-: ellos ___","querrán","quereránn","irregular"],
+["saber → sabr-: yo ___","sabré","saberé","irregular"],
+["decir → dir-: vosotros ___","diréis","deciréis","irregular, коротший корінь"],
+["hacer → har-: él ___","hará","hacerá","irregular"],
+["poder → podr-: tú ___","podrás","poderás","irregular"],
+["haber → habr-: форма для «буде» (безособова)","habrá","habrán","завжди в однині"],
+["Регулярні дієслова, які НЕ міняють корінь: hablar, comer, vivir, ser, ir, estar — правда чи ні?","estar неправильне (estaré — насправді regular форма), але ser/ir/hablar/comer/vivir — регулярні","усі перелічені неправильні","memo-тест"]
+]},
+{t:"Словник поглиблено", lv:2, q:[
+["probablemente vengo mañana — переклад…","мабуть, прийду завтра","точно прийду завтра","імовірність"],
+["seguramente lloverá — переклад…","напевно, буде дощ","можливо, буде дощ","вища впевненість"],
+["quizás / tal vez — синонімічна пара, що означає…","можливо","обов'язково","invarіантність"],
+["cuando sea mayor, seré médico — переклад…","коли виросту, буду лікарем","коли був малим, був лікарем","дитяча мрія"],
+["en unos años, todo cambiará — переклад…","за кілька років усе зміниться","кілька років тому все змінилося","майбутній період"],
+["dentro de un mes iré de vacaciones — переклад…","через місяць поїду у відпустку","місяць тому їздив у відпустку","dentro de = через"],
+["pasado mañana tengo cita — переклад…","післязавтра в мене зустріч","позавчора була зустріч","pasado mañana"],
+["algún día visitaré Japón — переклад…","колись відвідаю Японію","ніколи не відвідаю Японію","невизначений момент"],
+["Словник уроку 18 переважно описує…","час і ступінь імовірності","емоції","часові маркери + probability слова"],
+["más tarde te llamo — переклад…","пізніше подзвоню тобі","раніше дзвонив тобі","más tarde = пізніше"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки", lv:3, q:[
+["❌ Estará lloviendo mañana → ✅ …","Lloverá mañana.","Estará lloviendo pasado mañana.","з культ. нотаток"],
+["❌ Yo haceré la tarea → ✅ …","Yo haré la tarea.","Yo hacerá la tarea.","hacer → har-!"],
+["❌ Ellos teneránn una fiesta → ✅ …","Ellos tendrán una fiesta.","Ellos tenerán una fiesta.","tener → tendr-!"],
+["❌ Tú poderás venir → ✅ …","Tú podrás venir.","Tú poderás venirás.","poder → podr-!"],
+["❌ Nosotros saberemos la verdad → ✅ …","Nosotros sabremos la verdad.","Nosotros saberemos la verdad ya.","saber → sabr-!"],
+["❌ Yo saliré temprano → ✅ …","Yo saldré temprano.","Yo saldiré temprano.","salir → saldr-!"],
+["❌ Ellos veniránn mañana → ✅ …","Ellos vendrán mañana.","Ellos vendirán mañana.","venir → vendr-!"],
+["❌ Habrán muchas personas → ✅ …","Habrá muchas personas.","Habránn muchas personas.","haber безособове — завжди однина!"],
+["❌ ¿Qué horas serán? → ✅ …","¿Qué hora será?","¿Qué horas será?","hora — однина у стандартному питанні"],
+["❌ Mañana voy a ido al médico → ✅ …","Mañana voy a ir al médico.","Mañana voy ir al médico.","ir a + infinitivo, не participio"]
+]},
+{t:"Переклад укр → ісп", lv:3, q:[
+["«Завтра піду до лікаря»","Mañana iré al médico.","Mañana voy médico.","futuro simple"],
+["«Наступного року подорожуватиму Італією»","El año que viene viajaré a Italia.","El año pasado viajaré a Italia.","майбутній маркер"],
+["«Мабуть, він удома»","Estará en casa.","Está en casa seguro.","здогад"],
+["«Вони матимуть важливу зустріч»","Tendrán una reunión importante.","Teneránn una reunión importante.","tener irregular"],
+["«Що скаже Марта, коли дізнається?»","¿Qué dirá Marta cuando lo sepa?","¿Qué decirá Marta cuando lo sepa?","decir irregular"],
+["«Колись відвідаю Японію»","Algún día visitaré Japón.","Pasado mañana visitaré Japón.","algún día"],
+["«За кілька років усе буде інакше»","En unos años, todo será diferente.","Hace unos años, todo será diferente.","майбутній маркер"],
+["«Мабуть, зараз десята»","Serán las diez.","Son las diez seguro.","приблизність"],
+["«Я збираюся подорожувати» (розмовно)","Voy a viajar.","Viajaré a lo mejor seguro.","ir a + infinitivo"],
+["«Дощитиме завтра»","Lloverá mañana.","Estará lloviendo mañana.","простий прогноз, не прогресив"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«Mañana trabajaré desde casa» — …","правильно ✓","помилка","✓"],
+["«Yo haceré la compra» — …","помилка (haré)","правильно","hacer irregular"],
+["«Estará en el trabajo» (здогад) — …","правильно ✓","помилка","✓"],
+["«Ellos tendrán una reunión» — …","правильно ✓","помилка","✓"],
+["«Nosotros vivremos en otra ciudad» — …","помилка (viviremos)","правильно","-ir regular"],
+["«¿Qué hora será?» — …","правильно ✓","помилка","✓"],
+["«Tú podrás viajar» — …","правильно ✓","помилка","✓"],
+["«Habránn muchas personas» — …","помилка (Habrá)","правильно","безособове, однина"],
+["«Estará lloviendo mañana» (прогноз) — …","краще Lloverá mañana","правильно й природно","з культ. нотаток"],
+["«Mis padres vendrán el domingo» — …","правильно ✓","помилка","✓"]
+]},
+{t:"Виправ дієслово: неправильні корені", lv:3, q:[
+["decir → yo ___ (НЕ diceré)","diré","diceré","irregular"],
+["poner → tú ___ (НЕ poneras)","pondrás","poneras","irregular"],
+["salir → nosotros ___ (НЕ saliremos)","saldremos","saliremos","irregular!"],
+["tener → ellos ___ (НЕ teneránn)","tendrán","teneránn","irregular"],
+["venir → yo ___ (НЕ veniré)","vendré","veniré","irregular"],
+["querer → tú ___ (НЕ quereras)","querrás","quereras","irregular"],
+["saber → nosotros ___ (НЕ saberemos)","sabremos","saberemos","irregular"],
+["poder → yo ___ (НЕ poderé)","podré","poderé","irregular"],
+["hacer → vosotros ___ (НЕ haceréis)","haréis","haceréis","irregular"],
+["haber → форма «буде» (НЕ haberá)","habrá","haberá","irregular, безособове"]
+]},
+{t:"Ймовірність vs план: розрізни", lv:3, q:[
+["No contesta al teléfono, tendrá el móvil apagado — це…","здогад","план","припущення"],
+["El próximo mes tendré vacaciones — це…","план","здогад","конкретна майбутня подія"],
+["¿Dónde está Pepe? – Estará en el bar — це…","здогад","план","з культ. нотаток"],
+["Mañana estaré en el bar con mis amigos — це…","план","здогад","конкретна домовленість"],
+["Ahora serán las diez — це…","здогад про теперішній час","план на завтра","ahora = зараз"],
+["El domingo serán las diez cuando lleguemos — це…","план/прогноз","здогад","конкретний майбутній момент"],
+["Estará cansado, ha trabajado mucho — це…","здогад","план","пояснення теперішнього стану"],
+["Trabajaré duro para conseguirlo — це…","намір/план","здогад","рішучість"],
+["Tendrás hambre ahora, no has comido — це…","здогад про теперішнє","план на майбутнє","ahora"],
+["Ключ до розрізнення: чи йдеться про…","зараз (здогад) чи майбутнє (план)","чоловіка чи жінку","контекст рятує"]
+]},
+{t:"Culturally: futuro у щоденній мові", lv:3, q:[
+["Іспанці часто чергують futuro simple з…","ir a + infinitivo","pretérito imperfecto","з культ. нотаток"],
+["Другий варіант (ir a + infinitivo) звучить…","розмовніше","офіційніше","з культ. нотаток"],
+["Futuro simple як здогад — це типово…","іспанська особливість, не завжди пряма відповідність в українській","рідкісне явище","з культ. нотаток"],
+["¿Dónde está Pepe? – Estará en el bar — саме тому цю фразу…","не можна перекладати буквально «він буде в барі»","можна перекласти дослівно без втрат","пастка для початківців"],
+["Щоб «звучати як іспанець», важливо розрізняти…","план і здогад в одній і тій же формі","лише правильні закінчення","ключова порада уроку"],
+["✅ Tendrás hambre ahora — це приклад…","коректного здогаду","помилки","підтверджено в культ. нотатках"],
+["❌ Estará lloviendo mañana — помилка, бо…","«estar + gerundio» описує процес, а не простий прогноз","дієслово невідмінюване","краще Lloverá mañana"],
+["У щоденних розмовах домінує…","ir a + infinitivo для планів","futuro simple для планів","розмовна практика"],
+["Futuro simple для здогаду залишається типовим навіть у…","розмовній мові","лише офіційних текстах","з культ. нотаток"],
+["Підсумок культ. нотаток уроку 18:","одна форма — дві ідеї: план і здогад","futuro вживається рідко","головний висновок"]
+]},
+{t:"Побудуй речення логічно", lv:3, q:[
+["Завтра я піду до лікаря →","Mañana iré al médico.","Mañana voy médico ir.","futuro"],
+["Наступного тижня матимемо іспит →","La semana que viene tendremos un examen.","La semana que viene tenemos examen que viene.","tener irregular"],
+["Мабуть, вона на роботі →","Estará en el trabajo.","Está en el trabajo seguro.","здогад"],
+["Колись побачу море →","Algún día veré el mar.","Pasado mañana veré el mar.","algún día"],
+["Вони скажуть правду завтра →","Mañana dirán la verdad.","Mañana deciránn la verdad.","decir irregular"],
+["Ми матимемо більше часу за кілька років →","En unos años tendremos más tiempo.","Hace unos años tendremos más tiempo.","майбутній маркер"],
+["Мабуть, зараз опівніч →","Serán las doce de la noche.","Son las doce de la noche seguro.","приблизність"],
+["Дощитиме післязавтра →","Lloverá pasado mañana.","Estará lloviendo pasado mañana.","простий прогноз"],
+["Вона зможе прийти пізніше →","Podrá venir más tarde.","Poderá venir más tarde.","poder irregular"],
+["Скоро дізнаємося результат →","Pronto sabremos el resultado.","Pronto saberemos el resultado.","saber irregular"]
+]},
+{t:"Питання-відповіді практика", lv:3, q:[
+["¿Qué harás mañana? — …","Trabajaré desde casa.","Trabajo desde casa ayer.","futuro simple"],
+["¿Dónde vivirás en el futuro? — …","Viviré cerca del mar.","Vivía cerca del mar.","futuro simple"],
+["¿Qué cambiará en el mundo dentro de 10 años? — …","Usaremos más energía solar.","Usábamos más energía solar.","futuro"],
+["¿Crees que lloverá mañana? — …","Sí, probablemente.","Sí, ayer.","імовірність"],
+["¿Dónde estará tu jefe ahora? — …","Estará en una reunión.","Estuvo en una reunión.","здогад"],
+["¿Tendrás vacaciones pronto? — …","Sí, la semana que viene.","Sí, la semana pasada.","майбутнє"],
+["¿Qué hora será? — …","Serán las nueve, más o menos.","Son las nueve exactamente.","приблизність"],
+["¿Vendrán tus padres el domingo? — …","Sí, vendrán por la tarde.","Sí, veniránn por la tarde.","venir irregular"],
+["¿Podrás ayudarme más tarde? — …","Sí, podré ayudarte.","Sí, poderé ayudarte.","poder irregular"],
+["¿Qué dirás en la reunión? — …","Diré la verdad.","Deciré la verdad.","decir irregular"]
+]},
+{t:"«Mi vida en el futuro» (домашка)", lv:3, q:[
+["Dentro de diez años, ___ (tener) mi propia casa.","tendré","tengo","з домашки"],
+["___ (viajar) mucho por el mundo.","Viajaré","Viajo","з домашки"],
+["Mis amigos y yo ___ (seguir) en contacto.","seguiremos","seguimos","з домашки"],
+["Espero que el mundo ___ (ser) mejor.","sea","será","припущення з subjuntivo — тема наступного уроку!"],
+["Cuando sea mayor, ___ (trabajar) en lo que me gusta.","trabajaré","trabajo","з домашки"],
+["2 речення мають бути про особисті плани, 2 — про…","мрії й бажання","минуле","з домашки"],
+["1 речення має бути про…","світ майбутнього","сьогоднішній день","з домашки"],
+["Для домашки потрібно скласти мінімум ___ речень.","5","2","з підручника"],
+["¿Qué harás mañana? — усне завдання homework пропонує…","відповісти вголос або записати себе","написати есе на 500 слів","з домашки"],
+["Los deberes уроку 18 — це…","Escribe sobre ti (5 фраз про майбутнє)","переказ тексту","з підручника"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["Mañana ___ (ir) al médico.","iré","voy","futuro"],
+["decir → yo ___","diré","diceré","irregular"],
+["tener → nosotros ___","tendremos","teneremos","irregular"],
+["¿Dónde está Ana? – ___ en casa. (здогад)","Estará","Está","здогад"],
+["¿Qué hora ___?","será","es seguro","приблизність"],
+["❌ Estará lloviendo mañana → ✅ …","Lloverá mañana.","Estará mañana lloviendo.","типова помилка"],
+["Mañana iré al médico = …","Mañana voy a ir al médico.","Mañana fui al médico.","еквівалент"],
+["habrá — форма для…","«буде» (безособово)","«будуть»","завжди однина"],
+["Futuro Simple = план + …","здогад","минуле","дві функції"],
+["Урок 18 готово! Pronto ___ (saber) todos los verbos irregulares. 💪","sabrás","saberás","saber irregular"]
+]}
+
+];
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "FUTURO SIMPLE: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 18 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

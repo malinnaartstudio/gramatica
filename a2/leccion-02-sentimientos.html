@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 2 · Expresar sentimientos y emociones · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 2 · @malinnaartstudio</div>
+    <h1 id="htitle">EMOCIONES: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 2 · Expresar sentimientos y emociones.</b>
+      30 вправ по 10 питань: estar + емоції, вигуки ¡Qué bien!, ¡Qué rollo!, ¡No me digas!,
+      словник почуттів, tener miedo, прийменники емоцій, текст про історію Іспанії. Від ★ до ★★★. ¡Ánimo! 💃
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · вирази та словник</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · контекст і реакції</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й помилки</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 2</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"ESTAR + емоція: базовий вибір", lv:1, q:[
+["Мій друг спізнився на потяг. Está ___.","enfadado","contento","розсерджений 😠"],
+["Hoy es mi cumpleaños. ¡Estoy ___! 🎂","contento","triste","день народження → радість"],
+["Tengo mucho trabajo. Estoy ___.","cansado","relajado","багато роботи → втомлений"],
+["No tengo nada que hacer. Estoy ___.","aburrido","emocionado","нічого робити → нудно"],
+["Емоції та стани — з дієсловом…","estar","ser","estoy triste, а не soy triste"],
+["Mañana tengo examen. Estoy ___.","nervioso","orgulloso","іспит → нерви 😬"],
+["Mi gato está ___. (хворий)","enfermo","enfermado","хворий = enfermo 🐱"],
+["Después del yoga estoy ___.","relajado","nervioso","йога → релакс 🧘"],
+["¡No me digas! Estoy ___. (здивований)","sorprendido","preocupado","сюрприз → sorprendido"],
+["Mi hija ha ganado el premio. Estoy ___ de ella.","orgulloso","decepcionado","гордий за неї 🏆"]
+]},
+{t:"Словник емоцій: іспанська → українська", lv:1, q:[
+["contento = …","задоволений","контентний блогер","не про контент 😄"],
+["triste = …","сумний","тристоронній","сум 😢"],
+["cansado = …","втомлений","одружений","casado = одружений, cansado = втомлений!"],
+["enfadado = …","розсерджений","закоханий","злість 😠"],
+["nervioso = …","нервовий","новий","нерви"],
+["preocupado = …","стурбований","окупований","pre + ocupado, але не про роботу"],
+["aburrido = …","знуджений","обгорілий","нудьга 😴"],
+["relajado = …","розслаблений","релігійний","релакс"],
+["sorprendido = …","здивований","підтриманий","сюрприз!"],
+["enfermo = …","хворий","фермер","хвороба, не ферма 🚜"]
+]},
+{t:"Словник емоцій: українська → іспанська", lv:1, q:[
+["схвильований (позитивно) = …","emocionado","emocional","з книги: emocionado"],
+["розчарований = …","decepcionado","decepticon","не трансформер 🤖"],
+["гордий = …","orgulloso","gordo","gordo = товстий! обережно"],
+["тривожний = …","ansioso","ansias","прикметник → ansioso"],
+["здивований = …","sorprendido","sorpresa","прикметник → sorprendido"],
+["розслаблений = …","relajado","relajo","прикметник → relajado"],
+["стурбований = …","preocupado","procurado","preocupado"],
+["хворий = …","enfermo","enfermero","enfermero = медбрат!"],
+["знуджений = …","aburrido","burro","burro = віслюк 🫏"],
+["розсерджений = …","enfadado","enfada","прикметник → enfadado"]
+]},
+{t:"Вирази радості", lv:1, q:[
+["¡Qué ___! = Як добре!","bien","bueno","¡Qué bien!"],
+["¡Qué ___! = Яка удача!","suerte","fortuna","suerte = удача 🍀"],
+["¡___! = Вітаю!","Enhorabuena","Buenhora","enhorabuena — одним словом"],
+["— ¡He aprobado el examen! — ¡___!","Qué bien","Qué pena","радісна новина → радісна реакція"],
+["Enhorabuena кажуть, коли…","хтось має успіх","хтось захворів","вітання з успіхом"],
+["«Я склав іспит!» = He ___ el examen.","aprobado","probado","aprobar = скласти іспит"],
+["¡Qué suerte! кажуть про…","удачу","поразку","🍀"],
+["Відповідь на гарну новину:","¡Qué bien!","¡Qué rollo!","позитив → позитив"],
+["enhorabuena дослівно ≈ …","«у добрий час»","«добра трава»","en + hora + buena"],
+["— ¡Me voy de vacaciones! — ¡Qué ___!","suerte","lástima","біла заздрість 😄"]
+]},
+{t:"Вирази невдоволення", lv:1, q:[
+["Estoy ___. = Мені набридло. (жінка)","harta","harto","жінка → harta"],
+["¡Qué ___! = Яка нудота!","rollo","rolo","rollo — з подвійною ll"],
+["¡Es ___! = Це несправедливо!","injusto","unjusto","in- + justo"],
+["¡No ___ más! = Я більше не витримаю!","aguanto","aguante","aguantar → yo aguanto"],
+["— ¿Otra vez clase online? — ¡Qué ___!","rollo","suerte","скарга → rollo (приклад з книги)"],
+["Estoy harto de ___. (чекати)","esperar","espero","harto de + інфінітив"],
+["rollo дослівно = …","рулон, сувій","роль","але тут «нудота» 😩"],
+["aguantar = …","витримувати","чекати","¡no aguanto más!"],
+["injusto ↔ …","justo","juste","справедливий = justo"],
+["«Мені набрид шум» = Estoy harto ___ ruido.","del","al","de + el = del"]
+]},
+{t:"Вирази смутку та співчуття", lv:1, q:[
+["¡Qué ___! = Яка шкода!","pena","peña","peña — це скеля 🪨"],
+["¡Qué ___! = Як прикро!","lástima","lastima","з наголосом: lástima"],
+["¡Qué mala ___! = Яке невезіння!","suerte","fortuna","mala suerte"],
+["Lo ___ mucho. = Мені дуже шкода.","siento","sento","sentir → siento"],
+["— Mi gato está enfermo… — ¡Qué ___!","pena","bien","співчуття (приклад з книги)"],
+["Lo siento кажуть, щоб…","висловити співчуття","привітати","співчуття 💔"],
+["pena = …","шкода, смуток","піна","не піна в морі 🌊"],
+["На сумну новину НЕ кажуть:","¡Enhorabuena!","¡Qué lástima!","не вітаємо з бідою 😅"],
+["«Мені дуже шкода» = …","Lo siento mucho.","Me siento mucho.","LO siento"],
+["¡Qué mala suerte! — реакція на…","невезіння","успіх","чорна смуга"]
+]},
+{t:"Вирази здивування", lv:1, q:[
+["¿De ___? = Правда?","verdad","verdadero","¿De verdad?"],
+["¡No me ___! = Та невже!","digas","dices","стійка форма: no me digas"],
+["¡___! = Неймовірно!","Increíble","Incredible","increíble, не англійська 😄"],
+["¡Qué ___! = Який сюрприз!","sorpresa","surprise","sorpresa"],
+["— Voy a mudarme a Madrid. — ¿___? ¡No me digas!","De verdad","De mentira","приклад з книги"],
+["mudarse = …","переїжджати","роздягатися","mudarse a Madrid"],
+["¡No me digas! виражає…","здивування","наказ мовчати","та невже!"],
+["¿Sí? у розмові означає…","Справді?","Так!","перепитування"],
+["increíble = in + …","creíble","creer","не-ймовірний"],
+["Реакція на неймовірну новину:","¡Increíble!","¡Qué rollo!","вау! 😲"]
+]},
+{t:"Рід прикметників емоцій", lv:1, q:[
+["Ana está content___.","a","o","Ana → contenta"],
+["Pedro está cansad___.","o","a","Pedro → cansado"],
+["María está sorprendid___.","a","o","María → sorprendida"],
+["triste для жінки — …","triste","trista","на -e не змінюється"],
+["Mi madre está preocupad___.","a","o","мама → preocupada"],
+["ansioso для жінки → …","ansiosa","ansiose","o → a"],
+["Ellos están enfadad___.","os","as","чол. мн. → -os"],
+["Ellas están relajad___.","as","os","жін. мн. → -as"],
+["optimista для чоловіка → …","optimista","optimisto","-ista не змінюється"],
+["Mis padres están orgullos___.","os","o","мн. → orgullosos"]
+]},
+{t:"Вигуки з ¡Qué…!", lv:1, q:[
+["¡Qué ___! (спека)","calor","caliente","¡Qué calor! 🥵"],
+["¡Qué + …!","прикметник або іменник","лише дієслово","¡Qué bien! ¡Qué suerte!"],
+["«Який гарний день!» = ¡Qué día tan ___!","bonito","bonita","el día → чол. рід"],
+["¡Qué frío! = …","Який холод!","Який фрукт!","frío = холод 🥶"],
+["В Іспанії вигуки з ¡Qué…! вживають…","дуже часто, щодня","лише письмово","культурна нотатка з книги"],
+["¡Qué sueño! = …","Як хочеться спати!","Який сон наснився!","tener sueño = хотіти спати 😴"],
+["¡___ suerte tienes!","Qué","Que","вигук — з наголосом: qué"],
+["¡Qué hambre! = …","Як хочеться їсти!","Який голод у світі!","про себе, тут і зараз"],
+["Знак оклику в іспанській…","подвійний: ¡…!","лише в кінці","¡Así es!"],
+["¡Qué interesante! = …","Як цікаво!","Який інтерес!","реакція-вигук"]
+]},
+{t:"Форми ESTAR з емоціями", lv:1, q:[
+["yo ___ nervioso","estoy","soy","стан → estoy"],
+["tú ___ contenta","estás","eres","estar"],
+["él ___ preocupado","está","es","estar"],
+["nosotras ___ emocionadas","estamos","somos","estar"],
+["vosotros ___ cansados","estáis","sois","estar"],
+["ellos ___ aburridos","están","son","estar"],
+["usted ___ relajado","está","estás","usted → está"],
+["Mi hermana y yo ___ tristes.","estamos","estáis","вона + я = nosotros"],
+["¿Cómo ___ hoy? (ти)","estás","eres","самопочуття → estar"],
+["Todos ___ sorprendidos.","están","son","estar"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Обери реакцію на ситуацію", lv:2, q:[
+["Спізнився на автобус:","¡Qué mala suerte!","¡Qué suerte!","з вправи книги 🚌"],
+["Друг виграв приз:","¡Enhorabuena!","¡Qué rollo!","вітаємо! 🏆"],
+["Знову онлайн-урок:","¡Qué rollo!","¡Enhorabuena!","легка скарга"],
+["Кіт захворів:","¡Qué pena!","¡Qué bien!","співчуття 🐱"],
+["Подруга переїжджає до Мадрида:","¡No me digas!","Lo siento mucho.","здивування"],
+["Склав усі іспити:","¡Qué bien!","¡Qué lástima!","🎉"],
+["Дощ на пікніку:","¡Qué mala suerte!","¡Qué sorpresa tan buena!","☔"],
+["Колега вдесяте розповідає ту саму історію:","¡Qué rollo!","¡Increíble!","😴"],
+["Хтось загубив гаманець:","¡Qué pena!","¡Qué suerte!","співчуваємо"],
+["Несподіваний подарунок:","¡Qué sorpresa!","¡Es injusto!","🎁"]
+]},
+{t:"ESTAR + прикметник за контекстом", lv:2, q:[
+["Mi amigo ha perdido el tren. Está ___.","enfadado","relajado","з вправи книги"],
+["Hoy es mi cumpleaños. ¡Estoy ___!","contento","aburrido","🎂"],
+["Tengo mucho trabajo. Estoy ___.","cansado","relajado","з вправи книги"],
+["No tengo nada que hacer. Estoy ___.","aburrido","nervioso","нудьга"],
+["Mañana tengo entrevista. Estoy ___.","nervioso","aburrido","співбесіда 😬"],
+["Mi equipo ha perdido. Estoy ___.","decepcionado","emocionado","розчарування ⚽"],
+["Mis hijos han aprobado todo. Estoy ___. (мама)","orgullosa","enferma","горда мама"],
+["He dormido diez horas. Estoy ___.","relajado","cansado","виспався 😌"],
+["No sé dónde está mi hijo. Estoy ___. (мама)","preocupada","relajada","хвилюється"],
+["¡Mañana voy a España! Estoy ___.","emocionado","decepcionado","передчуття 🇪🇸"]
+]},
+{t:"Узгодження у множині", lv:2, q:[
+["Nosotros estamos ___.","cansados","cansado","ми → множина"],
+["Ellas están ___.","contentas","contentos","жін. мн."],
+["Los niños están ___.","nerviosos","nervioso","мн."],
+["Mis padres están ___ de mí.","orgullosos","orgulloso","батьки → мн."],
+["Ana y María están ___.","preocupadas","preocupados","обидві жінки → -as"],
+["Ana y Pedro están ___.","sorprendidos","sorprendidas","змішана група → чол. мн."],
+["Vosotras estáis ___.","relajadas","relajados","vosotras → жін."],
+["Los estudiantes están ___.","aburridos","aburrido","мн."],
+["Mis amigas están ___.","tristes","tristas","triste → tristes"],
+["Todos estamos ___.","emocionados","emocionado","мн."]
+]},
+{t:"ESTAR HARTO DE: мені набридло", lv:2, q:[
+["Estoy harto ___ esperar.","de","a","harto DE"],
+["Estoy harta de ___ trabajo.","mi","mí","de mi trabajo"],
+["harto/harta залежить від…","роду мовця","настрою","чоловік harto, жінка harta"],
+["Estoy harto виражає…","сильне роздратування","радість","набридло!"],
+["«Мені набридло прибирати» = Estoy harta de ___.","limpiar","limpio","de + інфінітив"],
+["Estamos hartos ___ ruido.","del","al","de + el = del"],
+["no aguanto más ≈ …","estoy harto","estoy contento","межа терпіння 🤯"],
+["harto дослівно означає…","«наїтий досхочу»","«голодний»","наївся по горло 😄"],
+["¡Es injusto! кажуть, коли щось…","несправедливо","дуже смішно","справедливість!"],
+["hartos — для групи…","чоловіків","жінок","чол. мн. → hartos"]
+]},
+{t:"Нюанси емоцій", lv:2, q:[
+["emocionado = …","схвильований позитивно","знервований","з книги: позитивно!"],
+["ansioso = …","тривожний","швидкий","тривога"],
+["Наречена перед весіллям радіє — вона…","emocionada","enferma","позитивне хвилювання 💍"],
+["decepcionado = …","розчарований","обдурений","очікування ≠ реальність"],
+["preocupado = …","стурбований","зайнятий","не «окупований» 😄"],
+["orgulloso = …","гордий","товстий","gordo = товстий, orgulloso = гордий"],
+["Студент тривожиться тижнями — він…","ansioso","relajado","постійна тривога"],
+["Фільм гірший за трейлер. Estoy ___.","decepcionado","emocionado","розчарування 🎬"],
+["sorprendido — це про…","несподіванку","сюрреалізм","сюрприз!"],
+["relajado ↔ …","nervioso","cansado","розслаблений ↔ напружений"]
+]},
+{t:"ABURRIDO: ser чи estar?", lv:2, q:[
+["Estoy ___. (мені нудно зараз)","aburrido","un aburrido","стан → estar"],
+["La película es ___. (нудний фільм)","aburrida","aburrido","la película → жін."],
+["ser aburrido = …","бути нудним","нудьгувати","характеристика"],
+["estar aburrido = …","нудьгувати зараз","бути нудним","стан"],
+["Este libro ___ muy aburrido.","es","está","книга нудна → ser"],
+["Los niños ___ aburridos en clase.","están","son","їм нудно → estar"],
+["«Мій сусід — нудна людина» = Mi vecino ___ aburrido.","es","está","характер → ser"],
+["«Мені нудно» = ___ aburrido.","Estoy","Soy","стан → estar"],
+["El profesor no es aburrido, pero hoy los alumnos están ___.","aburridos","aburrido","мн. + стан"],
+["ser aburrido vs estar aburrido — різниця…","характер vs стан","минуле vs майбутнє","класика рівня A2"]
+]},
+{t:"Міні-діалоги: підстав репліку", lv:2, q:[
+["— He suspendido el examen. — ¡Qué ___!","pena","suerte","провалив іспит 😢"],
+["— ¡Me caso! — ¿___? ¡Enhorabuena!","De verdad","De pena","одружуюсь! 💒"],
+["— Estoy enfermo. — Lo ___ mucho.","siento","sé","співчуття"],
+["— ¡He ganado la lotería! — ¡No me ___!","digas","hables","😲💰"],
+["— ¿Qué tal? — Estoy ___, gracias.","bien","bueno","estar bien"],
+["— ¿Otra reunión? — ¡Qué ___! Estoy harto.","rollo","bien","скарга"],
+["— Mi abuela está enferma. — ¡Qué ___ suerte!","mala","buena","співчуття"],
+["— ¡Mira, nieva en abril! — ¡Qué ___!","sorpresa","aburrido","несподіванка ❄️"],
+["— He encontrado trabajo. — ¡Qué ___!","bien","lástima","🎉"],
+["— No aguanto más este calor. — Yo también estoy ___.","harto","contento","солідарність 🥵"]
+]},
+{t:"Емоція + прийменник", lv:2, q:[
+["Estoy preocupado ___ ti.","por","de","preocupado POR"],
+["Estoy orgulloso ___ mi hija.","de","por","orgulloso DE"],
+["Está sorprendida ___ la noticia.","por","a","sorprendida POR"],
+["Estoy harto ___ este ruido.","de","por","harto DE"],
+["Estamos emocionados ___ el viaje.","por","en","emocionados POR"],
+["Está enfadado ___ su hermano.","con","de","enfadado CON + людина"],
+["Estoy cansado ___ trabajar.","de","a","cansado DE + інфінітив"],
+["Está triste ___ la mala noticia.","por","con","triste POR + причина"],
+["Estamos contentos ___ el resultado.","con","a","contentos CON"],
+["Está ansiosa ___ el examen.","por","de","ansiosa POR"]
+]},
+{t:"Текст «La historia de España» (1)", lv:2, q:[
+["La historia de España está llena de momentos ___.","emocionantes","emocionados","momentos emocionantes"],
+["Muchos españoles están ___ de su pasado.","orgullosos","preocupados","горді минулим"],
+["En 1492, Colón llegó a ___.","América","África","1492 🌎"],
+["La gente estaba ___: ¡era un mundo nuevo!","sorprendida","aburrida","здивування"],
+["En la Edad de Oro, los escritores estaban muy ___.","creativos","cansados","Золота доба ✍️"],
+["El público estaba ___ de leer sus obras.","contento","enfadado","радість читачів"],
+["Cervantes — це…","письменник Золотої доби","король Іспанії","автор «Дон Кіхота» 📖"],
+["En el siglo XIX España estaba triste por la pérdida de ___.","muchas colonias","su comida","втрата колоній"],
+["V/F: У XIX столітті Іспанія втратила багато колоній.","Verdadero","Falso","з тексту: правда"],
+["llegó означає…","прибув","полетів","llegar = прибувати"]
+]},
+{t:"Текст «La historia de España» (2)", lv:2, q:[
+["La Guerra Civil dejó a la población cansada, enfadada y con ___.","miedo","hambre","з тексту: страх"],
+["Hoy, España está ___ y abierta al mundo.","relajada","cerrada","сьогодні розслаблена"],
+["V/F: Hoy España está cerrada al mundo.","Falso","Verdadero","навпаки — abierta"],
+["Los españoles están alegres cuando hablan de su cultura, su comida y sus ___.","fiestas","siestas","культура, їжа, свята 🎊"],
+["La historia les produce orgullo, pena, sorpresa y ___.","esperanza","hambre","надія ✨"],
+["esperanza = …","надія","очікування в черзі","не «espera» в банку 😄"],
+["Дві негативні емоції з тексту:","pena y miedo","orgullo y esperanza","негатив"],
+["Дві позитивні емоції з тексту:","orgullo y esperanza","pena y miedo","позитив"],
+["dejó a la población cansada = …","залишила народ втомленим","народ покинув країну","dejar + прикметник"],
+["con miedo = …","зі страхом","з медом","miedo ≠ miel 🍯"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки українців", lv:3, q:[
+["Обери правильне:","Estoy triste.","Soy triste.","помилка з книги: емоція → estar"],
+["Обери правильне:","Estoy nervioso.","Tengo nervioso.","estar + прикметник"],
+["Обери правильне:","Tengo miedo.","Estoy miedo.","miedo — іменник → tener"],
+["«Я щасливий сьогодні»:","Estoy contento hoy.","Soy contento hoy.","hoy → стан"],
+["Обери правильне:","Estoy harto.","Soy harto.","набридло = стан"],
+["Обери правильне:","Ella está preocupada.","Ella es preocupada.","хвилюється зараз"],
+["tener nervios ≠ estar nervioso, бо…","tener + іменник, estar + прикметник","це одне й те саме","з культурних нотаток книги"],
+["«Мені страшно»:","Tengo miedo.","Soy miedo.","tener miedo"],
+["Обери правильне:","Estamos sorprendidos.","Somos sorprendidos.","реакція → estar"],
+["Емоції змінюються, тому вони з…","estar","ser","сьогодні сумний, завтра ні"]
+]},
+{t:"TENER + іменник: miedo, hambre, sueño…", lv:3, q:[
+["___ miedo. (мені страшно)","Tengo","Estoy","tener miedo"],
+["___ nervioso. (я знервований)","Estoy","Tengo","estar + прикметник"],
+["Tengo ___. (голод)","hambre","hambriento","tener hambre"],
+["Tengo ___. (спрага)","sed","agua","tener sed 💧"],
+["Tengo ___. (хочу спати)","sueño","dormir","tener sueño 😴"],
+["¡Qué suerte ___! (тобі)","tienes","estás","tener suerte"],
+["«Мені жарко»:","Tengo calor.","Estoy calor.","tener calor 🥵"],
+["«Мені холодно»:","Tengo frío.","Soy frío.","tener frío 🥶"],
+["tener + …","іменник","прикметник","tengo miedo"],
+["estar + …","прикметник","іменник","estoy nervioso"]
+]},
+{t:"¡Qué rollo! і культурні нюанси", lv:3, q:[
+["¡Qué rollo! — це…","легка скарга","повна відмова","з книги: queja ligera"],
+["¡Qué rollo! доречно сказати…","колезі про нудну нараду","на похороні","доречність 😅"],
+["Вигуки ¡Qué…! в Іспанії — це…","повсякденна норма","ознака невихованості","культурна нотатка"],
+["¡Qué calor! улітку в Іспанії кажуть…","постійно","лише синоптики","☀️ класика"],
+["«¡Qué rollo!» за тоном ≈ українське…","«ну й нудота»","«я подаю в суд»","легка скарга"],
+["Реакція на довгу чергу:","¡Qué rollo!","¡Enhorabuena!","🐌"],
+["¡No me digas! часто кажуть…","і з іронією","лише щиро","та ну! 😏"],
+["Іспанці виражають емоції…","відкрито й голосно","стримано","🔥"],
+["«Estoy harta ya» — ya додає…","нетерпіння","ввічливості","вже досить!"],
+["Сказати другові ¡Qué rollo! про його план — це…","м'яка скарга, не образа","кінець дружби","зазвичай ок"]
+]},
+{t:"Антоніми та пари емоцій", lv:3, q:[
+["relajado ↔ …","nervioso","cansado","спокій ↔ нерви"],
+["contento ↔ …","triste","enfermo","радість ↔ смуток"],
+["emocionado ↔ …","decepcionado","orgulloso","захват ↔ розчарування"],
+["aburrido ↔ …","emocionado","enfadado","нудьга ↔ захват"],
+["enfermo ↔ …","sano","cansado","хворий ↔ здоровий"],
+["¡Qué bien! ↔ …","¡Qué rollo!","¡Qué sorpresa!","позитив ↔ негатив"],
+["¡Qué suerte! ↔ …","¡Qué mala suerte!","¡Qué calor!","удача ↔ невдача"],
+["tranquilo ↔ …","ansioso","triste","спокійний ↔ тривожний"],
+["cansado ↔ …","descansado","decepcionado","втомлений ↔ відпочилий"],
+["justo ↔ …","injusto","juntos","juntos = разом!"]
+]},
+{t:"Повні міні-діалоги", lv:3, q:[
+["— ¿Por qué estás tan contenta? — ___","¡He aprobado el examen!","Estoy enferma.","радість має причину"],
+["— Mi perro está muy enfermo. — ___","Lo siento mucho.","¡Qué suerte!","співчуття 🐕"],
+["— ¡He ganado un viaje a Cuba! — ___","¡No me digas! ¡Qué suerte!","¡Qué pena!","😲✈️"],
+["— ¿Cómo estás? — ___, gracias.","Muy bien","Muy bueno","estar bien"],
+["— Estoy muy nervioso por la entrevista. — ___","Tranquilo, todo va a salir bien.","¡Enhorabuena!","підтримка"],
+["— ¡Otra vez llueve! — ___","¡Qué rollo!","¡Qué sorpresa tan buena!","☔ скарга"],
+["— He suspendido otra vez. — ___","¡Qué mala suerte!","¡Increíble, enhorabuena!","підтримуємо"],
+["— ¡Estoy embarazada! — ___","¡Enhorabuena!","Lo siento mucho.","радісна новина 👶"],
+["— No aguanto más este trabajo. — ___","¿Por qué? ¿Qué pasa?","¡Qué suerte tienes!","цікавимось"],
+["— ¡Qué sorpresa verte aquí! — ___","¡Sí! ¡Cuánto tiempo!","Lo siento.","зустріч 🤗"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Я дуже задоволена»","Estoy muy contenta.","Soy muy contenta.","стан → estar"],
+["«Яка шкода!»","¡Qué pena!","¡Qué peña!","pena без ñ"],
+["«Мені набридло»","Estoy harto.","Tengo harto.","estar harto"],
+["«Не може бути!»","¡No me digas!","¡No me dices!","стійка форма"],
+["«Ми стурбовані»","Estamos preocupados.","Somos preocupados.","estar"],
+["«Вітаю!»","¡Enhorabuena!","¡En buena hora!","одним словом"],
+["«Мені страшно»","Tengo miedo.","Estoy miedo.","tener miedo"],
+["«Він гордий за сина»","Está orgulloso de su hijo.","Está orgulloso por su hijo.","orgulloso DE"],
+["«Як цікаво!»","¡Qué interesante!","¡Cómo interesante!","вигук → qué"],
+["«Я більше не витримаю»","¡No aguanto más!","¡No aguanta más!","yo → aguanto"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«Soy triste» — це…","помилка (треба estoy)","правильно","помилка з книги!"],
+["«Estoy contento» — це…","правильно","помилка","стан ✓"],
+["«Tengo nervioso» — це…","помилка (estoy nervioso)","правильно","tener + іменник"],
+["«Tengo miedo» — це…","правильно","помилка","tener miedo ✓"],
+["«María está enfadado» — це…","помилка (enfadada)","правильно","María → жін. рід"],
+["«Estamos cansados» — це…","правильно","помилка","мн. ✓"],
+["«Ellos están harto» — це…","помилка (hartos)","правильно","мн. → hartos"],
+["«Lo siento mucho» — це…","правильно","помилка","співчуття ✓"],
+["«Estoy sorprendida por la noticia» — це…","правильно","помилка","POR причина ✓"],
+["«¡Qué bien! Lo siento» разом — це…","помилка (суперечність)","правильно","радість + співчуття не поєднуються 😄"]
+]},
+{t:"Емоція: позитивна чи негативна?", lv:3, q:[
+["emocionado — емоція…","позитивна","негативна","з книги: позитивно схвильований"],
+["decepcionado — …","негативна","позитивна","розчарування"],
+["orgulloso — …","позитивна","негативна","гордість"],
+["ansioso — …","негативна","позитивна","тривога"],
+["relajado — …","позитивна","негативна","спокій 🧘"],
+["harto — …","негативна","позитивна","набридло"],
+["¡Enhorabuena! — реакція…","позитивна","негативна","вітання"],
+["¡Qué lástima! — …","негативна","позитивна","прикрість"],
+["¡Increíble! може бути…","і позитивним, і негативним","лише негативним","залежить від контексту!"],
+["sorprendido може бути…","і приємно, і неприємно","лише приємно","сюрпризи бувають різні 🎁"]
+]},
+{t:"Емоції в минулому (з тексту)", lv:3, q:[
+["La gente ___ sorprendida. (тоді)","estaba","está","минуле: estaba"],
+["Los escritores ___ muy creativos.","estaban","están","минуле мн.: estaban"],
+["estaba — це минулий час дієслова…","estar","ser","imperfecto від estar"],
+["El público estaba contento de ___ sus obras.","leer","lee","de + інфінітив"],
+["España ___ preocupada en el siglo XIX.","estaba","era","емоція в минулому → estar"],
+["«era un mundo nuevo» — era від…","ser","estar","це БУВ новий світ"],
+["estaban — форма для…","ellos/ellas","yo","мн. минулого"],
+["Сьогодні: está relajada. Тоді: ___ preocupada.","estaba","estará","минуле"],
+["hubo épocas difíciles = …","були важкі часи","будуть важкі часи","минуле"],
+["«Народ був утомлений» = La población estaba ___.","cansada","cansado","la población → жін. рід"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["Hoy ella ___ muy contenta.","está","es","емоція → estar"],
+["— ¡He aprobado! — ¡___!","Enhorabuena","Lo siento","🎓"],
+["Estoy harta ___ esperar.","de","por","harta DE"],
+["___ miedo a las arañas.","Tengo","Estoy","tener miedo 🕷️"],
+["¡No me ___! ¿En serio?","digas","dices","no me digas"],
+["Los niños están ___ en casa. (знуджені)","aburridos","aburridas","чол. мн."],
+["El libro es aburrido y yo (чол.) estoy ___.","aburrido","aburrida","нудний і нудно"],
+["Está orgullosa ___ sus hijos.","de","por","orgullosa DE"],
+["«Це несправедливо!» = ¡Es ___!","injusto","injusticio","injusto"],
+["Урок 2 пройдено! ¡Estoy muy ___ de ti! (гордий)","orgulloso","orgullo","прикметник → orgulloso 🎉"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "EMOCIONES: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 2 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

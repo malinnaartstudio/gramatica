@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 5 · El gerundio · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 5 · @malinnaartstudio</div>
+    <h1 id="htitle">GERUNDIO: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 5 · El gerundio.</b>
+      30 вправ по 10 питань: -ando/-iendo, неправильні (durmiendo, leyendo, yendo…),
+      п’ять перифраз (estar, seguir, ir, llevar, andar + герундій), нічний Прадо і «¡Estoy llegando!». Від ★ до ★★★. ¡Vamos practicando! 🎨
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · утворення форм</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · перифрази й текст</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й помилки</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 5</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Утворення герундія: базове", lv:1, q:[
+["hablar → …","hablando","hablendo","-ar → -ando"],
+["comer → …","comiendo","comando","-er → -iendo"],
+["vivir → …","viviendo","vivando","-ir → -iendo"],
+["-ar дієслова → …","-ando","-iendo","hablando"],
+["-er / -ir дієслова → …","-iendo","-ando","comiendo, viviendo"],
+["trabajar → …","trabajando","trabajiendo","-ando"],
+["escribir → …","escribiendo","escribando","-iendo"],
+["Герундій українською ≈ …","«роблячи» / «роблю зараз»","«зробив»","дія в процесі"],
+["estudiar → …","estudiando","estudiendo","-ando"],
+["beber → …","bebiendo","bebando","-iendo"]
+]},
+{t:"Герундії на -ANDO", lv:1, q:[
+["cocinar → …","cocinando","cociniendo","👩‍🍳"],
+["descansar → …","descansando","descansiendo","😴"],
+["escuchar → …","escuchando","escuchiendo","🎧"],
+["cantar → …","cantando","cantiendo","🎤"],
+["bailar → …","bailando","bailiendo","💃"],
+["caminar → …","caminando","caminiendo","🚶"],
+["comprar → …","comprando","compriendo","🛒"],
+["esperar → …","esperando","esperiendo","⏳"],
+["mirar → …","mirando","miriendo","👀"],
+["sacar fotos → ___ fotos","sacando","saquiendo","📸"]
+]},
+{t:"Герундії на -IENDO", lv:1, q:[
+["hacer → …","haciendo","hacando","-iendo"],
+["aprender → …","aprendiendo","aprendando","-iendo"],
+["correr → …","corriendo","corrando","🏃"],
+["salir → …","saliendo","salando","-iendo"],
+["abrir → …","abriendo","abrando","-iendo"],
+["subir → …","subiendo","subando","⬆️"],
+["vender → …","vendiendo","vendando","vendando = бинтуючи 😄"],
+["recibir → …","recibiendo","recibando","-iendo"],
+["comprender → …","comprendiendo","comprendando","-iendo"],
+["romper → …","rompiendo","rompando","💔"]
+]},
+{t:"ESTAR + герундій: форми", lv:1, q:[
+["yo ___ estudiando","estoy","soy","прогресив → estar"],
+["tú ___ comiendo","estás","eres","estás"],
+["ella ___ cocinando","está","es","está"],
+["nosotros ___ trabajando","estamos","somos","estamos"],
+["vosotros ___ leyendo","estáis","sois","estáis"],
+["ellos ___ durmiendo","están","son","están"],
+["Прогресив = ___ + герундій","estar","ser","estar + -ando/-iendo"],
+["usted ___ hablando","está","estás","як él"],
+["¿Qué ___ haciendo? (ти)","estás","eres","estás haciendo"],
+["Mi gato y yo ___ descansando.","estamos","están","кіт + я = nosotros 🐱"]
+]},
+{t:"¿Qué estás haciendo? Що ти робиш?", lv:1, q:[
+["— ¿Qué haces? — Estoy ___. (вчуся)","estudiando","estudiar","приклад з книги"],
+["— ¿Qué hace mamá? — Está ___ la cena.","cocinando","cocinar","готує вечерю"],
+["Estoy ___ un libro. (читаю)","leyendo","leiendo","i → y!"],
+["Están ___ la tele. (дивляться)","viendo","vendo","ver → viendo"],
+["Estamos ___ música.","escuchando","escuchar","🎵"],
+["Estoy ___ en el sofá. (відпочиваю)","descansando","descansiendo","🛋️"],
+["Está ___ por teléfono.","hablando","hablar","📞"],
+["¿Estás ___? (спиш?)","durmiendo","dormiendo","o→u!"],
+["Estoy ___ al trabajo. (за кермом)","conduciendo","conducando","зі словника 🚗"],
+["Los niños están ___. (грають)","jugando","jugiendo","-ar → -ando"]
+]},
+{t:"Неправильні: e→i", lv:1, q:[
+["pedir → …","pidiendo","pediendo","e→i"],
+["decir → …","diciendo","deciendo","e→i"],
+["seguir → …","siguiendo","seguiendo","e→i"],
+["repetir → …","repitiendo","repetiendo","e→i"],
+["sentir → …","sintiendo","sentiendo","e→i"],
+["Está ___ ayuda. (просить)","pidiendo","pediendo","🙏"],
+["¿Qué estás ___? (кажеш)","diciendo","deciendo","🗣️"],
+["Estamos ___ las instrucciones.","siguiendo","seguiendo","слідуємо"],
+["El profesor está ___ la regla.","repitiendo","repetiendo","повторює"],
+["Me estoy ___ mejor. (почуваюся)","sintiendo","sentiendo","краще!"]
+]},
+{t:"Неправильні: o→u та -y-", lv:1, q:[
+["dormir → …","durmiendo","dormiendo","o→u"],
+["morir → …","muriendo","moriendo","o→u"],
+["leer → …","leyendo","leiendo","i між голосними → y"],
+["oír → …","oyendo","oiendo","y"],
+["caer → …","cayendo","caiendo","y"],
+["traer → …","trayendo","traiendo","y"],
+["construir → …","construyendo","construiendo","y"],
+["ir → …","yendo","iendo","особлива форма!"],
+["El bebé está ___. (спить)","durmiendo","dormiendo","😴"],
+["¿No me estás ___? (чуєш)","oyendo","oiendo","👂"]
+]},
+{t:"Словник герундіїв: іспанська → українська", lv:1, q:[
+["hablando = …","говорячи","гавкаючи","🗣️"],
+["trabajando = …","працюючи","подорожуючи","💼"],
+["escribiendo = …","пишучи","кричачи","✍️"],
+["cocinando = …","готуючи (їжу)","кокетуючи","👩‍🍳"],
+["descansando = …","відпочиваючи","скасовуючи","😌"],
+["conduciendo = …","за кермом","диригуючи","🚗"],
+["escuchando = …","слухаючи","ховаючись","🎧"],
+["diciendo = …","кажучи","диктуючи","decir"],
+["trayendo = …","приносячи","зраджуючи","traer 🎁"],
+["yendo = …","йдучи / їдучи","єднаючись","ir"]
+]},
+{t:"Словник герундіїв: українська → іспанська", lv:1, q:[
+["навчаючись = …","estudiando","estudiendo","-ando"],
+["просячи = …","pidiendo","pediendo","e→i"],
+["продовжуючи = …","siguiendo","seguiendo","e→i"],
+["сплячи = …","durmiendo","dormiendo","o→u"],
+["читаючи = …","leyendo","leiendo","y"],
+["чуючи = …","oyendo","oiendo","y"],
+["помираючи = …","muriendo","moriendo","o→u"],
+["готуючи = …","cocinando","cocinando ahora","одне слово"],
+["пишучи = …","escribiendo","escribando","-iendo"],
+["слухаючи музику = …","escuchando música","oyendo la telé","зі словника"]
+]},
+{t:"Коли вживається герундій?", lv:1, q:[
+["Дія просто зараз: ¿Qué haces? — …","Estoy estudiando.","Estudio mañana.","з книги"],
+["Тимчасова дія: Este mes ___ en Madrid.","estamos viviendo","vivimos desde siempre","з книги"],
+["Поступовий прогрес: Poco a poco ___ más.","voy aprendiendo","voy a aprender","з книги"],
+["Повторювана дія (скарга): Siempre está ___ de todo.","quejándose","quejando se","з книги"],
+["Герундій показує дію…","у процесі","завершену","триває"],
+["Дві одночасні дії — можна герундієм?","так","ні","одночасність"],
+["«Я зараз читаю» = …","Estoy leyendo.","Leo cada día.","зараз"],
+["Estoy comiendo означає…","я саме зараз їм","я їм щодня","у процесі 🍽️"],
+["Como vs Estoy comiendo — різниця:","звичка vs зараз","немає різниці","важливо!"],
+["ocurriendo en el momento de hablar = …","відбувається в момент мовлення","відбулося вчора","з книги"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Вправа 1 з книги: встав герундій", lv:2, q:[
+["Ellos están ___ el periódico. (leer)","leyendo","leiendo","з книги"],
+["Yo sigo ___ español. (estudiar)","estudiando","estudiendo","з книги"],
+["Tú estás ___ en el sofá. (dormir)","durmiendo","dormiendo","з книги"],
+["Nosotros vamos ___ poco a poco. (mejorar)","mejorando","mejoriendo","з книги"],
+["Ella está ___ la cena. (cocinar)","cocinando","cociniendo","з книги"],
+["Está ___ fotos. (sacar)","sacando","saquiendo","📸"],
+["Estamos ___ vídeos. (grabar)","grabando","grabiendo","🎥"],
+["Están ___ preguntas. (hacer)","haciendo","hacando","❓"],
+["Estoy ___ notas. (tomar)","tomando","tomiendo","📝"],
+["Está ___ la guitarra. (tocar)","tocando","toquiendo","🎸"]
+]},
+{t:"Вправа 2 з книги: утвори герундій", lv:2, q:[
+["pedir → …","pidiendo","pediendo","з книги"],
+["construir → …","construyendo","construiendo","з книги"],
+["vivir → …","viviendo","vivendo","з книги"],
+["decir → …","diciendo","deciendo","з книги"],
+["traer → …","trayendo","traiendo","з книги"],
+["ver → …","viendo","veyendo","звичайне: viendo"],
+["hacer → …","haciendo","hacendo","-iendo"],
+["jugar → …","jugando","juegando","у герундії БЕЗ чергування"],
+["querer → …","queriendo","quiriendo","без чергування"],
+["poder → …","pudiendo","podiendo","o→u"]
+]},
+{t:"Вправа 3 з книги: у прогресив!", lv:2, q:[
+["Yo trabajo en una oficina → …","Estoy trabajando en una oficina.","Estoy trabajo en una oficina.","з книги"],
+["Ellos estudian en la biblioteca → …","Están estudiando en la biblioteca.","Están estudian en la biblioteca.","з книги"],
+["Nosotros escribimos una carta → …","Estamos escribiendo una carta.","Estamos escribimos una carta.","з книги"],
+["Tú lees una novela → …","Estás leyendo una novela.","Estás leiendo una novela.","з книги"],
+["Mi madre cocina ahora → …","Mi madre está cocinando ahora.","Mi madre es cocinando ahora.","з книги"],
+["Duermo → …","Estoy durmiendo.","Estoy dormiendo.","o→u"],
+["Pide un café → …","Está pidiendo un café.","Está pediendo un café.","e→i"],
+["Oyen música → …","Están oyendo música.","Están oiendo música.","y"],
+["Construyen una casa → …","Están construyendo una casa.","Están construiendo una casa.","y"],
+["Vais al centro → …","Estáis yendo al centro.","Estáis iendo al centro.","yendo"]
+]},
+{t:"SEGUIR + герундій: продовжую", lv:2, q:[
+["Sigo ___ español. (вчу далі)","estudiando","estudiar","seguir + герундій!"],
+["seguir + gerundio = …","продовжувати дію","почати дію","persistencia"],
+["¿Sigues ___ en Madrid? (досі живеш)","viviendo","vivir","герундій"],
+["Siguen ___ del tema. (говорять далі)","hablando","hablar","герундій"],
+["seguir: yo ___","sigo","seguo","sigo"],
+["«Я продовжую працювати» = Sigo ___.","trabajando","trabajar","НЕ інфінітив!"],
+["A medianoche todos siguen ___ las salas. (з тексту)","recorriendo","recorrer","обходять зали"],
+["Sigue ___ aunque es difícil.","intentando","intentar","не здається 💪"],
+["seguir + інфінітив — можна?","ні, тільки герундій","так","поширена помилка!"],
+["Seguimos ___ detalles. (відкриваємо далі)","descubriendo","descubrir","з тексту"]
+]},
+{t:"IR + герундій: потроху", lv:2, q:[
+["Voy ___ mejor. (потроху розумію)","entendiendo","entender","приклад з книги"],
+["ir + gerundio = …","поступовий процес","миттєва дія","gradual"],
+["Poco a poco voy ___ más.","aprendiendo","aprender","з книги"],
+["Vamos ___ poco a poco. (покращуємося)","mejorando","mejorar","з вправи книги"],
+["Los visitantes van ___ atentos. (з тексту)","escuchando","escuchar","слухають собі"],
+["Voy entendiendo ≈ …","потроху починаю розуміти","вже все зрозумів","процес"],
+["ir + gerundio часто йде з…","poco a poco","ayer","поступовість 🐢"],
+["Vas ___ con el español. (прогресуєш)","avanzando","avanzar","¡muy bien!"],
+["La situación va ___. (поступово змінюється)","cambiando","cambiar","процес"],
+["estar + ger vs ir + ger:","зараз vs поступово","однакові","нюанс"]
+]},
+{t:"LLEVAR + час + герундій", lv:2, q:[
+["Llevo dos horas ___. (працюю)","trabajando","trabajar","приклад з книги"],
+["llevar + час + gerundio = …","тривалість дії","кінець дії","скільки вже часу"],
+["Llevo tres meses ___ español.","aprendiendo","aprender","з культ. нотаток!"],
+["¿Cuánto tiempo llevas ___ aquí? (живеш)","viviendo","vivir","герундій"],
+["Lleva una hora ___. (чекає)","esperando","esperar","⏳"],
+["Llevamos 20 minutos ___ el autobús.","esperando","esperar","🚌"],
+["«Вже 2 роки вчу іспанську» = Llevo dos años ___ español.","estudiando","estudiar","llevar + ger"],
+["Llevo toda la mañana ___. (прибираю)","limpiando","limpiar","🧹"],
+["llevar тут означає…","вже якийсь час робити","носити на спині","часова перифраза"],
+["Lleva días ___ en eso. (думає)","pensando","pensar","🤔"]
+]},
+{t:"ANDAR + герундій та огляд перифраз", lv:2, q:[
+["Anda ___ trabajo. (постійно шукає)","buscando","buscar","приклад з книги"],
+["andar + gerundio = …","повторювана дія","одноразова дія","з книги"],
+["Siempre anda ___ de todo. (скаржиться)","quejándose","quejarse","😤"],
+["estar + ger → …","дія зараз","поступовість","ahora"],
+["seguir + ger → …","продовження","кінець","далі"],
+["ir + ger → …","поступовий процес","дія зараз","poco a poco"],
+["llevar + час + ger → …","тривалість","початок","скільки часу"],
+["andar + ger → …","повторювана дія","разова дія","то тут, то там"],
+["Anda ___ historias por ahí. (розповідає всюди)","contando","contar","пліткар 😄"],
+["Скільки перифраз із герундієм у книзі?","п'ять","дві","estar, seguir, ir, llevar, andar"]
+]},
+{t:"Текст: ніч у музеї Прадо (1)", lv:2, q:[
+["El Museo del Prado está ___ una visita nocturna.","organizando","organizar","🏛️"],
+["Los turistas están ___ poco a poco.","entrando","entrar","заходять"],
+["…___ fotos y mirando todo.","sacando","sacar","📸"],
+["Los guías están ___ la historia de cuadros famosos.","explicando","explicar","екскурсоводи"],
+["Los estudiantes están ___ preguntas.","haciendo","hacer","❓"],
+["…y ___ vídeos para sus redes sociales.","grabando","grabar","📱"],
+["Los pintores están ___ las obras de Velázquez y Goya.","copiando","copiar","🎨"],
+["V/F: Молоді художники копіюють Пікассо.","Falso — Velázquez y Goya","Verdadero","з питань книги"],
+["La señora mayor está ___ recuerdos de su infancia.","contando","contar","спогади"],
+["Sus nietos están ___ sorprendidos.","escuchando","escuchar","онуки"]
+]},
+{t:"Текст: ніч у музеї Прадо (2)", lv:2, q:[
+["Un músico está ___ la guitarra.","tocando","tocar","🎸"],
+["V/F: Музикант грає на піаніно.","Falso — на гітарі","Verdadero","з питань книги"],
+["Varios visitantes están ___ con él.","cantando","cantar","🎤"],
+["Los vigilantes están ___ todo.","observando","observar","охорона 👮"],
+["…___ de que nadie toque los cuadros.","asegurándose","asegurando se","пильнують"],
+["A medianoche todos siguen ___ las salas.","recorriendo","recorrer","опівночі"],
+["…y ___ detalles.","descubriendo","descubrir","відкривають"],
+["Los visitantes están ___ del museo.","saliendo","salir","виходять"],
+["…___ la experiencia y prometiendo volver.","comentando","comentar","обговорюють"],
+["La visita se convierte en un recuerdo ___.","inolvidable","olvidable","незабутній ✨"]
+]},
+{t:"Герундій із займенниками", lv:2, q:[
+["quejarse → siempre está ___","quejándose","quejando se","займенник приклеюється"],
+["Наголос у quejándose…","обов'язковий","не потрібен","-ándose"],
+["ducharse → Estoy ___","duchándome","duchando me","me! 🚿"],
+["levantarse → Está ___","levantándose","levantandose","з наголосом"],
+["asegurarse → están ___ (з тексту)","asegurándose","asegurando","пильнують"],
+["Займенник можна і перед estar: ___ estoy duchando.","Me","Yo","me estoy duchando = estoy duchándome"],
+["lavarse: Está ___ los dientes.","lavándose","lavando","🪥"],
+["divertirse → Nos estamos ___.","divirtiendo","divertiendo","e→i!"],
+["vestirse → Está ___.","vistiéndose","vestiendose","e→i + наголос"],
+["Чому з'являється наголос?","слово довшає, а наголос лишається на місці","так красивіше","правило наголошення"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки з герундієм", lv:3, q:[
+["❌ Estoy sabiendo la respuesta → ✅ …","Ya sé la respuesta.","Estoy sabiendo bien.","з культ. нотаток!"],
+["❌ Fui al banco, sacando dinero — чому?","герундій не виражає наступну дію","все правильно","з культ. нотаток!"],
+["«Пішов у банк і зняв гроші» = Fui al banco y ___ dinero.","saqué","sacando","послідовні дії — без герундія"],
+["saber, tener у прогресиві…","зазвичай не вживаються","обов'язкові","стани, не процеси"],
+["❌ Estoy quiero comer → ✅ …","Quiero comer.","Estoy queriendo comer.","хотіти — не процес"],
+["«Я знаю відповідь» = …","Sé la respuesta.","Estoy sabiendo la respuesta.","saber!"],
+["Герундій для дії ПІСЛЯ іншої — це…","помилка","норма","в іспанській — ні"],
+["«Розумію все» (взагалі) = …","Entiendo todo.","Estoy entendiendo todo siempre.","стан → просте"],
+["А Voy entendiendo mejor — можна?","так, поступовий прогрес","ні","ir + ger — ок!"],
+["Estoy conociendo la ciudad (процес знайомства) — можна?","так","ні","процес — ок"]
+]},
+{t:"«¡Estoy llegando!» — культурні нотатки", lv:3, q:[
+["Іспанець пише «Estoy llegando». Насправді він…","ще їде, буде за 10–15 хв","уже на місці","культурна нотатка 😄"],
+["Estoy llegando дослівно = …","я прибуваю","я прибув","процес"],
+["«Estoy llegando» реально означає…","«я в дорозі»","«відчиняй двері»","voy en camino"],
+["Llevo tres meses aprendiendo español — так кажуть…","дуже часто","ніколи","поширена перифраза"],
+["Друг пише «¡Estoy llegando!» — що робити?","спокійно чекати ще трохи","дзвонити в поліцію","всі так кажуть 😅"],
+["Ya voy = …","вже йду","вже прийшов","аналог"],
+["На «¿Dónde estás?» той, хто спізнюється:","«¡Estoy llegando!»","«¡Estoy llegado!»","класика"],
+["estar llegando — це…","прогресив від llegar","минулий час","процес прибуття"],
+["Пунктуальність у неформальних зустрічах в Іспанії…","гнучка","військова","культура 🕐"],
+["«Щойно сів у метро, буду за 20 хв» коротко:","¡Estoy llegando!","¡He llegado!","😄"]
+]},
+{t:"Обери перифразу за змістом", lv:3, q:[
+["«Я ВЖЕ ГОДИНУ читаю» → …","Llevo una hora leyendo.","Sigo leer una hora.","тривалість → llevar"],
+["«Я ПРОДОВЖУЮ читати» → …","Sigo leyendo.","Voy leyendo.","persistencia"],
+["«Я ЗАРАЗ читаю» → …","Estoy leyendo.","Ando leyendo.","зараз"],
+["«ПОТРОХУ читаю все більше» → …","Voy leyendo más.","Estoy leyendo ahora mismo.","поступово"],
+["«Він ПОСТІЙНО шукає роботу» → …","Anda buscando trabajo.","Está buscar trabajo.","повторюваність"],
+["Llevo dos horas trabajando = …","вже 2 години працюю","працюватиму 2 години","тривалість"],
+["Sigo estudiando español = …","продовжую вчити","кинув вчити","з книги"],
+["Voy entendiendo mejor = …","потроху розумію краще","миттєво все зрозумів","з книги"],
+["Está quejándose = …","скаржиться зараз","поскаржився колись раз","процес"],
+["Anda contando historias = …","ходить і всім розповідає","розповів одну історію","повторюваність"]
+]},
+{t:"Одночасні дії з герундієм", lv:3, q:[
+["Trabaja ___ música. (слухаючи)","escuchando","escuchar","одночасність"],
+["Desayuno ___ las noticias. (дивлячись)","viendo","ver","☕📺"],
+["Camina ___ por teléfono. (розмовляючи)","hablando","hablar","🚶📞"],
+["…mientras los visitantes van ___ atentos. (з тексту)","escuchando","escuchar","mientras = поки"],
+["Aprendo español ___ podcasts.","escuchando","escuchado","🎧"],
+["Cocina ___. (співаючи)","cantando","cantar","🎤🍳"],
+["Estudia ___ apuntes. (роблячи нотатки)","tomando","tomar","📝"],
+["Дієслово + герундій показує дії…","одночасні","послідовні","разом у часі"],
+["Salen del museo ___ la experiencia. (з тексту)","comentando","comentar","виходячи, обговорюють"],
+["…mezclando estilos y ___ nuevas versiones. (з тексту)","creando","crear","художники 🎨"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Я зараз читаю книгу»","Estoy leyendo un libro.","Estoy leiendo un libro.","приклад з книги"],
+["«Я продовжую вчити іспанську»","Sigo estudiando español.","Sigo estudiar español.","приклад з книги"],
+["«Потроху розумію краще»","Voy entendiendo mejor.","Voy entender mejor.","приклад з книги"],
+["«Я вже дві години працюю»","Llevo dos horas trabajando.","Llevo dos horas trabajar.","приклад з книги"],
+["«Він постійно шукає роботу»","Anda buscando trabajo.","Anda buscar trabajo.","приклад з книги"],
+["«Дитина спить»","El niño está durmiendo.","El niño está dormiendo.","o→u"],
+["«Що ти кажеш?»","¿Qué estás diciendo?","¿Qué estás deciendo?","e→i"],
+["«Ми будуємо дім»","Estamos construyendo una casa.","Estamos construiendo una casa.","y"],
+["«Вона просить каву»","Está pidiendo un café.","Está pediendo un café.","e→i"],
+["«Я вже їду!»","¡Estoy yendo!","¡Estoy iendo!","yendo"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«Estoy sabiendo la respuesta» — …","помилка (Ya sé)","правильно","з книги"],
+["«Estoy leyendo» — …","правильно ✓","помилка","✓"],
+["«Está dormiendo» — …","помилка (durmiendo)","правильно","o→u"],
+["«Sigo estudiando» — …","правильно ✓","помилка","✓"],
+["«Sigo estudiar» — …","помилка (estudiando)","правильно","seguir + ger"],
+["«Están leiendo» — …","помилка (leyendo)","правильно","y"],
+["«Llevo dos horas trabajando» — …","правильно ✓","помилка","✓"],
+["«Está pidiendo ayuda» — …","правильно ✓","помилка","✓"],
+["«Estoy yendo a casa» — …","правильно ✓","помилка","yendo ✓"],
+["«Fui al banco, sacando dinero» — …","помилка (y saqué)","правильно","послідовність — без герундія"]
+]},
+{t:"Звідки ця форма?", lv:3, q:[
+["leyendo — чому y?","i між голосними → y","для краси","le-iendo → leyendo"],
+["oyendo — від дієслова…","oír","oler","oler = нюхати 👃"],
+["yendo — від…","ir","llevar","особлива форма"],
+["quejándose — наголос на…","á","e","герундій + se → наголос"],
+["duchándome: без займенника було б…","duchando","duchándo","наголос зникає"],
+["construyendo — від…","construir","constatar","будувати 🏗️"],
+["trayendo — від…","traer","tratar","приносити"],
+["cayendo — від…","caer","callar","callar = мовчати!"],
+["sintiendo — від…","sentir","sentar","sentar = садити!"],
+["repitiendo — від…","repetir","repartir","repartir = роздавати"]
+]},
+{t:"Деталі тексту: словник", lv:3, q:[
+["…mirando todo con mucha ___.","emoción","emocionando","з емоцією"],
+["mientras = …","поки, в той час як","назавжди","одночасність"],
+["…tomando ___ en sus libretas.","notas","notos","нотатки 📝"],
+["…transformando el museo en un lugar lleno de ___.","vida","vidas","повний життя"],
+["…pero también están ___. (усміхаються)","sonriendo","sonrisando","sonreír → sonriendo 😊"],
+["…porque disfrutan del ___.","ambiente","ambientando","атмосфера"],
+["…detalles que pasan ___.","desapercibidos","apercibidos","непомічені"],
+["…___ volver. (обіцяючи)","prometiendo","prometer","🤞"],
+["un recuerdo inolvidable = …","незабутній спогад","забутий спогад","in + olvidable"],
+["…lleno de acciones en ___.","progreso","progresando","фінал тексту"]
+]},
+{t:"Прогресив чи просте теперішнє?", lv:3, q:[
+["«Я їм о 2-й щодня» → …","Como a las dos.","Estoy comiendo a las dos.","звичка → просте"],
+["«Я саме зараз їм» → …","Estoy comiendo.","Como.","зараз → прогресив"],
+["Звичка → …","просте теперішнє","прогресив","siempre, cada día"],
+["Дія в момент мовлення → …","прогресив","просте","ahora"],
+["«Trabajo en un banco» — це про…","роботу взагалі","саме цю хвилину","професія"],
+["«Estoy trabajando, te llamo luego» — про…","зараз","професію","зайнятий!"],
+["ahora, en este momento → …","прогресив","просте","маркери"],
+["todos los días, siempre → …","просте теперішнє","прогресив","маркери звички"],
+["Vivo en Kyiv vs Estoy viviendo en Madrid este mes:","постійно vs тимчасово","однаково","з книги: тимчасова дія"],
+["¿Qué haces? може означати…","і «що робиш зараз», і «чим займаєшся»","лише професію","контекст!"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["hablar → …","hablando","hablendo","-ando"],
+["dormir → …","durmiendo","dormiendo","o→u"],
+["leer → …","leyendo","leiendo","y"],
+["Sigo ___ español.","estudiando","estudiar","продовжую"],
+["Llevo tres meses ___ español.","aprendiendo","aprender","тривалість"],
+["«Estoy llegando» від іспанця = …","буде за 10–15 хвилин","уже стоїть під дверима","😄"],
+["❌ Estoy sabiendo → ✅ …","Ya sé","Estoy conociendo","saber не в прогресиві"],
+["Siempre está ___ de todo.","quejándose","quejando","з наголосом"],
+["ir → …","yendo","iendo","особлива форма"],
+["Урок 5 готово! ¡Sigues ___! (прогресуєш)","avanzando","avanzar","🎉"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "GERUNDIO: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 5 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 26 · En una entrevista · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 26 · @malinnaartstudio</div>
+    <h1 id="htitle">EN UNA ENTREVISTA: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+<main>
+  <div id="home">
+    <div class="intro">
+            <b style="color:var(--rasp)">Lección 26 · En una entrevista.</b>
+      30 вправ по 10 питань: як природно поєднувати Pretérito Perfecto, Indefinido та Imperfecto,
+      розповідаючи про досвід роботи — плюс словник для співбесіди й типові питання інтерв'юера.
+      Від ★ до ★★★. ¡Cada entrevista es una oportunidad! 🤝
+
+    </div>
+    <div class="legend">
+            <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · три минулі часи + словник співбесіди</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · текст, поєднання часів, переклад</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · культура співбесід і типові помилки</span>
+
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 26</footer>
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Repaso: три минулі часи", lv:1, q:[
+["Pretérito Perfecto використовується для…","досвіду, звʼязаного з теперішнім","звичок у минулому","з таблиці книги"],
+["Pretérito Indefinido використовується для…","завершених дій у минулому","досвіду до сьогодні","з таблиці книги"],
+["Pretérito Imperfecto використовується для…","звичного опису в минулому","одноразової конкретної дії","з таблиці книги"],
+["He trabajado en una empresa internacional — переклад…","Я працював у міжнародній компанії (досвід важливий тепер)","Я працюю в міжнародній компанії щодня","Perfecto"],
+["Trabajé dos años en una tienda — переклад…","Я працював два роки в магазині (завершено)","Я працюю два роки в магазині","Indefinido"],
+["En mi trabajo anterior hablaba con muchos clientes — переклад…","На попередній роботі я часто спілкувався з клієнтами (звично)","На попередній роботі я одного разу поспілкувався з клієнтом","Imperfecto"],
+["Урок 26 називається…","En una entrevista","Busco empleo","з підручника"],
+["Урок 26 повторює й поглиблює використання…","трьох минулих часів у контексті співбесіди","майбутнього часу","мета уроку"],
+["Три часи (Perfecto/Indefinido/Imperfecto) розрізняються за…","звʼязком з теперішнім, завершеністю і звичністю","родом дієслова","три різні аспекти минулого"],
+["Ця тема логічно продовжує уроки 24-25 про…","роботу і кар'єру","подорожі","послідовність"]
+]},
+{t:"Perfecto: досвід (повторення)", lv:1, q:[
+["He aprendido a trabajar en equipo — переклад…","Я навчився працювати в команді","Я навчуся працювати в команді","Perfecto, досвід"],
+["He desarrollado habilidades de comunicación — переклад…","Я розвинув комунікаційні навички","Я розвину навички колись","Perfecto"],
+["Perfecto найкраще підходить для опису…","«чого я навчився/досяг за кар'єру» (загалом)","«що я робив щодня на попередній роботі»","з граматики уроку"],
+["Ключові маркери Perfecto: este año, últimamente,…","alguna vez","hace dos años","з таблиці уроку"],
+["He conseguido varios objetivos — переклад…","Я досяг кількох цілей","Я досягну кількох цілей","Perfecto"],
+["На співбесіді Perfecto добре підходить для розповіді про…","досягнення та навички загалом","точну дату початку роботи","практична порада"],
+["He mejorado mucho mi español — переклад…","Я значно покращив свою іспанську","Я покращу свою іспанську колись","Perfecto"],
+["Perfecto створює враження, що результат…","актуальний і сьогодні","стосується лише минулого","логіка часу"],
+["He trabajado en varios sectores — це приклад…","загального професійного досвіду","конкретної дати","Perfecto для досвіду"],
+["На співбесіді фраза з Perfecto звучить як…","підсумок навичок і досвіду","розповідь про один день","практичне застосування"]
+]},
+{t:"Indefinido: факти (повторення)", lv:1, q:[
+["En 2021 trabajé en una empresa de marketing — переклад…","У 2021 я працював у маркетинговій компанії","Я працюю в маркетинговій компанії відтоді","Indefinido, конкретна дата"],
+["Indefinido на співбесіді підходить для…","конкретних фактів (де, коли саме)","загальних вражень","з граматики уроку"],
+["Empecé a trabajar allí en enero — переклад…","Я почав там працювати в січні","Я почну там працювати в січні","Indefinido"],
+["Terminé mis estudios en 2020 — переклад…","Я закінчив навчання у 2020","Я закінчу навчання у 2020","Indefinido, конкретна дата"],
+["На питання «¿Cuándo empezaste?» очікується відповідь у…","Indefinido","Imperfecto","логіка питання cuándo"],
+["Conseguí el puesto después de tres entrevistas — переклад…","Я отримав посаду після трьох співбесід","Я отримую посаду після співбесід постійно","Indefinido, конкретна подія"],
+["Indefinido розповідає про…","одноразові, конкретні події кар'єри","повторювані звички","контраст з Imperfecto"],
+["Fue mi primera entrevista en España — форма fue:","Pretérito Indefinido (ser)","Pretérito Imperfecto","конкретна подія"],
+["Conseguí el trabajo — переклад…","Я отримав роботу","Я отримую роботу постійно","Indefinido, фінал історії"],
+["Indefinido типово вживають, відповідаючи на питання «¿Qué pasó?» —…","що сталося (конкретно)","що зазвичай відбувалося","логіка часу"]
+]},
+{t:"Imperfecto: рутина й опис (нове застосування)", lv:1, q:[
+["En mi último empleo atendía llamadas — переклад…","На останній роботі я (зазвичай) відповідав на дзвінки","На останній роботі я один раз відповів на дзвінок","Imperfecto, рутина"],
+["resolvía incidencias cada día — переклад…","вирішував інциденти щодня (звично)","вирішив один інцидент","Imperfecto, повторювана дія"],
+["Imperfecto на співбесіді описує…","типові завдання й обов'язки на попередній роботі","конкретну дату початку роботи","з граматики уроку"],
+["Cuando trabajaba en la tienda, siempre atendía a muchos clientes — форма atendía:","Imperfecto (звичка)","Indefinido","повторювана дія в минулому"],
+["Trabajaba de lunes a viernes — переклад…","Я (зазвичай) працював з понеділка по п'ятницю","Я попрацював один день з понеділка по п'ятницю","Imperfecto, розклад-звичка"],
+["Imperfecto відповідає на питання «¿Cómo era tu trabajo?» —…","яким був твій робочий день/звичка","що сталося того дня","логіка питання"],
+["Organizaba reuniones semanalmente — переклад…","Я (зазвичай) організовував зустрічі щотижня","Я організував одну зустріч","Imperfecto, регулярність"],
+["Era muy dinámico mi ambiente de trabajo — переклад…","Моє робоче середовище було дуже динамічним (опис)","Моє робоче середовище стало динамічним раптово","Imperfecto, опис стану"],
+["Cuando era recepcionista, hablaba con muchas personas — форма hablaba:","Imperfecto (звична дія)","Indefinido","повторювана дія"],
+["Imperfecto ідеально описує…","«якою була моя типова робота»","«коли я почав цю роботу»","розрізнення функцій часів"]
+]},
+{t:"CÓMO COMBINARLOS у співбесіді", lv:1, q:[
+["Perfecto для…","experiencias y logros (досвід і досягнення)","hechos concretos","з правила уроку"],
+["Indefinido для…","hechos concretos (конкретні факти)","tareas o rutinas","з правила уроку"],
+["Imperfecto для…","tareas o rutinas (опис завдань/рутини)","logros generales","з правила уроку"],
+["He aprendido a trabajar en equipo y a usar nuevas herramientas — час:","Perfecto","Indefinido","досвід/навички"],
+["En 2021 trabajé en una empresa de marketing — час:","Indefinido","Imperfecto","конкретна дата"],
+["En mi último empleo atendía llamadas y resolvía incidencias — час:","Imperfecto","Perfecto","опис типових завдань"],
+["На реальній співбесіді типово поєднують…","усі три часи в одній розповіді","лише один час завжди","практична порада уроку"],
+["Приклад комбінації: «He trabajado mucho (Perfecto). En 2020 empecé en esta empresa (Indefinido). Antes trabajaba como freelance (Imperfecto)» — це…","природна розповідь про кар'єру","граматично неправильна суміш","реалістичний приклад"],
+["Уміння поєднувати три часи показує…","високий рівень володіння мовою","базовий рівень","практична мета уроку"],
+["Ключ до вибору правильного часу — завжди…","враховувати контекст і функцію (досвід/факт/звичка)","запам'ятати напам'ять без логіки","підсумок"]
+]},
+{t:"Часові маркери трьох часів разом", lv:1, q:[
+["este año, últimamente, alguna vez → …","Pretérito Perfecto","Pretérito Indefinido","з таблиці"],
+["en 2020, el año pasado, hace dos años → …","Pretérito Indefinido","Pretérito Imperfecto","з таблиці"],
+["antes, cuando trabajaba, siempre → …","Pretérito Imperfecto","Pretérito Perfecto","з таблиці"],
+["«Antes» типово сигналізує…","Imperfecto (опис минулого стану)","Perfecto","часовий маркер"],
+["«Hace dos años» типово сигналізує…","Indefinido (конкретний момент)","Imperfecto","часовий маркер"],
+["«Últimamente» типово сигналізує…","Perfecto (недавній період)","Indefinido","часовий маркер"],
+["«Siempre» у контексті минулої звички сигналізує…","Imperfecto","Indefinido","повторювана дія"],
+["«El año pasado» типово сигналізує…","Indefinido","Perfecto","закінчений рік"],
+["«Cuando trabajaba» містить дієслово в…","Imperfecto","Indefinido","приклад маркера"],
+["Знання цих маркерів допомагає…","швидко обрати правильний час","запам'ятати лексику","практична користь"]
+]},
+{t:"Словник: дієслова для співбесід 1", lv:1, q:[
+["aprender = …","навчитися","керувати","базове"],
+["dirigir = …","керувати","співпрацювати","базове"],
+["colaborar = …","співпрацювати","вирішувати","базове"],
+["resolver = …","вирішувати (проблеми)","організовувати","базове"],
+["organizar = …","організовувати","покращувати","базове"],
+["He dirigido un equipo de diez personas — переклад…","Я керував командою з десяти осіб","Я співпрацював з десятьма особами","dirigir"],
+["Colaboro bien con otros departamentos — переклад…","Добре співпрацюю з іншими відділами","Добре керую іншими відділами","colaborar"],
+["Resuelvo problemas rápidamente — переклад…","Я швидко вирішую проблеми","Я швидко створюю проблеми","resolver"],
+["Organizo mi tiempo eficientemente — переклад…","Я ефективно організовую свій час","Я витрачаю час неефективно","organizar"],
+["Ці дієслова типово вживаються в контексті…","опису навичок на співбесіді","побутової розмови","тема уроку"]
+]},
+{t:"Словник: дієслова для співбесід 2", lv:1, q:[
+["mejorar = …","покращувати","досягати","базове"],
+["conseguir = …","досягати, отримувати","розвивати","базове"],
+["lograr = …","досягати (синонім conseguir)","підтримувати","синонім"],
+["desarrollar = …","розвивати","підтримувати","базове"],
+["apoyar = …","підтримувати","розвивати","базове"],
+["He mejorado mis habilidades de venta — переклад…","Я покращив свої навички продажу","Я втратив навички продажу","mejorar"],
+["Conseguí un ascenso el año pasado — переклад…","Я отримав підвищення минулого року","Я втратив підвищення минулого року","conseguir"],
+["Logré todos mis objetivos — переклад…","Я досяг усіх своїх цілей","Я не досяг жодної цілі","lograr"],
+["Desarrollé un nuevo proyecto — переклад…","Я розробив новий проєкт","Я закрив старий проєкт","desarrollar"],
+["Apoyo a mis compañeros cuando lo necesitan — переклад…","Я підтримую колег, коли їм це потрібно","Я ігнорую колег","apoyar"]
+]},
+{t:"Словник: особисті якості 1", lv:1, q:[
+["responsable = …","відповідальний","ненадійний","базове"],
+["puntual = …","пунктуальний","запізнілий","базове"],
+["organizado = …","організований","хаотичний","базове"],
+["comunicativo = …","комунікабельний","мовчазний","базове"],
+["creativo = …","креативний","звичайний","базове"],
+["Me considero una persona responsable — переклад…","Я вважаю себе відповідальною людиною","Я вважаю себе безвідповідальною людиною","з книги"],
+["Soy muy puntual en el trabajo — переклад…","Я дуже пунктуальний на роботі","Я часто запізнююся на роботу","puntual"],
+["Soy organizado con mis tareas — переклад…","Я організований у своїх завданнях","Я хаотичний у своїх завданнях","organizado"],
+["Soy comunicativo con los clientes — переклад…","Я комунікабельний з клієнтами","Я уникаю спілкування з клієнтами","comunicativo"],
+["Tengo un enfoque creativo — переклад…","Маю креативний підхід","Маю стандартний підхід без ідей","creativo"]
+]},
+{t:"Словник: особисті якості 2", lv:1, q:[
+["dinámico = …","активний, енергійний","повільний","базове"],
+["flexible = …","гнучкий","жорсткий, негнучкий","базове"],
+["amable = …","привітний","грубий","базове"],
+["empático = …","емпатичний","байдужий","базове"],
+["resolutivo = …","вміє вирішувати проблеми","створює проблеми","базове"],
+["Soy una persona dinámica y flexible — переклад…","Я активна і гнучка людина","Я повільна і жорстка людина","dinámico/flexible"],
+["Soy amable con todos mis compañeros — переклад…","Я привітний з усіма колегами","Я грубий з усіма колегами","amable"],
+["Soy empático cuando hay conflictos — переклад…","Я емпатичний, коли є конфлікти","Я байдужий до конфліктів","empático"],
+["Soy resolutivo ante los problemas — переклад…","Я вмію вирішувати проблеми","Я уникаю проблем завжди","resolutivo"],
+["Ці прикметники типово використовують, описуючи…","себе на співбесіді","погоду","тема уроку"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Словник: вирази на співбесіді", lv:2, q:[
+["Me considero una persona responsable — переклад…","Вважаю себе відповідальною людиною","Мене вважають безвідповідальним","з книги"],
+["Tengo facilidad para trabajar en equipo — переклад…","Умію легко працювати в команді","Мені важко працювати в команді","з книги"],
+["Aprendo rápido y me adapto con facilidad — переклад…","Швидко навчаюся й легко адаптуюся","Повільно навчаюся і важко адаптуюся","з книги"],
+["En mi anterior trabajo aprendí mucho — переклад…","На попередній роботі я багато навчився","На попередній роботі я нічого не навчився","з книги"],
+["He desarrollado habilidades de comunicación — переклад…","Я розвинув комунікаційні навички","Я втратив комунікаційні навички","з книги"],
+["Suelo trabajar bien bajo presión — переклад…","Зазвичай добре працюю під тиском","Ніколи не працюю під тиском","з книги"],
+["Me gustaría seguir aprendiendo — переклад…","Хотів(ла) б продовжувати навчатися","Не хочу більше нічого вчити","з книги"],
+["Estoy disponible para incorporación inmediata — переклад…","Готовий(а) почати негайно","Не готовий почати ще довго","з книги"],
+["«Soler» + infinitivo (suelo trabajar) означає…","зазвичай робити щось","одного разу зробити щось","дієслово звички"],
+["Ці фрази — практично готовий «скрипт» для…","реальної співбесіди","побутової розмови","практична мета"]
+]},
+{t:"Вправа 1 з книги: три форми одного дієслова", lv:2, q:[
+["En mi último empleo ___ en un restaurante italiano.","trabajé","he trabajaba","конкретний факт → Indefinido"],
+["Antes ___ como dependienta en una tienda del centro.","trabajaba","trabajé","«antes» → Imperfecto, звичка"],
+["Últimamente ___ mucho sobre atención al cliente.","he aprendido","aprendí","«últimamente» → Perfecto"],
+["Cuando era camarero, siempre ___ con muchas personas cada día.","trabajaba","trabajé","«siempre» + «cada día» → Imperfecto"],
+["En 2021 ___ en una empresa internacional y ___ a organizar mi tiempo mejor.","trabajé, aprendí","he trabajado, he aprendido","конкретна дата → Indefinido"],
+["Ключ до вибору форми — часовий маркер анте/últimamente/en 2021 та…","контекст (звичка/факт/досвід)","рід іменника","логіка вправи"],
+["«Antes trabajaba» описує…","стан/звичку в минулому без конкретної дати","один конкретний робочий день","Imperfecto"],
+["«En 2021 trabajé» описує…","конкретний факт з датою","загальну звичку","Indefinido"],
+["«Últimamente he aprendido» описує…","недавній період до сьогодні","закритий момент у минулому","Perfecto"],
+["Ця вправа з книги тренує…","розрізнення трьох часів в одному контексті","переклад ідіом","модуль 4, вправа 1"]
+]},
+{t:"Вправа 2 з книги: обери правильний час", lv:2, q:[
+["Este año ___ (aprender) a usar nuevas herramientas digitales.","he aprendido","aprendí","este año → Perfecto"],
+["Ayer ___ (tener) una entrevista por videollamada.","tuve","he tenido","ayer → Indefinido"],
+["Cuando trabajaba en la tienda, siempre ___ (atender) a muchos clientes.","atendía","atendí","siempre → Imperfecto"],
+["En 2019 ___ (empezar) mi primer trabajo.","empecé","he empezado","en 2019 → Indefinido"],
+["Últimamente ___ (mejorar) mucho mi nivel de español.","he mejorado","mejoré","últimamente → Perfecto"],
+["Три критерії вибору часу: часовий маркер, звʼязок з теперішнім і…","завершеність чи повторюваність дії","рід дієслова","підсумок логіки"],
+["«Cuando trabajaba…siempre atendía» — обидва дієслова в…","Imperfecto (паралельна звичка)","різних часах","узгодження в описі звички"],
+["Ця вправа є прямим продовженням граматики модуля…","1 (три минулі часи)","2 (словник)","логічний звʼязок"],
+["Складність цієї вправи в тому, що…","три часи легко переплутати без чіткого маркера","лексика дуже складна","суть вправи"],
+["Практика такого типу вправ покращує…","автоматичний вибір правильного часу в розмові","лише знання словника","мета вправи"]
+]},
+{t:"Вправа 3 з книги: конектори + часи", lv:2, q:[
+["(trabajar / estudiar español) → приклад поєднання:","Mientras trabajaba, estudiaba español.","Trabajar estudiar español mientras.","mientras + Imperfecto (паралельні дії)"],
+["(tener entrevista / preparar el currículum) → приклад поєднання:","Antes de tener la entrevista, preparé el currículum.","Tener entrevista antes preparar currículum.","antes + Indefinido"],
+["(estar nerviosa / empezar la entrevista) → приклад поєднання:","Estaba nerviosa cuando empezó la entrevista.","Estar nerviosa cuando empezar entrevista.","cuando + Imperfecto/Indefinido"],
+["(buscar trabajo / encontrar uno estable) → приклад поєднання:","Busqué trabajo hasta que encontré uno estable.","Buscar trabajo hasta encontrar estable.","hasta que + Indefinido"],
+["(no tener experiencia / aprender mucho) → приклад поєднання:","Aunque no tenía experiencia, aprendí mucho.","No tener experiencia aprender mucho porque.","aunque + Imperfecto/Indefinido"],
+["Конектори cuando, mientras, hasta que, antes, porque допомагають…","звʼязати дії різних часів логічно","уникати минулого часу взагалі","мета вправи 3"],
+["mientras типово поєднується з часом…","Imperfecto (паралельні дії)","Perfecto","одночасність у минулому"],
+["hasta que типово поєднується з часом…","Indefinido (момент завершення)","Imperfecto","завершення дії"],
+["porque може поєднуватися з…","будь-яким з трьох минулих часів залежно від контексту","лише Perfecto","гнучкість конектора"],
+["Ця вправа поєднує граматику уроків 16 (сполучники) і…","24-26 (минулі часи)","19 (сумнів)","міжтематичний звʼязок"]
+]},
+{t:"Текст: Mi entrevista más importante (1)", lv:2, q:[
+["El día de mi entrevista estaba muy nerviosa — форма estaba:","Imperfecto (опис стану)","Indefinido","стан у момент"],
+["Era para un puesto de recepcionista — форма era:","Imperfecto (опис)","Perfecto","опис ситуації"],
+["Había preparado mi currículum — ця форма (había preparado) — це…","Pluscuamperfecto (дія до іншої минулої дії)","Presente","передминулий час, для контексту"],
+["Cuando entré en la oficina — форма entré:","Indefinido (конкретна дія)","Imperfecto","одноразова дія"],
+["el director me sonrió y me dijo — форми sonrió/dijo:","Indefinido","Perfecto","конкретні одноразові дії"],
+["Le expliqué que había estudiado Administración — форма expliqué:","Indefinido","Imperfecto","конкретна дія розповіді"],
+["que trabajé dos años en una oficina pequeña — форма trabajé:","Indefinido (конкретний факт з тривалістю)","Perfecto","факт кар'єри"],
+["y que he aprendido a tratar con clientes — форма he aprendido:","Perfecto (навичка до сьогодні)","Indefinido","досвід/навичка"],
+["me considero una persona responsable y amable — форма considero:","Presente (постійна характеристика)","Indefinido","теперішній стан"],
+["Durante la entrevista hablamos de mis tareas anteriores — форма hablamos:","Indefinido (конкретна подія — розмова)","Imperfecto","одна конкретна дія"]
+]},
+{t:"Текст: Mi entrevista más importante (2)", lv:2, q:[
+["en mi último trabajo hablaba mucho con el público — форма hablaba:","Imperfecto (звична дія на попередній роботі)","Indefinido","типова робоча звичка"],
+["y resolvía incidencias cada día — форма resolvía:","Imperfecto (щоденна звичка)","Perfecto","повторювана дія"],
+["el director me agradeció la sinceridad — форма agradeció:","Indefinido (конкретна дія)","Imperfecto","одноразова подія"],
+["me dijo que le había gustado mi actitud — «había gustado» — це…","Pluscuamperfecto (сподобалось ще до моменту розповіді)","Presente","передминулий, для непрямої мови"],
+["Dos días después, me llamaron — форма llamaron:","Indefinido (конкретна подія)","Imperfecto","одноразова дія"],
+["para decirme que me habían seleccionado — «habían seleccionado» — це…","Pluscuamperfecto (обрали ще до дзвінка)","Presente","передминулий"],
+["Fue mi primera entrevista en España — форма fue:","Indefinido (ser, конкретний факт)","Imperfecto","підсумкова заява"],
+["¡y conseguí el trabajo! — форма conseguí:","Indefinido (кульмінація історії)","Perfecto","фінальна подія"],
+["Головна тема тексту:","важлива співбесіда і успішний результат","провал на співбесіді","назва тексту"],
+["Текст поєднує…","Perfecto, Indefinido, Imperfecto і навіть Pluscuamperfecto","лише один час","складність реальної розповіді"]
+]},
+{t:"Питання до тексту", lv:2, q:[
+["¿Para qué puesto era la entrevista?","Para un puesto de recepcionista en un hotel","Para un puesto de director","з тексту"],
+["¿Qué había preparado antes de la entrevista?","Su currículum, carta de presentación y preguntas","Solo su ropa","з тексту"],
+["¿Qué explicó la protagonista sobre su experiencia?","Que había estudiado Administración y trabajó en una oficina","Que nunca había trabajado","з тексту"],
+["¿Qué cualidades personales mencionó?","Responsable y amable","Perezosa y desorganizada","з тексту"],
+["¿Qué hacía en su trabajo anterior?","Hablaba con el público y resolvía incidencias","No hacía nada en particular","з тексту"],
+["¿Cómo terminó la entrevista?","El director le agradeció la sinceridad","Terminó mal, sin despedirse","з тексту"],
+["¿Qué noticia recibió dos días después?","Que la habían seleccionado para el puesto","Que no consiguió el trabajo","з тексту"],
+["¿Qué aprendió de esa experiencia?","Que fue su primera entrevista en España y la consiguió","Que nunca debe presentarse a entrevistas","з тексту, фінал"],
+["¿Qué tipo de puesto buscaba?","De recepcionista","De ingeniera","з тексту"],
+["¿Estaba tranquila o nerviosa antes de la entrevista?","Estaba muy nerviosa","Estaba completamente tranquila","з тексту"]
+]},
+{t:"Три часи в тексті: розпізнай", lv:2, q:[
+["Estaba muy nerviosa — час:","Imperfecto","Indefinido","опис стану"],
+["Entré en la oficina — час:","Indefinido","Imperfecto","конкретна дія"],
+["He aprendido a tratar con clientes — час:","Perfecto","Indefinido","досвід"],
+["Hablaba mucho con el público — час:","Imperfecto","Perfecto","звична дія"],
+["Me llamaron — час:","Indefinido","Imperfecto","конкретна подія"],
+["Conseguí el trabajo — час:","Indefinido","Perfecto","кульмінація"],
+["Me considero una persona responsable — час:","Presente (не минулий!)","Imperfecto","постійна характеристика"],
+["Трапляється, що в одному реченні поєднуються кілька часів — це…","нормально й типово для природної розповіді","завжди помилка","важливий висновок"],
+["У тексті переважає…","Indefinido для сюжету + Imperfecto для опису + Perfecto для досвіду","лише Presente","типова структура розповіді"],
+["Розуміння цього поєднання допомагає…","розповідати власні історії природно","лише скласти тест","практична мета"]
+]},
+{t:"CÓMO COMBINARLOS: поглиблена практика", lv:2, q:[
+["Розповідь про кар'єру зазвичай починається з…","Imperfecto/Indefinido (опис ситуації) + факти","одразу з Perfecto","типова структура"],
+["Досягнення й навички на кінець розповіді типово в…","Perfecto","Imperfecto","підсумок досвіду"],
+["«He trabajado como camarero. En 2019 empecé en un restaurante. Antes no tenía experiencia» — приклад поєднання…","всіх трьох часів","лише одного часу","реалістичний приклад"],
+["Дата початку роботи (empecé) — завжди…","Indefinido","Perfecto","конкретний факт"],
+["Загальний досвід за кар'єру (he trabajado, he aprendido) — завжди…","Perfecto","Indefinido","накопичений досвід"],
+["Опис типового робочого дня чи задач — завжди…","Imperfecto","Perfecto","рутина"],
+["На співбесіді уникати монотонності допомагає…","поєднання різних часів природно","вживання лише одного часу","стилістична порада"],
+["Практика поєднання часів готує до…","реальної розповіді про досвід іспанською","лише письмового тесту","практична мета"],
+["Помилка багатьох студентів — вживати лише…","Indefinido для всього","усі три часи одразу без розбору","типова проблема"],
+["Мета вправ уроку — навчитися…","автоматично обирати правильний час за контекстом","запам'ятати текст напам'ять","підсумок"]
+]},
+{t:"Переклад укр → ісп", lv:2, q:[
+["«Я працював два роки в маленькому офісі»","Trabajé dos años en una oficina pequeña.","He trabajado dos años en una oficina pequeña ya.","конкретний факт → Indefinido"],
+["«Я навчився вирішувати проблеми швидко»","He aprendido a resolver problemas rápido.","Aprendí a resolver problemas rápido ya siempre.","досвід → Perfecto"],
+["«На попередній роботі я щодня відповідав на дзвінки»","En mi trabajo anterior atendía llamadas cada día.","En mi trabajo anterior atendí llamadas cada día una vez.","звичка → Imperfecto"],
+["«У 2020 я почав працювати в цій компанії»","En 2020 empecé a trabajar en esta empresa.","En 2020 he empezado a trabajar en esta empresa.","дата → Indefinido"],
+["«Останнім часом я покращив свої навички»","Últimamente he mejorado mis habilidades.","Últimamente mejoré mis habilidades ya antes.","últimamente → Perfecto"],
+["«Я вважаю себе пунктуальною людиною»","Me considero una persona puntual.","Me consideré una persona puntual ayer.","постійна характеристика → Presente"],
+["«Коли я був студентом, багато вчився»","Cuando era estudiante, estudiaba mucho.","Cuando fui estudiante, estudié mucho una vez.","звичка → Imperfecto"],
+["«Отримав підвищення минулого року»","Conseguí un ascenso el año pasado.","He conseguido un ascenso el año pasado.","el año pasado → Indefinido"],
+["«Готовий почати роботу негайно»","Estoy disponible para incorporación inmediata.","Estuve disponible para incorporación inmediata.","Presente для теперішнього стану"],
+["«Умію добре працювати під тиском»","Suelo trabajar bien bajo presión.","Solía trabajar bien bajo presión una vez.","звичка теперішня → Presente"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки", lv:3, q:[
+["❌ Tengo 3 años de experiencias → ✅ …","Tengo 3 años de experiencia.","Tengo 3 años de experiencia ya de las.","experiencia — однина, з культ. нотаток!"],
+["❌ He trabajado en 2019 (конкретна дата) → ✅ …","Trabajé en 2019.","He trabajaba en 2019.","дата → Indefinido"],
+["❌ Antes trabajé siempre como camarero → ✅ …","Antes trabajaba siempre como camarero.","Antes he trabajado siempre como camarero.","siempre + antes → Imperfecto"],
+["❌ Últimamente mejoré mi español → ✅ …","Últimamente he mejorado mi español.","Últimamente mejoraba mi español.","últimamente → Perfecto"],
+["❌ Cuando trabajaba, resolví problemas cada día → ✅ …","Cuando trabajaba, resolvía problemas cada día.","Cuando trabajé, resolví problemas cada día siempre.","повторювана дія → Imperfecto"],
+["❌ En 2021 he trabajado en marketing → ✅ …","En 2021 trabajé en marketing.","En 2021 trabajaba en marketing solo una vez.","конкретний рік → Indefinido"],
+["❌ Me considero era responsable → ✅ …","Me considero responsable.","Me consideraba era responsable.","зайве дієслово, просто Presente"],
+["❌ He trabajado ayer en la oficina → ✅ …","Trabajé ayer en la oficina.","He trabajaba ayer en la oficina.","ayer → Indefinido, не Perfecto!"],
+["❌ Dirigí un equipo (маючи на увазі загальний досвід) → природніше з Perfecto:","He dirigido un equipo.","He dirigía un equipo.","загальний досвід → Perfecto"],
+["❌ Siempre he trabajado los lunes (як конкретний факт розкладу минулої роботи) → природніше…","Siempre trabajaba los lunes.","Siempre trabajé los lunes una vez solamente.","звичка в минулому → Imperfecto"]
+]},
+{t:"Культура: ambiente cercano pero profesional", lv:3, q:[
+["В іспанських співбесідах зазвичай панує атмосфера…","близька, але професійна","дуже формальна й дистанційна","з культ. нотаток"],
+["Зазвичай на співбесіді використовують форму…","«tú», а не «usted»","лише «usted»","з культ. нотаток"],
+["Це контрастує з уроком 22, де для лікаря типовіше…","«usted» (формальний контекст)","також «tú»","порівняння контекстів"],
+["Common Common questions include disponibilidad inmediata і…","expectativas salariales (зарплатні очікування)","улюблений колір","з культ. нотаток"],
+["Знання про «tú» на співбесіді допомагає…","не почуватися зайво напружено через формальність","завжди говорити занадто офіційно","практична порада"],
+["Це не означає, що співбесіда несерйозна — вона залишається…","професійною, попри неформальне звертання","несерйозною повністю","нюанс культури"],
+["Порівняно з деякими іншими країнами, іспанський стиль співбесіди…","більш людяний і менш формальний","суворіший і формальніший","культурне спостереження"],
+["Ця культурна норма узгоджується з уроком 24 про робочу атмосферу, яка описувалась як…","соціальна й людяна","дуже ізольована","звʼязок тем"],
+["Підсумок: незважаючи на «tú», співбесіда все одно вимагає…","підготовки й професійних відповідей","повної невимушеності без підготовки","важливий баланс"],
+["Ключове слово нотатки — «cercano», що означає…","близький, теплий","далекий, холодний","переклад терміна"]
+]},
+{t:"Культура: типові питання інтерв'юера", lv:3, q:[
+["«Háblame de ti» — переклад…","Розкажи мені про себе","Скажи мені твоє ім'я","типове питання"],
+["«¿Qué sabes sobre nuestra empresa?» — переклад…","Що ти знаєш про нашу компанію?","Що ти знаєш про свою родину?","типове питання"],
+["«¿Por qué quieres trabajar con nosotros?» — переклад…","Чому ти хочеш працювати з нами?","Чому ти хочеш звільнитися?","типове питання"],
+["Ці питання типово задають…","на початку співбесіди","лише в кінці","структура співбесіди"],
+["«Háblame de ti» очікує коротку відповідь про…","досвід, освіту, якості","лише вік і місце народження","практична порада"],
+["Готуючись до «¿Qué sabes sobre nuestra empresa?», варто…","дослідити компанію заздалегідь","нічого не готувати","практична порада"],
+["Ці питання ілюструють неформальний, але цілеспрямований стиль…","іспанських співбесід","лише письмових тестів","з культ. нотаток"],
+["Гарна відповідь на «¿Por qué quieres trabajar con nosotros?» повинна бути…","конкретною і щирою","загальною і байдужою","практична порада"],
+["Знання типових питань допомагає…","підготувати впевнені відповіді заздалегідь","імпровізувати без підготовки","мета розділу"],
+["Підсумок: ці фрази — практичний інструмент для…","реальної підготовки до співбесіди іспанською","лише граматичної вправи","загальна мета уроку"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Маю три роки досвіду»","Tengo tres años de experiencia.","Tengo tres años de experiencias.","experiencia — однина!"],
+["«Я працював у 2019 в маленькій компанії»","Trabajé en 2019 en una empresa pequeña.","He trabajado en 2019 en una empresa pequeña.","дата → Indefinido"],
+["«На попередній роботі я завжди приходив вчасно»","En mi trabajo anterior siempre llegaba puntual.","En mi trabajo anterior siempre llegué puntual una vez.","звичка → Imperfecto"],
+["«Я розвинув багато навичок за ці роки»","He desarrollado muchas habilidades en estos años.","Desarrollé muchas habilidades en estos años ya siempre.","досвід періоду → Perfecto"],
+["«Розкажи мені про себе»","Háblame de ti.","Hablas de ti mismo ahora.","типове питання-наказ"],
+["«Готовий(а) почати негайно»","Estoy disponible para incorporación inmediata.","Estuve disponible para incorporación inmediata ya.","теперішній стан → Presente"],
+["«Коли працював офіціантом, спілкувався з багатьма людьми»","Cuando trabajaba de camarero, hablaba con mucha gente.","Cuando trabajé de camarero, he hablado con mucha gente.","обидва Imperfecto для звички"],
+["«Два дні потому мені зателефонували»","Dos días después, me llamaron.","Dos días después, me han llamado ya siempre.","конкретна подія → Indefinido"],
+["«Вважаю себе гнучкою людиною»","Me considero una persona flexible.","Me consideré una persona flexible ayer.","постійна риса → Presente"],
+["«Це була моя перша співбесіда в Іспанії»","Fue mi primera entrevista en España.","Ha sido mi primera entrevista en España ya siempre.","підсумкова заява → Indefinido"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«Tengo tres años de experiencia» — …","правильно ✓","помилка","✓"],
+["«Tengo tres años de experiencias» — …","помилка (experiencia, однина)","правильно","з культ. нотаток"],
+["«Trabajé en 2019 en una tienda» — …","правильно ✓","помилка","✓"],
+["«He trabajado en 2019 en una tienda» — …","зазвичай гірше, краще Trabajé","завжди правильно і природно","дата → Indefinido"],
+["«Antes trabajaba como camarero» — …","правильно ✓","помилка","✓"],
+["«Antes trabajé como camarero siempre» — …","помилка (мішанина siempre + Indefinido)","правильно","суперечність"],
+["«He aprendido mucho en mi carrera» — …","правильно ✓","помилка","✓"],
+["«Aprendí mucho en mi carrera últimamente» — …","помилка (últimamente вимагає Perfecto)","правильно","часовий маркер"],
+["«Me considero una persona responsable» — …","правильно ✓","помилка","✓"],
+["«Me consideré una persona responsable» (постійна риса) — …","зазвичай гірше, звичайно Presente","завжди правильно","постійна характеристика"]
+]},
+{t:"Три часи: поглиблений мікс", lv:3, q:[
+["Розповідь про кар'єру: спочатку контекст (Imperfecto), потім події (Indefinido), потім підсумок досвіду (…)","Perfecto","знову Imperfecto","типова структура"],
+["«Trabajaba en una tienda cuando me llamaron para la entrevista» — обидва часи:","Imperfecto (фон) + Indefinido (подія)","обидва Indefinido","класична комбінація"],
+["«He trabajado mucho, pero en 2020 decidí cambiar» — обидва часи:","Perfecto (досвід) + Indefinido (рішення)","обидва Perfecto","типова комбінація"],
+["Функція Imperfecto у розповіді — це…","фон, декорація (що відбувалося навколо)","головна подія","роль у наративі"],
+["Функція Indefinido у розповіді — це…","головні події сюжету","опис атмосфери","роль у наративі"],
+["Функція Perfecto у розповіді — це…","підсумок досвіду й актуальний результат","лише фон","роль у наративі"],
+["«Estaba nerviosa cuando entré» — приклад класичної пари…","Imperfecto (стан) + Indefinido (дія)","Perfecto + Indefinido","типова пара речення"],
+["Уміння розрізняти ці три ролі — ключ до…","природної розповіді іспанською","лише граматичного тесту","практична мета"],
+["Носії мови вибирають час…","інтуїтивно, за функцією, не за формулою","завжди за одним правилом без винятків","реалістичний висновок"],
+["Підсумок уроку 26: три часи — це…","три різні «камери» для розповіді про минуле","один і той самий час з різними назвами","фінальна метафора"]
+]},
+{t:"Побудуй речення логічно", lv:3, q:[
+["Коли я вчився в університеті, я також працював у кафе →","Cuando estudiaba en la universidad, también trabajaba en un café.","Cuando estudié en la universidad, también trabajé en un café una vez.","паралельні звички → Imperfecto"],
+["У 2018 я отримав свою першу роботу →","En 2018 conseguí mi primer trabajo.","En 2018 he conseguido mi primer trabajo.","дата → Indefinido"],
+["Я розвинув багато навичок за останні роки →","He desarrollado muchas habilidades en los últimos años.","Desarrollé muchas habilidades en los últimos años ya siempre.","період до тепер → Perfecto"],
+["На попередній роботі я завжди приходив раніше за всіх →","En mi trabajo anterior siempre llegaba antes que todos.","En mi trabajo anterior siempre llegué antes que todos una vez.","звичка → Imperfecto"],
+["Отримав пропозицію роботи минулого тижня →","Recibí una oferta de trabajo la semana pasada.","He recibido una oferta de trabajo la semana pasada ya.","la semana pasada → Indefinido"],
+["Останнім часом я подав заявки в кілька компаній →","Últimamente he enviado solicitudes a varias empresas.","Últimamente envié solicitudes a varias empresas ya antes.","últimamente → Perfecto"],
+["Коли працював у ресторані, готував страви щодня →","Cuando trabajaba en el restaurante, cocinaba cada día.","Cuando trabajé en el restaurante, cociné cada día una vez.","повторювана дія → Imperfecto"],
+["Отримав диплом два роки тому →","Me gradué hace dos años.","Me he graduado hace dos años ya.","hace dos años → Indefinido"],
+["Я вважаю себе креативною й гнучкою людиною →","Me considero una persona creativa y flexible.","Me consideré una persona creativa y flexible ayer.","постійна характеристика → Presente"],
+["Це була найважливіша співбесіда мого життя →","Fue la entrevista más importante de mi vida.","Ha sido la entrevista más importante de mi vida ya siempre.","підсумкова заява → Indefinido"]
+]},
+{t:"Симуляція співбесіди: практика", lv:3, q:[
+["«¿Qué estudiaste?» — очікувана відповідь:","Estudié Administración de Empresas.","Estudio Administración de Empresas ahora mismo ya.","конкретний факт → Indefinido"],
+["«¿Qué aprendiste en tu trabajo anterior?» — очікувана відповідь:","Aprendí a resolver problemas y trabajar en equipo.","Aprendo a resolver problemas ahora mismo.","минулий досвід"],
+["«¿Cómo te describirías?» — очікувана відповідь:","Me considero responsable y organizado.","Me consideré responsable ayer solamente.","постійна риса → Presente"],
+["«¿Por qué dejaste tu último trabajo?» — очікувана відповідь:","Quería nuevos retos profesionales.","Quiero nuevos retos ahora ya mismo siempre.","Imperfecto для пояснення причини в минулому"],
+["«¿Qué harás si consigues el puesto?» — очікувана відповідь:","Trabajaré con dedicación y aprenderé rápido.","Trabajé con dedicación ya antes siempre.","майбутнє → Futuro"],
+["Домашнє завдання пропонує симулювати співбесіду з мінімум…","5 типовими питаннями","1 питанням","з підручника"],
+["Гарна відповідь на співбесіді поєднує…","конкретні факти, досвід і особисті якості","лише один короткий факт","практична порада"],
+["«Cuenta qué aprendiste en tus últimos empleos» — очікує відповідь у часі…","Perfecto (досвід) або Indefinido (факти)","лише Futuro","логіка питання"],
+["Симуляція співбесіди — гарна практика перед…","реальною співбесідою іспанською","лише письмовим тестом","практична мета"],
+["Домашнє завдання також просить описати навички мінімум…","8 прикметниками","1 прикметником","з підручника"]
+]},
+{t:"«Mi entrevista» (домашка)", lv:3, q:[
+["El día de mi entrevista ___ (estar) muy nervioso.","estaba","estuve","Imperfecto, опис стану"],
+["___ (preparar) mi currículum la noche anterior.","Preparé","He preparado","конкретна дія → Indefinido"],
+["Durante mis últimos empleos, ___ (aprender) mucho sobre atención al cliente.","he aprendido","aprendía","досвід періоду → Perfecto"],
+["Для домашки потрібно відповісти на мінімум…","5 типових питань співбесіди","1 питання","з підручника"],
+["Друге завдання — говорити 1 хвилину про…","позитивний або негативний досвід роботи","лише позитивний досвід","з підручника"],
+["Третє завдання — описати свої навички мінімум…","8 прикметниками","2 прикметниками","з підручника"],
+["Цитата для роздумів: «Cada entrevista es una oportunidad para conocerte ___».","mejor","peor","з підручника"],
+["Приклад типового питання з підручника: «¿Qué aprendiste en tu trabajo anterior?» очікує час…","Indefinido або Perfecto","лише Futuro","логіка питання"],
+["Мета домашки уроку 26 — практика…","розповіді про досвід трьома минулими часами","минулого доконаного часу лише","підсумок"],
+["Los deberes уроку 26 завершуються, як завжди,…","тестовим завданням (link test)","усним іспитом","стандартна структура"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["He trabajado en varios países — час і функція:","Perfecto, досвід","Indefinido, факт","повторення"],
+["Trabajé dos años en una tienda — час і функція:","Indefinido, факт","Imperfecto, звичка","повторення"],
+["En mi trabajo anterior hablaba con clientes — час і функція:","Imperfecto, звичка","Perfecto, досвід","повторення"],
+["❌ Tengo 3 años de experiencias → ✅ …","Tengo 3 años de experiencia.","обидва варіанти правильні","типова помилка"],
+["На іспанських співбесідах зазвичай використовують…","«tú»","«usted»","з культ. нотаток"],
+["«Háblame de ti» — переклад…","Розкажи мені про себе","Скажи своє ім'я","типове питання"],
+["Me considero una persona responsable — час:","Presente (постійна риса)","Imperfecto","не минулий!"],
+["antes, cuando trabajaba, siempre → …","Imperfecto","Perfecto","маркери"],
+["este año, últimamente, alguna vez → …","Perfecto","Indefinido","маркери"],
+["Урок 26 готово! Estoy seguro de que esta entrevista ___ (ir) muy bien. 💼","va a ir","irá vaya","ir a + infinitivo, план/впевненість"]
+]}
+
+];
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "EN UNA ENTREVISTA: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 26 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

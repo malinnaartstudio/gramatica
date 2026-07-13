@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 30 · Cierre del nivel A2 · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 30 · @malinnaartstudio</div>
+    <h1 id="htitle">CIERRE DEL NIVEL A2: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+<main>
+  <div id="home">
+    <div class="intro">
+      Останній урок рівня A2! 🎉 Тут немає нової граматики — лише підсумок усього шляху: чотири часи (Presente, Perfecto, Indefinido, Futuro), вирази думки, обов'язку й поради, розмовна лексика та особистий текст про досвід життя в Іспанії. Це урок-дзеркало: перевір, скільки ти вже вмієш!
+
+    </div>
+    <div class="legend">
+      <span class="lg lg1">★ Граматичний огляд (1-10)</span>
+<span class="lg lg2">★★ Словник і текст (11-20)</span>
+<span class="lg lg3">★★★ Синтез і рефлексія (21-30)</span>
+
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 30</footer>
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Presente: підсумок вживання", lv:1, q:[
+["Presente вживається для…","того, що відбувається зараз, і регулярних дій","лише завершених дій у минулому","з резюме уроку 30"],
+["Trabajo todos los días — переклад…","Я працюю щодня","Я працював учора","regular action, Presente"],
+["Presente описує дії, які…","повторюються або тривають зараз","відбулися один раз давно","базове визначення"],
+["Vivo en España — переклад…","Живу в Іспанії (зараз, триває)","Жив в Іспанії колись","Presente, триваюча дія"],
+["Presente — найбазовіший з чотирьох часів курсу A2, бо…","з нього починається розуміння інших часів","він найскладніший граматично","роль у системі часів"],
+["Como a las dos — переклад…","Я їм о другій (звична дія)","Я їв о другій вчора","регулярна дія"],
+["Presente протиставляється трьом іншим часам курсу:","Perfecto, Indefinido, Futuro","лише Futuro","з резюме уроку"],
+["«Це одна з найважливіших тем рівня A2» стосується…","розуміння різниці між часами","вивчення нової лексики","цитата з уроку 30"],
+["Presente НЕ підходить для опису…","одноразової завершеної події в минулому","звичної дії","розмежування функцій"],
+["Урок 30 називається…","Cierre del nivel A2","En el aeropuerto y en el hotel","з підручника"]
+]},
+{t:"Pretérito Perfecto: підсумок вживання", lv:1, q:[
+["Pretérito Perfecto вживається, коли…","дія відбулася недавно і є результат зараз","дія повністю завершена без звʼязку з теперішнім","з резюме уроку 30"],
+["He trabajado mucho esta semana — переклад…","Я багато працював цього тижня (і це важливо зараз)","Я багато працював минулого тижня","Perfecto, актуальність"],
+["Perfecto будується як…","haber + participio","дієслово + -aba/-ía","повторення уроку 24"],
+["He aprendido mucho español — переклад…","Я багато навчився іспанської (досвід до сьогодні)","Я навчався іспанської рік тому","Perfecto, досвід"],
+["esta semana, este año, últimamente, nunca → типові маркери…","Perfecto","Indefinido","повторення"],
+["Perfecto завжди пов'язаний з…","моментом «зараз»","конкретною датою в минулому","ключова ідея"],
+["Hemos vivido aquí mucho tiempo — переклад…","Ми живемо тут вже довгий час (і досі)","Ми жили тут рік, а потім поїхали","Perfecto, триваючий досвід"],
+["Perfecto — це «мостовий» час між…","минулим і теперішнім","минулим і майбутнім","функція в системі часів"],
+["¿Has estado alguna vez en Madrid? — питання про…","досвід","конкретну дату","типове питання Perfecto"],
+["Perfecto протиставляється Indefinido за критерієм…","звʼязку з теперішнім","роду дієслова","ключова відмінність"]
+]},
+{t:"Pretérito Indefinido: підсумок вживання", lv:1, q:[
+["Pretérito Indefinido вживається, коли…","дія повністю завершена, є конкретний момент часу","дія триває й досі","з резюме уроку 30"],
+["Ayer trabajé mucho — переклад…","Вчора я багато працював (усе, це вже закінчено)","Я багато працюю щодня","Indefinido, закінчена дія"],
+["Indefinido — проста форма (одне слово), на відміну від…","Perfecto (haber + participio)","Presente","структурна відмінність"],
+["ayer, la semana pasada, en 2019 → типові маркери…","Indefinido","Perfecto","повторення"],
+["Nací en Ucrania — переклад…","Я народився/народилася в Україні","Я народжуюся в Україні (нонсенс)","Indefinido, конкретний факт"],
+["Indefinido розповідає про події, які психологічно…","«закриті» для мовця","досі «відкриті»","нюанс сприйняття"],
+["Empecé a estudiar español hace dos años — форма empecé:","Pretérito Indefinido","Pretérito Perfecto","конкретний момент початку"],
+["Indefinido і Perfecto разом складають…","систему минулих часів рівня A2","лише один спосіб говорити про минуле","підсумок"],
+["Llegué a España en 2022 — переклад…","Я приїхав до Іспанії у 2022","Я приїжджаю до Іспанії постійно","конкретна дата, Indefinido"],
+["Indefinido відповідає на питання «¿Qué pasó?» (що сталося) точніше, ніж…","Perfecto","Presente","логіка вибору часу"]
+]},
+{t:"Futuro: підсумок вживання", lv:1, q:[
+["Futuro вживається для…","планів і припущень","звичних дій зараз","з резюме уроку 30"],
+["Mañana trabajaré mucho — переклад…","Завтра буду багато працювати","Вчора багато працював","Futuro, план"],
+["Estará en casa — переклад…","Мабуть, він удома","Він точно вдома","Futuro, здогадка"],
+["Futuro має дві функції:","план (в поєднанні з ir a) і здогадка","лише один тип значення","повторення уроку 18/20"],
+["Viviré en España algún día — переклад…","Колись я житиму в Іспанії","Колись я жив в Іспанії","Futuro, план на майбутнє"],
+["¿Dónde está Marta? — Estará trabajando — переклад…","Мабуть, вона працює","Вона точно зараз не працює","здогадка про теперішнє через futuro"],
+["Futuro Simple твориться від…","повного інфінітива + закінчення","основи без -ar/-er/-ir","повторення уроку 18"],
+["Ir a + infinitivo — альтернативний спосіб говорити про…","заплановане майбутнє","минулі звички","повторення уроку 20/28"],
+["Чотири часи курсу A2, розглянуті в уроці 30: Presente, Perfecto, Indefinido і…","Futuro","Imperfecto лише","підсумок резюме"],
+["Розуміння різниці між усіма чотирма часами — це…","одна з найважливіших тем рівня A2","другорядна деталь","цитата з уроку 30"]
+]},
+{t:"Чотири часи разом: мікс-практика", lv:1, q:[
+["Trabajo aquí desde 2020 — час:","Presente","Indefinido","триваюча дія"],
+["He trabajado mucho hoy — час:","Perfecto","Futuro","сьогодні, ще не закінчилось"],
+["Trabajé allí en 2018 — час:","Indefinido","Perfecto","конкретна дата"],
+["Trabajaré mañana desde casa — час:","Futuro","Presente","план на завтра"],
+["Como todos los días a la una — час:","Presente","Indefinido","регулярна дія"],
+["He comido ya, gracias — час:","Perfecto","Indefinido","недавня дія, результат зараз"],
+["Comí paella ayer en Valencia — час:","Indefinido","Perfecto","конкретний момент"],
+["Comeré algo más tarde — час:","Futuro","Presente","план"],
+["Ключ до вибору часу — завжди звертати увагу на…","часовий маркер і звʼязок із теперішнім","рід іменника","підсумок методики"],
+["Ці чотири часи разом складають…","основу граматики минулого-теперішнього-майбутнього рівня A2","лише малу частину граматики","важливість теми"]
+]},
+{t:"EXPRESAR OPINIÓN", lv:1, q:[
+["Creo que… = …","думаю, що…","знаю точно, що…","з резюме уроку"],
+["Me parece que… = …","мені здається, що…","мені байдуже, що…","з резюме уроку"],
+["Pienso que… = …","я думаю, що…","я забуваю, що…","синонім creo que"],
+["Ці три вирази допомагають…","звучати природно, висловлюючи думку","наказувати щось","мета розділу"],
+["Creo que es una buena idea — переклад…","Думаю, це гарна ідея","Я знаю, що це погана ідея","вираження думки"],
+["Me parece que tienes razón — переклад…","Мені здається, ти маєш рацію","Ти точно неправий","вираження думки"],
+["Pienso que el español es difícil al principio — переклад…","Думаю, іспанська складна на початку","Іспанська зовсім не складна","вираження думки"],
+["Ці три конструкції — узагальнення теми, детально вивченої в уроці…","19 (Expresar duda o inseguridad)","22 (En el médico)","звʼязок з попередніми уроками"],
+["Creo que, me parece que, pienso que — усі вимагають після себе…","indicativo (у стверджувальній формі)","subjuntivo завжди","граматичне правило"],
+["Уміння висловлювати думку — важлива навичка для…","природної розмови на будь-яку тему","лише письмових творів","практична мета"]
+]},
+{t:"OBLIGACIÓN Y CONSEJO", lv:1, q:[
+["Tener que — це…","конкретне «треба» (для когось)","загальне «треба»","з резюме уроку"],
+["Hay que — це…","загальне «треба» (без особи)","конкретне «треба»","з резюме уроку"],
+["Deber — це…","рекомендація","наказ без винятків","з резюме уроку"],
+["Tengo que trabajar mañana — переклад…","Мені треба працювати завтра (конкретно мені)","Взагалі треба працювати","tener que, конкретність"],
+["Hay que trabajar duro para conseguir tus metas — переклад…","Треба багато працювати, щоб досягти цілей (загалом)","Мені особисто треба працювати","hay que, загальність"],
+["Debes descansar más — переклад…","Тобі варто більше відпочивати (порада)","Тобі заборонено відпочивати","deber, рекомендація"],
+["Ці три конструкції — узагальнення тем з уроків…","17 (obligación, A1/A2 базова) і 23 (deber/hay que/es bueno)","лише одного уроку","звʼязок тем"],
+["Ступінь категоричності: tener que й hay que звучать…","сильніше/обов'язковіше, ніж deber","слабше, ніж deber","шкала"],
+["Deber найкраще підходить для…","м'якої поради","суворого наказу","нюанс"],
+["Ці три вирази часто вживаються разом у…","порадах про здоровий спосіб життя чи навчання","лише в кулінарних рецептах","практичне застосування"]
+]},
+{t:"VERBOS REFLEXIVOS: не просто «-ся»", lv:1, q:[
+["Verbos reflexivos — це не завжди…","«себе»","дієслова взагалі","з резюме уроку 30"],
+["Часто reflexivo — це просто…","інша форма дієслова (з іншим значенням)","помилка носіїв мови","важливе уточнення"],
+["levantarse = …","вставати","піднімати щось","приклад з резюме"],
+["sentirse = …","почуватися","відчувати щось руками","приклад з резюме"],
+["Це узагальнення теми детально вивченої в уроці…","21 (Mi cuerpo y mi rutina diaria)","25 (Busco empleo)","звʼязок тем"],
+["llamarse (зватися) — це приклад дієслова, де reflexivo…","змінює значення повністю (llamar = кликати когось)","не змінює нічого","приклад з попередніх уроків"],
+["Розуміння, що reflexivo — «інша форма», а не завжди «себе», допомагає…","краще запам'ятовувати нові дієслова","ігнорувати граматику взагалі","практична користь"],
+["quedarse (залишатися) — reflexivo тут means…","стан (залишитися десь), не дію на себе буквально","дію нанесення собі шкоди","нюанс значення"],
+["Це фінальне уточнення теми reflexivos важливе, бо…","багато студентів плутають «-ся» з буквальним «себе»","це проста тема без нюансів","мета уточнення"],
+["Підсумок: reflexivos треба вивчати…","як окремі слова з власним значенням, а не завжди перекладати буквально","завжди буквально перекладаючи «себе»","методична порада"]
+]},
+{t:"Словник: vida diaria 1", lv:1, q:[
+["hacer la compra = …","робити покупки","готувати їжу","базове"],
+["quedar con alguien = …","домовлятися про зустріч","сваритися з кимось","базове"],
+["llevarse bien = …","добре ладнати (з кимось)","погано ладнати","базове"],
+["echar de menos = …","сумувати (за кимось/чимось)","радіти","базове"],
+["llegar tarde = …","запізнюватися","приходити вчасно","базове"],
+["salir a pasear = …","йти гуляти","залишатися вдома","базове"],
+["pasar tiempo = …","проводити час","витрачати гроші","базове"],
+["quedarse en casa = …","залишатися вдома","виходити з дому","базове"],
+["hacer planes = …","будувати плани","скасовувати плани","базове"],
+["cambiar de rutina = …","змінювати рутину","дотримуватись рутини","базове"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Presente vs Futuro: обери правильний час", lv:1, q:[
+["Ahora mismo estudio español — час:","Presente","Futuro","дія зараз"],
+["El próximo año estudiaré inglés también — час:","Futuro","Presente","план на майбутнє"],
+["Todos los días desayuno a las ocho — час:","Presente","Futuro","звична дія"],
+["Algún día viviré en otro país — час:","Futuro","Presente","мрія/план"],
+["¿Qué haces ahora? — Estudio — час:","Presente","Futuro","питання про теперішню дію"],
+["¿Qué harás mañana? — Estudiaré — час:","Futuro","Presente","питання про майбутнє"],
+["Normalmente trabajo desde casa — час:","Presente","Futuro","регулярна дія"],
+["Seguramente lloverá esta tarde — час:","Futuro (здогадка)","Presente","припущення"],
+["Estará cansado, por eso no contesta — час:","Futuro (здогадка про теперішнє)","Presente","здогадка"],
+["Presente і Futuro разом дозволяють говорити про…","звички зараз і плани/здогадки на майбутнє","лише минулі події","підсумок"]
+]},
+{t:"Словник: vida diaria 2 та trabajo", lv:2, q:[
+["estar en paro = …","бути без роботи","мати багато роботи","базове"],
+["tener experiencia = …","мати досвід","не мати досвіду","повторення уроку 24"],
+["jornada completa = …","повний робочий день","неповний робочий день","повторення уроку 25"],
+["sueldo = …","зарплата","контракт","базове"],
+["contrato = …","контракт","співбесіда","базове"],
+["entrevista = …","співбесіда","резюме","повторення уроку 26"],
+["horario flexible = …","гнучкий графік","суворий графік","базове"],
+["trabajar en equipo = …","працювати в команді","працювати самостійно","повторення уроку 26"],
+["buscar empleo = …","шукати роботу","знайти роботу","повторення уроку 25"],
+["mejorar habilidades = …","покращувати навички","втрачати навички","базове"]
+]},
+{t:"Словник: salud y emociones", lv:2, q:[
+["estar cansado/a = …","бути втомленим","бути бадьорим","базове"],
+["sentirse mal = …","погано себе почувати","добре себе почувати","повторення уроку 21"],
+["tener dolor = …","мати біль","не мати болю","повторення уроку 21-22"],
+["relajarse = …","розслаблятися","напружуватися","базове"],
+["estar estresado/a = …","бути в стресі","бути спокійним","базове"],
+["preocuparse = …","хвилюватися","не хвилюватися","базове"],
+["mejorar = …","покращуватись","погіршуватись","базове"],
+["descansar = …","відпочивати","працювати","повторення уроку 23"],
+["tener energía = …","мати енергію","бути виснаженим","базове"],
+["sentirse mejor = …","почуватися краще","почуватися гірше","базове"]
+]},
+{t:"Expresiones reales: розмовні слова 1", lv:2, q:[
+["¡Qué guay! = …","Клас! Круто!","Як сумно!","розмовний вигук"],
+["¡Qué rollo! = …","Та ну, як нудно… Отстій","Як цікаво!","розмовний вигук, протилежність guay"],
+["Vale = …","Ок","Ні в якому разі","розмовне погодження"],
+["Venga = …","Давай","Стоп","розмовне спонукання"],
+["Pues… = …","Ну…","Точно!","вставне слово"],
+["Ці слова типово вживають у…","розмовній, неформальній мові","офіційних документах","контекст вживання"],
+["¡Qué guay! можна перекласти англійським сленгом…","«cool!»","«boring!»","культурний відповідник"],
+["Venga, vamos! = …","Давай, ходімо!","Стоп, чекай!","розмовна фраза"],
+["Ці слова НЕ типово зустрічаються в…","академічних текстах чи формальних листах","розмовах друзів","реєстр вживання"],
+["Знання цих слів допомагає розуміти…","реальну, живу іспанську мову (не лише підручникову)","лише письмову мову","практична мета"]
+]},
+{t:"Expresiones reales: розмовні слова 2", lv:2, q:[
+["En plan… (розмовне) = …","Типу…","Насправді…","розмовний вираз"],
+["O sea… = …","Тобто…","Ніколи…","вставне слово-пояснення"],
+["Bueno… = …","Ладно. Ну…","Погано!","вставне слово"],
+["Ya… (реакція) = …","Ага…","Ще ні…","розмовна реакція"],
+["Claro = …","Звісно. Ясно-понятно","Ніколи","розмовна згода"],
+["«En plan estresada» означає…","типу у стресі / якось у стресі","точно не в стресі","розмовний зворот"],
+["O sea, no quiero ir — переклад…","Тобто, я не хочу йти","Звичайно, я хочу йти","пояснення"],
+["Ya вживається як самостійна реакція, що означає…","«ага, зрозуміло»","«ні, не розумію»","коротка реакція"],
+["Ці десять розмовних слів разом ілюструють…","живу, неформальну іспанську мову вулиці","лише формальну літературну мову","мета розділу словника"],
+["Використання цих слів у розмові робить мову…","природнішою і сучаснішою","штучною","практична мета"]
+]},
+{t:"Текст: Vivo en España desde hace dos años (1)", lv:2, q:[
+["Vivo en España desde hace dos años — час і конструкція:","Presente + desde hace (тривалість, урок 17)","Futuro","повторення уроку 17"],
+["mi vida ha cambiado muchísimo desde entonces — форма ha cambiado:","Pretérito Perfecto","Pretérito Indefinido","досвід до сьогодні"],
+["Al principio todo era complicado — форма era:","Pretérito Imperfecto (опис стану в минулому)","Presente","фон розповіді"],
+["no entendía bien a la gente, me costaba hablar — форми entendía/costaba:","Imperfecto (звичний стан на початку)","Indefinido","опис труднощів"],
+["tenía miedo de cometer errores — переклад…","боявся/боялася робити помилки","не боявся помилок взагалі","Imperfecto"],
+["Recuerdo que en mi primer trabajo apenas podía comunicarme — переклад «apenas»…","ледве","дуже добре","з тексту"],
+["Usaba frases muy básicas — форма usaba:","Imperfecto (звичка на той момент)","Perfecto","опис минулої звички"],
+["Sin embargo, poco a poco empecé a sentirme más cómoda — форма empecé:","Pretérito Indefinido (початок зміни)","Imperfecto","конкретний момент початку"],
+["Ahora trabajo en una empresa pequeña — час:","Presente (теперішня ситуація)","Futuro","контраст з минулим"],
+["Me llevo muy bien con mis compañeros — переклад…","Я дуже добре ладнаю з колегами","Я погано ладнаю з колегами","llevarse bien зі словника"]
+]},
+{t:"Текст: Vivo en España desde hace dos años (2)", lv:2, q:[
+["ya puedo participar en conversaciones normales — переклад…","вже можу брати участь у звичайних розмовах","досі не можу говорити взагалі","прогрес автора"],
+["A veces todavía cometo errores, pero ya no me da vergüenza hablar — переклад…","Іноді досі роблю помилки, але мені вже не соромно говорити","Я ніколи не роблю помилок","з тексту"],
+["suelo salir a pasear, quedar con amigos — конструкція suelo:","soler + infinitivo (звичка, урок 27)","futuro simple","повторення граматики"],
+["También intento ver series en español para mejorar mi comprensión — переклад…","Також намагаюся дивитися серіали іспанською, щоб покращити розуміння","Ніколи не дивлюся серіали іспанською","з тексту"],
+["Echo de menos a mi familia — переклад…","Сумую за родиною","Не сумую за родиною","echar de menos зі словника"],
+["pero hablo con ellos regularmente — переклад…","але регулярно з ними спілкуюся","і ніколи з ними не спілкуюся","з тексту"],
+["Creo que aprender un idioma no es fácil, sino un proceso largo — конструкція «no es…sino»:","заперечення + виправлення (урок 16)","просте заперечення","повторення сполучників"],
+["que requiere paciencia — переклад…","що вимагає терпіння","що не вимагає нічого","з тексту"],
+["es una de las mejores decisiones que he tomado — форма he tomado:","Pretérito Perfecto (досвід, підсумок)","Futuro","досвід життя"],
+["Головна тема тексту:","особистий шлях вивчення іспанської мови й переїзду в Іспанію","подорож по містах Іспанії","назва тексту"]
+]},
+{t:"Питання до тексту", lv:2, q:[
+["¿Cuánto tiempo vive en España?","Desde hace dos años","Desde hace diez años","з тексту"],
+["¿Cómo se sentía al principio?","Insegura, con miedo de cometer errores","Muy segura de sí misma","з тексту"],
+["¿Qué dificultades tenía?","Le costaba hablar y entender a la gente","No tenía ninguna dificultad","з тексту"],
+["¿Dónde trabaja ahora?","En una empresa pequeña","En un hospital","з тексту"],
+["¿Cómo es su relación con los compañeros?","Se lleva muy bien con ellos","No se lleva bien con nadie","з тексту"],
+["¿Qué hace en su tiempo libre?","Sale a pasear, queda con amigos o descansa en casa","Solo trabaja, sin tiempo libre","з тексту"],
+["¿Qué hace para mejorar el idioma?","Ve series en español","Solo estudia gramática de libros","з тексту"],
+["¿A quién echa de menos?","A su familia","A sus antiguos compañeros de trabajo","з тексту"],
+["¿Cómo se siente ahora al hablar?","Ya no le da vergüenza, aunque comete errores","Todavía tiene mucho miedo","з тексту"],
+["¿Qué piensa sobre aprender idiomas?","Que es un proceso largo que requiere paciencia, pero vale la pena","Que es imposible para adultos","з тексту, фінал"]
+]},
+{t:"Opinión personal: питання для роздумів", lv:2, q:[
+["¿Es difícil aprender idiomas? — очікується відповідь з…","думкою (creo que.../me parece que...)","лише «так» або «ні»","формат питання"],
+["¿Qué haces para aprender español? — очікується відповідь про…","конкретні звички (suelo + infinitivo)","абстрактну філософію","практичне питання"],
+["¿Prefieres estudiar o practicar hablando? — це питання про…","особисту перевагу","факт з підручника","суб'єктивне питання"],
+["¿Te gusta vivir en otro país? — очікується відповідь з дієсловом…","gustar (Me gusta / No me gusta)","deber","конструкція gustar"],
+["¿Qué es lo más difícil para ti? — очікується відповідь про…","особистий досвід і труднощі","загальні факти","особисте питання"],
+["Ці п'ять питань призначені для…","особистої рефлексії та розмовної практики","письмового граматичного тесту","формат розділу"],
+["Гарна відповідь на ¿Es difícil aprender idiomas? може починатися з…","Creo que…","Nunca…","типова конструкція думки"],
+["Ці питання логічно повʼязані з темою тексту про…","досвід вивчення іспанської мови","подорожі","звʼязок з текстом"],
+["Відповідаючи на ці питання, варто використовувати граматику всього курсу…","A2 (часи, вирази думки, лексику)","лише Presente","підсумкова мета"],
+["Ці питання — гарна фінальна вправа для…","підготовки до вільної розмови іспанською","письмового есе на іспиті","практична мета"]
+]},
+{t:"Переклад укр → ісп", lv:2, q:[
+["«Живу в Іспанії вже два роки»","Vivo en España desde hace dos años.","Vivo en España desde dos años.","desde hace + тривалість"],
+["«Моє життя дуже змінилося відтоді»","Mi vida ha cambiado muchísimo desde entonces.","Mi vida cambió muchísimo desde entonces ya siempre.","Perfecto, досвід до сьогодні"],
+["«Спочатку все було складно»","Al principio todo era complicado.","Al principio todo fue complicado una vez solo.","Imperfecto, опис стану"],
+["«Тепер я добре ладнаю з колегами»","Ahora me llevo muy bien con mis compañeros.","Ahora me llevé muy bien con mis compañeros ayer.","Presente, теперішній стан"],
+["«Мені вже не соромно говорити»","Ya no me da vergüenza hablar.","Ya no me dio vergüenza hablar ayer.","Presente"],
+["«Сумую за родиною, але регулярно розмовляю з ними»","Echo de menos a mi familia, pero hablo con ellos regularmente.","Eché de menos a mi familia, pero hablé con ellos regularmente ayer.","Presente"],
+["«Вважаю, що вивчення мови — це довгий процес»","Creo que aprender un idioma es un proceso largo.","Creo que aprender un idioma será un proceso largo ya.","Presente після creo que"],
+["«Треба мати терпіння»","Hay que tener paciencia.","Tengo que tener paciencia todos siempre.","hay que, загальна порада"],
+["«Це було одне з найкращих рішень»","Ha sido una de las mejores decisiones.","Fue una de las mejores decisiones ya siempre hoy.","Perfecto, підсумок з актуальністю"],
+["«Продовжуй, ти вже почав(ла)!»","¡Sigue, ya has empezado!","¡Sigue, empezaste ya antes!","Perfecto, з фіналу уроку"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Trabajo: практика речень", lv:2, q:[
+["Estoy en paro desde hace tres meses — переклад…","Я без роботи вже три місяці","Я маю стабільну роботу вже три місяці","estar en paro"],
+["Tengo mucha experiencia en este sector — переклад…","Маю великий досвід у цій сфері","Не маю досвіду в цій сфері","tener experiencia"],
+["Busco un trabajo con horario flexible — переклад…","Шукаю роботу з гнучким графіком","Шукаю роботу з суворим графіком","horario flexible"],
+["Me gusta trabajar en equipo — переклад…","Мені подобається працювати в команді","Мені подобається працювати самостійно","trabajar en equipo"],
+["El sueldo no es muy alto, pero el contrato es estable — переклад…","Зарплата не дуже висока, але контракт стабільний","Зарплата висока, але контракту немає","sueldo, contrato"],
+["Tengo una entrevista la semana que viene — переклад…","У мене співбесіда наступного тижня","У мене була співбесіда минулого тижня","entrevista, майбутнє"],
+["Quiero mejorar mis habilidades este año — переклад…","Хочу покращити свої навички цього року","Не хочу нічого змінювати цього року","mejorar habilidades"],
+["Trabajo a jornada completa en una empresa pequeña — переклад…","Працюю повний робочий день у маленькій компанії","Працюю кілька годин на тиждень","jornada completa"],
+["Sigo buscando empleo, pero soy optimista — переклад…","Продовжую шукати роботу, але я оптимістично налаштований(а)","Уже покинув(ла) шукати роботу","buscar empleo"],
+["Ці приклади показують лексику теми…","роботи й працевлаштування, вивчену в уроках 24-26","подорожей, урок 27-29","звʼязок тем"]
+]},
+{t:"Типові помилки", lv:3, q:[
+["❌ Yo tengo que a trabajar → ✅ …","Tengo que trabajar.","Tengo que a trabajar ya mismo.","з культ. нотаток! після tener que НЕ ставимо a"],
+["❌ Yo muy quiero aprender mucho → ✅ …","Yo quiero aprender mucho.","Yo mucho quiero aprender.","з культ. нотаток! прислівник йде після дієслова"],
+["❌ He trabajado en 2018 (конкретна дата) → ✅ …","Trabajé en 2018.","He trabajaba en 2018.","повторення уроку 24"],
+["❌ Hay que se cuidar → ✅ …","Hay que cuidarse.","Hay que se cuida.","повторення уроку 23, se приєднано"],
+["❌ Iré a ir a Valencia → ✅ …","Iré a Valencia. / Voy a ir a Valencia.","Iré a ir a Valencia mañana ya.","повторення уроку 28"],
+["❌ Estará lloviendo mañana (простий прогноз) → ✅ …","Lloverá mañana.","Estará lloviendo mañana ya seguro.","повторення уроку 18"],
+["❌ Tengo 3 años de experiencias → ✅ …","Tengo 3 años de experiencia.","Tengo 3 años de experiencias ya.","повторення уроку 26, однина"],
+["❌ Se buscan una secretaria → ✅ …","Se busca una secretaria.","Se buscan unas secretaria.","повторення уроку 25"],
+["❌ Dame la llave! (у формальному контексті) → ✅ …","¿Podría darme la llave, por favor?","Dame la llave ahora ya.","повторення уроку 29"],
+["Ці десять помилок — підсумок найпоширеніших пасток…","усього курсу A2","лише уроку 30","фінальний огляд"]
+]},
+{t:"Культура: емоційне спілкування", lv:3, q:[
+["Спілкування іспанською описується як…","емоційне, з перебиваннями (це нормально)","дуже стримане і формальне","з культ. нотаток уроку 30"],
+["Соціальність вважається…","важливішою за «ідеальну граматику»","менш важливою, ніж граматика","з культ. нотаток"],
+["Іспанці говорять…","швидше і менш «правильно», ніж у підручниках","повільніше і формальніше, ніж у підручниках","з культ. нотаток"],
+["Слова-паразити (vale, pues, bueno) — це…","абсолютно нормальна частина живої мови","ознака поганої освіти","з культ. нотаток"],
+["Перебивання в розмові в іспанській культурі вважаються…","нормальним проявом залученості, а не грубістю","завжди неприпустимою грубістю","культурний нюанс"],
+["Цей висновок узгоджується з усім курсом, де наголошувалось на…","розмовних виразах і реальному, живому мовленні","лише академічній граматиці","підсумок філософії курсу"],
+["Головний практичний висновок: краще говорити з помилками, ніж…","взагалі мовчати від страху","говорити ідеально, але рідко","життєва порада з фіналу уроку"],
+["Це узгоджується з фінальним посланням курсу: «No necesitas hablar perfecto. Necesitas…»","comunicar (спілкуватися)","estudiar más reglas (вивчати більше правил)","цитата з фіналу"],
+["Розуміння цієї культурної риси допомагає…","менше боятися помилок у розмові","прагнути ідеальної граматики завжди","практична мета"],
+["Підсумок культурних нотаток курсу: мова — це насамперед…","інструмент спілкування і зв'язку з людьми","система формальних правил","філософія всього курсу A2"]
+]},
+{t:"Культура: слова-паразити й розмовний стиль", lv:3, q:[
+["«Vale, pues, bueno» — це приклади…","слів-паразитів, дуже поширених у розмові","рідкісних, книжкових слів","з культ. нотаток"],
+["Ці слова допомагають мовленню звучати…","природніше і невимушеніше","формальніше і суворіше","практична функція"],
+["Використання ¡Qué guay!, Vale, Venga типово для…","молодіжного й повсякденного мовлення","офіційних виступів","реєстр вживання"],
+["Знання цих слів корисне, щоб…","розуміти реальні розмови іспанців, а не лише підручникові діалоги","скласти формальний іспит","практична мета"],
+["На відміну від підручникової мови, реальна іспанська мова…","швидша, з розмовними скороченнями і вставками","повільніша і граматично бездоганна","спостереження з культ. нотаток"],
+["Розмовні слова з уроку 30 (o sea, en plan, ya) типово вживають…","молодь і в неформальному спілкуванні","лише в юридичних документах","контекст вживання"],
+["Підсумок: щоб «звучати як іспанець», важливо володіти не лише граматикою, а й…","живою розмовною лексикою","лише складними граматичними конструкціями","висновок усього курсу"],
+["Це узгоджується з порадами попередніх уроків (16, 19, 20) про…","чергування розмовних виразів для природності мови","уникання розмовних виразів завжди","звʼязок тем курсу"],
+["Найкращий спосіб вивчити ці розмовні слова — це…","слухати реальну іспанську мову (серіали, розмови)","лише читати підручник","практична порада, як в тексті уроку"],
+["Головний висновок розділу культури уроку 30:","жива мова = граматика + розмовна лексика + впевненість","жива мова = лише ідеальна граматика","фінальний синтез курсу"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Мені треба працювати завтра»","Tengo que trabajar mañana.","Tengo que a trabajar mañana.","без a після tener que!"],
+["«Я дуже хочу вивчити іспанську»","Quiero aprender español mucho.","Muy quiero aprender español.","прислівник після дієслова!"],
+["«Думаю, це гарна ідея»","Creo que es una buena idea.","Creo que sea una buena idea.","indicativo після creo que"],
+["«Треба мати терпіння, щоб вивчити мову»","Hay que tener paciencia para aprender un idioma.","Hay que tenga paciencia para aprender un idioma.","infinitivo після hay que"],
+["«Тобі варто більше практикуватися»","Deberías practicar más.","Debes a practicar más.","без a після deber; deberías теж прийнятно"],
+["«Клас! Дуже раді за тебе!» (розмовно)","¡Qué guay! Nos alegramos mucho por ti.","¡Qué rollo! Nos alegramos mucho por ti.","guay = круто, rollo = нудно"],
+["«Гаразд, домовились» (розмовно)","Vale, de acuerdo.","Rollo, de acuerdo.","vale = ок"],
+["«Не потрібно говорити ідеально, потрібно спілкуватися»","No necesitas hablar perfecto, necesitas comunicar.","No necesitas hablar perfecto, necesitas comunicarás.","infinitivo, з фіналу уроку"],
+["«Ти вже почав(ла) цей шлях»","Ya has empezado este camino.","Ya empezarás este camino ayer.","Perfecto, з фіналу"],
+["«До зустрічі на наступному рівні!»","¡Hasta la vista en el próximo nivel!","¡Hasta la vista en el próximo nivel ayer!","з фінального прощання підручника"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«Tengo que trabajar mañana» — …","правильно ✓","помилка","✓"],
+["«Tengo que a trabajar mañana» — …","помилка (зайве a)","правильно","з культ. нотаток"],
+["«Quiero aprender mucho» — …","правильно ✓","помилка","✓"],
+["«Muy quiero aprender» — …","помилка (порядок слів)","правильно","прислівник після дієслова"],
+["«Creo que tienes razón» — …","правильно ✓","помилка","✓"],
+["«Creo que tengas razón» — …","помилка (indicativo, не subjuntivo)","правильно","creo que + indicativo"],
+["«Hay que tener paciencia» — …","правильно ✓","помилка","✓"],
+["«Hay que tienes paciencia» — …","помилка (infinitivo, не дієвідмінена форма)","правильно","hay que + infinitivo"],
+["«Vivo en España desde hace dos años» — …","правильно ✓","помилка","✓"],
+["«Vivo en España desde dos años» — …","помилка (бракує hace)","правильно","повторення уроку 17"]
+]},
+{t:"Резюме всього курсу A2: граматичний мікс", lv:3, q:[
+["Ser і Estar (урок 1) — обидва перекладаються як…","«бути», але з різними функціями","завжди однаково без різниці","база курсу"],
+["Pretérito Indefinido (уроки 7-10) — для…","завершених дій у минулому","дій, що тривають","база курсу"],
+["Pretérito Imperfecto (урок 13) — для…","звичок і опису в минулому","конкретних фактів","база курсу"],
+["Imperativo afirmativo/negativo (уроки 14-15, 22) — для…","наказів і порад (позитивних і негативних)","питань","база курсу"],
+["Futuro simple (урок 18) — для…","планів і здогадок","минулих подій","база курсу"],
+["Expresar duda (урок 19) — creo que/no creo que — для…","вираження впевненості чи сумніву","наказів","база курсу"],
+["Verbos reflexivos (урок 21) — для…","дій на себе і особливих значень дієслів","лише дій на інших","база курсу"],
+["Deber/hay que/es bueno (урок 23) — для…","різних відтінків поради","опису погоди","база курсу"],
+["Pretérito Perfecto (уроки 24, 26) — для…","досвіду, звʼязаного з теперішнім","подій, повністю завершених","база курсу"],
+["Construcciones impersonales з se (урок 25) — для…","дій без названого діяча","дій на себе","база курсу"]
+]},
+{t:"Побудуй речення логічно", lv:3, q:[
+["Живу тут вже три роки, і мені дуже подобається →","Vivo aquí desde hace tres años, y me gusta mucho.","Vivo aquí desde tres años, y me gusta mucho ya.","desde hace"],
+["Спочатку боявся(лася) говорити, а тепер вже ні →","Al principio tenía miedo de hablar, pero ahora ya no.","Al principio tuve miedo de hablar, pero ahora ya no siempre.","Imperfecto, опис стану"],
+["Треба мати терпіння, щоб вивчити мову →","Hay que tener paciencia para aprender un idioma.","Hay que tienes paciencia para aprender un idioma.","infinitivo"],
+["Це було одне з найкращих рішень мого життя →","Ha sido una de las mejores decisiones de mi vida.","Fue una de las mejores decisiones de mi vida ya siempre.","Perfecto, актуальність"],
+["Мені не потрібно говорити ідеально, потрібно спілкуватися →","No necesito hablar perfecto, necesito comunicar.","No necesito hablar perfectamente, necesito comunicando.","infinitivo"],
+["Клас! Ти вже дуже прогресував(ла)! (розмовно) →","¡Qué guay! Ya has progresado mucho.","¡Qué rollo! Ya has progresado mucho.","guay = позитивна реакція"],
+["Думаю, вивчати мову — це процес, а не результат →","Creo que aprender un idioma es un proceso, no un resultado.","Creo que aprender un idioma sea un proceso, no un resultado.","indicativo після creo que"],
+["Ти вже не та сама людина, що почала цей курс →","Ya no eres la misma persona que empezó este curso.","Ya no eras la misma persona que empezó este curso ayer.","Presente, з фіналу уроку"],
+["Наступний крок — використовувати те, що вже знаєш →","El siguiente paso es usar lo que ya sabes.","El siguiente paso fue usar lo que ya sabes ayer.","Presente, з фіналу"],
+["Дякую, що довірили мені свій старт у вивченні іспанської →","Gracias por confiar en mí tu comienzo en el aprendizaje del español.","Gracias por confiaste en mí tu comienzo ya siempre.","infinitivo після por"]
+]},
+{t:"Розмовні вирази: практика в діалозі", lv:3, q:[
+["— ¿Vamos al cine esta noche? — ___, me apetece mucho.","Vale","Rollo","розмовна згода"],
+["— He aprobado el examen. — ¡___! Qué bien.","Qué guay","Qué rollo","радісна реакція"],
+["— Tengo que quedarme trabajando hasta tarde otra vez. — ¡___!","Qué rollo","Qué guay","розчарування"],
+["— ¿Entonces quedamos mañana a las cinco? — ___, perfecto.","Venga","Ya","згода і спонукання"],
+["— No sé si ir a la fiesta… — ___, tienes que descansar también, ¿no?","Pues","Claro que no","роздум перед порадою"],
+["— Estoy ___ agobiada con tantos exámenes. — Te entiendo.","en plan","o sea","розмовний зворот"],
+["— ¿Vienes o no? — ___, ya voy, dame un minuto.","Ya","Nunca","коротка розмовна реакція"],
+["— No me gusta madrugar, ___ prefiero trabajar de noche. — Lo entiendo.","o sea","vale","пояснення"],
+["— ¿Puedo confiar en ti? — ___, siempre.","Claro","Qué rollo","впевнена згода"],
+["Ці розмовні вставки роблять діалог…","живим і природним, як у реальному спілкуванні","штучним і неприродним","мета вправи"]
+]},
+{t:"«Algo al final»: рефлексія курсу", lv:3, q:[
+["«Si has llegado hasta aquí, ya no eres la misma persona que empezó este curso» — головна ідея…","ти змінився(лася) завдяки курсу","нічого не змінилося","фінальне послання"],
+["«Antes tenías miedo de hablar. Ahora sabes que puedes equivocarte… y seguir hablando» — головна ідея…","помилки — це нормально, головне продовжувати","треба уникати помилок за будь-яку ціну","фінальне послання"],
+["«No necesitas hablar perfecto. Necesitas comunicar» — головна ідея…","спілкування важливіше за досконалість","досконалість — єдина мета","фінальне послання"],
+["«Aprender un idioma no es estudiar reglas. Es vivir experiencias» — головна ідея…","мова — це досвід життя, а не лише правила","мова — це лише набір правил","фінальне послання"],
+["«El siguiente paso no es aprender más… es usar lo que ya sabes» — головна порада…","почати активно використовувати вивчене","вивчити ще більше правил перед практикою","фінальна порада курсу"],
+["Тон фінального послання курсу:","теплий, підбадьорливий, особистий","сухий, формальний, дистанційний","стиль фіналу"],
+["Це послання логічно завершує весь курс, підсумовуючи…","емоційну і практичну подорож вивчення мови","лише перелік граматичних тем","роль фіналу"],
+["Автор подяки (Inna Malosh) висловлює вдячність за…","довіру студентів на початку їхнього шляху","досконале виконання вправ","з фінальної подяки"],
+["«¡Hasta la vista en el próximo nivel!» натякає на…","наступний рівень курсу (B1)","кінець вивчення мови назавжди","відкритий фінал"],
+["Головний висновок усього уроку 30 і курсу A2:","граматика — інструмент, а мета — реальне спілкування і впевненість","граматика — єдина мета вивчення мови","фінальний синтез"]
+]},
+{t:"Фінальний мікс: увесь курс A2", lv:3, q:[
+["Vivo en España desde hace dos años — конструкція:","desde hace (тривалість), урок 17","desde que","повторення"],
+["He cambiado mucho desde entonces — час:","Pretérito Perfecto","Pretérito Indefinido","досвід"],
+["Al principio todo era complicado — час:","Pretérito Imperfecto","Futuro","опис минулого стану"],
+["❌ Tengo que a trabajar → ✅ …","Tengo que trabajar.","обидва варіанти правильні","типова помилка уроку 30"],
+["Creo que, me parece que, pienso que — усі виражають…","думку","наказ","expresar opinión"],
+["Tener que / hay que / deber — різні відтінки…","обов'язку й поради","минулого часу","obligación y consejo"],
+["¡Qué guay! означає…","Клас! Круто!","Як нудно!","розмовний вираз"],
+["«No necesitas hablar perfecto. Necesitas comunicar» — головна ідея…","спілкування важливіше за досконалість","досконалість — єдина мета","фінальне послання курсу"],
+["Урок 30 — це…","підсумок і завершення рівня A2","початок нового рівня B1 з новою граматикою","суть уроку"],
+["Вітаю із завершенням рівня A2! El siguiente paso es ___ (usar) lo que ya sabes. 🎉💪","usar","usarás","з фінального послання курсу"]
+]}
+
+];
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "CIERRE DEL NIVEL A2: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 30 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

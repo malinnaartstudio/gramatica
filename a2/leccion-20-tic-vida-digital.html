@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 20 · Las TIC y la vida digital · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 20 · @malinnaartstudio</div>
+    <h1 id="htitle">TIC Y VIDA DIGITAL: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+<main>
+  <div id="home">
+    <div class="intro">
+            <b style="color:var(--rasp)">Lección 20 · Las TIC y la vida digital.</b>
+      30 вправ по 10 питань: три способи говорити про майбутнє (futuro simple / ir a + infinitivo /
+      presente con valor de futuro) і лексика цифрового світу — ordenador, contraseña, nube, IA та інше.
+      Від ★ до ★★★. ¡Conéctate al futuro! 💻
+
+    </div>
+    <div class="legend">
+            <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · три структури майбутнього + словник TIC</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · текст, розпізнавання структур, контекст</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · типові помилки й тонкощі реєстру</span>
+
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 20</footer>
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Три способи говорити про майбутнє", lv:1, q:[
+["Скільки способів виразити майбутнє розглядає урок 20?","три","два","futuro simple, ir a + inf., presente"],
+["Перший спосіб — це…","Futuro Simple","Pretérito","формальний"],
+["Другий спосіб — це…","Ir a + infinitivo","Presente","найпоширеніший у розмові"],
+["Третій спосіб — це…","Presente con valor de futuro","Imperativo","для розкладів"],
+["Futuro Simple підходить для…","передбачень, здогадок, обіцянок","розкладів потягів","формальніший тон"],
+["Ir a + infinitivo підходить для…","планів і намірів","прогнозів на 10 років","вже вирішено"],
+["Presente con valor de futuro підходить для…","розкладів і запрограмованих дій","спонтанних рішень","el tren sale a las ocho"],
+["Ir a + infinitivo — найпоширеніша форма…","в розмовному іспанському","в газетах","з книги"],
+["Урок 20 присвячений темі…","цифрового життя (TIC) і трьох форм майбутнього","минулому часу","з підручника"],
+["TIC розшифровується як…","tecnologías de la información y la comunicación","técnicas de investigación científica","тема словника уроку"]
+]},
+{t:"EL FUTURO SIMPLE: коли вживати", lv:1, q:[
+["En el futuro todos trabajarán online — приклад…","predicción","promesa","передбачення"],
+["¿Dónde está Marta? Estará en casa — приклад…","suposición","decisión espontánea","здогадка"],
+["Te escribiré mañana — приклад…","promesa","predicción","обіцянка"],
+["Tengo hambre. Comeré algo — приклад…","decisión espontánea","plan organizado","спонтанне рішення"],
+["Futuro Simple — форма більш…","формальна","розмовна","з книги"],
+["Використовується часто для…","передбачень, прогнозів, обіцянок","розкладів автобусів","з книги"],
+["España ganará el partido — це…","передбачення (преса, спорт)","план на завтра","з культ. нотаток"],
+["Форма futuro simple = інфінітив + …","закінчення (-é,-ás,-á…)","корінь без -ar/-er/-ir","як в уроці 18"],
+["Te escribiré pronto — стиль…","дещо формальний/дистанційний","дуже інтимно-розмовний","з культ. нотаток"],
+["Serán las diez — це приклад…","suposición (здогад про час)","promesa","з уроку 18"]
+]},
+{t:"IR A + INFINITIVO: коли вживати", lv:1, q:[
+["Voy a viajar a Madrid el mes que viene — приклад…","plan","predicción","вже вирішено"],
+["Voy a estudiar marketing digital — приклад…","intención","suposición","намір"],
+["Estoy cansado, voy a descansar — приклад…","decisión inmediata","promesa formal","рішення прямо зараз"],
+["Ir a + infinitivo означає майбутнє, яке…","вже заплановане","лише припущення","ключова ідея"],
+["Ir a + infinitivo будується як: ir (у presente) + …","a + infinitivo","que + subjuntivo","структура"],
+["Voy a llamar a mi madre — приклад природної розмовної фрази замість…","Llamaré a mi madre","Llamo a mi madre ayer","з культ. нотаток"],
+["Ir a + infinitivo — найпоширеніша форма в…","розмовному іспанському","письмових прогнозах","з книги"],
+["Vas a estudiar esta noche — особа дієслова ir:","tú","yo","vas"],
+["Van a comprar una casa — особа дієслова ir:","ellos/ellas/ustedes","nosotros","van"],
+["Обов'язковий елемент структури — прийменник…","a","de","ir A + infinitivo, не ir infinitivo!"]
+]},
+{t:"PRESENTE CON VALOR DE FUTURO: коли вживати", lv:1, q:[
+["El tren sale a las ocho — приклад…","horario (розклад)","suposición","заплановано наперед"],
+["Mañana tenemos reunión — приклад…","plan fijo (узгоджений план)","decisión espontánea","з книги"],
+["Esta tarde empiezo un curso online — приклад…","acción programada","predicción формальна","з книги"],
+["Presente con valor de futuro вживається, коли подія…","вже точно запланована","лише можлива","розклад/графік"],
+["Часто супроводжується словами…","mañana, esta tarde, el lunes, la semana que viene","quizás, tal vez","часові маркери"],
+["Presente тут означає…","«майбутній теперішній»","минулу дію","з примітки книги"],
+["El curso empieza mañana — переклад…","Курс починається завтра","Курс почався вчора","з таблиці книги"],
+["Presente con valor de futuro типово для…","розкладів (потяги, автобуси, курси)","спонтанних емоцій","з книги"],
+["Esta tarde tengo una reunión — дієслово в…","Presente","Futuro","con valor de futuro"],
+["Ключова відмінність від ir a: presente описує щось…","організоване, майже офіційне (розклад)","лише особистий намір","нюанс"]
+]},
+{t:"Comparación rápida: обери структуру", lv:1, q:[
+["Plan personal decidido → …","Ir a + infinitivo","Futuro simple","з таблиці"],
+["Predicción general → …","Futuro simple","Presente","з таблиці"],
+["Horario o plan fijo → …","Presente","Futuro simple","з таблиці"],
+["Decisión en el momento → …","Futuro simple","Ir a + infinitivo","спонтанне — futuro!"],
+["Voy a abrir una cuenta nueva en Instagram — категорія:","Plan personal decidido","Horario fijo","з таблиці"],
+["Las redes sociales serán diferentes en 10 años — категорія:","Predicción general","Plan personal","з таблиці"],
+["El curso empieza mañana — категорія:","Horario o plan fijo","Decisión en el momento","з таблиці"],
+["¡Sí! Lo haré ahora mismo — категорія:","Decisión en el momento","Plan personal decidido","спонтанне рішення → futuro!"],
+["Три структури різняться за…","ступенем плановості й формальності","родом іменника","суть порівняння"],
+["Найформальніша серед трьох структур:","Futuro simple","Ir a + infinitivo","з книги"]
+]},
+{t:"Словник TIC: техніка", lv:1, q:[
+["el ordenador = …","комп'ютер","клавіатура","базова лексика"],
+["el portátil = …","ноутбук","портфель","псевдодруг? ні — просто похідне від «portar»"],
+["la conexión = …","з'єднання","колекція","технічний термін"],
+["el wifi = …","вайфай","телефон","технологія"],
+["la cuenta = …","акаунт","рахунок у ресторані","омонім! тут — цифровий акаунт"],
+["el perfil = …","профіль","прибуток","цифровий контекст"],
+["la contraseña = …","пароль","відповідь","безпека акаунту"],
+["descargar = …","завантажити (з інтернету)","розвантажити машину","цифрова дія"],
+["subir = …","викласти (файл)","підійматися сходами","тут — цифровий контекст"],
+["enviar = …","надіслати","отримати","протилежність recibir"]
+]},
+{t:"Словник TIC: комунікація", lv:1, q:[
+["recibir = …","отримати","надіслати","протилежність enviar"],
+["la aplicación / la app = …","додаток","застосування (юридичне)","цифровий контекст"],
+["el mensaje = …","повідомлення","меню","базове слово"],
+["el chat = …","чат","стілець (chaise)","англіцизм, псевдодруг з франц."],
+["la videollamada = …","відеодзвінок","телесеріал","video + llamada"],
+["el teclado = …","клавіатура","екран","teclas = клавіші"],
+["la pantalla = …","екран","штани (pantalón)","псевдодруг за звучанням!"],
+["la nube = …","хмара (в т.ч. хмарне сховище)","новина","подвійне значення: погода + IT"],
+["el archivo = …","файл","архів (паперовий теж)","подвійне значення"],
+["actualizar = …","оновити","актуалізувати сумнів","технічна дія"]
+]},
+{t:"Словник TIC: дані та ШІ", lv:1, q:[
+["conectar = …","підключити","з'єднати руки","технічна дія"],
+["los datos = …","дані","дати (числа)","омонім на письмі, різне значення"],
+["el almacenamiento = …","сховище (пам'ять)","магазин","almacén = склад"],
+["la inteligencia artificial = …","штучний інтелект","штучна їжа","IA"],
+["el correo electrónico = …","електронна пошта","звичайна пошта","з тексту уроку"],
+["hacer una reunión por videollamada = …","провести зустріч по відеозв'язку","зателефонувати другу","з тексту"],
+["chatear con amigos = …","переписуватися з друзями","готувати з друзями","cocinar ≠ chatear!"],
+["mirar series en línea = …","дивитися серіали онлайн","слухати радіо","з тексту"],
+["apagar el ordenador = …","вимкнути комп'ютер","увімкнути комп'ютер","протилежність encender"],
+["Словник уроку 20 присвячений темі…","цифрових технологій і комунікації","кулінарії","las TIC"]
+]},
+{t:"Обери правильну структуру (мікс)", lv:1, q:[
+["«Я збираюся купити ноутбук» →","Voy a comprar un portátil.","Compraré un portátil ahora mismo.","план → ir a"],
+["«Через 10 років роботи зміняться» →","Los trabajos cambiarán.","Los trabajos van a cambiar dentro de 10 años exactos.","прогноз → futuro"],
+["«Курс починається в понеділок» →","El curso empieza el lunes.","El curso empezará el lunes quizás.","розклад → presente"],
+["«Ой, дзвонить телефон! Відповім» →","¡Contestaré!","Voy a contestar mañana.","спонтанне → futuro"],
+["«Я планую відкрити акаунт в Instagram» →","Voy a abrir una cuenta en Instagram.","Abriré una cuenta en Instagram algún día quizás.","конкретний план → ir a"],
+["«Потяг відправляється о восьмій» →","El tren sale a las ocho.","El tren saldrá a las ocho probablemente.","розклад → presente"],
+["«ШІ допоможе нам вчитися» (прогноз) →","La IA nos ayudará a estudiar.","La IA va a ayudarnos a estudiar el próximo mes exacto.","загальний прогноз → futuro"],
+["«Сьогодні ввечері у мене відеодзвінок» (заплановано) →","Esta tarde tengo una videollamada.","Esta tarde voy a tener una videollamada quizás.","presente con valor de futuro"],
+["Три структури різняться передусім…","ступенем плановості дії","родом дієслова","суть теми"],
+["Немає жодної «неправильної» структури — важливо лише…","відповідність контексту","запам'ятати одну і використовувати завжди","гнучкість мови"]
+]},
+{t:"Резюме модуля 1", lv:1, q:[
+["Futuro Simple → …","передбачення, здогадки, обіцянки, спонтанні рішення","лише розклади","4 випадки"],
+["Ir a + infinitivo → …","плани, наміри, рішення прямо зараз","лише прогнози на роки","3 випадки"],
+["Presente con valor de futuro → …","розклади, узгоджені плани, заплановані дії","спонтанні емоції","3 випадки"],
+["Найпоширеніша форма в розмовній мові:","ir a + infinitivo","futuro simple","з книги"],
+["Найформальніша форма:","futuro simple","presente","преса, прогнози"],
+["TIC у словнику уроку означає тему…","цифрових технологій","транспорту","tecnologías de la información"],
+["la nube в IT-контексті = …","хмарне сховище","дощова хмара","подвійне значення слова"],
+["la pantalla = …","екран","штани","обережно зі звучанням!"],
+["Урок 20 йде відразу після уроку про…","сумнів і невпевненість (урок 19)","минулий час","послідовність"],
+["Головна мета уроку 20:","навчитися вибирати правильну форму майбутнього + лексика TIC","вивчити лише минулий час","підсумок"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Вправа 1 з книги: обери правильний варіант", lv:2, q:[
+["Mañana nosotros ___ clase de informática.","tenemos","tendremos ya","з книги: presente con valor de futuro"],
+["En unos años los robots ___ en las fábricas.","trabajarán","trabajan ahora","з книги: прогноз → futuro"],
+["Esta tarde yo ___ con ChatGPT.","voy a estudiar","estudié ayer","з книги: план → ir a"],
+["El curso de programación ___ el lunes.","empieza","empezó ya","з книги: розклад → presente"],
+["No sé la respuesta… ¡la ___ en internet ahora!","voy a buscar","busqué ayer","з книги: рішення зараз"],
+["У реченні 5 варіант voy a buscar передає…","негайний намір","чистий прогноз","контекст «зараз»"],
+["Реченні 2 (robots trabajarán) передає…","загальний прогноз на майбутнє","точний розклад","«en unos años» — прогноз"],
+["Реченні 4 (el curso empieza el lunes) передає…","запланований, фіксований факт","припущення","розклад курсу"],
+["Ключ до вибору правильної структури — …","контекст і часові маркери речення","рід іменника","логіка вправи"],
+["Ця вправа тренує…","розрізнення трьох форм майбутнього","минулий час","модуль 4, вправа 1"]
+]},
+{t:"Вправа 2 з книги: доповни правильною формою", lv:2, q:[
+["Creo que la inteligencia artificial ___ (cambiar) nuestra forma de trabajar.","cambiará","cambia ya","прогноз → futuro"],
+["Este fin de semana ___ (visitar) a mis abuelos. Ya lo tengo planeado.","voy a visitar","visitaré tal vez","вже заплановано → ir a"],
+["Las clases online ___ (ser) más comunes en el futuro.","serán","son ahora","прогноз → futuro"],
+["Ahora mismo estoy cansado, ___ (descansar) un rato.","voy a descansar","descansaré el año que viene","рішення зараз → ir a"],
+["El tren a Madrid ___ (salir) a las siete.","sale","saldrá tal vez","розклад → presente"],
+["«Ya lo tengo planeado» вказує на структуру…","ir a + infinitivo","futuro simple","явна вказівка на план"],
+["«el tren…sale» — тут дієслово в часі…","Presente","Futuro","con valor de futuro"],
+["«Creo que…cambiará» — тут вжито…","Futuro simple (бо це прогноз/думка)","Presente","думка про майбутнє"],
+["«Ahora mismo…voy a descansar» вказує на…","рішення в момент мовлення","розклад","«ahora mismo» = зараз же"],
+["Ця вправа поєднує…","контекстні підказки з вибором форми","лише переклад","модуль 4, вправа 2"]
+]},
+{t:"Текст: Mi vida digital hoy y mañana (1)", lv:2, q:[
+["Mi día empieza con el sonido del móvil — дієслово empieza в часі…","Presente","Futuro","звичайна дія"],
+["Reviso los mensajes y leo las noticias antes del café — це опис…","щоденної звички (presente)","одноразової події в минулому","з тексту"],
+["Uso el correo electrónico para comunicarme con mis compañeros — переклад…","Використовую електронну пошту, щоб спілкуватися з колегами","Пишу листи паперовою поштою колегам","з тексту"],
+["subo archivos a la nube — переклад…","завантажую файли в хмару","спускаю файли зі сховища","subir = підійматися/завантажувати"],
+["Voy a intentar usar menos el móvil por la noche — структура:","ir a + infinitivo","futuro simple","намір/план змінити звичку"],
+["También voy a salir más al aire libre — переклад…","Також планую більше виходити на свіже повітря","Також вийшов на свіже повітря вчора","план"],
+["Creo que eso ___ (ayudar) a dormir mejor.","me ayudará","me ayuda ya","прогноз наслідку → futuro"],
+["En el futuro, la tecnología ___ (ser) todavía más importante.","será","es ya","прогноз → futuro"],
+["La inteligencia artificial nos ___ (ayudar) a estudiar y a trabajar.","ayudará","ayuda ya","прогноз"],
+["Las empresas ___ (utilizar) robots y habrá menos oficinas.","utilizarán","utilizan ya","прогноз"]
+]},
+{t:"Текст: Mi vida digital hoy y mañana (2)", lv:2, q:[
+["Quizás las clases ___ (ser) totalmente online.","serán","sean solamente","futuro (можливо indicativo тут за текстом)"],
+["Pero yo ___ (seguir) prefiriendo las conversaciones cara a cara.","seguiré","sigo ya","прогноз про особисту звичку"],
+["cara a cara = …","віч-на-віч","обличчя проти обличчя буквально","розмовний вираз"],
+["la tecnología es útil, pero la vida real es necesaria — головна думка:","технології корисні, та живе спілкування необхідне","технології шкідливі повністю","висновок тексту"],
+["Paso demasiado tiempo con las pantallas — переклад…","Проводжу забагато часу з екранами","Проводжу мало часу з екранами","demasiado = забагато"],
+["eso me cansa — переклад…","це мене втомлює","це мене радує","cansar = втомлювати"],
+["voy a apagar el ordenador después del trabajo — структура:","ir a + infinitivo (план)","futuro simple","намір змінити звичку"],
+["habrá menos oficinas — форма habrá:","futuro безособове від haber","presente","«буде менше офісів»"],
+["Головна тема тексту:","цифрове життя сьогодні й у майбутньому","подорожі по Іспанії","Mi vida digital hoy y mañana"],
+["Наскільки текст оптимістичний щодо технологій?","збалансовано: технології корисні, але жива розмова важливіша","повністю негативно","висновок тексту"]
+]},
+{t:"Питання до тексту", lv:2, q:[
+["¿Qué hace el narrador cada mañana?","Revisa mensajes y lee noticias antes del café","Hace ejercicio antes del café","з тексту"],
+["¿Qué cambios quiere hacer en su vida digital?","Usar menos el móvil por la noche","Comprar más pantallas","з тексту"],
+["¿Qué piensa sobre el futuro de la tecnología?","Que será todavía más importante","Que desaparecerá pronto","з тексту"],
+["¿Qué estructuras del futuro aparecen en el texto?","Futuro simple, ir a + infinitivo, presente","Solo pretérito","з тексту — усі три!"],
+["¿Qué prefiere el protagonista: la vida digital o la real?","Prefiere las conversaciones cara a cara","Prefiere solo la vida digital","з тексту"],
+["¿Para qué usa el correo electrónico?","Para comunicarse con sus compañeros","Para ver series","з тексту"],
+["¿Cómo hace las reuniones de trabajo?","Por videollamada","En persona siempre","з тексту"],
+["¿Qué va a hacer después del trabajo?","Apagar el ordenador","Encender más pantallas","з тексту"],
+["¿Quién ayudará a estudiar y trabajar en el futuro, según el texto?","La inteligencia artificial","Solo los profesores","з тексту"],
+["¿Por qué el narrador quiere cambiar sus hábitos digitales?","Porque pasa demasiado tiempo con pantallas y eso le cansa","Porque no tiene wifi","з тексту"]
+]},
+{t:"Три структури в тексті: розпізнай", lv:2, q:[
+["Voy a intentar usar menos el móvil — структура:","ir a + infinitivo","futuro simple","з тексту"],
+["La tecnología será todavía más importante — структура:","futuro simple","presente","з тексту"],
+["Mi día empieza con el sonido del móvil — структура:","presente (con valor habitual, не futuro тут)","futuro simple","звичка, не майбутнє"],
+["Las empresas utilizarán robots — структура:","futuro simple","ir a + infinitivo","прогноз"],
+["Voy a salir más al aire libre — структура:","ir a + infinitivo","presente","план"],
+["Voy a apagar el ordenador después del trabajo — структура:","ir a + infinitivo","futuro simple","намір"],
+["Yo seguiré prefiriendo las conversaciones — структура:","futuro simple","ir a + infinitivo","прогноз про себе"],
+["Habrá menos oficinas — структура:","futuro simple (haber)","presente","безособова форма"],
+["У тексті переважає структура для…","особистих намірів і прогнозів","розкладів","бо це особиста розповідь"],
+["Жодного прикладу чистого «presente con valor de futuro» (розклад) немає в тексті — це…","правда, текст особистий, не про розклади","неправда, є кілька","спостереження"]
+]},
+{t:"IR A: найпоширеніше в розмові", lv:2, q:[
+["Voy a llamar a mi madre — типовіше за…","Llamaré a mi madre","обидва однаково рідкісні","з культ. нотаток"],
+["В щоденному мовленні іспанці частіше вживають…","ir a + infinitivo","futuro simple","з культ. нотаток"],
+["Ir a + infinitivo звучить…","природніше в розмові","формальніше в пресі","нюанс реєстру"],
+["Futuro Simple типовіше зустрічається в…","пресі, прогнозах, обіцянках","побутовій розмові","з культ. нотаток"],
+["España ganará el partido — приклад…","журналістського прогнозу (futuro)","побутової розмови (ir a)","з культ. нотаток"],
+["Voy a estudiar esta noche звучить…","природно й розмовно","дуже офіційно","типова розмовна фраза"],
+["Причина переваги ir a в розмові:","психологічно ближче — «я вже вирішив»","граматично простіше","пояснення природності"],
+["І все ж, для здогадок (¿Dónde está Juan? Estará…) типовіше…","futuro simple","ir a + infinitivo","з уроку 18"],
+["Отже, вибір форми залежить не тільки від часу, а й від…","реєстру мовлення (формальний/розмовний)","статі того, хто говорить","висновок"],
+["Порада: у щоденній розмові про особисті плани сміливо обирай…","ir a + infinitivo","завжди futuro simple","практична порада"]
+]},
+{t:"Presente con valor de futuro: поглиблено", lv:2, q:[
+["El avión despega a las nueve — тип вживання:","horario","decisión espontánea","розклад"],
+["Mañana empezamos el proyecto — тип вживання:","plan fijo (узгоджено)","suposición","заплановано"],
+["Esta noche cenamos con mis padres — тип вживання:","acción programada","predicción","організовано заздалегідь"],
+["Presente con valor de futuro звучить…","більш впевнено й конкретно, ніж futuro simple","менш конкретно","нюанс"],
+["El museo abre a las diez — типовий приклад для…","розкладів (музеї, транспорт, заклади)","особистих мрій","з теми"],
+["Presente тут функціонує як…","«майбутній теперішній»","минулий час","з примітки книги"],
+["La reunión es el jueves — тут es у значенні…","«відбудеться» (майбутнє)","«була» (минуле)","presente con valor de futuro"],
+["Ключова ознака цієї структури — наявність…","часового маркера (mañana, el lunes…)","заперечення","типова підказка"],
+["Presente con valor de futuro НЕ підходить для…","здогадок і невпевнених прогнозів","точних розкладів","обмеження вживання"],
+["Ця структура найчастіше зустрічається в контексті…","організованих подій (курси, транспорт, зустрічі)","спонтанних емоцій","підсумок"]
+]},
+{t:"Словник поглиблено: переклад", lv:2, q:[
+["«Забув пароль від акаунту» = Olvidé ___ de la cuenta.","la contraseña","el archivo","пароль"],
+["«Завантажив додаток» = ___ la aplicación.","Descargué","Subí","descargar = завантажити собі"],
+["«Виклав фото в хмару» = Subí la foto ___.","a la nube","al teclado","хмарне сховище"],
+["«У мене немає інтернет-з'єднання» = No tengo ___.","conexión","pantalla","з'єднання"],
+["«Оновити профіль» = ___ el perfil.","Actualizar","Enviar","технічна дія"],
+["«Штучний інтелект» іспанською:","la inteligencia artificial","la inteligencia natural","IA"],
+["«Провести відеодзвінок» = hacer ___.","una videollamada","un archivo","IT-термін"],
+["«Дані користувача» = los ___ del usuario.","datos","almacenamientos","los datos"],
+["«Підключити ноутбук до wifi» = ___ el portátil al wifi.","conectar","apagar","технічна дія"],
+["«Отримати повідомлення» = ___ un mensaje.","recibir","enviar","протилежність enviar"]
+]},
+{t:"Обери структуру за контекстом", lv:2, q:[
+["«Зустріч у четвер о третій» (в календарі) →","La reunión es el jueves a las tres.","La reunión será el jueves quizás a las tres.","presente, точний план"],
+["«Гадаю, штучний інтелект змінить усе» →","Creo que la IA cambiará todo.","Creo que la IA va a cambiar todo mañana mismo.","прогноз-думка → futuro"],
+["«Я вирішив: іду в спортзал сьогодні ввечері» →","Voy a ir al gimnasio esta noche.","Iré al gimnasio esta noche tal vez.","вже вирішено → ir a"],
+["«Дзвонить у двері! Відкрию» →","¡Abriré!","Voy a abrir mañana.","спонтанне → futuro"],
+["«Автобус відправляється о 9:15» →","El autobús sale a las nueve y cuarto.","El autobús saldrá a las nueve y cuarto seguramente.","розклад → presente"],
+["«Плануємо переїхати наступного року» →","Vamos a mudarnos el año que viene.","Nos mudaremos el año que viene tal vez.","план → ir a"],
+["«За 50 років люди житимуть на Марсі» (прогноз) →","La gente vivirá en Marte.","La gente va a vivir en Marte el año que viene.","далекий прогноз → futuro"],
+["«Курс з ШІ починається в понеділок» (розклад) →","El curso empieza el lunes.","El curso va a empezar el lunes quizás.","розклад → presente"],
+["Ключове питання для вибору: чи це факт (розклад), рішення (план), чи здогад/прогноз?","так, саме це визначає структуру","ні, форма завжди одна й та сама","підсумок"],
+["Контекст важливіший за…","«правильну» відповідь напам'ять","граматичні закінчення","головний урок"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки", lv:3, q:[
+["❌ A lo mejor voy estudiar IA → ✅ …","A lo mejor voy a estudiar IA.","A lo mejor voy estudiaré IA.","бракує «a»!"],
+["❌ Mañana iré al médico (вже заплановано) → краще ✅ …","Mañana voy a ir al médico.","Mañana iré al médico ya seguro.","план → ir a, не futuro"],
+["❌ Voy estudiar esta noche → ✅ …","Voy a estudiar esta noche.","Voy estudiaré esta noche.","бракує «a»!"],
+["❌ El tren saldrá a las ocho (розклад) → природніше ✅ …","El tren sale a las ocho.","El tren saldrá a las ocho tal vez.","presente для розкладу"],
+["❌ Descargué el aplicación → ✅ …","Descargué la aplicación.","Descargué lo aplicación.","la aplicación — жіночий рід"],
+["❌ Subí el archivo a la nube ayer futuro → ✅ (якщо про майбутнє) …","Voy a subir el archivo a la nube.","Subo el archivo a la nube ayer.","план → ir a"],
+["❌ La pantalla es un tipo de pantalón → ✅ розуміння:","la pantalla = екран, а не штани","обидва значення правильні","псевдодруг!"],
+["❌ Actualizaré mi perfil ahora mismo (спонтанно, ok) — а якщо це вже план: краще…","Voy a actualizar mi perfil ahora mismo.","обидва варіанти неправильні","нюанс контексту"],
+["❌ La reunión será el jueves (fijo, в календарі) → природніше ✅ …","La reunión es el jueves.","La reunión sería el jueves quizás.","presente для фіксованого плану"],
+["❌ Voy a llamar mi madre → ✅ …","Voy a llamar a mi madre.","Voy llamar a mi madre.","a personal перед mi madre!"]
+]},
+{t:"El futuro simple: стиль преси й обіцянок", lv:3, q:[
+["El futuro simple звучить…","більш формально або дистанційно","дуже інтимно","з культ. нотаток"],
+["Використовується в…","пресі, передбаченнях, обіцянках","лише в кулінарних рецептах","з культ. нотаток"],
+["España ganará el partido — приклад…","спортивного прогнозу в пресі","особистого плану","з культ. нотаток"],
+["Te escribiré pronto — приклад…","обіцянки","розкладу","з культ. нотаток"],
+["Чому futuro simple рідше в побуті?","бо ir a + infinitivo звучить природніше","бо futuro simple граматично складніше","з культ. нотаток"],
+["Преса часто використовує futuro simple для…","заголовків і прогнозів","особистих історій","стилістична норма"],
+["«El precio subirá el próximo mes» — типовий стиль…","новинної статті","дружньої розмови","формальний реєстр"],
+["Обіцянка «Te llamaré esta noche» звучить…","трохи урочистіше, ніж «Te voy a llamar»","однаково нейтрально","нюанс"],
+["Формальність futuro simple не означає, що він…","неправильний у розмові","завжди помилка в розмові","обидві форми можливі"],
+["Підсумок: реєстр мовлення (преса/розмова) впливає на…","вибір між futuro simple і ir a + infinitivo","вибір роду іменника","головний висновок"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Я збираюся вивчати ШІ» (план)","Voy a estudiar la IA.","Estudiaré la IA ahora mismo ya.","ir a + infinitivo"],
+["«Курс закінчується в п'ятницю» (розклад)","El curso termina el viernes.","El curso terminará el viernes tal vez.","presente"],
+["«Роботи замінять деякі професії» (прогноз)","Los robots reemplazarán algunas profesiones.","Los robots van a reemplazar algunas profesiones el año que viene exacto.","futuro simple"],
+["«Ой, забув пароль! Зараз відновлю»","¡Recuperaré la contraseña ahora!","Voy a recuperar la contraseña mañana.","спонтанне рішення → futuro"],
+["«Ми плануємо оновити сайт наступного тижня»","Vamos a actualizar la web la semana que viene.","Actualizaremos la web la semana que viene ya decidido.","план → ir a"],
+["«Зустріч о п'ятій» (за розкладом)","La reunión es a las cinco.","La reunión será a las cinco tal vez.","presente"],
+["«Обіцяю, надішлю файл сьогодні» (формальна обіцянка)","Te enviaré el archivo hoy.","Te voy a enviar el archivo hoy seguro seguro.","promesa → futuro simple"],
+["«Виклади фото в профіль» (наказ, інша тема, для контрасту) — переклад іменника «профіль»:","el perfil","la pantalla","словник уроку"],
+["«Хмарне сховище закінчується» — переклад «хмара»:","la nube","el archivo","словник"],
+["«Підключи ноутбук до wifi» — переклад «підключити»:","conectar","actualizar","словник"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«Voy a estudiar esta noche» — …","правильно ✓","помилка","✓"],
+["«Voy estudiar esta noche» — …","помилка (бракує a)","правильно","типова помилка!"],
+["«El tren sale a las ocho» (розклад) — …","правильно ✓","помилка","✓"],
+["«Los robots trabajarán en las fábricas» (прогноз) — …","правильно ✓","помилка","✓"],
+["«A lo mejor voy estudiar IA» — …","помилка (voy A estudiar)","правильно","бракує a"],
+["«Mañana tenemos reunión» (заплановано) — …","правильно ✓","помилка","✓ presente"],
+["«Voy a llamar mi madre» — …","помилка (a mi madre)","правильно","a personal"],
+["«Creo que la IA cambiará todo» — …","правильно ✓","помилка","✓ прогноз"],
+["«Descargué el aplicación» — …","помилка (la aplicación)","правильно","жіночий рід"],
+["«Esta tarde empiezo un curso online» — …","правильно ✓","помилка","✓ presente"]
+]},
+{t:"Три структури: порівняльний аналіз", lv:3, q:[
+["Voy a comprar un portátil / Compraré un portátil — різниця в…","ступені рішучості плану, не в перекладі","значенні повністю","обидва «куплю ноутбук», але нюанс"],
+["El curso empieza mañana / El curso va a empezar mañana — обидва можливі, але перший звучить…","більш формально-фактично (розклад)","менш ймовірно","нюанс реєстру"],
+["Comeré algo (голод, спонтанно) — заміна на ir a звучала б…","менш природно для спонтанного рішення","так само природно","futuro для спонтанності"],
+["¿Dónde está Juan? Estará en casa — заміна на «Va a estar en casa» змінює сенс на…","«він збирається бути вдома» (план, дивно для здогадки)","точно те саме","важлива різниця!"],
+["El tren sale a las ocho / El tren saldrá a las ocho — перший звучить…","як факт розкладу","як прогноз/здогад","нюанс"],
+["Три структури — це…","відтінки одного поняття «майбутнє», не взаємозамінні на 100%","повністю ідентичні завжди","головний висновок"],
+["Вибір структури сигналізує співрозмовнику про…","ступінь впевненості й плановості","стать мовця","прагматична функція"],
+["Найбезпечніший вибір для «просто плану» в розмові:","ir a + infinitivo","завжди futuro simple","практична порада"],
+["Найбезпечніший вибір для «чистого факту з розкладу»:","presente","ir a + infinitivo","практична порада"],
+["Найбезпечніший вибір для «прогнозу на роки вперед»:","futuro simple","presente","практична порада"]
+]},
+{t:"Побудуй речення логічно", lv:3, q:[
+["Я збираюся підключити ноутбук до wifi →","Voy a conectar el portátil al wifi.","Conectaré el portátil al wifi ya mismo seguro.","план → ir a"],
+["Через 20 років комп'ютери будуть іншими →","Los ordenadores serán diferentes.","Los ordenadores van a ser diferentes el año que viene.","далекий прогноз → futuro"],
+["Заняття починається о 9 (розклад) →","La clase empieza a las nueve.","La clase empezará a las nueve tal vez.","presente"],
+["Ой, немає з'єднання! Перезавантажу роутер →","¡Reiniciaré el router!","Voy a reiniciar el router el mes que viene.","спонтанне → futuro"],
+["Плануємо оновити застосунок цими вихідними →","Vamos a actualizar la app este fin de semana.","Actualizaremos la app este fin de semana ya decidido antes.","план → ir a"],
+["ШІ, ймовірно, змінить ринок праці (прогноз) →","La IA cambiará el mercado laboral.","La IA va a cambiar el mercado laboral el lunes.","прогноз → futuro"],
+["Файл завантажується зараз (технічний процес, факт) →","El archivo se descarga ahora.","El archivo se descargará ahora tal vez.","presente, поточний факт"],
+["Обіцяю надіслати пароль сьогодні →","Te enviaré la contraseña hoy.","Te voy a enviar la contraseña hoy ya prometido.","promesa → futuro simple"],
+["Вирішив: видаляю акаунт просто зараз →","Voy a eliminar la cuenta ahora mismo.","Eliminaré la cuenta ahora mismo tal vez.","рішення → ir a (вже вирішено)"],
+["Хмара, ймовірно, замінить фізичні диски (загальний прогноз) →","La nube reemplazará los discos físicos.","La nube va a reemplazar los discos físicos mañana exacto.","загальний прогноз → futuro"]
+]},
+{t:"Vocabulario TIC: переклад практика", lv:3, q:[
+["«Клавіатура зламалася» = El ___ se rompió.","teclado","almacenamiento","технічна поломка"],
+["«Екран тріснув» = La ___ se rompió.","pantalla","nube","технічна поломка"],
+["«Забув завантажити файл» = Olvidé ___ el archivo.","descargar","enviar","дія з файлом"],
+["«Оновлення програми» = la ___ de la aplicación.","actualización","conexión","похідне від actualizar"],
+["«Штучний інтелект уже тут» = La ___ ya está aquí.","inteligencia artificial","pantalla artificial","термін уроку"],
+["«У мене закінчилося сховище» = Se me acabó el ___.","almacenamiento","teclado","пам'ять пристрою"],
+["«Він відповів на повідомлення» = Contestó al ___.","mensaje","archivo","базове слово"],
+["«Ми зателефонували по відео» = Hicimos una ___.","videollamada","aplicación","термін уроку"],
+["«Дані під захистом» = Los ___ están protegidos.","datos","perfiles","термін уроку"],
+["«Підключення нестабільне» = La ___ es inestable.","conexión","contraseña","термін уроку"]
+]},
+{t:"«Mi vida digital» (домашка)", lv:3, q:[
+["En el futuro, ___ (usar) menos papel y más pantallas.","usaremos","usamos ya","futuro — загальний прогноз, з домашки"],
+["Este fin de semana ___ (probar) una nueva aplicación. Ya lo decidí.","voy a probar","probaré tal vez","план → ir a"],
+["Mi clase de español ___ (empezar) a las seis los martes.","empieza","empezará seguro","розклад → presente"],
+["Для домашки: 2 речення з futuro simple, 2 з ir a + infinitivo, і 2 з…","presente con valor de futuro","pretérito imperfecto","з підручника, вправа 3"],
+["Приклад із книги: «Voy a comprar un nuevo portátil» — це…","plan (ir a + infinitivo)","predicción","зразок з підручника"],
+["Приклад із книги: «En el futuro todos hablaremos con robots» — це…","predicción (futuro simple)","horario","зразок"],
+["Приклад із книги: «Mañana tengo una videollamada con mi jefe» — це…","acción programada (presente)","decisión espontánea","зразок"],
+["Аудіозавдання домашки: записати 1 хвилину на тему…","«Mi vida digital hoy y en el futuro»","«Mi comida favorita»","з підручника"],
+["Письмове завдання: текст на 8–10 речень про…","як зміниться твій спосіб навчання/роботи з технологіями","історію Іспанії","з підручника"],
+["Мета всієї домашки уроку 20 — практика…","трьох форм майбутнього в контексті цифрового життя","минулого доконаного часу","підсумок"]
+]},
+{t:"Питання-відповіді: цифрове життя", lv:3, q:[
+["¿Qué vas a hacer esta noche? — …","Voy a mirar una serie online.","Miraré una serie ayer.","ir a + infinitivo"],
+["¿A qué hora sale tu vuelo mañana? — …","Sale a las siete de la mañana.","Saldrá a las siete quizás.","presente, розклад"],
+["¿Crees que la IA cambiará el trabajo? — …","Sí, creo que cambiará mucho.","Sí, creo que cambia ayer mucho.","прогноз → futuro"],
+["¿Tienes planes para el fin de semana? — …","Sí, voy a visitar a mis abuelos.","Sí, visitaré a mis abuelos ya visto.","план → ir a"],
+["¿Cuándo empieza el curso de programación? — …","Empieza el lunes.","Empezará el lunes quizás seguro.","розклад → presente"],
+["¿Qué contraseña vas a usar? — …","Voy a usar una nueva.","Usaré una nueva ya decidido antes.","план → ir a"],
+["¿Subirás las fotos a la nube? — …","Sí, las voy a subir esta noche.","Sí, las subí mañana.","план → ir a"],
+["¿Funcionará bien la conexión mañana? — …","Espero que sí, pero no estoy seguro.","Sí, funciona fatal ayer.","невпевненість, урок 19+20"],
+["¿Actualizaste ya la aplicación? — …","Todavía no, la voy a actualizar hoy.","Todavía no, la actualizaré ayer.","ir a + infinitivo"],
+["Ця вправа поєднує теми уроків 18–20:","майбутнє + цифровий словник","минулий час + їжа","підсумок"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["En el futuro todos trabajarán online — структура:","futuro simple","ir a + infinitivo","прогноз"],
+["Voy a viajar a Madrid el mes que viene — структура:","ir a + infinitivo","presente","план"],
+["El tren sale a las ocho — структура:","presente con valor de futuro","futuro simple","розклад"],
+["¡Sí! Lo haré ahora mismo — структура:","futuro simple","ir a + infinitivo","спонтанне рішення"],
+["la contraseña = …","пароль","профіль","словник TIC"],
+["descargar = …","завантажити","викласти","словник TIC"],
+["❌ Voy estudiar → ✅ …","Voy a estudiar.","Voy estudiaré.","бракує a!"],
+["Ir a + infinitivo найпоширеніше в…","розмовній мові","пресі","з культ. нотаток"],
+["Futuro simple типовіше для…","прогнозів і обіцянок","розкладів","з книги"],
+["Урок 20 готово! La tecnología es útil, pero la vida real ___ (ser) necesaria. 💻","es","será siempre","з фіналу тексту уроку"]
+]}
+
+];
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "TIC Y VIDA DIGITAL: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 20 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

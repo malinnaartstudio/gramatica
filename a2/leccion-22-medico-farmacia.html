@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 22 · En el médico y en la farmacia · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 22 · @malinnaartstudio</div>
+    <h1 id="htitle">MÉDICO Y FARMACIA: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+<main>
+  <div id="home">
+    <div class="intro">
+            <b style="color:var(--rasp)">Lección 22 · En el médico y en la farmacia.</b>
+      30 вправ по 10 питань: el imperativo negativo (no hables, no comas, no vivas + неправильні
+      дієслова), словник лікаря й аптеки, і культура «фармацевт як міні-лікар» в Іспанії.
+      Від ★ до ★★★. No te preocupes, ¡lo lograrás! 💊
+
+    </div>
+    <div class="legend">
+            <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · imperativo negativo + словник лікаря</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · аптека, текст, tú vs usted</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · культура, помилки, займенники</span>
+
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 22</footer>
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Imperativo negativo: коли вживається", lv:1, q:[
+["Imperativo negativo вживається, коли кажемо…","комусь не робити щось","комусь зробити щось","з книги"],
+["No fumes aquí — переклад…","Не кури тут","Кури тут","заперечний наказ"],
+["No te olvides de tomar la pastilla — переклад…","Не забудь випити пігулку","Забудь про пігулку","заперечний наказ"],
+["Урок 22 називається…","En el médico y en la farmacia","Mi cuerpo y mi rutina diaria","з підручника"],
+["Imperativo negativo протилежний за формою до…","imperativo afirmativo (стверджувального)","presente","логіка теми"],
+["Граматично imperativo negativo будується від основи…","subjuntivo presente","indicativo presente","важлива особливість!"],
+["No + дієслово в наказовій формі = …","заперечний наказ/порада","питання","базова структура"],
+["Ця тема тісно повʼязана з попередніми уроками про…","imperativo afirmativo (уроки 14–15)","минулий час","послідовність підручника"],
+["Лікарська порада «Не виходьте з дому» — приклад…","imperativo negativo","imperativo afirmativo","з теми уроку"],
+["Мета граматики уроку 22 — навчитися…","радити й забороняти ввічливо","розповідати про минуле","підсумок"]
+]},
+{t:"Formación: -AR дієслова (hablar)", lv:1, q:[
+["tú: no habl___","es","as","no hables"],
+["usted: no habl___","e","a","no hable"],
+["vosotros: no habl___","éis","áis","no habléis"],
+["ustedes: no habl___","en","an","no hablen"],
+["Для -AR дієслів закінчення tú у imperativo negativo:","-es","-as","протилежне до звичного -as!"],
+["no comas — це форма для дієслова на…","-ER","-AR","comer"],
+["Imperativo negativo для -AR бере закінчення, типові для…","-ER/-IR дієслів (обернена логіка)","самих -AR дієслів","важлива особливість!"],
+["no hables — переклад…","не говори","говори","tú negativo"],
+["no hable — переклад (usted)…","не говоріть","говоріть","usted negativo"],
+["no habléis — переклад (vosotros)…","не говоріть (ви, гурт)","не говори (ти)","vosotros negativo"]
+]},
+{t:"Formación: -ER/-IR дієслова (comer, vivir)", lv:1, q:[
+["tú: no com___","as","es","no comas"],
+["tú: no viv___","as","es","no vivas"],
+["usted: no com___","a","e","no coma"],
+["usted: no viv___","a","e","no viva"],
+["ustedes: no com___","an","en","no coman"],
+["ustedes: no viv___","an","en","no vivan"],
+["Для -ER/-IR дієслів закінчення tú у imperativo negativo:","-as","-es","обернена логіка!"],
+["no vivas — переклад…","не живи","живи","tú negativo"],
+["no coman — переклад (ustedes)…","не їжте (ви, увічл. мн.)","їжте","ustedes negativo"],
+["-ER і -IR дієслова мають…","однакові закінчення в imperativo negativo","різні закінчення","спільна форма"]
+]},
+{t:"Позиція займенників", lv:1, q:[
+["No te preocupes — переклад…","Не переживай","Переживай","займенник te перед дієсловом"],
+["У заперечній формі всі займенники (me, te, lo, la, nos, os, se) ставимо…","перед дієсловом","приєднуємо в кінці","на відміну від стверджувального!"],
+["No lo toques — переклад…","Не чіпай це","Чіпай це","lo перед дієсловом"],
+["No te levantes tan tarde — переклад…","Не вставай так пізно","Вставай так пізно","te перед дієсловом"],
+["No se olvide de beber agua — переклад…","Не забувайте пити воду","Забудьте пити воду","se перед дієсловом, форма usted"],
+["No os preocupéis — переклад…","Не переживайте (ви, гурт)","Переживайте","os перед дієсловом"],
+["Це правило (займенник перед дієсловом) характерне саме для…","заперечного наказу","стверджувального наказу","ключова відмінність!"],
+["No me lo digas — переклад…","Не кажи мені цього","Скажи мені це","подвійний займенник перед дієсловом"],
+["No nos vayamos todavía — переклад…","Не підемо ще","Підемо вже","nos перед дієсловом"],
+["Порядок займенників (якщо два): непрямий перед прямим — це…","me lo, te lo, se lo…","lo me, lo te, lo se…","стандартне правило іспанської"]
+]},
+{t:"Неправильні дієслова 1", lv:1, q:[
+["decir → no ___","digas","dices","no digas"],
+["hacer → no ___","hagas","haces","no hagas"],
+["ir → no ___","vayas","vas","no vayas — ірегулярне!"],
+["poner → no ___","pongas","pones","no pongas"],
+["tener → no ___","tengas","tienes","no tengas"],
+["No digas mentiras — переклад…","Не бреши","Бреши","no digas"],
+["No hagas ruido — переклад…","Не шуми","Шуми","no hagas"],
+["No vayas allí — переклад…","Не йди туди","Йди туди","no vayas"],
+["No pongas la música tan alta — переклад…","Не вмикай музику так голосно","Вмикай музику голосно","no pongas"],
+["No tengas miedo — переклад…","Не бійся","Бійся","no tengas"]
+]},
+{t:"Неправильні дієслова 2", lv:1, q:[
+["venir → no ___","vengas","vienes","no vengas"],
+["salir → no ___","salgas","sales","no salgas"],
+["ser → no ___","seas","eres","no seas"],
+["estar → no ___","estés","estas","no estés"],
+["dar → no ___","des","das","no des"],
+["No vengas tarde — переклад…","Не приходь пізно","Приходь пізно","no vengas"],
+["No salgas sin abrigo — переклад…","Не виходь без пальта","Виходь без пальта","no salgas"],
+["No seas tonto — переклад…","Не будь дурним","Будь дурним","no seas"],
+["No estés triste — переклад…","Не сумуй (не будь сумним)","Сумуй","no estés"],
+["No des tu contraseña a nadie — переклад…","Не давай нікому свій пароль","Давай нікому свій пароль","no des"]
+]},
+{t:"Вирази з imperativo negativo", lv:1, q:[
+["No fumes tanto — переклад…","Не кури так багато","Кури так багато","з книги"],
+["No comas demasiado — переклад…","Не їж занадто","Їж занадто","з книги"],
+["No trabajes tanto — переклад…","Не працюй так багато","Працюй так багато","з книги"],
+["No te preocupes — переклад…","Не переживай","Переживай","з книги"],
+["No olvides descansar — переклад…","Не забувай відпочивати","Забувай відпочивати","з книги"],
+["No grites — переклад…","Не кричи","Кричи","з книги"],
+["No te pongas nervioso — переклад…","Не нервуйся","Нервуйся","з книги"],
+["No lo toques — переклад…","Не чіпай це","Чіпай це","з книги"],
+["No hables con la boca llena — переклад…","Не розмовляй з повним ротом","Розмовляй з повним ротом","з книги"],
+["Ці фрази типово вживають…","батьки, лікарі, друзі — у порадах","лише в офіційних документах","практичне вживання"]
+]},
+{t:"Consejos y frases útiles", lv:1, q:[
+["Me encuentro mal — переклад…","Почуваюся погано","Почуваюся добре","з книги"],
+["Tengo fiebre — переклад…","У мене температура","У мене нежить","з книги"],
+["Tengo dolor de garganta — переклад…","У мене болить горло","У мене болить нога","з книги"],
+["¿Qué me recomienda? — переклад…","Що ви мені порадите?","Що ви мені продасте?","питання до фармацевта"],
+["¿Con receta o sin receta? — переклад…","За рецептом чи без?","З лікарем чи без?","типове питання в аптеці"],
+["Tome esta pastilla cada 8 horas — переклад…","Приймайте цю пігулку кожні 8 годин","Приймайте цю пігулку раз на тиждень","порада фармацевта, imperativo usted afirmativo"],
+["No se olvide de beber agua — переклад…","Не забувайте пити воду","Забудьте пити воду","imperativo negativo usted"],
+["Descanse y no salga de casa — переклад…","Відпочиньте і не виходьте з дому","Працюйте і виходьте з дому","дві форми imperativo usted разом"],
+["Ці фрази типово звучать…","у кабінеті лікаря або в аптеці","на вокзалі","контекст уроку"],
+["Tome, Descanse, No salga — усі ці форми стосуються особи…","usted (ввічлива форма)","tú (неформальна)","типово для лікаря з пацієнтом"]
+]},
+{t:"Словник: у лікаря", lv:1, q:[
+["el médico / la doctora = …","лікар / лікарка","пацієнт","базове"],
+["el paciente = …","пацієнт","лікар","базове"],
+["la consulta = …","прийом (у лікаря)","рецепт","базове"],
+["la cita médica = …","запис до лікаря","операція","базове"],
+["el síntoma = …","симптом","хвороба","базове"],
+["la enfermedad = …","хвороба","здоров'я","базове"],
+["la fiebre = …","температура (жар)","застуда","базове"],
+["la tos = …","кашель","нежить","базове"],
+["el dolor de cabeza = …","головний біль","біль у горлі","базове"],
+["el resfriado / el catarro = …","застуда","грип","синоніми"]
+]},
+{t:"Словник: діагнози й аналізи", lv:1, q:[
+["la gripe = …","грип","застуда","відрізняється від resfriado"],
+["el mareo = …","запаморочення","біль у горлі","базове"],
+["la receta = …","рецепт (лікарський)","квитанція","базове"],
+["la inyección = …","укол","операція","базове"],
+["la operación = …","операція","аналіз","базове"],
+["el análisis = …","аналіз","рецепт","базове"],
+["la presión = …","тиск","пульс","базове"],
+["la tensión alta / baja = …","високий / низький тиск","швидкий / повільний пульс","медичний термін"],
+["el corazón / los pulmones = …","серце / легені","печінка / нирки","повторення з уроку 21"],
+["Ці слова типово почуєш…","у кабінеті лікаря","у ресторані","контекст уроку"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Словник: аптека", lv:2, q:[
+["el farmacéutico / la farmacéutica = …","фармацевт","лікар","базове"],
+["las pastillas / los medicamentos = …","пігулки / ліки","вітаміни","базове"],
+["el jarabe = …","сироп","мазь","базове"],
+["la crema = …","крем","спрей","базове"],
+["las vitaminas = …","вітаміни","пігулки від болю","базове"],
+["las tiritas = …","пластирі","термометри","базове"],
+["el termómetro = …","термометр","тонометр","базове"],
+["la pomada = …","мазь","сироп","синонім crema у певних контекстах"],
+["gotas para los ojos = …","очні краплі","краплі для носа","базове"],
+["el spray nasal = …","спрей для носа","спрей для горла","базове"],
+]},
+{t:"Вправа 1 з книги: imperativo negativo", lv:2, q:[
+["No ___ (tomar) tantos dulces.","tomes","tomas","з книги"],
+["No ___ (ir) a trabajar si tienes fiebre.","vayas","vas","з книги, ir irregular"],
+["No ___ (preocuparse), todo saldrá bien.","te preocupes","preocupas","з книги, reflexivo"],
+["No ___ (fumar) en la habitación.","fumes","fumas","з книги"],
+["No ___ (olvidarse) de descansar.","te olvides","olvidas","з книги, reflexivo"],
+["tomar → no tomes — тип дієслова:","-AR","-ER","закінчення -es"],
+["preocuparse у imperativo negativo зберігає…","зворотний займенник te перед дієсловом","займенник в кінці","reflexivo правило"],
+["ir у imperativo negativo (tú) — форма:","vayas","vas","irregular"],
+["Ця вправа з книги тренує…","форми imperativo negativo з реальними порадами","минулий час","модуль 4, вправа 1"],
+["olvidarse de + infinitivo означає…","забувати щось зробити","пам'ятати щось зробити","базова конструкція"]
+]},
+{t:"Вправа 2 з книги: обери правильний варіант", lv:2, q:[
+["– Tengo tos. – Entonces ___.","no fumes","fuma","з книги"],
+["– Me duele la cabeza. – ___ más café.","No tomes","Toma","з книги, порада уникати"],
+["– Estoy resfriado. – ___ sin bufanda.","No salgas","Sal","з книги"],
+["– No duermo bien. – ___ el móvil antes de dormir.","No uses","Usa","з книги"],
+["– Me duele la garganta. – ___ agua fría.","No bebas","Bebe","з книги"],
+["Логіка вправи: коли є проблема зі здоров'ям, порада зазвичай…","заперечна (уникай цього)","завжди стверджувальна","imperativo negativo для застережень"],
+["«Tengo tos» → «no fumes» — логічний зв'язок:","кашель посилюється від куріння","кашель не пов'язаний з курінням","причинно-наслідковий зв'язок"],
+["«No duermo bien» → «no uses el móvil» — логічний зв'язок:","екран заважає заснути","телефон допомагає заснути","загальновідома порада"],
+["Ця вправа поєднує…","симптоми з відповідними порадами imperativo negativo","лише граматику без контексту","модуль 4, вправа 2"],
+["Всі відповіді вправи використовують форму…","tú (неформальна порада другу)","usted (формальна)","контекст дружньої поради"]
+]},
+{t:"Imperativo afirmativo vs negativo", lv:2, q:[
+["Habla (afirmativo) vs No hables (negativo) — обидві форми з дієслова…","hablar","comer","-AR приклад"],
+["Come (afirmativo) vs No comas (negativo) — тип дієслова:","-ER","-AR","comer"],
+["У afirmativo (tú) закінчення -AR дієслів:","-a (як у presente él/ella)","-es","habla, canta, mira…"],
+["У negativo (tú) закінчення -AR дієслів:","-es (обернена логіка)","-a","no hables"],
+["Ve (afirmativo, ir) vs No vayas (negativo) — обидві форми…","irregular","regular","ir дуже неправильне"],
+["Ten (afirmativo, tener) vs No tengas (negativo) — корінь:","однаковий (teng-), різні закінчення","повністю різний","tener irregular"],
+["У afirmativo займенники…","приєднуються в кінці (dímelo)","стоять перед дієсловом","контраст із negativo"],
+["У negativo займенники…","стоять перед дієсловом (no me lo digas)","приєднуються в кінці","контраст з afirmativo"],
+["Ponte el abrigo / No te pongas el abrigo — це приклад…","протилежної позиції займенника","однакової позиції","reflexivo контраст"],
+["Обидві форми (afirmativo/negativo) потрібні, бо…","іноді треба радити щось робити, іноді — не робити","одна з них зайва","практична мета"]
+]},
+{t:"Текст: En la farmacia de mi barrio (1)", lv:2, q:[
+["Ayer me desperté con fiebre y dolor de garganta — переклад…","Вчора я прокинувся з температурою і болем у горлі","Вчора я заснув з головним болем","з тексту"],
+["No me sentía bien y decidí ir a la farmacia — переклад «decidí»…","вирішив","забув","pretérito indefinido"],
+["La farmacéutica me miró con una sonrisa — переклад «sonrisa»…","усмішка","суворість","з тексту"],
+["«Tienes cara de poco dormir» — переклад…","У тебе вигляд, ніби мало спав","У тебе гарний вигляд сьогодні","розмовний вираз"],
+["Le conté que me dolía la cabeza — переклад «conté»…","розповів","порахував","contar = і розповідати, і рахувати!"],
+["Ella me aconsejó — переклад…","вона порадила мені","вона заборонила мені","aconsejar = радити"],
+["«Toma este jarabe dos veces al día» — це форма…","imperativo afirmativo (tú)","imperativo negativo","стверджувальна порада"],
+["«y no salgas a la calle» — це форма…","imperativo negativo (tú)","imperativo afirmativo","заперечна порада"],
+["«No comas helado, no bebas frío» — обидві форми…","imperativo negativo","presente indicativo","заперечні поради"],
+["«y descansa mucho» — це форма…","imperativo afirmativo","imperativo negativo","стверджувальна порада"]
+]},
+{t:"Текст: En la farmacia de mi barrio (2)", lv:2, q:[
+["Compré las pastillas y una crema para la tos — переклад…","Я купив пігулки і крем від кашлю","Я продав пігулки і крем","з тексту"],
+["Antes de irme, me dijo — переклад…","Перед тим, як я пішов, вона мені сказала","Після того, як я пішов, вона написала","з тексту"],
+["«Y no te preocupes, en dos días estarás como nuevo» — переклад…","І не переживай, за два дні будеш як новенький","І переживай, за два дні буде гірше","з тексту, підбадьорення"],
+["Regresé a casa, tomé el jarabe — переклад «regresé»…","повернувся","залишився","pretérito indefinido"],
+["seguí todas las indicaciones — переклад…","я дотримався всіх вказівок","я проігнорував усі вказівки","seguir = слідувати"],
+["Hoy ya me siento mejor — переклад…","Сьогодні я вже почуваюся краще","Сьогодні мені гірше","з тексту"],
+["Prometo cuidarme más — переклад…","Обіцяю більше дбати про себе","Обіцяю менше дбати про себе","з тексту, reflexivo"],
+["y no esperar a sentirme mal para descansar — головна ідея…","не чекати, поки стане погано, щоб відпочити","чекати хвороби, щоб відпочити","мораль тексту"],
+["Головна тема тексту:","похід в аптеку через застуду і корисні поради","подорож до Мадрида","назва тексту"],
+["Фінальна фраза фармацевта («estarás como nuevo») звучить…","підбадьорливо, з теплотою","байдуже, формально","стиль тексту"]
+]},
+{t:"Питання до тексту", lv:2, q:[
+["¿Por qué fue el protagonista a la farmacia?","Porque se despertó con fiebre y dolor de garganta","Porque quería comprar champú","з тексту"],
+["¿Qué síntomas tenía?","Dolor de cabeza, garganta y falta de energía","Solo tos leve","з тексту"],
+["¿Qué le recomendó la farmacéutica?","Tomar jarabe, no salir, descansar mucho","Ir directamente al hospital","з тексту"],
+["¿Cuántas veces al día toma el jarabe?","Dos veces al día","Tres veces al día","з тексту"],
+["¿Qué cosas no debe hacer?","No comer helado, no beber frío, no salir","No debe descansar","з тексту"],
+["¿Cómo se sintió al día siguiente?","Mejor","Peor","з тексту, «hoy ya me siento mejor»"],
+["¿Qué compró además del jarabe?","Una crema para la tos","Solo vitaminas","з тексту"],
+["¿Siguió las recomendaciones?","Sí, siguió todas las indicaciones","No, las ignoró","з тексту"],
+["¿Cuál fue la última frase de la farmacéutica?","«Estarás como nuevo»","«Vuelve mañana»","з тексту"],
+["¿Qué aprendió de esta experiencia?","A cuidarse más y no esperar a sentirse mal","Nada en particular","з тексту, мораль"]
+]},
+{t:"TÚ vs USTED: imperativo negativo", lv:2, q:[
+["Формальна порада незнайомій людині — форма…","usted","tú","реєстр ввічливості"],
+["Порада другові — форма…","tú","usted","неформальний реєстр"],
+["No fumes (tú) vs No fume (usted) — різниця тільки в…","закінченні (-es vs -e)","значенні повністю","формальність"],
+["No te preocupes (tú) vs No se preocupe (usted) — займенник змінюється з te на…","se","le","формальна форма reflexivo"],
+["Лікар, звертаючись до пацієнта офіційно, скаже…","No se olvide de beber agua","No te olvides de beber agua","типова медична порада, usted"],
+["No salgas (tú) vs No salga (usted) — обидві форми означають…","не виходь / не виходьте","вийди / вийдіть","заперечний наказ"],
+["У формальному контексті (лікар-пацієнт) типово вживають…","usted","tú","культурна норма"],
+["Друзі й родина зазвичай спілкуються на…","tú","usted","неформальний реєстр"],
+["No tengas miedo (tú) vs No tenga miedo (usted) — різниця в…","закінченні дієслова","значенні цілком","формальність"],
+["Вибір tú/usted залежить від…","стосунків між співрозмовниками","роду іменника","прагматичне правило"]
+]},
+{t:"Словник поглиблено", lv:2, q:[
+["farmacia de guardia = …","чергова аптека (працює вночі/у вихідні)","аптека для військових","з культ. нотаток"],
+["tensión alta означає…","високий тиск","швидкий пульс","медичний термін"],
+["análisis de sangre = …","аналіз крові","аналіз сечі","уточнення"],
+["«Me pongo una inyección» = …","роблю собі укол","роблю собі операцію","дія"],
+["«Voy a hacerme un análisis» = …","піду здати аналіз","піду на операцію","дія"],
+["cita médica = …","запис до лікаря","рецепт лікаря","базове"],
+["«Tengo cita a las diez» = …","у мене запис на десяту","у мене операція о десятій","розмовне"],
+["«Estoy en la sala de espera» = …","я в залі очікування","я в кабінеті лікаря","типова фраза"],
+["«Necesito una receta para este medicamento» = …","мені потрібен рецепт на ці ліки","мені не потрібен рецепт","з практики"],
+["Словник аптеки й лікаря корисний для…","реальних ситуацій у поїздці чи в житті в Іспанії","лише для іспиту","практична мета уроку"]
+]},
+{t:"Переклад укр → ісп", lv:2, q:[
+["«Не кури так багато»","No fumes tanto.","No fumas tanto.","imperativo negativo"],
+["«Не переживай, все буде добре»","No te preocupes, todo saldrá bien.","No preocupas, todo saldrá bien.","reflexivo"],
+["«Не забувай пити воду»","No olvides beber agua.","No olvidas beber agua.","imperativo negativo"],
+["«Не виходьте без пальта» (усть)","No salga sin abrigo.","No sale sin abrigo.","форма usted"],
+["«У мене температура і болить горло»","Tengo fiebre y me duele la garganta.","Estoy fiebre y me duele la garganta.","tener fiebre"],
+["«Що ви порадите?»","¿Qué me recomienda?","¿Qué me recomiendo?","питання до фармацевта"],
+["«Приймайте цю пігулку тричі на день» (усть)","Tome esta pastilla tres veces al día.","Toma esta pastilla tres veces al día ya.","форма usted, imperativo afirmativo"],
+["«Не хвилюйтеся, за два дні одужаєте»","No se preocupe, en dos días estará mejor.","No se preocupa, en dos días está mejor ya.","форма usted"],
+["«Не давай нікому свій пароль»","No des tu contraseña a nadie.","No das tu contraseña a nadie.","dar irregular"],
+["«Не будь таким нервовим»","No seas tan nervioso.","No eres tan nervioso.","ser irregular"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки", lv:3, q:[
+["❌ No vas a la farmacia → ✅ …","No vayas a la farmacia.","No vayas a la farmacia ya seguro.","ir — irregular, з культ. нотаток!"],
+["❌ No comes demasiado → ✅ …","No comas demasiado.","No come demasiado tú.","-AR/-ER закінчення обернені!"],
+["❌ No fumas tanto → ✅ …","No fumes tanto.","No fuma tanto tú.","fumar — -AR → -es"],
+["❌ No preocupas → ✅ …","No te preocupes.","No preocupate.","reflexivo, займенник перед дієсловом!"],
+["❌ Preocupate no → ✅ …","No te preocupes.","Te no preocupes.","no завжди перед займенником!"],
+["❌ No tienes miedo (як наказ) → ✅ …","No tengas miedo.","No tenga miedo tú.","tener irregular у imperativo negativo"],
+["❌ No eres tonto (як наказ) → ✅ …","No seas tonto.","No sé tonto.","ser irregular"],
+["❌ No des la pastilla lo → ✅ …","No le des la pastilla.","No des la la pastilla.","правильний порядок займенників"],
+["❌ Tomas esta pastilla (маючи на увазі наказ) → ✅ …","Toma esta pastilla.","Tomas esta pastilla ya ahora.","imperativo, не presente!"],
+["❌ No vengas tú aquí mismo ahora ya (зайві слова) → простіше ✅ …","No vengas aquí ahora.","однаково довге речення","стилістична економія"]
+]},
+{t:"Культура: el farmacéutico como mini-doctor", lv:3, q:[
+["В Іспанії люди часто йдуть спочатку…","в аптеку, а не до лікаря","одразу до лікарні","з культ. нотаток"],
+["Фармацевт в Іспанії може…","порадити безрецептурні ліки й навіть поміряти тиск","виписати рецептурні наркотичні препарати без лікаря","з культ. нотаток"],
+["Кожен район в Іспанії має чергову аптеку, яка називається…","farmacia de guardia","farmacia nocturna oficial","з культ. нотаток"],
+["Символ аптек в Іспанії — це…","світний зелений хрест","червоний хрест","з культ. нотаток"],
+["«Si la vida te da fiebre, tómate un ibuprofeno» — це приклад…","іспанського гумору навіть під час хвороби","серйозної медичної поради","з культ. нотаток"],
+["Чому важливо знати про farmacia de guardia?","бо аптеки в Іспанії чергують по черзі вночі й у вихідні","бо всі аптеки завжди зачинені вночі","практична інформація"],
+["Роль фармацевта в Іспанії ширша, ніж просто…","продавець ліків","лікар у лікарні","з культ. нотаток"],
+["Ставлення іспанців до хвороби, судячи з жарту про ібупрофен:","з легким гумором, без зайвої драми","з великою тривогою і драмою","культурна риса"],
+["Якщо потрібні ліки вночі, шукай…","farmacia de guardia (зелений хрест)","звичайну аптеку (вона теж працює)","практична порада"],
+["Підсумок культурної нотатки уроку 22:","аптека в Іспанії — доступний перший контакт зі здоров'ям","аптеки в Іспанії рідкісні і дорогі","головний висновок"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Не кури тут»","No fumes aquí.","No fumas aquí.","imperativo negativo"],
+["«Не забудь випити пігулку»","No te olvides de tomar la pastilla.","No olvidas de tomar la pastilla.","reflexivo + imperativo"],
+["«Не йдіть на роботу, якщо у вас температура» (усть)","No vaya a trabajar si tiene fiebre.","No va a trabajar si tiene fiebre.","ir irregular, usted"],
+["«Не їж морозиво, у тебе горло болить»","No comas helado, te duele la garganta.","No comes helado, te duele la garganta.","imperativo negativo"],
+["«Не пийте холодну воду» (усть)","No beba agua fría.","No bebe agua fría.","usted"],
+["«Не переживайте, за два дні будете як новий» (усть)","No se preocupe, en dos días estará como nuevo.","No se preocupa, en dos días está como nuevo.","usted, reflexivo"],
+["«Не забувайте пити воду» (усть)","No se olvide de beber agua.","No se olvida de beber agua.","usted, reflexivo"],
+["«Відпочиньте і не виходьте з дому» (усть)","Descanse y no salga de casa.","Descansa y no sale de casa.","usted, дві форми imperativo"],
+["«Не давай нікому свій пароль»","No des tu contraseña a nadie.","No das tu contraseña a nadie.","dar irregular"],
+["«Не будь таким нервовим»","No seas tan nervioso.","No eres tan nervioso.","ser irregular"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«No fumes tanto» — …","правильно ✓","помилка","✓"],
+["«No fumas tanto» (як наказ) — …","помилка (no fumes)","правильно","imperativo, не presente"],
+["«No vayas a la farmacia» — …","правильно ✓","помилка","✓"],
+["«No vas a la farmacia» (як наказ) — …","помилка (no vayas)","правильно","ir irregular"],
+["«No te preocupes» — …","правильно ✓","помилка","✓"],
+["«No preocupas» — …","помилка (no te preocupes)","правильно","reflexivo обов'язковий"],
+["«No comas demasiado» — …","правильно ✓","помилка","✓"],
+["«No come demasiado» (tú) — …","помилка (no comas)","правильно","tú форма!"],
+["«No se olvide de beber agua» (usted) — …","правильно ✓","помилка","✓"],
+["«No se olvida de beber agua» (як наказ usted) — …","помилка (no se olvide)","правильно","imperativo, не presente"]
+]},
+{t:"Займенники в imperativo negativo: поглиблено", lv:3, q:[
+["No me lo digas — переклад…","Не кажи мені цього","Кажи мені це","подвійний займенник me lo"],
+["No se lo des — переклад…","Не давай йому/їй цього","Давай йому/їй це","se lo (непрямий+прямий)"],
+["No nos lo cuentes — переклад…","Не розказуй нам цього","Розказуй нам це","подвійний займенник"],
+["Порядок подвійних займенників: спочатку…","непрямий (me,te,le→se), потім прямий (lo,la,los,las)","завжди прямий, потім непрямий","стандартне правило"],
+["No te la pongas (про одяг) — переклад…","Не вдягай це (жін.рід предмет) на себе","Вдягай це на себе","reflexivo + прямий займенник"],
+["У стверджувальному imperativo займенники…","приєднуються в кінці слова","завжди стоять окремо перед дієсловом","контраст з negativo!"],
+["Ponte el abrigo (afirmativo) vs No te pongas el abrigo (negativo) — це показує…","протилежну позицію займенника","однакову позицію завжди","ключовий контраст двох форм"],
+["No lo hagas así — переклад…","Не роби це так","Роби це так","lo перед дієсловом"],
+["No los toques — переклад…","Не чіпай їх (предмети чол.р. мн.)","Чіпай їх","los перед дієсловом"],
+["Підсумок: заперечний наказ = no + займенник(и) + …","дієслово в subjuntivo-формі","дієслово в infinitivo","граматична формула уроку"]
+]},
+{t:"Побудуй речення логічно", lv:3, q:[
+["Не кури в кімнаті →","No fumes en la habitación.","No fumas en la habitación ya.","imperativo negativo"],
+["Не забувайте приймати ліки (усть) →","No se olvide de tomar el medicamento.","No se olvida de tomar el medicamento ya.","usted, reflexivo"],
+["Не виходь без парасольки, іде дощ →","No salgas sin paraguas, está lloviendo.","No sales sin paraguas, está lloviendo ya.","imperativo negativo"],
+["Не хвилюйся, лікар допоможе →","No te preocupes, el médico te ayudará.","No preocupas, el médico te ayudará ya.","reflexivo"],
+["Не пийте алкоголь з цими ліками (усть) →","No beba alcohol con este medicamento.","No bebe alcohol con este medicamento ya.","usted"],
+["Не давай дитині цей сироп без рецепту →","No le des este jarabe al niño sin receta.","No des este jarabe al niño sin receta le.","непрямий займенник le перед дієсловом"],
+["Не будь таким суворим до себе →","No seas tan duro contigo mismo.","No eres tan duro contigo mismo ya.","ser irregular"],
+["Не забувай про огляд у лікаря →","No olvides la cita médica.","No olvidas la cita médica ya.","imperativo negativo"],
+["Не приходьте голодними на прийом (усть, жарт) →","No vengan con hambre a la consulta.","No vienen con hambre a la consulta ya.","ustedes irregular"],
+["Не турбуйся про результати аналізів →","No te preocupes por los resultados del análisis.","No preocupas por los resultados del análisis.","reflexivo"]
+]},
+{t:"Vocabulario: лікар і аптека мікс", lv:3, q:[
+["«У мене висока температура і кашель» = Tengo ___ alta y ___.","fiebre, tos","tos, jarabe","мікс словника"],
+["«Мені потрібен рецепт на ці пігулки» = Necesito ___ para estas ___.","una receta, pastillas","un jarabe, cremas","мікс словника"],
+["«Виміряй мені тиск» = Mídeme ___.","la tensión","el termómetro","мікс словника"],
+["«Купи пластирі й термометр в аптеці» = Compra ___ y ___ en la farmacia.","tiritas, un termómetro","jarabe, gotas","мікс словника"],
+["«У мене запаморочення і болить голова» = Tengo ___ y me duele la cabeza.","mareo","operación","мікс словника"],
+["«Мені зробили аналіз крові» = Me hicieron ___ de sangre.","un análisis","una inyección","мікс словника"],
+["«Лікарка виписала мені мазь» = La doctora me recetó ___.","una pomada","un termómetro","мікс словника"],
+["«У мене запис до лікаря о третій» = Tengo ___ a las tres.","cita médica","farmacia de guardia","мікс словника"],
+["«Купи очні краплі, будь ласка» = Compra ___, por favor.","gotas para los ojos","spray nasal","мікс словника"],
+["«Фармацевтка порадила мені сироп від кашлю» = La farmacéutica me recomendó ___ para la tos.","un jarabe","una tirita","мікс словника"]
+]},
+{t:"Ситуації в аптеці: діалог", lv:3, q:[
+["Фармацевт запитує «¿Con receta o sin receta?» — очікує почути…","чи є в тебе рецепт лікаря","скільки коштують ліки","типове питання"],
+["Клієнт каже «Me encuentro mal» — фармацевт може відповісти…","¿Qué síntomas tienes?","¿Cuánto cuesta?","логічна відповідь"],
+["«¿Qué me recomienda para la tos?» — очікувана відповідь фармацевта:","Le recomiendo este jarabe.","Le recomiendo este libro.","контекст аптеки"],
+["Прощання в аптеці типово включає пораду…","Cuídese y mejórese pronto.","Adiós y buena suerte con el examen.","типова фраза"],
+["«¿Cada cuánto tomo la pastilla?» — відповідь фармацевта:","Cada ocho horas.","Cada año.","типова інструкція"],
+["Симуляція розмови з фармацевтом (домашка) має тривати…","2 хвилини","20 хвилин","з підручника"],
+["Типова структура діалогу: симптом → …","порада/рецепт → прощання","одразу прощання","логічна структура"],
+["«¿Tiene algo para el dolor de cabeza?» — переклад…","У вас є щось від головного болю?","У вас болить голова?","питання клієнта"],
+["Ввічливе звернення до фармацевта зазвичай на форму…","usted","tú","формальний контекст"],
+["Ключові фрази для рольової гри: Me encuentro mal, ¿Qué me recomienda?, Con/sin receta, і…","Tome esta pastilla cada…","Hasta luego, amigo mío exclusivamente","базовий набір фраз уроку"]
+]},
+{t:"«El día que me enfermé» (домашка)", lv:3, q:[
+["Ayer ___ (despertarse) con fiebre.","me desperté","desperté","reflexivo, pretérito, з домашки"],
+["El médico me dijo: «No ___ (salir) de casa».","salgas","sales","imperativo negativo, з домашки"],
+["Для домашки потрібно написати 10 речень з…","imperativo negativo","futuro simple","з підручника"],
+["Домашка також включає міні-історію під назвою…","«El día que me enfermé»","«Mi vida en el futuro»","з підручника"],
+["Третє завдання — симулювати розмову з фармацевтом тривалістю…","2 хвилини","10 хвилин","з підручника"],
+["У розмові «En la farmacia» варто використати фрази типу…","¿Qué me recomienda? / Tengo fiebre","лише привітання","практична мета"],
+["Приклад корисної фрази для домашки: «No ___ (comer) mucho azúcar si estás enfermo».","comas","comes","imperativo negativo"],
+["Ще одна: «No ___ (olvidarse) de tomar las pastillas».","te olvides","olvidas","reflexivo + imperativo"],
+["Мета домашки уроку 22 — практика…","imperativo negativo в реалістичних медичних ситуаціях","минулого доконаного часу","підсумок"],
+["Los deberes уроку 22, як завжди, завершуються…","тестовим завданням (link test)","усним іспитом","стандартна структура"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["No fumes tanto — переклад…","Не кури так багато","Кури так багато","imperativo negativo"],
+["ir → no ___","vayas","vas","irregular"],
+["No te preocupes — займенник te стоїть…","перед дієсловом","у кінці слова","правило negativo"],
+["el farmacéutico = …","фармацевт","лікар","словник"],
+["Tengo fiebre y dolor de garganta — переклад…","У мене температура і болить горло","У мене нежить і кашель","словник"],
+["❌ No vas a la farmacia → ✅ …","No vayas a la farmacia.","однаково правильно","irregular"],
+["farmacia de guardia = …","чергова аптека","приватна аптека","з культ. нотаток"],
+["No se olvide de beber agua — форма для…","usted","tú","ввічлива форма"],
+["-AR дієслова в imperativo negativo tú закінчуються на…","-es","-as","обернена логіка"],
+["Урок 22 готово! No ___ (dejar) de practicar cada día. 💊","dejes","dejas","imperativo negativo, фінальна порада"]
+]}
+
+];
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "MÉDICO Y FARMACIA: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 22 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

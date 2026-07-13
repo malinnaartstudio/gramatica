@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 17 · Expresiones temporales · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 17 · @malinnaartstudio</div>
+    <h1 id="htitle">EXPRESIONES TEMPORALES: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+<main>
+  <div id="home">
+    <div class="intro">
+            <b style="color:var(--rasp)">Lección 17 · Expresiones temporales.</b>
+      30 вправ по 10 питань: desde, desde hace, hace…que, desde que, hace poco / hace mucho,
+      desde entonces, todavía / ya, últimamente. Presente замість минулого — коли дія ще триває!
+      Від ★ до ★★★. ¡El tiempo se vive! ⏳
+
+    </div>
+    <div class="legend">
+            <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · desde, desde hace, hace…que, desde que</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · текст, порядок слів, Presente</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й типові помилки</span>
+
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 17</footer>
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Основні конструкції часу", lv:1, q:[
+["Desde вживається з…","конкретним моментом (дата, день)","кількістю часу","desde 2015"],
+["Desde hace вживається з…","кількістю часу (тривалістю)","конкретною датою","desde hace dos años"],
+["Hace…que будується як…","Hace + час + que + дієслово","Desde + час + que","hace tres años que…"],
+["Desde que вживається з…","повним реченням (дієслово)","лише іменником","desde que vivo aquí"],
+["Vivo en España desde 2015 — desde тут вказує…","конкретний рік початку","тривалість у роках","точка на календарі"],
+["Estudio español desde hace dos años — тут вказано…","тривалість дії","точну дату початку","«вже два роки»"],
+["Hace tres años que estudio español ≈ …","Estudio español desde hace tres años","Estudio español desde 2022 хоча воно і рік","еквівалентні конструкції"],
+["Desde (іменник/дата) vs Desde que (…)","дієслово","прикметник","desde que + verbo"],
+["Дія, що триває й досі, іспанською описується часом…","Presente","Pretérito","НЕ як українською!"],
+["No veo a Marta desde el lunes — це…","Не бачу Марту з понеділка","Не бачив Марту в понеділок","desde + момент"]
+]},
+{t:"DESDE + момент", lv:1, q:[
+["Vivo en España ___ 2015.","desde","desde hace","конкретний рік"],
+["No veo a Marta ___ el lunes.","desde","hace","конкретний день"],
+["Trabajo aquí ___ esta mañana.","desde","desde hace","конкретний момент"],
+["Desde вказує на…","точку початку дії","тривалість дії","а не «скільки часу»"],
+["___ enero, no fumo.","Desde","Hace","конкретний місяць"],
+["Vivo aquí ___ el año pasado.","desde","desde hace","конкретний рік як точка"],
+["Consejo з книги: desde вживаємо, коли вказуємо…","точку початку (момент)","тривалість","не «скільки», а «відколи»"],
+["___ el 3 de mayo, trabajo en esta oficina.","Desde","Hace","конкретна дата"],
+["No hablamos ___ su cumpleaños.","desde","hace","точка в часі"],
+["Vivo en Madrid ___ 2020.","desde","desde hace","рік = точка, не тривалість"]
+]},
+{t:"DESDE HACE + тривалість", lv:1, q:[
+["Estudio español ___ dos años.","desde hace","desde","тривалість!"],
+["No trabajo ___ tres meses.","desde hace","hace","«вже три місяці»"],
+["Vivimos juntos ___ mucho tiempo.","desde hace","desde","тривалість"],
+["Desde hace + число + одиниця часу = …","тривалість дії дотепер","конкретна дата","дні, місяці, роки…"],
+["No lo veo ___ una semana.","desde hace","desde","тиждень = тривалість"],
+["В українській «вже два роки» = іспанською…","desde hace dos años","desde dos años","саме ця структура!"],
+["Vivo aquí ___ seis meses.","desde hace","hace que","тривалість"],
+["No como carne ___ un año.","desde hace","desde","рік як тривалість"],
+["Trabajo en esta empresa ___ cinco años.","desde hace","desde","з книги, вправа 1"],
+["No fumo ___ dos años.","desde hace","hace","з книги, вправа 1"]
+]},
+{t:"HACE + час + QUE + дієслово", lv:1, q:[
+["___ tres años que estudio español.","Hace","Desde","hace…que"],
+["___ una semana que estoy enfermo.","Hace","Desde hace","hace…que"],
+["___ seis meses que vivimos aquí.","Hace","Desde","hace…que"],
+["Hace + час + que + дієслово позначає…","як давно триває дія","як довго вона тривала в минулому","варіант «desde hace», інша будова"],
+["___ un mes que no voy al gimnasio.","Hace","Desde","з книги, вправа 1"],
+["___ tres días que estoy resfriado.","Hace","Desde que","з книги, вправа 1"],
+["Порядок слів у hace…que: спочатку…","hace + час","дієслово","потім que + дієслово"],
+["Hace dos años que vivo aquí = …","Vivo aquí desde hace dos años","Vivo aquí desde 2020","та сама ідея, інший порядок"],
+["___ mucho tiempo que no hablamos.","Hace","Desde","hace mucho tiempo que"],
+["Hace tres años que estudio español — перекласти:","Вже три роки, як я вчу іспанську","Три роки тому я вчив іспанську","триває й досі"]
+]},
+{t:"DESDE QUE + речення", lv:1, q:[
+["___ vivo en Valencia, soy más feliz.","Desde que","Desde hace","з дієсловом → desde que"],
+["___ empezó el curso, estudio mucho.","Desde que","Hace que","з дієсловом"],
+["___ tengo coche, viajo más.","Desde que","Desde","з дієсловом coche + tengo"],
+["Desde que завжди супроводжується…","дієсловом (verbo conjugado)","лише іменником","повне речення"],
+["Desde завжди супроводжується…","іменником або датою","дієсловом","без дієслова!"],
+["___ dejé el tabaco, duermo mejor.","Desde que","Desde hace","з тексту уроку"],
+["No trabajo ___ tuve a mi hijo.","desde que","desde hace","дієслово tuve"],
+["___ llegué a España, todo cambió.","Desde que","Hace que","з книги, вправа 2"],
+["Desde que + дієслово, а desde + …","іменник або дата","прислівник","правило з книги"],
+["No viajo ___ empezó la pandemia.","desde que","desde hace","з книги, вправа 2"]
+]},
+{t:"Словник: desde, hace…", lv:1, q:[
+["desde = …","з (якогось моменту)","досі","прийменник часу"],
+["desde hace = …","вже (певний час)","з того дня","тривалість"],
+["hace… que = …","вже… як","останнім часом","інший порядок тієї ж ідеї"],
+["desde que = …","відтоді як","назавжди","+ дієслово"],
+["hace poco = …","нещодавно","давно","протилежність hace mucho"],
+["hace mucho = …","давно","нещодавно","протилежність hace poco"],
+["hace un rato = …","кілька хвилин тому","через хвилину","близький момент у минулому"],
+["hace un año = …","рік тому","за рік","конкретна відстань у часі"],
+["desde entonces = …","відтоді","з того ж моменту, що й зараз","після певної події"],
+["desde aquel día = …","з того дня","до того дня","конкретний день у минулому"]
+]},
+{t:"Словник: hace poco/mucho, hace un rato…", lv:1, q:[
+["desde siempre = …","завжди, здавна","іноді","без початку — «завжди так було»"],
+["durante mucho tiempo = …","протягом довгого часу","короткий час","тривалість у минулому"],
+["todavía = …","досі","вже","заперечна форма: todavía no"],
+["ya = …","вже","досі","стверджувальне"],
+["últimamente = …","останнім часом","дуже давно","близький період"],
+["recientemente = …","нещодавно","назавжди","синонім hace poco"],
+["en los últimos años = …","останніми роками","у перші роки","період до сьогодні"],
+["«Досі не подзвонив» = Todavía no ___.","he llamado","llamo","ще не"],
+["«Останнім часом багато працюю» = ___ trabajo mucho.","Últimamente","Desde","близький період"],
+["hace un rato ≈ …","кілька хвилин тому","рік тому","дуже недавно"]
+]},
+{t:"Яку конструкцію обрати?", lv:1, q:[
+["Перед конкретною датою (2015, el lunes) → …","desde","desde hace","точка в часі"],
+["Перед кількістю часу (dos años, tres meses) → …","desde hace","desde","тривалість"],
+["Перед повним реченням з дієсловом → …","desde que","desde","dесde que + verbo"],
+["На початку речення з часом і que → …","Hace… que","Desde que","hace tres años que…"],
+["«з 2020 року» → …","desde 2020","desde hace 2020","дата"],
+["«вже 3 роки» → …","desde hace tres años","desde tres años","тривалість"],
+["«відтоді як переїхав» → …","desde que me mudé","desde me mudé","дієслово mudé"],
+["«3 роки, як я тут живу» → …","Hace tres años que vivo aquí","Vivo aquí hace tres años sin que","hace…que на початку"],
+["«з понеділка» → …","desde el lunes","desde hace el lunes","конкретний день"],
+["«давно» одним словом → …","hace mucho","desde mucho","прислівникова фраза"]
+]},
+{t:"Переклад укр → ісп", lv:1, q:[
+["«Живу тут з 2018 року»","Vivo aquí desde 2018.","Vivo aquí desde hace 2018.","дата → desde"],
+["«Вчу іспанську вже рік»","Estudio español desde hace un año.","Estudio español desde un año.","тривалість → desde hace"],
+["«Відтоді як маю пса, гуляю більше»","Desde que tengo perro, camino más.","Desde tengo perro, camino más.","дієслово → desde que"],
+["«Уже тиждень, як я хворію»","Hace una semana que estoy enfermo.","Desde una semana estoy enfermo.","hace…que"],
+["«Не бачу його з Різдва»","No lo veo desde Navidad.","No lo veo desde hace Navidad.","конкретна подія-точка"],
+["«Не курю вже два роки»","No fumo desde hace dos años.","No fumo desde dos años.","тривалість"],
+["«Відтоді як покинув куріння, сплю краще»","Desde que dejé de fumar, duermo mejor.","Desde dejé de fumar, duermo mejor.","desde que + дієслово"],
+["«Живу тут дуже давно»","Vivo aquí desde hace mucho tiempo.","Vivo aquí desde mucho tiempo.","desde hace + тривалість"],
+["«З того дня все змінилося»","Desde aquel día, todo cambió.","Desde hace aquel día, todo cambió.","desde aquel día"],
+["«Востаннє бачилися нещодавно»","Nos vimos hace poco.","Nos vimos desde poco.","hace poco"]
+]},
+{t:"Резюме модуля 1", lv:1, q:[
+["desde + дата/момент → …","точка початку","тривалість","desde 2015"],
+["desde hace + число → …","тривалість дотепер","точка початку","desde hace 3 años"],
+["hace + число + que → …","та сама ідея, інший порядок","геть інше значення","= desde hace"],
+["desde que + дієслово → …","з моменту, коли сталося щось","тривалість без причини","повне речення"],
+["Українською часто минулий час, іспанською — …","Presente (дія ще триває)","завжди Pretérito","головна пастка!"],
+["desde НІКОЛИ не йде з…","дієсловом напряму","іменником","для дієслова є desde que"],
+["Найкоротше «нещодавно» — …","hace poco","desde hace poco","прислівник"],
+["Найкоротше «давно» — …","hace mucho","desde mucho","прислівник"],
+["4 головні конструкції уроку:","desde, desde hace, hace…que, desde que","desde, hasta, para, por","тема уроку 17"],
+["Урок 17 називається…","Expresiones temporales","Pretérito perfecto","з підручника"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Вправа 1 з книги: доповни", lv:2, q:[
+["Trabajo en esta empresa ___ cinco años.","desde hace","desde","з книги"],
+["No bebo café ___ el verano pasado.","desde","desde hace","конкретний момент"],
+["___ hago yoga, me siento mejor.","Desde que","Desde hace","з книги"],
+["___ un mes que no voy al gimnasio.","Hace","Desde","з книги"],
+["Vivo en esta ciudad ___ 2019.","desde","desde hace","з книги"],
+["No fumo ___ dos años.","desde hace","desde","з книги"],
+["___ empezó el invierno, hace más frío.","Desde que","Hace que","з книги"],
+["___ tres días que estoy resfriado.","Hace","Desde","з книги"],
+["Aprendo español ___ hace poco.","desde","desde hace","з книги: desde hace poco"],
+["No hablo con mi primo ___ la Navidad pasada.","desde","desde hace","конкретна подія"]
+]},
+{t:"Вправа 2 з книги: обери варіант", lv:2, q:[
+["No voy al médico ___ seis meses.","desde hace","desde","з книги"],
+["Trabajo aquí ___ 2021.","desde","desde hace","з книги"],
+["___ llegué a España, todo cambió.","Desde que","Desde hace","з книги"],
+["___ tres años que vivo solo.","Hace","Desde","з книги"],
+["No viajo ___ empezó la pandemia.","desde que","desde hace","з книги"],
+["Estudio español ___ un año.","desde hace","desde","з книги"],
+["___ el verano pasado, hago deporte.","Desde","Hace","з книги"],
+["No salgo de casa ___ ayer.","desde","desde hace","конкретний момент"],
+["___ dos meses que tengo coche nuevo.","Hace","Desde que","hace…que"],
+["Vivo con mi pareja ___ hace tres años.","desde","hace","desde hace, з книги"]
+]},
+{t:"Текст: Mi nueva rutina saludable (1)", lv:2, q:[
+["Hace unos meses ___ decidí cambiar mi vida.","que","desde","hace…que"],
+["Voy al gimnasio ___ cuatro meses.","desde hace","desde","з тексту"],
+["___ hago ejercicio, tengo más energía.","Desde que","Desde hace","з тексту"],
+["Hace tres semanas ___ no tomo bebidas con azúcar.","que","desde","hace…que"],
+["Trabajo desde casa ___ 2020.","desde","desde hace","конкретний рік"],
+["No fumo ___ dos años.","desde hace","desde","з тексту"],
+["___ dejé el tabaco, también duermo mejor.","Desde que","Desde hace","з тексту"],
+["Lo adopté ___ un año.","hace","desde","hace = «тому»"],
+["___ entonces, salimos juntos todos los días.","Desde","Hace","desde entonces"],
+["Hace seis meses ___ me siento más feliz.","que","desde","hace…que, фінал тексту"]
+]},
+{t:"Текст: Mi nueva rutina saludable (2)", lv:2, q:[
+["Antes me levantaba tarde, pero ahora me despierto a las siete — це…","зміна звички","опис одного дня","porque antes/ahora"],
+["intento moverme cada hora — moverme означає…","рухатися","переїжджати","mudarse = переїжджати!"],
+["hago estiramientos = …","роблю розтяжку","роблю покупки","estirar = розтягувати"],
+["mejorado mi respiración = …","покращив моє дихання","покращив мій рецепт","respirar = дихати; receta = рецепт"],
+["me obliga a desconectarme del trabajo = …","змушує мене відключитися від роботи","з'єднує мене з роботою","obligar = зобов'язувати"],
+["Cuando paseo, escucho podcasts — cuando тут означає…","коли (щоразу, коли)","чому","звичка"],
+["desconectarme del trabajo — desconectar значить…","відʼєднатися","підключитися","des- = проти-"],
+["escucho podcasts o hablo con mis amigos — o означає…","або","і","альтернатива"],
+["este cambio ha sido lo mejor que he hecho — переклад…","ця зміна була найкращим, що я зробив","ця зміна була найгіршим досвідом","lo mejor = найкраще"],
+["más tranquilo = …","спокійніший","швидший","tranquilo = спокійний"]
+]},
+{t:"Питання до тексту", lv:2, q:[
+["¿Por qué decidió cambiar su vida?","Se sentía cansado y no cuidaba su salud","Quería viajar más","з тексту"],
+["¿Desde hace cuánto tiempo va al gimnasio?","Desde hace cuatro meses","Desde hace un año","з тексту"],
+["¿Qué cambios hizo en su alimentación?","Bebe más agua y come fruta","Dejó de comer fruta","з тексту"],
+["¿Desde cuándo trabaja desde casa?","Desde 2020","Desde hace dos años","з тексту"],
+["¿Qué hace cuando da paseos?","Escucha podcasts o habla con amigos","Ve la televisión","з тексту"],
+["¿Qué beneficios nota en su salud?","Más energía, mejor humor y sueño","Menos energía","з тексту"],
+["Desde que dejó de fumar, ¿qué ha mejorado?","Su respiración y su sueño","Su memoria","з тексту"],
+["«Desde entonces, he cambiado mis hábitos» означає…","з того моменту я поступово змінюю звички","до того моменту я все змінив","desde entonces"],
+["¿Hace cuánto tiempo que no toma bebidas con azúcar?","Hace tres semanas","Hace un año","з тексту"],
+["¿Hace cuánto tiempo que adoptó a su perro?","Hace un año","Hace un mes","з тексту"]
+]},
+{t:"HACE…QUE vs DESDE HACE: порядок слів", lv:2, q:[
+["Estudio español desde hace tres años = …","Hace tres años que estudio español.","Hace tres años estudio español que.","однакове значення"],
+["Hace dos años que vivo aquí = …","Vivo aquí desde hace dos años.","Vivo aquí desde dos años.","переставили місцями"],
+["У desde hace дієслово стоїть…","перед desde hace","після que","Estudio desde hace…"],
+["У hace…que дієслово стоїть…","після que","перед hace","Hace… QUE vivo…"],
+["No trabajo desde hace un mes = …","Hace un mes que no trabajo.","Hace un mes no trabajo que.","еквівалент"],
+["Слово que обов'язкове тільки в…","hace…que","desde hace","друга частина конструкції"],
+["Hace mucho tiempo que no la veo = …","No la veo desde hace mucho tiempo.","No la veo desde mucho tiempo.","еквівалент"],
+["desde hace НЕ вимагає слова…","que","tiempo","на відміну від hace…que"],
+["«Hace tres años» без que означає…","три роки тому (подія в минулому)","вже три роки (триває)","без que — інший сенс!"],
+["Hace tres años me mudé a España — тут дія…","закінчена в минулому","триває й досі","без que → просте «тому»"]
+]},
+{t:"Presente, а не Pasado!", lv:2, q:[
+["Vivo en España desde 2020 — правильний час, бо дія…","ще триває","вже закінчилась","Presente!"],
+["❌ Viví en España desde 2020 → тут проблема, бо…","дія ще триває, а Pretérito її «закриває»","все правильно","Presente, а не Pretérito!"],
+["Trabajo aquí desde hace un año — час дієслова:","Presente","Pretérito","триває"],
+["No trabajo desde hace tres meses — це…","й досі не працюю","працював три місяці тому","Presente + no"],
+["Українською кажемо «я жив», іспанською — коли дія триває:","Vivo","Viví","Presente!"],
+["Естudio español desde hace dos años означає, що я…","й досі вчу","вчив, але покинув","Presente = триває"],
+["Правило з культ. нотаток: коли дія ще триває, іспанці завжди ставлять…","Presente","Pretérito","навіть якщо українською минулий час"],
+["✅ правильно: …","Vivo en España desde 2020.","Viví en España desde 2020.","з культ. нотаток"],
+["No la veo desde el lunes — вона…","й досі не бачена","була побачена в понеділок","Presente = триває дотепер"],
+["Desde que tengo coche, viajo más — «tengo» у Presente, бо…","й досі маю машину","колись мав машину","триває"]
+]},
+{t:"Розмовні скорочення", lv:2, q:[
+["— ¿Vives aquí? — Sí, ___.","hace mucho","desde mucho","розмовне скорочення"],
+["— ¿Conoces a Marta? — Claro, ___ la vi.","hace poco","desde poco","розмовне скорочення"],
+["Hace mucho, la verdad. = …","Давно, чесно кажучи.","Багато разів, правда.","розмовна вставка"],
+["Desde entonces, todo cambió. = …","Відтоді все змінилося.","З того часу нічого не змінилося.","вставна фраза"],
+["Hace años que no voy, pero tengo ganas. = …","Роками не був, але хочеться.","За роки не пішов, але не хочу.","розмовна фраза"],
+["У розмові іспанці часто…","скорочують фрази з hace/desde","уникають цих конструкцій","типово для usnого мовлення"],
+["«la verdad» додають, щоб…","підкреслити щирість","поставити питання","розмовний зворот"],
+["Коротка відповідь на «¿Hace mucho que estudias español?» — …","Hace un año.","Un año hace.","коротко, без повторення дієслова"],
+["Розмовні вставки роблять мову…","живішою, природнішою","складнішою для розуміння","як у носіїв"],
+["«Hace poco la vi» — la тут means…","її","його","Marta = жіночий рід"]
+]},
+{t:"Словник поглиблено", lv:2, q:[
+["desde entonces vs desde aquel día — різниця…","майже немає, синоніми","протилежні за змістом","обидва: «з того моменту»"],
+["desde siempre підкреслює, що…","так було завжди, без початку","почалося недавно","«споконвіку»"],
+["durante mucho tiempo фокусується на…","тривалості (можливо, вже завершеній)","точці початку","durante = протягом"],
+["todavía у заперечному реченні: Todavía no he comido = …","Ще не їв.","Вже поїв.","досі не"],
+["ya у стверджувальному: Ya he comido = …","Вже поїв.","Ще не їв.","протилежність todavía no"],
+["últimamente вживається з часом…","Presente perfecto (he + participio)","Futuro","últimamente he estado ocupado"],
+["recientemente більш формальне, ніж…","hace poco","desde siempre","стилістичний регістр"],
+["en los últimos años + дієслово в…","Presente perfecto","Pretérito indefinido","«останніми роками»"],
+["«Últimamente trabajo mucho» означає…","Останнім часом багато працюю.","Раніше багато працював.","близький, актуальний період"],
+["hace un rato ближче за змістом до…","hace poco","hace mucho","дуже нещодавно"]
+]},
+{t:"¿Cuánto tiempo hace que…?", lv:2, q:[
+["Питання «Скільки часу вже…?» іспанською:","¿Cuánto tiempo hace que…?","¿Cuánto tiempo desde…?","стандартне питання"],
+["¿Cuánto tiempo hace que vives aquí? — відповідь:","Hace tres años que vivo aquí.","Vivo tres años.","hace…que"],
+["¿Desde cuándo estudias español? — відповідь:","Desde 2022.","Hace 2022.","desde + дата"],
+["¿Desde cuándo conoces a Pedro? — відповідь:","Desde hace mucho tiempo.","Desde hace mucho tiempo que.","desde hace без que"],
+["¿Cuánto tiempo hace que no fumas? — відповідь:","Hace dos años que no fumo.","Desde dos años que no fumo.","hace…que"],
+["Питання ¿Desde cuándo…? очікує відповідь з…","desde","hace…que","симетрія питання-відповідь"],
+["Питання ¿Cuánto tiempo hace que…? очікує відповідь з…","hace…que / desde hace","desde + дата","симетрія"],
+["¿Hace mucho que esperas? — Sí, ___.","hace media hora","desde media hora","hace + тривалість"],
+["¿Desde cuándo trabajas aquí? — ___ el año pasado.","Desde","Hace","конкретний момент"],
+["Симетрична пара: desde cuándo ↔ …","desde + момент","cuánto + іменник","питання-відповідь"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки", lv:3, q:[
+["❌ Viví en España desde 2020 → ✅ …","Vivo en España desde 2020.","Vivía en España desde 2020.","дія ще триває → Presente"],
+["❌ Estudio español desde tres años → ✅ …","Estudio español desde hace tres años.","Estudio español desde hace de tres años.","тривалість → desde hace"],
+["❌ Hace tres años estudio español → ✅ …","Hace tres años que estudio español.","Hace tres años estudio que español.","бракує que"],
+["❌ Desde tengo coche, viajo más → ✅ …","Desde que tengo coche, viajo más.","Desde hace tengo coche, viajo más.","дієслово → desde que"],
+["❌ No lo veo desde hace el lunes → ✅ …","No lo veo desde el lunes.","No lo veo hace el lunes.","конкретний день → desde"],
+["❌ Vivo aquí desde mucho tiempo → ✅ …","Vivo aquí desde hace mucho tiempo.","Vivo aquí hace desde mucho tiempo.","тривалість → desde hace"],
+["❌ Desde que 2015 vivo aquí → ✅ …","Desde 2015 vivo aquí.","Desde que 2015, vivo aquí.","дата без que"],
+["❌ Hace dos años vivo aquí (без que) означає інше:","«2 роки тому переїхав» (закінчена дія)","«вже 2 роки живу» (триває)","без que — просто «тому»!"],
+["❌ No fumo desde dos años → ✅ …","No fumo desde hace dos años.","No fumo hace dos años.","тривалість → desde hace"],
+["❌ ¿Desde cuánto vives aquí? → ✅ …","¿Desde cuándo vives aquí?","¿Desde cuánto tiempo vives aquí?","питання про точку — cuándo"]
+]},
+{t:"DESDE vs DESDE QUE", lv:3, q:[
+["Desde + іменник/дата, Desde que + …","дієслово (речення)","прикметник","правило"],
+["Desde el lunes — після desde йде…","іменник (el lunes)","дієслово","без дієслова"],
+["Desde que llegué — після desde que йде…","дієслово (llegué)","тільки іменник","з дієсловом"],
+["Desde mi boda, soy más feliz — desde + …","іменник (mi boda)","дієслово","noun"],
+["Desde que me casé, soy más feliz — desde que + …","дієслово (me casé)","іменник","verb"],
+["Обидва варіанти можливі для одного змісту:","Desde mi boda / Desde que me casé","Desde que mi boda / Desde me casé","залежно від того, іменник чи дієслово далі"],
+["Desde niño, hablo dos idiomas — niño тут…","іменник (без дієслова)","дієслово","desde + noun"],
+["Desde que era niño, hablo dos idiomas — тут є…","дієслово era","лише іменник","desde que + verbo"],
+["Помилка: Desde que niño… — бракує…","дієслова (era)","іменника","que вимагає verbo"],
+["Правило одним реченням:","desde + noun, desde que + verbo","desde завжди без винятків","підсумок"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Живу тут вже 5 років»","Vivo aquí desde hace cinco años.","Vivo aquí desde cinco años.","тривалість"],
+["«Не курю з минулого літа»","No fumo desde el verano pasado.","No fumo desde hace el verano pasado.","конкретний момент"],
+["«Відтоді як переїхав до Мадрида, я щасливіший»","Desde que me mudé a Madrid, soy más feliz.","Desde me mudé a Madrid, soy más feliz.","дієслово → desde que"],
+["«Уже два тижні, як я хворію»","Hace dos semanas que estoy enfermo.","Desde dos semanas estoy enfermo.","hace…que"],
+["«Давно її не бачив»","Hace mucho que no la veo.","Desde mucho que no la veo.","hace mucho"],
+["«Останнім часом багато працюю»","Últimamente trabajo mucho.","Desde trabajo mucho.","прислівник"],
+["«Ще не поїв»","Todavía no he comido.","Ya no he comido.","заперечення"],
+["«З дитинства говорю двома мовами»","Desde niño, hablo dos idiomas.","Desde que niño, hablo dos idiomas.","desde + іменник"],
+["«Скільки часу ти тут живеш?»","¿Cuánto tiempo hace que vives aquí?","¿Cuánto tiempo desde vives aquí?","стандартне питання"],
+["«З того дня все інакше»","Desde aquel día, todo es diferente.","Desde hace aquel día, todo es diferente.","desde aquel día"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«Vivo en España desde 2020» — …","правильно ✓","помилка","✓ Presente + дата"],
+["«Viví en España desde 2020» — …","помилка (має бути Vivo)","правильно","дія ще триває"],
+["«Estudio español desde hace tres años» — …","правильно ✓","помилка","✓"],
+["«Estudio español desde tres años» — …","помилка (бракує hace)","правильно","тривалість"],
+["«Hace tres años que vivo aquí» — …","правильно ✓","помилка","✓"],
+["«Hace tres años vivo aquí que» — …","помилка (que не туди)","правильно","порядок слів"],
+["«Desde que tengo coche, viajo más» — …","правильно ✓","помилка","✓"],
+["«Desde tengo coche, viajo más» — …","помилка (бракує que)","правильно","дієслово → desde que"],
+["«No lo veo desde el lunes» — …","правильно ✓","помилка","✓"],
+["«No lo veo desde hace el lunes» — …","помилка (день — точка, не hace)","правильно","desde, без hace"]
+]},
+{t:"CUÁNTO TIEMPO: дві структурні пари", lv:3, q:[
+["Desde hace tres años, vivo aquí = Hace tres años ___ vivo aquí.","que","desde","та сама ідея"],
+["Vivo aquí desde hace tres años — прибрати «hace», додати дату:","Vivo aquí desde 2021 (наприклад).","Vivo aquí hace 2021.","desde + конкретна дата"],
+["Заміни на еквівалент: «Hace un año que no fumo» → …","No fumo desde hace un año.","No fumo desde un año.","desde hace"],
+["Заміни: «Trabajo aquí desde hace dos años» → …","Hace dos años que trabajo aquí.","Hace dos años trabajo aquí que.","hace…que"],
+["Обидві структури (desde hace / hace…que) виражають…","тривалість дії дотепер","точку в минулому","синоніми"],
+["А структура desde + дата виражає…","точку початку","тривалість","інша ідея!"],
+["«Hace un año» (без que, окремо) = …","рік тому (просто вказівка часу в минулому)","вже рік (триває)","без que — інший сенс"],
+["Lo adopté hace un año — дія…","закінчена в минулому (усиновив)","триває й досі","без que"],
+["Y desde entonces salimos juntos — desde entonces вказує на…","точку відліку після тієї події","тривалість без початку","«з того моменту»"],
+["Дві пари з однаковим змістом, різним порядком:","desde hace X / hace X que","desde X / hace que X","підсумок правила"]
+]},
+{t:"Los españoles miden la vida por momentos", lv:3, q:[
+["«El tiempo se vive, no solo se cuenta» означає…","час не просто рахують, а проживають","час треба рахувати точно","філософія з культ. нотаток"],
+["Desde que terminé la universidad, no he parado de trabajar — приклад…","desde que + дієслово","desde + дата","з культ. нотаток"],
+["Hace muchos años que vivo en el mismo barrio — приклад…","hace…que","desde que","з культ. нотаток"],
+["Desde hace poco tengo coche, así que viajo más — приклад…","desde hace","desde que","з культ. нотаток"],
+["Іспанці часто говорять не просто про дати, а про…","життєві етапи","точний час доби","з культ. нотаток"],
+["Щоб звучати природно, іспанці додають короткі вставки типу…","«Hace mucho, la verdad»","довгі формальні фрази","розмовний стиль"],
+["barrio = …","район (міста)","борода","псевдодруг перекладача! 🧔"],
+["parar de trabajar = …","припинити працювати","готуватися до роботи","parar = зупинятись"],
+["Головна порада уроку 17 для «звучати як іспанець»:","дію, що триває, завжди ставити в Presente","уникати hace і desde взагалі","з культ. нотаток"],
+["El tiempo se vive — vivir тут вжито…","переносно (проживати час, а не просто рахувати)","буквально (жити в часі як в будинку)","філософський зворот"]
+]},
+{t:"Побудуй речення логічно", lv:3, q:[
+["Живу тут з 2010 (точна дата) →","Vivo aquí desde 2010.","Vivo aquí desde hace 2010.","дата → desde"],
+["Живу тут вже 14 років (тривалість) →","Vivo aquí desde hace catorce años.","Vivo aquí desde catorce años.","тривалість → desde hace"],
+["Відтоді як маю дітей, менше сплю →","Desde que tengo hijos, duermo menos.","Desde tengo hijos, duermo menos.","дієслово → desde que"],
+["Уже місяць, як шукаю роботу →","Hace un mes que busco trabajo.","Desde un mes busco trabajo.","hace…que"],
+["З того дня я більше не довіряю йому →","Desde aquel día, no confío en él.","Desde hace aquel día, no confío en él.","desde aquel día"],
+["Нещодавно змінив роботу →","Cambié de trabajo hace poco.","Cambié de trabajo desde poco.","hace poco"],
+["Давно тут не був →","Hace mucho que no vengo por aquí.","Desde mucho que no vengo por aquí.","hace mucho que"],
+["Ще не отримав відповіді →","Todavía no he recibido respuesta.","Ya no he recibido respuesta.","todavía no"],
+["Останніми роками все дорожчає →","En los últimos años, todo sube de precio.","Desde los últimos años, todo sube de precio.","en los últimos años"],
+["Скільки часу ти тут працюєш? →","¿Cuánto tiempo hace que trabajas aquí?","¿Cuánto tiempo desde trabajas aquí?","стандартне питання"]
+]},
+{t:"Питання-відповіді практика", lv:3, q:[
+["¿Desde cuándo vives en esta casa? — …","Desde 2016.","Hace 2016.","desde + дата"],
+["¿Cuánto tiempo hace que la conoces? — …","La conozco desde hace diez años.","La conozco desde diez años.","desde hace"],
+["¿Hace mucho que esperas el autobús? — …","Sí, hace veinte minutos.","Sí, desde veinte minutos.","hace + тривалість"],
+["¿Desde cuándo no fumas? — …","Desde hace un año.","Desde un año.","тривалість → desde hace"],
+["¿Cuánto tiempo hace que trabajas en la empresa? — …","Hace tres años que trabajo aquí.","Trabajo tres años aquí hace.","hace…que"],
+["¿Desde cuándo estudias español? — …","Desde que llegué a España.","Desde llegué a España.","подія → desde que"],
+["¿Hace cuánto que se conocen? — …","Se conocen desde hace veinte años.","Se conocen desde veinte años.","desde hace"],
+["¿Desde cuándo tienes ese coche? — …","Desde el año pasado.","Desde hace el año pasado.","конкретний рік"],
+["¿Cuánto tiempo hace que no la ves? — …","Hace un mes que no la veo.","Desde un mes que no la veo.","hace…que"],
+["¿Desde cuándo vive aquí tu familia? — …","Desde siempre.","Desde hace siempre.","desde siempre — без hace"]
+]},
+{t:"«Cambios en mi vida» (домашка)", lv:3, q:[
+["Desde que llegué a España, ___ (he cambiado) mucho.","he cambiado","cambié","desde que + presente perfecto"],
+["Trabajo en este proyecto ___ hace seis meses.","desde","desde hace","з домашки"],
+["___ tres años que no veo a mi familia.","Hace","Desde","hace…que"],
+["Desde ___ tengo trabajo estable, estoy más tranquilo.","que","hace","дієслово tengo"],
+["Aprendo español ___ el año pasado.","desde","desde hace","конкретний рік"],
+["___ empecé a hacer deporte, duermo mejor.","Desde que","Desde hace","дієслово empecé"],
+["Vivo solo ___ hace dos años.","desde","hace","desde hace"],
+["Для домашки потрібно мінімум ___ expresiones temporales.","6","2","з підручника"],
+["Задай другові 6–8 питань із виразами desde, hace, desde hace, ___.","desde que","para que","чотири конструкції уроку"],
+["Опиши зміни у своєму житті, вказуючи, ___ вони почалися.","коли","чому","з домашки"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["Vivo aquí ___ 2015.","desde","desde hace","дата"],
+["Estudio español ___ dos años.","desde hace","desde","тривалість"],
+["___ tres años que vivo aquí.","Hace","Desde","hace…que"],
+["___ tengo coche, viajo más.","Desde que","Desde hace","дієслово"],
+["No fumo ___ hace dos años.","desde","hace","desde hace"],
+["Vivo en España desde 2020 — не Viví, бо дія…","триває","закінчена","Presente!"],
+["hace poco = …","нещодавно","давно","антонім до hace mucho"],
+["todavía no he comido = …","ще не поїв","вже поїв","заперечення"],
+["¿Desde cuándo…? очікує відповідь з…","desde","hace…que","симетрія"],
+["Урок 17 готово! Estudias español ___ hace un rato, ¡sigue así! 💪","desde","desde que","desde hace un rato"]
+]}
+
+];
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "EXPRESIONES TEMPORALES: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 17 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

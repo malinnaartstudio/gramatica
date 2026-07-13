@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 13 · El pretérito imperfecto · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 13 · @malinnaartstudio</div>
+    <h1 id="htitle">IMPERFECTO: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 13 · El pretérito imperfecto.</b>
+      30 вправ по 10 питань: -aba/-ía, era/iba/veía, звички дитинства, solía + інфінітив,
+      тло vs дія (imperfecto + indefinido), había vs hubo, традиційні ігри Іспанії. Від ★ до ★★★. ¡Como cuando eras niño! 🧸
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · форми й маркери</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · текст і вибір часу</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й помилки</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 13</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Навіщо imperfecto?", lv:1, q:[
+["Повторювані дії в минулому → …","imperfecto","indefinido","з книги"],
+["Опис людей і місць у минулому → …","imperfecto","perfecto","з книги"],
+["Дія тривала, коли інша її перервала → тривала в…","imperfecto","indefinido","з книги"],
+["Ввічливе прохання: ___ pedirte un favor.","Quería","Quise","з книги"],
+["Cuando era niño, ___ con mis amigos todos los días.","jugaba","jugué","з книги"],
+["La casa ___ grande y tenía un jardín.","era","fue","з книги"],
+["___ cuando me llamaste.","Estudiaba","Estudié","з книги"],
+["Imperfecto відповідає на…","«як було / що робилося»","«що сталося раз»","тло"],
+["Звички зараз → presente; звички раніше → …","imperfecto","futuro","з книги"],
+["jugaba ≈ українською…","грався (регулярно)","зіграв (раз)","недоконаний вид!"]
+]},
+{t:"-AR: estudiaba", lv:1, q:[
+["yo ___ (estudiar)","estudiaba","estudié","-aba"],
+["tú ___","estudiabas","estudiabas?","-abas"],
+["él ___","estudiaba","estudiabа él mismo","як yo!"],
+["nosotros ___","estudiábamos","estudiabamos","з наголосом!"],
+["vosotros ___","estudiabais","estudiabáis","-abais"],
+["ellos ___","estudiaban","estudiaron","-aban"],
+["jugar: yo ___","jugaba","jugué","звичка"],
+["preparar: ella ___","preparaba","preparó","звичка"],
+["hablar: nosotros ___","hablábamos","hablabamos","´!"],
+["Форми yo та él в imperfecto…","однакові","різні","estudiaba = estudiaba"]
+]},
+{t:"-ER / -IR: comía, vivía", lv:1, q:[
+["yo ___ (comer)","comía","comí","з наголосом í"],
+["tú ___ (comer)","comías","comiste","-ías"],
+["ella ___ (vivir)","vivía","vivió","-ía"],
+["nosotros ___ (comer)","comíamos","comimos","-íamos"],
+["vosotros ___ (vivir)","vivíais","vivisteis","-íais"],
+["ellos ___ (comer)","comían","comieron","-ían"],
+["tener: yo ___","tenía","tuve","imperfecto"],
+["hacer: él ___","hacía","hizo","в imperfecto — правильне!"],
+["querer: yo ___","quería","quise","imperfecto"],
+["-er та -ir в imperfecto…","мають однакові закінчення","різні","comía = vivía"]
+]},
+{t:"Неправильні: IR, SER, VER", lv:1, q:[
+["ir: yo ___","iba","yba","iba"],
+["ser: yo ___","era","sera","era"],
+["ver: yo ___","veía","vía","veía"],
+["ir: nosotros ___","íbamos","ibamos","з наголосом!"],
+["ser: nosotros ___","éramos","eramos","з наголосом!"],
+["ver: ellos ___","veían","vían","veían"],
+["Скільки неправильних дієслів в imperfecto?","лише три: ir, ser, ver","двадцять","найлегший час!"],
+["ser: tú ___","eras","eres","eres = ти Є зараз"],
+["ir: ellos ___","iban","iben","iban"],
+["ver: nosotros ___","veíamos","vímos","veíamos"]
+]},
+{t:"Наголоси в imperfecto", lv:1, q:[
+["-ar, nosotros: закінчення…","-ábamos","-abamos","з наголосом"],
+["hablar: nosotros ___","hablábamos","hablabamos","´"],
+["ir: nosotros ___","íbamos","ibamos","´"],
+["ser: nosotros ___","éramos","eramos","´"],
+["comer: nosotros ___","comíamos","comiamos","í"],
+["-er/-ir: усі форми мають…","í з наголосом","i без наголосу","comía"],
+["vivía чи vivia?","vivía","vivia","í!"],
+["veíamos чи veiamos?","veíamos","veiamos","í"],
+["estudiábamos — наголос на…","á","останню a","-ábamos"],
+["tenía чи tenia?","tenía","tenia","tenia — це стьожка! 😄"]
+]},
+{t:"Словник: яким я був у дитинстві", lv:1, q:[
+["de niño / de pequeña = …","коли був(ла) дитиною","про дитину","зі словника"],
+["travieso = …","бешкетний","травоїдний","😈"],
+["obediente = …","слухняний","одноденний","😇"],
+["soñador = …","мрійливий","сонний","мрії ✨"],
+["curioso = …","допитливий","курйозний","🔍"],
+["sociable = …","товариський","соціалістичний","друзі"],
+["tímido = …","сором'язливий","тьмяний","🙈"],
+["independiente = …","самостійний","незалежна держава","сам!"],
+["creativo = …","творчий","кредитний","🎨"],
+["alegre ↔ …","triste","travieso","веселий ↔ сумний"]
+]},
+{t:"Словник: дім дитинства", lv:1, q:[
+["vivir en el campo = …","жити в селі","жити в наметі","🌾"],
+["la casa antigua = …","старий будинок","антична скульптура","🏡"],
+["el piso pequeño = …","маленька квартира","маленька підлога","piso!"],
+["compartir habitación = …","ділити кімнату","ремонтувати кімнату","з братом 😄"],
+["tener vecinos cerca = …","мати сусідів поруч","мати овець поруч","vecino"],
+["pasar las vacaciones en el pueblo = …","проводити канікули в селі","пропустити канікули","зі словника"],
+["la merienda = …","полуденок","мереживо","з тексту"],
+["el huerto = …","город, сад","хорт","🍊"],
+["las gallinas = …","кури","галлійці","🐔"],
+["el patio = …","двір","патіо-бар","з тексту"]
+]},
+{t:"Маркери imperfecto", lv:1, q:[
+["Antes… = …","раніше","згодом","зі словника"],
+["En aquella época… = …","у ті часи","в цю епоху","зі словника"],
+["Cuando era niño… = …","коли я був дитиною","коли я буду дитиною","класика"],
+["a menudo = …","часто","обідно","зі словника"],
+["muchas veces = …","багато разів","багато ваз","повторення"],
+["todos los días = …","щодня","всі дні тижня поіменно","звичка"],
+["cada verano = …","кожного літа","ціле літо","звичка"],
+["Me gustaba… = …","мені подобалось","мені подобається","минуле"],
+["siempre (у минулому) → час…","imperfecto","indefinido","звичка"],
+["Ці маркери ведуть до…","imperfecto","futuro","звички минулого"]
+]},
+{t:"SOLÍA + інфінітив", lv:1, q:[
+["Solía + …","інфінітив","герундій","solía jugar"],
+["solía jugar = …","зазвичай грав","один раз зіграв","звичка"],
+["Mi familia ___ visitar a mis abuelos. (з тексту)","solía","soló","imperfecto"],
+["soler в imperfecto: yo ___","solía","solaba","solía"],
+["nosotros ___ comer juntos","solíamos","solabamos","solíamos"],
+["«Я зазвичай вставав о 7» = ___ levantarme a las 7.","Solía","Suelo","минуле"],
+["soler у теперішньому: suelo = …","зазвичай роблю","робив колись","зараз"],
+["solías = …","ти зазвичай (робив)","ти будеш","минула звичка"],
+["Solían pasar el verano en el pueblo = …","зазвичай проводили літо в селі","провели одне літо","звичка"],
+["solía — маркер…","звички в минулому","наказу","зі словника!"]
+]},
+{t:"Cuando era niño: прості речення", lv:1, q:[
+["Cuando era niña, ___ en una casa pequeña.","vivía","viví","з тексту"],
+["De pequeño ___ muy travieso.","era","fui","опис"],
+["Antes ___ al fútbol cada día.","jugaba","jugué","звичка"],
+["Mi abuela ___ galletas todos los domingos.","preparaba","preparó","звичка"],
+["___ un perro que corría detrás de nosotros.","Teníamos","Tuvimos","з тексту"],
+["No ___ ordenadores ni móviles.","había","hubo","з тексту"],
+["Cada verano ___ moras.","recogíamos","recogimos","з тексту"],
+["Mi profesora ___ muy simpática.","era","fue","з тексту"],
+["Siempre nos ___ historias.","contaba","contó","з тексту"],
+["De niña me ___ los dibujos animados.","gustaban","gustaron","звичка + мн."]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Вправа 1 з книги", lv:2, q:[
+["Cuando yo ___ (ser) pequeño, vivía en un pueblo.","era","fui","з книги"],
+["Mis amigos y yo siempre ___ (jugar) al fútbol.","jugábamos","jugamos","з книги"],
+["Mi madre ___ (preparar) pasteles todos los domingos.","preparaba","preparó","з книги"],
+["Nosotros ___ (ver) películas por la noche.","veíamos","vimos","з книги"],
+["¿Tú ___ (tener) muchos juguetes?","tenías","tuviste","з книги"],
+["juguetes = …","іграшки","судді","🧸"],
+["Yo ___ (ir) al colegio andando.","iba","fui","звичка"],
+["Mis abuelos ___ (vivir) en el campo.","vivían","vivieron","опис"],
+["En verano ___ (hacer) mucho calor.","hacía","hizo","тло"],
+["Los niños ___ (ser) muy traviesos.","eran","fueron","опис"]
+]},
+{t:"Вправи 2–3 з книги", lv:2, q:[
+["Antes mi casa ___ en el campo.","estaba","trabajaba","вправа книги"],
+["Cuando éramos jóvenes ___ mucho.","salíamos","salimos","з книги"],
+["Ayer ___ a mi abuela.","visité","visitaba","з книги: ayer!"],
+["«éramos jóvenes» — опис → …","imperfecto","indefinido","тло"],
+["ayer + конкретна дія → …","indefinido","imperfecto","з книги"],
+["antes → …","imperfecto","indefinido","звички"],
+["cuando era niño → …","imperfecto","futuro","маркер"],
+["cada verano → …","imperfecto","perfecto","звичка"],
+["en aquella época → …","imperfecto","indefinido","тло"],
+["siempre (у минулому) → …","imperfecto","indefinido","звичка"]
+]},
+{t:"Текст «Mi infancia» (1)", lv:2, q:[
+["Cuando era niña, la vida ___ muy diferente.","era","fue","з тексту"],
+["Vivía en una casa pequeña pero muy ___.","alegre","alegra","з тексту"],
+["Teníamos un patio con ___ y un perro.","flores","floreros","🌸"],
+["No ___ ordenadores ni móviles.","había","habían","había — незмінне!"],
+["Pasábamos mucho tiempo al aire ___.","libre","abierto","на свіжому повітрі"],
+["Jugábamos al ___. (хованки)","escondite","escondido","з тексту"],
+["___ en bicicleta. (каталися)","Montábamos","Montamos ayer","звичка"],
+["Recogíamos ___ en el campo. (ожину)","moras","moros","moras = ожина!"],
+["Mi madre preparaba la ___: pan con chocolate.","merienda","cena","полуденок"],
+["Aquellos momentos eran sencillos pero llenos de ___.","felicidad","facilidad","щастя ≠ легкість!"]
+]},
+{t:"Текст «Mi infancia» (2)", lv:2, q:[
+["Yo iba al ___ que estaba cerca de casa.","colegio","colega","школа"],
+["No me gustaban las ___.","matemáticas","artes","з тексту"],
+["Disfrutaba con las clases de ___.","arte","matemáticas","🎨"],
+["Dibujaba, pintaba y hacía pequeños ___.","teatros","tratos","з тексту"],
+["Mi profesora ___ muy simpática.","era","fue","опис"],
+["Siempre nos ___ historias.","contaba","contó","звичка"],
+["Cuando llegaba a casa, ___ a mi madre.","ayudaba","ayudé","звичка"],
+["Después veía ___ animados.","dibujos","dibujantes","мультики 📺"],
+["Me encantaban «Heidi» y ___.","«Marco»","«Pokémon»","серіали 80-х!"],
+["Ці серіали були популярні у роки…","ochenta (80-ті)","dos mil","з тексту"]
+]},
+{t:"Текст «Mi infancia» (3)", lv:2, q:[
+["Los fines de semana mi familia ___ visitar a mis abuelos.","solía","soló","з тексту"],
+["Su casa era antigua y tenía un gran ___.","jardín","jardinero","сад"],
+["En el jardín había gallinas y un ___ enorme.","olivo","oliva","оливкове дерево"],
+["Mi abuelo me ___ a regar las plantas.","enseñaba","enseñó","звичка"],
+["Mi abuela ___ una paella deliciosa.","cocinaba","cocinó","звичка"],
+["Ayudábamos a recoger las ___ del huerto.","naranjas","naranjos","🍊 плоди!"],
+["Por la noche todos ___ juntos.","cenábamos","cenamos ayer","звичка"],
+["El abuelo contaba historias de cuando él ___ joven.","era","fue","опис"],
+["Me dormía feliz, pensando que la vida ___ perfecta.","era","fue","з тексту"],
+["Hoy todo es ___, pero recuerdo aquella época con cariño.","distinto","extinto","з тексту"]
+]},
+{t:"Питання до тексту", lv:2, q:[
+["¿Dónde vivía la narradora?","En una casa pequeña con patio","En un piso enorme","з питань"],
+["¿Qué comía por la tarde?","Pan con chocolate o galletas","Paella","merienda"],
+["¿Qué clases le gustaban?","Las de arte","Las matemáticas","🎨"],
+["V/F: Le gustaban mucho las matemáticas.","Falso","Verdadero","з питань!"],
+["¿Cómo era su profesora?","Muy simpática","Muy estricta","з тексту"],
+["¿Qué veía en la televisión?","Dibujos animados","Noticias","Heidi y Marco"],
+["¿A dónde iba la familia los fines de semana?","Al pueblo, a ver a los abuelos","A la montaña","з питань"],
+["¿Qué hacía con el abuelo?","Regaba las plantas","Jugaba al ajedrez","з тексту"],
+["¿Qué cocinaba la abuela?","Una paella deliciosa","Sushi","🥘"],
+["¿Por qué recuerda esa época con cariño?","Fue la etapa más bonita de su vida","Porque no la recuerda","фінал"]
+]},
+{t:"Imperfecto чи indefinido?", lv:2, q:[
+["Ayer ___ al fútbol. (зіграв)","jugué","jugaba","з культ. нотаток!"],
+["Antes ___ al fútbol cada semana.","jugaba","jugué","звичка"],
+["Звичка / повторення → …","imperfecto","indefinido","jugaba"],
+["Одноразова завершена дія → …","indefinido","imperfecto","jugué"],
+["Ayer ___ a mi abuela.","visité","visitaba","з вправи книги"],
+["Cada domingo ___ a mi abuela.","visitaba","visité","звичка"],
+["En 2010 ___ a Madrid una vez.","fui","iba","раз"],
+["De niño ___ al pueblo cada verano.","iba","fui","звичка"],
+["El lunes pasado ___ tarde.","llegué","llegaba","раз"],
+["Siempre ___ tarde. (спізнювався)","llegaba","llegué","звичка"]
+]},
+{t:"Перервана дія: …cuando…", lv:2, q:[
+["___ cuando me llamaste.","Estudiaba","Estudié","з книги"],
+["Dormía cuando ___ el teléfono.","sonó","sonaba","переривання → indefinido"],
+["Тривала дія → imperfecto; переривання → …","indefinido","perfecto","формула!"],
+["___ la tele cuando llegó mamá.","Veía","Vi","тривання"],
+["Veía la tele cuando ___ mamá.","llegó","llegaba","подія"],
+["Cocinaba cuando ___ la luz.","se fue","se iba","подія"],
+["Mientras yo leía, él ___. (паралельно)","dormía","durmió","обидві тривалі → imperfecto"],
+["mientras = …","поки","після","паралельність"],
+["Iba a casa cuando ___ a llover.","empezó","empezaba","подія"],
+["Схема: imperfecto (тло) + cuando + …","indefinido (подія)","imperfecto завжди","класика!"]
+]},
+{t:"Ввічливість: quería, podía", lv:2, q:[
+["___ pedirte un favor.","Quería","Quise","з книги: м'якість"],
+["Quería + інфінітив звучить…","м'якше і ввічливіше","грубіше","cortesía"],
+["У магазині: «___ ver esa camisa».","Quería","Exijo","ввічливо"],
+["«Я хотіла запитати…» = ___ preguntar…","Quería","Querré","imperfecto ввічливості"],
+["¿___ ayudarme? (не могли б Ви)","Podría","Debes","ввічливе"],
+["Imperfecto ввічливості — з дієсловами…","querer, poder","correr, saltar","quería, podía"],
+["«Perdona, quería saber…» — тон…","ввічливий","агресивний","😊"],
+["Llamaba para preguntar… = …","телефоную, щоб запитати (м'яко)","колись давно дзвонив","ввічливість"],
+["У барі: «___ un café, por favor».","Quería","Dame ya","☕"],
+["cortesía o suavidad = …","ввічливість або м'якість","суворість","з книги"]
+]},
+{t:"Опис у минулому: era, tenía, había", lv:2, q:[
+["La casa ___ grande.","era","fue","опис"],
+["___ un jardín bonito. (мала)","Tenía","Tuvo","опис"],
+["___ muchas flores en el patio.","Había","Hubo","тло"],
+["El pueblo ___ tranquilo.","era","fue","опис"],
+["Mi abuelo ___ alto y fuerte.","era","fue","опис особи"],
+["Hacía ___ en verano.","calor","caliente","hacía calor"],
+["La casa ___ cerca del río.","estaba","estuvo","місце-тло"],
+["Todos ___ contentos. (тло)","estaban","estuvieron","стан"],
+["Трійка опису: era, tenía, ___.","había","hubo","тло"],
+["El tiempo ___ estupendo. (тло)","era","fue","опис"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки", lv:3, q:[
+["❌ Ayer jugaba al fútbol (зіграв) → ✅ …","Ayer jugué al fútbol.","Ayer juego al fútbol.","з культ. нотаток!"],
+["❌ Fui feliz cuando era niño → ✅ …","Era feliz cuando era niño.","Soy feliz cuando era niño.","з культ. нотаток!"],
+["«Бути щасливим» у дитинстві — це…","стан-опис → imperfecto","подія → indefinido","з книги"],
+["❌ Cuando era niño jugué cada día → ✅ …","jugaba cada día","juego cada día","звичка"],
+["❌ La casa fue grande y bonita (опис) → ✅ …","era grande y bonita","es grande ayer","опис"],
+["❌ Siempre comí en casa de niño → ✅ …","Siempre comía en casa.","Siempre como en casa ayer.","звичка"],
+["«Прожив у Мадриді рівно рік» (закрито) → …","Viví en Madrid un año.","Vivía en Madrid un año exacto.","закритий період"],
+["❌ Ayer veía una película entera → ✅ …","Ayer vi una película.","Ayer veo una película.","завершено"],
+["❌ Éramos ir al parque → ✅ …","Íbamos al parque.","Éramos al parque.","ir → íbamos"],
+["❌ Yo era 10 años → ✅ …","Yo tenía 10 años.","Yo estaba 10 años.","вік → tener!"]
+]},
+{t:"Традиційні ігри Іспанії", lv:3, q:[
+["el escondite = …","хованки","сховище скарбів","з культ. нотаток"],
+["la rayuela = …","класики","райдуга","з культ. нотаток"],
+["las canicas = …","кульки","канікули","з культ. нотаток"],
+["el pilla-pilla = …","доганялки","пілатес","з культ. нотаток"],
+["a la cuerda = …","скакалка","хор","з культ. нотаток"],
+["Раніше іспанські діти гралися…","на вулиці","лише в застосунках","al aire libre"],
+["jugar a + …","назва гри","їжа","jugar al escondite"],
+["«Гратися в хованки» = jugar al ___.","escondite","escondido","гра"],
+["Antes los niños ___ al aire libre.","jugaban","jugaron","звичка"],
+["Ці ігри — частина…","дитинства поколінь","олімпійських видів","ностальгія 😊"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Коли я був дитиною, я щодня грався з друзями»","Cuando era niño, jugaba con mis amigos todos los días.","Cuando fui niño, jugué con mis amigos.","з книги"],
+["«Будинок був великий і мав гарний сад»","La casa era grande y tenía un jardín bonito.","La casa fue grande y tuvo un jardín.","з книги"],
+["«Я вчився, коли ти подзвонив»","Estudiaba cuando me llamaste.","Estudié cuando me llamabas.","з книги"],
+["«Я хотів попросити тебе про послугу»","Quería pedirte un favor.","Quise pedirte un favor ya.","з книги"],
+["«Раніше ми жили в селі»","Antes vivíamos en el campo.","Antes vivimos en el campo una vez.","звичка"],
+["«Мама готувала полуденок щодня»","Mi madre preparaba la merienda cada día.","Mi madre preparó la merienda cada día.","звичка"],
+["«Не було ні комп'ютерів, ні мобільних»","No había ordenadores ni móviles.","No hubo ordenadores ni móviles.","тло"],
+["«Мені було 8 років»","Tenía ocho años.","Era ocho años.","tener años!"],
+["«Ми зазвичай відвідували дідуся й бабусю»","Solíamos visitar a los abuelos.","Solimos visitar a los abuelos.","solíamos"],
+["«Життя було простішим»","La vida era más sencilla.","La vida fue más sencilla ayer.","опис"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«Cuando era niño, jugaba mucho» — …","правильно ✓","помилка","✓"],
+["«Ayer jugaba al fútbol» (зіграв раз) — …","помилка (jugué)","правильно","з книги"],
+["«Éramos jóvenes y salíamos mucho» — …","правильно ✓","помилка","✓"],
+["«Yo era 10 años» — …","помилка (tenía)","правильно","вік"],
+["«Íbamos al colegio andando» — …","правильно ✓","помилка","✓"],
+["«Nosotros hablabamos mucho» — …","помилка (hablábamos)","правильно","наголос!"],
+["«Mi casa tenía un patio» — …","правильно ✓","помилка","✓"],
+["«Veíamos la tele por la noche» — …","правильно ✓","помилка","✓"],
+["«Fui feliz cuando era niño» — …","помилка (era feliz)","правильно","з книги"],
+["«Solía jugar al escondite» — …","правильно ✓","помилка","✓"]
+]},
+{t:"Antes ↔ ahora", lv:3, q:[
+["Antes ___ en el campo; ahora vivo en la ciudad.","vivía","viví","контраст"],
+["Antes no ___ internet; ahora sí.","había","hubo","тло"],
+["De niño ___ mucho; ahora casi no juego.","jugaba","jugué","звичка"],
+["Antes la gente ___ más cartas.","escribía","escribió","звичка"],
+["Ahora tengo trabajo; antes solo ___ que estudiar.","tenía","tuve","контраст"],
+["Antes ___ dibujos animados; ahora veo series.","veía","vi","звичка"],
+["Presente = звички зараз; imperfecto = …","звички раніше","плани","з книги!"],
+["Antes las familias ___ cerca unas de otras.","vivían","vivieron","з культ. нотаток"],
+["Порівняти «раніше і зараз» — це…","домашка з книги","неможливо","завдання"],
+["«Раніше було краще» 😄 = Antes todo ___ mejor.","era","fue","класика"]
+]},
+{t:"HABÍA vs HUBO", lv:3, q:[
+["___ muchas flores en el jardín. (тло)","Había","Hubo","опис"],
+["___ un accidente ayer. (сталося)","Hubo","Había","подія!"],
+["había = …","було (тло, опис)","сталося раптом","imperfecto"],
+["hubo = …","сталося, відбулося","було постійно","indefinido"],
+["En la fiesta ___ mucha gente. (опис)","había","hubo","тло"],
+["De repente ___ un ruido.","hubo","había","подія"],
+["No ___ móviles en aquella época.","había","hubo","тло"],
+["Ayer ___ una tormenta. (як подія)","hubo","había","подія ⛈️"],
+["había/hubo — форми дієслова…","haber","hablar","існування"],
+["había змінюється за числами?","ні, завжди había","так","había dos casas!"]
+]},
+{t:"Тло + дія: мікс часів", lv:3, q:[
+["Mientras mi madre ___, yo ponía la mesa.","cocinaba","cocinó","паралель"],
+["Cuando ___ pequeña, me gustaba bailar.","era","fui","тло"],
+["Llegué a casa y mi padre ___ la cena. (саме готував)","preparaba","preparó","тло"],
+["El sol brillaba cuando ___ a Toledo.","llegamos","llegábamos","подія (текст уроку 10!)"],
+["Тло малює…","imperfecto","indefinido","декорації"],
+["Сюжет просуває…","indefinido","imperfecto","події"],
+["Dormía tranquilamente cuando ___ un ruido.","oí","oía","подія"],
+["«Era tarde y no había nadie» — це…","тло","ланцюг подій","опис сцени"],
+["«Entré, saludé y me senté» — це…","ланцюг подій","опис","indefinido"],
+["У гарній розповіді часи…","поєднуються","ніколи не змішуються","imperfecto + indefinido"]
+]},
+{t:"Родинні традиції", lv:3, q:[
+["Antes las familias solían vivir…","muy cerca unas de otras","en continentes distintos","з культ. нотаток"],
+["Los fines de semana se ___ a los abuelos.","visitaba","visitó","з культ. нотаток"],
+["La comida familiar del domingo — …","досі жива традиція","заборонена","sigue siendo"],
+["Недільна страва: paella, cocido або…","tortilla","pizza","з культ. нотаток"],
+["el cocido = …","традиційна страва з нуту й м'яса","коктейль","мадридська класика"],
+["«se comía toda la familia junta» = …","вся родина їла разом","родина все з'їдала","juntos!"],
+["sigue siendo una costumbre = …","досі є звичаєм","перестало бути","тривалість"],
+["Неділя в Іспанії — день…","родинного обіду","понаднормової роботи","👨‍👩‍👧‍👦"],
+["У ті часи родини жили…","поруч","якнайдалі","cerca"],
+["Ностальгія за дитинством — тема…","цього уроку","під забороною","Mi infancia 💛"]
+]},
+{t:"Розкажи про своє дитинство", lv:3, q:[
+["Cuando ___ pequeña, vivía con mis padres.","era","fui","старт"],
+["___ una casa con jardín. (ми мали)","Teníamos","Tuvimos","опис"],
+["Cada verano ___ al pueblo.","íbamos","fuimos","звичка"],
+["Mi abuela ___ pasteles deliciosos.","hacía","hizo","звичка"],
+["Yo ___ muy travieso. 😈","era","fui","характер"],
+["Me ___ jugar al escondite.","gustaba","gustó","звичка"],
+["Mis amigos y yo ___ en bicicleta.","montábamos","montamos ayer","звичка"],
+["No me ___ las verduras. 🥦","gustaban","gustaron","мн.!"],
+["___ dibujos animados cada tarde.","Veía","Vi","звичка"],
+["¡Qué época tan ___! (гарна)","bonita","bonito","época → жін."]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["hablar: yo ___ (imperfecto)","hablaba","hablé","звичка"],
+["ser: nosotros ___","éramos","eramos","наголос"],
+["ir: yo ___","iba","fui","imperfecto"],
+["ver: ellos ___","veían","vieron","imperfecto"],
+["Ayer ___ al fútbol. (раз)","jugué","jugaba","подія"],
+["Antes ___ al fútbol. (звичка)","jugaba","jugué","звичка"],
+["___ feliz cuando era niño.","Era","Fui","з книги"],
+["Estudiaba cuando me ___.","llamaste","llamabas","переривання"],
+["Solía + …","інфінітив","герундій","звичка"],
+["Урок 13 готово! De niño soñabas — hoy lo ___. 🎉","haces","hacías","мрії збуваються"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "IMPERFECTO: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 13 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

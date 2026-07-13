@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 23 · Vivir bien · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 23 · @malinnaartstudio</div>
+    <h1 id="htitle">VIVIR BIEN: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+<main>
+  <div id="home">
+    <div class="intro">
+            <b style="color:var(--rasp)">Lección 23 · Vivir bien. Consejos para una vida sana.</b>
+      30 вправ по 10 питань: deber / hay que / es bueno + infinitivo, словник здорових звичок і їжі,
+      секрет середземноморської дієти та la siesta. Від ★ до ★★★. Reír es gratis y no engorda! 😄
+
+    </div>
+    <div class="legend">
+            <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · три структури поради + словник</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · текст, культура дієти й спорту</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · типові помилки й тонкощі reflexivo</span>
+
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 23</footer>
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"DEBER / HAY QUE / ES BUENO: огляд", lv:1, q:[
+["Усі три вирази передають…","пораду або необхідність","минулу дію","з книги"],
+["Deber + infinitivo — це…","обов'язок, порада для конкретної особи","загальне правило без особи","з таблиці книги"],
+["Hay que + infinitivo — це…","загальна порада або правило, без конкретної особи","порада для «я»","з таблиці книги"],
+["Es bueno / es importante + infinitivo — це…","м'яка порада, загальна рекомендація","наказ","з таблиці книги"],
+["Debes dormir más — приклад…","поради конкретній людині","загальної істини","з книги"],
+["Hay que descansar bien — приклад…","загальної істини","поради конкретній людині","з книги"],
+["Es bueno caminar todos los días — приклад…","оцінки, рекомендації","наказу","з книги"],
+["Deber відмінюється за особами — правда чи ні?","так (debo, debes, debe…)","ні, завжди однакова форма","на відміну від hay que!"],
+["Hay que змінюється за особами — правда чи ні?","ні, завжди одна форма","так, відмінюється","незмінна конструкція!"],
+["Урок 23 називається…","Vivir bien. Consejos para una vida sana","En el médico y en la farmacia","з підручника"]
+]},
+{t:"DEBER + infinitivo", lv:1, q:[
+["yo debo, tú ___, él debe","debes","debas","відмінювання"],
+["nosotros debemos, vosotros ___","debéis","debís","відмінювання"],
+["ellos ___","deben","debén","відмінювання"],
+["Debes dormir más — переклад…","Тобі слід спати більше","Тобі заборонено спати","конкретна порада"],
+["Debemos beber mucha agua — переклад…","Нам слід пити багато води","Нам заборонено пити воду","конкретна порада «нам»"],
+["Deber вказує на пораду, адресовану…","конкретній особі (ти, ви, ми…)","загалу без адресата","з таблиці"],
+["No debes fumar — переклад…","Тобі не слід курити","Ти не куриш","заперечна порада"],
+["Deber + infinitivo структурно схоже на…","«повинен/повинна» + дієслово","«є» + прикметник","пряма відповідність"],
+["Debo descansar más — переклад…","Мені слід відпочивати більше","Мені заборонено відпочивати","1-ша особа"],
+["Deber — регулярне чи неправильне дієслово?","регулярне (-ER)","неправильне","звичайне відмінювання"]
+]},
+{t:"HAY QUE + infinitivo", lv:1, q:[
+["Hay que comer frutas y verduras — переклад…","Треба їсти фрукти й овочі","Комусь конкретно треба їсти фрукти","загальна порада"],
+["Hay que descansar bien — переклад…","Треба добре відпочивати","Ми повинні відпочивати","безособова форма"],
+["Hay que НЕ має форм для…","різних осіб (я, ти, ми…)","часу взагалі","завжди «hay que»"],
+["No hay que fumar — переклад…","Не варто курити (загалом)","Тобі особисто не можна курити","загальне правило"],
+["Hay que cuidar la mente — переклад…","Треба дбати про розум","Дозволено не дбати про розум","загальна порада"],
+["Hay que базується на безособовій формі дієслова…","haber (hay)","tener","hay que = «є що»"],
+["Hay que moverse todos los días — з тексту, переклад…","Треба рухатися щодня","Заборонено рухатися щодня","загальна істина"],
+["Hay que підходить, коли говоримо про правила для…","всіх (загалом)","конкретно «я»","ключова відмінність від deber"],
+["Hay que відповідає українському безособовому…","«треба», «слід»","«я повинен»","загальна порада"],
+["На відміну від deber, hay que НЕ можна сказати як «yo hay que» — правда?","правда, hay que завжди без особи","неправда, можна відмінювати","важливе правило"]
+]},
+{t:"ES BUENO / IMPORTANTE / NECESARIO + infinitivo", lv:1, q:[
+["Es bueno hacer ejercicio cada día — переклад…","Добре робити вправи щодня","Погано робити вправи щодня","м'яка рекомендація"],
+["Es importante dormir ocho horas — переклад…","Важливо спати вісім годин","Неважливо, скільки спати","рекомендація"],
+["Es necesario beber agua — переклад…","Необхідно пити воду","Заборонено пити воду","рекомендація"],
+["Es bueno / malo / importante / necesario / recomendable — усі вживаються з…","інфінітивом","subjuntivo","правило книги"],
+["No es bueno cenar tarde — переклад…","Не добре вечеряти пізно","Добре вечеряти пізно","заперечна рекомендація"],
+["Es mejor evitar el azúcar — переклад…","Краще уникати цукру","Краще їсти більше цукру","es mejor = краще"],
+["Es recomendable meditar cada día — переклад…","Рекомендується медитувати щодня","Забороняється медитувати","рекомендація"],
+["Ці вирази (es bueno, es importante…) — найм'якіший спосіб дати…","пораду","наказ","з книги"],
+["Es bueno + infinitivo структурно нагадує…","безособовий оціночний вираз","особисте зобов'язання","es + прикметник + infinitivo"],
+["Es bueno, hay que і debes можуть виражати схожий зміст, але різняться…","ступенем формальності/адресності","повністю різним змістом","нюанс уроку"]
+]},
+{t:"Вирази 1: з книги", lv:1, q:[
+["Debes descansar más.","Тобі слід більше відпочивати.","Тобі заборонено відпочивати.","з книги"],
+["Hay que comer frutas y verduras.","Треба їсти фрукти й овочі.","Заборонено їсти фрукти.","з книги"],
+["Es bueno hacer ejercicio cada día.","Добре робити вправи щодня.","Погано робити вправи.","з книги"],
+["No hay que fumar.","Не варто курити.","Треба курити.","з книги"],
+["Debemos beber mucha agua.","Нам слід пити багато води.","Нам заборонено пити воду.","з книги"],
+["Es importante dormir ocho horas.","Важливо спати вісім годин.","Неважливо спати.","з книги"],
+["Hay que cuidar la mente.","Треба дбати про розум.","Заборонено думати.","з книги"],
+["Es mejor evitar el azúcar.","Краще уникати цукру.","Краще їсти цукор.","з книги"],
+["Es recomendable meditar cada día.","Рекомендується медитувати щодня.","Заборонено медитувати.","з книги"],
+["No es bueno cenar tarde.","Не добре вечеряти пізно.","Добре вечеряти будь-коли.","з книги"]
+]},
+{t:"Вирази 2: сталі фрази", lv:1, q:[
+["Llevar una vida sana = …","вести здоровий спосіб життя","займатися спортом лише раз","з книги"],
+["Comer de todo, pero con moderación = …","їсти все, але помірно","їсти лише одне","з книги"],
+["Dormir como un bebé = …","спати як немовля (дуже добре)","не спати взагалі","ідіома"],
+["Cuidar el cuerpo y la mente = …","дбати про тіло і розум","дбати лише про тіло","з книги"],
+["Evitar los excesos = …","уникати надмірностей","шукати надмірності","з книги"],
+["Estar en forma = …","бути у формі (фізично)","бути без форми","з книги"],
+["Sentirse lleno de energía = …","почуватися повним енергії","почуватися виснаженим","з книги"],
+["«Reír es gratis y no engorda» = …","Сміх безкоштовний і не додає ваги","Сміх коштує грошей","з культ. нотаток, жарт"],
+["Ці фрази типово зустрічаються в контексті…","порад про здоровий спосіб життя","технічних інструкцій","тема уроку"],
+["moderación = …","поміркованість, помірність","модернізація","«con moderación»"]
+]},
+{t:"Словник: здорові звички 1", lv:1, q:[
+["dormir bien = …","добре спати","погано спати","базове"],
+["descansar = …","відпочивати","працювати","базове"],
+["beber agua = …","пити воду","їсти воду (нонсенс)","базове"],
+["comer sano = …","їсти корисно","їсти шкідливо","базове"],
+["evitar el estrés = …","уникати стресу","шукати стрес","базове"],
+["practicar yoga = …","займатися йогою","дивитися йогу","базове"],
+["salir a caminar = …","виходити на прогулянку","виходити на роботу","базове"],
+["respirar profundamente = …","глибоко дихати","швидко дихати","базове"],
+["mantener la calma = …","зберігати спокій","втрачати спокій","базове"],
+["reír más = …","більше сміятись","менше сміятись","базове"]
+]},
+{t:"Словник: здорові звички 2 — спорт", lv:1, q:[
+["hacer deporte = …","займатися спортом","дивитися спорт","базове"],
+["correr = …","бігати","плавати","базове"],
+["nadar = …","плавати","бігати","базове"],
+["montar en bicicleta = …","кататися на велосипеді","кататися на конях","базове"],
+["hacer yoga / pilates = …","робити йогу / пілатес","робити прибирання","базове"],
+["ir al gimnasio = …","ходити в спортзал","ходити в кіно","базове"],
+["estirarse = …","розтягуватись","стискатись","базове"],
+["levantar pesas = …","піднімати вагу (гантелі)","опускати вагу","базове"],
+["jugar al fútbol / tenis = …","грати у футбол / теніс","дивитися футбол по тб","базове"],
+["descansar entre entrenamientos = …","відпочивати між тренуваннями","тренуватись без перерв","базове"]
+]},
+{t:"Словник: харчування 1", lv:1, q:[
+["las frutas = …","фрукти","овочі","базове"],
+["las verduras = …","овочі","фрукти","базове"],
+["el pescado = …","риба","м'ясо","базове"],
+["la carne blanca = …","біле м'ясо","червоне м'ясо","базове"],
+["los cereales integrales = …","цільнозернові","солодощі","базове"],
+["los frutos secos = …","горіхи","сухофрукти буквально","насправді «сухі плоди» = горіхи"],
+["el agua = …","вода","олія","базове"],
+["el té verde = …","зелений чай","чорна кава","базове"],
+["el azúcar = …","цукор","сіль","базове"],
+["las grasas = …","жири","білки","базове"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Резюме модуля 1", lv:1, q:[
+["Deber → …","обов'язок для конкретної особи, відмінюється","загальне правило без особи","підсумок"],
+["Hay que → …","загальне правило, незмінна форма","особистий обов'язок","підсумок"],
+["Es bueno/importante/necesario → …","м'яка рекомендація + infinitivo","наказ у imperativo","підсумок"],
+["Усі три структури поєднує спільний елемент —…","infinitivo після себе","subjuntivo після себе","граматична спільність"],
+["Debes cuidarte — переклад…","Тобі слід дбати про себе","Заборонено дбати про себе","конкретна порада + reflexivo"],
+["Hay que cuidarse — переклад…","Треба дбати про себе (загалом)","Заборонено дбати про себе","загальна порада + reflexivo"],
+["Найформальніша/найм'якіша серед трьох структур:","es bueno / es recomendable","deber","ступінь директивності"],
+["Найбільш адресна (особиста) серед трьох структур:","deber","hay que","звертання до конкретної особи"],
+["Тема уроку 23 логічно продовжує урок 22 про…","поради й заборони (imperativo negativo)","минулий час","послідовність підручника"],
+["Урок 23 завершує «здоровий» блок підручника: тіло (21), медицина (22) і…","спосіб життя (23)","подорожі","логіка блоку"]
+]},
+{t:"Словник: харчування 2", lv:2, q:[
+["la comida rápida = …","фастфуд","швидка вечеря","базове"],
+["los dulces = …","солодощі","овочі","базове"],
+["el desayuno = …","сніданок","обід","базове"],
+["la comida / el almuerzo = …","обід","вечеря","синоніми"],
+["la cena = …","вечеря","сніданок","базове"],
+["el hábito = …","звичка","дієта","базове"],
+["la dieta equilibrada = …","збалансована дієта","сувора дієта","equilibrada = збалансована"],
+["Дієта mediterránea будується навколо…","оливкової олії, хліба, овочів, риби","фастфуду і солодощів","з тексту уроку"],
+["«Con moderación» стосується вживання…","цукру, жирів — усього помірно","лише спорту","з книги"],
+["Слово la dieta в іспанському контексті часто означає…","спосіб харчування загалом, а не «схуднення»","лише суворе обмеження їжі","з культ. нотаток"]
+]},
+{t:"Вправа 1 з книги: обери вираз", lv:2, q:[
+["___ comer frutas y verduras todos los días.","Hay que","Debo yo mismo siempre","з книги, загальна порада"],
+["Si estás cansado, ___ descansar un poco.","debes","hay","з книги, конкретна порада"],
+["Para tener buena salud, ___ beber mucha agua.","hay que","debe él nada más","з книги, загальне правило"],
+["Cuando hace calor, ___ evitar el sol fuerte.","hay que","deben ellos exclusivamente","з книги"],
+["Si tienes estrés, ___ practicar yoga o meditación.","es bueno","hay bueno","з книги, м'яка порада"],
+["___ dormir al menos ocho horas.","Hay que","Debe se","з книги, загальна істина"],
+["Para mantener la mente sana, ___ leer y aprender cosas nuevas.","es bueno","hay bien","з книги"],
+["___ hacer ejercicio tres veces por semana.","Es recomendable","Debe ser obligatorio siempre","з книги, рекомендація"],
+["Si quieres adelgazar, ___ dejar el azúcar.","debes","hay debes","з книги, конкретна порада"],
+["___ sonreír más y preocuparse menos.","Hay que","Debe nosotros","з книги, загальна порада"]
+]},
+{t:"Вправа 2 (повторення уроку 22): imperativo negativo", lv:2, q:[
+["– Tengo tos. – Entonces ___.","no fumes","fuma","повторення з уроку 22"],
+["– Me duele la cabeza. – ___ más café.","No tomes","Toma","повторення"],
+["– Estoy resfriado. – ___ sin bufanda.","No salgas","Sal","повторення"],
+["– No duermo bien. – ___ el móvil antes de dormir.","No uses","Usa","повторення"],
+["– Me duele la garganta. – ___ agua fría.","No bebas","Bebe","повторення"],
+["Ця вправа поєднує теми уроків 22 і 23:","поради про здоров'я різними структурами","лише минулий час","міжтематичний зв'язок"],
+["Deber, hay que, es bueno і imperativo negativo — усі можуть виражати…","поради (з різним відтінком)","лише накази","спільна функція"],
+["Найбільш прямий і особистий спосіб порадити «не роби» — це…","imperativo negativo","es bueno no hacer","пряма форма"],
+["Найзагальніший спосіб дати пораду — це…","hay que","imperativo tú","безособова форма"],
+["Урок 23 розширює «інструментарій порад», доданий в уроці…","22 (imperativo negativo)","19 (сумнів)","логічна послідовність"]
+]},
+{t:"Переклад укр → ісп: поради", lv:2, q:[
+["«Треба їсти більше овочів»","Hay que comer más verduras.","Debe comer más verduras nadie.","hay que"],
+["«Тобі слід спати більше»","Debes dormir más.","Hay que tú dormir más.","deber конкретно"],
+["«Добре гуляти щодня»","Es bueno caminar cada día.","Es buen caminar cada día.","es bueno, без скорочення перед дієсловом"],
+["«Нам треба пити більше води»","Debemos beber más agua.","Hay que nosotros beber agua.","deber для «нам»"],
+["«Не варто їсти пізно ввечері»","No es bueno comer tarde por la noche.","No hay bueno comer tarde.","es bueno"],
+["«Важливо відпочивати регулярно»","Es importante descansar con regularidad.","Es importante descansa con regularidad.","infinitivo"],
+["«Рекомендується уникати стресу»","Es recomendable evitar el estrés.","Es recomendable evita el estrés.","infinitivo"],
+["«Треба дбати про тіло і розум»","Hay que cuidar el cuerpo y la mente.","Hay que cuida el cuerpo y la mente.","infinitivo"],
+["«Краще менше цукру, більше фруктів»","Es mejor comer menos azúcar y más fruta.","Es mejor come menos azúcar.","infinitivo"],
+["«Ти повинен займатися спортом тричі на тиждень»","Debes hacer deporte tres veces por semana.","Debes que hacer deporte tres veces.","deber без que"]
+]},
+{t:"Текст: El secreto de la vida mediterránea (1)", lv:2, q:[
+["En España, la gente vive más años que en muchos otros países — переклад…","В Іспанії люди живуть довше, ніж у багатьох інших країнах","В Іспанії люди живуть менше","з тексту"],
+["Muchos dicen que el secreto está en la dieta mediterránea — переклад…","Багато хто каже, що секрет у середземноморській дієті","Ніхто не знає секрету","з тексту"],
+["Esta forma de comer no es una dieta estricta, sino un ___.","estilo de vida","secreto médico","з тексту"],
+["___ comer productos naturales, frescos y variados.","Hay que","Debe uno mismo siempre","з тексту, hay que"],
+["y disfrutar de cada comida sin prisa — переклад «sin prisa»…","без поспіху","дуже швидко","з тексту"],
+["En la mesa nunca falta el aceite de oliva — переклад…","На столі завжди є оливкова олія","На столі ніколи немає олії","nunca falta = завжди є"],
+["También es importante comer con otras personas — переклад…","Також важливо їсти з іншими людьми","Важливо їсти самому","з тексту"],
+["Los españoles raramente comen solos — переклад «raramente»…","рідко","часто","з тексту"],
+["Prefieren almorzar o cenar con la familia — переклад…","Вони віддають перевагу обідати чи вечеряти з родиною","Вони завжди їдять самі","з тексту"],
+["eso también alimenta el alma — переклад…","це також живить душу","це шкодить душі","переносний вислів"]
+]},
+{t:"Текст: El secreto de la vida mediterránea (2)", lv:2, q:[
+["El deporte es otra parte esencial de la vida mediterránea — переклад «esencial»…","суттєва, важлива","необов'язкова","з тексту"],
+["No todo el mundo va al gimnasio, pero mucha gente sale a caminar — переклад…","Не всі ходять у спортзал, але багато хто виходить гуляти","Всі обов'язково ходять у спортзал","з тексту"],
+["anda en bicicleta o baila — переклад…","їздить на велосипеді або танцює","сидить удома або спить","з тексту"],
+["Es normal ver personas mayores caminando juntas por el parque — переклад…","Звично бачити літніх людей, що гуляють разом у парку","Незвично бачити літніх людей на вулиці","з тексту"],
+["Hay que moverse todos los días, aunque solo sea veinte minutos — переклад…","Треба рухатися щодня, навіть якщо це лише двадцять хвилин","Треба рухатися лише раз на тиждень","з тексту"],
+["el descanso es fundamental — переклад…","відпочинок є фундаментальним","відпочинок необов'язковий","з тексту"],
+["Los españoles valoran mucho la siesta — переклад…","Іспанці дуже цінують сієсту","Іспанці не люблять сієсту","з тексту"],
+["Dormir unos veinte o treinta minutos ayuda a recargar energía — переклад…","Спати хвилин 20-30 допомагає відновити енергію","Спати довше трьох годин шкідливо","з тексту"],
+["es necesario desconectar del trabajo y disfrutar del tiempo libre — переклад…","необхідно відключатися від роботи і насолоджуватися вільним часом","необхідно працювати без перерв","з тексту"],
+["La vida mediterránea enseña que el equilibrio es la mejor medicina — переклад…","Середземноморське життя вчить, що баланс — найкращі ліки","Середземноморське життя вчить, що спорт — єдині ліки","фінал тексту"]
+]},
+{t:"Питання до тексту", lv:2, q:[
+["¿Por qué los españoles viven más años que otras personas?","Por su estilo de vida: dieta, movimiento y descanso","Por la genética únicamente","з тексту"],
+["¿Qué alimentos son típicos de la dieta mediterránea?","Aceite de oliva, pan, frutas, verduras, vino tinto","Comida rápida y refrescos","з тексту"],
+["¿Qué significa «comer sin prisa»?","Comer con calma, disfrutando la comida","Comer lo más rápido posible","з тексту"],
+["¿Con quién prefieren comer los españoles?","Con la familia, amigos o compañeros","Solos, casi siempre","з тексту"],
+["¿Por qué dicen que compartir la comida es bueno?","Porque también alimenta el alma","Porque ahorra dinero","з тексту"],
+["¿Qué actividades hacen para mantenerse activos?","Caminar, andar en bici, bailar","Solo ir al gimnasio","з тексту"],
+["¿Qué es la siesta y cuánto dura normalmente?","Una pausa después de comer, unos 20–30 minutos","Una comida especial, dura 2 horas","з тексту"],
+["¿Por qué es importante descansar?","Ayuda a recargar energía y tener buen humor","No tiene ninguna importancia","з тексту"],
+["¿Qué enseña la vida mediterránea según el texto?","Que el equilibrio es la mejor medicina","Que hay que trabajar sin descanso","з тексту"],
+["¿Qué tres cosas hay que hacer para vivir bien, según el texto?","Cuidar el cuerpo, comer con alegría, dormir bien y reír","Ganar mucho dinero","з тексту"]
+]},
+{t:"DEBER vs HAY QUE vs ES BUENO: нюанси вибору", lv:2, q:[
+["Порада другові особисто: «Debes dormir más» — звертання…","до конкретної людини (tú)","до всіх загалом","адресність"],
+["Загальне правило здоров'я: «Hay que dormir bien» — звертання…","до всіх загалом (безособово)","лише до себе","загальність"],
+["М'яка рекомендація: «Es bueno dormir bien» — це…","оцінка, найменш категорична форма","найкатегоричніший наказ","м'якість"],
+["Найкатегоричніша з трьох форм:","Deber (особистий обов'язок)","Es bueno","ступінь директивності"],
+["Найм'якіша з трьох форм:","Es bueno / es recomendable","Deber","ступінь директивності"],
+["У розмові з лікарем пацієнту частіше кажуть…","Debe usted…","Es bueno que exista…","формальна конкретна порада"],
+["У загальних порадах зі здоров'я (стаття, книга) частіше вживають…","hay que / es bueno","лише deber","безособовий стиль"],
+["«Hay que cuidar la mente» звучить як…","загальна мудрість","особистий наказ конкретній людині","universal"],
+["«Debes cuidar tu mente» звучить як…","персональна порада тобі","загальне правило для всіх","адресність"],
+["Вибір структури залежить від того, чи хочемо ми…","звернутися до конкретної особи чи узагальнити","use дієслово в минулому чи теперішньому","прагматичний вибір"]
+]},
+{t:"La dieta mediterránea: культура", lv:2, q:[
+["Дієта mediterránea — це…","стиль життя, а не мода","короткочасна дієта для схуднення","з культ. нотаток"],
+["В Іспанії їсти добре не означає…","їсти мало","їсти збалансовано","з культ. нотаток"],
+["Основа щоденного харчування:","оливкова олія, риба, фрукти, овочі, хліб","фастфуд і газовані напої","з культ. нотаток"],
+["Іспанці зазвичай їдять…","в родинному колі й без поспіху","на бігу, поодинці","з культ. нотаток"],
+["El aceite de oliva — ключовий продукт, бо…","основа середземноморської кухні","рідкісний делікатес","з тексту й нотаток"],
+["Вино в поміркованій кількості (un poco de vino tinto) — це…","частина традиційного столу","заборонений продукт","з тексту"],
+["«Con moderación» — ключове слово, бо дієта mediterránea НЕ про…","повну заборону, а про баланс","їжу взагалі","важливий нюанс"],
+["Соціальний аспект їжі (їсти разом) вважається…","частиною здоров'я, «їжею для душі»","неважливою деталлю","з культ. нотаток"],
+["Підсумок: середземноморський підхід поєднує…","їжу, рух, відпочинок і спілкування","лише дієтичні обмеження","головна ідея уроку"],
+["Цей стиль життя пояснює, чому в Іспанії…","висока тривалість життя","найдорожча медицина в Європі","з тексту"]
+]},
+{t:"El deporte як частина щоденного життя", lv:2, q:[
+["El deporte в Іспанії — це…","частина повсякденного життя (vida cotidiana)","рідкість, лише для спортсменів","з культ. нотаток"],
+["Типові активності: caminar, correr, andar en bici,…","jugar al fútbol o bailar","лише йога","з культ. нотаток"],
+["Навіть люди похилого віку…","щовечора виходять на прогулянку (dar un paseo)","ніколи не виходять з дому","з культ. нотаток"],
+["dar un paseo = …","прогулятися","дати щось у подарунок","переклад з нотаток"],
+["Спорт в Іспанії частіше…","на свіжому повітрі, ніж лише в спортзалі","виключно в закритих залах","з культ. нотаток"],
+["Ця культурна норма пов'язана з…","теплим кліматом і соціальним способом життя","суворими законами про фізкультуру","логічний зв'язок"],
+["Бачити людей похилого віку, що гуляють у парку, для Іспанії — це…","звичайна, нормальна картина","рідкісне явище","з тексту"],
+["Рух рекомендується навіть…","у мінімальній кількості (20 хвилин)","лише інтенсивними тренуваннями","з тексту: aunque solo sea veinte minutos"],
+["Головний висновок про спорт у культурі Іспанії:","рух — природна частина дня, не «завдання»","спорт вважається розкішшю","підсумок"],
+["Це узгоджується з підходом «con moderación», який стосується…","і їжі, і фізичної активності","лише їжі","загальний принцип"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки", lv:3, q:[
+["❌ Hay que se cuidar → ✅ …","Hay que cuidarse.","Hay que se cuida.","se приєднується до інфінітива!"],
+["❌ Hay que yo descanso → ✅ …","Hay que descansar.","Hay que yo descanse.","hay que без особи!"],
+["❌ Debo que dormir más → ✅ …","Debo dormir más.","Debo de que dormir más.","deber без que!"],
+["❌ Es bueno que comer sano → ✅ …","Es bueno comer sano.","Es bueno de comer sano.","es bueno + infinitivo, без que!"],
+["❌ Hay que nosotros comer bien → ✅ …","Hay que comer bien.","Hay que comemos bien.","без особи і без відмінювання!"],
+["❌ Deben ellos cuidarse → кращий порядок ✅ …","Ellos deben cuidarse.","Deben se ellos cuidar.","підмет перед дієсловом природніше"],
+["❌ Es necesario a dormir bien → ✅ …","Es necesario dormir bien.","Es necesario de dormir bien.","без зайвого прийменника!"],
+["❌ Hay que cuidando la mente → ✅ …","Hay que cuidar la mente.","Hay que cuida la mente.","hay que + infinitivo, не gerundio!"],
+["❌ Debes de dormir más (розмовна помилка) → нормативно ✅ …","Debes dormir más.","Debes dormir más de.","«deber de» вживається для здогадки, не обов'язку"],
+["❌ Es bueno relajar → доречніше (reflexivo) ✅ …","Es bueno relajarse.","Es bueno relaja.","relajarse reflexivo"]
+]},
+{t:"HAY QUE + reflexivo: приєднання SE", lv:3, q:[
+["Hay que cuidarse — переклад…","треба дбати про себе","треба когось доглядати","reflexivo приєднано"],
+["se в hay que cuidarse приєднується…","до кінця інфінітива","перед hay","правило приєднання"],
+["Hay que relajarse de vez en cuando — переклад…","треба іноді розслаблятися","заборонено розслаблятися","reflexivo"],
+["Hay que levantarse temprano — переклад…","треба вставати рано","треба лягати рано","reflexivo, levantarse"],
+["Правило: з інфінітивом зворотний займенник завжди…","приєднується в кінці слова","стоїть окремо перед дієсловом","загальне правило для infinitivo"],
+["Це те саме правило, що ми бачили з «voy a ducharme» в уроці 21 — так?","так, той самий принцип","ні, інше правило","логічний зв'язок тем"],
+["❌ Hay que se relajar — помилка, бо se…","не можна ставити перед hay que","можна ставити де завгодно","чітке правило"],
+["Es bueno acostarse temprano — тут se…","приєднано до acostar-","стоїть окремо","reflexivo + es bueno"],
+["Es importante despertarse a tiempo — переклад…","важливо прокидатися вчасно","важливо будити когось вчасно","reflexivo"],
+["Підсумок правила: reflexivo-дієслово + infinitivo після hay que/es bueno/es importante завжди пишеться…","одним словом (se приклеєне до кінця)","окремо (se перед дієсловом)","ключове граматичне правило"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Треба їсти більше овочів»","Hay que comer más verduras.","Hay que comes más verduras.","hay que + infinitivo"],
+["«Тобі слід більше відпочивати»","Debes descansar más.","Debes que descansar más.","deber без que"],
+["«Добре займатися спортом щодня»","Es bueno hacer deporte cada día.","Es bueno que hacer deporte cada día.","es bueno + infinitivo"],
+["«Треба дбати про себе»","Hay que cuidarse.","Hay que se cuidar.","se приєднано"],
+["«Нам слід пити більше води»","Debemos beber más agua.","Hay que nosotros beber más agua.","deber для «нам»"],
+["«Не варто вечеряти пізно»","No es bueno cenar tarde.","No es bueno cenas tarde.","es bueno + infinitivo"],
+["«Важливо спати вісім годин»","Es importante dormir ocho horas.","Es importante duerme ocho horas.","es importante + infinitivo"],
+["«Краще уникати цукру»","Es mejor evitar el azúcar.","Es mejor evita el azúcar.","es mejor + infinitivo"],
+["«Рекомендується медитувати щодня»","Es recomendable meditar cada día.","Es recomendable medita cada día.","es recomendable + infinitivo"],
+["«Сміх безкоштовний і не додає ваги» (ідіома)","Reír es gratis y no engorda.","Reír es gratis y no engordas.","3-тя особа однини, безособово"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«Hay que cuidarse» — …","правильно ✓","помилка","✓"],
+["«Hay que se cuidar» — …","помилка (cuidarse)","правильно","se приєднано неправильно"],
+["«Debes dormir más» — …","правильно ✓","помилка","✓"],
+["«Debes que dormir más» — …","помилка (без que)","правильно","deber без que"],
+["«Es bueno comer sano» — …","правильно ✓","помилка","✓"],
+["«Es bueno que comer sano» — …","помилка (без que)","правильно","es bueno + infinitivo без que"],
+["«Hay que comer frutas» — …","правильно ✓","помилка","✓"],
+["«Hay que comemos frutas» — …","помилка (comer, infinitivo)","правильно","hay que + infinitivo завжди"],
+["«Es importante desconectar del trabajo» — …","правильно ✓","помилка","✓"],
+["«Es importante desconecta del trabajo» — …","помилка (desconectar)","правильно","infinitivo, не дієвідмінена форма"]
+]},
+{t:"DEBER: відмінювання поглиблено", lv:3, q:[
+["Yo debo cuidarme más — переклад…","Мені слід більше дбати про себе","Мені заборонено дбати про себе","1 особа"],
+["Tú debes hacer ejercicio — переклад…","Тобі слід робити вправи","Тобі заборонено робити вправи","2 особа"],
+["Ella debe dormir más — переклад…","Їй слід спати більше","Їй заборонено спати","3 особа"],
+["Nosotros debemos comer sano — переклад…","Нам слід їсти корисно","Нам заборонено їсти корисно","1 особа мн."],
+["Vosotros debéis descansar — переклад…","Вам (гурт) слід відпочивати","Вам (гурт) заборонено відпочивати","2 особа мн."],
+["Ellos deben evitar el estrés — переклад…","Їм слід уникати стресу","Їм заборонено уникати стресу","3 особа мн."],
+["No debo comer tanto azúcar — переклад…","Мені не слід їсти стільки цукру","Мені дозволено їсти багато цукру","заперечення"],
+["Deber + de + infinitivo (інша структура!) виражає…","здогадку, а не обов'язок","те саме, що просто deber","нюанс: debe de llover = мабуть, буде дощ"],
+["Debe de estar cansado — переклад…","Мабуть, він втомлений","Він повинен бути втомленим","здогадка, не обов'язок!"],
+["Без «de»: Debe estar cansado (теж можливо) означає…","і обов'язок, і здогадку залежно від контексту","лише обов'язок","нюанс сучасної мови"]
+]},
+{t:"Побудуй речення логічно", lv:3, q:[
+["Треба щодня рухатися, навіть 20 хвилин →","Hay que moverse todos los días, aunque solo sea veinte minutos.","Hay que se mueve todos los días veinte minutos.","hay que + reflexivo infinitivo"],
+["Тобі слід менше працювати і більше відпочивати →","Debes trabajar menos y descansar más.","Debes que trabajar menos y descansar más.","deber без que"],
+["Добре їсти з родиною, а не самому →","Es bueno comer en familia y no solo.","Es bueno come en familia y no solo.","es bueno + infinitivo"],
+["Нам треба пити більше води влітку →","Debemos beber más agua en verano.","Hay que nosotros beber más agua en verano.","deber для «нам»"],
+["Не варто їсти забагато солодощів →","No es bueno comer demasiados dulces.","No es bueno come demasiados dulces.","es bueno + infinitivo"],
+["Важливо дбати і про тіло, і про розум →","Es importante cuidar el cuerpo y la mente.","Es importante cuida el cuerpo y la mente.","es importante + infinitivo"],
+["Треба відключатися від роботи іноді →","Hay que desconectar del trabajo a veces.","Hay que desconecta del trabajo a veces.","hay que + infinitivo"],
+["Краще лягати спати раніше →","Es mejor acostarse más temprano.","Es mejor acuesta más temprano.","es mejor + reflexivo infinitivo"],
+["Рекомендується займатися спортом тричі на тиждень →","Es recomendable hacer deporte tres veces por semana.","Es recomendable hace deporte tres veces por semana.","es recomendable + infinitivo"],
+["Мабуть, вона дуже втомлена (здогад із deber de) →","Debe de estar muy cansada.","Debe estar de muy cansada.","deber de + infinitivo, здогадка"]
+]},
+{t:"Вирази й ідіоми: практика", lv:3, q:[
+["«Llevar una vida sana» дослівно означає…","«нести здорове життя» = вести здоровий спосіб життя","«приносити здоров'я комусь»","ідіоматичний вираз"],
+["«Dormir como un bebé» дослівно означає…","«спати як немовля»","«спати мало»","ідіома"],
+["«Estar en forma» дослівно означає…","«бути у формі»","«мати гарну фігуру геометрично»","fitness-контекст"],
+["«Sentirse lleno de energía» дослівно означає…","«почуватися повним енергії»","«почуватися порожнім»","з книги"],
+["«Comer de todo, pero con moderación» — головна ідея…","їсти різноманітно, та в міру","їсти лише одне блюдо","баланс"],
+["Ці вирази допомагають…","звучати природніше в розмові про здоров'я","лише скласти іспит","практична мета"],
+["«Cuidar el cuerpo y la mente» об'єднує…","фізичне і ментальне здоров'я","лише фізичні вправи","holistic підхід"],
+["«Evitar los excesos» дослівно означає…","«уникати надмірностей»","«шукати надмірності»","базове"],
+["Вживання подібних сталих виразів робить мову…","живішою і природнішою, як у носіїв","складнішою для розуміння","практична користь"],
+["Вивчати такі вирази цілими блоками (а не слово за словом) — це…","ефективна стратегія вивчення мови","марна трата часу","методична порада"]
+]},
+{t:"Питання-відповіді про здоров'я", lv:3, q:[
+["¿Qué debo hacer si estoy estresado? — …","Debes practicar yoga o meditación.","Debes que practicar yoga.","deber без que"],
+["¿Es bueno cenar tarde? — …","No, no es bueno cenar tarde.","No, no es bueno cenas tarde.","es bueno + infinitivo"],
+["¿Qué hay que hacer para vivir más años? — …","Hay que comer bien, moverse y descansar.","Hay que comemos bien.","hay que + infinitivo"],
+["¿Debo beber más agua? — …","Sí, debes beber al menos dos litros al día.","Sí, hay que tú beber dos litros.","deber для конкретної особи"],
+["¿Qué es recomendable antes de dormir? — …","Es recomendable no usar el móvil.","Es recomendable no usas el móvil.","es recomendable + infinitivo"],
+["¿Es necesario ir al gimnasio para estar en forma? — …","No, es bueno moverse de cualquier forma.","No, es bueno mueves de cualquier forma.","es bueno + infinitivo"],
+["¿Qué debe hacer una persona cansada? — …","Debe descansar y dormir más.","Debe que descansar y dormir más.","deber без que"],
+["¿Hay que evitar todo el azúcar? — …","No, hay que comer con moderación.","No, hay que comes con moderación.","hay que + infinitivo"],
+["Ця вправа поєднує…","три структури поради в контексті питань-відповідей","лише минулий час","підсумкова практика"],
+["Найкраща стратегія — обирати структуру за…","адресністю поради (особисто/загалом)","довжиною речення","практичний висновок"]
+]},
+{t:"«Mis hábitos para vivir bien» (домашка)", lv:3, q:[
+["Para vivir bien, ___ (hay que) dormir bien y comer sano.","hay que","debo yo mismo únicamente","з домашки"],
+["Yo ___ (deber) beber más agua cada día.","debo","hay que","особиста порада собі"],
+["___ (ser bueno) hacer ejercicio por la mañana.","Es bueno","Debe ser malo","загальна рекомендація"],
+["Для домашки потрібно написати текст на…","10–12 речень","1–2 речення","з підручника"],
+["Тема тексту домашки:","«Mis hábitos para vivir bien»","«Mi vida digital»","з підручника"],
+["Друге завдання домашки — створити…","здорове меню на весь день (сніданок, обід, вечеря)","список покупок","з підручника"],
+["Третє завдання — дати щонайменше 5 порад другові, який…","втомлений, у стресі й погано їсть","святкує день народження","з підручника"],
+["Приклад поради з підручника: «___ dormir más».","Debes","Hay que tú","зразок"],
+["Ще приклад: «___ hacer deporte por la mañana».","Es bueno","Debe ser"," зразок"],
+["Мета домашки уроку 23 — практика…","трьох структур поради в контексті здорового способу життя","минулого часу","підсумок"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["Debes dormir más — структура:","deber + infinitivo","hay que","конкретна порада"],
+["Hay que comer sano — структура:","hay que + infinitivo","es bueno","загальна порада"],
+["Es bueno hacer ejercicio — структура:","es bueno + infinitivo","deber","м'яка рекомендація"],
+["❌ Hay que se cuidar → ✅ …","Hay que cuidarse.","Hay que se cuida.","se приєднано"],
+["la dieta mediterránea базується на…","оливковій олії, рибі, овочах, фруктах","фастфуді","з тексту"],
+["la siesta — це…","коротка пауза після їжі","вечірня прогулянка","з тексту"],
+["Reír es gratis y no engorda — переклад…","Сміх безкоштовний і не додає ваги","Сміх коштує грошей","жарт з нотаток"],
+["Deber відмінюється, а Hay que…","ні, завжди однакова форма","також відмінюється","ключова відмінність"],
+["Estar en forma = …","бути у формі","бути без форми","ідіома"],
+["Урок 23 готово! Recuerda: hay que ___ (cuidarse) cada día. 🌿","cuidarse","se cuidar","reflexivo приєднано"]
+]}
+
+];
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "VIVIR BIEN: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 23 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

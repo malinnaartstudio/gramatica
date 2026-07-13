@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 15 · Imperativos irregulares · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 15 · @malinnaartstudio</div>
+    <h1 id="htitle">IRREGULARES: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 15 · Imperativos irregulares.</b>
+      30 вправ по 10 питань: Ven Di Sal Haz Ten Ve Pon Sé, форми usted/vosotros/ustedes,
+      займенники (hazla, dímelo, póntela), заперечний наказ, ¡Venga! і поради мами. Від ★ до ★★★. ¡Hazlo ya! 💪
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · вісім коротких форм</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · текст і займенники</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й культура</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 15</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Вісім коротких форм (tú)", lv:1, q:[
+["hacer → tú: ___","haz","hace","короткі!"],
+["decir → tú: ___","di","dice","di"],
+["ir → tú: ___","ve","va","ve"],
+["poner → tú: ___","pon","pone","pon"],
+["salir → tú: ___","sal","sale","sal"],
+["ser → tú: ___","sé","se","з наголосом"],
+["tener → tú: ___","ten","tiene","ten"],
+["venir → tú: ___","ven","viene","ven"],
+["Мнемофраза з книги:","Ven Di Sal Haz Ten Ve Pon Sé","Corre Salta Baila Canta","8 коротких"],
+["Скільки головних неправильних наказів tú?","вісім","двадцять","мнемофраза"]
+]},
+{t:"Приклади з книги", lv:1, q:[
+["___ la tarea. (зроби)","Haz","Hace","з книги"],
+["___ la verdad. (скажи)","Di","Dice","з книги"],
+["___ paciencia. (май)","Ten","Tiene","з книги"],
+["___ amable con todos. (будь)","Sé","Se","з книги"],
+["___ conmigo. (ходи зі мною)","Ven","Viene","з книги"],
+["___ la mesa. (накрий)","Pon","Pone","з книги"],
+["___ temprano. (виходь)","Sal","Sale","з книги"],
+["___ al médico. (іди)","Ve","Va","з книги"],
+["Ten cuidado = …","будь обережним","тримай догляд","зі словника"],
+["Sé fuerte = …","будь сильним","я сильно знаю","зі словника"]
+]},
+{t:"USTED: diga, haga, vaya…", lv:1, q:[
+["decir → usted: ___","diga","di","з таблиці"],
+["hacer → usted: ___","haga","haz","з таблиці"],
+["ir → usted: ___","vaya","ve","з таблиці"],
+["poner → usted: ___","ponga","pon","з таблиці"],
+["salir → usted: ___","salga","sal","з таблиці"],
+["ser → usted: ___","sea","sé","з таблиці"],
+["tener → usted: ___","tenga","ten","з таблиці"],
+["venir → usted: ___","venga","ven","з таблиці"],
+["«¿___, señor?» (слухаю Вас)","Dígame","Dime","ввічливо"],
+["«___ su firma aquí». (підпишіть)","Ponga","Pon","зі словника"]
+]},
+{t:"VOSOTROS: haced, id, sed…", lv:1, q:[
+["decir → vosotros: ___","decid","digan","правильна форма!"],
+["hacer → vosotros: ___","haced","hagan","-ed"],
+["ir → vosotros: ___","id","vayan","найкоротший наказ!"],
+["poner → vosotros: ___","poned","pongan","-ed"],
+["salir → vosotros: ___","salid","salgan","-id"],
+["ser → vosotros: ___","sed","sean","Sed buenos, niños"],
+["tener → vosotros: ___","tened","tengan","Tened calma"],
+["venir → vosotros: ___","venid","vengan","-id"],
+["vosotros у неправильних дієсловах — …","правильні (-d)","теж неправильні","сюрприз: легко!"],
+["___ buenos, niños. (будьте)","Sed","Sean","зі словника"]
+]},
+{t:"USTEDES: digan, hagan…", lv:1, q:[
+["decir → ustedes: ___","digan","decid","-an"],
+["hacer → ustedes: ___","hagan","haced","-an"],
+["ir → ustedes: ___","vayan","id","-an"],
+["poner → ustedes: ___","pongan","poned","-an"],
+["salir → ustedes: ___","salgan","salid","-an"],
+["ser → ustedes: ___","sean","sed","Sean sinceros"],
+["tener → ustedes: ___","tengan","tened","-an"],
+["venir → ustedes: ___","vengan","venid","-an"],
+["ustedes = usted + …","-n","-d","diga → digan"],
+["«___ sinceros». (будьте, формально)","Sean","Sed","зі словника"]
+]},
+{t:"Фрази з DI, HAZ, VE", lv:1, q:[
+["Dime tu nombre = …","назви мені своє ім'я","дай мені твоє ім'я","di + me"],
+["¿___, señor? (слухаю Вас)","Dígame","Dime","ввічливо"],
+["No digas ___. (не бреши)","mentiras","verdades","зі словника"],
+["Vete a casa = …","іди додому","подивись на дім","ir + te"],
+["___ por aquí, por favor. (проходьте)","Vaya","Ve","usted"],
+["No vayas tan ___. (швидко)","rápido","rápida","зі словника"],
+["Haz la ___. (домашнє)","tarea","tela","зі словника"],
+["ve — наказ від ir чи ver?","обидва!","лише ir","ve a casa / ve la peli"],
+["Ve al médico ___ no te sientes bien.","si","sí","умова"],
+["Dime і Dígame різняться…","формальністю","значенням повністю","tú vs usted"]
+]},
+{t:"Фрази з PON, SAL, SÉ", lv:1, q:[
+["Ponte la chaqueta = …","одягни куртку","постав куртку","ponerse"],
+["___ su firma aquí. (підпишіть)","Ponga","Pon","usted"],
+["Sal con tus ___. (друзями)","amigos","enemigos","зі словника"],
+["___ del coche, por favor. (вийдіть)","Salga","Sal","usted"],
+["No salgas esta ___. (сьогодні ввечері)","noche","mañana","зі словника"],
+["___ amable. (будь)","Sé","Se","зі словника"],
+["___ puntual. (будьте, usted)","Sea","Sé","usted"],
+["Pon atención = …","зверни увагу","постав увагу на полицю","poner atención"],
+["sal — це також…","сіль (омонім!)","сонце","la sal 🧂"],
+["Sé fuerte y ___ paciencia. (май)","ten","tienes","дві поради"]
+]},
+{t:"Фрази з TEN, VEN та ¡VENGA!", lv:1, q:[
+["Ten cuidado = …","будь обережним","тримай варту","⚠️"],
+["No tengas ___. (не бійся)","miedo","sueño","зі словника"],
+["___ aquí. (іди сюди)","Ven","Venga tú","tú"],
+["Ven ___. (зі мною)","conmigo","con mí","conmigo!"],
+["¡Venga! як вигук = …","«Ну ж бо!»","лише «прийдіть»","з культ. нотаток"],
+["¡Venga, vamos! = …","«Ходімо!»","«Продано!»","з культ. нотаток"],
+["¡Venga ya! = …","«Та годі вже!»","«Приходь уже!»","з культ. нотаток"],
+["¡Venga, vale! = …","«Добре, гаразд»","«Приходь, коштує»","з культ. нотаток"],
+["Tened calma = …","зберігайте спокій (ви)","тримайте калину","vosotros"],
+["Venga — форма від дієслова…","venir","vengar","з культ. нотаток"]
+]},
+{t:"Займенники: Hazla, Dímela", lv:1, q:[
+["Haz la tarea → ___","Hazla","La haz","з книги"],
+["Dime la verdad → ___","Dímela","Dila me","з книги"],
+["Ponte la chaqueta → ___","Póntela","Pontela","з наголосом! з книги"],
+["Tráeme el libro → ___","Tráemelo","Tráelome","з книги"],
+["Займенники в ствердному наказі…","приклеюються після дієслова","стоять перед","з книги"],
+["me, te, lo, la… після наказу пишуться…","одним словом","окремо","hazla"],
+["«Скажи це мені» = ___","Dímelo","Me lo di","разом"],
+["«Зроби це» = ___","Hazlo","Lo haz","hazlo"],
+["Порядок: спершу me/te, потім…","lo/la","навпаки","dímelo"],
+["Чому Dímela з наголосом?","слово подовжилося","традиція","правило"]
+]},
+{t:"Умовні поради з SI", lv:1, q:[
+["Si tienes tiempo, ___ con nosotros.","ven","vienes","з книги"],
+["Si estudias, ___ el examen.","aprobarás","apruebas ayer","з книги"],
+["Si estás cansado, ___.","descansa","descansas","з книги"],
+["Si tienes frío, ___ una chaqueta.","ponte","pones","з книги"],
+["Si no entiendes, ___ otra vez.","pregunta","preguntas","з книги"],
+["Структура: Si + presente + …","futuro / presente / imperativo","лише минуле","з книги"],
+["Іспанці вживають si-поради, щоб звучати…","люб'язно","суворо","consejos amables"],
+["Si llueve, ___ el paraguas. (візьми)","coge","coges","☔"],
+["«Якщо хочеш — приходь» = Si quieres, ___.","ven","vengas","imperativo"],
+["Після si у цій структурі йде…","presente de indicativo","futuro","si tienes"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Вправа 1 з книги", lv:2, q:[
+["___ la verdad, no tengas miedo.","Di","Haz","з книги"],
+["___ la mesa antes de cenar.","Pon","Ten","з книги"],
+["___ conmigo al supermercado.","Ven","Ve","з книги"],
+["___ cuidado al cruzar la calle.","Ten","Pon","з книги"],
+["___ amable con tus vecinos.","Sé","Di","з книги"],
+["___ del trabajo temprano hoy.","Sal","Ven","з книги"],
+["___ la tarea y después descansa.","Haz","Di","з книги"],
+["___ al médico si no te sientes bien.","Ve","Ven","з книги"],
+["«ve al médico» — ve від…","ir","ver","іди"],
+["«sal del trabajo» — sal від…","salir","salar","salar = солити! 🧂"]
+]},
+{t:"Вправа 2 з книги: трансформації", lv:2, q:[
+["Tienes que hacer la cama → …","Haz la cama.","Hace la cama.","з книги"],
+["Tiene que ser puntual → …","Sea puntual.","Sé puntual.","usted!"],
+["Tienes que venir a clase temprano → …","Ven a clase temprano.","Viene a clase temprano.","tú"],
+["Tiene que tener paciencia → …","Tenga paciencia.","Ten paciencia.","usted!"],
+["Tienes que poner atención → …","Pon atención.","Pone atención.","tú"],
+["Tiene que ir por esta calle → …","Vaya por esta calle.","Ve por esta calle.","usted!"],
+["Tienes que salir ahora → …","Sal ahora.","Sale ahora.","tú"],
+["Tiene que venir mañana → …","Venga mañana.","Ven mañana.","usted!"],
+["Tienes que decir la verdad → …","Di la verdad.","Dices la verdad.","приклад книги"],
+["У вправі важливо розрізняти…","tú та usted","минуле й майбутнє","tiene(s) que!"]
+]},
+{t:"Текст «Consejos de mamá» (1)", lv:2, q:[
+["—Hijo, ___ la cama. (застели)","haz","hace","з тексту"],
+["…y ___ la ropa sucia en el cesto.","pon","pone","з тексту"],
+["___ cuidado al cruzar la calle.","Ten","Tienes","з тексту"],
+["…y ___ amable con todos.","sé","eres","з тексту"],
+["___ directamente al colegio.","Ve","Va","з тексту"],
+["«No te pares a hablar» — pararse = …","зупинятися","готуватися","не зупиняйся"],
+["—Tranquila, mamá, ___ a papá que me espere.","di","dice","з тексту"],
+["—Vale, pero ___ pronto.","ven","vienes","з тексту"],
+["el cesto = …","кошик","тісто","для білизни 🧺"],
+["la ropa sucia = …","брудний одяг","сумний одяг","🧺"]
+]},
+{t:"Текст «Consejos de mamá» (2)", lv:2, q:[
+["—___ con abrigo, que hace frío.","Sal","Sale","з тексту"],
+["«que hace frío» — que тут = …","бо (розмовне)","який","розмовна причина"],
+["¿Has tenido un buen ___?","día","dia","з тильдою"],
+["—___ feliz, hijo. (будь)","Sé","Se","з тексту"],
+["…y ___ siempre lo que te guste.","haz","haces","з тексту"],
+["Las mejores órdenes son las que se dicen con ___.","amor","rigor","фінал тексту ❤️"],
+["¿Qué hace el hijo cuando la escucha?","Sonríe","Llora","з питань"],
+["«Sal con abrigo» означає…","виходь у пальті","посоли пальто","😄"],
+["Неправильні накази в тексті:","haz, pon, ten, sé, ve, di, ven, sal","жодного","з питання 7"],
+["Стосунки мами й сина — …","теплі, з любов'ю","холодні","❤️"]
+]},
+{t:"Займенники: практика", lv:2, q:[
+["«Принеси його мені» = ___","Tráemelo","Melo trae","з книги"],
+["«Одягни її (куртку)» = ___","Póntela","Te la pon","з книги"],
+["«Скажи їй» = ___","Dile","Le di","di + le"],
+["«Зроби їх (вправи)» = ___","Hazlos","Los haz","haz + los"],
+["Pon el libro → «поклади його» = ___","Ponlo","Lo pon","ponlo"],
+["«Дай мені» = ___","Dame","Me da","da + me"],
+["«Скажи нам» = ___","Dinos","Nos di","di + nos"],
+["Vete — від дієслова…","irse","verse","ir + te"],
+["«Купи собі це» = ___","Cómpratelo","Te lo compra","compra+te+lo"],
+["Наголос з'являється, коли…","слово стає довгим","завжди","dímelo"]
+]},
+{t:"Заперечний наказ: No lo hagas", lv:2, q:[
+["«Не роби цього» = ___","No lo hagas.","No hazlo.","з книги!"],
+["No me digas eso = …","не кажи мені цього","скажи мені це","з книги"],
+["No te vayas = …","не йди","іди собі","з книги"],
+["У запереченні займенник стоїть…","перед дієсловом","після","no LO hagas"],
+["Заперечний наказ використовує…","subjuntivo","інфінітив","з книги"],
+["«Не виходь сьогодні» = No ___ esta noche.","salgas","sal","зі словника"],
+["«Не бійся» = No ___ miedo.","tengas","ten","зі словника"],
+["«Не бреши» = No ___ mentiras.","digas","di","зі словника"],
+["«Не їдь так швидко» = No ___ tan rápido.","vayas","ve","зі словника"],
+["Ствердний: hazlo. Заперечний: …","no lo hagas","no hazlo","порядок змінюється!"]
+]},
+{t:"VE, VETE, VAYA: усе про ir", lv:2, q:[
+["ve — наказ від…","ir та ver водночас","лише ver","2 в 1"],
+["Ve al médico — ve від…","ir","ver","іди"],
+["Ve esta película — ve від…","ver","ir","подивись"],
+["Vete = …","іди собі / іди геть","подивись на себе","irse"],
+["Vete a casa = …","іди додому","дивись на дім","зі словника"],
+["«Іди сюди» vs «іди геть»: ven vs …","vete","ve tú","протилежні!"],
+["ir → usted: ___","vaya","va","vaya"],
+["ir → vosotros: ___","id","vayad","найкоротше слово-наказ!"],
+["¡Vaya! як вигук = …","«оце так!»","«їдьте!»","здивування"],
+["ve, vaya, id, vayan — це…","ir в імперативі","ver в імперативі","таблиця"]
+]},
+{t:"Домашка: постав форму", lv:2, q:[
+["___ (venir) aquí, quiero hablar contigo.","Ven","Viene","з домашки"],
+["___ (decir) la verdad, no tengas miedo.","Di","Dice","з домашки"],
+["___ (poner) la mesa, ya es hora de comer.","Pon","Pone","з домашки"],
+["___ (salir) de casa temprano.","Sal","Sale","з домашки"],
+["___ (hacer) deporte cada día.","Haz","Hace","порада"],
+["___ (tener) confianza en ti.","Ten","Tiene","порада"],
+["___ (ser) tú mismo.","Sé","Se","порада"],
+["___ (ir) a la cama temprano.","Ve","Va","порада"],
+["8 порад для друзів — формат…","домашки з книги","іспиту DELE","завдання"],
+["Поради можна записати як…","голосове повідомлення","лише в камені","з домашки 🎙️"]
+]},
+{t:"SÉ: будь чи знаю?", lv:2, q:[
+["sé (наказ) = …","будь!","я знаю","ser"],
+["sé (від saber) = …","я знаю","будь","yo sé"],
+["Sé amable — тут sé = …","будь (ser)","знаю (saber)","наказ"],
+["No sé — тут sé = …","знаю (saber)","будь","yo no sé"],
+["Обидва sé пишуться…","з наголосом","без наголосу","омоніми!"],
+["se (без наголосу) = …","займенник","наказ «будь»","se lava"],
+["«Будь щасливим» = ___ feliz.","Sé","Se","з тексту"],
+["«Я не знаю» = No ___.","sé","se","saber"],
+["ser → usted: ___","sea","sé","Sea puntual"],
+["ser → vosotros: ___","sed","sean","Sed buenos"]
+]},
+{t:"USTED у сервісі", lv:2, q:[
+["Телефон: «¿___, señor?»","Dígame","Dime","ввічливо"],
+["Банк: «___ su firma aquí».","Ponga","Pon","usted"],
+["Поліція: «___ del coche, por favor».","Salga","Sal","usted"],
+["Ресепшн: «___ por aquí, por favor».","Vaya","Ve","usted"],
+["Лікар: «___ paciencia, señora».","Tenga","Ten","usted"],
+["Офіс: «___ mañana a las 9».","Venga","Ven","usted"],
+["«___ puntual, por favor». (будьте)","Sea","Sé","usted"],
+["Магазин: «___ su código PIN».","Ponga","Pon","usted"],
+["usted-форми: diga, ponga, salga — закінчення…","-a/-ga","-d","особлива основа"],
+["Сервіс + незнайомці → форма…","usted","tú","ввічливість"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки", lv:3, q:[
+["❌ Hace la tarea (наказ) → ✅ …","Haz la tarea.","Hacer la tarea.","коротка форма!"],
+["❌ Pone la mesa (наказ) → ✅ …","Pon la mesa.","Puso la mesa.","pon"],
+["❌ Se amable → ✅ …","Sé amable.","Se amable tú.","з наголосом!"],
+["❌ Ven usted → ✅ …","Venga usted.","Vienes usted.","usted → venga"],
+["❌ Di usted → ✅ …","Diga usted.","Dices usted.","usted → diga"],
+["❌ No hazlo → ✅ …","No lo hagas.","No lo haz.","заперечення!"],
+["❌ Tiene cuidado (наказ tú) → ✅ …","Ten cuidado.","Tener cuidado.","ten"],
+["❌ Sal usted del coche → ✅ …","Salga usted del coche.","Sales usted.","salga"],
+["❌ Ponte te la chaqueta → ✅ …","Ponte la chaqueta.","Pon te la chaqueta.","один te!"],
+["«Ходи зі мною»: ❌ Ve conmigo → ✅ …","Ven conmigo.","Va conmigo.","ven, не ve!"]
+]},
+{t:"¡VENGA! Культура й інтонація", lv:3, q:[
+["Іспанці вживають «Venga» як…","універсальний вигук","лише наказ прийти","з культ. нотаток"],
+["¡Venga! = …","Ну ж бо!","Прибудьте негайно!","тон вирішує"],
+["¡Venga ya! = …","Та годі вже!","Приходь уже!","з культ. нотаток"],
+["¡Venga, vale! = …","Добре, гаразд","Приходь, коштує","з культ. нотаток"],
+["Прощання по телефону часто: «Venga, ___».","hasta luego","hasta nunca","розмовне"],
+["Тон імператива визначає…","наказ це, порада чи прохання","час дієслова","з культ. нотаток"],
+["«Ven aquí» суворо vs «Ven aquí, ___» лагідно.","cariño","enemigo","з культ. нотаток"],
+["cariño = …","любий / люба","карі очі","звертання ❤️"],
+["Щоб пом'якшити наказ, додай…","por favor або м'який тон","гучності","з культ. нотаток"],
+["«Ven un momento, si puedes» звучить…","м'яко і ввічливо","грубо","з культ. нотаток"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Зроби домашнє»","Haz la tarea.","Hace la tarea.","з книги"],
+["«Скажи правду»","Di la verdad.","Dice la verdad.","з книги"],
+["«Май терпіння»","Ten paciencia.","Tiene paciencia.","з книги"],
+["«Будь добрим до всіх»","Sé amable con todos.","Se amable con todos.","з книги"],
+["«Іди зі мною»","Ven conmigo.","Ve conmigo.","з книги"],
+["«Накрий на стіл»","Pon la mesa.","Pone la mesa.","з книги"],
+["«Виходь раніше»","Sal temprano.","Sale temprano.","з книги"],
+["«Іди до лікаря»","Ve al médico.","Ven al médico.","з книги"],
+["«Скажіть, пане» (ввічливо)","Dígame, señor.","Dime, señor.","зі словника"],
+["«Не бійся»","No tengas miedo.","No ten miedo.","заперечення → subjuntivo"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«Haz la cama» — …","правильно ✓","помилка","✓"],
+["«Hace la cama» (наказ) — …","помилка (haz)","правильно","коротка форма"],
+["«Sé feliz» — …","правильно ✓","помилка","✓"],
+["«Se feliz» — …","помилка (sé)","правильно","наголос!"],
+["«Venga usted mañana» — …","правильно ✓","помилка","✓"],
+["«Di la verdad» — …","правильно ✓","помилка","✓"],
+["«No sal esta noche» — …","помилка (no salgas)","правильно","заперечення"],
+["«Ponte la chaqueta» — …","правильно ✓","помилка","✓"],
+["«Id a casa» — …","правильно ✓","помилка","vosotros: id ✓"],
+["«Ten paciencia» — …","правильно ✓","помилка","✓"]
+]},
+{t:"Реклама й оголошення", lv:3, q:[
+["___ clic aquí. (натисни)","Haz","Hace","з культ. нотаток"],
+["___ tu nombre. (введи)","Pon","Pone","з культ. нотаток"],
+["___ cuidado: piso mojado.","Ten","Tiene","з культ. нотаток"],
+["___ responsable, recicla.","Sé","Se","з культ. нотаток"],
+["piso mojado = …","мокра підлога","мокра квартира","⚠️"],
+["Реклама любить імператив, бо…","закликає до дії","гарно виглядає","маркетинг"],
+["«___ ahora, paga después». (купуй)","Compra","Compras","реклама"],
+["«___ tu opinión». (залиш)","Deja","Dejas","коментарі"],
+["«___ parte del equipo». (стань)","Forma","Formas","вакансії"],
+["«___ la diferencia». (зроби)","Haz","Haces","слоган"]
+]},
+{t:"SI + порада: практика", lv:3, q:[
+["Si estás cansado, ___.","descansa","descansas","з книги"],
+["Si tienes frío, ___ una chaqueta.","ponte","pones","з книги"],
+["Si no entiendes, ___ otra vez.","pregunta","preguntas","з книги"],
+["Si tienes tiempo, ___ con nosotros.","ven","vienes","з книги"],
+["Si llueve, ___ el paraguas. (візьми)","coge","coges","☔"],
+["Si estás enfermo, ___ al médico.","ve","vas","порада"],
+["Si tienes miedo, ___ valiente. (будь)","sé","se","порада"],
+["Si hay problemas, ___ la verdad.","di","dices","порада"],
+["Si sales tarde, ___ prisa. (поспіши)","date","da te","date prisa!"],
+["Si + presente, + imperativo — формула…","люб'язної поради","погрози","з книги"]
+]},
+{t:"Тон: наказ чи ласка?", lv:3, q:[
+["Той самий наказ різним тоном — …","різне значення","однакове","з культ. нотаток"],
+["«Ven aquí» різко = …","суворий наказ","запрошення на чай","тон!"],
+["«Ven aquí, cariño» = …","лагідне звертання","військова команда","❤️"],
+["Імператив в Іспанії звучить…","природно й тепло","завжди агресивно","з культ. нотаток"],
+["«Pon la mesa, por favor» — …","м'яке прохання","крик","por favor"],
+["«Ven un momento, si puedes» — si puedes додає…","м'якості","суворості","ввічливість"],
+["Не бійся імператива, бо…","з правильною інтонацією він доречний","його заборонили","з культ. нотаток"],
+["Незнайомцю краще: «Espere» чи «Espera»?","Espere (usted)","Espera","формально"],
+["Другу за столом: «___ esto, está riquísimo».","Prueba","Pruebe","tú"],
+["Найважливіше в наказі — …","інтонація","гучність","з культ. нотаток"]
+]},
+{t:"Подвійні займенники: Dímelo", lv:3, q:[
+["«Скажи мені це» = ___","Dímelo","Lo me di","з книги"],
+["«Принеси мені його» = ___","Tráemelo","Traéme lo","me + lo"],
+["Порядок займенників: спершу…","me/te/nos, потім lo/la","lo/la, потім me","dímelo"],
+["«Дай мені її (книгу)» = ___","Dámela","Dalame","da+me+la"],
+["«Купи нам їх» = ___","Cómpranoslos","Cómpralosnos","nos + los"],
+["«Одягни її» (куртку) = ___","Póntela","Pónlate","te + la"],
+["Dímela: di + me + …","la","le","з книги"],
+["Два займенники + наказ = …","одне слово","три слова","разом!"],
+["«Поясни мені це» = ___","Explícamelo","Explica me lo","разом + наголос"],
+["Наголос у таких формах…","обов'язковий","зайвий","dímelo, tráemelo"]
+]},
+{t:"8 порад другу (домашка)", lv:3, q:[
+["1. ___ deporte cada mañana.","Haz","Hace","haz"],
+["2. ___ siempre la verdad.","Di","Dice","di"],
+["3. ___ la mesa para tu familia.","Pon","Pone","pon"],
+["4. ___ a pasear cada día.","Sal","Sale","sal"],
+["5. ___ paciencia con los demás.","Ten","Tiene","ten"],
+["6. ___ tú mismo.","Sé","Se","sé"],
+["7. ___ al gimnasio dos veces por semana.","Ve","Va","ve"],
+["8. ___ a visitarme pronto.","Ven","Viene","ven"],
+["Ці 8 порад використовують…","усі 8 неправильних","лише правильні","домашка!"],
+["Ven Di Sal Haz Ten Ve Pon Sé — це…","мнемофраза з книги","дитяча пісня","запам'ятай!"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["hacer → tú: ___","haz","hace","короткі"],
+["decir → usted: ___","diga","di","usted"],
+["ir → vosotros: ___","id","ved","id"],
+["ser → tú: ___","sé","se","наголос"],
+["Haz la tarea → з займенником: ___","Hazla","La haz","разом"],
+["No ___ hagas. (не роби цього)","lo","le","перед дієсловом"],
+["¡___ ya! (та годі вже!)","Venga","Ven","вигук"],
+["Si estás cansado, ___.","descansa","descansas","порада"],
+["«Ну ж бо, ходімо!» = ¡Venga, ___!","vamos","vayamos ya","з культ. нотаток"],
+["Урок 15 готово! ¡___ una pausa, te la mereces! (зроби)","Haz","Hace","🎉"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "IRREGULARES: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 15 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

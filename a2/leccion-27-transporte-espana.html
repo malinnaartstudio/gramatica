@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 27 · El transporte en España · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 27 · @malinnaartstudio</div>
+    <h1 id="htitle">EL TRANSPORTE: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+<main>
+  <div id="home">
+    <div class="intro">
+            <b style="color:var(--rasp)">Lección 27 · El transporte en España.</b>
+      30 вправ по 10 питань: se puede (можливість) / se usa para (призначення) / soler + infinitivo
+      (звичка), повний словник транспорту, і подорож по Аліканте та Бенідормі.
+      Від ★ до ★★★. Viajar no es solo moverse, es conocer cómo vive la gente. 🚊
+
+    </div>
+    <div class="legend">
+            <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · три конструкції + словник транспорту</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · текст, Alicante/Benidorm, soler поглиблено</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · культура й типові помилки</span>
+
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 27</footer>
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"SE PUEDE + infinitivo: можливість", lv:1, q:[
+["Se puede + infinitivo виражає…","можливість","звичку","з книги"],
+["En Madrid se puede viajar en metro o autobús — переклад…","У Мадриді можна пересуватись метро або автобусом","У Мадриді треба пересуватись лише метро","з книги"],
+["Se puede pagar con tarjeta — переклад…","Можна платити карткою","Не можна платити карткою","impersonal, можливість"],
+["Se puede aparcar aquí — переклад…","Тут можна паркуватися","Тут заборонено паркуватися","можливість"],
+["Se puede — це конструкція з дієсловом poder у…","3-й особі однини, impersonal","1-й особі","impersonal se"],
+["Структура: se + puede + …","infinitivo","gerundio","базове правило"],
+["No se puede fumar aquí — переклад…","Тут не можна курити","Тут можна курити","заперечення"],
+["Se puede viajar en tren de noche — переклад…","Можна подорожувати нічним потягом","Не можна подорожувати вночі","можливість"],
+["Se puede пов'язане з темою уроку 25 (impersonal se), але тут конкретно виражає…","можливість (а не оголошення)","заборону завжди","нюанс застосування"],
+["Урок 27 називається…","El transporte en España","Busco empleo","з підручника"]
+]},
+{t:"SE USA PARA + infinitivo: призначення", lv:1, q:[
+["Se usa para + infinitivo пояснює…","призначення (для чого щось використовують)","звичку","з книги"],
+["El metro se usa para moverse rápidamente por la ciudad — переклад…","Метро використовують, щоб швидко переміщатись містом","Метро ніколи не використовують у місті","з книги"],
+["El autobús se usa para llegar a las zonas residenciales — переклад…","Автобус використовують, щоб дістатися житлових районів","Автобус ніколи не їздить до житлових районів","з тексту"],
+["Se usa para pagar sin contacto — переклад…","Використовується для безконтактної оплати","Заборонено для оплати","призначення"],
+["Структура: se usa para + …","infinitivo","subjuntivo","базове правило"],
+["El AVE se usa para viajar largas distancias rápido — переклад…","AVE використовують для швидких подорожей на великі відстані","AVE використовують лише в місті","призначення"],
+["Se usa para vs Se puede — головна різниця:","usa para = призначення; puede = можливість","обидва означають те саме","нюанс уроку"],
+["La tarjeta multiviaje se usa para pagar varios viajes — переклад…","Багаторазову картку використовують для оплати кількох поїздок","Картку використовують лише раз","призначення"],
+["El funicular se usa para subir montañas — переклад…","Фунікулер використовують, щоб підійматися в гори","Фунікулер використовують у морі","призначення"],
+["Se usa para описує функцію предмета чи транспорту, а не…","одноразову дію","можливість","розрізнення функцій"]
+]},
+{t:"SOLER + infinitivo: звичка", lv:1, q:[
+["Soler + infinitivo описує…","звичку або тенденцію","одноразову дію","з книги"],
+["Los españoles suelen coger el tren de cercanías — переклад…","Іспанці зазвичай їздять приміським потягом","Іспанці ніколи не їздять потягом","з книги"],
+["Suelo ir al trabajo en bici — переклад…","Я зазвичай їжджу на роботу на велосипеді","Я один раз поїхав на роботу на велосипеді","soler, звичка"],
+["yo suelo, tú sueles, él ___","suele","solo","дієвідмінювання soler (o→ue)"],
+["nosotros solemos, vosotros soléis, ellos ___","suelen","soleen","дієвідмінювання"],
+["Soler — це дієслово з чергуванням…","o → ue","e → ie","як poder, dormir"],
+["Suele llover en otoño — переклад…","Зазвичай восени йде дощ","Ніколи не буває дощу восени","soler, тенденція"],
+["Solemos viajar en verano — переклад…","Ми зазвичай подорожуємо влітку","Ми ніколи не подорожуємо влітку","soler"],
+["Soler вживається лише в…","Presente (і зрідка Imperfecto), не в усіх часах однаково","Futuro завжди","особливість дієслова"],
+["Soler + infinitivo — іспанський еквівалент українського…","«зазвичай + дієслово»","«ніколи + дієслово»","переклад"]
+]},
+{t:"Три конструкції разом: огляд", lv:1, q:[
+["Se puede viajar en metro — конструкція:","можливість","призначення","se puede"],
+["El metro se usa para moverse rápido — конструкція:","призначення","звичка","se usa para"],
+["Los españoles suelen coger el tren — конструкція:","звичка","можливість","soler"],
+["Se puede vs Se usa para vs Soler — усі три пов'язані з…","транспортом і способами пересування","їжею","тема уроку 27"],
+["«Можна» (дозвіл/можливість) → …","Se puede","Se usa para","логіка вибору"],
+["«Для чого це потрібно» (призначення) → …","Se usa para","Soler","логіка вибору"],
+["«Зазвичай хтось робить» (звичка) → …","Soler","Se puede","логіка вибору"],
+["Se puede — це форма дієслова poder + impersonal se, тоді як soler — це…","самостійне дієслово звички","те саме дієслово poder","різні дієслова!"],
+["Знання цих трьох конструкцій корисне для опису…","транспортної системи міста чи країни","лише особистих емоцій","мета уроку"],
+["Ці три конструкції можна комбінувати в одному тексті, щоб…","описати повну картину транспорту (можливості, призначення, звички)","уникати повторень слів","практична мета"]
+]},
+{t:"Приклади з книги", lv:1, q:[
+["En Madrid se puede viajar en metro o autobús — тип конструкції:","se puede (можливість)","soler (звичка)","з книги"],
+["El metro se usa para moverse rápidamente por la ciudad — тип конструкції:","se usa para (призначення)","se puede","з книги"],
+["Los españoles suelen coger el tren de cercanías — тип конструкції:","soler (звичка)","se usa para","з книги"],
+["moverse rápidamente — переклад…","переміщатися швидко","стояти на місці","з прикладу"],
+["coger el tren — переклад…","сідати на потяг / їхати потягом","продавати потяг","з прикладу, coger = брати/сідати"],
+["Ці три приклади разом ілюструють…","повний спектр вживання нової граматики","лише один тип конструкції","мета розділу"],
+["El metro se usa para… — після para йде…","infinitivo (moverse)","іменник завжди","граматичне правило"],
+["Los españoles suelen — suelen узгоджується з підметом…","los españoles (множина, 3-тя особа)","yo (1-ша особа)","узгодження дієслова"],
+["se puede viajar — після puede йде…","infinitivo (viajar)","gerundio","граматичне правило"],
+["Ці приклади типово зустрічаються в контексті…","опису транспортної системи міста","особистого щоденника","тема уроку"]
+]},
+{t:"Словник: транспорт 1", lv:1, q:[
+["el metro = …","метро","трамвай","базове"],
+["el tranvía = …","трамвай","метро","базове"],
+["el autobús = …","автобус","потяг","базове"],
+["el tren / el AVE / el cercanías = …","потяг / швидкісний / приміський","метро / трамвай / автобус","базове"],
+["el coche / el taxi / el Cabify = …","авто / таксі / Кaбіфай (сервіс поїздок)","велосипед / самокат / паром","базове"],
+["el ferry = …","паром","човен","базове"],
+["el barco = …","човен, корабель","паром","базове"],
+["la bicicleta = …","велосипед","самокат","базове"],
+["el patinete eléctrico = …","електросамокат","велосипед","базове"],
+["el avión = …","літак","гелікоптер","базове"]
+]},
+{t:"Словник: транспорт 2", lv:1, q:[
+["el funicular = …","фунікулер","канатна дорога","підйомний транспорт по рейках"],
+["el teleférico = …","канатна дорога","фунікулер","підвісний транспорт"],
+["el coche compartido (BlaBlaCar) = …","спільна поїздка на авто","персональне таксі","сервіс каршерингу"],
+["coger el metro / autobús = …","сідати на метро / автобус","продавати квиток на метро","базове дієслово"],
+["hacer transbordo = …","робити пересадку","їхати без зупинок","базове"],
+["subir / bajar en la próxima parada = …","сідати / виходити на наступній зупинці","чекати наступну зупинку без дій","базове"],
+["llegar con retraso = …","приїхати із запізненням","приїхати вчасно","базове"],
+["perder el autobús / tren = …","запізнитися на автобус / потяг","встигнути на автобус / потяг","базове"],
+["comprar / validar el billete = …","купити / компостувати квиток","продати квиток","базове"],
+["recargar la tarjeta = …","поповнити транспортну картку","витратити всю картку","базове"]
+]},
+{t:"Словник: дієслова транспорту", lv:1, q:[
+["ir en coche / metro / bici = …","їхати на авто / метро / велосипеді","йти пішки","базове"],
+["aparcar el coche = …","паркувати машину","заправляти машину","базове"],
+["poner gasolina = …","заправити паливо","паркувати машину","базове"],
+["hacer una parada = …","зупинитися","прискоритися","базове"],
+["cambiar de línea = …","змінити лінію (метро/трамвай)","змінити квиток","базове"],
+["estar en hora = …","бути вчасно","запізнюватися","базове"],
+["llegar tarde / pronto = …","приїхати пізно / рано","приїхати вчасно","базове"],
+["subir al tren = …","сісти в потяг","вийти з потяга","базове"],
+["bajar del autobús = …","вийти з автобуса","сісти в автобус","базове, протилежність subir"],
+["Ці дієслова типово потрібні для…","опису щоденних поїздок і транспортних ситуацій","кулінарії","тема уроку"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Словник: транспортні дії", lv:1, q:[
+["hacer transbordo = …","робити пересадку","їхати без зупинок","базове"],
+["llegar con retraso = …","приїхати із запізненням","приїхати вчасно","базове"],
+["perder el tren = …","запізнитися на потяг","встигнути на потяг","базове"],
+["comprar el billete = …","купити квиток","продати квиток","базове"],
+["validar el billete = …","компостувати квиток","викинути квиток","базове"],
+["subir en la próxima parada = …","сідати на наступній зупинці","виходити на цій зупинці","базове"],
+["bajar en la próxima parada = …","виходити на наступній зупинці","сідати на цій зупинці","базове"],
+["cambiar de línea = …","змінити лінію","залишитись на тій самій лінії","базове"],
+["estar en hora = …","бути вчасно","запізнюватися","базове"],
+["Ці дії типово описують…","процес користування громадським транспортом","процес приготування їжі","тема уроку"]
+]},
+{t:"Резюме модуля 1", lv:1, q:[
+["Se puede виражає…","можливість","звичку","підсумок"],
+["Se usa para виражає…","призначення","дозвіл","підсумок"],
+["Soler виражає…","звичку/тенденцію","можливість","підсумок"],
+["Усі три конструкції поєднує вживання…","infinitivo після себе","subjuntivo","граматична спільність"],
+["Se puede + infinitivo, se usa para + infinitivo, soler + …","infinitivo","gerundio","однакова модель"],
+["Soler відмінюється, а se puede/se usa para…","залишаються в 3-й особі (impersonal)","теж відмінюються за особами","контраст"],
+["Урок 27 логічно продовжує тему impersonal se з уроку…","25 (Busco empleo)","19 (сумнів)","звʼязок тем"],
+["Тема уроку 27 — транспорт, тому приклади здебільшого про…","способи пересування містом і країною","їжу","контекст лексики"],
+["El TRAM, el AVE, el Cabify — приклади…","сучасних видів іспанського транспорту","старовинних видів транспорту","словник уроку"],
+["Мета граматики уроку 27 — навчитися описувати…","можливості, призначення і звички щодо пересування","минулі події","підсумок"]
+]},
+{t:"Вправа 1 з книги: se puede/se usa para/soler", lv:2, q:[
+["En Alicante ___ viajar en tranvía o autobús.","se puede","se usa para","з книги, можливість"],
+["El metro ___ moverse por la ciudad.","se usa para","se puede","з книги, призначення"],
+["En verano los turistas ___ caminar por el paseo marítimo.","suelen","se pueden","з книги, звичка"],
+["Los trenes de cercanías ___ ir a pueblos cercanos.","se usan para","suele","з книги, призначення, множина"],
+["En Benidorm la gente ___ alquilar bicicletas.","suele","se puede para","з книги, звичка"],
+["У реченні 4 «se usan» (множина), бо підмет trenes у…","множині","однині","узгодження"],
+["У реченні 1 обрано «se puede», бо йдеться про…","можливість (у Аліканте можна…)","типову звичку жителів","логіка вибору"],
+["У реченні 5 обрано «suele», бо йдеться про…","типову поведінку людей (la gente)","одноразову можливість","логіка вибору"],
+["Ця вправа з книги тренує…","розрізнення трьох конструкцій у контексті","минулий час","модуль 4, вправа 1"],
+["Ключ до вибору правильної конструкції — уважно читати…","контекст речення (можливість/призначення/звичка)","лише перше слово речення","практична порада"]
+]},
+{t:"Вправа 2 з книги: виправ помилки", lv:2, q:[
+["Se usa para ir trabajo. → правильно:","Se usa para ir al trabajo.","Se usa para va trabajo.","бракує прийменника al!"],
+["Suelen van al trabajo en metro. → правильно:","Suelen ir al trabajo en metro.","Suelen van al trabajo en el metro ya.","після soler — infinitivo, не дієвідмінена форма!"],
+["Se puede viajar por la noche, pero no hay tranvía. → …","правильно, без змін","Se puede viajar por la noche, pero no tranvía hay.","це речення вже правильне!"],
+["Uso metro para voy al centro. → правильно:","Uso el metro para ir al centro.","Uso el metro para voy centro ya.","para + infinitivo, не дієвідмінена форма! і бракує el"],
+["Suele conducir el coche cada día. → …","правильно, без змін","Suele conduce el coche cada día ya.","це речення вже правильне!"],
+["Головна помилка в реченні 2:","van замість infinitivo ir після suelen","артикль el забутий","після soler завжди infinitivo"],
+["Головна помилка в реченні 4:","voy замість infinitivo ir після para","зайвий артикль","para + infinitivo — правило"],
+["Ця вправа з книги вчить розпізнавати…","типові помилки з infinitivo після конструкцій","рід іменників","мета вправи 2"],
+["Правило: після soler, se puede, se usa para завжди йде…","infinitivo (незмінна форма дієслова)","дієвідмінена форма","ключове граматичне правило уроку"],
+["Ця помилка (дієвідмінена форма замість infinitivo) — найпоширеніша, бо…","в українській мові після подібних конструкцій теж дієслово відмінюється","немає логічної причини","типова помилка через різницю мов"]
+]},
+{t:"Вправа 3 з книги: обери правильний варіант", lv:2, q:[
+["En Alicante (se puede / se usan) viajar con tarjeta multiviaje.","se puede","se usan","з книги"],
+["En Madrid la gente (suele / se puede) coger el metro cada día.","suele","se puede","з книги, звичка"],
+["El TRAM (se usa / se soler) para ir a Benidorm.","se usa","se soler","з книги, «se soler» не існує!"],
+["Los autobuses (se puede / se pueden) tomar en la estación central.","se pueden","se puede","autobuses — множина"],
+["En el centro histórico (suelo / se usa) caminar más que conducir.","se usa","suelo","impersonal, не «я»"],
+["«Se soler» граматично…","не існує — soler не вживається з se impersonal так","існує і часто вживається","пастка вправи!"],
+["Autobuses (множина) вимагає форму…","se pueden","se puede","узгодження числа"],
+["«suelo» (1-ша особа) не підходить у безособовому контексті «в центрі зазвичай…», бо…","треба безособову або загальну форму (se usa/suele la gente)","воно завжди правильне","логіка вибору"],
+["Ця вправа поєднує граматику уроку 27 з правилом узгодження числа з уроку…","25 (impersonal se)","19 (сумнів)","міжтематичний звʼязок"],
+["Підсумок вправи 3: важливо перевіряти і тип конструкції, і…","узгодження числа","рід іменника","практична порада"]
+]},
+{t:"Транспорт: питання-відповіді", lv:2, q:[
+["¿Se puede ir en bici por el centro? — …","Sí, se puede.","Sí, se puedes.","se puede, impersonal"],
+["¿Para qué se usa el AVE? — …","Se usa para viajar largas distancias rápido.","Se usan para viajar rápido.","AVE — однина"],
+["¿Sueles coger el autobús o el metro? — …","Suelo coger el metro.","Suelo cojo el metro.","infinitivo після suelo"],
+["¿Hay que validar el billete en el tranvía? — …","Sí, hay que validarlo antes de subir.","Sí, hay que valida antes de subir.","infinitivo"],
+["¿Se puede aparcar gratis en el centro? — …","No, normalmente hay que pagar.","No, normalmente hay pagar.","hay que + infinitivo"],
+["¿Qué sueles hacer si pierdes el autobús? — …","Suelo esperar el siguiente.","Suelo espero el siguiente.","infinitivo"],
+["¿Se usan las bicicletas mucho en tu ciudad? — …","Sí, se usan bastante.","Sí, se usa bastante ellas.","bicicletas — множина"],
+["¿Cómo sueles ir al trabajo? — …","Suelo ir en metro.","Suelo voy en metro.","infinitivo"],
+["Ця вправа поєднує три конструкції в природному діалозі, типовому для…","розмови про щоденні звички пересування","офіційного листа","практична мета"],
+["Відповіді на питання з soler завжди містять…","дієслово в infinitivo після soler","дієвідмінену форму","граматичне правило"]
+]},
+{t:"Текст: Moverse por Alicante y Benidorm (1)", lv:2, q:[
+["Alicante es una ciudad con historia milenaria — переклад «milenaria»…","тисячолітня","сучасна","з тексту"],
+["Fundada por los íberos y más tarde conquistada por los romanos — переклад…","Заснована іберами, а пізніше завойована римлянами","Заснована римлянами, завойована іберами","з тексту"],
+["su nombre viene del árabe Al-Laqant, que significa «fuente de luz» — переклад…","її назва походить з арабської і означає «джерело світла»","її назва грецька і означає «море»","з тексту"],
+["El TRAM de Alicante es uno de los medios de transporte más ___ de España.","cómodos y ecológicos","caros y lentos","з тексту"],
+["Se puede viajar desde el puerto hasta pueblos costeros — форма «se puede», бо йдеться про…","можливість","обов'язковість","з тексту"],
+["como El Campello, Villajoyosa o Benidorm — це приклади…","прибережних селищ (pueblos costeros)","гірських міст","з тексту"],
+["Durante el trayecto se ven las playas, los castillos — переклад «se ven»…","видно (impersonal)","хтось конкретний бачить","impersonal se"],
+["Los habitantes de Alicante suelen usar el tranvía — форма «suelen», бо йдеться про…","звичку жителів","одноразову подію","soler"],
+["muchos turistas prefieren caminar por el paseo marítimo — переклад «paseo marítimo»…","приморська набережна","гірська стежка","з тексту"],
+["El autobús urbano pasa cada 15 minutos — переклад…","Міський автобус ходить кожні 15 хвилин","Міський автобус ходить раз на день","з тексту"]
+]},
+{t:"Текст: Moverse por Alicante y Benidorm (2)", lv:2, q:[
+["se usa para llegar a las zonas residenciales — форма se usa para, бо йдеться про…","призначення автобуса","звичку конкретної особи","з тексту"],
+["Los fines de semana, el tráfico aumenta — переклад…","У вихідні трафік збільшується","У вихідні трафіку немає","з тексту"],
+["los alicantinos toman las cosas con calma — переклад…","жителі Аліканте сприймають усе спокійно","жителі Аліканте завжди поспішають","з тексту"],
+["dicen que el clima invita a la paciencia — переклад…","кажуть, що клімат сприяє терпінню","кажуть, що клімат викликає стрес","з тексту"],
+["Benidorm, por su parte, es un fenómeno curioso — переклад «por su parte»…","зі свого боку, натомість","з іншого боку річки","вставний вираз"],
+["la ciudad se llena de jubilados del norte de Europa — переклад…","місто наповнюється пенсіонерами з півночі Європи","місто порожніє взимку","з тексту"],
+["que viven allí varios meses buscando el sol — переклад…","що живуть там кілька місяців у пошуках сонця","що живуть там один день","з тексту"],
+["Ellos suelen moverse en bicicleta o en tranvía — форма suelen, бо йдеться про…","звичку пенсіонерів","одноразову поїздку","soler"],
+["A diferencia de otros destinos, Benidorm funciona todo el año — переклад…","На відміну від інших напрямків, Бенідорм працює цілий рік","Бенідорм працює лише влітку","з тексту"],
+["hay que validar los billetes antes de subir al tranvía — переклад…","треба компостувати квитки перед посадкою в трамвай","квитки не потрібні у трамваї","з тексту"]
+]},
+{t:"Питання до тексту", lv:2, q:[
+["¿De dónde viene el nombre «Alicante»?","Del árabe Al-Laqant, que significa «fuente de luz»","Del latín, que significa «ciudad grande»","з тексту"],
+["¿Qué medio de transporte conecta Alicante con Benidorm?","El TRAM (tranvía)","El avión","з тексту"],
+["¿Qué se puede ver durante el viaje en el TRAM?","Playas, castillos y montañas del Mediterráneo","Solo edificios modernos","з тексту"],
+["¿Qué costumbre tienen los habitantes de Alicante?","Suelen usar el tranvía o el autobús para ir al trabajo","Suelen usar solo el coche","з тексту"],
+["¿Cómo es el ritmo de vida en los fines de semana?","El tráfico aumenta, pero la gente toma las cosas con calma","Todo se detiene completamente","з тексту"],
+["¿Por qué Benidorm es una ciudad especial?","Porque funciona todo el año, no solo en verano","Porque está cerrada en invierno","з тексту"],
+["¿Qué hacen muchos jubilados extranjeros allí?","Viven allí varios meses buscando el sol","Trabajan en el turismo","з тексту"],
+["¿Qué curiosidad sorprende a los turistas?","Que hay que validar los billetes antes de subir al tranvía","Que el transporte es gratis","з тексту"],
+["¿Qué diferencia hay entre Alicante y Benidorm?","Alicante es más histórica; Benidorm es un destino turístico activo todo el año","No hay ninguna diferencia","з тексту"],
+["¿Qué frase resume la experiencia de viajar por la Costa Blanca?","Es fácil, barato y muy agradable","Es complicado y caro","з тексту, фінал"]
+]},
+{t:"SOLER: відмінювання й вживання поглиблено", lv:2, q:[
+["Soler має чергування о→ue, як дієслово…","poder","hablar","однакова модель"],
+["yo suelo — переклад…","я зазвичай (роблю щось)","я одного разу (зробив щось)","звичка"],
+["¿Sueles coger el metro?","Ти зазвичай їздиш метро?","Ти одного разу поїхав метро?","питання про звичку"],
+["Soler найчастіше вживається в часі…","Presente","Futuro","типове вживання"],
+["Solía coger el autobús (Imperfecto de soler) — переклад…","Я, бувало, їздив автобусом (у минулому)","Я їжджу автобусом зараз","soler в Imperfecto для минулих звичок"],
+["Soler НЕ вживається в…","Futuro simple (рідко/неприродно)","Presente","обмеження вживання"],
+["Suele llover mucho aquí en invierno — переклад…","Тут узимку зазвичай багато дощить","Тут узимку ніколи не дощить","soler, тенденція"],
+["Soler + infinitivo — семантично близьке до прислівника…","normalmente / generalmente","nunca","синонімічність"],
+["«Suelo» різниться від «siempre» тим, що…","suelo — це дієслово (потребує дієвідмінювання), siempre — прислівник","вони ідентичні за формою","граматична відмінність"],
+["Підсумок: soler — унікальне дієслово для вираження…","звички чи тенденції, дуже природно в іспанській","наказу","роль дієслова"]
+]},
+{t:"Словник поглиблено", lv:2, q:[
+["la tarjeta multiviaje = …","багаторазова транспортна картка","одноразовий квиток","з тексту"],
+["el paseo marítimo = …","приморська набережна","гірська стежка","з тексту"],
+["el trayecto = …","маршрут, шлях поїздки","розклад","базове"],
+["el conductor = …","водій","пасажир","базове"],
+["el pasaje = …","квиток/проїзд","паспорт","псевдодруг: pasaporte = паспорт!"],
+["la estación central = …","центральний вокзал/станція","центральний парк","базове"],
+["el tráfico = …","трафік, дорожній рух","торгівля","базове"],
+["ecológico = …","екологічний","економічний","обережно, схожі слова!"],
+["Los pueblos costeros = …","прибережні селища","гірські села","costa = узбережжя"],
+["cada 15 minutos = …","кожні 15 хвилин","один раз на 15 днів","часовий вираз"]
+]},
+{t:"Переклад укр → ісп", lv:2, q:[
+["«У Валенсії можна пересуватися велосипедом»","En Valencia se puede moverse en bicicleta.","En Valencia se puede mover en bicicleta ella.","se puede + infinitivo"],
+["«Автобус використовують, щоб дістатися аеропорту»","El autobús se usa para llegar al aeropuerto.","El autobús se usa por llegar al aeropuerto.","se usa PARA"],
+["«Іспанці зазвичай їздять на роботу на метро»","Los españoles suelen ir al trabajo en metro.","Los españoles solen ir al trabajo en metro.","suelen, правильна орфографія"],
+["«Тут не можна паркуватися»","Aquí no se puede aparcar.","Aquí no se puede aparcarse.","se puede + infinitivo, без зайвого se"],
+["«Я зазвичай запізнююся на автобус»","Suelo perder el autobús.","Suelo pierdo el autobús.","soler + infinitivo, не дієвідмінена форма!"],
+["«Метро використовується для швидкого пересування»","El metro se usa para moverse rápido.","El metro se usa para mover rápido.","moverse reflexivo!"],
+["«Треба компостувати квиток перед посадкою»","Hay que validar el billete antes de subir.","Hay que valida el billete antes de subir.","hay que + infinitivo"],
+["«У сільській місцевості майже всі мають машину»","En zonas rurales, casi todos tienen coche.","En zonas rurales, casi todos tiene coche.","tienen, множина"],
+["«Автобуси зупиняються, лише якщо підняти руку»","Los autobuses paran solo si levantas la mano.","Los autobuses paran solo si levanta la mano tú mismo.","tú → levantas"],
+["«Я щоранку сідаю на автобус»","Cojo el autobús cada mañana.","Tomo el autobús cada mañana solo raramente.","з культ. нотаток, coger"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки", lv:3, q:[
+["❌ Se usa para ir trabajo → ✅ …","Se usa para ir al trabajo.","Se usa para ir el trabajo.","бракує al!"],
+["❌ Suelen van al trabajo en metro → ✅ …","Suelen ir al trabajo en metro.","Suelen ir al trabajo en el metro ya.","infinitivo після soler!"],
+["❌ Uso metro para voy al centro → ✅ …","Uso el metro para ir al centro.","Uso el metro para voy al centro ya.","infinitivo після para, і артикль el!"],
+["❌ El TRAM se soler usar para ir a Benidorm → ✅ …","El TRAM se usa para ir a Benidorm.","El TRAM soler se usa para ir a Benidorm.","«se soler» не існує!"],
+["❌ Los autobuses se puede tomar → ✅ …","Los autobuses se pueden tomar.","Los autobuses se puede tomars.","autobuses — множина!"],
+["❌ Suelo cojo el metro cada día → ✅ …","Suelo coger el metro cada día.","Suelo cogiendo el metro cada día.","infinitivo, не дієвідмінена форма!"],
+["❌ Se puede aparcarse aquí → ✅ …","Se puede aparcar aquí.","Se puede aparcando aquí.","aparcar вже достатньо, без зайвого se"],
+["❌ El metro se usan para moverse → ✅ …","El metro se usa para moverse.","El metro se use para moverse.","metro — однина!"],
+["❌ Sueles a coger el autobús → ✅ …","Sueles coger el autobús.","Sueles de coger el autobús.","без зайвого прийменника перед infinitivo!"],
+["❌ Se puede viaja en tren → ✅ …","Se puede viajar en tren.","Se puede viajado en tren.","infinitivo після poder!"]
+]},
+{t:"Культура: coger, zonas rurales, підняти руку", lv:3, q:[
+["Слово «coger» (брати транспорт) в Іспанії — це…","абсолютно нормальне слово","табуйоване слово","з культ. нотаток"],
+["«Cojo el autobús cada mañana» означає…","Я сідаю на автобус щоранку","Я ловлю автобус, тікаючи","з культ. нотаток, буквальний переклад coger"],
+["У деяких країнах Латинської Америки «coger» має інше, вульгарне значення — тому…","в Іспанії це нормально, але за кордоном варто бути обережним","слово ніде не можна вживати","культурний нюанс (натяк з нотаток)"],
+["У сільській місцевості (zonas rurales) громадський транспорт…","обмежений (escaso)","дуже розвинений","з культ. нотаток"],
+["Тому в селах майже всі мають…","власну машину","лише велосипеди","з культ. нотаток"],
+["Автобуси в Іспанії часто зупиняються, лише якщо…","пасажир підніме руку","водій сам вирішить зупинитися будь-де","з культ. нотаток, важлива практична порада"],
+["Якщо не підняти руку, водій може…","просто проїхати повз","обов'язково зупинитися","практичний наслідок"],
+["Іспанці зазвичай вітаються з водієм фразами…","buenos días / gracias","мовчки заходять","з культ. нотаток"],
+["Ця звичка вітання — приклад загальної іспанської культури…","ввічливості й соціальності (як в уроці 24 про роботу)","формальної дистанції","звʼязок тем"],
+["Підсумок культурних нотаток уроку 27:","практичні деталі (підняти руку, coger, ввічливість) важливі для реального користування транспортом","усе це неважливо на практиці","головний висновок"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«У Барселоні можна їздити метро всюди»","En Barcelona se puede viajar en metro a todas partes.","En Barcelona se puede viajando en metro a todas partes.","se puede + infinitivo"],
+["«Потяг AVE використовують для швидких подорожей»","El AVE se usa para viajar rápido.","El AVE se usan para viajar rápido.","AVE — однина"],
+["«Іспанці зазвичай п'ють каву вранці»","Los españoles suelen tomar café por la mañana.","Los españoles suele tomar café por la mañana.","suelen, множина"],
+["«Автобуси не можна ловити без піднятої руки»","No se pueden coger los autobuses sin levantar la mano.","No se puede coger los autobuses sin levantar la mano.","autobuses — множина"],
+["«Я зазвичай спізнююся на роботу»","Suelo llegar tarde al trabajo.","Suelo llego tarde al trabajo.","infinitivo після soler"],
+["«Метро використовується для уникнення трафіку»","El metro se usa para evitar el tráfico.","El metro se usa por evitar el tráfico.","se usa PARA"],
+["«Треба поповнити транспортну картку»","Hay que recargar la tarjeta.","Hay que recarga la tarjeta.","hay que + infinitivo"],
+["«У сільській місцевості майже всі мають машину»","En zonas rurales, casi todos tienen coche.","En zonas rurales, casi todo tiene coche.","todos, множина"],
+["«Не забудь компостувати квиток!»","¡No olvides validar el billete!","¡No olvides valida el billete!","infinitivo після olvides"],
+["«Тут зазвичай багато туристів влітку»","Aquí suele haber muchos turistas en verano.","Aquí suele hay muchos turistas en verano.","haber infinitivo після suele"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«Se puede viajar en tren» — …","правильно ✓","помилка","✓"],
+["«Se puede viaja en tren» — …","помилка (viajar, infinitivo)","правильно","infinitivo після poder"],
+["«El metro se usa para moverse rápido» — …","правильно ✓","помилка","✓"],
+["«El metro se usan para moverse rápido» — …","помилка (se usa, однина)","правильно","metro — однина"],
+["«Suelen coger el tren» — …","правильно ✓","помилка","✓"],
+["«Suelen cogen el tren» — …","помилка (coger, infinitivo)","правильно","infinitivo після soler"],
+["«Los autobuses se pueden tomar aquí» — …","правильно ✓","помилка","✓"],
+["«Los autobuses se puede tomar aquí» — …","помилка (se pueden, множина)","правильно","autobuses — множина"],
+["«Cojo el autobús cada mañana» — …","правильно ✓","помилка","✓"],
+["«Cojo el autobús cada mañana en coche» — …","помилка (суперечність: автобус чи машина?)","правильно","логічна суперечність"]
+]},
+{t:"SE PUEDE vs SE USA PARA vs SOLER: нюанси", lv:3, q:[
+["«En este parque se puede andar en bici» — фокус на…","дозволі/можливості","типовій звичці","se puede"],
+["«La bici se usa para hacer ejercicio y moverse» — фокус на…","призначенні (для чого потрібен велосипед)","дозволі кататися","se usa para"],
+["«Los niños suelen ir en bici al colegio» — фокус на…","звичній поведінці дітей","дозволі","soler"],
+["Якщо питання «¿Está permitido?» (чи дозволено?) — очікувана відповідь з…","se puede","soler","логіка можливості"],
+["Якщо питання «¿Para qué sirve esto?» (для чого це?) — очікувана відповідь з…","se usa para","se puede","логіка призначення"],
+["Якщо питання «¿Qué es normal/típico aquí?» (що тут типово?) — очікувана відповідь з…","soler","se usa para","логіка звички"],
+["Можна поєднати всі три в одному описі: «Aquí se puede viajar en tranvía (можливість), que se usa para llegar rápido (призначення), y la gente suele cogerlo cada día (звичка)» — це приклад…","повного, багатогранного опису","граматичної помилки","стилістична майстерність"],
+["Часта плутанина: використовувати soler замість se puede, коли йдеться про…","дозвіл, а не звичку","справжню звичку","типова помилка"],
+["Інша плутанина: використовувати se usa para замість soler, коли йдеться про…","поведінку людей, а не призначення предмета","призначення предмета","типова помилка"],
+["Підсумок: три конструкції відповідають на три різні питання —","можливість? призначення? звичка?","хто? що? де?","фінальне узагальнення уроку"]
+]},
+{t:"Побудуй речення логічно", lv:3, q:[
+["У цьому місті можна їздити трамваєм скрізь →","En esta ciudad se puede viajar en tranvía a todas partes.","En esta ciudad se puede viaja en tranvía a todas partes.","infinitivo"],
+["Метро використовують, щоб уникнути заторів →","El metro se usa para evitar los atascos.","El metro se usan para evitar los atascos.","однина"],
+["Іспанці зазвичай обідають о другій →","Los españoles suelen almorzar a las dos.","Los españoles suele almorzar a las dos.","множина"],
+["Не можна паркуватися перед лікарнею →","No se puede aparcar delante del hospital.","No se puede aparcarse delante del hospital.","без зайвого se"],
+["Велосипед використовують для коротких поїздок →","La bicicleta se usa para trayectos cortos.","La bicicleta se usan para trayectos cortos.","однина"],
+["Я зазвичай приходжу на роботу вчасно →","Suelo llegar puntual al trabajo.","Suelo llego puntual al trabajo.","infinitivo"],
+["Тут потрібно компостувати квиток перед посадкою →","Aquí hay que validar el billete antes de subir.","Aquí hay que valida el billete antes de subir.","infinitivo"],
+["Автобуси зазвичай запізнюються в години пік →","Los autobuses suelen llegar tarde en hora punta.","Los autobuses suele llegar tarde en hora punta.","множина"],
+["Можна дістатися аеропорту на потягу →","Se puede llegar al aeropuerto en tren.","Se puede llega al aeropuerto en tren.","infinitivo"],
+["Люди похилого віку зазвичай пересуваються повільніше →","Las personas mayores suelen moverse más despacio.","Las personas mayores suele moverse más despacio.","множина"]
+]},
+{t:"Alicante y Benidorm: культура й географія", lv:3, q:[
+["Alicante була заснована…","іберами, пізніше завойована римлянами","лише римлянами","з тексту"],
+["Назва «Alicante» походить з…","арабської мови (Al-Laqant)","латинської мови","з тексту"],
+["El TRAM de Alicante описується як…","один із найзручніших і найекологічніших видів транспорту Іспанії","найповільніший транспорт країни","з тексту"],
+["Benidorm взимку наповнюється…","пенсіонерами з півночі Європи","студентами з Азії","з тексту"],
+["На відміну від типових курортів, Benidorm функціонує…","цілий рік","лише влітку","з тексту"],
+["Жителі Аліканте у вихідні, попри збільшення трафіку,…","залишаються спокійними («toman las cosas con calma»)","дуже нервуються","з тексту"],
+["«El clima invita a la paciencia» — переклад…","клімат сприяє терпінню","клімат викликає роздратування","з тексту"],
+["Пенсіонери в Benidorm зазвичай пересуваються…","на велосипеді або трамваї","лише пішки","з тексту"],
+["Головна фраза, що підсумовує враження від подорожі Costa Blanca:","«Es fácil, barato y muy agradable»","«Es complicado y caro»","фінал тексту"],
+["Текст показує, що транспорт в Іспанії тісно повʼязаний з…","культурою, історією і способом життя регіону","лише технічними деталями","загальний висновок уроку"]
+]},
+{t:"Se puede/se usa para/soler: контекст оголошень", lv:3, q:[
+["Вивіска на станції метро: «Se prohíbe comer y beber» — тип конструкції:","impersonal se (заборона, урок 25)","soler","повторення уроку 25"],
+["Оголошення в путівнику: «En esta ciudad se puede viajar con una sola tarjeta» — тип:","se puede (можливість)","soler","з контексту путівника"],
+["Опис у брошурі: «El funicular se usa para subir al castillo» — тип:","se usa para (призначення)","se puede","з контексту брошури"],
+["Стаття про звички: «Los madrileños suelen usar el metro a diario» — тип:","soler (звичка)","se usa para","з контексту статті"],
+["Розрізнення цих трьох типів корисне при читанні…","путівників, оголошень і статей про транспорт","лише художньої літератури","практична мета"],
+["Путівник для туристів частіше використовує…","se puede (що можливо зробити туристу)","soler (звички місцевих)","практичне спостереження"],
+["Стаття про спосіб життя частіше використовує…","soler (типова поведінка місцевих)","se usa para","практичне спостереження"],
+["Технічний опис транспортного засобу частіше використовує…","se usa para (призначення)","se puede","практичне спостереження"],
+["Уміння розпізнавати ці конструкції в реальних текстах — ознака…","впевненого розуміння A2/B1 рівня","початкового рівня","рівень складності"],
+["Підсумок: контекст тексту (путівник/оголошення/стаття) підказує, яка з трьох конструкцій…","найімовірніше буде вжита","завжди однакова","фінальний висновок"]
+]},
+{t:"«Cómo me muevo por mi ciudad» (домашка)", lv:3, q:[
+["En mi ciudad, ___ (poder) moverse fácilmente en autobús.","se puede","se puedo","se puede, з домашки"],
+["El metro ___ (usar) para llegar rápido al centro.","se usa","se uso","se usa para, з домашки"],
+["Yo ___ (soler) ir al trabajo caminando.","suelo","suelto","soler, з домашки"],
+["Для домашки потрібно написати текст на…","8–10 речень","1 речення","з підручника"],
+["Тема тексту домашки:","«Cómo me muevo por mi ciudad»","«Mi trabajo ideal»","з підручника"],
+["Друге завдання — записати коротке аудіо на тему…","«Qué transporte prefiero y por qué»","«Mi comida favorita»","з підручника"],
+["Цитата для роздумів: «Viajar no es solo moverse, es conocer cómo vive ___».","la gente","el tráfico","з підручника"],
+["У тексті домашки варто використати мінімум одну конструкцію з…","se puede, se usa para, soler","лише дієслово ir","мета вправи"],
+["Приклад корисної фрази: «___ coger el autobús cada mañana».","Suelo","Suelto","soler"],
+["Мета домашки уроку 27 — практика…","опису транспорту рідного міста новою граматикою","минулого доконаного часу","підсумок"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["Se puede viajar en metro — конструкція:","можливість","звичка","se puede"],
+["El metro se usa para moverse rápido — конструкція:","призначення","можливість","se usa para"],
+["Los españoles suelen coger el tren — конструкція:","звичка","призначення","soler"],
+["❌ Suelen van al trabajo → ✅ …","Suelen ir al trabajo.","обидва варіанти правильні","infinitivo після soler"],
+["el patinete eléctrico = …","електросамокат","велосипед","словник"],
+["coger el autobús = …","сідати на автобус","продавати автобус","базове, культурно нормальне слово"],
+["В Іспанії автобуси зупиняються, лише якщо…","підняти руку","почекати мовчки","з культ. нотаток"],
+["El TRAM de Alicante — приклад…","зручного й екологічного транспорту","найдорожчого транспорту Іспанії","з тексту"],
+["hay que validar el billete — переклад…","треба компостувати квиток","квиток не потрібен","з тексту"],
+["Урок 27 готово! Espero que ___ (poder) viajar por España pronto. 🚋","puedas","puedes","subjuntivo після espero que"]
+]}
+
+];
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "EL TRANSPORTE: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 27 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

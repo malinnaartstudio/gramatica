@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 9 · Hablar de experiencias pasadas · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 9 · @malinnaartstudio</div>
+    <h1 id="htitle">EXPERIENCIAS: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 9 · Hablar de experiencias pasadas.</b>
+      30 вправ по 10 питань: perfecto vs indefinido (hoy/ayer, esta semana/la semana pasada),
+      alguna vez, nunca, ya, todavía no, присвійні (mi, tu, su, nuestro…), мови Іспанії. Від ★ до ★★★. ¡Has aprendido mucho! 🗣️
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · perfecto й посесиви</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · вибір часу й текст</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й помилки</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 9</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Perfecto: haber + participio", lv:1, q:[
+["Perfecto = ___ + participio","haber (he, has, ha…)","estar","he hablado"],
+["yo ___ hablado","he","ha","he"],
+["tú ___ comido","has","ha","has"],
+["ella ___ vivido","ha","he","ha"],
+["nosotros ___ viajado","hemos","habemos","hemos!"],
+["vosotros ___ leído","habéis","habeis","з наголосом"],
+["ellos ___ estado","han","hemos","han"],
+["hablar → participio: …","hablado","hablando","-ado"],
+["comer → …","comido","comiendo","-ido"],
+["vivir → …","vivido","vivado","-ido"]
+]},
+{t:"Неправильні participios", lv:1, q:[
+["hacer → …","hecho","hacido","hecho!"],
+["escribir → …","escrito","escribido","з тексту: han escrito"],
+["ver → …","visto","veído","visto"],
+["decir → …","dicho","decido","decido = я вирішую!"],
+["poner → …","puesto","ponido","puesto"],
+["volver → …","vuelto","volvido","vuelto"],
+["abrir → …","abierto","abrido","abierto"],
+["romper → …","roto","rompido","roto 💔"],
+["morir → …","muerto","morido","muerto"],
+["leer → …","leído","leido","з тильдою!"]
+]},
+{t:"Маркери perfecto", lv:1, q:[
+["hoy = …","сьогодні","вчора","→ perfecto"],
+["esta mañana = …","сьогодні вранці","вчора вранці","esta!"],
+["esta semana = …","цього тижня","минулого тижня","→ perfecto"],
+["este año = …","цього року","того року","→ perfecto"],
+["últimamente = …","останнім часом","востаннє","→ perfecto"],
+["alguna vez = …","колись (у житті)","один раз рівно","досвід"],
+["nunca = …","ніколи","назавжди","досвід"],
+["ya = …","вже","ще","готово ✔"],
+["todavía no = …","ще ні","вже так","в очікуванні"],
+["este/esta у маркері → час…","perfecto","indefinido","порада з книги!"]
+]},
+{t:"Маркери indefinido: повторення", lv:1, q:[
+["ayer → …","indefinido","perfecto","вчора"],
+["anoche → …","indefinido","perfecto","вчора ввечері"],
+["la semana pasada → …","indefinido","perfecto","pasada!"],
+["el año pasado → …","indefinido","perfecto","pasado!"],
+["en 2010 → …","indefinido","perfecto","en + рік"],
+["hace dos días → …","indefinido","perfecto","hace…"],
+["anteayer = …","позавчора","завтра","→ indefinido"],
+["aquella vez = …","того разу","цього разу","aquella"],
+["el otro día = …","днями","сьогодні","→ indefinido"],
+["pasado/pasada у маркері → …","indefinido","perfecto","порада з книги!"]
+]},
+{t:"Perfecto чи indefinido? Вибір за маркером", lv:1, q:[
+["Hoy ___ en una cafetería.","he desayunado","desayuné","з книги"],
+["Ayer ___ en una cafetería.","desayuné","he desayunado","з книги"],
+["Esta semana ___ dos partidos de tenis.","he jugado","jugué","з книги"],
+["La semana pasada ___ dos partidos.","jugué","he jugado","з книги"],
+["Este año ___ poco.","he viajado","viajé","з книги"],
+["El año pasado ___ mucho.","viajé","he viajado","з книги"],
+["este/esta → …","perfecto","indefinido","правило"],
+["pasado/pasada → …","indefinido","perfecto","правило"],
+["en 2020 → …","indefinido","perfecto","рік закрито"],
+["hoy → …","perfecto","indefinido","день триває"]
+]},
+{t:"Perfecto: повні речення", lv:1, q:[
+["Hoy he ___ en una cafetería. (поснідала)","desayunado","desayunada","participio незмінний!"],
+["¿Has ___ la película? (бачив)","visto","veído","ver → visto"],
+["Hemos ___ mucho este año.","trabajado","trabajados","незмінний"],
+["Han ___ libros en catalán. (написали)","escrito","escribido","з тексту!"],
+["He ___ un artículo. (прочитав)","leído","leido","тильда!"],
+["Todavía no he ___. (не поїв)","comido","comida","незмінний"],
+["¿Qué has ___ hoy? (зробив)","hecho","hacido","hecho"],
+["Ya hemos ___ el trabajo. (закінчили)","terminado","terminando","-ado"],
+["Han ___ películas. (зняли)","hecho","hechado","hacer → hecho"],
+["Nunca he ___ en Galicia. (був)","estado","sido","estar → estado"]
+]},
+{t:"Присвійні: mi, tu, su", lv:1, q:[
+["___ casa es grande. (моя)","Mi","Mí","без наголосу перед іменником"],
+["___ amigos son simpáticos. (мої)","Mis","Mi","мн.!"],
+["¿Dónde está ___ coche? (твій)","tu","tú","tú з наголосом = ти!"],
+["___ casa está cerca del centro. (його)","Su","Sus","одн."],
+["___ libros (її)","sus","su","мн."],
+["mi/tu/su стоять…","перед іменником","після іменника","з книги"],
+["su може означати…","його, її, їхній, Ваш","лише його","багатозначне!"],
+["___ hermana vive en Madrid. (моя)","Mi","Mía","перед іменником — mi"],
+["tu vs tú:","твій vs ти","однакові","наголос!"],
+["___ padres (твої)","tus","tu","мн."]
+]},
+{t:"Присвійні: nuestro, vuestro", lv:1, q:[
+["___ profesora es muy buena. (наша)","Nuestra","Nuestro","з книги: жін."],
+["___ profesor explica muy bien. (наш)","Nuestro","Nuestra","чол."],
+["___ libros están en la mesa. (ваші)","Vuestros","Vuestras","чол. мн."],
+["___ casa (ваша)","Vuestra","Vuestro","жін."],
+["nuestro узгоджується з…","іменником","особою власника","з книги!"],
+["___ hijos (наші)","Nuestros","Nuestras","чол. мн."],
+["Рід мають лише…","nuestro/a, vuestro/a","mi, tu, su","особливість"],
+["___ ciudad es bonita. (наша)","Nuestra","Nuestro","жін."],
+["vosotros → «ваш» = …","vuestro","suyo","vuestro"],
+["nosotras + madre → …","nuestra madre","nuestro madre","жін."]
+]},
+{t:"Маркери: іспанська → українська", lv:1, q:[
+["últimamente = …","останнім часом","в останню чергу","нещодавно"],
+["alguna vez = …","колись","кожного разу","досвід"],
+["ya = …","вже","ще","✔"],
+["todavía no = …","ще ні","ніколи","⏳"],
+["esta tarde = …","сьогодні вдень","вчора вдень","esta"],
+["aquella vez = …","того разу","наступного разу","aquella"],
+["hace tres semanas = …","три тижні тому","за три тижні","hace"],
+["anteayer = …","позавчора","передучора ввечері","ante+ayer"],
+["el otro día = …","днями","іншого дня в майбутньому","розмовне"],
+["este mes = …","цього місяця","минулого місяця","→ perfecto"]
+]},
+{t:"ALGUNA VEZ, NUNCA, YA, TODAVÍA NO", lv:1, q:[
+["¿Has estado ___ en España? (колись)","alguna vez","nunca","питання про досвід"],
+["___ he probado la paella. (ніколи)","Nunca","Ya","🥘"],
+["¿Ya has terminado? — Sí, ___ he terminado.","ya","todavía no","вже"],
+["¿Ya has comido? — No, ___.","todavía no","nunca","ще ні"],
+["nunca + perfecto = …","ніколи за життя","вчора","досвід"],
+["ya вживається у…","ствердженнях і питаннях","лише запереченнях","¿ya…? / ya…"],
+["todavía no = …","ще ні","вже давно","в процесі"],
+["Питання про життєвий досвід → час…","perfecto","indefinido","alguna vez"],
+["¿___ vez has visto la nieve?","Alguna","Ninguna","колись"],
+["Nunca ___ estado en Galicia. (я)","he","ha","з вправи книги"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Вправа 1 з книги", lv:2, q:[
+["Hoy yo ___ (visitar) el museo Reina Sofía.","he visitado","visité","з книги"],
+["La semana pasada nosotros ___ (ir) a la playa.","fuimos","hemos ido","з книги"],
+["Este año tú ___ (leer) tres libros.","has leído","leíste","з книги"],
+["Ayer ellos ___ (cenar) en un restaurante japonés.","cenaron","han cenado","з книги"],
+["Nunca ___ (estar, yo) en Galicia.","he estado","estuve","з книги"],
+["Esta mañana ___ (desayunar, yo) temprano.","he desayunado","desayuné","esta"],
+["En 2010 ___ (vivir, yo) en Kyiv.","viví","he vivido","рік"],
+["¿Alguna vez ___ (probar, tú) el gazpacho?","has probado","probaste","досвід"],
+["Anoche ___ (ver, nosotros) una película.","vimos","hemos visto","anoche"],
+["Últimamente ella ___ (trabajar) mucho.","ha trabajado","trabajó","останнім часом"]
+]},
+{t:"Вправа 2 з книги: посесиви", lv:2, q:[
+["(yo) ___ amigos son muy simpáticos.","Mis","Mi","з книги"],
+["(tú) ¿Dónde está ___ coche?","tu","tus","з книги"],
+["(él) ___ casa está cerca del centro.","Su","Sus","з книги"],
+["(nosotros) ___ profesor explica muy bien.","Nuestro","Nuestra","з книги"],
+["(vosotros) ___ libros están en la mesa.","Vuestros","Vuestro","з книги"],
+["(ella) ___ hermano es médico.","Su","Sus","одн."],
+["(ellos) ___ hijos estudian aquí.","Sus","Su","мн."],
+["(yo) ___ familia es grande.","Mi","Mis","одн."],
+["(nosotras) ___ madre es profesora.","Nuestra","Nuestro","жін."],
+["(tú) ___ ideas son geniales.","Tus","Tu","мн."]
+]},
+{t:"Вправа 3 з книги: переклад", lv:2, q:[
+["«Минулого року я поїхала до Італії»","El año pasado fui a Italia.","El año pasado he ido a Italia.","помилка з нотаток!"],
+["«Цього тижня ми багато працювали»","Esta semana hemos trabajado mucho.","Esta semana trabajamos mucho.","esta → perfecto"],
+["«Я ніколи не був у Барселоні»","Nunca he estado en Barcelona.","Nunca estuve en Barcelona.","досвід → perfecto"],
+["«Це наші діти»","Son nuestros hijos.","Son nuestros hijos de nosotros.","без дублювання"],
+["«Моя сестра живе в Мадриді»","Mi hermana vive en Madrid.","Mí hermana vive en Madrid.","mi без наголосу"],
+["«Сьогодні я відвідав музей»","Hoy he visitado el museo.","Hoy visité el museo.","hoy → perfecto"],
+["«Ти колись пробував тапас?»","¿Has probado tapas alguna vez?","¿Probaste tapas alguna vez?","досвід"],
+["«Вчора вони повечеряли пізно»","Ayer cenaron tarde.","Ayer han cenado tarde.","ayer"],
+["«Ваш учитель дуже добрий»","Vuestro profesor es muy bueno.","Vuestros profesor es muy bueno.","одн."],
+["«Її дім великий»","Su casa es grande.","Suya casa es grande.","su + іменник"]
+]},
+{t:"Текст «España y sus lenguas» (1)", lv:2, q:[
+["La lengua oficial de toda España es…","el castellano","el catalán","з тексту"],
+["Desde 1978, la Constitución ha ___ tres lenguas cooficiales.","reconocido","reconociendo","perfecto"],
+["Las lenguas cooficiales son…","catalán, gallego y euskera","francés, inglés y latín","з тексту"],
+["He ___ en un artículo que millones las usan.","leído","leido","тильда!"],
+["Han ___ libros y han hecho películas.","escrito","escribido","escrito!"],
+["El catalán se habla en Cataluña, Baleares y parte de ___.","Valencia","Galicia","з тексту"],
+["El gallego es muy parecido al ___.","portugués","italiano","з тексту"],
+["El euskera se habla en el País Vasco y ___.","Navarra","Andalucía","з тексту"],
+["El euskera ___ del latín.","no viene","viene","особлива мова!"],
+["Los lingüistas no han ___ su origen.","descubierto","descubrido","descubierto!"]
+]},
+{t:"Текст «España y sus lenguas» (2)", lv:2, q:[
+["Hace años ___ San Sebastián. (відвідав)","visité","he visitado","hace años → indefinido"],
+["Escuché frases en euskera: me ___ muy diferentes.","parecieron","parecen","минуле"],
+["En Cataluña muchos niños han ___ en catalán.","estudiado","estudiando","perfecto"],
+["En Galicia la gente ha ___ canciones en gallego.","cantado","cantada","незмінний"],
+["Las familias han ___ el euskera de padres a hijos.","transmitido","transmitiendo","передали"],
+["Durante un tiempo la lengua ___ prohibida.","estuvo","ha estado","закритий період!"],
+["Hoy los españoles han ___ este patrimonio.","recuperado","recuperando","відновили"],
+["patrimonio cultural = …","культурна спадщина","патріотична пісня","спадщина"],
+["«Mi lengua» в Іспанії — це…","не завжди лише кастильська","завжди кастильська","фінал тексту"],
+["V/F: Euskera має те саме походження, що castellano.","Falso","Verdadero","з питань книги"]
+]},
+{t:"Питання до тексту", lv:2, q:[
+["¿Cuántas lenguas cooficiales hay desde 1978?","Tres","Diez","catalán, gallego, euskera"],
+["¿Dónde se habla el catalán?","En Cataluña, Baleares y parte de Valencia","Solo en Madrid","з тексту"],
+["¿A qué lengua se parece el gallego?","Al portugués","Al euskera","сусіди 🇵🇹"],
+["¿Qué es especial en el euskera?","No viene del latín","Es una lengua nueva","загадка"],
+["¿Qué visitó el narrador hace años?","San Sebastián","Sevilla","з тексту"],
+["¿En qué lengua han estudiado niños en Cataluña?","En catalán","En inglés","з питань"],
+["¿Qué pasó con el euskera durante un tiempo?","Estuvo prohibido","Fue obligatorio","історія"],
+["¿Qué han hecho las familias vascas?","Han transmitido el euskera a los hijos","Han olvidado la lengua","передали"],
+["Hoy el patrimonio lingüístico es parte de…","su identidad","un problema","ідентичність"],
+["España es un país…","multilingüe","con una sola lengua","🗣️"]
+]},
+{t:"Perfecto в тексті: знайди інфінітив", lv:2, q:[
+["ha reconocido → …","reconocer","reconocido","визнати"],
+["he leído → …","leer","leír","читати"],
+["han escrito → …","escribir","escritar","писати"],
+["han hecho → …","hacer","hechar","робити"],
+["han creado → …","crear","creer","creer = вірити!"],
+["no han descubierto → …","descubrir","descubrar","відкрити"],
+["han estudiado → …","estudiar","estudir","вчитися"],
+["han transmitido → …","transmitir","transmitar","передавати"],
+["han recuperado → …","recuperar","recupir","відновити"],
+["«Desde 1978… ha reconocido» — чому perfecto?","дія має ефект досі","бо давно було","зв'язок із теперішнім"]
+]},
+{t:"Посесив узгоджується з іменником!", lv:2, q:[
+["Присвійний узгоджується з…","іменником","власником","з книги!"],
+["nosotros + casa → …","nuestra casa","nuestro casa","casa — жін."],
+["él + hermanas → …","sus hermanas","su hermanas","мн."],
+["yo + perros → …","mis perros","mi perros","мн."],
+["vosotras + coche → …","vuestro coche","vuestra coche","coche — чол.!"],
+["ella + padres → …","sus padres","su padres","мн."],
+["Чоловік про свою машину: ___ coche.","mi","mío","перед іменником"],
+["nuestra — бо іменник…","жіночого роду","бо ми жінки","узгодження!"],
+["tu + gafas → …","tus gafas","tu gafas","мн."],
+["usted + maleta → …","su maleta","tu maleta","usted → su"]
+]},
+{t:"Діалоги про досвід", lv:2, q:[
+["— ¿Has estado alguna vez en Madrid? — Sí, ___ dos veces.","he estado","estaba","досвід"],
+["— ¿Has probado el gazpacho? — No, ___.","nunca","ya","ні разу"],
+["— ¿Ya has visto la Sagrada Familia? — Sí, la ___ el año pasado.","vi","he visto","конкретний рік → indefinido!"],
+["— ¿Has viajado mucho ___?","últimamente","antiguamente","perfecto"],
+["— ¿Alguna vez has ___ paella? (готував)","cocinado","cocido","🥘"],
+["«Я вже двічі бачив цей фільм» = ___ esta película dos veces.","He visto","Veo","досвід"],
+["— ¿Has estado en Galicia? — Todavía ___.","no","sí","ще ні"],
+["Питання «¿Has…?» — про…","життєвий досвід","конкретну дату","perfecto"],
+["— ¿Cuándo fuiste? — ___ en 2020.","Fui","He ido","конкретно → indefinido"],
+["Досвід без дати → perfecto; з датою → …","indefinido","perfecto","правило!"]
+]},
+{t:"Змішані речення", lv:2, q:[
+["Hoy me ___ temprano, pero ayer me ___ tarde.","he levantado / levanté","levanté / he levantado","hoy vs ayer"],
+["Este mes ___ poco; el mes pasado ___ mucho. (читати, я)","he leído / leí","leí / he leído","este vs pasado"],
+["Nunca ___ sushi, pero ayer ___ ramen. (я)","he probado / comí","probé / he comido","досвід vs вчора"],
+["Esta semana ___ dos exámenes. (мав)","he tenido","tuve","esta"],
+["La semana pasada ___ un examen.","tuve","he tenido","pasada"],
+["¿___ hoy con tu madre? (говорив)","Has hablado","Hablaste","hoy"],
+["¿___ anoche con tu madre?","Hablaste","Has hablado","anoche"],
+["Este año ___ tres libros. (прочитав)","he leído","leí","este"],
+["En 2020 ___ en Barcelona. (жив)","viví","he vivido","рік"],
+["Últimamente ___ mucho frío. (робити — погода)","ha hecho","hizo","останнім часом"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки", lv:3, q:[
+["❌ He ido a Italia el año pasado → ✅ …","Fui a Italia el año pasado.","Iba a Italia el año pasado.","з культ. нотаток!"],
+["❌ Ayer he comido paella → ✅ …","Ayer comí paella.","Ayer comía paella.","ayer → indefinido"],
+["«Su casa» іноді незрозуміло — краще…","la casa de él / de ella","sus casa","з культ. нотаток!"],
+["Досвід за життя: краще…","Nunca he estado en Galicia.","Nunca estaba en Galicia.","perfecto"],
+["❌ Esta semana trabajé mucho → ✅ …","Esta semana he trabajado mucho.","Esta semana trabajaba mucho.","esta!"],
+["❌ Hoy desayuné tarde → ✅ (норма Іспанії)","Hoy he desayunado tarde.","Hoy desayunaba tarde.","hoy → perfecto"],
+["❌ Mí casa → ✅ …","Mi casa","Mis casa","без наголосу"],
+["❌ Nuestro casa → ✅ …","Nuestra casa","Nuestros casa","жін."],
+["❌ He leido → ✅ …","He leído","He lección","тильда на í!"],
+["❌ Han escribido → ✅ …","Han escrito","Han escribiendo","неправильний participio"]
+]},
+{t:"Білінгвізм: культурні нотатки", lv:3, q:[
+["Білінгвізм у багатьох регіонах Іспанії — це…","норма","екзотика","з культ. нотаток"],
+["У Каталонії школярі вчаться…","каталанською і кастильською","лише англійською","з культ. нотаток"],
+["Пісні й фестивалі в Галісії просувають мову як…","символ ідентичності","розвагу для туристів","з культ. нотаток"],
+["castellano — це…","іспанська (кастильська)","мова замків","español = castellano"],
+["Коофіційними мовами користуються…","мільйони людей","кілька сотень","з тексту"],
+["euskera — мова…","басків","галісійців","País Vasco"],
+["gallego близька до…","португальської","баскської","🇵🇹"],
+["Мовне розмаїття — частина…","культурної спадщини","бюрократії","patrimonio"],
+["Порівняти мови України та Іспанії — це…","тема домашки з книги","неможливо","завдання 📝"],
+["«Мова» іспанською:","la lengua / el idioma","la lingua","синоніми"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Сьогодні я поснідала в кафе»","Hoy he desayunado en una cafetería.","Hoy desayuné en una cafetería.","з книги"],
+["«Вчора я снідала в кафе»","Ayer desayuné en una cafetería.","Ayer he desayunado en una cafetería.","з книги"],
+["«Цього року я мало подорожувала»","Este año he viajado poco.","Este año viajé poco.","з книги"],
+["«Минулого року я багато подорожувала»","El año pasado viajé mucho.","El año pasado he viajado mucho.","з книги"],
+["«Наша професорка дуже хороша»","Nuestra profesora es muy buena.","Nuestro profesora es muy buena.","з книги"],
+["«Я ніколи не чув euskera»","Nunca he escuchado euskera.","Nunca escuché euskera.","досвід"],
+["«Ти вже поїв?»","¿Ya has comido?","¿Ya comiste hoy?","ya + perfecto"],
+["«Ще ні»","Todavía no.","Nunca jamás.","ще ні"],
+["«Його будинок біля центру»","Su casa está cerca del centro.","Suyo casa está cerca del centro.","su"],
+["«Колись я був у Севільї»","He estado en Sevilla alguna vez.","Estuve en Sevilla alguna vez hoy.","досвід"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«He ido a Italia el año pasado» — …","помилка (Fui)","правильно","маркер!"],
+["«Hoy he visitado el museo» — …","правильно ✓","помилка","✓"],
+["«Nunca he estado en Galicia» — …","правильно ✓","помилка","✓"],
+["«Ayer he cenado fuera» — …","помилка (cené)","правильно","ayer"],
+["«Mis amigos son simpáticos» — …","правильно ✓","помилка","✓"],
+["«Nuestros profesora» — …","помилка (nuestra)","правильно","узгодження"],
+["«¿Ya has terminado?» — …","правильно ✓","помилка","✓"],
+["«Esta semana fui al gimnasio» — за правилом книги…","краще he ido","ідеально","esta → perfecto"],
+["«Han hecho películas» — …","правильно ✓","помилка","hecho ✓"],
+["«Tú coche es nuevo» — …","помилка (tu)","правильно","без наголосу!"]
+]},
+{t:"Порівняльні пари з книги", lv:3, q:[
+["Esta mañana ___ / Ayer ___ (снідати, я)","he desayunado / desayuné","desayuné / he desayunado","з книги"],
+["Esta semana ___ / La semana pasada ___ (грати, я)","he jugado / jugué","jugué / he jugado","з книги"],
+["Este año ___ / El año pasado ___ (подорожувати, я)","he viajado / viajé","viajé / he viajado","з книги"],
+["Este mes he leído dos libros. El mes pasado ___ tres.","leí","he leído","pasado"],
+["Hoy he trabajado mucho. Anteayer ___ poco.","trabajé","he trabajado","anteayer"],
+["Пара: esta semana ↔ …","la semana pasada","este fin","пара часів"],
+["Пара: hoy ↔ …","ayer","mañana","минуле"],
+["Пара: este año ↔ …","el año pasado","aquel siglo","пара"],
+["Той самий факт, різні маркери → …","різні часи","однаковий час","логіка уроку"],
+["Обидва часи описують…","минулі дії","майбутні дії","по-різному"]
+]},
+{t:"NUNCA + perfecto: за все життя", lv:3, q:[
+["Nunca ___ estado en Galicia. (я)","he","ha","з книги"],
+["«Ніколи не їв устриць» = Nunca he ___ ostras.","comido","comida","participio"],
+["Nunca можна ставити…","перед дієсловом (без no)","лише в кінці","Nunca he estado"],
+["«No he estado nunca» — це…","теж правильно","груба помилка","подвійне заперечення ок"],
+["¿Has visto la nieve? — No, nunca la ___.","he visto","veo","досвід"],
+["nunca + perfecto виражає…","відсутність досвіду","звичку","за все життя"],
+["«Я ще ніколи не літав» = Nunca he ___ en avión.","volado","volando","volar → volado"],
+["Nunca hemos ___ euskera. (чули)","oído","oido","з тильдою!"],
+["jamás = …","підсилене nunca","завжди","ніколи-ніколи"],
+["Nunca he estado en Barcelona, pero ___ ir.","quiero","quise","мрія 😊"]
+]},
+{t:"SU — чий саме?", lv:3, q:[
+["su casa може означати дім…","його, її, їхній або Ваш","лише його","з культ. нотаток!"],
+["Щоб уточнити, кажемо…","la casa de él / de ella","su casa de su","з культ. нотаток"],
+["«Її книга» точно = …","el libro de ella","su libro de ella misma","уточнення"],
+["Ana y Luis: ___ hijos. (їхні)","sus","suyos","перед іменником"],
+["usted: «___ pasaporte, por favor».","su","tu","формально"],
+["su/sus вживається для…","él, ella, ellos, ellas, usted(es)","лише él","універсальне"],
+["Двозначність su вирішує…","контекст або de él/ella","гучність голосу","уточнюй!"],
+["«Це машина Марії» краще: …","Es el coche de María.","Es su coche de María.","de + ім'я"],
+["sus gafas = …","його/її/їхні окуляри","наші окуляри","su ≠ nuestro"],
+["«¿Es su casa?» до незнайомця означає…","«це Ваш дім?»","«це їхня хата?» лише","usted!"]
+]},
+{t:"Мови Іспанії: факти", lv:3, q:[
+["Офіційна мова всієї Іспанії:","el castellano","el catalán","з тексту"],
+["Каталанською говорять у…","Каталонії, на Балеарах, частині Валенсії","лише в Мадриді","з тексту"],
+["Галісійська схожа на…","португальську","баскську","🇵🇹"],
+["Походження euskera…","невідоме — загадка","з латини","лінгвісти не знають!"],
+["Коофіційні мови визнано Конституцією у…","1978","2000","з тексту"],
+["San Sebastián — це…","País Vasco","Cataluña","північ 🌊"],
+["cooficial означає…","офіційна поряд з кастильською","неофіційна","co-"],
+["У Каталонії діти вчили предмети…","каталанською","лише кастильською","з тексту"],
+["Euskera певний час була…","забороненою","обов'язковою всюди","з тексту"],
+["Мовна карта Іспанії — це…","багатство","непорозуміння","🌈"]
+]},
+{t:"Розкажи про свій досвід", lv:3, q:[
+["Esta semana ___ mucho español. (вчив)","he estudiado","estudié","esta"],
+["El sábado ___ con amigos. (вийшов)","salí","he salido","конкретний день"],
+["Alguna vez ___ comida española. (пробував)","he probado","probé","досвід"],
+["Hoy ___ tres ejercicios. (зробив)","he hecho","hice","hoy"],
+["En 2019 ___ mi primer viaje. (зробив)","hice","he hecho","рік"],
+["Todavía no ___ el nivel B1. (почав)","he empezado","empecé","todavía no"],
+["Ya ___ ocho lecciones. (закінчив)","he terminado","terminé","ya"],
+["Nunca ___ en Argentina. (був)","he estado","estuve","досвід"],
+["El otro día ___ un podcast en español. (послухав)","escuché","he escuchado","el otro día"],
+["Розповідь про досвід міксує…","perfecto та indefinido","лише один час","домашка з книги!"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["Hoy ___ temprano. (поснідав)","he desayunado","desayuné","hoy"],
+["Ayer ___ tarde. (поснідав)","desayuné","he desayunado","ayer"],
+["Nunca ___ en Galicia. (я був)","he estado","estuve","досвід"],
+["___ amigos son simpáticos. (мої)","Mis","Mi","мн."],
+["___ profesora es buena. (наша)","Nuestra","Nuestro","жін."],
+["hacer → participio:","hecho","hacido","неправильний"],
+["❌ He ido el año pasado → ✅ …","Fui el año pasado.","Voy el año pasado.","маркер"],
+["Мови Іспанії: castellano, catalán, gallego і…","euskera","francés","4 мови"],
+["«su casa» краще уточнити як…","la casa de él / de ella","la su casa","ясність"],
+["Урок 9 готово! ¡___ aprendido mucho! (ти)","Has","He","🎉"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "EXPERIENCIAS: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 9 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 12 · Historia de España · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 12 · @malinnaartstudio</div>
+    <h1 id="htitle">HISTORIA: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 12 · Historia de España.</b>
+      30 вправ по 10 питань: indefinido vs perfecto в історії, 1492 і «рік-магія»,
+      Реконкіста, Clara Campoamor, Franco і Транзиція, арабська спадщина, фрази для розповіді. Від ★ до ★★★. ¡Gracias a ti, tu español crece! 🏛️
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · дати, словник, часи</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · текст і вправи книги</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й помилки</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 12</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Дієслова історії", lv:1, q:[
+["nacer = …","народитися","нація","👶"],
+["morir = …","померти","мріяти","☠️"],
+["fundar = …","заснувати","фондувати гроші","🏛️"],
+["construir = …","будувати","конструювати думки","🏗️"],
+["descubrir = …","відкрити","прикрити","🌎"],
+["conquistar = …","завоювати","приготувати","⚔️"],
+["aprobar = …","ухвалити","спробувати","≠ probar!"],
+["luchar = …","боротися","світити","✊"],
+["gobernar = …","правити","говорити","👑"],
+["exiliarse = …","піти у вигнання","поїхати на екскурсію","зі словника"]
+]},
+{t:"Словник історії (1)", lv:1, q:[
+["la Reconquista = …","відвоювання Іспанії в мусульман","повторне завоювання Америки","зі словника"],
+["los Reyes Católicos = …","Ізабель та Фернандо","усі королі Іспанії","👑👑"],
+["el Imperio español = …","Іспанська імперія","іспанський імператив","XVI–XVII ст."],
+["la Segunda República = …","Друга Республіка","друга республіка Франції","1931"],
+["la Guerra Civil = …","Громадянська війна","цивілізована війна","1936–1939"],
+["el siglo = …","століття","цикл","el siglo XV"],
+["la época = …","епоха","опера","часи"],
+["la corona = …","корона","колона","👑"],
+["la convivencia = …","співіснування","вечірка","зі словника"],
+["el patrimonio cultural = …","культурна спадщина","культурний шлюб","matrimonio — це шлюб!"]
+]},
+{t:"Словник історії (2)", lv:1, q:[
+["la dictadura = …","диктатура","диктант","без виборів"],
+["el dictador = …","диктатор","диктор","Franco"],
+["la Transición = …","перехід до демократії","транзит через країну","після 1975"],
+["la Constitución = …","конституція","конструкція","1978"],
+["la monarquía parlamentaria = …","парламентська монархія","монархія без парламенту","сучасна Іспанія"],
+["la libertad = …","свобода","бібліотека","🕊️"],
+["los derechos = …","права","праворуч усі","derecho"],
+["las elecciones = …","вибори","елекція лампочок","🗳️"],
+["la igualdad = …","рівність","легальність","з вправи книги"],
+["la huella = …","слід","воля","dejar huella"]
+]},
+{t:"Indefinido — час історії", lv:1, q:[
+["Дати й історичні події → час…","indefinido","perfecto","з книги"],
+["En 1492 ___ un año clave.","ocurrió","ha ocurrido","рік!"],
+["Біографії померлих → …","indefinido","perfecto","з книги"],
+["En 1931 ___ la Segunda República.","empezó","ha empezado","з книги"],
+["Історія — час «acciones ___».","cerradas","abiertas","закриті дії"],
+["Franco ___ casi 40 años.","gobernó","ha gobernado","з книги"],
+["Los romanos ___ acueductos.","construyeron","han construido","давно"],
+["La Guerra Civil ___ en 1936.","estalló","ha estallado","дата"],
+["hace mucho tiempo → …","indefinido","perfecto","маркер"],
+["en 1936 → …","indefinido","perfecto","рік"]
+]},
+{t:"Приклади з книги", lv:1, q:[
+["Los Reyes Católicos ___ España en 1492.","unificaron","unificaban","з книги"],
+["Franco ___ el país durante casi 40 años.","gobernó","gobernaba","з книги"],
+["En 1978 se ___ la nueva Constitución.","aprobó","aprobaba","з книги"],
+["unificar = …","об'єднати","уніфікувати шрифт","одна корона"],
+["gobernar = …","правити","говорити","влада"],
+["durante casi 40 años = …","протягом майже 40 років","через 40 років","durante"],
+["se aprobó = …","було ухвалено","він сам собі схвалив","безособове"],
+["un año clave = …","ключовий рік","рік ключів","clave 🔑"],
+["bajo una sola corona = …","під однією короною","під однією колоною","corona"],
+["la llamada «Reconquista» = …","так звана Реконкіста","дзвінок Реконкісти","llamada!"]
+]},
+{t:"Perfecto — зв'язок із сьогодні", lv:1, q:[
+["Hoy ___ sobre la historia de España.","hemos aprendido","aprendimos","з книги: hoy"],
+["Muchas mujeres ___ por sus derechos. (і боротьба триває)","han luchado","lucharon","з книги"],
+["España ___ mucho desde la dictadura.","ha cambiado","cambió","з книги: desde"],
+["desde entonces = …","відтоді","до того","зв'язок із сьогодні"],
+["España ha crecido como país moderno — чому perfecto?","результат важливий досі","бо дуже давно","з тексту"],
+["Siempre ha sabido ___. (переосмислювати себе)","reinventarse","reinventarse ayer","з тексту"],
+["Ha pasado por guerras e imperios — час…","perfecto","indefinido","підсумок до сьогодні"],
+["hasta ahora → час…","perfecto","indefinido","маркер"],
+["Подія важлива сьогодні → …","perfecto","indefinido","з книги"],
+["desde la dictadura = …","з часів диктатури","під диктатурою","desde"]
+]},
+{t:"Помер чи живий? Обери час", lv:1, q:[
+["Cervantes (†1616): ___ Don Quijote.","escribió","ha escrito","помер → indefinido"],
+["Penélope Cruz (жива): ___ con Almodóvar.","ha trabajado","trabajó","з книги: жива → perfecto"],
+["Померла особа → час…","indefinido","perfecto","з книги!"],
+["Жива особа (кар'єра триває) → …","perfecto","indefinido","з книги"],
+["Velázquez ___ retratos famosos.","pintó","ha pintado","помер"],
+["Rosalía ___ muchos premios. (жива)","ha ganado","ganó","🎤"],
+["Colón ___ a América en 1492.","viajó","ha viajado","дата + помер"],
+["Мій дідусь (живий) ___ tres idiomas.","ha aprendido","aprendió","живий 😊"],
+["Clara Campoamor ___ el voto femenino.","consiguió","ha conseguido","1933"],
+["Правило «живий/померлий» — для…","біографій","прогнозів погоди","з книги"]
+]},
+{t:"Ключові дати", lv:1, q:[
+["1492 — рік…","кінця Реконкісти й відкриття Америки","початку Громадянської війни","рік-магія"],
+["1931 — …","початок Другої Республіки","кінець диктатури","з тексту"],
+["1933 — жінки вперше…","проголосували","полетіли в космос","Campoamor"],
+["1936–1939 — …","Громадянська війна","Реконкіста","з тексту"],
+["1975 — …","смерть Франко","відкриття Америки","початок Транзиції"],
+["1978 — …","нова Конституція","початок імперії","з тексту"],
+["Арабське панування тривало майже…","вісім століть","два роки","з тексту"],
+["Siglos XVI–XVII — Іспанія була…","великою імперією","колонією","золота доба"],
+["El siglo XV — це століття…","15-те","16-те","римські цифри!"],
+["Franco правив майже…","40 років","4 роки","з тексту"]
+]},
+{t:"Народи півострова", lv:1, q:[
+["На півострові жили: íberos, celtas, ___…","romanos, visigodos y árabes","vikingos y aztecas","з тексту"],
+["Римляни збудували…","carreteras, ciudades y acueductos","піраміди","з тексту"],
+["Від римлян лишилися…","слова, закони і звичаї","лише руїни","з тексту"],
+["acueducto = …","акведук","аквапарк","💧"],
+["Араби панували на…","великій частині території","лише островах","з тексту"],
+["La Península Ibérica — це…","Іспанія + Португалія","лише Іспанія","півострів"],
+["visigodos = …","вестготи","візантійці","народ"],
+["Після римлян прийшли…","вестготи й араби","ацтеки","хронологія"],
+["celtas = …","кельти","кельнери","🍀"],
+["Historia llena de ___.","contrastes","contratos","контрасти, не контракти!"]
+]},
+{t:"Арабська спадщина", lv:1, q:[
+["Арабське слово в іспанській:","almohada","ventana","подушка"],
+["aceite = …","олія","оцет","арабізм"],
+["ojalá = …","«хоч би ж, дай Боже»","«о, вже»","від «ін шалла»"],
+["La Alhambra знаходиться у…","Granada","Madrid","з тексту"],
+["La Mezquita — у місті…","Córdoba","Barcelona","мечеть"],
+["Скільки арабських слів у іспанській?","понад 4000","близько 10","з культ. нотаток!"],
+["Слова на al- часто…","арабського походження","латинські","almohada, alfombra"],
+["Арабський період залишив слід у…","мові й архітектурі","лише в кухні","huella enorme"],
+["Mezquita = …","мечеть","москіт","релігійна споруда"],
+["dejar huella = …","залишити слід","залишити взуття","ідіома"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Вправа 1 з книги", lv:2, q:[
+["Los romanos ___ muchas carreteras y ciudades.","construyeron","construían","з книги"],
+["En 1492 los Reyes Católicos ___ Granada.","conquistaron","conquistaban","з книги"],
+["Ese mismo año Colón ___ América.","descubrió","descubría","з книги"],
+["Los Reyes Católicos ___ el país bajo una sola corona.","unificaron","unificaban","з книги"],
+["Las mujeres ___ por primera vez en 1933.","votaron","votaban","з книги: votar"],
+["Franco ___ España como dictador.","gobernó","gobernaba","з книги"],
+["En 1975 él ___ y empezó la Transición.","murió","moría","з книги"],
+["En 1978 los españoles ___ una nueva Constitución.","aprobaron","aprobaban","з книги"],
+["España ___ en una monarquía parlamentaria.","se convirtió","se convertía","convertirse"],
+["Cervantes ___ en el siglo XVI.","nació","nacía","nacer → nació"]
+]},
+{t:"Дієслова історії: відмінювання", lv:2, q:[
+["nacer: él ___","nació","nacó","nació"],
+["morir: él ___","murió","morió","o→u"],
+["construir: ellos ___","construyeron","construieron","y"],
+["descubrir: él ___","descubrió","descubrí","3-тя"],
+["conquistar: ellos ___","conquistaron","conquistieron","-ar"],
+["luchar: ellas ___","lucharon","luchieron","-ar"],
+["gobernar: él ___","gobernó","gobernió","-ar"],
+["aprobar: ellos ___","aprobaron","aprobieron","-ar"],
+["convertirse: España ___","se convirtió","se convertió","e→i"],
+["exiliarse: muchos ___","se exiliaron","se exilieron","-ar"]
+]},
+{t:"Вправа 2 з книги: лексика", lv:2, q:[
+["España fue un gran ___ con territorios en América.","imperio","imperativo","з книги"],
+["La ___ terminó en 1492.","Reconquista","Transición","з книги"],
+["En 1931 comenzó la Segunda ___.","República","Monarquía","з книги"],
+["Franco impuso una ___ sin elecciones.","dictadura","transición","з книги"],
+["Tras 1975 empezó la ___ hacia la democracia.","Transición","Reconquista","з книги"],
+["Hoy España es una ___ parlamentaria.","monarquía","república","з книги"],
+["La ___ se convirtió en un valor fundamental.","libertad","dictadura","з книги"],
+["La Alhambra forma parte del ___ cultural.","patrimonio","matrimonio","matrimonio — це шлюб! 😄"],
+["La ___ Civil dividió al país tres años.","Guerra","Fiesta","з книги"],
+["Campoamor defendió la ___ entre hombres y mujeres.","igualdad","legalidad","з книги"]
+]},
+{t:"Текст: стародавня Іспанія", lv:2, q:[
+["La historia de España es larga, apasionante y llena de ___.","contrastes","contratos","з тексту"],
+["Gracias a los romanos ___ palabras, leyes y costumbres.","nacieron","nacían","з тексту"],
+["…que todavía ___.","existen","existieron","досі існують!"],
+["Casi ocho siglos el territorio estuvo bajo dominio ___.","árabe","romano","з тексту"],
+["De esa época vienen palabras como aceite, almohada y ___.","ojalá","paella","з тексту"],
+["almohada = …","подушка","мохіто","арабізм 😴"],
+["La Alhambra de Granada — це…","monumento maravilloso","aeropuerto","з тексту"],
+["dominio = …","панування","доміно","влада"],
+["bajo dominio árabe = …","під арабським пануванням","низький арабський дім","bajo!"],
+["costumbres = …","звичаї","костюми","фальшивий друг!"]
+]},
+{t:"Текст: 1492 та імперія", lv:2, q:[
+["En 1492 los Reyes Católicos terminaron la ___.","Reconquista","Transición","з тексту"],
+["…al conquistar ___.","Granada","Sevilla","останнє місто"],
+["Ese mismo año Colón viajó hacia ___.","América","África","🌎"],
+["Comenzó la expansión del ___ español.","Imperio","Instituto","з тексту"],
+["Centro de arte con Cervantes, Velázquez y ___.","El Greco","Picasso","Пікассо — пізніше!"],
+["Sin embargo, hubo crisis y pérdidas de ___.","colonias","colinas","colinas — це пагорби"],
+["En el siglo XIX España cambió muchas veces de ___.","gobierno","camisa","з тексту"],
+["Імперія XVI–XVII століть була…","однією з найбільших","найменшою","з тексту"],
+["pérdida = …","втрата","перлина","perder"],
+["Ese mismo año = …","того ж року","іншого року","mismo"]
+]},
+{t:"Текст: XX століття", lv:2, q:[
+["En 1931 nació la Segunda República con ideales de ___.","libertad y educación","guerra y poder","з тексту"],
+["Fue una época de esperanza, pero también de ___.","conflictos","siestas","з тексту"],
+["Poco después estalló la Guerra ___ (1936–1939).","Civil","Mundial","з тексту"],
+["La guerra dejó profundas ___.","heridas","meriendas","herida = рана"],
+["Tras la guerra, Franco gobernó como una ___.","dictadura","democracia","з тексту"],
+["Muchos vivieron sin libertad ___ ni derechos.","política","poética","з тексту"],
+["Franco murió en ___.","1975","1985","дата"],
+["El país inició un proceso conocido como ___.","la Transición","la Reconquista","з тексту"],
+["En 1978 se aprobó una nueva ___ democrática.","Constitución","Constelación","constelación — це сузір'я ✨"],
+["Desde entonces España ___ como un país moderno.","ha crecido","creció","з тексту: perfecto!"]
+]},
+{t:"Питання до тексту", lv:2, q:[
+["¿Qué construyeron los romanos?","Carreteras, ciudades y acueductos","Castillos góticos","з питань"],
+["¿Qué pasó en 1492?","Fin de la Reconquista y viaje de Colón","Nació Franco","рік-магія"],
+["¿Quiénes eran los Reyes Católicos?","Isabel y Fernando","Juan y Sofía","з тексту"],
+["¿Qué logró Clara Campoamor?","El voto femenino (1933)","La Constitución","з питань"],
+["¿Cuándo terminó la dictadura?","En 1975, con la muerte de Franco","En 1936","з питань"],
+["¿Qué ocurrió en 1978?","Se aprobó la Constitución","Empezó la Guerra Civil","з питань"],
+["¿Cómo es España hoy?","Moderna y diversa","Cerrada y triste","з тексту"],
+["¿Qué es España políticamente hoy?","Una monarquía parlamentaria","Una república","важливо!"],
+["¿Qué dejó la Guerra Civil?","Profundas heridas","Muchos acueductos","з тексту"],
+["España siempre ha sabido…","reinventarse","rendirse","фінал тексту"]
+]},
+{t:"Clara Campoamor і права жінок", lv:2, q:[
+["Clara Campoamor — …","борчиня за права жінок","королева Іспанії","з тексту"],
+["Вона домоглася…","права голосу для жінок","заборони виборів","1933"],
+["Жінки вперше проголосували у…","1933","1833","з тексту"],
+["Це сталося за часів…","Segunda República","dictadura","з тексту"],
+["derecho al voto = …","право голосу","право на відпустку","🗳️"],
+["conseguir = …","домогтися, досягти","порахувати","досягнення"],
+["Muchas mujeres han luchado por sus ___.","derechos","desechos","desechos — це відходи!"],
+["Боротьба за права, за книгою, …","триває (perfecto)","давно скінчилася","han luchado"],
+["mujer destacada = …","видатна жінка","втомлена жінка","destacar"],
+["igualdad entre hombres y mujeres = …","рівність чоловіків і жінок","однаковий одяг","з вправи"]
+]},
+{t:"1492: рік-магія", lv:2, q:[
+["Подія 1: кінець…","Реконкісти (Granada)","імперії","з культ. нотаток"],
+["Подія 2: Колумб…","відкрив Америку","народився","з культ. нотаток"],
+["Подія 3: Небріха опублікував…","першу граматику кастильської","перший роман","з культ. нотаток!"],
+["Antonio de Nebrija — автор…","la primera gramática del castellano","Don Quijote","1492"],
+["Тому 1492 називають…","«el año mágico»","роком тиші","культ. нотатки"],
+["Реконкіста завершилася взяттям…","Granada","Toledo","останнє місто"],
+["Скільки головних подій у 1492?","три","одна","культ. нотатки"],
+["Колумб плив шукати шлях до…","Індії","Австралії","🚢"],
+["La Reconquista — відвоювання в…","мусульман","римлян","зі словника"],
+["Після 1492 почалась експансія…","імперії","сієсти","з тексту"]
+]},
+{t:"Фрази для розповіді (з книги)", lv:2, q:[
+["En aquella época… = …","у ті часи…","у тій аптеці…","з книги"],
+["Hace muchos siglos… = …","багато століть тому","за багато століть","з книги"],
+["Todo empezó cuando… = …","все почалося, коли…","все скінчилося","з книги"],
+["Por un lado… por otro lado… = …","з одного боку… з іншого…","на одній нозі","з книги"],
+["Además = …","крім того","замість","з книги"],
+["Sin embargo = …","однак","без багажу","embargo ≠ багаж 😄"],
+["Gracias a eso… = …","завдяки цьому","дякую за це","з книги"],
+["Fue un momento clave = …","це був ключовий момент","момент із ключами","з книги"],
+["Esa época marcó el futuro. = …","та епоха визначила майбутнє","та епоха зіпсувала майбутнє","з книги"],
+["Hoy seguimos recordando… = …","сьогодні досі пам'ятаємо","сьогодні записуємо","з книги"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки", lv:3, q:[
+["❌ España es una república → ✅ …","Es una monarquía parlamentaria.","Es una dictadura.","з культ. нотаток!"],
+["Парламентська монархія — від…","Конституції 1978","1492","з культ. нотаток"],
+["❌ El castellano siempre fue la única lengua → ✅ …","Hay varias lenguas cooficiales.","Sí, siempre la única.","з культ. нотаток"],
+["Коофіційні мови: catalán, gallego, euskera і…","valenciano","francés","з культ. нотаток!"],
+["❌ Franco ha gobernado 40 años → ✅ …","Franco gobernó 40 años.","Franco gobierna.","помер → indefinido"],
+["❌ En 1492 ha ocurrido → ✅ …","En 1492 ocurrió","En 1492 ocurre","рік!"],
+["❌ Cervantes ha escrito Don Quijote → ✅ …","Cervantes escribió Don Quijote.","Cervantes escribe hoy.","помер"],
+["❌ España cambió mucho desde entonces → краще…","España ha cambiado mucho desde entonces.","España cambia ayer.","desde → perfecto"],
+["Глава держави Іспанії сьогодні — …","король","президент республіки","monarquía"],
+["❌ La Guerra Civil fue en 1975 → ✅ …","1936–1939","1875–1879","дати!"]
+]},
+{t:"Indefinido чи perfecto в історії?", lv:3, q:[
+["En 1931 ___ la Segunda República.","empezó","ha empezado","рік"],
+["España ___ mucho desde la dictadura.","ha cambiado","cambió","desde"],
+["Colón ___ a América en 1492.","viajó","ha viajado","дата"],
+["Hoy ___ mucho sobre historia. (ми дізналися)","hemos aprendido","aprendimos","hoy"],
+["Los árabes ___ ocho siglos en la península.","estuvieron","han estado","закрито"],
+["España siempre ___ sabido reinventarse.","ha","hubo","підсумок-сьогодні"],
+["La Constitución se ___ en 1978.","aprobó","ha aprobado","рік"],
+["Muchas mujeres ___ por sus derechos. (боротьба триває)","han luchado","lucharon","з книги"],
+["Дата/рік у реченні → …","indefinido","perfecto","правило книги"],
+["Значення для сьогодні → …","perfecto","indefinido","правило книги"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Католицькі королі об'єднали Іспанію у 1492»","Los Reyes Católicos unificaron España en 1492.","Los Reyes Católicos han unificado España en 1492.","з книги"],
+["«Франко правив майже 40 років»","Franco gobernó casi 40 años.","Franco gobernaba 40 años exactos.","з книги"],
+["«У 1978 було ухвалено нову Конституцію»","En 1978 se aprobó la nueva Constitución.","En 1978 se ha aprobado la nueva Constitución.","з книги"],
+["«Іспанія сильно змінилася відтоді»","España ha cambiado mucho desde entonces.","España cambió mucho desde entonces.","з книги"],
+["«Римляни збудували дороги й міста»","Los romanos construyeron carreteras y ciudades.","Los romanos construyen carreteras hoy.","з тексту"],
+["«Колумб відкрив Америку»","Colón descubrió América.","Colón ha descubierto América.","помер + дата"],
+["«Війна поділила країну»","La guerra dividió al país.","La guerra divide al país en 1936.","факт"],
+["«Сьогодні Іспанія — сучасна країна»","Hoy España es un país moderno.","Hoy España fue un país moderno.","теперішнє"],
+["«Це був ключовий момент»","Fue un momento clave.","Era un momento llave.","clave!"],
+["«Завдяки їм Іспанія є такою, як є»","Gracias a ellos, España es lo que es hoy.","Gracias por ellos, España está lo que está.","з книги"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«En 1492 ocurrió un año clave» — …","правильно ✓","помилка","✓"],
+["«Franco ha gobernado en los años 40» — …","помилка (gobernó)","правильно","помер"],
+["«España ha cambiado desde la dictadura» — …","правильно ✓","помилка","✓"],
+["«Cervantes escribió Don Quijote» — …","правильно ✓","помилка","✓"],
+["«España es una república» — …","помилка (monarquía parlamentaria)","правильно","з книги!"],
+["«La Constitución se aprobó en 1978» — …","правильно ✓","помилка","✓"],
+["«Colón ha viajado a América en 1492» — …","помилка (viajó)","правильно","дата"],
+["«Los romanos construyeron acueductos» — …","правильно ✓","помилка","✓"],
+["«La Reconquista terminó en 1492» — …","правильно ✓","помилка","✓"],
+["«Penélope Cruz trabajó con Almodóvar» (кар'єра триває) — краще…","ha trabajado","trabajaba","жива!"]
+]},
+{t:"Хронологія: що раніше?", lv:3, q:[
+["Що раніше: римляни чи араби?","римляни","араби","хронологія"],
+["Що раніше: Реконкіста чи Громадянська війна?","Реконкіста","Громадянська війна","1492 vs 1936"],
+["Що раніше: Республіка (1931) чи Конституція (1978)?","Республіка","Конституція","XX ст."],
+["Порядок: війна → диктатура → …","Транзиція","Реконкіста","XX ст."],
+["Після смерті Франко почалася…","Транзиція","Реконкіста","1975"],
+["Перед Громадянською війною була…","Segunda República","Transición","1931 → 1936"],
+["Голосування жінок (1933) — до чи після війни?","до","після","1936"],
+["Найдавніші з переліку — …","íberos y celtas","visigodos","до римлян"],
+["Золота доба (Сервантес) — століття…","XVI–XVII","XX","siglos de oro"],
+["Сучасна демократія — від…","1978","1492","Конституція"]
+]},
+{t:"Безособове SE: se aprobó", lv:3, q:[
+["se aprobó = …","було ухвалено","він сам ухвалив собі","безособове se"],
+["En 1978 ___ la Constitución.","se aprobó","aprobó se","порядок"],
+["se habla español = …","тут говорять іспанською","він говорить сам до себе","безособове"],
+["La Mezquita ___ en Córdoba. (була зведена)","se construyó","construyó","se"],
+["«dictaduras se sucedieron» = …","змінювали одна одну","мали успіх","sucederse!"],
+["suceder ≠ …","мати успіх","відбуватися","фальшивий друг! успіх = tener éxito"],
+["se conoce como «la Transición» = …","відомий як…","знайомиться з…","безособове"],
+["Безособове se + дієслово в…","3-й особі","1-й особі","se aprobó"],
+["El español ___ en más de 20 países.","se habla","habla se","se habla"],
+["«se dice que…» = …","кажуть, що…","він собі каже","безособове"]
+]},
+{t:"Історичні постаті", lv:3, q:[
+["Cristóbal Colón — …","мореплавець, відкрив Америку","король","1492"],
+["Isabel y Fernando — …","Католицькі королі","актори","👑👑"],
+["Franco — …","диктатор (до 1975)","перший демократ","з тексту"],
+["Cervantes — …","автор «Дон Кіхота»","художник","📖"],
+["Velázquez — …","художник","архітектор","🎨"],
+["El Greco — …","художник","грецький король","🎨"],
+["Clara Campoamor — …","борчиня за виборче право жінок","перша президентка","1933"],
+["Antonio de Nebrija — …","автор першої граматики","конкістадор","1492"],
+["До «золотої доби» належать…","Cervantes, Velázquez, El Greco","Franco y Colón","siglos XVI–XVII"],
+["«Hoy seguimos ___ a esas personas».","recordando","olvidando","з книги: пам'ятаємо"]
+]},
+{t:"Конектори історичної розповіді", lv:3, q:[
+["___, hubo crisis y guerras. (однак)","Sin embargo","Además","з тексту"],
+["___, dejó una huella enorme. (крім того)","Además","Sin embargo","додавання"],
+["___ a los romanos nacieron leyes. (завдяки)","Gracias","Por culpa","gracias a"],
+["___ un lado esperanza, por otro conflictos.","Por","En","por un lado"],
+["Todo empezó ___ llegaron los romanos.","cuando","donde","коли"],
+["Después → más tarde → al final — порядок…","розповіді","алфавіту","хронологія"],
+["tras la guerra = …","після війни","за війною слідом","tras = після"],
+["desde entonces = …","відтоді","поки що","з тексту"],
+["poco después = …","невдовзі","задовго до","з тексту"],
+["Конектори роблять розповідь…","логічною","заплутаною","для домашки!"]
+]},
+{t:"Розкажи історію: структура", lv:3, q:[
+["Початок: «Todo empezó ___…»","cuando","dónde","з книги"],
+["«___ muchos siglos vivieron aquí muchos pueblos».","Hace","Desde","давно"],
+["«En ___ época no había internet». 😄","aquella","aquello","aquella época"],
+["«Fue un momento importante ___ cambió todo».","porque","por qué","причина"],
+["«___ a eso, el país creció».","Gracias","Grasas","grasas — це жири! 😄"],
+["«___ el siglo XV todo cambió».","Durante","Durando","durante"],
+["«Esa época ___ el futuro del país».","marcó","marcaba","з книги"],
+["«Hoy ___ recordando a esas personas».","seguimos","seguíamos","з книги"],
+["Історична розповідь = indefinido + …","конектори","лише дати","структура"],
+["Гарна історія має початок, розвиток і…","фінал","іспит","композиція"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["En 1492 ___ la Reconquista.","terminó","ha terminado","рік"],
+["España ___ mucho desde entonces.","ha cambiado","cambió","desde"],
+["Cervantes ___ Don Quijote.","escribió","ha escrito","помер"],
+["conquistar = …","завоювати","приготувати","⚔️"],
+["Іспанія сьогодні — …","monarquía parlamentaria","república","з книги"],
+["ojalá — слово походження…","арабського","латинського","спадщина"],
+["1492: Реконкіста, Америка і…","перша граматика","перший потяг","Небріха"],
+["Franco ___ casi 40 años.","gobernó","ha gobernado","помер"],
+["Sin embargo = …","однак","отже","конектор"],
+["Урок 12 готово! Esa lección ___ tu futuro español. 😄","marcó","marcaba","🎉"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "HISTORIA: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 12 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

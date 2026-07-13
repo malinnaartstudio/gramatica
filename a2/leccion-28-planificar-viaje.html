@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 28 · Planificar un viaje · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 28 · @malinnaartstudio</div>
+    <h1 id="htitle">PLANIFICAR UN VIAJE: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+<main>
+  <div id="home">
+    <div class="intro">
+            <b style="color:var(--rasp)">Lección 28 · Planificar un viaje.</b>
+      30 вправ по 10 питань: Ir a + infinitivo (плани) vs Futuro simple (прогнози), словник квитків
+      і вокзалу, і подорож Sergio та Clara потягом до Гранади й Кордови.
+      Від ★ до ★★★. El que viaja una vez, ya no puede parar. 🚄
+
+    </div>
+    <div class="legend">
+            <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · ir a vs futuro + словник подорожі</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · текст, Sergio y Clara, нюанси вибору</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · культура транспорту й типові помилки</span>
+
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 28</footer>
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"IR A + infinitivo vs FUTURO SIMPLE: огляд", lv:1, q:[
+["Ir a + infinitivo вживається для…","намірів, запланованих дій","прогнозів, здогадок","з таблиці книги"],
+["Futuro simple вживається для…","прогнозів, здогадок, рішень у момент розмови","чітких планів на завтра","з таблиці книги"],
+["Voy a viajar a Granada el sábado — тип конструкції:","ir a + infinitivo (план)","futuro simple","з книги"],
+["Mañana hará sol y el tren saldrá puntual — тип конструкції:","futuro simple (прогноз)","ir a + infinitivo","з книги"],
+["Урок 28 називається…","Planificar un viaje","El transporte en España","з підручника"],
+["Ця граматика вже зустрічалася в уроці…","20 (Las TIC), тепер застосована до подорожей","22 (En el médico)","повторення теми"],
+["Ir a + infinitivo сигналізує, що рішення…","вже прийняте","ще не прийняте","ключова ідея"],
+["Futuro simple часто супроводжується словами…","probablemente, seguramente","mañana, esta tarde","з таблиці"],
+["Обидві конструкції говорять про…","майбутнє","минуле","спільна тема"],
+["Мета уроку 28 — навчитися…","планувати подорож і говорити про неї правильним часом","готувати їжу","підсумок"]
+]},
+{t:"Formación: IR A + infinitivo", lv:1, q:[
+["yo voy a ___","viajar","viajaré","infinitivo після voy a"],
+["tú vas a ___","viajar","viajas","infinitivo"],
+["él/ella va a ___","viajar","viaja","infinitivo"],
+["nosotros vamos a ___","viajar","viajamos","infinitivo"],
+["vosotros vais a ___","viajar","viajáis","infinitivo"],
+["ellos van a ___","viajar","viajan","infinitivo"],
+["Формула: ir (у Presente) + a + …","infinitivo (незмінна форма)","дієвідмінена форма","базове правило"],
+["Vamos a comer — переклад…","Ми збираємося поїсти","Ми їмо щодня","ir a + infinitivo"],
+["Va a llover — переклад…","Збирається дощити (видно за хмарами)","Дощитиме за прогнозом преси","ir a + infinitivo, видима ознака"],
+["Ir тут — допоміжне дієслово, яке відмінюється, а друге дієслово завжди…","в infinitivo","у тому ж часі, що ir","ключове правило конструкції"]
+]},
+{t:"Formación: FUTURO SIMPLE", lv:1, q:[
+["yo viajar___","é","o","viajaré"],
+["tú viajar___","ás","as","viajarás"],
+["él/ella viajar___","á","a","viajará"],
+["nosotros viajar___","emos","amos","viajaremos"],
+["vosotros viajar___","éis","áis","viajaréis"],
+["ellos viajar___","án","an","viajarán"],
+["Futuro simple будується від…","повного інфінітива + закінчення","основи без -ar/-er/-ir","як в уроці 18"],
+["saldrá — це неправильна форма дієслова…","salir","saber","корінь saldr-"],
+["habrá — це форма дієслова…","haber (безособова, «буде»)","hacer","з книги, прогноз погоди тощо"],
+["Ці форми — точне повторення граматики з уроку…","18 (Futuro Simple)","22 (imperativo negativo)","звʼязок тем"]
+]},
+{t:"Expresiones temporales: IR A", lv:1, q:[
+["esta tarde → типово з…","ir a + infinitivo","futuro simple","з таблиці книги"],
+["mañana → типово з…","ir a + infinitivo","futuro simple","близький, конкретний план"],
+["el próximo fin de semana → типово з…","ir a + infinitivo","futuro simple","з таблиці"],
+["dentro de dos días → типово з…","ir a + infinitivo","futuro simple","з таблиці"],
+["Ці маркери сигналізують про…","близьке, конкретне майбутнє","далеке, невизначене майбутнє","логіка близькості"],
+["Voy a salir mañana a las 9 — конкретний план з маркером…","mañana","en el futuro","з таблиці"],
+["Vamos a visitar Valencia este fin de semana — маркер…","este fin de semana","dentro de un año","конкретний, близький план"],
+["Ці маркери типово вказують на рішення, яке…","вже прийняте заздалегідь","ще не прийняте","логіка ir a"],
+["esta tarde voy a estudiar — переклад…","сьогодні ввечері я буду вчитися (вже вирішено)","мабуть, вчитимусь колись","конкретний план"],
+["Маркери ir a зазвичай ближчі за часом, ніж маркери…","futuro simple","presente","порівняння"]
+]},
+{t:"Expresiones temporales: FUTURO SIMPLE", lv:1, q:[
+["en el futuro → типово з…","futuro simple","ir a + infinitivo","з таблиці книги"],
+["dentro de un año → типово з…","futuro simple","ir a + infinitivo","далеке майбутнє"],
+["pronto → типово з…","futuro simple","ir a + infinitivo","з таблиці"],
+["más tarde → типово з…","futuro simple","ir a + infinitivo","з таблиці"],
+["seguramente, probablemente → типово з…","futuro simple","ir a + infinitivo","невпевненість/прогноз"],
+["El vuelo saldrá con retraso — маркер невпевненості:","(підразумівана) probablemente","mañana","прогноз"],
+["Probablemente viajaré en coche — маркер:","probablemente","esta tarde","з книги"],
+["Ці маркери типово супроводжують…","прогнози й здогадки, не тверді плани","конкретні розклади","логіка futuro"],
+["Llegaremos sobre las diez — «sobre» вказує на…","приблизність часу","точний час","нюанс"],
+["Маркери futuro simple зазвичай пов'язані з…","невизначеністю або віддаленістю в часі","повною впевненістю","контраст з ir a"]
+]},
+{t:"Diferencias prácticas", lv:1, q:[
+["Plan concreto (Voy a salir mañana a las 9) → …","ir a + infinitivo","futuro simple","з таблиці"],
+["Decisión espontánea (Vale, te llamaré mañana) → …","futuro simple","ir a + infinitivo","з таблиці"],
+["Predicción (Llegará con retraso, como siempre) → …","futuro simple","ir a + infinitivo","з таблиці"],
+["Intención clara (Voy a visitar Valencia) → …","ir a + infinitivo","futuro simple","з таблиці"],
+["Спонтанне рішення в момент розмови типово в…","futuro simple","ir a + infinitivo","з таблиці"],
+["Чіткий намір, вирішений заздалегідь, типово в…","ir a + infinitivo","futuro simple","з таблиці"],
+["Прогноз про звичну поведінку («як завжди») типово в…","futuro simple","ir a + infinitivo","з таблиці, Llegará con retraso, como siempre"],
+["«Vale, te llamaré mañana» — рішення прийняте…","щойно, в момент розмови","за тиждень до розмови","спонтанність"],
+["Ці чотири категорії допомагають…","точно обрати правильну конструкцію в реальному спілкуванні","запам'ятати лише словник","практична мета"],
+["Найважливіший критерій вибору — чи рішення…","вже було прийняте раніше, чи приймається зараз","формальне чи неформальне","ключове питання"]
+]},
+{t:"Frases útiles", lv:1, q:[
+["Voy a coger el tren de las ocho — переклад…","Я збираюся сісти на потяг о восьмій","Я сяду на потяг колись у майбутньому, ще не вирішив","конкретний план"],
+["Llegaremos sobre las diez — переклад…","Ми прибудемо близько десятої","Ми прибули о десятій вчора","futuro, приблизність"],
+["El vuelo saldrá con retraso — переклад…","Рейс затримається","Рейс вилетів вчасно","futuro, прогноз"],
+["Probablemente viajaré en coche — переклад…","Мабуть, поїду на машині","Точно поїду на машині","futuro, невпевненість"],
+["Este verano voy a visitar Andalucía — переклад…","Цього літа я відвідаю Андалусію (вже вирішено)","Цього літа я, можливо, відвідаю Андалусію","конкретний план, ir a"],
+["Ці фрази типово звучать, коли обговорюють…","плани подорожей","минулий досвід","тема уроку"],
+["«Sobre las diez» = …","близько десятої","рівно о десятій","приблизність"],
+["«Con retraso» = …","із запізненням","вчасно","базове"],
+["Ці п'ять фраз поєднують…","обидві конструкції (ir a і futuro) природно","лише одну конструкцію","практичне застосування"],
+["Вивчення готових фраз допомагає…","говорити про подорожі впевненіше","лише скласти тест","мета розділу"]
+]},
+{t:"Резюме модуля 1", lv:1, q:[
+["Ir a + infinitivo → …","наміри, заплановані дії","прогнози, здогадки","підсумок"],
+["Futuro simple → …","прогнози, здогадки, рішення в момент розмови","заплановані дії","підсумок"],
+["Обидві конструкції говорять про…","майбутнє","минуле","спільна тема"],
+["Ir a утворюється: ir (Presente) + a + …","infinitivo","дієвідмінена форма","формула"],
+["Futuro simple утворюється: інфінітив + …","закінчення (é,ás,á,emos,éis,án)","допоміжне дієслово haber","формула"],
+["esta tarde, mañana, el próximo fin de semana → …","ir a + infinitivo","futuro simple","маркери"],
+["en el futuro, dentro de un año, probablemente → …","futuro simple","ir a + infinitivo","маркери"],
+["❌ Не можна поєднувати обидві конструкції разом, напр. …","«iré a ir»","«voy a viajar» окремо","з культ. нотаток"],
+["Урок 28 застосовує цю граматику до теми…","планування подорожей","медицини","контекст лексики"],
+["Мета уроку 28 — навчитися…","говорити про плани й прогнози подорожі природно","готувати їжу","підсумок"]
+]},
+{t:"Словник: квитки й станція", lv:1, q:[
+["el billete de ida / ida y vuelta = …","квиток в один бік / туди й назад","квиток на цілий рік","базове"],
+["la taquilla / la ventanilla = …","каса","перон","базове"],
+["la estación = …","вокзал","аеропорт","базове"],
+["el andén = …","перон","каса","базове"],
+["el horario = …","розклад","затримка","базове"],
+["el retraso = …","затримка","скасування","базове"],
+["la cancelación = …","скасування","підтвердження","базове"],
+["la salida = …","відправлення","прибуття","протилежність llegada"],
+["la llegada = …","прибуття","відправлення","протилежність salida"],
+["el destino = …","пункт призначення","точка відправлення","базове"]
+]},
+{t:"Словник: бронювання й місця", lv:1, q:[
+["la reserva = …","бронювання","підтвердження","базове"],
+["la confirmación = …","підтвердження","скасування","базове"],
+["la anulación = …","скасування (бронювання)","бронювання","синонім cancelación"],
+["el asiento = …","місце (сидіння)","прохід","базове"],
+["la ventanilla (місце) = …","місце біля вікна","місце біля проходу","у контексті сидінь"],
+["el pasillo = …","прохід (між рядами)","вікно","базове"],
+["la maleta = …","валіза","рюкзак","базове"],
+["el equipaje = …","багаж","квиток","базове"],
+["la mochila = …","рюкзак","валіза","базове"],
+["Ці слова типово потрібні при…","бронюванні квитків і зборі в подорож","приготуванні їжі","тема уроку"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Словник: типи транспорту й ціни", lv:2, q:[
+["el tren AVE = …","швидкісний потяг","трамвай","повторення+нове"],
+["el transbordo / la escala = …","пересадка","скасування","базове"],
+["el precio = …","ціна","знижка","базове"],
+["el descuento = …","знижка","підвищення ціни","базове"],
+["el abono = …","абонемент","одноразовий квиток","базове"],
+["descuento joven = …","молодіжна знижка","знижка для літніх людей","з тексту"],
+["comprar billetes online con descuento = …","купити квитки онлайн зі знижкою","купити квитки лише в касі","з тексту"],
+["billete de ida y vuelta = …","квиток туди й назад","квиток лише в один бік","базове, з тексту"],
+["Ці слова допомагають…","планувати бюджет подорожі","готувати документи","практична мета"],
+["el abono типово купують, якщо…","подорожують регулярно (напр. щодня на роботу)","подорожують лише раз","логіка терміна"]
+]},
+{t:"Вправа 1 з книги: Ir a чи Futuro", lv:2, q:[
+["Mañana ___ (salir) de viaje.","voy a salir","saldré también","mañana → ir a (обидва можливі, книга приймає ir a)"],
+["Este verano ___ (visitar) Sevilla y Málaga.","voy a visitar","visitaré también","конкретний план на літо → ir a"],
+["Probablemente el tren ___ (llegar) con retraso.","llegará","va a llegar también","probablemente → futuro simple"],
+["Nosotros ___ (hacer) un recorrido por Andalucía.","vamos a hacer","haremos también","конкретний план → ir a"],
+["Creo que ___ (haber) mucho tráfico.","habrá","va a haber también","думка/прогноз → futuro simple"],
+["У реченні 3 маркер probablemente вказує на…","futuro simple","ir a + infinitivo","невпевненість"],
+["У реченні 5 «creo que» вказує на…","думку/прогноз, тому futuro simple","чіткий план, тому ir a","логіка вибору"],
+["У реченнях 1, 2, 4 йдеться про…","конкретні плани (тому природніше ir a)","чисті прогнози","логіка вибору"],
+["Ця вправа з книги показує, що…","часто можливі обидва варіанти, залежно від відтінку значення","завжди лише один правильний варіант","важливий нюанс"],
+["Ключове — розуміти, чи це план, чи прогноз/здогад, а не…","шукати «єдину правильну» відповідь механічно","взагалі ігнорувати контекст","практична порада"]
+]},
+{t:"Вправа 2 з книги: виправ помилки", lv:2, q:[
+["Voy viajar a Madrid. → правильно:","Voy a viajar a Madrid.","Voy a viajaré a Madrid.","бракує «a»!"],
+["Iré a ir a Valencia. → правильно:","Iré a Valencia. / Voy a ir a Valencia.","Iré a ir a Valencia ya.","НЕ можна поєднувати обидві конструкції!"],
+["Mañana voy a viajo a Murcia. → правильно:","Mañana voy a viajar a Murcia.","Mañana voy viajo a Murcia ya.","infinitivo після voy a!"],
+["Nosotros viajamosemos a Barcelona. → правильно:","Nosotros viajaremos a Barcelona.","Nosotros viajamos emos a Barcelona.","неіснуюча форма!"],
+["Viajará a casa ahora mismo. → природніше:","Va a viajar a casa ahora mismo.","Viajará a casa ahora mismo ya ayer.","«ahora mismo» → рішення зараз, ir a природніше"],
+["Головна помилка в реченні 2 (Iré a ir a Valencia):","змішування futuro simple і ir a в одній конструкції","неправильний рід","з культ. нотаток!"],
+["❌ «Iré a ir» — це приклад…","граматично неможливої конструкції","цілком правильної форми","з культ. нотаток"],
+["✅ Правильні альтернативи «Iré a ir a Valencia»:","Iré a Valencia. / Voy a ir a Valencia.","Iré voy a Valencia.","дві окремі правильні форми"],
+["Ця вправа з книги — пряме продовження культурної нотатки про…","заборону поєднувати ir + a + ir","минулий час","звʼязок розділів уроку"],
+["Урок вчить: обери ОДНУ конструкцію (ir a АБО futuro), а не…","змішуй їх в одному дієслові","використовуй їх у різних реченнях","ключовий висновок"]
+]},
+{t:"Переклад укр → ісп: подорож", lv:2, q:[
+["«Завтра ми їдемо до Гранади» (вирішено)","Mañana vamos a ir a Granada.","Mañana iremos a ir a Granada.","ir a, план"],
+["«Мабуть, буде сонячно»","Probablemente hará sol.","Probablemente va a hará sol.","futuro, прогноз"],
+["«Купую квиток онлайн»","Compro el billete online.","Compro el billete online.","Presente, правильне дієвідмінювання"],
+["«Ми прибудемо близько восьмої»","Llegaremos sobre las ocho.","Vamos a llegaremos sobre las ocho.","futuro, приблизність"],
+["«Збираюся відвідати Толедо цього літа»","Voy a visitar Toledo este verano.","Visitaréré Toledo este verano.","ir a, план"],
+["«Рейс, мабуть, затримається»","El vuelo probablemente se retrasará.","El vuelo probablemente va a se retrasará.","futuro"],
+["«У нас є заброньовані місця»","Tenemos los asientos reservados.","Tenemos los asientos reservaremos.","іменник, не дієслово"],
+["«Гаразд, зустрінемось на пероні!»","Vale, nos vemos en el andén.","Vale, nos vamos a veremos en el andén.","Presente/futuro просте"],
+["«Плануємо маршрут із трьох міст»","Planeamos una ruta de tres ciudades.","Planeamosemos una ruta de tres ciudades.","Presente правильне"],
+["«Подорожувати — значить пізнавати, як живуть люди» (з домашки)","Viajar es conocer cómo vive la gente.","Viajar es conociendo cómo vive la gente.","infinitivo як підмет"]
+]},
+{t:"Текст: Viajar por España (1)", lv:2, q:[
+["En España viajar en tren es una de las formas más cómodas y seguras — переклад…","В Іспанії подорожувати потягом — один з найзручніших і найбезпечніших способів","В Іспанії потяги дуже незручні","з тексту"],
+["El sistema ferroviario está muy desarrollado — переклад «ferroviario»…","залізничний","автомобільний","з тексту"],
+["desde los trenes de cercanías…hasta los trenes AVE — переклад…","від приміських потягів до потягів AVE","лише про літаки","з тексту"],
+["que unen Madrid con Barcelona o Sevilla en pocas horas — переклад «unen»…","з'єднують","розділяють","unir = зʼєднувати"],
+["El fin de semana pasado Sergio y Clara decidieron hacer un viaje corto — форма decidieron:","Pretérito Indefinido (конкретна подія)","Futuro","минула конкретна подія"],
+["Querían visitar Granada y Córdoba — форма querían:","Pretérito Imperfecto (бажання/фон)","Futuro","опис бажання"],
+["dos ciudades del sur famosas por su historia árabe — переклад…","два міста півдня, відомі своєю арабською історією","два міста, які нещодавно збудували","з тексту"],
+["Fueron a la estación de Renfe en Alicante — форма fueron:","Pretérito Indefinido","Imperfecto","конкретна дія"],
+["compraron billetes de ida y vuelta online, con descuento joven — переклад…","купили квитки туди-назад онлайн, з молодіжною знижкою","купили лише квиток в один бік у касі","з тексту"],
+["El sábado viajaron en un tren regional hasta Granada — форма viajaron:","Pretérito Indefinido","Futuro","конкретна подія суботи"]
+]},
+{t:"Текст: Viajar por España (2)", lv:2, q:[
+["durante el trayecto observaron los olivares y los pueblos blancos — переклад «olivares»…","оливкові гаї","виноградники","з тексту"],
+["En Granada visitaron la Alhambra — форма visitaron:","Pretérito Indefinido","Imperfecto","конкретна подія"],
+["y comieron tapas en el barrio del Albaicín — переклад…","і поїли тапас у кварталі Альбайсін","і не їли нічого в Гранаді","з тексту"],
+["Por la noche, el ambiente era tranquilo — форма era:","Imperfecto (опис атмосфери)","Indefinido","фон розповіді"],
+["y la gente paseaba por las calles iluminadas — форма paseaba:","Imperfecto (звична дія в момент опису)","Indefinido","паралельна дія"],
+["Al día siguiente fueron a Córdoba — переклад «al día siguiente»…","наступного дня","того самого дня","часовий маркер"],
+["y pasearon por la Mezquita y el Puente Romano — переклад…","і прогулялися Мескітою і Римським мостом","і не відвідали жодної пам'ятки","з тексту"],
+["«Este viaje ha sido corto, pero perfecto» — форма ha sido:","Pretérito Perfecto (підсумок з результатом зараз)","Futuro","оцінка досвіду"],
+["«El que viaja una vez, ya no puede parar» — переклад…","Хто раз подорожує, вже не може зупинитися","Хто раз подорожує, більше ніколи не поїде","іспанська приказка"],
+["Antes de regresar, planearon su próximo viaje a Sevilla — форма planearon:","Pretérito Indefinido","Futuro","конкретна дія планування"]
+]},
+{t:"Питання до тексту", lv:2, q:[
+["¿Qué medios de transporte hay en España?","Trenes de cercanías, AVE, autobuses, entre otros","Solo aviones","з тексту"],
+["¿A dónde viajaron Sergio y Clara?","A Granada y Córdoba","A Barcelona y Madrid","з тексту"],
+["¿De dónde salieron?","De Alicante","De Sevilla","з тексту"],
+["¿Qué paisajes vieron durante el viaje?","Olivares y pueblos blancos","Montañas nevadas","з тексту"],
+["¿Qué comieron en Granada?","Tapas en el barrio del Albaicín","Paella en la playa","з тексту"],
+["¿Qué lugares visitaron en Córdoba?","La Mezquita y el Puente Romano","El Museo del Prado","з тексту"],
+["¿Qué dijo Sergio sobre el viaje?","Que fue corto pero perfecto","Que fue aburrido","з тексту"],
+["¿Qué significa «El que viaja una vez, ya no puede parar»?","Que viajar engancha, crea ganas de seguir viajando","Que viajar es peligroso","іспанська приказка"],
+["¿Qué aprendiste sobre los viajes en tren en España?","Que el sistema ferroviario es cómodo y desarrollado","Que los trenes son muy caros e incómodos","з тексту"],
+["¿Qué ciudad planearon visitar después?","Sevilla","Valencia","з тексту, фінал"]
+]},
+{t:"Diferencias prácticas: поглиблено", lv:2, q:[
+["Voy a salir mañana a las 9 — це…","plan concreto (ir a)","decisión espontánea","з таблиці"],
+["Vale, te llamaré mañana — це…","decisión espontánea (futuro)","plan concreto","рішення в момент розмови"],
+["Llegará con retraso, como siempre — це…","predicción (futuro), заснована на звичці","intención clara","прогноз на основі досвіду"],
+["Voy a visitar Valencia este fin de semana — це…","intención clara (ir a)","predicción","чіткий намір"],
+["Різниця між «plan concreto» і «intención clara» — обидва…","типи ir a + infinitivo, дуже близькі за значенням","протилежні за значенням","нюанс таблиці"],
+["«Predicción» і «decisión espontánea» — обидва…","типи futuro simple","типи ir a + infinitivo","нюанс таблиці"],
+["На практиці, коли не впевнені, який тип обрати, варто запитати себе:","чи рішення вже прийняте раніше, чи приймається зараз","чи дієслово регулярне","практичне правило"],
+["«Vale, te llamaré mañana» — «vale» тут сигналізує…","згоду, прийняту щойно (спонтанно)","заплановану заздалегідь дію","контекстна підказка"],
+["Ця класифікація допомагає…","точніше передавати нюанси майбутнього","запам'ятати лише граматичні форми","мета таблиці"],
+["Розуміння цих чотирьох категорій — ключ до…","природної розмови про майбутнє іспанською","письмового тесту лише","практична мета"]
+]},
+{t:"Frases útiles: поглиблено", lv:2, q:[
+["«Voy a coger el tren de las ocho» показує рішення…","вже прийняте","ще не прийняте","ir a"],
+["«Llegaremos sobre las diez» — форма llegaremos:","futuro simple, приблизний час прибуття","ir a + infinitivo","прогноз"],
+["«El vuelo saldrá con retraso» типово оголошують…","в аеропорту (прогноз ситуації)","на вокзалі електричок лише","контекст фрази"],
+["«Probablemente viajaré en coche» — probablemente сигналізує…","futuro simple (невпевненість)","ir a + infinitivo","маркер невпевненості"],
+["«Este verano voy a visitar Andalucía» — цей план…","вже вирішений на літо","лише можливий, під питанням","ir a, конкретність"],
+["Ці фрази корисні при бронюванні квитків та…","обговоренні маршруту подорожі","медичному огляді","тема уроку"],
+["«Coger el tren de las ocho» означає…","сісти на потяг о восьмій годині","купити потяг о восьмій","базове"],
+["Фраза «con retraso» часто зустрічається в контексті…","аеропортів і вокзалів","ресторанів","типовий контекст"],
+["Вивчення цих фраз цілими блоками допомагає…","говорити швидше й природніше","лише знати граматику","практична мета"],
+["Ці п'ять фраз ілюструють баланс між…","ir a (плани) і futuro (прогнози) в одному контексті подорожі","лише минулим часом","підсумок розділу"]
+]},
+{t:"Словник поглиблено: подорож", lv:2, q:[
+["«У мене квиток в один бік» = Tengo un billete ___.","de ida","de ida y vuelta","один бік"],
+["«Місце біля проходу» = un asiento de ___.","pasillo","ventanilla","протилежність ventanilla"],
+["«Рейс скасовано» = El vuelo tiene una ___.","cancelación","confirmación","базове"],
+["«Потрібна пересадка в Мадриді» = Hay que hacer ___ en Madrid.","transbordo","reserva","базове"],
+["«У мене підтверджене бронювання» = Tengo la ___ confirmada.","reserva","anulación","базове"],
+["«Скільки коштує квиток зі знижкою?» = ¿Cuánto cuesta el billete con ___?","descuento","abono","базове"],
+["«Валіза важить 20 кг» = La ___ pesa veinte kilos.","maleta","mochila","базове"],
+["«Розклад потягів онлайн» = el ___ de trenes online.","horario","andén","базове"],
+["«Потяг прибуває на перон 3» = El tren llega al ___ tres.","andén","asiento","базове"],
+["Ці терміни типово потрібні при…","плануванні й бронюванні подорожі","розмові про здоров'я","тема уроку"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки", lv:3, q:[
+["❌ Iré a ir a Valencia → ✅ …","Iré a Valencia. / Voy a ir a Valencia.","Iré a ir a Valencia mañana ya.","з культ. нотаток! не можна поєднувати"],
+["❌ Voy viajar a Madrid → ✅ …","Voy a viajar a Madrid.","Voy viajaré a Madrid.","бракує «a»!"],
+["❌ Mañana voy a viajo a Murcia → ✅ …","Mañana voy a viajar a Murcia.","Mañana voy viajaré a Murcia ya.","infinitivo після voy a!"],
+["❌ Nosotros viajamosemos a Barcelona → ✅ …","Nosotros viajaremos a Barcelona.","Nosotros viajamos a Barcelona emos.","неіснуюча форма!"],
+["❌ Van a irán a Sevilla → ✅ …","Van a ir a Sevilla. / Irán a Sevilla.","Van a irán a Sevilla mañana.","не можна поєднувати обидві конструкції!"],
+["❌ Vamos a viajaremos juntos → ✅ …","Vamos a viajar juntos. / Viajaremos juntos.","Vamos a viajaremos juntos siempre.","одна конструкція за раз!"],
+["❌ El tren llegará a llegar tarde → ✅ …","El tren llegará tarde.","El tren llegará a llegar tarde ya.","зайве дублювання!"],
+["❌ Va a saldrá el vuelo con retraso → ✅ …","Va a salir el vuelo con retraso. / Saldrá con retraso.","Va a saldrá el vuelo con retraso ya.","infinitivo або futuro, не обидва!"],
+["❌ Voy a a viajar mañana → ✅ …","Voy a viajar mañana.","Voy a a viajar mañana ya.","подвоєне «a» — помилка!"],
+["Головне правило цього розділу:","НЕ можна поєднувати ir a і futuro simple в одній дієслівній групі","можна вільно поєднувати їх завжди","з культ. нотаток"]
+]},
+{t:"Культура: Renfe, ALSA, BlaBlaCar", lv:3, q:[
+["Потяги Renfe описуються як…","швидкі, комфортні, пунктуальні","повільні й ненадійні","з культ. нотаток"],
+["Автобуси ALSA популярні для…","дешевих поїздок між регіонами","лише міських поїздок","з культ. нотаток"],
+["BlaBlaCar особливо популярний серед…","молоді","людей похилого віку","з культ. нотаток"],
+["BlaBlaCar — це сервіс…","спільних поїздок (car-sharing), що знижує витрати","приватного таксі преміум-класу","з культ. нотаток"],
+["Renfe — це…","національна залізнична компанія Іспанії","авіакомпанія","з тексту і нотаток"],
+["«Escapadas de fin de semana» означає…","короткі подорожі на вихідні","довгі відпустки на місяць","з культ. нотаток"],
+["Влітку іспанці зазвичай проводять відпустку…","біля моря або в горах","виключно за кордоном","з культ. нотаток"],
+["Ця культурна деталь пояснює, чому в тексті Sergio y Clara обрали…","короткий вікенд-виїзд (escapada) до Гранади й Кордови","піврічну подорож","звʼязок з текстом"],
+["Автобуси в Іспанії, як згадувалось раніше, зупиняються, лише якщо…","підняти руку","почекати на зупинці мовчки","повторення з уроку 27"],
+["Підсумок культурних нотаток уроку 28:","в Іспанії розвинена й доступна транспортна культура для подорожей","подорожувати в Іспанії дуже складно","головний висновок"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Завтра я поїду до Валенсії» (вирішено)","Mañana voy a viajar a Valencia.","Mañana iré a ir a Valencia.","ir a, без дублювання"],
+["«Мабуть, потяг запізниться»","Probablemente el tren llegará con retraso.","Probablemente el tren va a llegará con retraso.","futuro, не змішувати"],
+["«Ми збираємося відвідати Кордову цими вихідними»","Vamos a visitar Córdoba este fin de semana.","Vamos a visitaremos Córdoba este fin de semana.","ir a + infinitivo, не futuro!"],
+["«Гаразд, зателефоную тобі пізніше» (спонтанно)","Vale, te llamaré más tarde.","Vale, te voy a llamaré más tarde.","futuro, спонтанне рішення"],
+["«Рейс вилетить із запізненням»","El vuelo saldrá con retraso.","El vuelo va a saldrá con retraso.","futuro АБО ir a + salir, не змішано"],
+["«Купуємо квитки онлайн»","Compramos los billetes online.","Compramosemos los billetes online.","Presente, звичайна форма"],
+["«У мене є бронювання на дві ночі»","Tengo una reserva para dos noches.","Tengo una reservaré para dos noches.","іменник, не дієслово!"],
+["«Цього літа відвідаю Андалусію» (вирішено)","Este verano voy a visitar Andalucía.","Este verano iré a visitar Andalucía ya decidido antes.","ir a, конкретний план"],
+["«Хто раз подорожує, вже не може зупинитися» (приказка)","El que viaja una vez, ya no puede parar.","El que viaja una vez, ya no va a poder parar nunca.","точна приказка з тексту"],
+["«Ми прибудемо близько десятої»","Llegaremos sobre las diez.","Vamos a llegaremos sobre las diez.","futuro, не дублювати"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«Voy a viajar a Madrid» — …","правильно ✓","помилка","✓"],
+["«Iré a ir a Madrid» — …","помилка (дублювання конструкцій)","правильно","з культ. нотаток"],
+["«Viajaremos a Barcelona pronto» — …","правильно ✓","помилка","✓"],
+["«Viajamosemos a Barcelona» — …","помилка (неіснуюча форма)","правильно","типова орфографічна помилка"],
+["«Vamos a hacer un recorrido» — …","правильно ✓","помилка","✓"],
+["«Vamos a haremos un recorrido» — …","помилка (дублювання)","правильно","ir a + infinitivo, не futuro!"],
+["«El tren saldrá con retraso» — …","правильно ✓","помилка","✓"],
+["«El tren va a saldrá con retraso» — …","помилка (va a + infinitivo, не futuro)","правильно","дублювання конструкцій"],
+["«Probablemente lloverá mañana» — …","правильно ✓","помилка","✓"],
+["«Probablemente va a lloverá mañana» — …","помилка (дублювання)","правильно","одна конструкція за раз"]
+]},
+{t:"IR A vs FUTURO: поглиблений мікс", lv:3, q:[
+["На вокзалі оголошують: «El tren con destino a Sevilla saldrá del andén 3» — тип конструкції:","futuro simple (офіційне оголошення/прогноз розкладу)","ir a + infinitivo","офіційний реєстр"],
+["Друг каже: «Voy a comprar los billetes ahora mismo» — тип:","ir a (рішення вже прийняте, дія негайна)","futuro simple","конкретна дія"],
+["Синоптик каже: «Mañana lloverá en el norte» — тип:","futuro simple (прогноз погоди)","ir a + infinitivo","типовий прогноз"],
+["Мама каже дитині: «Vamos a llegar tarde si no te apuras» — тип:","ir a (наближена, майже теперішня дія)","futuro simple","невідкладність"],
+["Офіційні оголошення (аеропорти, вокзали) частіше використовують…","futuro simple","ir a + infinitivo","реєстр формальності"],
+["Побутова розмова про негайні плани частіше використовує…","ir a + infinitivo","futuro simple","реєстр розмовності"],
+["«Como siempre» (як завжди) у реченні натякає на…","predicción (futuro simple)","plan concreto (ir a)","досвід/звичка → прогноз"],
+["Ці нюанси показують, що вибір форми залежить не лише від граматики, а й від…","реєстру мовлення і ситуації","роду підмета","важливий висновок"],
+["Обидві конструкції зрештою говорять про майбутнє, але передають різний…","відтінок значення (план/прогноз/спонтанність)","час дії (майбутнє/минуле)","суть відмінності"],
+["Досвідчений мовець обирає конструкцію…","інтуїтивно за контекстом ситуації","завжди одну і ту саму","реалістичний висновок"]
+]},
+{t:"Побудуй речення логічно", lv:3, q:[
+["Завтра ми їдемо до Гранади (вирішено) →","Mañana vamos a ir a Granada.","Mañana iremos a ir a Granada.","ir a, без дублювання"],
+["Мабуть, буде багато трафіку →","Probablemente habrá mucho tráfico.","Probablemente va a haberá mucho tráfico.","futuro simple, невпевненість"],
+["Збираюся купити квитки онлайн зі знижкою →","Voy a comprar los billetes online con descuento.","Compraréré los billetes online con descuento.","ir a, конкретний план"],
+["Рейс, мабуть, запізниться, як завжди →","El vuelo llegará con retraso, como siempre.","El vuelo va a llegará con retraso, como siempre.","futuro, прогноз на основі досвіду"],
+["Гаразд, зустрінемось на вокзалі! (спонтанно) →","Vale, nos veremos en la estación.","Vale, nos vamos a veremos en la estación.","futuro, спонтанне рішення"],
+["Цими вихідними відвідаємо Кордову (план) →","Este fin de semana vamos a visitar Córdoba.","Este fin de semana visitaremosremos Córdoba.","ir a, конкретний план"],
+["За кілька років подорожі стануть дешевшими (прогноз) →","Dentro de unos años los viajes serán más baratos.","Dentro de unos años los viajes van a serán más baratos.","futuro, далекий прогноз"],
+["Я збираюся забронювати готель сьогодні ввечері →","Voy a reservar el hotel esta noche.","Reservaréré el hotel esta noche.","ir a, конкретний план"],
+["Хто раз подорожує, вже не може зупинитися →","El que viaja una vez, ya no puede parar.","El que viaja una vez, ya no va a puede parar.","приказка, presente"],
+["Потяг прибуде на перон три →","El tren llegará al andén tres.","El tren va a llegará al andén tres.","futuro, не дублювати"]
+]},
+{t:"Sergio y Clara: подорож деталі", lv:3, q:[
+["Sergio y Clara вирушили з міста…","Alicante","Мадрид","з тексту"],
+["Вони обрали квитки…","туди-назад онлайн, з молодіжною знижкою","в один бік, у касі","з тексту"],
+["У суботу вони їхали…","регіональним потягом до Гранади","швидкісним AVE до Мадрида","з тексту"],
+["Під час подорожі вони бачили…","оливкові гаї й білі села","гори зі снігом","з тексту"],
+["У Гранаді вони відвідали…","Альгамбру","Королівський палац Мадрида","з тексту"],
+["У кварталі Альбайсін вони…","поїли тапас","переночували в готелі","з тексту"],
+["Наступного дня вони поїхали до…","Кордови","Севільї","з тексту"],
+["У Кордові вони прогулялися…","Мескітою і Римським мостом","пляжем","з тексту"],
+["Sergio описав подорож як…","коротку, але ідеальну","занадто довгу і виснажливу","з тексту, цитата"],
+["Перед поверненням вони запланували наступну подорож до…","Севільї","Барселони","з тексту, фінал"]
+]},
+{t:"Оголошення на вокзалі: практика", lv:3, q:[
+["«El tren con destino a Madrid saldrá del andén 5» — переклад…","Потяг напрямком до Мадрида відправиться з перону 5","Потяг до Мадрида вже відправився з перону 5","офіційне оголошення, futuro"],
+["«Se ruega a los pasajeros no dejar el equipaje sin vigilancia» — переклад…","Просимо пасажирів не залишати багаж без нагляду","Пасажирам дозволено залишати багаж будь-де","impersonal, повторення уроку 25"],
+["«El AVE con destino a Barcelona tiene un retraso de 15 minutos» — переклад…","AVE напрямком до Барселони затримується на 15 хвилин","AVE до Барселони прибув на 15 хвилин раніше","типове оголошення"],
+["«Próxima parada: Córdoba» — переклад…","Наступна зупинка: Кордова","Попередня зупинка була в Кордові","оголошення в потязі"],
+["«Se recomienda validar el billete antes de subir» — переклад…","Рекомендується компостувати квиток перед посадкою","Квиток компостувати не потрібно","impersonal, повторення уроку 27"],
+["Ці оголошення типово вживають…","futuro simple або impersonal se","лише imperativo negativo","реєстр оголошень"],
+["Розуміння вокзальних оголошень корисне для…","реальних подорожей по Іспанії","лише граматичних вправ","практична мета"],
+["«Con destino a» означає…","напрямком до","що прибуває з","стандартний вираз"],
+["Формальний реєстр оголошень контрастує з…","розмовним «voy a coger el tren»","звичайною розмовною мовою повністю однаковою","реєстр мовлення"],
+["Підсумок: вміння розуміти оголошення — практичний навик, що поєднує граматику уроків…","25, 27 і 28","лише уроку 1","міжтематичний звʼязок"]
+]},
+{t:"«Mi plan de viaje» (домашка)", lv:3, q:[
+["Para mi próximo viaje, ___ (visitar) tres ciudades de España.","voy a visitar","visitaré también","конкретний план → ir a, з домашки"],
+["Probablemente ___ (viajar) en tren porque es cómodo.","viajaré","voy a viajaré","probablemente → futuro"],
+["Для домашки потрібно створити «plan de viaje» — маршрут із…","трьох міст Іспанії","одного міста","з підручника"],
+["Друге завдання — розповісти про…","найкращий або найгірший досвід подорожі","улюблену страву","з підручника"],
+["Третє завдання — описати місто, яке хотілося б…","відвідати в Іспанії","ніколи не відвідувати","з підручника"],
+["У плані подорожі варто вказати транспорт, наприклад…","el tren AVE, el autobús ALSA","лише «я поїду»","практична порада"],
+["Приклад корисної фрази для домашки: «Voy a coger el ___ de las ocho».","tren","reserva","з book"],
+["Ще приклад: «Probablemente ___ con retraso» (про рейс).","llegue/llegará","llega","futuro для прогнозу"],
+["Мета домашки уроку 28 — практика…","планування подорожі новою граматикою (ir a/futuro)","минулого часу","підсумок"],
+["Los deberes уроку 28 завершуються, як завжди,…","тестовим завданням (link test)","усним іспитом","стандартна структура"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["Voy a viajar a Granada el sábado — конструкція:","ir a + infinitivo","futuro simple","план"],
+["Mañana hará sol — конструкція:","futuro simple","ir a + infinitivo","прогноз"],
+["❌ Iré a ir a Valencia → ✅ …","Iré a Valencia. / Voy a ir a Valencia.","обидва варіанти правильні одночасно","типова помилка"],
+["el billete de ida y vuelta = …","квиток туди й назад","квиток лише в один бік","словник"],
+["Renfe — це…","залізнична компанія Іспанії","авіакомпанія","з культ. нотаток"],
+["BlaBlaCar популярний серед…","молоді","пенсіонерів","з культ. нотаток"],
+["«El que viaja una vez, ya no puede parar» — переклад…","Хто раз подорожує, вже не може зупинитися","Хто подорожує, завжди втомлюється","приказка з тексту"],
+["Sergio y Clara відвідали Гранаду і…","Кордову","Севілью відразу","з тексту"],
+["probablemente сигналізує вживання…","futuro simple","ir a + infinitivo","маркер"],
+["Урок 28 готово! Espero que tu próximo viaje ___ (ser) inolvidable. ✈️","sea","será","subjuntivo після espero que"]
+]}
+
+];
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "PLANIFICAR UN VIAJE: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 28 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

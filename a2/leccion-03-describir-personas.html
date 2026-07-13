@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 3 · Describir a personas · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 3 · @malinnaartstudio</div>
+    <h1 id="htitle">DESCRIBIR PERSONAS: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 3 · Describir a personas física y emocionalmente.</b>
+      30 вправ по 10 питань: tener + риси, llevar + одяг, parecer + враження, словник
+      зовнішності й характеру, розмовні majo/tío/tía, суперлатив -ísimo, Сервантес і Далі. Від ★ до ★★★. ¡A describir! 👀
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · tener, llevar, parecer</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · узгодження й контекст</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й помилки</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 3</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"TENER, LLEVAR чи PARECER?", lv:1, q:[
+["___ ojos azules.","Tiene","Lleva","об'єктивна риса → tener"],
+["___ gafas.","Lleva","Parece","аксесуар → llevar (приклад з книги)"],
+["___ simpático. (здається)","Parece","Tiene","враження → parecer"],
+["___ barba.","Tiene","Parece","борода → tener"],
+["Hoy ___ una falda roja.","lleva","tiene","одяг сьогодні → llevar"],
+["___ cansada. (виглядаєш)","Pareces","Llevas","враження → parecer"],
+["tener = …","мати (щось об'єктивне)","носити","з книги"],
+["llevar = …","носити / бути в (одяг, аксесуари)","здаватися","щось змінне"],
+["parecer = …","здаватися, виглядати","мати","враження"],
+["Ella ___ una artista. (схожа на)","parece","lleva","parecer + іменник"]
+]},
+{t:"TENER + риси зовнішності", lv:1, q:[
+["Tiene el pelo ___. (коротке)","corto","corta","el pelo → чол. рід"],
+["Tiene ojos ___. (блакитні)","azules","azuls","azul → azules"],
+["Tiene ___. (борода)","barba","barbo","barbo — це риба! 🐟"],
+["Tiene el pelo ___. (довге)","largo","grande","довгий = largo, не grande"],
+["Tiene los ojos ___. (темні)","oscuros","oscures","oscuro → oscuros"],
+["Tiene ___ largo. (волосся)","el pelo","la pela","el pelo — чол. рід"],
+["Tiene bigote = у нього…","вуса","бігуді","bigote = вуса 👨"],
+["«У неї зелені очі» = Tiene ojos ___.","verdes","verdos","verde → verdes"],
+["Tiene una sonrisa bonita = у неї гарна…","усмішка","сорочка","sonrisa = усмішка 😊"],
+["Частини тіла та риси — з дієсловом…","tener","llevar","об'єктивна риса"]
+]},
+{t:"Форми TENER", lv:1, q:[
+["yo ___ (tener)","tengo","teno","yo tengo"],
+["tú ___ (tener)","tienes","tenes","e→ie: tienes"],
+["él ___ (tener)","tiene","tene","tiene"],
+["nosotros ___ (tener)","tenemos","tienemos","без чергування"],
+["vosotros ___ (tener)","tenéis","teneis","з наголосом: tenéis"],
+["ellos ___ (tener)","tienen","tenen","tienen"],
+["usted ___ (tener)","tiene","tienes","usted → як él"],
+["Mi hermano y yo ___ los ojos verdes.","tenemos","tienen","він + я = nosotros"],
+["¿Cuántos años ___? (ти)","tienes","estás","вік → tener"],
+["ellas ___ el pelo largo","tienen","tiene","мн."]
+]},
+{t:"LLEVAR + одяг і аксесуари", lv:1, q:[
+["Lleva ___ gafas negras.","unas","unos","las gafas → жін. мн."],
+["Hoy lleva una falda ___.","roja","rojo","la falda → roja"],
+["Lleva el pelo ___. (розпущене)","suelto","soltado","приклад з книги: suelto"],
+["Lleva pantalones ___. (джинси)","vaqueros","vaquero","pantalones vaqueros 👖"],
+["Mi madre lleva una ___ roja. (шарф)","bufanda","bufón","bufón — це блазень 🃏"],
+["Lleva un ___ elegante. (капелюх)","sombrero","sombra","sombra = тінь"],
+["Одяг і аксесуари — з дієсловом…","llevar","tener","носити"],
+["Lleva ropa ___. (сучасний)","moderna","moderno","la ropa → жін."],
+["«На ній синя сукня» = Lleva un vestido ___.","azul","azula","azul — одна форма"],
+["Lleva zapatos ___. (нові)","nuevos","nuevas","los zapatos → чол. мн."]
+]},
+{t:"Форми LLEVAR", lv:1, q:[
+["yo ___ (llevar)","llevo","llevó","правильне дієслово: llevo"],
+["tú ___ (llevar)","llevas","llevés","llevas"],
+["ella ___ (llevar)","lleva","llieva","без чергування: lleva"],
+["nosotros ___ (llevar)","llevamos","llevemos","llevamos"],
+["vosotros ___ (llevar)","lleváis","llevais","з наголосом: lleváis"],
+["ellos ___ (llevar)","llevan","llievan","без чергування: llevan"],
+["usted ___ (llevar)","lleva","llevas","usted → lleva"],
+["¿Qué ___ hoy? (ти)","llevas","lleves","що на тобі сьогодні"],
+["Mi hermana y yo ___ vaqueros.","llevamos","llevan","вона + я = nosotros"],
+["llevar — дієслово…","правильне (-ar)","неправильне","ніяких сюрпризів 😌"]
+]},
+{t:"PARECER + прикметник", lv:1, q:[
+["Él parece ___. (приємним)","simpático","simpática","чол. → simpático"],
+["(Ти, жінка) Pareces ___.","cansada","cansado","жінка → cansada"],
+["Mi jefe parece ___. (серйозний)","serio","seria","чол. → serio"],
+["Ellos parecen ___. (задоволені)","contentos","contento","мн."],
+["parecer виражає…","враження","доведений факт","перше враження"],
+["Pareces triste, ¿qué te pasa? = Ти виглядаєш…","сумною","стрункою","triste = сумний"],
+["El chico nuevo parece ___ y delgado.","alto","alta","чол."],
+["Vosotros ___ cansados, ¿no?","parecéis","parecen","вправа з книги: vosotros → parecéis"],
+["Juan siempre parece ___.","nervioso","nerviosa","вправа з книги"],
+["Tú ___ muy alegre hoy.","pareces","parece","вправа з книги: tú → pareces"]
+]},
+{t:"Словник: зовнішність (ісп → укр)", lv:1, q:[
+["alto = …","високий","старий","зріст 📏"],
+["bajo = …","низький","бас-гітарист","зріст, не музика 🎸"],
+["delgado = …","худий","делікатний","стрункий"],
+["gordito = …","повненький","гордий","з ласкавим -ito"],
+["fuerte = …","сильний","гучний","сила 💪"],
+["moreno = …","темноволосий, смаглявий","моряк","брюнет"],
+["rubio = …","білявий","рубін","блонд 👱"],
+["pelirrojo = …","рудий","пелікан","pelo + rojo 🦰"],
+["ojos claros = …","світлі очі","ясний погляд","світлі"],
+["pelo liso = …","пряме волосся","лисе волосся","liso ≠ лисий! 😄"]
+]},
+{t:"Словник: зовнішність (укр → ісп)", lv:1, q:[
+["високий = …","alto","largo","largo — про предмети"],
+["худий = …","delgado","delicado","delicado = делікатний"],
+["рудий = …","pelirrojo","rojo","pelirrojo — про людину"],
+["блондинка = …","rubia","rusa","rusa — це росіянка!"],
+["кучеряве волосся = …","pelo rizado","pelo rezado","rezar = молитися 🙏"],
+["сильний = …","fuerte","forte","forte — це музика 🎵"],
+["повненький = …","gordito","gordo grande","м'яка форма"],
+["темні очі = …","ojos oscuros","ojos negros claros","oscuros"],
+["низька (вона) = …","baja","bajo","жін. → baja"],
+["довге волосся = …","pelo largo","pelo longo","longo — португальська 🇵🇹"]
+]},
+{t:"Словник: характер і темперамент", lv:1, q:[
+["tímido = …","сором'язливий","тьмяний","🙈"],
+["serio = …","серйозний","сірий","серйозність"],
+["extrovertido = …","екстравертний","вивернутий","душа компанії"],
+["introvertido = …","інтровертний","введений","любить тишу 📚"],
+["abierto = …","відкритий","абонент","відкрита людина"],
+["tranquilo = …","спокійний","п'яний","спокій 🧘"],
+["alegre = …","веселий","алергік","радість"],
+["сором'язлива (вона) = …","tímida","tímido","жін. → tímida"],
+["серйозна = …","seria","serio","жін. → seria"],
+["extrovertida ↔ …","introvertida","tranquila","екстраверт ↔ інтроверт"]
+]},
+{t:"Волосся: усі варіанти", lv:1, q:[
+["pelo corto ↔ pelo ___","largo","longo","довге = largo"],
+["pelo liso ↔ pelo ___","rizado","lisado","пряме ↔ кучеряве"],
+["pelo suelto = …","розпущене волосся","волосся, що випадає","suelto = вільний"],
+["Tiene el pelo ___. (кучеряве)","rizado","rizada","el pelo → чол."],
+["Lleva el pelo ___. (зібране)","recogido","recogida","recogido"],
+["moreno — це про…","темне волосся","море","брюнет 🌊❌"],
+["rubia = …","блондинка","рубін","блонд 👱‍♀️"],
+["pelirrojo = pelo + …","rojo","reloj","reloj — це годинник ⏰"],
+["«лисий» іспанською = …","calvo","caballo","caballo — це кінь! 🐴"],
+["El pelo de Ana es largo y ___. (пряме)","liso","lisa","el pelo → liso"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Вправи з книги: заповни пропуск", lv:2, q:[
+["Mi profesora ___ gafas.","lleva","parece","з вправи книги"],
+["…y siempre ___ simpática.","parece","lleva","враження"],
+["Hoy Marta ___ un vestido azul…","lleva","tiene","одяг → llevar"],
+["…y ___ muy elegante.","parece","tiene","виглядає елегантно"],
+["Mi abuelo ___ barba y bigote.","tiene","parece","риси → tener"],
+["Vosotros ___ cansados, ¿no?","parecéis","tenéis","виглядаєте втомленими"],
+["El chico nuevo ___ alto y delgado.","parece","lleva","враження"],
+["Mi amiga ___ el pelo rizado.","tiene","parece","риса → tener"],
+["Mi madre ___ una bufanda roja.","lleva","tiene","аксесуар → llevar"],
+["Ellos ___ muy contentos esta mañana.","parecen","llevan","враження"]
+]},
+{t:"Узгодження роду й числа", lv:2, q:[
+["Ana es ___. (брюнетка)","morena","moreno","жін. → morena"],
+["Mis hermanos son ___. (високі)","altos","altas","чол. мн."],
+["Ella es ___. (худа)","delgada","delgado","жін."],
+["Tiene los ojos ___. (світлі)","claros","claras","los ojos → чол. мн."],
+["Las chicas son ___. (біляві)","rubias","rubios","жін. мн."],
+["Mi abuela es ___. (низенька)","baja","bajo","жін."],
+["Pedro es ___. (повненький)","gordito","gordita","чол."],
+["Es una chica ___. (сильна)","fuerte","fuerta","fuerte — одна форма"],
+["Son ___. (руді, дівчата)","pelirrojas","pelirrojos","жін. мн."],
+["La niña tiene el pelo ___. (кучеряве)","rizado","rizada","el pelo → чол.!"]
+]},
+{t:"Форми PARECER", lv:2, q:[
+["yo ___ (parecer)","parezco","parezo","zc: parezco"],
+["tú ___ (parecer)","pareces","parecas","pareces"],
+["él ___ (parecer)","parece","parese","з c: parece"],
+["nosotros ___ (parecer)","parecemos","paremos","parecemos"],
+["vosotros ___ (parecer)","parecéis","pareceis","з наголосом"],
+["ellos ___ (parecer)","parecen","paresen","з c"],
+["usted ___ (parecer)","parece","pareces","usted → parece"],
+["Me ___ interesante. (мені здається)","parece","parezco","me parece = мені здається"],
+["¿Qué te ___? (як тобі?)","parece","pareces","¿Qué te parece?"],
+["Mis amigos ___ contentos.","parecen","parece","мн."]
+]},
+{t:"TENER vs LLEVAR: що обрати?", lv:2, q:[
+["Об'єктивна риса (очі, зріст) → …","tener","llevar","мати"],
+["Змінне (одяг, аксесуари) → …","llevar","tener","носити"],
+["Багаторічна борода → …","tiene barba","parece barba","риса → tener"],
+["Сьогоднішня сукня → …","lleva un vestido","tiene un vestido","з помилок книги!"],
+["Окуляри на носі зараз → …","lleva gafas","es gafas","llevar"],
+["«У нього блакитні очі» → …","Tiene ojos azules.","Lleva ojos azules.","очі не знімаються 😄"],
+["Зачіска сьогодні → …","lleva el pelo suelto","es el pelo suelto","llevar + зачіска"],
+["Татуювання → …","tiene un tatuaje","parece un tatuaje","риса → tener"],
+["Рюкзак на спині → …","lleva una mochila","tiene razón","llevar 🎒"],
+["Вік: Tiene 30 ___.","años","anos","обов'язково з ñ! 😅"]
+]},
+{t:"PARECER vs ESTAR: враження чи факт?", lv:2, q:[
+["___ cansada. (здаєшся, я не впевнений)","Pareces","Estás","враження → parecer"],
+["___ cansada. (я знаю: вона не спала)","Está","Parece","факт → estar"],
+["parece nervioso → я…","припускаю з вигляду","знаю напевно","враження"],
+["está nervioso → це…","факт, стан","припущення","факт"],
+["Незнайомець приємний на вигляд: ___ simpático.","Parece","Es","перше враження"],
+["parece simpático означає…","можливо приємний — перше враження","100% приємний","культурна нотатка книги!"],
+["Parece nervioso → (стан) ___ nervioso.","Está","Es","вправа 3 з книги"],
+["Бачиш друга з валізами: ___ que te vas de viaje.","Parece","Tienes","parece que…"],
+["Me parece que… = …","мені здається, що…","мені належить…","думка"],
+["Hoy ___ genial. (виглядаєш — комплімент)","estás","tienes","estar про вигляд сьогодні"]
+]},
+{t:"Вгадай за описом", lv:2, q:[
+["Alto, fuerte, juega al baloncesto…","un deportista","un bebé","спортсмен 🏀"],
+["Lleva uniforme y apaga fuegos…","un bombero","un panadero","пожежник 🚒"],
+["Tiene bigote larguísimo y pinta relojes blandos…","Salvador Dalí","Cervantes","сюрреаліст 🎨"],
+["Escribió «Don Quijote»…","Cervantes","Dalí","письменник 📖"],
+["Pelo blanco, 90 años, muy sabia…","una abuela","una niña","бабуся"],
+["Tímido, no habla mucho, prefiere leer…","un introvertido","un extrovertido","інтроверт 📚"],
+["Habla con todos, le encantan las fiestas…","un extrovertido","un tímido","екстраверт 🎉"],
+["Lleva corona y vestidos elegantes…","una reina","una profesora","королева 👑"],
+["Nunca está nervioso, siempre calmado…","tranquilo","nervioso","спокій"],
+["Pelo rojo natural…","pelirrojo","moreno","рудий 🦰"]
+]},
+{t:"Антоніми зовнішності й характеру", lv:2, q:[
+["alto ↔ …","bajo","corto","про людину — bajo, corto — про волосся"],
+["delgado ↔ …","gordito","fuerte","худий ↔ повненький"],
+["moreno ↔ …","rubio","pelirrojo","брюнет ↔ блондин"],
+["pelo corto ↔ pelo ___","largo","alto","largo про волосся"],
+["liso ↔ …","rizado","suelto","пряме ↔ кучеряве"],
+["ojos claros ↔ ojos ___","oscuros","cerrados","темні, а не заплющені 😄"],
+["tímido ↔ …","extrovertido","tranquilo","сором'язливий ↔ екстраверт"],
+["serio ↔ …","alegre","triste","серйозний ↔ веселий"],
+["fuerte ↔ …","débil","fuerza","слабкий = débil"],
+["joven ↔ …","mayor","menor","старший = mayor"]
+]},
+{t:"Словник: одяг та аксесуари", lv:2, q:[
+["vestido = …","сукня","жилет","👗"],
+["falda = …","спідниця","фалда фрака","спідниця"],
+["pantalones = …","штани","пантелик","👖"],
+["vaqueros = …","джинси","ковбої (завжди)","дослівно «ковбойські» 🤠"],
+["bufanda = …","шарф","банда","🧣"],
+["sombrero = …","капелюх","парасолька","👒"],
+["gafas = …","окуляри","жирафи","👓"],
+["camiseta = …","футболка","сорочка офіційна","camisa = сорочка, camiseta = футболка"],
+["zapatos = …","взуття","запчастини","👟"],
+["abrigo = …","пальто","абрикос","🧥"]
+]},
+{t:"Текст: Cervantes та Isabel", lv:2, q:[
+["Cervantes — el autor de…","«Don Quijote»","«La casa de papel»","📖"],
+["Cervantes tenía ___.","bigote","barba larga","з тексту: bigote"],
+["Cervantes parecía serio, pero era…","creativo y con humor","aburrido","оманливе враження!"],
+["Isabel la Católica llevaba…","vestidos elegantes","vaqueros","королева 👑"],
+["Isabel parecía una mujer muy ___ de sí misma.","segura","cansada","впевнена в собі"],
+["tenía — минуле від…","tener","llevar","мав"],
+["llevaba — минуле від…","llevar","llegar","llegar = прибувати!"],
+["parecía — минуле від…","parecer","parar","здавався"],
+["segura de sí misma = …","впевнена в собі","захищена від усіх","впевненість"],
+["En la cultura española encontramos personas…","muy diferentes","idénticas","різноманіття"]
+]},
+{t:"Текст: Dalí та сучасна Іспанія", lv:2, q:[
+["Dalí tenía un bigote ___ y muy extraño.","larguísimo","cortísimo","довжелезні вуса"],
+["La gente decía que Dalí parecía un poco ___.","loco","serio","божевільний геній"],
+["…aunque todos reconocen que era un ___.","genio","genial","іменник: genio"],
+["Dalí era pintor ___.","surrealista","realista","🎨 годинники, що течуть"],
+["Hoy en España hay una gran ___ de personas.","diversidad","densidad","різноманіття"],
+["Algunos tienen el pelo rubio y los ojos ___.","claros","cerrados","світлі"],
+["Otros llevan ropa moderna y ___.","colorida","aburrida","яскрава"],
+["Muchos parecen simpáticos cuando hablan ___.","contigo","con tú","contigo = з тобою"],
+["V/F: En España todos tienen el mismo aspecto.","Falso","Verdadero","різноманіття!"],
+["La diversidad refleja mucha variedad ___.","humana","humeda","humana"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки українців", lv:3, q:[
+["«На ній червона сукня»:","Lleva un vestido rojo.","Tiene un vestido rojo.","помилка з книги!"],
+["«Він втомлений»:","Está cansado.","Es cansado.","es cansado = він нудний!"],
+["«Es cansado» насправді означає…","«він нудний» (aburrido)","«він втомлений»","з помилок книги"],
+["«У неї довге волосся»:","Tiene el pelo largo.","Es el pelo largo.","tener"],
+["«Він виглядає щасливим»:","Parece feliz.","Lleva feliz.","parecer"],
+["«Вона носить окуляри»:","Lleva gafas.","Es gafas.","llevar"],
+["«Я високий»:","Soy alto.","Estoy alto.","постійна риса → ser"],
+["«Він здається молодим»:","Parece joven.","Tiene joven.","parecer"],
+["«У мене борода»:","Tengo barba.","Tengo barbo.","barbo — риба-вусань 🐟"],
+["«Ти сьогодні елегантна»:","Estás muy elegante hoy.","Eres muy elegante hoy.","hoy → estar"]
+]},
+{t:"Трансформації (вправа 3 з книги)", lv:3, q:[
+["Tiene ojos verdes → (parecer)","Sus ojos parecen verdes.","Parece ojos verdes.","очі здаються зеленими"],
+["Lleva pantalones vaqueros → (tener)","Tiene unos pantalones vaqueros.","Tiene puestos vaqueros es.","має джинси"],
+["Parece nervioso → (estar)","Está nervioso.","Es nervioso.","стан"],
+["Tiene pelo corto → (llevar)","Lleva el pelo corto.","Lleva pelo es corto.","зачіска → llevar"],
+["Lleva un sombrero elegante → (parecer)","Parece elegante con ese sombrero.","Parece un sombrero.","ти не капелюх 😄"],
+["Está cansado → (parecer)","Parece cansado.","Parece cansancio.","прикметник"],
+["Parece una artista → (ser)","Es artista.","Está artista.","професія → ser"],
+["Tiene gafas → (llevar)","Lleva gafas.","Lleva que tiene gafas.","носить окуляри"],
+["Es simpático (як враження) → …","Parece simpático.","Tiene simpático.","parecer"],
+["Lleva el pelo suelto → (tener)","Tiene el pelo suelto.","Tiene suelto.","повне речення"]
+]},
+{t:"Розмовна іспанська: majo, tío, tía", lv:3, q:[
+["un chico ___ = класний хлопець","majo","mago","mago — це чарівник 🪄"],
+["«una tía simpática» — tía тут = …","дівчина, жінка (розмовно)","тітка (родичка)","з культурних нотаток"],
+["tío/tía у розмові = …","чувак / чувіха","завжди дядько/тітка","контекст!"],
+["maja про дівчину = …","мила, класна","маска","¡Qué maja!"],
+["Іспанці кажуть majo, tía…","у повсякденні постійно","лише в селах","культурна нотатка книги"],
+["¡Qué majo es tu amigo! = …","Який класний твій друг!","Який маг твій друг!","majo 😄"],
+["guapo у розмові може бути…","і компліментом, і звертанням","лише про зовнішність","¡Hola, guapo!"],
+["parece majo = …","здається класним","точно класний","перше враження!"],
+["Незнайомець приємний: Parece un tío ___.","majo","mucho","majo"],
+["Слово tía образливе?","ні, якщо дружній тон","так, завжди","тон вирішує"]
+]},
+{t:"PARECER + іменник: схожість", lv:3, q:[
+["Ella parece ___ artista.","una","un","artista про жінку → una"],
+["Parece ___ buena persona.","una","un","persona → завжди жін."],
+["Con ese traje pareces ___ actor.","un","una","чоловік → un"],
+["parecer + іменник = …","бути схожим на когось","мати щось","parece una artista"],
+["Parece un modelo = він…","схожий на модель","має модель","схожість"],
+["El niño parece ___ ángel.","un","una","янголятко 👼"],
+["Tu casa parece ___ museo.","un","una","стільки картин! 🖼️"],
+["Parece mentira = …","важко повірити","він бреше","стійкий вираз!"],
+["Pareces ___ princesa con ese vestido.","una","un","👑"],
+["Mi perro parece ___ oso.","un","una","ведмедик 🐻"]
+]},
+{t:"Опис у минулому: tenía, llevaba, parecía", lv:3, q:[
+["Cervantes ___ bigote. (мав)","tenía","tiene","минуле"],
+["Isabel ___ vestidos elegantes. (носила)","llevaba","lleva","минуле"],
+["Dalí ___ un poco loco. (здавався)","parecía","parece","минуле"],
+["tenía, llevaba, parecía — це час…","минулий (imperfecto)","майбутній","опис у минулому"],
+["La gente ___ que parecía loco. (казали)","decía","dice","минуле"],
+["era — минуле від…","ser","estar","era un genio"],
+["«Вона завжди здавалася впевненою» = Siempre ___ segura.","parecía","parece","минуле"],
+["Cervantes ___ muy creativo. (був)","era","estaba","характеристика → era"],
+["Про митців минулого розповідаємо в часі…","минулому","теперішньому","логічно 😄"],
+["«Він мав довжелезні вуса» = ___ un bigote larguísimo.","Tenía","Tiene","минуле"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«У нього коротке волосся»","Tiene el pelo corto.","Lleva el pelo es corto.","приклад з книги"],
+["«Він носить окуляри»","Lleva gafas.","Tiene gafas puesto.","приклад з книги"],
+["«Ти виглядаєш втомленою»","Pareces cansada.","Llevas cansada.","приклад з книги"],
+["«Вона схожа на артистку»","Parece una artista.","Tiene una artista.","приклад з книги"],
+["«Сьогодні на ній червона спідниця»","Hoy lleva una falda roja.","Hoy tiene una falda roja.","одяг зараз → llevar"],
+["«Дідусь має бороду й вуса»","Mi abuelo tiene barba y bigote.","Mi abuelo lleva barbo y bigote.","tener + barba"],
+["«Вони здаються дуже задоволеними»","Parecen muy contentos.","Llevan muy contentos.","parecer"],
+["«Я сором'язливий»","Soy tímido.","Estoy tímido.","риса характеру → ser"],
+["«Вона білявка зі світлими очима»","Es rubia y tiene ojos claros.","Está rubia y lleva ojos claros.","риси"],
+["«Він здається трохи божевільним»","Parece un poco loco.","Tiene un poco loco.","як казали про Далі 😄"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«Tiene un vestido rojo» (одяг зараз) — це…","помилка (треба lleva)","правильно","з книги"],
+["«Lleva gafas» — це…","правильно","помилка","✓"],
+["«Es cansado» (втомлений) — це…","помилка (треба está)","правильно","es cansado = нудний"],
+["«Parece simpática» — це…","правильно","помилка","✓"],
+["«Tiene ojos azules» — це…","правильно","помилка","✓"],
+["«María es morena» — це…","правильно","помилка","колір волосся → ser ✓"],
+["«Pareces un vestido bonito» — це…","помилка (треба llevas)","правильно","ти не сукня 😄"],
+["«Tengo 25 años» — це…","правильно","помилка","вік → tener ✓"],
+["«Ellos parecen cansado» — це…","помилка (треба cansados)","правильно","мн."],
+["«Lleva el pelo suelto» — це…","правильно","помилка","приклад з книги ✓"]
+]},
+{t:"Суперлатив -ísimo", lv:3, q:[
+["largo → …","larguísimo","largísimo","gu зберігає звук [ґ]"],
+["Dalí мав bigote ___. (з тексту)","larguísimo","muy larguito","суперлатив"],
+["alto → …","altísimo","altoísimo","alt + ísimo"],
+["guapa → …","guapísima","guapaísima","guap + ísima"],
+["-ísimo означає…","дуже-дуже, надзвичайно","трошки","максимальне підсилення"],
+["El libro es ___. (дуже-дуже цікава)","interesantísimo","interesanteísimo","без кінцевої e"],
+["rico → …","riquísimo","ricísimo","c → qu"],
+["La paella está ___. (неймовірно смачна)","riquísima","ricísima","qu! 🥘"],
+["mucho → …","muchísimo","muyísimo","muchísimas gracias!"],
+["feliz → …","felicísimo","felizísimo","z → c"]
+]},
+{t:"Повний портрет: комбіновані речення", lv:3, q:[
+["Mi hermana ___ alta, ___ el pelo rizado y hoy ___ un vestido azul.","es / tiene / lleva","tiene / es / parece","ser + tener + llevar"],
+["«Я низенька, маю темні очі» = Soy ___ y tengo ojos ___.","baja / oscuros","bajo / oscuras","жінка + очі чол. мн."],
+["Mi padre es ___, tiene ___ y lleva ___.","fuerte / bigote / gafas","gafas / fuerte / bigote","логічний порядок"],
+["El profesor parece ___, pero en realidad es muy ___.","serio / divertido","divertido / seria","як Сервантес!"],
+["У профілі соцмережі описуємо себе з…","ser, tener, llevar","haber, ir, dar","домашка з книги 😉"],
+["Ana es rubia, ___ los ojos claros y siempre ___ ropa elegante.","tiene / lleva","lleva / tiene","риса vs одяг"],
+["«Він відкритий і веселий» = Es ___ y ___.","abierto / alegre","abierta / alegra","чол."],
+["Mi abuela es ___, pero parece ___. (літня / молодшою)","mayor / joven","joven / mayor","вік vs враження"],
+["Tengo el pelo ___ y los ojos ___. (пряме, темні)","liso / oscuros","lisa / oscuras","el pelo, los ojos — чол."],
+["Повний опис людини — це зовнішність + …","характер","зарплата","física y emocionalmente!"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["___ el pelo largo y rizado.","Tiene","Parece","риса → tener"],
+["Hoy ___ una bufanda roja.","lleva","tiene","аксесуар → llevar"],
+["___ tímido, pero es extrovertido.","Parece","Tiene","враження оманливе"],
+["Un chico ___ = класний хлопець","majo","bajo","розмовне"],
+["Dalí tenía un bigote ___.","larguísimo","pequeñísimo","🎨"],
+["alto ↔ …","bajo","largo","про людину"],
+["«У мене світлі очі» = Tengo los ojos ___.","claros","claras","чол. мн."],
+["Vosotros ___ cansados, ¿no?","parecéis","parecen","vosotros"],
+["María es ___ y tiene el pelo liso. (блондинка)","rubia","rubio","жін."],
+["Урок 3 готово! Ти ___ un campeón. (схожий на чемпіона)","pareces","tienes","parecer 🏆"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "DESCRIBIR PERSONAS: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 3 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

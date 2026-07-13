@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 4 · Construcciones de obligación · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 4 · @malinnaartstudio</div>
+    <h1 id="htitle">OBLIGACIÓN: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 4 · Construcciones de obligación.</b>
+      30 вправ по 10 питань: hay que, tener que, empezar a, dejar de + інфінітив,
+      словник здорових звичок, volver a, новорічні propósitos і культурні нотатки. Від ★ до ★★★. ¡Hay que practicar! 💪
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · чотири конструкції</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · вибір і контекст</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й помилки</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 4</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"HAY QUE чи TENER QUE?", lv:1, q:[
+["___ dormir bien. (загальне правило)","Hay que","Tengo que","загальне → hay que"],
+["___ estudiar hoy. (я особисто)","Tengo que","Hay que","особисте → tener que"],
+["hay que = …","треба (всім, загалом)","я повинен","загальне правило"],
+["tener que = …","повинен (конкретна особа)","треба всім","особистий обов'язок"],
+["___ reciclar. (усім треба)","Hay que","Tienes que","приклад з книги ♻️"],
+["Tú ___ beber más agua.","tienes que","hay que","ти → tienes que"],
+["___ ser puntual. (правило)","Hay que","Tenemos que","приклад з книги ⏰"],
+["Mis padres ___ trabajar el fin de semana.","tienen que","hay que","батьки → tienen que"],
+["hay que змінюється за особами?","ні, лише 3 ос. однини","так","безособова форма"],
+["tener que змінюється за особами?","так","ні","tengo, tienes, tiene…"]
+]},
+{t:"HAY QUE + інфінітив", lv:1, q:[
+["Hay que + …","інфінітив","герундій","hay que dormir"],
+["Hay que ___ bien. (спати)","dormir","duermo","інфінітив"],
+["Hay que ___. (сортувати сміття)","reciclar","reciclo","інфінітив"],
+["«Треба бути пунктуальним» = Hay que ___ puntual.","ser","estar","з книги: ser puntual"],
+["En este hospital hay que llevar ___.","mascarilla","mascota","mascota — це песик 🐶"],
+["Hay que entregar el informe antes del ___.","viernes","verano","з тексту: до п'ятниці"],
+["«Треба поважати інших» = Hay que ___ a los demás.","respetar","respectar","respetar, без c"],
+["Hay que ≈ українське…","«треба»","«можна»","загальна необхідність"],
+["Hay que cuidarse = треба…","дбати про себе","стригтися","cuidarse = дбати про себе"],
+["No hay que ___ tanto. (хвилюватися)","preocuparse","preocupa","інфінітив"]
+]},
+{t:"Форми TENER QUE", lv:1, q:[
+["yo ___ que estudiar","tengo","teno","tengo"],
+["tú ___ que descansar","tienes","tenes","e→ie"],
+["él ___ que trabajar","tiene","tene","tiene"],
+["nosotros ___ que limpiar","tenemos","tienemos","без чергування"],
+["vosotros ___ que leer","tenéis","teneis","з наголосом"],
+["ellos ___ que madrugar","tienen","tenen","tienen"],
+["usted ___ que firmar aquí","tiene","tienes","usted → як él"],
+["¿Qué ___ que hacer hoy? (ти)","tienes","tiene","tú"],
+["Mi hermana y yo ___ que cocinar.","tenemos","tienen","вона + я = nosotros"],
+["ellas ___ que esperar","tienen","tiene","мн."]
+]},
+{t:"TENER QUE у реченнях", lv:1, q:[
+["Tengo que ___ hoy. (вчитися)","estudiar","estudio","que + інфінітив"],
+["Tienes que ___ más agua.","beber","bebes","інфінітив"],
+["Tenemos que ___ la casa.","limpiar","limpiamos","інфінітив"],
+["Tenéis que ___ más para el examen.","estudiar","estudiáis","вправа з книги"],
+["Tiene que ir ___ médico.","al","a el","a + el = al"],
+["Tengo que llegar a ___. (вчасно)","tiempo","hora","llegar a tiempo"],
+["«Ти маєш зробити уроки» = Tienes que hacer los ___.","deberes","debes","los deberes 📚"],
+["Tienen que ___ el móvil en clase.","apagar","apagan","інфінітив 📵"],
+["Після tener que йде…","інфінітив","особова форма дієслова","завжди інфінітив"],
+["Tengo que descansar ___. (більше)","más","muy","descansar más"]
+]},
+{t:"EMPEZAR A + інфінітив", lv:1, q:[
+["___ a trabajar mañana. (я)","Empiezo","Empezo","e→ie: empiezo"],
+["¿Cuándo ___ a estudiar español? (ти)","empiezas","empezas","e→ie"],
+["Los niños ___ a leer a los 6 años.","empiezan","empezan","приклад з книги"],
+["empezar a + …","інфінітив","лише іменник","empezar a leer"],
+["Nosotros ___ a ahorrar dinero.","empezamos","empiezamos","nosotros — БЕЗ чергування"],
+["Empiezo ___ meditar.","a","de","empezar A"],
+["empezar = …","починати","завершувати","старт 🏁"],
+["Vosotros ___ a entrenar.","empezáis","empiezáis","vosotros — без чергування"],
+["Yo ___ a practicar deporte este mes.","empiezo","empezo","вправа з книги"],
+["ahorrar dinero = …","економити гроші","заробляти гроші","скарбничка 🐷"]
+]},
+{t:"DEJAR DE + інфінітив", lv:1, q:[
+["He dejado ___ fumar.","de","a","dejar DE"],
+["___ de comer carne. (ми)","Dejamos","Empezamos","приклад з книги"],
+["¿Cuándo vas a dejar de ___ tanto?","preocuparte","preocupas","з книги: інфінітив"],
+["dejar de = …","перестати","почати","стоп ✋"],
+["Dejo de ___ los domingos. (працювати)","trabajar","trabajo","інфінітив"],
+["«Кинь курити!» = ¡Deja de ___!","fumar","fumas","інфінітив 🚭"],
+["Mi padre dejó de ___ hace un año.","fumar","fumar a","dejar de fumar"],
+["dejar de quejarse = перестати…","скаржитися","питати","queja = скарга"],
+["dejar — дієслово…","правильне","з чергуванням e→ie","звичайне -ar"],
+["No dejes de ___. (не переставай намагатися)","intentarlo","intentas","з фіналу тексту!"]
+]},
+{t:"Словник звичок: іспанська → українська", lv:1, q:[
+["hacer ejercicio = …","займатися спортом","робити вправи з граматики","💪"],
+["comer sano = …","харчуватися правильно","їсти святе","sano = здоровий"],
+["limpiar la casa = …","прибирати в будинку","лимонити будинок","🧹"],
+["ir al médico = …","йти до лікаря","йти до медіа","🩺"],
+["descansar = …","відпочивати","скасовувати","😴"],
+["llegar a tiempo = …","приходити вчасно","приходити в часи","⏰"],
+["reciclar = …","сортувати сміття","їздити на велосипеді","♻️"],
+["apagar el móvil = …","вимикати телефон","оплачувати телефон","pagar = платити!"],
+["quejarse = …","скаржитися","кашляти","скарги"],
+["ahorrar = …","економити","зараз","ahora = зараз!"]
+]},
+{t:"Словник звичок: українська → іспанська", lv:1, q:[
+["пити воду = …","beber agua","tomar aqua","agua, не aqua"],
+["читати книги = …","leer libros","leer livros","livros — португальська 🇵🇹"],
+["вчитися щодня = …","estudiar todos los días","estudiar todos los dias","з наголосом: días"],
+["кинути курити = …","dejar de fumar","dejar fumar","з de!"],
+["почати медитувати = …","empezar a meditar","empezar meditar","з a!"],
+["більше відпочивати = …","descansar más","descansar mucho más muy","descansar más"],
+["перестати скаржитися = …","dejar de quejarse","dejar de quejar","зворотне: quejarSE"],
+["економити гроші = …","ahorrar dinero","ahorar dinero","подвійна rr"],
+["займатися спортом = …","hacer ejercicio","hacer ejercicios de yoga","hacer ejercicio"],
+["приходити вчасно = …","llegar a tiempo","llegar en tiempo","a tiempo"]
+]},
+{t:"Прийменник: A, DE чи QUE?", lv:1, q:[
+["Empiezo ___ estudiar.","a","de","empezar A"],
+["Dejamos ___ fumar.","de","a","dejar DE"],
+["Empiezan ___ leer.","a","de","a"],
+["He dejado ___ comer carne.","de","a","de"],
+["Vuelvo ___ entrenar. (знову)","a","de","volver A"],
+["Hay ___ dormir bien.","que","de","hay QUE"],
+["Tengo ___ trabajar.","que","a","tener QUE"],
+["¿Empiezas ___ ahorrar?","a","que","empezar a"],
+["Dejó ___ quejarse.","de","que","dejar de"],
+["Empezamos ___ meditar.","a","en","a 🧘"]
+]},
+{t:"Що означає кожна конструкція?", lv:1, q:[
+["Початок дії → …","empezar a","dejar de","🏁"],
+["Кінець дії → …","dejar de","empezar a","✋"],
+["Загальне правило → …","hay que","tener que","всім"],
+["Особистий обов'язок → …","tener que","hay que","конкретній особі"],
+["«Почати» = …","empezar a","acabar de","старт"],
+["«Перестати» = …","dejar de","tener que","стоп"],
+["Скільки конструкцій у цьому уроці?","чотири","дві","hay que, tener que, empezar a, dejar de"],
+["Усі чотири поєднуються з…","інфінітивом","герундієм","+ infinitivo"],
+["hay que існує…","лише в 3-й особі однини","в усіх особах","безособове"],
+["He dejado de fumar = я…","кинув курити","почав курити","🚭"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Вправа з книги: заповни пропуск", lv:2, q:[
+["Tú ___ hacer los deberes antes de salir.","tienes que","hay que","ти → tienes que"],
+["En este hospital ___ llevar mascarilla.","hay que","tienes que","правило лікарні"],
+["Nosotros ___ comer tanto azúcar. (перестаємо)","dejamos de","empezamos a","цукор — стоп 🍬"],
+["Yo ___ a practicar deporte este mes.","empiezo","dejo","початок"],
+["Vosotros ___ estudiar más para el examen.","tenéis que","hay que","vosotros → tenéis que"],
+["En la biblioteca ___ hablar bajo.","hay que","tengo que","правило для всіх 🤫"],
+["Para estar sano ___ comer bien.","hay que","dejas de","загальне"],
+["Yo ___ ir al médico mañana.","tengo que","hay que","особисте"],
+["Ellos ___ a estudiar francés este año.","empiezan","dejan","початок"],
+["Ella ___ de trabajar por la noche.","deja","empieza","кінець"]
+]},
+{t:"EMPEZAR: повне відмінювання", lv:2, q:[
+["yo ___","empiezo","empezo","ie"],
+["tú ___","empiezas","empezas","ie"],
+["él ___","empieza","empeza","ie"],
+["nosotros ___","empezamos","empiezamos","без ie!"],
+["vosotros ___","empezáis","empiezáis","без ie!"],
+["ellos ___","empiezan","empezan","ie"],
+["Чергування e→ie НЕ відбувається у…","nosotros і vosotros","yo і tú","правило «чобітка» 🥾"],
+["empezar — дієслово типу…","e→ie","o→ue","як querer"],
+["usted ___","empieza","empiezas","як él"],
+["La clase ___ a las 9.","empieza","empeza","заняття починається"]
+]},
+{t:"HAY QUE — безособова форма", lv:2, q:[
+["hay — форма дієслова…","haber","hacer","hay від haber"],
+["«Всім треба» → …","Hay que + інфінітив","Hayamos que","не змінюється!"],
+["❌ Yo hay que trabajar → ✅ …","Yo tengo que trabajar.","Yo hay que trabajo.","вправа 2 з книги!"],
+["Hay que перекладається…","«треба», «слід»","«я мушу»","безособово"],
+["Hay que звертається до конкретної особи?","ні, до всіх загалом","так","для конкретики — tener que"],
+["«У школі треба носити форму» → …","hay que","tengo que","правило школи"],
+["«Мені треба до лікаря» → …","tengo que","hay que","особисто мені"],
+["hay que звучить…","м'якше, без адресата","як особистий наказ","дипломатично 😌"],
+["Скільки форм має hay que в теперішньому?","одну","шість","лише hay que"],
+["Hay que + інфінітив чи особова форма?","інфінітив","особова форма","hay que dormir"]
+]},
+{t:"Хто говорить? Обери конструкцію", lv:2, q:[
+["Лікар усім: «___ dormir 8 horas».","Hay que","Dejo de","порада всім"],
+["Мама сину: «___ limpiar tu habitación».","Tienes que","Hay que","з тексту: батьки"],
+["Новорічна обіцянка: «___ a ir al gimnasio».","Empiezo","Dejo","старт 💪"],
+["Здоров'я: «___ de fumar».","Dejo","Empiezo","стоп 🚭"],
+["Бос колегам: «___ entregar el informe antes del viernes».","Hay que","Empezáis a","з тексту: офіс"],
+["Батьки дітям: «___ que apagar el ordenador».","Tenéis","Hay","з тексту: vosotros"],
+["Друзі: «___ de salir tanto entre semana».","Dejamos","Tenemos","з тексту"],
+["«___ a organizar mejor mi tiempo».","Empiezo","Dejo","з тексту"],
+["Тренер тобі: «___ que beber más agua».","Tienes","Hay","особисто тобі"],
+["Еколог усім: «___ reciclar».","Hay que","Tengo que","загальне ♻️"]
+]},
+{t:"Вправа 3 з книги: обери опцію", lv:2, q:[
+["Загальний обов'язок — це…","Hay que…","Tengo que…","вправа з книги"],
+["Початок дії — це…","Empezar a","Dejar de","вправа з книги"],
+["Кінець поганої звички — це…","Dejar de","Hay que","вправа з книги"],
+["«Tienes que venir a clase mañana» — це…","особистий обов'язок","загальна порада","вправа з книги"],
+["«Hay que comer sano» адресовано…","всім загалом","одній людині","без адресата"],
+["«Tengo que estudiar» адресовано…","мені самому","всім","yo"],
+["Початок: Empiezo ___ correr.","a","de","a"],
+["Кінець: Dejo ___ correr.","de","a","de"],
+["Обов'язок: Tengo ___ correr.","que","a","que"],
+["Правило: ___ correr con cuidado.","Hay que","Hay a","hay que"]
+]},
+{t:"Поради для здорового життя", lv:2, q:[
+["Hay que comer ___.","sano","sana","comer sano"],
+["Hay que hacer ___ tres veces por semana.","ejercicio","ejercicios de examen","💪"],
+["Tienes que ir ___ médico.","al","a la","el médico → al"],
+["Hay que beber dos litros de ___.","agua","aguas","💧"],
+["Tienes que descansar ___.","más","muy","більше"],
+["Hay que llegar a ___ al trabajo.","tiempo","tiempos","вчасно ⏰"],
+["Tienes que apagar el ___ antes de dormir.","móvil","movil","з наголосом: móvil 📱"],
+["Hay que leer más ___.","libros","librillos","📚"],
+["Tienes que empezar a ___ dinero.","ahorrar","ahora","ahorrar ≠ ahora!"],
+["Hay que estudiar todos los ___.","días","dias","з наголосом: días"]
+]},
+{t:"Текст: новорічні propósitos", lv:2, q:[
+["En enero casi todos dicen que hay que hacer ejercicio y ___ de fumar.","dejar","empezar","новорічні обіцянки"],
+["propósitos = …","наміри, цілі","пропозиції","🎯"],
+["Algunos empiezan a ir al ___ con motivación.","gimnasio","cine","спортзал 💪"],
+["Otros deciden empezar a ___ más libros.","leer","comer","читання"],
+["¿Es fácil mantener los hábitos?","No siempre","Sí, siempre","з тексту: no siempre"],
+["Muchos dejan de entrenar después de pocas ___.","semanas","décadas","кілька тижнів 😅"],
+["…o vuelven a comer comida ___.","rápida","lenta","фастфуд 🍔"],
+["volver a + інфінітив = …","знову щось робити","перестати","повернення до звички"],
+["mantener los hábitos = …","підтримувати звички","утримувати будинок","звички"],
+["«igual que en Ucrania» = …","так само, як в Україні","на відміну від України","igual que"]
+]},
+{t:"Текст: офіс, дім, друзі", lv:2, q:[
+["En la oficina: «Hay que entregar el ___ antes del viernes».","informe","informa","звіт 📄"],
+["En casa los padres: «Tienes que limpiar tu ___».","habitación","habitante","кімната"],
+["«Tenéis que apagar el ___ antes de dormir».","ordenador","orden","комп'ютер 💻"],
+["Entre amigos: «Dejamos de ___ tanto entre semana».","salir","dormir","менше гуляти"],
+["entre semana = …","у будні","на вихідних","пн–пт"],
+["Para vivir bien hay que ___.","cuidarse","quejarse","дбати про себе"],
+["Cada persona tiene que empezar a cambiar poco a ___.","poco","mucho","poco a poco 🐢"],
+["Lo importante no es ser perfecto, sino…","no dejar de intentarlo","dejar de intentar","фінал тексту!"],
+["entregar = …","здати, вручити","затягнути","здати звіт"],
+["poco a poco = …","потроху","дуже швидко","крок за кроком"]
+]},
+{t:"DEJAR vs DEJAR DE", lv:2, q:[
+["dejar de fumar = …","кинути курити","залишити цигарки вдома","dejar de + інф. = перестати"],
+["dejar las llaves en casa = …","залишити ключі вдома","перестати ключі","dejar + іменник = залишити"],
+["He dejado ___ fumar. (кинув)","de","el","з de!"],
+["He dejado el libro en la mesa. Тут dejar = …","залишити","перестати","без de"],
+["«Перестань говорити!» = ¡Deja ___ hablar!","de","el","dejar DE + інф."],
+["«Дай мені спокій» = ¡Déjame en ___!","paz","pausa","déjame en paz 😤"],
+["Dejé mi trabajo = я…","покинув роботу","почав роботу","звільнився"],
+["Dejé de trabajar a las 5 = я…","закінчив працювати о 5-й","почав о 5-й","перестав"],
+["dejar + іменник = …","залишити щось","перестати щось","без de"],
+["dejar de + інфінітив = …","перестати робити","залишити річ","з de"]
+]},
+{t:"Заперечення: no hay que, no tengo que", lv:2, q:[
+["No hay que ___ tanto. (працювати)","trabajar","trabajas","інфінітив"],
+["No tengo que trabajar hoy = …","мені не треба працювати","я не можу працювати","відсутність обов'язку"],
+["No hay que preocuparse = …","не треба хвилюватися","ніхто не хвилюється","заспокоєння 😌"],
+["«Тобі не обов'язково приходити» = No ___ que venir.","tienes","hay","особисто тобі"],
+["No dejes de ___. (не переставай вчитися)","estudiar","estudias","інфінітив"],
+["no dejar de intentarlo = …","не припиняти спроби","не починати","з тексту!"],
+["No empieces a ___ ahora. (скаржитися)","quejarte","te quejas","інфінітив + te"],
+["No hay que correr = …","не треба бігти","заборонено дихати","спокійно 🚶"],
+["«Не треба» (загально) = …","No hay que","No tengo que","безособове"],
+["No tenemos que madrugar mañana = завтра не треба…","рано вставати","снідати","madrugar = рано вставати"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Виправ помилки (вправа 2 з книги)", lv:3, q:[
+["❌ Yo hay que trabajar los lunes → ✅ …","Yo tengo que trabajar los lunes.","Yo hay que trabajo los lunes.","hay que безособове!"],
+["«Ellos tienen que limpiar su habitación» — …","правильно ✓","помилка","вправа з книги"],
+["❌ ¿Tú empiezas estudiar ruso? → ✅ …","¿Tú empiezas a estudiar ruso?","¿Tú empiezas de estudiar ruso?","бракує a"],
+["❌ Nosotros dejamos fumar ayer → ✅ …","Nosotros dejamos de fumar ayer.","Nosotros dejamos a fumar ayer.","бракує de"],
+["«Hay que respetar a los demás» — …","правильно ✓","помилка","вправа з книги"],
+["❌ Empiezo estudiar → ✅ …","Empiezo a estudiar.","Empiezo de estudiar.","помилка з культ. нотаток!"],
+["❌ Dejamos fumar → ✅ …","Dejamos de fumar.","Dejamos a fumar.","помилка з культ. нотаток!"],
+["❌ Tú hay que dormir → ✅ …","Tú tienes que dormir.","Tú hays que dormir.","tener que для особи"],
+["«Мені треба вчитися» ❌ Hay que estudiar yo → ✅ …","Tengo que estudiar.","Hay que estudio.","особисте → tener que"],
+["❌ Empiezan de correr → ✅ …","Empiezan a correr.","Empiezan que correr.","empezar A"]
+]},
+{t:"Культурні нотатки: tienes que як запрошення", lv:3, q:[
+["«Tienes que venir a mi casa el sábado» між друзями — це…","дружнє запрошення","суворий наказ","культурна нотатка!"],
+["«Hay que tomarse una caña después del trabajo» — це…","привід насолодитися","сувора інструкція","культурна нотатка 🍺"],
+["una caña = …","келих розливного пива","тростина (у барі)","маленьке пиво 🍻"],
+["«Tienes que probar esta tortilla» означає…","дуже раджу скуштувати","їж, бо змушу","рекомендація-запрошення"],
+["Іспанці вживають tienes que для…","порад і запрошень теж","лише наказів","м'яке вживання"],
+["«Tienes que ver esta película» = …","обов'язково подивись!","юридичний обов'язок","рекомендація 🎬"],
+["Después del trabajo hay que…","tomarse una caña","trabajar más","релакс 🍺"],
+["tomarse una caña — tomar тут = …","випити","взяти й тримати","tomar = пити"],
+["Відмовитися від «tienes que venir» — образа?","ні, але краще з поясненням","так, назавжди","ввічливість"],
+["Ці конструкції в розмовній іспанській…","звучать постійно","майже не вживаються","щоденна мова"]
+]},
+{t:"VOLVER A: знову за старе", lv:3, q:[
+["vuelven a comer comida rápida = …","знову їдять фастфуд","перестали їсти","volver a = знову"],
+["volver a + …","інфінітив","герундій","volver a fumar"],
+["Vuelvo ___ entrenar.","a","de","volver A"],
+["«Він знову почав курити» = ___ a fumar.","Vuelve","Deja","повернення 🚬"],
+["volver: yo ___","vuelvo","volvo","o→ue (Volvo — це авто 🚗)"],
+["volver: nosotros ___","volvemos","vuelvemos","без чергування"],
+["«Не повертайся до старих звичок» = No vuelvas ___ los malos hábitos.","a","de","volver a"],
+["volver без a + інфінітив = …","повертатися кудись","знову робити","vuelvo a casa"],
+["Vuelvo a casa vs Vuelvo a fumar — різниця:","місце vs повторення дії","немає різниці","іменник vs інфінітив"],
+["Dejé de fumar, pero ___ a fumar en enero. 😅","volví","dejé","на жаль, знову"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Треба добре спати»","Hay que dormir bien.","Tiene que dormir bien.","приклад з книги"],
+["«Я маю сьогодні вчитися»","Tengo que estudiar hoy.","Hay que estudiar hoy.","приклад з книги"],
+["«Завтра я починаю працювати»","Empiezo a trabajar mañana.","Empiezo trabajar mañana.","з a!"],
+["«Я кинув курити»","He dejado de fumar.","He dejado fumar.","з de!"],
+["«Ми перестали їсти м'ясо»","Dejamos de comer carne.","Dejamos a comer carne.","приклад з книги"],
+["«Треба сортувати сміття»","Hay que reciclar.","Hay reciclar.","з que"],
+["«Ти повинен пити більше води»","Tienes que beber más agua.","Tienes beber más agua.","з que"],
+["«Діти починають читати у 6 років»","Los niños empiezan a leer a los 6 años.","Los niños empiezan leer con 6 años.","a los 6 años"],
+["«Коли ти перестанеш так хвилюватися?»","¿Cuándo vas a dejar de preocuparte tanto?","¿Cuándo vas a dejar preocuparte tanto?","dejar DE"],
+["«Батьки мусять працювати на вихідних»","Mis padres tienen que trabajar el fin de semana.","Mis padres hay que trabajar el fin de semana.","tienen que"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«Empiezo a estudiar» — …","правильно ✓","помилка","з a ✓"],
+["«Dejamos fumar» — …","помилка (dejamos de)","правильно","без de — помилка"],
+["«Hay que ser puntual» — …","правильно ✓","помилка","✓"],
+["«Yo hay que trabajar» — …","помилка (tengo que)","правильно","класика"],
+["«Tenéis que estudiar más» — …","правильно ✓","помилка","✓"],
+["«Empiezan de leer» — …","помилка (empiezan a)","правильно","a!"],
+["«No hay que preocuparse» — …","правильно ✓","помилка","✓"],
+["«Tengo que ir al médico» — …","правильно ✓","помилка","✓"],
+["«Nosotros empiezamos a correr» — …","помилка (empezamos)","правильно","без ie у nosotros!"],
+["«Hay que dormir bien» — …","правильно ✓","помилка","✓"]
+]},
+{t:"Конструкції в різних часах", lv:3, q:[
+["He dejado de fumar — час…","минулий (perfecto)","майбутній","he + participio"],
+["Voy a empezar a correr — час…","найближче майбутнє","минуле","ir a + inf"],
+["Mañana tengo que madrugar — це…","обов'язок на завтра","минулий обов'язок","завтра"],
+["«Я збираюся кинути курити» = Voy a ___ de fumar.","dejar","dejo","ir a + інфінітив"],
+["«Він щойно почав вчитися» = Acaba de empezar ___ estudiar.","a","de","empezar a"],
+["Ayer tuve que trabajar = вчора я…","мусив працювати","хочу працювати","минуле"],
+["Vas a tener que esperar = тобі…","доведеться почекати","не треба чекати","майбутній обов'язок"],
+["He empezado a meditar = я…","почав медитувати","перестав медитувати","🧘"],
+["¿Cuándo vas a dejar de preocuparte? — питання про…","майбутнє","минуле","з книги"],
+["Tuvimos que salir = ми…","мусили піти","почали співати","минуле"]
+]},
+{t:"Мудрість тексту: розбір фраз", lv:3, q:[
+["Para vivir bien ___ cuidarse.","hay que","tiene a","висновок тексту"],
+["Cada persona ___ que empezar a cambiar.","tiene","hay","tiene que"],
+["Lo importante no es ser perfecto, ___ no dejar de intentarlo.","sino","pero","sino після заперечення!"],
+["sino вживається після…","заперечення","будь-якого речення","no es X, sino Y"],
+["cambiar poco a poco = змінюватися…","поступово","різко","🐢"],
+["intentarlo — lo тут означає…","це (спроби)","його (друга)","спробувати ЦЕ"],
+["Sin embargo = …","проте","завдяки","протиставлення"],
+["no siempre es fácil = …","не завжди легко","ніколи не легко","нюанс!"],
+["У січні mucha motivación, а потім багато хто…","deja de entrenar","entrena más","реалізм 😅"],
+["Головна думка тексту:","дбати про себе й не здаватися","бути ідеальним","фінальні рядки"]
+]},
+{t:"HAY QUE vs TENER QUE: тонкий вибір", lv:3, q:[
+["Правило в спортзалі для всіх:","Hay que llevar toalla.","Tengo que llevar toalla.","загальне"],
+["Мій особистий план:","Tengo que ahorrar.","Hay que ahorrar.","особисте"],
+["Порада людству:","Hay que proteger el planeta.","Tienes que proteger el planeta.","🌍"],
+["Нагадування собі:","Tengo que llamar a mamá.","Hay que llamar a mamá.","📞 особисте"],
+["Табличка в музеї:","Hay que guardar silencio.","Tengo que guardar silencio.","правило"],
+["Лікар пацієнту (usted):","Tiene que tomar esta medicina.","Hay que tomar esta medicina.","адресно"],
+["Загальний принцип пунктуальності:","Hay que ser puntual.","Tengo que ser puntual.","з книги"],
+["Мама саме тобі:","Tienes que ordenar tu cuarto.","Hay que ordenar tu cuarto.","адресовано тобі"],
+["Не хочеш вказувати пальцем →","hay que","tener que","дипломатія 😌"],
+["Обов'язок конкретної людини →","tener que","hay que","адресно"]
+]},
+{t:"Мої плани: почати й перестати", lv:3, q:[
+["«З понеділка починаю бігати» = El lunes empiezo a ___.","correr","corro","інфінітив 🏃"],
+["Voy a dejar de ___ tarde. (лягати пізно)","acostarme","me acuesto","інфінітив + me"],
+["Voy a empezar ___ ahorrar.","a","de","empezar a"],
+["Este mes tengo que ___ al médico.","ir","voy","інфінітив"],
+["Mi propósito: dejar de ___ tanto café. ☕","tomar","tomo","інфінітив"],
+["Vamos a empezar a comer más ___.","verduras","verdades","овочі, не правда 🥦"],
+["El año que viene = …","наступного року","минулого року","майбутнє"],
+["«Що почнеш робити?» = ¿Qué vas a empezar a ___?","hacer","haces","домашка з книги 😉"],
+["«Що перестанеш робити?» = ¿Qué vas a dejar de ___?","hacer","haces","план на місяць"],
+["Гарний план = початок нового + …","відмова від поганого","лише мрії","empezar / dejar / mantener"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["___ que reciclar. (усім)","Hay","Tengo","загальне ♻️"],
+["Yo ___ que estudiar hoy.","tengo","hay","особисте"],
+["Empiezo ___ trabajar mañana.","a","de","a"],
+["He dejado ___ fumar.","de","a","de"],
+["Nosotros ___ a ahorrar. (починаємо)","empezamos","empiezamos","без ie"],
+["Vuelve ___ fumar. 😞 (знову)","a","de","volver a"],
+["«Tienes que venir el sábado» між друзями — це…","запрошення","наказ","культурна нотатка"],
+["No dejes de ___. (не здавайся!)","intentarlo","lo intentas","фінал тексту 💪"],
+["Hay que tomarse una ___ después del trabajo. 🍺","caña","cana","cana — це сивина!"],
+["Урок 4 готово! Ahora ___ que descansar. 🎉","hay","haber","hay que + відпочинок"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "OBLIGACIÓN: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 4 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

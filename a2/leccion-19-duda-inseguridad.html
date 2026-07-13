@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 19 · Expresar duda o inseguridad · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 19 · @malinnaartstudio</div>
+    <h1 id="htitle">EXPRESAR DUDA: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+<main>
+  <div id="home">
+    <div class="intro">
+            <b style="color:var(--rasp)">Lección 19 · Expresar duda o inseguridad.</b>
+      30 вправ по 10 питань: creo que / me parece que + indicativo, no creo que + subjuntivo,
+      quizá(s) / tal vez / a lo mejor, supongo que / imagino que / es posible que. Плюс —
+      як звучати ввічливо, коли сумніваєшся. Від ★ до ★★★. ¿Y si cambiamos de vida? 🤔
+
+    </div>
+    <div class="legend">
+            <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · основні вирази й indicativo/subjuntivo</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · текст, прийменники, шкала впевненості</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · культура сумніву й типові помилки</span>
+
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 19</footer>
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Основні конструкції сумніву", lv:1, q:[
+["Іспанці, коли не впевнені, свою думку…","пом'якшують","висловлюють категорично","з книги"],
+["Creo que… + …","indicativo","subjuntivo","«я досить впевнений»"],
+["No creo que… + …","subjuntivo","indicativo","«я не впевнений/сумніваюсь»"],
+["Quizá(s) / Tal vez / A lo mejor + …","дієслово (можливість)","лише іменник","припущення"],
+["Supongo que… / Imagino que… / Es posible que… — це…","інші способи висловити невпевненість","накази","з книги"],
+["Creo que hoy va a llover — переклад…","Думаю, сьогодні буде дощ","Точно сьогодні буде дощ","припущення, indicativo"],
+["No creo que venga hoy — переклад…","Не думаю, що він сьогодні прийде","Точно не прийде сьогодні","сумнів, subjuntivo"],
+["A lo mejor вживається лише з…","indicativo","subjuntivo","на відміну від quizás!"],
+["Quizás і tal vez можуть іти з…","subjuntivo або indicativo","лише subjuntivo","гнучкіші за a lo mejor"],
+["Урок 19 називається…","Expresar duda o inseguridad","Futuro Simple","з підручника"]
+]},
+{t:"CREO QUE / ME PARECE QUE + indicativo", lv:1, q:[
+["Creo que hoy va a llover.","va a llover","vaya a llover","indicativo після creo que"],
+["Me parece que Ana ___ triste.","está","esté","indicativo"],
+["Creo que tienes razón.","tienes","tengas","indicativo"],
+["Me parece que… вживається для…","думки або припущення з упевненістю","наказу","з книги"],
+["Creo que… вживається, коли ми…","досить упевнені","зовсім не впевнені","стверджувальна думка"],
+["Creo que Marta ___ cansada.","está","esté","indicativo"],
+["Me parece que el examen ___ difícil.","es","sea","indicativo"],
+["Creo que ellos ___ razón.","tienen","tengan","indicativo"],
+["Me parece que Juan ___ trabajo nuevo.","tiene","tenga","indicativo"],
+["Creo que і me parece que граматично вимагають…","indicativo (у стверджувальній формі)","subjuntivo завжди","ключове правило"]
+]},
+{t:"NO CREO QUE / NO ME PARECE QUE + subjuntivo", lv:1, q:[
+["No creo que venga hoy.","venga","viene","subjuntivo після заперечення"],
+["No me parece que ___ enfermo.","esté","está","subjuntivo"],
+["No creo que ___ buena idea.","sea","es","subjuntivo"],
+["No creo que… вживається, коли ми…","не впевнені або сумніваємось","повністю впевнені","протилежність creo que"],
+["No creo que ellos ___ tiempo.","tengan","tienen","subjuntivo"],
+["No me parece que Ana ___ razón.","tenga","tiene","subjuntivo"],
+["No creo que Pedro ___ mañana.","venga","viene","subjuntivo"],
+["Заперечення перед creo que…","змінює indicativo на subjuntivo","нічого не змінює","граматичне правило"],
+["No creo que llueva mañana — переклад…","Не думаю, що завтра піде дощ","Точно піде дощ завтра","сумнів"],
+["No me parece que esté enfermo — переклад…","Не здається, що він хворий","Здається, що він хворий","заперечення"]
+]},
+{t:"QUIZÁ(S), TAL VEZ, A LO MEJOR", lv:1, q:[
+["Quizás mañana ___ sol.","haga","hace","можливо з subjuntivo"],
+["Tal vez venga más tarde.","venga","viene","tal vez + subjuntivo можливо"],
+["A lo mejor está en casa.","está","esté","a lo mejor ЗАВЖДИ indicativo!"],
+["Quizá(s) — стилістично…","більш формальне або нейтральне","дуже розмовне","з таблиці книги"],
+["Tal vez — стилістично…","так само, як quizás","найрозмовніше","«так само, як quizás»"],
+["A lo mejor — стилістично…","дуже розмовне","формальне","з таблиці книги"],
+["A lo mejor завжди йде з…","indicativo","subjuntivo","єдиний виняток!"],
+["Quizás/tal vez можуть іти з…","subjuntivo або indicativo","лише indicativo","гнучкість"],
+["A lo mejor no puedo ir mañana — тут puedo у…","indicativo","subjuntivo","a lo mejor правило"],
+["Quizás mañana haga sol — тут haga у…","subjuntivo","indicativo","можливий варіант"]
+]},
+{t:"SUPONGO QUE / IMAGINO QUE / ES POSIBLE QUE", lv:1, q:[
+["Supongo que llegarán tarde.","llegarán","lleguen","indicativo після supongo que"],
+["Imagino que ___ cansada.","estará","esté","futuro для здогаду"],
+["Es posible que no ___.","venga","viene","es posible que + subjuntivo"],
+["Supongo que… = …","припускаю, що…","точно знаю, що…","невпевненість"],
+["Imagino que… = …","уявляю, що…","бачу, що…","припущення"],
+["Es posible que… = …","можливо, що…","неможливо, що…","es posible que + subjuntivo"],
+["Es posible que llueva mañana — llueva у…","subjuntivo","indicativo","es posible que правило"],
+["Supongo que tienes razón — tienes у…","indicativo","subjuntivo","supongo que + indicativo"],
+["Imagino que estará cansada — тут вжито…","futuro (для здогаду)","subjuntivo","imagino que + futuro/indicativo"],
+["Es posible que no venga — переклад…","Можливо, він не прийде","Точно не прийде","невпевненість"]
+]},
+{t:"Словник: перша половина", lv:1, q:[
+["creo que = …","думаю, що","знаю, що","базове"],
+["me parece que = …","мені здається, що","мені байдуже, що","думка"],
+["no creo que = …","не думаю, що","дуже думаю, що","заперечення"],
+["no me parece que = …","не здається, що","здається, що","заперечення"],
+["supongo que = …","припускаю, що","забороняю, що","припущення"],
+["imagino que = …","уявляю, що","забуваю, що","припущення"],
+["es posible que = …","можливо, що","неможливо, що","imposible = протилежне!"],
+["es probable que = …","ймовірно, що","неймовірно, що","probable"],
+["puede que = …","може бути, що","не може бути, що","альтернатива es posible que"],
+["quizá(s) / tal vez = …","можливо","обов'язково","прислівникова пара"]
+]},
+{t:"Словник: друга половина", lv:1, q:[
+["a lo mejor = …","можливо (дуже розмовне)","точно (формальне)","з таблиці"],
+["seguramente = …","напевно","навряд чи","висока впевненість"],
+["posiblemente = …","можливо","неможливо","прислівник"],
+["quién sabe = …","хто знає","всі знають","розмовний вираз"],
+["no estoy seguro/a = …","я не впевнений/а","я цілком впевнений/а","невпевненість"],
+["Найбільш розмовне слово зі списку:","a lo mejor","es probable que","з культ. нотаток"],
+["Синонім до es posible que:","puede que","es imposible que","альтернатива"],
+["quién sabe вживається як…","самостійний вигук невпевненості","граматична конструкція з дієсловом","розмовний зворот"],
+["posiblemente і probablemente — обидва означають…","можливо/імовірно","точно","близькі синоніми"],
+["no estoy seguro/a звучить…","м'якше, ніж no sé","грубіше, ніж no sé","з культ. нотаток"]
+]},
+{t:"Indicativo чи subjuntivo?", lv:1, q:[
+["Creo que + …","indicativo","subjuntivo","стверджувальна впевненість"],
+["No creo que + …","subjuntivo","indicativo","заперечення = сумнів"],
+["Es posible que + …","subjuntivo","indicativo","можливість = сумнів"],
+["Supongo que + …","indicativo","subjuntivo","припущення без заперечення"],
+["A lo mejor + …","indicativo","subjuntivo","єдиний завжди-indicativo вираз"],
+["Me parece que + …","indicativo","subjuntivo","стверджувальна думка"],
+["No me parece que + …","subjuntivo","indicativo","заперечення"],
+["Es probable que + …","subjuntivo","indicativo","ймовірність = непевність"],
+["Imagino que + …","indicativo","subjuntivo","припущення без заперечення"],
+["Загальне правило: заперечення + думка (no creo, no parece) → …","subjuntivo","indicativo","ключове правило уроку"]
+]},
+{t:"Переклад укр → ісп", lv:1, q:[
+["«Думаю, сьогодні буде дощ»","Creo que hoy va a llover.","No creo que hoy llueva.","стверджувальна думка"],
+["«Не думаю, що він прийде»","No creo que venga.","Creo que viene.","заперечення"],
+["«Можливо, зателефоную пізніше» (розмовно)","A lo mejor llamo más tarde.","A lo mejor llame más tarde.","a lo mejor + indicativo"],
+["«Припускаю, що вони запізняться»","Supongo que llegarán tarde.","Supongo que lleguen tarde.","supongo que + indicativo"],
+["«Можливо, він не прийде»","Es posible que no venga.","Es posible que no viene.","es posible que + subjuntivo"],
+["«Я не впевнена, чого хочу»","No estoy segura de lo que quiero.","No sé segura de lo que quiero.","estar segura"],
+["«Мені здається, Ана сумна»","Me parece que Ana está triste.","Me parece que Ana esté triste.","me parece que + indicativo"],
+["«Не здається, що він хворий»","No me parece que esté enfermo.","No me parece que está enfermo.","no me parece que + subjuntivo"],
+["«Хто знає»","Quién sabe.","Quién sepa.","вигук"],
+["«Мабуть, буде сонячно» (нейтрально)","Quizás haga sol.","A lo mejor haga sol.","quizás + subjuntivo можливо"]
+]},
+{t:"Резюме модуля 1", lv:1, q:[
+["Creo que / Me parece que → …","indicativo","subjuntivo","впевненість"],
+["No creo que / No me parece que → …","subjuntivo","indicativo","сумнів"],
+["A lo mejor → …","завжди indicativo","завжди subjuntivo","виняток"],
+["Quizás / Tal vez → …","indicativo або subjuntivo","лише subjuntivo","гнучкі"],
+["Supongo que / Imagino que → …","indicativo","subjuntivo","припущення без заперечення"],
+["Es posible que / Es probable que / Puede que → …","subjuntivo","indicativo","непевність"],
+["Найрозмовніший вираз можливості:","a lo mejor","es probable que","з таблиці"],
+["«No estoy seguro» звучить…","ввічливіше, ніж «No sé»","грубіше, ніж «No sé»","культурна порада"],
+["Ключове правило уроку 19:","заперечення думки → subjuntivo","заперечення завжди indicativo","головний висновок"],
+["Урок 19 у книзі стоїть після…","Futuro Simple (урок 18)","Conjunciones (урок 16)","послідовність"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Вправа 1 з книги: доповни", lv:2, q:[
+["___ mañana no trabajo, estoy muy cansado.","Creo que","A lo mejor no","з книги (варіант можливий)"],
+["___ necesito unas vacaciones.","Me parece que","No creo que","з книги"],
+["___ el tren sale a las ocho.","Creo que","Tal vez que","з книги"],
+["___ María no tiene tiempo hoy.","Supongo que","Que supongo","з книги"],
+["___ Juan está en el gimnasio ahora.","A lo mejor","A lo mejor que","з книги, a lo mejor + indicativo"],
+["Вибір виразу залежить від…","ступеня впевненості мовця","роду іменника","логіка вправи"],
+["«Creo que» найкраще пасує до нейтральної впевненої думки — правда?","так","ні","базове правило"],
+["«A lo mejor» — найрозмовніший з п'яти варіантів вправи — правда?","так","ні","з культ. нотаток"],
+["Усі п'ять виразів вправи 1 вимагають…","indicativo (у цих прикладах)","subjuntivo завжди","бо всі стверджувальні"],
+["Вправа 1 тренує…","вибір виразу невпевненості за контекстом","дієвідмінювання","з книги"]
+]},
+{t:"Вправа 2 з книги: прийменники", lv:2, q:[
+["Trabajo mucho ___ tener más experiencia.","para","por","мета"],
+["No estoy segura ___ lo que quiero hacer.","de","en","estar segura DE"],
+["Estudio español ___ hablar mejor.","para","con","мета"],
+["No puedo vivir ___ música.","sin","con","«без музики»"],
+["Pienso ___ cambiar de ciudad.","en","de","pensar EN"],
+["para виражає…","мету","причину","«щоб»"],
+["estar segura de + …","іменник/речення","дієслово завжди","segura DE algo"],
+["pensar en + …","думати про щось","думати з чимось","стандартний прийменник"],
+["sin + іменник = …","без","з","протилежність con"],
+["Ця вправа з книги тренує…","прийменники (a/de/en/con/sin/por/para)","часи дієслів","модуль 4, вправа 2"]
+]},
+{t:"Вправа 3 з книги: Presente чи Futuro", lv:2, q:[
+["Creo que mañana ___ (hacer) sol.","hará","haga","creo que + indicativo (futuro)"],
+["A lo mejor ___ (ir) al cine esta noche.","voy","vaya","a lo mejor + indicativo"],
+["Me parece que ahora Marta ___ (trabajar) en casa.","trabaja","trabaje","me parece que + indicativo presente"],
+["Tal vez nosotros ___ (cambiar) de piso el próximo año.","cambiemos","cambiaremos","tal vez допускає subjuntivo тут"],
+["Supongo que tú ___ (necesitar) descansar el fin de semana.","necesitarás","necesites","supongo que + indicativo (futuro)"],
+["Presente чи Futuro залежить від…","контексту (зараз чи майбутнє)","виразу сумніву","подвійний вибір у вправі"],
+["creo que mañana hará sol — час дієслова вказує на…","майбутню подію","теперішній стан","mañana = завтра"],
+["me parece que ahora Marta trabaja — час вказує на…","теперішній момент","майбутнє","ahora = зараз"],
+["Ця вправа поєднує…","вирази сумніву з правильним часом дієслова","лише прийменники","модуль 4, вправа 3"],
+["tal vez з subjuntivo (cambiemos) — це приклад…","гнучкості quizás/tal vez","помилки","з граматики уроку"]
+]},
+{t:"Текст: ¿Y si cambiamos de vida? (1)", lv:2, q:[
+["Trabajo en la misma empresa ___ hace cinco años.","desde","desde hace","з тексту, урок 17!"],
+["___ necesito un cambio, pero no estoy segura de cuál.","Creo que","No creo que","з тексту"],
+["A lo mejor ___ mudarme a otra ciudad.","quiero","quiera","a lo mejor + indicativo"],
+["___ en la ciudad todo pasa demasiado rápido.","Me parece que","No me parece que","з тексту"],
+["Ella piensa que no es buena idea dejar el trabajo, porque tengo un sueldo ___.","fijo","libre","sueldo fijo = стабільна зарплата"],
+["___ ella no entiende bien cómo me siento.","Creo que","No creo que","з тексту"],
+["No se trata solo de dinero, sino de la sensación de estar siempre en el mismo ___.","lugar","tiempo","з тексту"],
+["A veces pienso en estudiar algo nuevo, tal vez diseño o ___.","fotografía","farmacia","з тексту"],
+["___ empiece un curso online en otoño.","Es posible que","Es posible","es posible que + subjuntivo"],
+["sueldo fijo означає…","стабільна зарплата","вільна зарплата","псевдодруг: fijo ≠ вільний"]
+]},
+{t:"Текст: ¿Y si cambiamos de vida? (2)", lv:2, q:[
+["Mi madre me escribe: «___ no eres feliz en una ciudad tan grande».","Creo que","No creo que","з тексту"],
+["Y quizás ___ razón.","tenga","tiene","quizás + subjuntivo тут"],
+["A lo mejor ___ unas semanas con ellos.","paso","pase","a lo mejor + indicativo"],
+["Por otro lado, me da miedo cambiar — переклад…","З іншого боку, мені страшно змінюватися","З іншого боку, я не боюся змінюватися","por otro lado"],
+["¿Y si me arrepiento? — переклад…","А що, якщо я пожалкую?","А що, якщо я не пожалкую?","arrepentirse = жалкувати"],
+["___ es normal tener dudas.","Supongo que","No supongo que","з тексту"],
+["Tal vez dentro de unos meses todo ___ igual.","siga","sigue","tal vez + subjuntivo тут"],
+["o quizás ___ sin planearlo.","cambie","cambia","quizás + subjuntivo тут"],
+["la vida está hecha para atreverse — atreverse означає…","наважуватися","боятися","переносний вислів"],
+["Головна емоція героїні наприкінці тексту:","суміш страху й рішучості спробувати","повна впевненість без сумнівів","з тексту"]
+]},
+{t:"Питання до тексту", lv:2, q:[
+["¿Por qué la protagonista duda de su vida actual?","Siente que todo se repite y el tiempo se escapa","Perdió su trabajo","з тексту"],
+["¿Qué quiere hacer para cambiar?","Mudarse a otra ciudad y estudiar algo nuevo","Quedarse igual siempre","з тексту"],
+["¿Qué opina su amiga Laura?","Que no es buena idea dejar el trabajo","Que debe mudarse ya","з тексту"],
+["¿Qué le dice su madre?","Que no es feliz en una ciudad tan grande","Que debe quedarse en la ciudad","з тексту"],
+["¿Qué emociones tiene la protagonista al final del texto?","Miedo pero también ganas de atreverse","Total indiferencia","з тексту"],
+["¿Qué expresiones de duda aparecen en el texto?","Creo que, a lo mejor, tal vez, es posible que","Solo «sí» y «no»","з тексту"],
+["¿Dónde vive la familia de la protagonista?","En un pueblo pequeño del sur","En la misma ciudad que ella","з тексту"],
+["¿Desde hace cuánto trabaja en la misma empresa?","Desde hace cinco años","Desde hace un año","з тексту"],
+["¿Qué nuevo curso podría empezar?","Un curso de diseño o fotografía","Un curso de cocina","з тексту"],
+["¿Qué decisión final toma la protagonista en el texto?","Ninguna decisión definitiva, solo dudas","Deja el trabajo inmediatamente","текст завершується сумнівом"]
+]},
+{t:"A LO MEJOR: тільки indicativo", lv:2, q:[
+["A lo mejor llego un poco tarde.","llego","llegue","a lo mejor + indicativo завжди"],
+["A lo mejor no puedo ir mañana.","puedo","pueda","indicativo"],
+["A lo mejor está en casa.","está","esté","indicativo"],
+["Правило: після a lo mejor НІКОЛИ не йде…","subjuntivo","indicativo","єдиний виняток серед виразів сумніву"],
+["A lo mejor viene mi hermana.","viene","venga","indicativo"],
+["A lo mejor tienen razón.","tienen","tengan","indicativo"],
+["A lo mejor no lo sabe.","sabe","sepa","indicativo"],
+["A lo mejor — палабра mágica en el español real, бо…","її чуєш щодня на вулиці, у кав'ярні, в офісі","вона вживається лише формально","з культ. нотаток"],
+["A lo mejor salgo esta noche.","salgo","salga","indicativo"],
+["Порівняй: Es posible que salga (subjuntivo) vs A lo mejor salgo (…).","indicativo","subjuntivo","контраст двох виразів"]
+]},
+{t:"QUIZÁS / TAL VEZ: гнучкість", lv:2, q:[
+["Quizás mañana haga sol. (subjuntivo)","haga","hace","можливо, subjuntivo"],
+["Quizás mañana hace sol. (indicativo) — теж…","можливо, правильно","завжди помилка","обидва варіанти існують"],
+["Tal vez venga más tarde. (subjuntivo)","venga","viene","можливо"],
+["Tal vez viene más tarde. (indicativo) — теж…","можливо, правильно","завжди помилка","гнучкість tal vez"],
+["Quizás/tal vez з indicativo звучить…","трохи впевненіше","менш впевнено","нюанс"],
+["Quizás/tal vez з subjuntivo підкреслює…","більшу невпевненість","повну впевненість","нюанс"],
+["На відміну від a lo mejor, quizás/tal vez допускають…","обидва способи (indic./subj.)","лише indicativo","ключова відмінність"],
+["Quizás tenga razón (з тексту) — форма tenga:","subjuntivo","indicativo","з тексту уроку"],
+["Позиція quizás/tal vez у реченні:","на початку або в середині","лише в кінці","гнучке розташування"],
+["Обидва слова (quizás, tal vez) — практично…","синоніми","антоніми","взаємозамінні"]
+]},
+{t:"Ступінь впевненості (шкала)", lv:2, q:[
+["Найвища впевненість серед виразів уроку:","seguramente","quién sabe","шкала"],
+["Найнижча впевненість серед виразів уроку:","quién sabe","seguramente","повна невизначеність"],
+["creo que ближче до…","середньої/високої впевненості","повної невпевненості","«я думаю»"],
+["es posible que ближче до…","середньої невпевненості","повної впевненості","«можливо»"],
+["a lo mejor і creo que — обидва відносно…","впевнені, хоч і різні за стилем","цілком невпевнені","розмовний регістр"],
+["quién sabe вживається, коли…","мовець зовсім не знає відповіді","мовець впевнений","розмовний вигук"],
+["posiblemente / probablemente розташовані…","в середині шкали","на краях шкали","помірна невпевненість"],
+["no estoy seguro/a вказує на…","особисту невпевненість без здогадки","чиюсь чужу думку","«я не знаю»"],
+["Шкала допомагає обрати…","правильний вираз за контекстом","правильний рід іменника","мета вправи"],
+["Найближчі синоніми за впевненістю: es probable que і …","seguramente","quién sabe","обидва відносно високі"]
+]},
+{t:"Словник поглиблено", lv:2, q:[
+["posiblemente llueva — переклад…","можливо, буде дощ","точно буде дощ","прислівник + subjuntivo можливо"],
+["probablemente tenga razón — переклад…","імовірно, він має рацію","точно не має рації","ймовірність"],
+["puede que no venga — переклад…","може, він не прийде","точно не прийде","puede que + subjuntivo"],
+["es probable que llueva — переклад…","ймовірно, буде дощ","неможливо, щоб пішов дощ","es probable que + subjuntivo"],
+["quién sabe qué pasará — переклад…","хто знає, що станеться","всі знають, що станеться","розмовний вигук"],
+["no estoy seguro de venir mañana — переклад…","я не впевнений, чи прийду завтра","я точно прийду завтра","невпевненість"],
+["Puede que і Es posible que — …","синоніми","антоніми","взаємозамінні вирази"],
+["Розмовна пара «a lo mejor» vs формальна «es posible que» — обидві означають…","можливість, різний регістр","геть різний зміст","стилістична відмінність"],
+["seguramente llegaré tarde — переклад…","напевно, спізнюся","точно не спізнюся","висока ймовірність"],
+["Слово, що означає повну необізнаність:","quién sabe","seguramente","розмовний вигук"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки", lv:3, q:[
+["❌ Creo que venga hoy → ✅ …","Creo que viene hoy.","No creo que venga hoy.","creo que + indicativo!"],
+["❌ No creo que viene hoy → ✅ …","No creo que venga hoy.","No creo que viene hoy siempre.","заперечення → subjuntivo!"],
+["❌ A lo mejor venga mi hermana → ✅ …","A lo mejor viene mi hermana.","A lo mejor que venga mi hermana.","a lo mejor завжди indicativo!"],
+["❌ Es posible que viene → ✅ …","Es posible que venga.","Es posible que viene ya.","es posible que + subjuntivo!"],
+["❌ Supongo que tengas razón → ✅ …","Supongo que tienes razón.","Supongo que tenga razón ya.","supongo que + indicativo!"],
+["❌ Me parece que esté cansada → ✅ …","Me parece que está cansada.","Me parece que esté muy cansada.","me parece que + indicativo!"],
+["❌ No me parece que está bien → ✅ …","No me parece que esté bien.","No me parece que está muy bien.","заперечення → subjuntivo!"],
+["❌ Quizás que venga → ✅ …","Quizás venga.","Quizás que él venga hoy.","без que після quizás!"],
+["❌ No sé замість «я не впевнений» — ввічливіше сказати:","No estoy seguro.","No sé nada de nada.","з культ. нотаток"],
+["❌ Es probable que viene → ✅ …","Es probable que venga.","Es probable que viene mañana.","es probable que + subjuntivo!"]
+]},
+{t:"Los españoles dudan… pero con estilo", lv:3, q:[
+["В іспанській культурі не прийнято говорити…","занадто прямо, категорично","занадто ввічливо","з культ. нотаток"],
+["Замість прямого «ні» іспанці часто кажуть…","Bueno, no estoy muy seguro…","¡No, nunca!","з культ. нотаток"],
+["«Me parece que no…» звучить…","м'яко й ввічливо, без конфронтації","грубо й категорично","з культ. нотаток"],
+["Порада уроку: не завжди повторюй «creo que», а чергуй з…","me parece que, a lo mejor, supongo que","лише es posible que","з культ. нотаток"],
+["«No estoy seguro» краще за «No sé», бо…","звучить м'якше","звучить формальніше","з культ. нотаток"],
+["A lo mejor llego un poco tarde — типова фраза, яку чуєш…","на вулиці, у кав'ярні, в офісі","лише в офіційних документах","з культ. нотаток"],
+["Уникнення прямого «ні» — це ознака…","ввічливості, а не нещирості","слабкості характеру","культурна норма"],
+["Bueno, no estoy muy seguro… — це спосіб…","м'яко висловити незгоду","категорично відмовити","з культ. нотаток"],
+["Головна порада: «звучати як іспанець» означає…","вміти чергувати різні вирази сумніву","завжди говорити прямо «no»","підсумок культ. нотаток"],
+["Стиль іспанської ввічливості в сумнівах схожий на…","дипломатичне пом'якшення думки","повну відсутність думки","загальний висновок"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Не думаю, що це гарна ідея»","No creo que sea buena idea.","No creo que es buena idea.","subjuntivo після заперечення"],
+["«Думаю, ти маєш рацію»","Creo que tienes razón.","Creo que tengas razón.","indicativo"],
+["«Можливо, прийду пізніше» (розмовно)","A lo mejor vengo más tarde.","A lo mejor venga más tarde.","a lo mejor + indicativo"],
+["«Мабуть, вона втомлена»","Imagino que estará cansada.","Imagino que esté cansada.","imagino que + indicativo/futuro"],
+["«Можливо, він не прийде»","Es posible que no venga.","Es posible que no viene.","es posible que + subjuntivo"],
+["«Хто знає, що станеться»","Quién sabe qué pasará.","Quién sepa qué pasará.","розмовний вигук, indicativo"],
+["«Я не впевнена, чого хочу»","No estoy segura de lo que quiero.","No estoy segura de lo que quiera.","de lo que + indicativo"],
+["«Мені здається, Ана сумна»","Me parece que Ana está triste.","Me parece que Ana esté triste.","indicativo"],
+["«Не здається, що він хворий»","No me parece que esté enfermo.","No me parece que está enfermo.","subjuntivo"],
+["«Припускаю, що вони запізняться»","Supongo que llegarán tarde.","Supongo que lleguen tarde.","indicativo (futuro)"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«Creo que hoy va a llover» — …","правильно ✓","помилка","✓"],
+["«No creo que venga hoy» — …","правильно ✓","помилка","✓"],
+["«A lo mejor esté en casa» — …","помилка (está)","правильно","a lo mejor + indicativo"],
+["«Es posible que no venga» — …","правильно ✓","помилка","✓"],
+["«Supongo que tenga razón» — …","помилка (tienes)","правильно","supongo que + indicativo"],
+["«Me parece que Ana está triste» — …","правильно ✓","помилка","✓"],
+["«No me parece que está enfermo» — …","помилка (esté)","правильно","заперечення → subjuntivo"],
+["«Quizás venga mañana» — …","правильно ✓","помилка","✓ (subjuntivo можливий)"],
+["«Tal vez viene más tarde» — …","правильно ✓","помилка","✓ (indicativo можливий у tal vez)"],
+["«Es probable que viene» — …","помилка (venga)","правильно","es probable que + subjuntivo"]
+]},
+{t:"NO ESTOY SEGURO vs NO SÉ", lv:3, q:[
+["No sé — це…","прямо, нейтрально «не знаю»","завжди грубо","базова фраза"],
+["No estoy seguro/a — це…","м'якший, ввічливіший варіант","грубіший варіант","з культ. нотаток"],
+["У формальній чи делікатній розмові краще сказати…","No estoy seguro.","No sé, y no me importa.","ввічливість"],
+["No sé + прямота іноді звучить…","занадто категорично","занадто м'яко","залежно від контексту"],
+["No estoy seguro de que venga — тут вжито…","subjuntivo (venga)","indicativo (viene)","seguro de que — як заперечення"],
+["No estoy segura de lo que quiero — тут lo que quiero у…","indicativo","subjuntivo","звичайна конструкція"],
+["«No estoy seguro» більш підходить для…","делікатних тем і ввічливої розмови","технічних інструкцій","з культ. нотаток"],
+["Заміна «No sé» на «No estoy seguro» — приклад…","мовної делікатності","граматичної помилки","стилістичний вибір"],
+["No estoy seguro/a de + інфінітив чи que + subjuntivo — обидва…","можливі структури","заборонені структури","гнучкість"],
+["Підсумок: обираючи між No sé і No estoy seguro, звертай увагу на…","бажаний тон ввічливості","рід співрозмовника","стилістичне рішення"]
+]},
+{t:"Побудуй речення логічно", lv:3, q:[
+["Думаю, сьогодні буде спекотно →","Creo que hoy hará calor.","Creo que hoy haga calor.","indicativo"],
+["Не думаю, що це правда →","No creo que sea verdad.","No creo que es verdad.","subjuntivo"],
+["Можливо, піду в кіно (розмовно) →","A lo mejor voy al cine.","A lo mejor vaya al cine.","indicativo"],
+["Можливо, дощитиме (формальніше) →","Es posible que llueva.","Es posible que lloverá.","subjuntivo"],
+["Припускаю, що вона втомлена →","Supongo que está cansada.","Supongo que esté cansada.","indicativo"],
+["Не здається, що він правий →","No me parece que tenga razón.","No me parece que tiene razón.","subjuntivo"],
+["Хто знає, що буде завтра →","Quién sabe qué pasará mañana.","Quién sepa qué pasará mañana.","розмовний вигук"],
+["Мабуть, він на роботі (здогад через futuro) →","Estará en el trabajo.","Esté en el trabajo.","futuro для здогаду, урок 18"],
+["Я не впевнений, чи це добра ідея →","No estoy seguro de que sea buena idea.","No estoy seguro de que es buena idea.","subjuntivo"],
+["Ймовірно, вони запізняться →","Es probable que lleguen tarde.","Es probable que llegarán tarde.","subjuntivo"]
+]},
+{t:"Situaciones de la vida real (домашка)", lv:3, q:[
+["Tu amigo no contesta al teléfono. ¿Dónde está? — відповідь:","A lo mejor está ocupado.","A lo mejor esté ocupado.","a lo mejor + indicativo"],
+["Ves muchas nubes en el cielo. ¿Qué pasará? — відповідь:","Quizás llueva más tarde.","Quizás lloverá más tarde y esté seguro.","quizás + subjuntivo можливо"],
+["Escuchas ruido en casa del vecino. ¿Qué hacen? — відповідь:","Tal vez tienen visita.","Tal vez tengan visita — обидва можливі","tal vez гнучкий"],
+["Для домашки потрібно обрати ___ ситуації й відповісти усно.","3","10","з підручника"],
+["Elige 5 temas de la vida diaria і скажи фразу з…","невпевненою думкою","наказовим способом","з домашки"],
+["Приклади тем для домашки:","redes sociales, trabajo, estudiar idiomas","лише погода","з підручника"],
+["Усна вправа: говори 1–2 хвилини, використовуючи мінімум ___ виразів сумніву.","5","1","з домашки"],
+["Мета домашки уроку 19 — практика…","expresiones de duda o inseguridad у природному мовленні","дієвідмінювання дієслова ser","з підручника"],
+["«Situaciones de la vida real» тренує…","реагувати на несподівані ситуації з сумнівом","переказувати текст напам'ять","формат домашки"],
+["Los deberes уроку 19 завершуються…","тестовим завданням (link test)","письмовим есе","як і в інших уроках"]
+]},
+{t:"Indicativo/Subjuntivo: поглиблений мікс", lv:3, q:[
+["Creo que + indicativo, No creo que + …","subjuntivo","indicativo","контраст"],
+["Es posible que + subjuntivo, A lo mejor + …","indicativo","subjuntivo","контраст"],
+["Supongo que + indicativo, Es probable que + …","subjuntivo","indicativo","контраст"],
+["Me parece que + indicativo, No me parece que + …","subjuntivo","indicativo","контраст"],
+["Quizás/Tal vez — унікальні тим, що допускають…","обидва способи","лише один спосіб","гнучкість"],
+["Правило заперечення: заперечена думка (no creo, no parece) вимагає…","subjuntivo","indicativo","послідовне правило"],
+["Стверджувальна думка (creo, me parece, supongo, imagino) вимагає…","indicativo","subjuntivo","послідовне правило"],
+["Вирази можливості (es posible/probable que, puede que) вимагають…","subjuntivo","indicativo","незалежно від заперечення"],
+["Виняток серед виразів можливості:","a lo mejor (завжди indicativo)","es posible que","єдиний виняток"],
+["Підсумкове правило одним реченням:","заперечення й «можливість» тягнуть subjuntivo, впевненість — indicativo","усе завжди indicativo","головний висновок уроку"]
+]},
+{t:"Прийменники сумніву: практика", lv:3, q:[
+["No estoy segura ___ lo que quiero.","de","en","estar segura DE"],
+["Pienso ___ cambiar de trabajo.","en","de","pensar EN"],
+["Trabajo mucho ___ conseguir mis metas.","para","por","мета"],
+["No puedo vivir ___ mi familia lejos.","con","sin","«без родини поруч» — залежно від сенсу"],
+["Estudio ___ mejorar mi español.","para","en","мета"],
+["Dudo ___ que sea la mejor opción.","-","de","dudar QUE, без de перед que зазвичай"],
+["Estar seguro ___ algo = бути впевненим у чомусь.","de","en","стандартний вираз"],
+["Confío ___ que todo saldrá bien.","en","de","confiar EN que"],
+["Tengo dudas ___ el futuro.","sobre","en","«сумніви щодо»"],
+["Ця вправа поєднує прийменники з темою…","невпевненості й сумніву","дат і часу","підсумок уроку 19"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["Creo que hoy ___ (hacer) sol.","hace","haga","indicativo"],
+["No creo que ___ (venir) hoy.","venga","viene","subjuntivo"],
+["A lo mejor ___ (llegar) tarde.","llego","llegue","indicativo"],
+["Es posible que no ___ (venir).","venga","viene","subjuntivo"],
+["Supongo que ___ (tener) razón.","tienes","tengas","indicativo"],
+["Quizás mañana ___ (hacer) sol. (subjuntivo)","haga","hace","можливий варіант"],
+["No estoy seguro звучить…","м'якше, ніж No sé","грубіше, ніж No sé","культурна порада"],
+["A lo mejor — найрозмовніший вираз, тому завжди…","indicativo","subjuntivo","виняток уроку"],
+["No me parece que ___ (ser) buena idea.","sea","es","заперечення → subjuntivo"],
+["Урок 19 готово! Creo que ya ___ (saber) expresar tus dudas. 🎉","sabes","sepas","indicativo, ти вже знаєш!"]
+]}
+
+];
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "EXPRESAR DUDA: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 19 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

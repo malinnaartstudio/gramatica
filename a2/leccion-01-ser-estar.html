@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 1 · Usos de SER y ESTAR · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 1 · @malinnaartstudio</div>
+    <h1 id="htitle">SER y ESTAR: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 1 · Usos de SER y ESTAR.</b>
+      30 вправ по 10 питань: усі вживання ser та estar, матеріал і посесія, характер,
+      апокопа (buen, gran, primer…), estar + participio, розмовні вирази. Від ★ до ★★★. ¡Vamos! 💪
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · основи ser/estar</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · вживання й нюанси</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й ідіоми</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 1</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"SER чи ESTAR? Базовий вибір", lv:1, q:[
+["Javier ___ simpático.","es","está","характер → ser"],
+["La camisa ___ en el armario.","está","es","місце → estar"],
+["Yo ___ periodista.","soy","estoy","професія → ser"],
+["Nosotros ___ bien, gracias.","estamos","somos","самопочуття → estar"],
+["El bolso ___ negro.","es","está","колір → ser"],
+["Mis padres ___ de Perú.","son","están","походження → ser"],
+["El jefe ___ de viaje.","está","es","тимчасова активність → estar"],
+["Hoy ___ viernes.","es","está","дата → ser"],
+["La puerta ___ abierta.","está","es","результат дії → estar"],
+["Ese coche ___ de Maribel.","es","está","посесія → ser de"]
+]},
+{t:"Форми SER у теперішньому", lv:1, q:[
+["yo ___ (ser)","soy","eres","я → soy"],
+["tú ___ (ser)","eres","es","ти → eres"],
+["él ___ (ser)","es","son","він → es"],
+["nosotros ___ (ser)","somos","sois","ми → somos"],
+["vosotros ___ (ser)","sois","son","ви (Іспанія) → sois"],
+["ellas ___ (ser)","son","es","вони → son"],
+["usted ___ (ser)","es","eres","Ви (ввічливо) → es, як él"],
+["Tú y yo ___ amigos.","somos","sois","tú + yo = nosotros"],
+["ustedes ___ (ser)","son","sois","ustedes → son"],
+["ella ___ (ser)","es","está","ser: ella es"]
+]},
+{t:"Форми ESTAR у теперішньому", lv:1, q:[
+["yo ___ (estar)","estoy","esto","я → estoy"],
+["tú ___ (estar)","estás","estas","з наголосом: estás"],
+["él ___ (estar)","está","esta","з наголосом: está (esta = ця)"],
+["nosotros ___ (estar)","estamos","estámos","estamos — без наголосу"],
+["vosotros ___ (estar)","estáis","estais","з наголосом: estáis"],
+["ellos ___ (estar)","están","estan","з наголосом: están"],
+["usted ___ (estar)","está","estás","usted → як él"],
+["Mi amiga y yo ___ en casa.","estamos","están","вона + я = nosotros"],
+["ustedes ___ (estar)","están","estáis","ustedes → están"],
+["ella ___ (estar)","está","es","estar: ella está"]
+]},
+{t:"SER: ідентичність і походження", lv:1, q:[
+["___ Santiago Pérez Segura.","Soy","Estoy","представлення → ser"],
+["Ella ___ de Perú.","es","está","походження → ser de"],
+["¿De dónde ___ tú?","eres","estás","звідки ти → ser"],
+["Nosotros ___ ucranianos.","somos","estamos","національність → ser"],
+["Mis amigos son ___ Italia.","de","en","ser DE + країна"],
+["¿___ dónde eres?","De","En","¿De dónde eres?"],
+["Ana es español___.","a","o","Ana — жінка → española"],
+["Ellos ___ mexicanos.","son","están","національність → ser"],
+["«Я з України» = …","Soy de Ucrania.","Estoy de Ucrania.","походження → ser de"],
+["Usted ___ argentino, ¿verdad?","es","está","usted → es"]
+]},
+{t:"SER: професії", lv:1, q:[
+["Soy ___. (журналіст)","periodista","un periodista","професія — без артикля"],
+["Mi madre ___ médica.","es","está","професія → ser"],
+["❌ Estoy médico → ✅ …","Soy médico.","Estoy un médico.","професія завжди з ser"],
+["Juan Luis es profesor ___ yoga.","de","del","profesor de yoga"],
+["¿Qué ___ Juan Luis? — Es profesor.","es","está","професія → ¿Qué es?"],
+["Ellos ___ estudiantes.","son","están","професія/статус → ser"],
+["Ella es ___. (акторка)","actriz","actora","actor → actriz"],
+["Somos ___. (вчителі)","profesores","profesors","мн.: +es → profesores"],
+["«Він юрист» = Es …","abogado","abogando","abogado; abogando — це «адвокатуючи» 😄"],
+["¿En qué trabajas? — Soy ___. (офіціант, чол.)","camarero","camarera","чоловік → camarero"]
+]},
+{t:"ESTAR: локалізація", lv:1, q:[
+["La camisa está ___ el armario.","en","de","estar EN + місце"],
+["Madrid está ___ España.","en","a","у країні → en"],
+["¿Dónde ___ los libros?","están","son","місце → estar"],
+["Mi casa ___ en Madrid.","está","es","класика! місце → estar"],
+["El baño está ___ la derecha.","a","en","a la derecha"],
+["Los niños ___ en el parque.","están","estan","не забудь наголос: están"],
+["¿Dónde ___ (tú)?","estás","eres","де ти → estar"],
+["El banco está cerca ___ la plaza.","de","a","cerca DE"],
+["«Ключі на столі» = Las llaves ___ en la mesa.","están","son","місце → estar"],
+["España está ___ Europa.","en","por","у Європі → en"]
+]},
+{t:"ESTAR: фізичний та емоційний стан", lv:1, q:[
+["Estoy ___, gracias.","bien","bueno","почуватися добре = estar bien"],
+["Isidoro no ha venido porque ___ enfermo.","está","es","хвороба (тимчасова) → estar"],
+["¿Por qué estás tan ___? (задоволений, чол.)","contento","contenta","чоловік → contento"],
+["Estamos ___. (втомлені)","cansados","cansado","ми → множина: cansados"],
+["Mi hermano está de mal ___.","humor","humo","humor = настрій, humo = дим 💨"],
+["У контексті емоцій estar ≈ …","sentirse / encontrarse","llamarse","з книги: estar ≈ почуватися"],
+["Ella está ___ hoy. (сумна)","triste","trista","triste — одна форма для обох родів"],
+["¿Cómo ___ usted? — Muy bien.","está","es","самопочуття → estar"],
+["Estoy un poco ___. (нервовий, чол.)","nervioso","nerviosa","чоловік → nervioso"],
+["Los niños ___ contentos.","están","son","стан → estar"]
+]},
+{t:"SER: колір і матеріал", lv:1, q:[
+["El bolso ___ negro.","es","está","колір → ser"],
+["La camiseta es ___ algodón.","de","en","ser DE + матеріал"],
+["El anillo es de ___ blanco. (золото)","oro","ora","oro = золото"],
+["El suelo es de cerámica ___. (сіра)","gris","grisa","gris — одна форма"],
+["¿___ qué es la mesa? — De madera.","De","En","¿De qué es…?"],
+["Las paredes ___ blancas.","son","están","колір → ser"],
+["«Перстень з білого золота» = El anillo es …","de oro blanco","en oro blanco","ser de + матеріал"],
+["La ventana es de ___. (скло)","cristal","cristallo","cristallo — це вже італійська 🇮🇹"],
+["Los zapatos son ___ piel. (зі шкіри)","de","con","матеріал → de"],
+["El jersey es de ___. (вовна)","lana","luna","lana = вовна, luna = місяць 🌙"]
+]},
+{t:"Словник: прикметники характеру", lv:1, q:[
+["simpático = …","приємний, милий","симпатичний зовні","фальшивий друг! про характер, не зовнішність"],
+["trabajador = …","працьовитий","офісний працівник","як прикметник = працьовитий"],
+["vago = …","ледачий","бродяга","vago = лінивий 🛋️"],
+["tacaño = …","скупий","тихий","tacaño — скнара 💰"],
+["alegre = …","веселий","алергійний","alegría = радість, не алергія 🤧"],
+["abierto = …","відкритий","обірваний","abierto — відкрита людина"],
+["tranquilo = …","спокійний","транквілізатор","¡Tranquilo! = Спокійно!"],
+["generoso = …","щедрий","генеральний","generoso — щедра душа"],
+["divertido = …","веселий, кумедний","розлучений","divertido ≠ divorciado 😄"],
+["tonto = …","дурненький","тонкий","tonto ≠ тонкий"]
+]},
+{t:"Словник: антоніми характеру", lv:1, q:[
+["simpático ↔ …","antipático","tacaño","приємний ↔ неприємний"],
+["optimista ↔ …","pesimista","optimisto","на -ista для обох родів"],
+["inteligente ↔ …","tonto","triste","розумний ↔ дурненький"],
+["abierto ↔ …","introvertido","aburrido","відкритий ↔ інтроверт"],
+["generoso ↔ …","tacaño","vago","щедрий ↔ скупий"],
+["alegre ↔ …","triste","tranquilo","веселий ↔ сумний"],
+["divertido ↔ …","aburrido","nervioso","веселий ↔ нудний"],
+["trabajador ↔ …","vago","tonto","працьовитий ↔ ледачий"],
+["tranquilo ↔ …","nervioso","alegre","спокійний ↔ нервовий"],
+["pesimista ↔ …","optimista","realista","склянка наполовину повна 🥛"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"SER + DE: посесія і призначення", lv:2, q:[
+["Ese coche es ___ Maribel.","de","a","посесія → ser de"],
+["¿De quién ___ este bolso?","es","está","чий → ser"],
+["Este libro es ___. (мій)","mío","mi","після ser → mío"],
+["«Це авто Хуана» = El coche es …","de Juan","a Juan","ser de + власник"],
+["ser de може означати…","матеріал, походження і посесію","лише матеріал","три в одному!"],
+["¿De qué es la camiseta? — Es de ___.","algodón","algodona","algodón = бавовна, чол. рід"],
+["¿De quién es? питає про…","власника","матеріал","quién = хто"],
+["¿De qué es? питає про…","матеріал","власника","qué = що"],
+["El regalo es ___ mi tío Eduardo. (для)","para","por","призначення → para"],
+["— ¿Para quién es ese regalo? — ___ para mi tío.","Es","Está","ser para = для когось"]
+]},
+{t:"¿Cómo es…? Опис характеру", lv:2, q:[
+["¿___ es tu profesor? — Amable y simpático.","Cómo","Dónde","опис → ¿Cómo es?"],
+["¿Cómo es? питає про…","характер і якості","самопочуття зараз","es → постійне"],
+["¿Cómo está? питає про…","самопочуття зараз","характер","está → тимчасове"],
+["Soy tranquila ___ curiosa.","pero","pera","pero = але, pera = груша 🍐"],
+["¿Qué tal ___ tu jefe? (який він)","es","está","опис особистості → ser"],
+["Mi mejor amiga ___ muy divertida.","es","está","характер → ser"],
+["Es amable ___ simpático.","y","o","і = y"],
+["«Яка твоя сестра?» (характер) = …","¿Cómo es tu hermana?","¿Cómo está tu hermana?","характер → es"],
+["Ellos son muy ___. (балакучі)","habladores","hablados","hablador = балакун"],
+["Mi abuela es generosa y ___. (весела)","alegre","alegra","alegre — одна форма"]
+]},
+{t:"Sentirse / encontrarse: почуватися", lv:2, q:[
+["No me ___ bien. (encontrarse)","encuentro","encontro","o→ue: me encuentro"],
+["¿Cómo te ___? (sentirse)","sientes","sentes","e→ie: te sientes"],
+["Me siento ___. (чудово)","genial","genialo","genial — одна форма"],
+["Ella no se encuentra ___.","bien","buena","почуватися добре = bien"],
+["sentirse ≈ …","estar (про стан)","ser (про характер)","почуватися = стан"],
+["Nos ___ cansados. (sentirse)","sentimos","sientimos","nosotros — без чергування"],
+["¿Te encuentras ___? (краще)","mejor","más bien","краще = mejor"],
+["Me encuentro mal = …","мені зле","я не можу нічого знайти","не про пошук 😄"],
+["Los niños se sienten ___. (щасливі)","felices","felizes","feliz → felices (z→c)"],
+["Ya estoy ___. (мені вже краще)","mejor","mejorado","estar mejor"]
+]},
+{t:"Дата й час: SER чи ESTAR", lv:2, q:[
+["Hoy ___ viernes 24.","es","está","дата → ser"],
+["___ las 9:00.","Son","Es","більше 1 години → son"],
+["___ la una menos cuarto.","Es","Son","1 година → es"],
+["¿Qué hora ___?","es","son","питання завжди: ¿Qué hora es?"],
+["Hoy estamos ___ viernes 24.","a","en","альтернатива: estar A + дата"],
+["¿A qué día ___ hoy?","estamos","somos","estamos a 15"],
+["— ¿A qué día estamos? — Estamos ___ 15.","a","en","estar a + число"],
+["Mañana ___ sábado.","es","está","дата → ser"],
+["Son las nueve ___ la mañana.","de","por","las 9 DE la mañana"],
+["Дата двома способами: Hoy es viernes / Hoy ___ a viernes.","estamos","somos","ser + дата або estar a + дата"]
+]},
+{t:"ESTAR DE: тимчасова активність", lv:2, q:[
+["El jefe está ___ viaje.","de","en","estar de viaje = у відрядженні"],
+["Estamos ___ vacaciones.","de","en","estar de vacaciones 🏖️"],
+["Marta está ___ camarera este verano.","de","como","estar de + тимчасова робота"],
+["«Está de camarero» означає…","тимчасово підробляє офіціантом","офіціант — його покликання","estar de = тимчасово"],
+["Mis padres están ___ compras.","de","a","estar de compras 🛍️"],
+["Estoy de ___ humor hoy. (гарний)","buen","bueno","апокопа: buen"],
+["Está de ___ humor. (поганий)","mal","malo","апокопа: mal"],
+["Estamos de ___. (святкуємо)","fiesta","festival","estar de fiesta 🎉"],
+["El profesor está de baja = …","він на лікарняному","він низький на зріст","estar de baja = лікарняний"],
+["Están de ___ por Andalucía. (подорожують)","viaje","viajar","de + іменник, не інфінітив"]
+]},
+{t:"ESTAR + participio: результат дії", lv:2, q:[
+["La puerta está ___. (відчинена)","abierta","abierto","la puerta → жін. рід"],
+["Los libros están ___. (упорядковані)","ordenados","ordenado","мн. → ordenados"],
+["Las luces están ___. (увімкнені)","encendidas","encendidos","las luces → жін. мн."],
+["El ordenador está ___. (вимкнений)","apagado","apagada","el ordenador → чол."],
+["La tienda está ___. (зачинена)","cerrada","cerrado","la tienda → cerrada"],
+["Participio з estar виражає…","результат дії","саму дію","двері ВЖЕ відчинені"],
+["El trabajo ya está ___. (зроблений)","hecho","hacido","hacer → hecho (неправильна форма)"],
+["La mesa está ___. (накритий стіл)","puesta","ponida","poner → puesto"],
+["Los deberes están ___. (написані)","escritos","escribidos","escribir → escrito"],
+["La ventana está ___. (розбита)","rota","rompida","romper → roto 💥"]
+]},
+{t:"Апокопа: BUEN / MAL", lv:2, q:[
+["Es un ___ amigo.","buen","bueno","перед чол. одн. → buen"],
+["El amigo es ___.","bueno","buen","після дієслова → повна форма"],
+["Hace ___ tiempo.","buen","bueno","buen tiempo ☀️"],
+["Es una ___ idea.","buena","buen","жін. рід — без апокопи"],
+["Un ___ día decidió aprender español.","buen","bueno","un buen día"],
+["Tengo un ___ presentimiento.","mal","malo","перед іменником → mal"],
+["El café no es ___.","malo","mal","після ser → malo"],
+["Estoy de ___ humor.","buen","bueno","de buen humor"],
+["Апокопа відбувається перед…","іменником чол. роду однини","будь-яким іменником","buen chico, але buena chica"],
+["unos buenos amigos — чому не buen?","бо множина","бо це виняток","апокопа лише в однині"]
+]},
+{t:"Апокопа: PRIMER, TERCER, ALGÚN, GRAN", lv:2, q:[
+["Vivo en el ___ piso. (1-й)","primer","primero","перед іменником → primer"],
+["Soy el ___. (перший)","primero","primer","без іменника → primero"],
+["El ___ piso. (3-й)","tercer","tercero","tercer piso"],
+["¿Hay ___ problema?","algún","alguno","перед чол. одн. → algún"],
+["No hay ___ problema.","ningún","ninguno","перед іменником → ningún"],
+["— ¿Hay pan? — No, no hay ___.","ninguno","ningún","без іменника → ninguno"],
+["Es un ___ hombre. (видатний)","gran","grande","gran перед іменником = видатний"],
+["Es una ___ ciudad.","gran","grande","gran і перед жіночим родом!"],
+["La casa es muy ___.","grande","gran","після дієслова → grande"],
+["gran скорочується перед…","чол. і жін. родом однини","лише чол. родом","особливість gran (з книги!)"]
+]},
+{t:"Питальні слова: qué, cómo, dónde…", lv:2, q:[
+["¿___ qué es la silla? — De plástico.","De","En","матеріал → ¿De qué es?"],
+["¿___ es tu hermano? — Alto y simpático.","Cómo","Qué","опис → ¿Cómo es?"],
+["¿___ está el hospital? — Cerca del centro.","Dónde","Adónde","місце → ¿Dónde está?"],
+["¿___ quién es este paraguas? — De Ana.","De","A","власник → ¿De quién es?"],
+["¿___ hora es? — Son las dos.","Qué","Cuál","¿Qué hora es?"],
+["¿De ___ eres? — De Ucrania.","dónde","donde","у питанні — з наголосом"],
+["¿___ es Juan Luis? — Profesor de yoga.","Qué","Cómo","професія → ¿Qué es?"],
+["¿___ tal es tu nuevo jefe?","Qué","Cómo","¿Qué tal es…? = Який він?"],
+["¿___ quién es el regalo? — Para mi tío.","Para","De","призначення → ¿Para quién?"],
+["¿A qué día ___ hoy?","estamos","es","дата: ¿A qué día estamos?"]
+]},
+{t:"SER чи ESTAR у діалогах", lv:2, q:[
+["— ¿Por qué no ha venido Isidoro? — Porque ___ enfermo.","está","es","хвороба → estar"],
+["El norte de España ___ muy verde.","es","está","постійна характеристика → ser"],
+["— ¿Por qué ___ tan contento? — He aprobado los exámenes.","estás","eres","емоція зараз → estar"],
+["A veces ___ difícil entender a los españoles.","es","está","es difícil + інфінітив"],
+["___ muy guapa con el pelo corto. (комплімент про зміну)","Estás","Eres","новий вигляд → estar"],
+["— ¿Qué ___ Juan Luis? — Es profesor de yoga.","es","está","професія → ser"],
+["— ¿Qué hora es? — ___ la una menos cuarto.","Es","Son","1 година → es"],
+["— ¿Para quién es el regalo? — ___ para mi tío Eduardo.","Es","Está","ser para"],
+["— ¿A qué día estamos? — ___ a 15.","Estamos","Somos","estar a + дата"],
+["— ¿Qué le pasa a tu hermano? — ___ de mal humor.","Está","Es","настрій → estar de"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки українців", lv:3, q:[
+["Обери правильне:","Mi casa está en Madrid.","Mi casa es en Madrid.","місце → estar (помилка з книги!)"],
+["Обери правильне:","Soy médico.","Estoy médico.","професія → ser (помилка з книги!)"],
+["Обери правильне:","La fiesta es en mi casa.","La fiesta está en mi casa.","подія відбувається → ser!"],
+["Обери правильне:","Estoy cansado.","Soy cansado.","тимчасовий стан → estar"],
+["Обери правильне:","¡La sopa está fría!","¡La sopa es fría!","скуштував зараз → estar"],
+["Обери правильне:","Son las tres.","Están las tres.","час → ser"],
+["Обери правильне:","Estamos en verano.","Somos en verano.","пора року → estar en"],
+["Обери правильне:","Es la una.","Son la una.","1 година → es"],
+["Обери правильне:","Estoy de acuerdo.","Soy de acuerdo.","погоджуюсь = estar de acuerdo"],
+["Обери правильне:","¿Dónde es el concierto?","¿Dónde está el concierto?","концерт — подія → ser"]
+]},
+{t:"Розмовні вирази: cielo, cabra, sabelotodo", lv:3, q:[
+["Ser un cielo = …","бути дуже милим/добрим","бути високим","cielo = небо, але тут «золотко» ☁️"],
+["Estar como una cabra = …","бути трохи божевільним","бути впертим","cabra = коза 🐐"],
+["Ser un sabelotodo = …","бути всезнайком","бути мудрецем","знає все (або так думає 😏)"],
+["María es un cielo → вона…","дуже добра й мила","мрійлива","золото, а не людина"],
+["Ці вирази в Іспанії…","вживаються навіть по-дружньому","завжди образливі","з книги: не завжди образливі"],
+["«Estás como una cabra» можна сказати…","жартома другові","лише незнайомцю","дружній жарт"],
+["sabelotodo складається з…","sabe + lo + todo","saber + loto","«знає-це-все»"],
+["ser un cielo → з дієсловом…","ser","estar","це характеристика → ser"],
+["estar como una cabra → з дієсловом…","estar","ser","стійкий вираз з estar"],
+["«Мій брат трохи схиблений» = Mi hermano ___ como una cabra.","está","es","estar como una cabra"]
+]},
+{t:"SER vs ESTAR: зміна значення", lv:3, q:[
+["ser listo = …","бути розумним","бути готовим","¡Qué listo eres! 🧠"],
+["estar listo = …","бути готовим","бути розумним","¿Estás listo? = Ти готовий?"],
+["ser aburrido = …","бути нудним (характер)","нудьгувати зараз","нудна людина"],
+["estar aburrido = …","нудьгувати зараз","бути нудним","мені зараз нудно"],
+["ser malo = …","бути поганим/злим","хворіти","злий характер"],
+["estar malo = …","хворіти / бути зіпсованим","бути злим","estoy malo = мені зле"],
+["ser rico = …","бути багатим","бути смачним","багатій 💰"],
+["estar rico = …","бути смачним","бути багатим","¡La paella está rica! 🥘"],
+["La cena ya ___ lista.","está","es","вечеря готова → estar"],
+["Pedro ___ muy listo: habla 5 idiomas.","es","está","розумний → ser"]
+]},
+{t:"Текст: ¿Cómo son los españoles?", lv:3, q:[
+["Los españoles son alegres, sociables y muy ___.","habladores","hablantes","з тексту: балакучі"],
+["Кажуть, що іспанці vagos. За текстом це…","неправда — вони багато працюють","чиста правда","sobre todo en las ciudades grandes"],
+["Cuando está soleado, los españoles están de buen ___.","humor","tiempo","гарна погода → гарний настрій"],
+["Les gusta pasar tiempo con ___.","la familia","el trabajo","сім'я понад усе 👨‍👩‍👧"],
+["Іспанці directos, але…","con amabilidad","грубі","прямі, та люб'язні"],
+["sobre todo = …","особливо, передусім","над усім","не «зверху всього» 😄"],
+["habladores означає…","балакучі","пліткарі","hablar = говорити"],
+["El buen clima les ___. (впливає)","afecta","efecta","afectar = впливати"],
+["salir con amigos = …","гуляти з друзями","виходити заміж за друзів","salir = виходити/гуляти"],
+["«se dice que…» = …","кажуть, що…","він каже, що…","безособове se"]
+]},
+{t:"Заповни пропуск: складні випадки", lv:3, q:[
+["Juan Luis es profesor; ___ budista y vegetariano.","es","está","переконання → ser"],
+["Hoy ___ su cumpleaños.","es","está","подія/дата → ser"],
+["Este ejercicio no ___ difícil.","es","está","характеристика → ser"],
+["¿Dónde ___ mis gafas?","están","son","місце → estar"],
+["Mi hermana ___ embarazada.","está","es","вагітність → estar 🤰"],
+["La ventana ___ rota.","está","es","результат → estar + participio"],
+["Las tiendas hoy ___ cerradas.","están","son","стан сьогодні → estar"],
+["Mi abuelo ___ mayor.","es","está","вік → ser"],
+["El examen ___ el lunes. (відбудеться)","es","está","подія → ser"],
+["Nosotros ___ listos para salir.","estamos","somos","готові → estar"]
+]},
+{t:"Зовнішність: постійне чи зараз?", lv:3, q:[
+["Javier ___ guapo. (красень загалом)","es","está","постійна риса → ser"],
+["¡Qué guapa ___ hoy! (сьогодні особливо)","estás","eres","зараз → estar"],
+["Mi padre ___ alto.","es","está","зріст → ser"],
+["___ muy delgado últimamente. (схуд)","Está","Es","зміна → estar"],
+["Ana ___ morena. (від природи)","es","está","природний колір → ser"],
+["Ana ___ morena después del verano. (засмагла)","está","es","засмага → estar 🏖️"],
+["El pelo de Luis ___ muy largo ahora.","está","es","ahora → estar"],
+["Con ese vestido ___ elegante. (зараз)","estás","eres","у цій сукні → estar"],
+["Mis ojos ___ verdes.","son","están","колір очей → ser"],
+["___ más joven con ese corte. (виглядаєш)","Estás","Eres","виглядати → estar"]
+]},
+{t:"Настрої та стани", lv:3, q:[
+["Está de mal humor → він…","у поганому настрої","поганий за характером","настрій ≠ характер"],
+["estar de ___ humor (гарний) — з апокопою","buen","bueno","de buen humor"],
+["Estoy ___ nervioso por el examen.","un poco","un poca","un poco — незмінне"],
+["Están muy ___ por la noticia. (щасливі, ellos)","contentos","contentas","ellos → contentos"],
+["Estamos ___ por ti. (стурбовані)","preocupados","preocupado","ми → множина"],
+["Después del trabajo estoy ___. (втомлена)","cansada","cansado","жінка → cansada"],
+["¿Qué le pasa? ___ triste.","Está","Es","зараз сумний → estar"],
+["estar de los nervios = …","бути на нервах","бути нервовим за характером","розмовне 😱"],
+["Hoy me siento ___. (краще)","mejor","más bueno","краще = mejor"],
+["No te preocupes, todo ___ bien.","está","es","estar bien"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Він лікар»","Es médico.","Está médico.","професія → ser"],
+["«Двері відчинені»","La puerta está abierta.","La puerta es abierta.","результат → estar"],
+["«Ми з України»","Somos de Ucrania.","Estamos de Ucrania.","походження → ser de"],
+["«Кава смачна!» (саме ця)","¡El café está rico!","¡El café es rico!","смак зараз → estar"],
+["«Шеф у відрядженні»","El jefe está de viaje.","El jefe es de viaje.","estar de viaje"],
+["«Сьогодні п'ятниця»","Hoy es viernes.","Hoy está viernes.","дата → ser"],
+["«Стіл з дерева»","La mesa es de madera.","La mesa está de madera.","матеріал → ser de"],
+["«Я трохи нервую»","Estoy un poco nervioso.","Soy un poco nervioso.","стан → estar"],
+["«Це чудова ідея»","Es una gran idea.","Es una grande idea.","апокопа: gran idea"],
+["«Немає жодної проблеми»","No hay ningún problema.","No hay ninguno problema.","перед іменником → ningún"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«Soy cansado» — це…","помилка (треба estoy)","правильно","стан → estar"],
+["«La fiesta es en el club» — це…","правильно","помилка","подія → ser en"],
+["«Estoy profesor» — це…","помилка (треба soy)","правильно","професія → ser"],
+["«El primero piso» — це…","помилка (треба primer)","правильно","апокопа перед іменником"],
+["«Es un buen chico» — це…","правильно","помилка","buen перед чол. одн. ✓"],
+["«Mi casa es en el centro» — це…","помилка (треба está)","правильно","місце → estar"],
+["«Estamos a lunes» — це…","правильно","помилка","дата: estar a ✓"],
+["«Son la una» — це…","помилка (треба es la una)","правильно","1 година → es"],
+["«Una gran mujer» — це…","правильно","помилка","gran і з жін. родом ✓"],
+["«Las luces están encendidos» — це…","помилка (треба encendidas)","правильно","las luces — жін. рід"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["Yo ___ optimista.","soy","estoy","характер → ser"],
+["La sopa ___ fría, ¡puaj!","está","es","скуштував → estar 🥣"],
+["¿De qué ___ el suelo? — De cerámica gris.","es","está","матеріал → ser"],
+["Es el ___ ejercicio. (третій)","tercer","tercero","апокопа: tercer"],
+["Los españoles ___ muy habladores.","son","están","характер → ser"],
+["Hoy ___ a 24 de octubre.","estamos","somos","estar a + дата"],
+["María es un ___: siempre ayuda a todos.","cielo","sabelotodo","добра душа → un cielo ☁️"],
+["El ordenador ___ apagado.","está","es","результат → estar"],
+["Pedro es ___ y trabajador.","inteligente","inteligento","inteligente — одна форма"],
+["Ти закінчив урок 1! «Я готовий до уроку 2» = …","Estoy listo","Soy listo","готовий → estar 🎉"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "SER y ESTAR: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 1 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

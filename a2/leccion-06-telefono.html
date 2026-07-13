@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 6 · Conversaciones y mensajes telefónicos · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 6 · @malinnaartstudio</div>
+    <h1 id="htitle">TELÉFONO: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 6 · Conversaciones y mensajes telefónicos.</b>
+      30 вправ по 10 питань: ¿Diga?, tener razón, llamar/sonar/marcar, colgar/descolgar,
+      buzón de voz, equivocarse, культурні нотатки (Іспанія vs Латинська Америка). Від ★ до ★★★. ¡Llámame! 📞
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · фрази й словник</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · діалоги й текст</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й культура</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 6</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Телефонні фрази: базові", lv:1, q:[
+["«Алло?» в Іспанії = …","¿Diga?","¿Hola qué?","з книги"],
+["¿___ Marta, por favor? (Можна Марту?)","Está","Es","¿Está…?"],
+["Un momento, ahora se ___. (зараз підійде)","pone","va","se pone"],
+["¿De parte de ___? (Хто телефонує?)","quién","qué","de parte de quién"],
+["¿Puedo dejar un ___? (повідомлення)","mensaje","masaje","masaje — це масаж! 💆"],
+["Lo siento, se ha ___. (помилилися номером)","equivocado","equivocando","з книги"],
+["Відповісти на дзвінок = …","contestar","contar","contar = рахувати"],
+["Телефонувати = …","llamar","llorar","llorar = плакати! 😭"],
+["Телефон дзвонить = El teléfono ___.","suena","sueña","sueña = бачить сни!"],
+["Набрати номер = ___ un número.","marcar","markar","з c"]
+]},
+{t:"TENER RAZÓN: мати рацію", lv:1, q:[
+["«Мати рацію» = ___ razón.","tener","ser","з книги: tener"],
+["Creo que ___ razón. (ти)","tienes","eres","tienes razón"],
+["Mi madre ___ razón.","tiene","es","з книги"],
+["No tienes razón, los datos son ___.","incorrectos","incorrectas","los datos → чол."],
+["«Ти не маєш рації» = No ___ razón.","tienes","estás","tener"],
+["razón означає…","рація, слушність","радіо","🧠"],
+["Lo has entendido ___. (неправильно)","mal","malo","прислівник mal"],
+["tener razón = …","бути правим","мати рацію-пристрій","😄"],
+["¡Qué razón tienes! = …","Як ти маєш рацію!","Яка в тебе рація!","підсилення"],
+["Протилежне до tener razón:","no tener razón","tener sinrazón","просто з no"]
+]},
+{t:"Телефонні дієслова", lv:1, q:[
+["llamar = …","телефонувати","плакати","📞"],
+["contestar = …","відповісти","протестувати","на дзвінок"],
+["colgar = …","покласти слухавку","підняти слухавку","повісити"],
+["descolgar = …","підняти слухавку","покласти","des- = зняти"],
+["marcar un número = …","набрати номер","замалювати номер","цифри"],
+["dejar un mensaje = …","залишити повідомлення","забути повідомлення","🎙️"],
+["enviar un mensaje = …","надіслати повідомлення","заховати повідомлення","📤"],
+["sonar = …","дзвонити (про телефон)","спати","дзеленчить"],
+["cortar la llamada = …","перервати дзвінок","порізати телефон","✂️"],
+["poner en altavoz = …","увімкнути гучний зв'язок","поставити на полицю","🔊"]
+]},
+{t:"Словник: іспанська → українська", lv:1, q:[
+["buzón de voz = …","голосова пошта","базар голосів","📬"],
+["línea ocupada = …","лінія зайнята","лінія окупована","короткі гудки"],
+["equivocado = …","помилився","еквівалентний","помилка"],
+["mensaje de texto = …","текстове повідомлення","повідомлення з підручника","смс"],
+["saldo = …","баланс (на телефоні)","сальто","💰"],
+["altavoz = …","гучний зв'язок, динамік","високий голос","alta + voz"],
+["llamada = …","дзвінок","лама","📞 не 🦙"],
+["móvil = …","мобільний","меблі","📱"],
+["batería = …","батарея","бактерія","🔋"],
+["urgente = …","терміновий","агент","швидко!"]
+]},
+{t:"Словник: українська → іспанська", lv:1, q:[
+["залишити повідомлення = …","dejar un mensaje","dejar un masaje","mensaje!"],
+["голосова пошта = …","buzón de voz","buzo de voz","buzo — це водолаз! 🤿"],
+["набрати номер = …","marcar un número","tocar un número","marcar"],
+["баланс на телефоні = …","saldo","salsa","salsa — це соус 💃"],
+["говорити по телефону = …","hablar por teléfono","hablar en teléfono","POR teléfono"],
+["перервати дзвінок = …","cortar la llamada","cortar la lámpara","llamada"],
+["мати рацію = …","tener razón","ser razón","tener"],
+["підняти слухавку = …","descolgar","colgar","des-!"],
+["надіслати смс = …","enviar un mensaje","enviar un menaje","mensaje"],
+["лінія зайнята = …","línea ocupada","línea operada","ocupada"]
+]},
+{t:"Хто що каже по телефону?", lv:1, q:[
+["Знімаєш слухавку. Кажеш:","¿Diga?","¡Adiós!","привітання"],
+["Хочеш покликати Марту:","¿Está Marta, por favor?","¿Eres Marta ahora?","з книги"],
+["Тебе питають, хто ти:","¿De parte de quién?","¿De dónde vienes?","з книги"],
+["Марта вдома, зараз підійде:","Un momento, ahora se pone.","Marta no existe.","з книги"],
+["Хочеш лишити повідомлення:","¿Puedo dejar un mensaje?","¿Puedo dejar un masaje?","💆❌"],
+["Номер неправильний:","Lo siento, se ha equivocado.","Lo siento, está delicioso.","з книги"],
+["Завершуєш розмову:","Hasta luego.","¿Diga?","прощання"],
+["Не чуєш співрозмовника:","¿Me oyes?","¿Me hueles?","hueles = нюхаєш! 😄"],
+["Просиш передзвонити:","Llámame cuando puedas.","Olvídame para siempre.","з книги"],
+["Дякуєш за дзвінок:","Gracias por llamar.","Gracias por colgar.","ввічливо"]
+]},
+{t:"Форми TENER RAZÓN", lv:1, q:[
+["yo ___ razón","tengo","teno","tengo"],
+["tú ___ razón","tienes","tenes","e→ie"],
+["ella ___ razón","tiene","tene","tiene"],
+["nosotros ___ razón","tenemos","tienemos","без чергування"],
+["vosotros ___ razón","tenéis","teneis","з наголосом"],
+["ellos ___ razón","tienen","tenen","tienen"],
+["usted ___ razón","tiene","tienes","як él"],
+["¿Quién ___ razón?","tiene","tienen","хто — однина"],
+["Mis padres siempre ___ razón.","tienen","tiene","мн."],
+["Tú y yo ___ razón.","tenemos","tenéis","ти + я = ми"]
+]},
+{t:"COLGAR, DESCOLGAR чи CONTESTAR?", lv:1, q:[
+["colgar = …","покласти слухавку","підняти слухавку","завершити"],
+["descolgar = …","підняти слухавку","покласти слухавку","відповісти"],
+["contestar = …","відповісти","протестувати","atender"],
+["Розмова завершена — ти…","cuelgas","descuelgas","кладеш"],
+["Телефон дзвонить — ти…","descuelgas / contestas","cuelgas","піднімаєш"],
+["colgar: yo ___","cuelgo","colgo","o→ue"],
+["«Не клади слухавку!» = ¡No ___!","cuelgues","colgues","o→ue"],
+["Normalmente siempre ___ el teléfono. (піднімає, з тексту)","descuelga","cuelga","сестра"],
+["V/F: «Colgar» означає «відповісти на дзвінок».","Falso","Verdadero","вправа з книги!"],
+["Кинув слухавку посеред розмови = …","Ha colgado.","Ha descolgado.","😤"]
+]},
+{t:"LLAMAR, SONAR чи MARCAR?", lv:1, q:[
+["El teléfono ___ sin parar.","suena","llama","телефон дзвенить = sonar"],
+["Yo te ___ mañana. (подзвоню)","llamo","sueno","людина → llamar"],
+["___ un número. (набрати)","Marcar","Tocar","цифри"],
+["sonar — про…","телефон чи будильник","людину","дзеленчить ⏰"],
+["llamar — про…","людину, що телефонує","телефон, що дзвенить","я дзвоню"],
+["Mi móvil no para de ___. (з тексту)","sonar","llamar","не змовкає"],
+["Mi madre ___ mi número tres veces. (з тексту)","marca","suena","набирає"],
+["«Мені подзвонив телефон» (розмовно) = Me ha ___ el móvil.","sonado","llamado","з культ. нотаток!"],
+["sonar: el teléfono ___ (o→ue)","suena","sona","чергування"],
+["Te llamo = …","я тобі подзвоню","ти мені дзвониш","yo → te"]
+]},
+{t:"Прості діалоги: заповни", lv:1, q:[
+["— ¿Diga? — Hola, ¿___ Pedro?","está","es","чи є Педро"],
+["— ¿De parte de quién? — ___ Ana.","De","La","de Ana"],
+["— ¿Está tu madre? — No, no ___.","está","es","немає вдома"],
+["— ¿Puedo dejar un mensaje? — ___.","Claro","Nunca","звісно 😊"],
+["— Se ha equivocado. — ¡Ay, ___!","perdone","bienvenido","вибачте"],
+["— ¿Me oyes bien? — Sí, te oigo ___.","perfectamente","perfectamento","прислівник"],
+["— Te llamo luego. — ___.","Vale, hasta luego","¿Diga?","ок 👋"],
+["— La línea está ___. (зайнята)","ocupada","ocupado","la línea → жін."],
+["— ¿Hablo con el señor García? — Sí, soy ___.","yo","tú","це я"],
+["— No puedo hablar ahora. — Vale, ___ luego. (передзвоню)","te llamo","me llamo","me llamo = мене звати!"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Вправа 1 з книги: razón", lv:2, q:[
+["María dice que hoy es lunes (і це так). Ella ___.","tiene razón","no tiene razón","з книги"],
+["Lo siento, yo ___, era un error.","no tenía razón","tenía razón","визнаю помилку"],
+["¿Quién ___ en esta discusión?","tiene razón","tiene razones","з книги"],
+["Tus amigos piensan que siempre ___. (ти)","tienes razón","tengo razón","з книги"],
+["No, vosotros ___: la reunión es mañana.","no tenéis razón","tenéis razón","з книги"],
+["Ellos ___ razón: el examen es hoy.","tienen","tenéis","ellos"],
+["Yo siempre ___ razón. 😄","tengo","tiengo","tengo"],
+["¿Crees que ella ___ razón?","tiene","tenga","просте теперішнє"],
+["Nosotros ___ razón esta vez.","tenemos","tienemos","без чергування"],
+["Визнати «no tengo razón» — це…","чесно і зріло","соромно назавжди","💪"]
+]},
+{t:"Вправа 2 з книги: переклад", lv:2, q:[
+["«Я телефоную подрузі»","Llamo a mi amiga.","Llamo mi amiga.","a + особа!"],
+["«Він залишає повідомлення»","Deja un mensaje.","Deja un masaje.","mensaje!"],
+["«Лінія зайнята»","La línea está ocupada.","La línea es ocupada.","стан → estar"],
+["«Ти не маєш рації»","No tienes razón.","No eres razón.","tener"],
+["«Ми говоримо по телефону»","Hablamos por teléfono.","Hablamos en teléfono.","POR teléfono"],
+["«Телефон дзвонить»","El teléfono suena.","El teléfono llama.","sonar"],
+["«Я набираю номер»","Marco un número.","Toco un número.","marcar"],
+["«Вона кладе слухавку»","Cuelga el teléfono.","Descuelga el teléfono.","colgar"],
+["«Надішли мені смс»","Envíame un mensaje.","Envíame una carta.","📱"],
+["«Увімкни гучний зв'язок»","Pon en altavoz.","Pon en altobajo.","altavoz 🔊"]
+]},
+{t:"Вправа 3 з книги: обери опцію", lv:2, q:[
+["Коли номер неправильний, кажемо:","se ha equivocado","línea ocupada","вправа з книги"],
+["Хочеш конкретну людину:","¿Está Marta, por favor?","¿De parte de quién?","вправа з книги"],
+["Ніхто не відповідає — можна…","dejar un mensaje","contestar","вправа з книги"],
+["V/F: «Colgar» significa «responder la llamada».","Falso","Verdadero","вправа з книги"],
+["«Tener razón» significa:","estar correcto","tener dinero","вправа з книги"],
+["¿De parte de quién? питає…","хто телефонує","куди телефонуєш","хто ви?"],
+["buzón de voz — це…","голосова пошта","вулична скринька","у телефоні"],
+["Короткі гудки = …","línea ocupada","buzón de voz","зайнято"],
+["contestar — це…","відповісти","запитати","на дзвінок"],
+["Людини нема — кажеш:","¿Puedo dejar un mensaje?","¿Está Marta?","повідомлення"]
+]},
+{t:"Текст: шалений ранок (1)", lv:2, q:[
+["Mi móvil no para de ___.","sonar","llamar","не змовкає"],
+["Primero me llama mi ___.","jefe","hermana","перший — шеф"],
+["«Tenemos que hablar de un proyecto ___».","urgente","urgentemente","терміновий"],
+["La línea está ocupada y la llamada se ___.","corta","cuelga","зривається"],
+["Mi madre marca mi número ___ veces.","tres","dos","тричі!"],
+["La madre deja un mensaje en el ___ de voz.","buzón","botón","botón = кнопка"],
+["Повідомлення мами: «___ cuando puedas».","Llámame","Olvídame","подзвони"],
+["El amigo envía mensajes ___ parar.","sin","con","без упину"],
+["«¿Vas a venir al ___ esta tarde?»","partido","partida","матч ⚽"],
+["V/F: Оповідач цілком вільний.","Falso — ocupadísimo","Verdadero","з питань книги"]
+]},
+{t:"Текст: шалений ранок (2)", lv:2, q:[
+["Llamo a mi hermana, pero ella no ___.","contesta","cuelga","не відповідає"],
+["Me parece ___, porque siempre descuelga.","raro","rara","дивно"],
+["Tal vez no tiene ___ o ha apagado el móvil.","batería","cartera","🔋"],
+["La hermana estaba en ___ y no podía hablar.","clase","casa","на занятті"],
+["«___ razón, siempre me pongo nervioso…»","Tienes","Eres","з тексту"],
+["me pongo nervioso = …","я нервуюся","я вдягаюся","ponerse + прикметник"],
+["Al final decide ___ el móvil un rato.","apagar","romper","вимкнути"],
+["…y descansar en ___.","silencio","silencios","у тиші 🤫"],
+["Tal vez = …","можливо","точно","припущення"],
+["Що робить оповідач, коли говорить із сестрою?","sonríe","llora","усміхається 😊"]
+]},
+{t:"Ввічливі телефонні фрази", lv:2, q:[
+["Формальне «алло, слухаю»:","¿Dígame?","¿Qué pasa, tío?","формально"],
+["Ввічливо спитати, хто дзвонить:","¿De parte de quién?","¿Quién eres tú?","з книги"],
+["«Зараз підійде» = Ahora se ___.","pone","va","ponerse al teléfono"],
+["«Хвилинку» = Un ___.","momento","memento","momento"],
+["«Можна пана Ґарсію?» = ¿___ el señor García?","Está","Es","está"],
+["«Perdone, no le ___ bien». (не чую)","oigo","veo","👂"],
+["«Подзвоню пізніше» = Le llamo más ___.","tarde","tardes","más tarde"],
+["«Передайте, що я дзвонив» = Dígale que he ___.","llamado","llamando","perfecto"],
+["До незнайомих по телефону — на…","usted","tú","формально"],
+["¿Dígame? — від дієслова…","decir","dignarse","кажіть мені"]
+]},
+{t:"EQUIVOCARSE: помилятися", lv:2, q:[
+["Se ha equivocado (de número) = …","ви помилилися номером","ви заблукали","з книги"],
+["equivocarse = …","помилятися","дорівнювати","помилка"],
+["Me he ___. (я помилився)","equivocado","equivocando","participio"],
+["Perdone, me he equivocado de ___.","número","numero","з наголосом: número"],
+["equivocado зі словника = …","помилився","еквівалентний","словник уроку"],
+["«Я помилилася дверима» = Me he equivocado de ___.","puerta","puertas","equivocarse de + одн."],
+["Дзвонять не туди. Кажеш:","Lo siento, se ha equivocado.","¡Marta soy yo!","ввічливо"],
+["Краще, ніж «Es mi culpa»:","Me he equivocado.","La culpa es del mundo.","з культ. нотаток!"],
+["equivocarse — дієслово…","зворотне (se)","незворотне","equivocarSE"],
+["Todos nos equivocamos = …","усі ми помиляємося","усі ми рівні","людяно 💛"]
+]},
+{t:"Повідомлення: dejar, enviar, buzón", lv:2, q:[
+["Залишити повідомлення = ___ un mensaje.","dejar","tirar","dejar"],
+["Надіслати смс = ___ un mensaje.","enviar","dejar caer","enviar / mandar"],
+["Розмовне «скину повідомлення» = Te ___ un mensaje.","mando","tiro","з культ. нотаток!"],
+["buzón de voz вмикається, коли…","ніхто не відповідає","лінія вільна","🎙️"],
+["Dejo que suene el buzón de voz (з тексту) = …","даю спрацювати голосовій пошті","ламаю телефон","dejar que…"],
+["mensaje de texto = …","смс","текст підручника","📱"],
+["mandar = …","надсилати","мандрувати","= enviar"],
+["«Залиш мені голосове» = Déjame un ___.","mensaje de voz","masaje de voz","mensaje!"],
+["«¿Dónde ___?» (де зустрінемось, з тексту)","quedamos","quedáis","quedar"],
+["Llámame cuando ___. (зможеш)","puedas","puedes","стійка фраза з книги"]
+]},
+{t:"Телефонні проблеми", lv:2, q:[
+["Короткі гудки: línea ___.","ocupada","abierta","зайнято"],
+["Телефон сів: no tiene ___.","batería","saldo","🔋"],
+["Нема грошей на рахунку: no tiene ___.","saldo","batería","баланс"],
+["Дзвінок обірвався: la llamada se ha ___.","cortado","colgado","cortarse"],
+["Погано чути: no te ___ bien.","oigo","veo","чую"],
+["Телефон вимкнено: ha ___ el móvil.","apagado","encendido","вимкнув"],
+["saldo = …","баланс на телефоні","сальто","💰"],
+["poner en altavoz = …","увімкнути гучний зв'язок","поставити на підлогу","🔊"],
+["cortar la llamada = …","перервати дзвінок","порізати дріт","✂️"],
+["У тунелі зник зв'язок: no hay ___.","cobertura","apertura","покриття 📶"]
+]},
+{t:"Міні-діалоги телефоном", lv:2, q:[
+["— ¿Dígame? — Hola, soy Ana. ¿Está Luis? — ___","Un momento, ahora se pone.","Luis no quiere hablar contigo.","класика"],
+["— ¿De parte de quién? — ___","De su amiga Ana.","De la calle.","хто дзвонить"],
+["— ¿Puedo dejar un mensaje? — ___","Sí, claro, dime.","No, jamás.","звісно"],
+["— ¿Está el doctor? — No, pero ___ dejar un mensaje.","puede","debe nunca","пропозиція"],
+["— La línea está ocupada. — Vale, llamo ___.","más tarde","ayer","пізніше"],
+["— ¡No te oigo! — ¿Me oyes ___?","ahora","nunca","а зараз? 📶"],
+["— Se ha equivocado. — ___","Perdone, lo siento.","¡Qué bien!","вибачення"],
+["— Te llamo luego, estoy en clase. — ___","Vale, hasta luego.","¿Por qué contestas entonces?","ок"],
+["— Mi móvil no tiene batería. — Usa el ___.","mío","tuyo de mí","візьми мій"],
+["— ¿Hablamos por videollamada? — ___","¡Buena idea!","¡Ni loca!","😄"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Іспанія vs Латинська Америка", lv:3, q:[
+["В Іспанії на дзвінок відповідають:","¿Diga? / ¿Dígame?","¿Aló?","з культ. нотаток"],
+["У Латинській Америці частіше:","¿Aló?","¿Diga?","з культ. нотаток"],
+["¿Diga? дослівно = …","«кажіть»","«дзига»","наказова форма"],
+["У Мексиці кажуть ¿Bueno?, а в Іспанії…","¿Diga?","¿Malo?","😄"],
+["Сказати ¿Aló? у Мадриді — зрозуміють?","так, але звучить не по-місцевому","ні, покладуть слухавку","регіональність"],
+["Українське «алло» ближче до…","¿Aló?","¿Diga?","звучання"],
+["Стиль відповіді залежить від…","країни","марки телефону","🌎"],
+["¿Sí? як відповідь на дзвінок…","теж можлива","заборонена","коротко"],
+["В офісі відповідають частіше…","назвою компанії + ¿dígame?","¡Hola, guapo!","формальність"],
+["dígame містить займенник…","me","te","скажіть МЕНІ"]
+]},
+{t:"Розмовні фрази про телефон", lv:3, q:[
+["«Я скину тобі повідомлення» = Te ___ un mensaje.","mando","tiro","з культ. нотаток"],
+["«Мені подзвонив телефон» = Me ha ___ el móvil.","sonado","llamado","з культ. нотаток"],
+["Te mando un mensaje — mandar тут = …","надіслати","наказати","розмовне"],
+["«Подзвони, як зможеш» = Llámame cuando ___.","puedas","podrás","з книги"],
+["Пропущений дзвінок = llamada ___.","perdida","ganada","perdida"],
+["«Перетелефоную» = Te ___ a llamar.","vuelvo","voy","volver a llamar"],
+["«Скинь мені локацію» = Mándame la ___.","ubicación","localidad","📍"],
+["Голосове повідомлення (розмовно) = un ___.","audio","ruido","mándame un audio"],
+["«Я на зв'язку» = Estoy ___.","disponible","invisible","доступний"],
+["«Батарея на 1%» = Me queda un 1% de ___.","batería","paciencia","хоча й terpіння теж 😄"]
+]},
+{t:"Культура дзвінків в Іспанії", lv:3, q:[
+["Якщо не відповідають, іспанці зазвичай…","дзвонять кілька разів поспіль","чекають тиждень","з культ. нотаток!"],
+["Після пропущених дзвінків надсилають…","«Llámame cuando puedas»","рахунок за дзвінки","з культ. нотаток"],
+["Подзвонити двічі-тричі поспіль — це…","нормально","дуже грубо","культурна норма"],
+["Голосова пошта в Іспанії…","існує, але частіше пишуть","головний канал зв'язку","реалії"],
+["О 15:00 — обід. Краще…","написати повідомлення","дзвонити тричі","🕒"],
+["«Не можу говорити, я на нараді» = Estoy en una ___.","reunión","reunificación","коротко"],
+["Скинути виклик і написати смс — в Іспанії…","звична практика","страшна образа","norma"],
+["Мама тричі набрала номер (з тексту) — це…","типова турботлива мама","дивна поведінка","❤️"],
+["Після tantas llamadas герой вирішує…","apagar el móvil un rato","tirar el móvil al mar","цифровий детокс"],
+["«Un día sin móvil» — це тема…","домашки з книги","фантастики","📵"]
+]},
+{t:"RAZÓN, EQUIVOCARSE чи CULPA?", lv:3, q:[
+["Ти правий → …","Tienes razón.","Te equivocas.","слушність"],
+["Ти помиляєшся → …","Te equivocas.","Tienes razón.","помилка"],
+["Визнати помилку: «___»","Me he equivocado.","Siempre tengo razón.","чесно"],
+["no tener razón ≈ …","equivocarse","tener hambre","близькі значення"],
+["Замість «Es mi culpa» краще…","«Me he equivocado»","«Es tu culpa»","з культ. нотаток!"],
+["culpa = …","провина","культ","вина"],
+["У суперечці мав рацію той, хто ___ razón.","tenía","estaba","tener"],
+["«Мабуть, ти маєш рацію» = ___ tienes razón.","Quizás","Jamás","можливо"],
+["Погодитися: «___, tienes razón».","Vale","Nunca","ок"],
+["tener razón у розмові звучить…","щодня","архаїчно","повсякденне"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Думаю, ти маєш рацію»","Creo que tienes razón.","Creo que eres razón.","з книги"],
+["«Хвилинку, зараз підійде»","Un momento, ahora se pone.","Un momento, ahora se va.","з книги"],
+["«Хто телефонує?»","¿De parte de quién?","¿De quién es la parte?","з книги"],
+["«Можна залишити повідомлення?»","¿Puedo dejar un mensaje?","¿Puedo dejar un masaje?","💆❌"],
+["«Вибачте, ви помилилися номером»","Lo siento, se ha equivocado.","Lo siento, se ha evaporado.","з книги"],
+["«Мій телефон не змовкає»","Mi móvil no para de sonar.","Mi móvil no deja de llamar.","з тексту"],
+["«Вона не бере слухавку»","No contesta.","No pregunta.","contestar"],
+["«Подзвони мені, коли зможеш»","Llámame cuando puedas.","Llámame cuando puedes.","puedas"],
+["«Вимикаю телефон на трохи»","Apago el móvil un rato.","Pago el móvil un rato.","apagar ≠ pagar!"],
+["«Ти неправильно зрозумів»","Lo has entendido mal.","Lo has entendido malo.","прислівник mal"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«No eres razón» — …","помилка (no tienes razón)","правильно","tener!"],
+["«Tienes razón» — …","правильно ✓","помилка","✓"],
+["«La línea es ocupada» — …","помилка (está ocupada)","правильно","стан"],
+["«¿Puedo dejar un mensaje?» — …","правильно ✓","помилка","✓"],
+["«Llamo mi amiga» — …","помилка (llamo A mi amiga)","правильно","a + особа"],
+["«El teléfono llama» — …","помилка (suena)","правильно","телефон дзвенить"],
+["«Se ha equivocado» — …","правильно ✓","помилка","✓"],
+["«Hablamos por teléfono» — …","правильно ✓","помилка","✓"],
+["«Te mando un mensaje» — …","правильно ✓ (розмовне)","помилка","культ. нотатки"],
+["«¿Diga?» на дзвінок — …","правильно ✓","помилка","🇪🇸"]
+]},
+{t:"PONERSE та слухавка", lv:3, q:[
+["ponerse (al teléfono) = …","підійти до телефону","одягтися","se pone"],
+["«Зараз вона підійде» = Ahora se ___.","pone","viste","з книги"],
+["Ahora se pone кажуть, коли…","кличуть людину до телефону","кладуть слухавку","хвилинку!"],
+["ponerse nervioso = …","знервуватися","підняти слухавку","з тексту!"],
+["«me pongo nervioso cuando no contestas» = …","нервуюся, коли не відповідаєш","вдягаюся, коли дзвониш","ponerse + adj"],
+["«Передаю слухавку мамі» = Te ___ con mi madre.","paso","pongo","te paso con…"],
+["Te paso con el director = …","з'єдную з директором","проходжу повз директора","офісне"],
+["está reunido = …","на нараді","з'єднаний","не може відповісти"],
+["«Він щойно вийшов» = ___ de salir.","Acaba","Deja","acabar de + inf"],
+["ponerse — дієслово…","зворотне","незмінюване","SE pone"]
+]},
+{t:"Граматика тексту", lv:3, q:[
+["no para de sonar — parar de = …","переставати","починати","не перестає"],
+["sin parar = …","без упину","без пари","nonstop"],
+["Dejo que suene… — dejar que = …","дозволити, дати","заборонити","хай дзвонить"],
+["Mientras tanto = …","тим часом","назавжди","паралельно"],
+["ocupadísimo = …","дуже-дуже зайнятий","трохи зайнятий","-ísimo!"],
+["Me parece raro = …","мені здається дивним","мені подобається","parecer"],
+["«no podía hablar» — podía це…","минуле від poder","майбутнє","imperfecto"],
+["recibo otra llamada = …","отримую ще один дзвінок","роблю дзвінок","recibir"],
+["«estaba en clase» — estaba це…","минуле від estar","теперішнє","imperfecto"],
+["decido apagar el móvil — decidir + …","інфінітив","герундій","вирішую вимкнути"]
+]},
+{t:"Формально чи неформально?", lv:3, q:[
+["Дзвінок у лікарню — звертання:","usted","tú","формально"],
+["Дзвінок бабусі:","tú","usted","сім'я ❤️"],
+["Формально: «¿___ dejar un mensaje?»","Podría","Puedo o no puedo","умовний ввічливий"],
+["Неформально другу:","¡Ey! ¿Qué pasa?","Estimado señor…","😄"],
+["В офіс: «Buenos días, ¿___ el señor López?»","está","anda","формально"],
+["Другу: «Llámame ___». (потім)","luego","posteriormente","розмовно"],
+["Формальне прощання:","Que tenga un buen día.","¡Chao, tío!","ввічливо"],
+["Неформальне прощання:","¡Venga, hasta luego!","Le saluda atentamente.","розмовно"],
+["«Le paso con…» — стиль…","формальний","дитячий","офіс"],
+["Шеф каже «Tenemos que hablar» — тон…","діловий","святковий","📊"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["«Алло» в Іспанії:","¿Diga?","¿Aló?","🇪🇸"],
+["Creo que ___ razón. (ти)","tienes","eres","tener razón"],
+["La línea está ___.","ocupada","ocupado","жін."],
+["¿Puedo ___ un mensaje?","dejar","doblar","залишити"],
+["El teléfono ___. (дзвонить)","suena","llama","sonar"],
+["Se ha ___. (помилилися номером)","equivocado","evaporado","😄"],
+["Un momento, ahora se ___.","pone","va","підійде"],
+["Me ha ___ el móvil. (розмовне)","sonado","cantado","культ. нотатки"],
+["Llámame cuando ___.","puedas","puedes","стійке"],
+["Урок 6 готово! ___ razón: ти молодець! 🎉","Tienes","Eres","tener razón"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "TELÉFONO: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 6 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

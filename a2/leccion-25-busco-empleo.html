@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 25 · Busco empleo · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 25 · @malinnaartstudio</div>
+    <h1 id="htitle">BUSCO EMPLEO: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+<main>
+  <div id="home">
+    <div class="intro">
+            <b style="color:var(--rasp)">Lección 25 · Busco empleo. Ofertas y anuncios laborales.</b>
+      30 вправ по 10 питань: construcciones impersonales з se (Se busca, Se necesita, Se ofrece…),
+      узгодження числа, словник резюме й вакансій, зразок CV та carta de presentación.
+      Від ★ до ★★★. ¡Se busca tu próximo trabajo! 📋
+
+    </div>
+    <div class="legend">
+            <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · impersonal se + словник оголошень</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · текст, CV, carta de presentación</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · культура пошуку роботи й помилки</span>
+
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 25</footer>
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Construcciones impersonales con SE", lv:1, q:[
+["Impersonal se вживається, коли…","не вказується, хто виконує дію","дія завжди зворотна","з книги"],
+["Увага зосереджена на…","самій дії, а не на діячі","особі, що виконує дію","з книги"],
+["Se necesita recepcionista — переклад…","Потрібен адміністратор","Адміністратор себе потребує","impersonal"],
+["Se ofrece trabajo estable — переклад…","Пропонується стабільна робота","Робота пропонує себе","impersonal"],
+["Se vive bien en España — переклад…","В Іспанії добре живеться","Іспанія живе добре сама по собі","impersonal, загальне твердження"],
+["Урок 25 називається…","Busco empleo. Ofertas y anuncios laborales","Mi trabajo y mi experiencia profesional","з підручника"],
+["Impersonal se типово зустрічається в…","оголошеннях про роботу","особистих щоденниках","контекст уроку"],
+["Ключова ідея: se тут НЕ означає…","зворотну дію (себе)","безособовість","важлива відмінність від reflexivo"],
+["Se необхідне для вираження дій без…","конкретного названого підмета","дієслова взагалі","суть конструкції"],
+["Ця конструкція типова для…","оголошень, правил, загальних звичаїв","особистих емоцій","з таблиці книги"]
+]},
+{t:"Структура: SE + дієслово (3-тя особа)", lv:1, q:[
+["Структура завжди: SE + …","дієслово в 3-й особі (одн. або мн.)","дієслово в 1-й особі","базове правило"],
+["Se necesita camarero — camarero в однині, тому дієслово…","necesita (однина)","necesitan (множина)","узгодження"],
+["Se necesitan camareros — camareros у множині, тому дієслово…","necesitan (множина)","necesita (однина)","узгодження"],
+["Se busca secretaria — узгодження:","однина + однина","множина + множина","secretaria = однина"],
+["Se buscan secretarias — узгодження:","множина + множина","однина + однина","secretarias = множина"],
+["Дієслово в impersonal se узгоджується з…","іменником, що йде після нього","займенником se","ключове правило"],
+["Se habla español aquí — español тут…","неісчислюваний іменник, однина","множина","однина за замовчуванням"],
+["Se venden pisos — pisos у множині, тому дієслово…","venden","vende","узгодження"],
+["Se alquila apartamento — apartamento в однині, тому…","alquila","alquilan","узгодження"],
+["Правило узгодження числа — найважливіше в цій конструкції, бо…","часта помилка — плутати однину/множину","воно ніколи не порушується","практична порада"]
+]},
+{t:"SE необхідне: приклади оголошень", lv:1, q:[
+["Se ofrece contrato indefinido — переклад…","Пропонується безстроковий контракт","Пропонується тимчасовий контракт","з таблиці книги"],
+["No se fuma — переклад…","Не курять (тут не можна курити)","Хтось не курить","правило/заборона"],
+["Se mezcla la pintura con agua — переклад…","Фарбу змішують з водою (інструкція)","Фарба сама змішується з водою","інструкція"],
+["En España se cena tarde — переклад…","В Іспанії вечеряють пізно (загальна звичка)","В Іспанії хтось конкретний вечеряє пізно","загальна звичка"],
+["Se paga con tarjeta — переклад…","Платять карткою (тут можна платити карткою)","Картка сама платить","у публічних місцях"],
+["Ці приклади ілюструють вживання se у сферах: оголошення, правила,…","інструкції, звички, публічні місця","лише особисті емоції","з таблиці книги"],
+["No se fuma — це приклад категорії…","reglas/prohibiciones (правила/заборони)","hábitos generales","з таблиці"],
+["En España se cena tarde — це приклад категорії…","hábitos generales (загальні звички)","instrucciones","з таблиці"],
+["Se paga con tarjeta — це приклад категорії…","lugares públicos (публічні місця)","anuncios de trabajo","з таблиці"],
+["Se mezcla la pintura con agua — це приклад категорії…","instrucciones (інструкції)","reglas","з таблиці"]
+]},
+{t:"REFLEXIVO чи IMPERSONAL?", lv:1, q:[
+["Se levanta a las ocho — це…","reflexivo (він/вона встає)","impersonal","конкретна особа встає"],
+["Se trabaja mucho aquí — це…","impersonal (тут багато працюють, без конкретної особи)","reflexivo","загальне твердження"],
+["No es lo mismo «se levanta» que «se trabaja» — головна різниця:","перше має конкретного діяча, друге — ні","обидва однакові за змістом","з книги"],
+["Se viste rápido — це…","reflexivo (він/вона одягається)","impersonal","конкретна особа"],
+["Se come bien en este restaurante — це…","impersonal (тут добре їдять, загалом)","reflexivo","загальне твердження про заклад"],
+["Se ducha cada mañana — це…","reflexivo","impersonal","конкретна особа"],
+["Se vende de todo en este mercado — це…","impersonal (тут продають усе)","reflexivo","загальне твердження"],
+["Ключ до розрізнення: чи є конкретний підмет (він/вона), чи йдеться про загальне…","загальне — impersonal; конкретне — reflexivo","завжди однаково","практичний тест"],
+["Se necesita ayuda — це…","impersonal (потрібна допомога, без діяча)","reflexivo","оголошення"],
+["Se peina antes de salir — це…","reflexivo (розчісується)","impersonal","конкретна особа"]
+]},
+{t:"Вирази оголошень: SE BUSCA, SE NECESITA…", lv:1, q:[
+["Se busca… = …","Шукається…","Продається…","з книги"],
+["Se necesita… = …","Потрібен/потрібна…","Не потрібен/потрібна…","з книги"],
+["Se ofrece… = …","Пропонується…","Вимагається…","з книги"],
+["Se requiere… = …","Вимагається…","Пропонується…","з книги"],
+["Se valorará… = …","Цінуватиметься…","Не цінуватиметься…","з книги, майбутній час!"],
+["Se busca camarero con experiencia — переклад…","Шукається офіціант з досвідом","Офіціант шукає роботу","типове оголошення"],
+["Se requiere nivel de inglés alto — переклад…","Вимагається високий рівень англійської","Пропонується вивчення англійської","типове оголошення"],
+["Se valorará experiencia previa — переклад…","Попередній досвід буде цінуватися","Попередній досвід не має значення","типове оголошення"],
+["Ці п'ять виразів типово з'являються на початку…","оголошень про роботу","особистих листів","контекст уроку"],
+["Se ofrece формально протиставляється…","se requiere / se necesita (що вимагають від кандидата)","se busca (синонім)","логіка оголошення: що дають vs що вимагають"]
+]},
+{t:"Словник: оголошення 1", lv:1, q:[
+["se ofrece = …","пропонується","вимагається","базове"],
+["se requiere experiencia = …","вимагається досвід","пропонується досвід","базове"],
+["se valorará formación = …","цінуватиметься освіта","не цінуватиметься освіта","базове"],
+["contrato indefinido = …","безстроковий контракт","тимчасовий контракт","протилежність temporal"],
+["contrato temporal = …","тимчасовий контракт","безстроковий контракт","протилежність indefinido"],
+["jornada completa = …","повний робочий день","неповний робочий день","базове"],
+["jornada parcial = …","неповний робочий день","повний робочий день","базове"],
+["incorporación inmediata = …","негайний початок роботи","початок за рік","базове"],
+["sueldo según experiencia = …","зарплата залежно від досвіду","фіксована зарплата для всіх","базове"],
+["formación continua = …","постійне навчання","одноразовий курс","базове"]
+]},
+{t:"Словник: оголошення 2", lv:1, q:[
+["posibilidad de promoción = …","можливість підвищення","обов'язкове підвищення","базове"],
+["el empleo = …","робота, зайнятість","безробіття","базове"],
+["el puesto = …","посада","компанія","базове"],
+["la oferta de trabajo = …","оголошення про роботу","заявка на роботу","базове"],
+["la vacante = …","вакансія","контракт","базове"],
+["el contrato = …","контракт","резюме","базове"],
+["el horario = …","графік","зарплата","базове"],
+["el sueldo / salario = …","зарплата","графік","синоніми"],
+["el turno de mañana / tarde = …","ранкова / вечірня зміна","повний / неповний день","базове"],
+["el currículum / el CV = …","резюме","мотиваційний лист","базове"]
+]},
+{t:"Словник: CV терміни 1", lv:1, q:[
+["los datos personales = …","особисті дані","професійні навички","базове"],
+["la formación = …","освіта","досвід роботи","базове"],
+["la experiencia laboral = …","досвід роботи","освіта","базове"],
+["los idiomas = …","мови (знання мов)","навички","базове"],
+["las habilidades = …","навички","мови","базове"],
+["el perfil profesional = …","професійний профіль","особисті дані","базове"],
+["el objetivo laboral = …","професійна мета","контракт","базове"],
+["adjuntar el CV = …","додавати резюме","видаляти резюме","базове"],
+["enviar solicitud = …","надіслати заявку","отримати заявку","базове"],
+["Ці терміни типово потрібні для…","складання резюме","побутової розмови","контекст уроку"]
+]},
+{t:"SE impersonal: швидка практика", lv:1, q:[
+["Se habla inglés aquí.","Тут говорять англійською.","Англійська говорить тут сама.","impersonal"],
+["Se prohíbe fumar.","Заборонено палити.","Хтось забороняє собі палити.","impersonal, правило"],
+["Se alquilan pisos.","Здаються квартири в оренду.","Квартира здає себе.","impersonal, множина"],
+["Se ruega silencio.","Просимо дотримуватись тиші.","Тиша просить сама.","impersonal, ввічлива вимога"],
+["Se abre a las nueve.","Відкривається о дев'ятій.","Він відкриває себе о дев'ятій.","impersonal (про заклад)"],
+["Se cierra los domingos.","Зачинено по неділях.","Двері зачиняють себе.","impersonal"],
+["Se admite reservas.","Приймаються бронювання.","Бронювання приймає саме себе.","impersonal"],
+["Se entra por aquí.","Входять тут / вхід тут.","Хтось входить у себе.","impersonal, вказівка"],
+["Se ve el mar desde aquí.","Звідси видно море.","Море бачить себе звідси.","impersonal"],
+["Se llega en veinte minutos.","Доїжджають за двадцять хвилин.","Хтось приходить до себе за 20 хвилин.","impersonal, про маршрут"]
+]},
+{t:"Резюме модуля 1", lv:1, q:[
+["Impersonal se головно вживається, коли…","діяч неважливий або невідомий","діяч дуже важливий","підсумок"],
+["Структура завжди: se + дієслово в…","3-й особі однини/множини","1-й особі","підсумок"],
+["Число дієслова узгоджується з…","іменником після нього","займенником se","ключове правило"],
+["Se busca, se necesita, se ofrece, se requiere, se valorará — усі типові для…","оголошень про роботу","подорожніх нотаток","тема уроку"],
+["Reflexivo se має конкретного…","діяча (він/вона сам)","адресата, але без діяча","контраст"],
+["Impersonal se не має конкретного…","названого діяча","дієслова взагалі","контраст"],
+["No se fuma — категорія вживання:","заборона/правило","звичка","з таблиці"],
+["En España se cena tarde — категорія вживання:","загальна звичка","заборона","з таблиці"],
+["Урок 25 логічно продовжує урок 24 про…","роботу і кар'єру","цифрові технології","послідовність тем"],
+["Мета граматики уроку 25 — навчитися…","читати й писати оголошення про роботу","говорити про минуле","підсумок"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Словник: CV терміни 2", lv:2, q:[
+["carta de presentación = …","супровідний (мотиваційний) лист","резюме","з тексту уроку"],
+["el Departamento de Recursos Humanos = …","відділ кадрів (HR)","бухгалтерія","базове"],
+["la atención al cliente = …","обслуговування клієнтів","увага до себе","базове"],
+["disponible para incorporación inmediata = …","готовий(а) почати роботу негайно","недоступний для роботи","з тексту"],
+["quedar a disposición para una entrevista = …","бути готовим/готовою до співбесіди","відмовитися від співбесіди","з тексту"],
+["aportar experiencia y entusiasmo = …","привнести досвід і ентузіазм","забрати досвід","з тексту"],
+["Me gustaría formar parte de su equipo = …","Хотів(ла) би стати частиною вашої команди","Не хочу приєднуватися до команди","з тексту"],
+["Adjunto mi currículum para su consideración = …","Додаю своє резюме для розгляду","Видаляю своє резюме","з тексту"],
+["Muchas gracias por su atención = …","Дуже дякую за увагу","Дуже дякую за роботу","з тексту, ввічлива формула"],
+["Atentamente (наприкінці листа) = …","З повагою","До зустрічі","формула закінчення листа"]
+]},
+{t:"Вправа 1 з книги: обери форму SE", lv:2, q:[
+["___ camarero con experiencia.","Se busca","Se buscan","camarero — однина"],
+["___ jornada completa y buen ambiente.","Se ofrece","Se ofrecen","jornada — однина"],
+["___ dependientes para tienda de ropa.","Se necesitan","Se necesita","dependientes — множина"],
+["___ conocimientos de informática.","Se requieren","Se requiere","conocimientos — множина"],
+["___ cocinero con incorporación inmediata.","Se necesita","Se necesitan","cocinero — однина"],
+["Вибір однина/множина залежить від…","іменника, що йде після se + дієслово","роду іменника","узгодження числа"],
+["dependientes (множина) вимагає дієслово…","necesitan","necesita","множина-множина"],
+["conocimientos (множина) вимагає дієслово…","requieren","requiere","множина-множина"],
+["Ця вправа з книги тренує…","узгодження числа в impersonal se","минулий час","модуль 4, вправа 1"],
+["Найпоширеніша помилка у цій вправі — це…","неузгодження числа (se busca з множинним іменником)","неправильний рід","практична порада"]
+]},
+{t:"Вправа 2 з книги: трансформуй у SE impersonal", lv:2, q:[
+["La empresa contrata nuevos empleados. →","Se contratan nuevos empleados.","Se contrata nuevos empleados.","empleados — множина"],
+["Buscan repartidores para verano. →","Se buscan repartidores para verano.","Se busca repartidores para verano.","repartidores — множина"],
+["Ofrecen cursos de formación. →","Se ofrecen cursos de formación.","Se ofrece cursos de formación.","cursos — множина"],
+["No permiten fumar aquí. →","No se permite fumar aquí.","No se permiten fumar aquí.","fumar — інфінітив, однина"],
+["En esta oficina hablan inglés. →","En esta oficina se habla inglés.","En esta oficina se hablan inglés.","inglés — однина (мова)"],
+["Трансформація прибирає…","конкретний підмет (la empresa, ellos…) і додає se","дієслово взагалі","суть вправи"],
+["«No permiten fumar» → «No se permite fumar» — тут дієслово однина, бо…","fumar (інфінітив) вважається одниною","fumar — множина","особливий випадок"],
+["«Hablan inglés» → «Se habla inglés» — inglés тут…","іменник в однині (мова)","іменник у множині","узгодження"],
+["Ця вправа тренує…","перетворення особистих речень на impersonal se","переклад ідіом","модуль 4, вправа 2"],
+["Impersonal se корисний, коли не хочемо або не можемо вказати…","хто саме виконує дію","час дії","практичне застосування"]
+]},
+{t:"Текст: Buscando mi primer trabajo en España (1)", lv:2, q:[
+["Cuando llegué a España, no conocía a nadie — переклад…","Коли я приїхав до Іспанії, я нікого не знав","Коли я приїхав до Іспанії, я знав усіх","з тексту"],
+["Durante las primeras semanas busqué trabajo en internet — переклад…","Протягом перших тижнів я шукав роботу в інтернеті","Я ніколи не шукав роботу в інтернеті","з тексту"],
+["Leí muchos anuncios con frases nuevas — переклад…","Я прочитав багато оголошень з новими фразами","Я написав багато оголошень","з тексту"],
+["Al principio no entendía, pero pronto descubrí que… — переклад…","Спочатку я не розумів, але скоро виявив, що…","Я одразу все зрозумів","з тексту"],
+["«Se necesita dependiente para tienda de comida natural» — форма necesita, бо dependiente…","однина","множина","узгодження"],
+["Llamé, hice la entrevista y me contrataron — переклад «me contrataron»…","мене найняли","мене звільнили","з тексту"],
+["Durante ese tiempo aprendí a atender a los clientes — переклад…","за цей час я навчився обслуговувати клієнтів","за цей час я навчився керувати компанією","з тексту"],
+["mejoré mi español y gané confianza — переклад «gané confianza»…","здобув впевненість","втратив впевненість","з тексту"],
+["Un año después busqué nuevas oportunidades — переклад…","Через рік я шукав нові можливості","Через рік я перестав шукати роботу","з тексту"],
+["«Se buscan vendedores jóvenes y motivados» — форма buscan, бо vendedores…","множина","однина","узгодження"]
+]},
+{t:"Текст: Buscando mi primer trabajo en España (2)", lv:2, q:[
+["«Se ofrece formación continua y posibilidad de promoción» — переклад…","Пропонується постійне навчання і можливість підвищення","Вимагається постійне навчання","з тексту"],
+["Ahora he trabajado en esa empresa casi dos años — форма he trabajado, бо…","досвід/період до сьогодні (Perfecto)","конкретна закінчена дата","повторення уроку 24!"],
+["He aprendido a trabajar en equipo — переклад…","Я навчився працювати в команді","Я забув, як працювати в команді","з тексту, Perfecto"],
+["he hecho cursos y he conocido a gente increíble — переклад…","пройшов курси і познайомився з чудовими людьми","не пройшов жодного курсу","з тексту, Perfecto"],
+["Gracias a esa experiencia me siento más preparado — переклад…","Завдяки цьому досвіду я почуваюся більш підготовленим","Через цей досвід я втомився","з тексту"],
+["cuando veo un cartel que dice «Se busca personal», sonrío — переклад…","коли бачу вивіску «Шукається персонал», усміхаюся","коли бачу вивіску, засмучуюся","фінал тексту"],
+["porque así empezó mi nueva vida en España — переклад…","бо саме так почалося моє нове життя в Іспанії","бо так закінчилося моє життя в Іспанії","фінал тексту"],
+["Головна тема тексту:","пошук першої роботи в Іспанії й вивчення оголошень з se","подорож по Іспанії","назва тексту"],
+["Текст показує практичне застосування…","impersonal se в реальних оголошеннях","минулого незакінченого часу","мета тексту"],
+["Емоційний тон фіналу тексту:","теплий, вдячний","сумний, розчарований","стиль закінчення"]
+]},
+{t:"Питання до тексту", lv:2, q:[
+["¿Dónde buscó trabajo al principio?","En internet y en los periódicos","Solo preguntando a amigos","з тексту"],
+["¿Qué expresiones nuevas aprendió?","Se busca, se necesita, se ofrece","Voy a, tengo que","з тексту"],
+["¿Qué decía el primer anuncio?","Se necesita dependiente, jornada completa","Se busca ingeniero informático","з тексту"],
+["¿Cuánto tiempo trabajó allí?","Un año","Diez años","з тексту"],
+["¿Qué aprendió en su primer empleo?","A atender a los clientes y mejorar su español","A programar","з тексту"],
+["¿Qué decía el segundo anuncio?","Se buscan vendedores jóvenes y motivados","Se necesita camarero con coche propio","з тексту"],
+["¿Cuánto tiempo lleva en su empresa actual?","Casi dos años","Un mes","з тексту"],
+["¿Qué partes contiene su currículum?","Datos personales, experiencia laboral, formación, idiomas","Solo el nombre","з тексту, приклад CV"],
+["¿Qué idiomas habla Olena?","Español, ucraniano e inglés","Solo ucraniano","з прикладу CV"],
+["¿Por qué está preparada para nuevos retos?","Por su experiencia y todo lo que ha aprendido","Porque tiene suerte","з тексту"]
+]},
+{t:"Ejemplo de Currículum: структура", lv:2, q:[
+["Currículum починається з розділу…","Datos personales","Objetivo laboral","з прикладу CV"],
+["Datos personales включають…","ім'я, національність, email, телефон","лише ім'я","з прикладу CV"],
+["Experiencia laboral вказується у форматі…","роки (2021–2023) + посада + місце","лише назва компанії","з прикладу CV"],
+["Formación у прикладі Olena включає…","курс іспанської A2 і освіту в адмініструванні","лише школу","з прикладу CV"],
+["Idiomas вказуються з рівнем, наприклад…","Español (B1), Inglés (A2)","лише список мов без рівня","з прикладу CV"],
+["actualidad у датах (2023–actualidad) означає…","дотепер (ще працює)","до минулого року","типовий формат CV"],
+["CV має бути…","коротким і структурованим","довгим і детальним, як роман","практична порада"],
+["El grado medio означає…","середню професійну освіту","університетський диплом","з прикладу CV"],
+["Компактний CV допомагає роботодавцю…","швидко оцінити кандидата","витратити більше часу на читання","практична мета"],
+["Структура CV в іспанській традиції схожа на…","українську/міжнародну (дані, досвід, освіта, мови)","зовсім іншу, унікальну систему","загальне спостереження"]
+]},
+{t:"Carta de presentación: що це і навіщо", lv:2, q:[
+["Carta de presentación — це…","короткий супровідний лист разом із CV","повна автобіографія","з тексту уроку"],
+["Він показує…","мотивацію кандидата","лише контактні дані","з тексту"],
+["Головне питання, на яке відповідає лист: чому саме…","ти хочеш працювати там і підходиш для посади","ти народився в цій країні","з тексту"],
+["Лист має бути…","коротким (8–10 рядків), щирим, граматично правильним","довгим і формальним на 2 сторінки","з тексту"],
+["Лист показує не просто «що я зробив», а…","«чому я хочу працювати саме у вас»","лише перелік дипломів","з тексту"],
+["Типовий початок листа: «A la atención del…»","Departamento de Recursos Humanos","Presidente del país","з прикладу листа"],
+["Типове завершення листа:","Atentamente","Hasta pronto, amigo","формальне закінчення"],
+["«He visto su anuncio…» на початку листа означає…","Я побачив ваше оголошення…","Я створив оголошення…","з прикладу листа"],
+["Carta de presentación порівнюється в уроці з…","«міні-розмовою» з роботодавцем у письмовій формі","юридичним документом","метафора з тексту"],
+["В Іспанії роботодавці зазвичай очікують…","і CV, і carta de presentación","лише CV","з культ. нотаток"]
+]},
+{t:"Корисні фрази для carta de presentación", lv:2, q:[
+["Me gustaría formar parte de su equipo — переклад…","Хотів(ла) би стати частиною вашої команди","Не хочу приєднуватися до команди","з книги"],
+["Creo que puedo aportar experiencia y entusiasmo — переклад…","Вважаю, що можу внести досвід і ентузіазм","Вважаю, що не маю досвіду","з книги"],
+["Adjunto mi currículum para su consideración — переклад…","Додаю своє резюме для розгляду","Не додаю резюме","з книги"],
+["Quedo a su disposición para una entrevista — переклад…","Готовий(а) до співбесіди у зручний час","Не можу прийти на співбесіду","з книги"],
+["Muchas gracias por su atención — переклад…","Дуже дякую за увагу","Дуже шкода за увагу","з книги, ввічлива формула"],
+["Ці фрази типово розташовані…","в кінці мотиваційного листа","на початку резюме","структура листа"],
+["«Quedo a su disposición» дослівно означає…","«лишаюся у вашому розпорядженні»","«чекаю на гроші»","дослівний переклад"],
+["Використання цих фраз робить лист…","професійним і ввічливим","занадто неформальним","практична мета"],
+["«Aportar» у контексті резюме означає…","привнести, додати (цінність)","забрати","базове"],
+["Ці фрази варто…","вивчити цілими блоками для використання в реальних листах","перекладати дослівно кожен раз","методична порада"]
+]},
+{t:"SE BUSCA vs SE BUSCAN: узгодження числа", lv:2, q:[
+["Se busca secretaria — узгодження:","однина-однина","множина-множина","secretaria = однина"],
+["Se buscan secretarias — узгодження:","множина-множина","однина-однина","secretarias = множина"],
+["Se necesita un traductor — узгодження:","однина-однина","множина-множина","traductor = однина"],
+["Se necesitan traductores — узгодження:","множина-множина","однина-однина","traductores = множина"],
+["❌ Se buscan una secretaria — чому помилка?","una secretaria однина, а buscan множина","усе правильно","неузгодження!"],
+["✅ Se busca una secretaria — узгодження правильне, бо…","однина + однина","множина + множина","з культ. нотаток"],
+["Se requieren dos años de experiencia — узгодження:","множина (dos años)","однина","число визначає форму"],
+["Se ofrece un puesto estable — узгодження:","однина (un puesto)","множина","число визначає форму"],
+["Головне правило: перевіряй…","число іменника, що йде після дієслова","рід іменника","практична порада"],
+["Ця тема — джерело найпоширенішої помилки в оголошеннях, тому…","варто завжди перевіряти узгодження","це не має значення на практиці","підсумок"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки", lv:3, q:[
+["❌ Se buscan una secretaria → ✅ …","Se busca una secretaria.","Se busca unas secretaria.","з культ. нотаток!"],
+["❌ Se busca dependientes → ✅ …","Se buscan dependientes.","Se busca dependiente los.","dependientes — множина"],
+["❌ Se necesitan un camarero → ✅ …","Se necesita un camarero.","Se necesitan uno camarero.","un camarero — однина"],
+["❌ Se ofrecen contrato indefinido → ✅ …","Se ofrece contrato indefinido.","Se ofrecen contratos indefinido.","contrato — однина"],
+["❌ Se habla inglés y francés aquí (правильно чи ні?) → перевір число:","правильно, бо мови тут як «загальна дія», однина дієслова доречна","обов'язково se hablan","прийнятна форма для загальних тверджень"],
+["❌ Aquí se vive bien і se vives bien — яка форма правильна?","se vive bien (3-тя особа, не 2-га!)","se vives bien","impersonal завжди 3-тя особа!"],
+["❌ Se trabajo mucho aquí → ✅ …","Se trabaja mucho aquí.","Se trabajas mucho aquí.","3-тя особа: trabaja, не trabajo/trabajas!"],
+["❌ Se recomienda dos entrevistas → ✅ …","Se recomiendan dos entrevistas.","Se recomienda dos entrevista.","dos entrevistas — множина"],
+["❌ Se requiere conocimientos → ✅ …","Se requieren conocimientos.","Se requiero conocimientos.","conocimientos — множина"],
+["❌ No se permiten fumar → ✅ …","No se permite fumar.","No se permito fumar.","fumar (інфінітив) = однина"]
+]},
+{t:"Культура: portales, puntualidad y actitud", lv:3, q:[
+["Найпопулярніші портали пошуку роботи в Іспанії:","InfoJobs, Indeed, LinkedIn, MilAnuncios","лише офіційна газета","з культ. нотаток"],
+["La puntualidad y la actitud вважаються…","такими ж важливими, як досвід","менш важливими за диплом","з культ. нотаток"],
+["Це узгоджується з уроком 24, де сказано, що досвід важливіший за…","títulos (звання/дипломи)","актуальність оголошення","логічний звʼязок тем"],
+["У більшості випадків роботодавці в Іспанії чекають…","і CV, і carta de presentación","лише телефонний дзвінок","з культ. нотаток"],
+["Carta de presentación пишуть у стилі…","ввічливому, але без складних фраз","дуже офіційному з латинськими виразами","з культ. нотаток"],
+["Знання цих порталів корисне для…","реального пошуку роботи в Іспанії","лише для іспиту","практичне застосування"],
+["«La actitud» у контексті співбесіди означає…","ставлення, поведінку кандидата","лише зовнішній вигляд","переклад терміна"],
+["Пунктуальність на співбесіді сигналізує роботодавцю про…","серйозність і повагу до часу інших","нічого важливого","логічний висновок"],
+["Підсумок культурної нотатки уроку 25:","в Іспанії важливі і документи, і особисті якості кандидата","важливий лише диплом","головний висновок"],
+["Ці культурні деталі допомагають…","краще підготуватися до реального пошуку роботи в Іспанії","лише зрозуміти граматику","практична мета уроку"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Шукається офіціант з досвідом»","Se busca camarero con experiencia.","Se buscan camarero con experiencia.","однина"],
+["«Пропонуються курси навчання»","Se ofrecen cursos de formación.","Se ofrece cursos de formación.","cursos — множина"],
+["«Вимагається знання англійської»","Se requiere conocimiento de inglés.","Se requieren conocimiento de inglés.","conocimiento — однина"],
+["«Тут говорять іспанською»","Aquí se habla español.","Aquí se hablan español.","español — однина"],
+["«Продаються квартири в центрі»","Se venden pisos en el centro.","Se vende pisos en el centro.","pisos — множина"],
+["«Не дозволяється палити тут»","No se permite fumar aquí.","No se permiten fumar aquí.","fumar — однина"],
+["«Потрібні два продавці»","Se necesitan dos vendedores.","Se necesita dos vendedores.","dos vendedores — множина"],
+["«Хочу стати частиною вашої команди»","Me gustaría formar parte de su equipo.","Me gustaría formo parte de su equipo.","gustaría + infinitivo"],
+["«Додаю своє резюме»","Adjunto mi currículum.","Adjunta mi currículum.","1-ша особа, adjunto"],
+["«Готовий(а) до співбесіди»","Quedo a su disposición para una entrevista.","Quedo a mi disposición para una entrevista.","su, ввічлива форма"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«Se busca una secretaria» — …","правильно ✓","помилка","✓"],
+["«Se buscan una secretaria» — …","помилка (Se busca)","правильно","неузгодження числа"],
+["«Se necesitan camareros» — …","правильно ✓","помилка","✓"],
+["«Se necesita camareros» — …","помилка (Se necesitan)","правильно","camareros — множина"],
+["«Aquí se vive bien» — …","правильно ✓","помилка","✓"],
+["«Aquí se vivo bien» — …","помилка (se vive, 3-тя особа)","правильно","impersonal завжди 3-тя особа"],
+["«Se ofrece contrato temporal» — …","правильно ✓","помилка","✓"],
+["«Se ofrecen contrato temporal» — …","помилка (Se ofrece)","правильно","contrato — однина"],
+["«No se fuma en la oficina» — …","правильно ✓","помилка","✓"],
+["«No se fuman en la oficina» — …","помилка (No se fuma)","правильно","fumar — однина (безособово)"]
+]},
+{t:"Reflexivo vs Impersonal: поглиблено", lv:3, q:[
+["Se vende esta casa — тут se…","impersonal (продають цей будинок)","reflexivo (будинок продає себе)","логічно impersonal"],
+["Se viste elegante — тут se…","reflexivo (вона/він одягається елегантно)","impersonal","конкретна особа"],
+["Se dice que va a llover — тут se…","impersonal (кажуть, що…)","reflexivo","загальна чутка"],
+["Se lava las manos antes de comer — тут se…","reflexivo (миє свої руки)","impersonal","конкретна дія на себе"],
+["Se comen muchas tapas en España — тут se…","impersonal (в Іспанії їдять багато тапас)","reflexivo","загальна звичка"],
+["Se acuesta tarde los fines de semana — тут se…","reflexivo (лягає спати пізно)","impersonal","конкретна особа"],
+["Se aprende mucho viajando — тут se…","impersonal (багато чого навчаються, подорожуючи)","reflexivo","загальна істина"],
+["Тест на розрізнення: чи можна замінити на «люди/хтось» + дієслово?","так → impersonal","так → reflexivo завжди","практичний тест"],
+["Тест на розрізнення: чи є конкретна особа, що виконує дію на себе?","так → reflexivo","так → impersonal завжди","практичний тест"],
+["Підсумок: контекст і сенс речення визначають, reflexivo це чи…","impersonal","завжди одне і те саме","ключовий висновок"]
+]},
+{t:"Побудуй речення логічно", lv:3, q:[
+["Шукається дизайнер графіки з досвідом →","Se busca diseñador gráfico con experiencia.","Se buscan diseñador gráfico con experiencia.","однина"],
+["Пропонуються стабільність і хороша зарплата →","Se ofrecen estabilidad y buen sueldo.","Se ofrece estabilidad y buen sueldo dos.","два іменники → множина"],
+["Вимагається водійське посвідчення →","Se requiere carné de conducir.","Se requieren carné de conducir.","carné — однина"],
+["В Іспанії багато працюють у сфері туризму →","En España se trabaja mucho en el turismo.","En España se trabajan mucho en el turismo.","impersonal, 3-тя особа однини"],
+["Тут не можна паркуватися →","Aquí no se puede aparcar.","Aquí no se pueden aparcar.","aparcar — інфінітив, однина"],
+["Потрібні два перекладачі негайно →","Se necesitan dos traductores de inmediato.","Se necesita dos traductores de inmediato.","dos traductores — множина"],
+["Готовий(а) почати роботу негайно →","Estoy disponible para incorporación inmediata.","Estoy disponible para incorporación inmediatos.","з CV словника"],
+["Додаю резюме і мотиваційний лист →","Adjunto mi currículum y mi carta de presentación.","Adjunto mi currículum y mi carta de presentaciones.","однина обох"],
+["Хотів би стати частиною вашої команди →","Me gustaría formar parte de su equipo.","Me gustaría forma parte de su equipo.","gustaría + infinitivo"],
+["Тут добре живеться і багато працюють →","Aquí se vive bien y se trabaja mucho.","Aquí se viven bien y se trabajan mucho.","обидва impersonal, однина"]
+]},
+{t:"Напиши оголошення: практика", lv:3, q:[
+["Оголошення з книги: «Se busca diseñador gráfico. Se ofrece ___.»","contrato temporal y horario flexible","nada en especial","зразок з книги"],
+["Модуль 4, вправа 3 просить написати оголошення довжиною…","3 рядки","30 рядків","з книги"],
+["Обов'язкові елементи оголошення: se busca/se necesita + …","se ofrece (умови)","лише назва вакансії","логічна структура"],
+["«Se busca profesor de español. Se requiere ___ y se ofrece ___.»","título universitario / sueldo competitivo","nada / nada","приклад завершення"],
+["Гарне оголошення повинно бути…","коротким і чітким","довгим і детальним, як роман","практична порада"],
+["«Se ofrece horario flexible» приваблює кандидатів, які цінують…","гнучкість графіка","стабільність зарплати","логіка оголошення"],
+["Ключова граматична перевірка перед публікацією оголошення:","узгодження числа se busca/se buscan","рід прикметників","практична порада"],
+["Оголошення часто закінчуються фразою типу…","«Interesados, enviar CV a…»","«Hasta luego, amigo»","типова структура"],
+["Вправа написання оголошення тренує…","активне використання impersonal se","лише читання","мета вправи 3"],
+["Написання власних оголошень — гарна практика перед…","реальним пошуком роботи чи публікацією вакансії","іспитом з літератури","практичне застосування"]
+]},
+{t:"Impersonal SE у публічних оголошеннях", lv:3, q:[
+["На дверях магазину: «Se prohíbe la entrada con animales» означає…","заборонено вхід з тваринами","дозволено вхід з тваринами","impersonal, правило"],
+["На пляжі: «Se prohíbe hacer fuego» означає…","заборонено розпалювати вогонь","дозволено розпалювати вогонь","impersonal, правило"],
+["В аеропорту: «Se ruega no fumar» — ruega означає…","просять (ввічливо)","наказують (грубо)","ввічлива форма прохання"],
+["На вивісці ресторану: «Se sirven tapas todo el día» означає…","тапас подають цілий день","тапас продають лише вранці","impersonal, множина tapas"],
+["В офісі: «Se atiende con cita previa» означає…","приймають лише за попереднім записом","приймають без запису","impersonal"],
+["На автостоянці: «Se prohíbe aparcar» означає…","заборонено паркуватися","дозволено паркуватися","impersonal, правило"],
+["Такі вивіски типово використовують форму дієслова…","3-тя особа (se prohíbe, se ruega, se sirven)","2-га особа наказова","impersonal завжди 3-тя особа"],
+["Розуміння цих вивісок корисне для…","орієнтування в реальному житті в Іспанії","лише складання іспиту","практична мета"],
+["«Se alquila» на вивісці на будинку означає, що…","квартиру здають в оренду","квартиру продають","поширена вивіска"],
+["«Se vende» на вивісці означає…","продається","здається в оренду","протилежність alquila"]
+]},
+{t:"«Mi carta de presentación» (домашка)", lv:3, q:[
+["He visto su anuncio «___» y me gustaría presentarme.","Se busca dependienta","Se busque dependienta","з прикладу листа"],
+["Tengo experiencia en atención al cliente y ___ (ser) una persona responsable.","soy","estoy","опис якостей"],
+["Для домашки потрібно написати carta de presentación довжиною…","8–10 рядків","1 рядок","з підручника"],
+["Друге завдання — створити власне коротке резюме з розділами…","Datos personales, Experiencia laboral, Formación, Idiomas","лише ім'я та вік","з підручника"],
+["У листі варто вказати, яку роботу шукаєш, свій досвід і…","чому підходиш на посаду","улюблену їжу","з підручника"],
+["Цитата з підручника для роздумів: «No siempre se encuentra el trabajo perfecto, pero siempre ___ algo nuevo».","se aprende","se aprenden","impersonal, однина"],
+["Приклад корисної фрази для листа: «Quedo a su disposición para ___.»","una entrevista","un contrato firmado ya","з book"],
+["Ще приклад: «Adjunto mi currículum para ___.»","su consideración","su casa","з книги"],
+["Мета домашки уроку 25 — практика…","impersonal se й реальних документів для пошуку роботи","минулого часу","підсумок"],
+["Los deberes уроку 25 завершуються, як завжди,…","тестовим завданням (link test)","усним іспитом","стандартна структура"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["Se necesita camarero — узгодження:","однина-однина","множина-множина","camarero — однина"],
+["Se necesitan camareros — узгодження:","множина-множина","однина-однина","camareros — множина"],
+["❌ Se buscan una secretaria → ✅ …","Se busca una secretaria.","обидва варіанти правильні","типова помилка"],
+["Se vive bien en España — це…","impersonal (загальне твердження)","reflexivo","без конкретного діяча"],
+["carta de presentación — це…","супровідний лист","резюме","з тексту"],
+["Se busca, Se necesita, Se ofrece, Se requiere, Se valorará — усі типові для…","оголошень про роботу","особистих щоденників","тема уроку"],
+["Найпопулярніші портали для пошуку роботи в Іспанії:","InfoJobs, Indeed, LinkedIn","лише газети","з культ. нотаток"],
+["La puntualidad y la actitud вважаються…","такими ж важливими, як досвід","неважливими","з культ. нотаток"],
+["Quedo a su disposición para una entrevista — переклад…","Готовий(а) до співбесіди","Відмовляюся від співбесіди","з тексту"],
+["Урок 25 готово! Espero que pronto ___ (encontrar) el trabajo perfecto. 💼","encuentres","encuentras","subjuntivo після espero que"]
+]}
+
+];
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "BUSCO EMPLEO: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 25 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

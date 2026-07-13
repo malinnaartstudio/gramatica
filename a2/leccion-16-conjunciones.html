@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 16 · Conjunciones básicas · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 16 · @malinnaartstudio</div>
+    <h1 id="htitle">CONJUNCIONES: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 16 · Conjunciones básicas.</b>
+      30 вправ по 10 питань: y/e/ni, pero/sino, porque/por eso, cuando/mientras/hasta que,
+      si, para que, que/donde, розмовні pues/o sea/porque sí. Від ★ до ★★★. ¡Conecta tus ideas! 🔗
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · усі типи сполучників</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · текст і логіка</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й помилки</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 16</footer>
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Типи сполучників", lv:1, q:[
+["Сполучники — це слова, що…","з'єднують ідеї та речення","прикрашають текст","з книги"],
+["Додавання → …","y / e / ni","pero / sino","класифікація"],
+["Протиставлення → …","pero / sino","porque","з книги"],
+["Причина → …","porque","por eso","чому?"],
+["Наслідок → …","por eso / así que","porque","тому"],
+["Час → …","cuando / mientras","si","коли"],
+["Умова → …","si","para que","якщо"],
+["Мета → …","para que","ya que","щоб"],
+["«і» = …","y","o","adición"],
+["«але» = …","pero","pera","pera — це груша 🍐"]
+]},
+{t:"Y, E, NI: додавання", lv:1, q:[
+["Tengo un gato ___ un perro.","y","e","з книги"],
+["Estudio español ___ inglés.","e","y","перед i- → e!"],
+["y → e перед словами на…","i / hi","a","з книги"],
+["No tengo tiempo ___ energía.","ni","y","з книги"],
+["madre ___ hija","e","y","hija → e!"],
+["ni…ni = …","ні…ні","і…і","подвійне заперечення"],
+["padres ___ hijos","e","y","hijos → e!"],
+["café ___ leche","y","e","звичайне y"],
+["No como carne ___ pescado.","ni","y","заперечення"],
+["agua ___ hielo","e","y","hielo → e!"]
+]},
+{t:"PERO, SINO, SIN EMBARGO", lv:1, q:[
+["Quiero salir, ___ llueve.","pero","sino","з книги"],
+["No quiero té, ___ café.","sino","pero","з книги"],
+["pero = …","але (контраст)","а не","з книги"],
+["sino = …","а не (виправлення)","але","після заперечення!"],
+["sino вживається після…","заперечення","будь-де","no…sino"],
+["Hace frío; ___, vamos a la playa.","sin embargo","sino","з книги"],
+["No es lunes, ___ martes.","sino","pero","виправлення"],
+["Es caro, ___ es bueno.","pero","sino","контраст"],
+["No estudio francés, ___ español.","sino","pero","а саме"],
+["sin embargo = …","однак, проте","без сумніву","з книги"]
+]},
+{t:"PORQUE, YA QUE, COMO: причина", lv:1, q:[
+["No salgo ___ estoy cansado.","porque","por eso","з книги"],
+["No fui, ___ estaba enfermo.","ya que","así que","з книги"],
+["___ no llovía, salimos a pasear.","Como","Porque","з книги: на початку!"],
+["porque стоїть…","всередині речення","на початку","з книги!"],
+["como (причина) стоїть…","на початку речення","в кінці","з книги"],
+["ya que = …","оскільки","вже що","причина"],
+["Estudio español ___ me gusta.","porque","así que","з вправи книги"],
+["___ era tarde, volvimos a casa.","Como","Porque","початок"],
+["«бо» = …","porque","por qué","разом, без наголосу"],
+["por qué (окремо) = …","чому? (питання)","бо","різниця!"]
+]},
+{t:"POR ESO, ASÍ QUE, ENTONCES: наслідок", lv:1, q:[
+["No dormí bien, ___ tengo sueño.","por eso","porque","з книги"],
+["Está lloviendo, ___ no salimos.","así que","porque","з книги"],
+["Tienes hambre, ___ come algo.","entonces","porque","з книги"],
+["por eso = …","тому, через це","тому що","наслідок"],
+["así que = …","отже, тож","якщо","наслідок"],
+["entonces = …","отже, тоді","поки","висновок"],
+["Tengo sueño, ___ me acuesto temprano.","así que","porque","з вправи книги"],
+["No tengo coche, ___ voy en autobús.","por eso","porque","з вправи книги"],
+["Причина → porque; наслідок → …","por eso / así que","ya que","напрямок!"],
+["Llueve, ___ me quedo en casa.","por eso","porque","з резюме книги"]
+]},
+{t:"CUANDO, MIENTRAS, HASTA QUE: час", lv:1, q:[
+["___ llego a casa, descanso.","Cuando","Mientras","з книги"],
+["Escucho música ___ estudio.","mientras","hasta que","з книги"],
+["Espero ___ llegues.","hasta que","mientras","з книги"],
+["cuando = …","коли","поки не","час"],
+["mientras = …","поки, в той час як","після","одночасність"],
+["hasta que = …","поки не / доки","відколи","з книги"],
+["___ era niño, vivía en un pueblo.","Cuando","Si","з вправи книги"],
+["Trabajo ___ escucho música.","mientras","hasta que","з вправи книги"],
+["Mientras tanto = …","тим часом","назавжди","зі словника"],
+["Te espero hasta ___ termines.","que","cuando","hasta que"]
+]},
+{t:"SI, A MENOS QUE, PARA QUE", lv:1, q:[
+["___ estudias, apruebas.","Si","Para que","з книги"],
+["No salgas, a menos ___ deje de llover.","que","si","з книги"],
+["a menos que = …","якщо не / хіба що","тому що","з книги"],
+["Estudia mucho ___ saques buena nota.","para que","porque","з книги"],
+["para que = …","щоб","бо","мета"],
+["___ llueve, no salgo de casa.","Si","Para que","з вправи книги"],
+["si (без наголосу) = …","якщо","так","умова"],
+["sí (з наголосом) = …","так","якщо","ствердження!"],
+["Si puedes, ___ mañana.","ven","vienes","зі словника: ven"],
+["Te lo digo ___ lo sepas.","para que","porque","para que lo sepas!"]
+]},
+{t:"QUE, DONDE: зв'язкові", lv:1, q:[
+["Conozco a una persona ___ vive en España.","que","donde","з книги"],
+["Hay un restaurante ___ se come bien.","donde","que","з книги"],
+["que (відносне) = …","який, що","де","зв'язок"],
+["donde = …","де","коли","місце"],
+["El libro ___ me diste.","que","donde","зі словника"],
+["La casa ___ nací.","donde","que","зі словника"],
+["La chica ___ conocí ayer es simpática.","que","donde","особа → que"],
+["La ciudad ___ vivo es bonita.","donde","que","місце → donde"],
+["El café ___ tomamos era rico.","que","donde","напій → que"],
+["El bar ___ tomamos café era bonito.","donde","que","місце → donde"]
+]},
+{t:"Розмовні фрази зі словника", lv:1, q:[
+["porque sí = …","просто так / бо так","бо сонце","зі словника"],
+["así que nada = …","тож ось так","зовсім нічого нема","зі словника"],
+["y además = …","і до того ж","і назад","зі словника"],
+["pero bueno = …","ну але ж / та нехай","але добрий","зі словника"],
+["cuando quieras = …","коли захочеш","коли хочеш зараз же","зі словника"],
+["si puedes = …","якщо зможеш","так, можеш","зі словника"],
+["que tengas un buen día = …","гарного дня!","що маєш добрий день","побажання"],
+["Para que lo sepas = …","щоб ти знав","для чого знати","зі словника"],
+["Mientras tanto = …","тим часом","поки такий","зі словника"],
+["Cuando puedas = …","коли зможеш","якщо схочеш","зі словника"]
+]},
+{t:"Резюме: обери за питанням", lv:1, q:[
+["¿y qué más? → …","y / e / ni","pero","резюме книги"],
+["¿pero…? → …","pero / sino","porque","протиставлення"],
+["¿por qué? → …","porque / ya que","por eso","причина"],
+["¿entonces? → …","por eso / así que","cuando","наслідок"],
+["¿cuándo? → …","cuando / mientras","si","час"],
+["¿si…? → …","si","que","умова"],
+["Trabajo ___ estudio. (додавання)","y","pero","резюме"],
+["Quiero ir, ___ no puedo.","pero","sino","резюме"],
+["No voy ___ llueve.","porque","por eso","резюме"],
+["Si tienes hambre, ___.","come","comes","резюме + наказ"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Вправа 1 з книги", lv:2, q:[
+["No quiero café, ___ té con leche.","sino","pero","з книги"],
+["Estudio español ___ me gusta mucho.","porque","por eso","з книги"],
+["Hace frío, ___ vamos a pasear igual.","pero","sino","з книги"],
+["Tengo sueño, ___ me acuesto temprano.","así que","porque","з книги"],
+["___ era niño, vivía en un pueblo.","Cuando","Mientras","з книги"],
+["Trabajo ___ escucho música.","mientras","hasta que","з книги"],
+["No tengo coche, ___ voy en autobús.","por eso","porque","з книги"],
+["___ llueve, no salgo de casa.","Si","Para que","з книги"],
+["Quiero ver una película, ___ no tengo tiempo.","pero","sino","з книги"],
+["Compro verduras ___ frutas cada semana.","y","e","з книги"]
+]},
+{t:"Вправа 2 з книги: з'єднай логічно", lv:2, q:[
+["Tengo hambre, ___ compro un bocadillo.","así que","porque","з книги"],
+["Estudio mucho, ___ voy a aprobar el examen.","así que","pero","з книги"],
+["Me gusta el café, ___ tomo uno cada mañana.","por eso","sino","з книги"],
+["No tengo dinero, ___ no puedo viajar.","así que","cuando","з книги"],
+["___ llego tarde, no me esperes.","Si","Y","з книги"],
+["Llueve mucho, ___ me quedo en casa.","así que","sino","з книги"],
+["bocadillo = …","бутерброд","маленький ротик","🥪"],
+["Голод → логічно…","купити їжу","піти під дощ","логіка"],
+["Дощ → логічно…","лишитися вдома","засмагати","логіка"],
+["Багато вчуся → …","складу іспит","забуду все","🎓"]
+]},
+{t:"Текст: día normal, pero diferente (1)", lv:2, q:[
+["Me he levantado temprano ___ quería aprovechar el día.","porque","así que","з тексту"],
+["Hacía sol, ___ he decidido salir a caminar.","así que","porque","з тексту"],
+["He preparado café ___ escuchaba música.","mientras","hasta que","з тексту"],
+["Normalmente desayuno solo, ___ hoy ha venido mi vecina.","pero","sino","з тексту"],
+["Marta, ___ siempre tiene algo interesante que contar.","que","donde","з тексту"],
+["Hemos ido al mercado ___ necesitábamos fruta.","porque","por eso","з тексту"],
+["No había plátanos, ___ manzanas y naranjas.","sino","pero","з тексту"],
+["He comprado pan, queso y ___ chocolate.","además","tampoco","з тексту"],
+["aprovechar el día = …","скористатися днем","змарнувати день","carpe diem!"],
+["Había sol, ___ hacía un poco de viento.","aunque","sino","з тексту"]
+]},
+{t:"Текст: día normal, pero diferente (2)", lv:2, q:[
+["Hacía viento, ___ nos hemos sentado dentro.","por eso","porque","з тексту"],
+["___ cocinaba, hablaba con mi madre.","Mientras","Hasta que","з тексту"],
+["«Descansa un poco ___ puedes, hijo».","si","que","з тексту"],
+["«…___ trabajas demasiado».","que","donde","розмовне que = бо"],
+["«Sí, mamá, ___ después tengo que estudiar…»","pero","sino","з тексту"],
+["«…___ mañana hay examen».","porque","así que","з тексту"],
+["___ me he preparado un té.","Así que","Sino","з тексту"],
+["No ha sido un día especial, ___ ha sido bonito.","pero","sino","з тексту"],
+["…___ he hecho muchas cosas simples y útiles.","porque","para que","з тексту"],
+["demasiado = …","занадто","замало","trabajar demasiado"]
+]},
+{t:"Питання до тексту", lv:2, q:[
+["¿Por qué se levanta temprano?","Quería aprovechar el día","Tenía una reunión","з питань"],
+["¿Qué tiempo hace por la mañana?","Hace sol","Llueve","з тексту"],
+["¿Con quién desayuna hoy?","Con su vecina Marta","Solo, como siempre","сьогодні інакше!"],
+["¿Qué compra el protagonista?","Pan, queso y chocolate","Plátanos","з тексту"],
+["¿Por qué se sientan dentro del café?","Hacía viento","Llovía mucho","з питань"],
+["¿Qué hace mientras cocina?","Habla con su madre","Ve la tele","з питань"],
+["¿Qué le dice su madre?","«Descansa un poco si puedes»","«Trabaja más»","з питань"],
+["¿Por qué no puede descansar mucho?","Mañana hay examen","Tiene una fiesta","з питань"],
+["Сполучник причини в тексті:","porque","sino","з питання 9"],
+["¿Por qué fue un día «normal, pero diferente»?","Hizo cosas simples pero bonitas","No pasó absolutamente nada","фінал"]
+]},
+{t:"PERO чи SINO: поглиблено", lv:2, q:[
+["Після заперечення + виправлення → …","sino","pero","no X, sino Y"],
+["No es rojo, ___ azul.","sino","pero","виправлення"],
+["Es rojo, ___ no me gusta.","pero","sino","контраст"],
+["No vino Juan, ___ Pedro.","sino","pero","заміна"],
+["Quería ir, ___ no pude.","pero","sino","контраст"],
+["No solo canta, ___ también baila.","sino que","pero","no solo… sino"],
+["sino перед дієсловом → …","sino que","sino y","з дієсловом"],
+["No dije eso, ___ lo contrario.","sino","pero","виправлення"],
+["El libro es viejo, ___ útil.","pero","sino","контраст"],
+["У sino-реченні перша частина завжди…","заперечна","стверджувальна","no…"]
+]},
+{t:"Y → E: правило", lv:2, q:[
+["Fernando ___ Isabel","e","y","Isabel → e!"],
+["padre ___ hijo","e","y","hijo → e!"],
+["nieve ___ hielo","e","y","hielo → e!"],
+["bonita ___ inteligente","e","y","inteligente → e!"],
+["perros ___ gatos","y","e","звичайне y"],
+["aguja ___ hilo","e","y","hilo → e!"],
+["madre ___ hija","e","y","hija → e!"],
+["Правило: y → e перед звуком…","[і]","[о]","i-, hi-"],
+["verano ___ invierno","e","y","invierno → e!"],
+["español ___ italiano","e","y","italiano → e!"]
+]},
+{t:"PORQUE чи POR ESO: напрямок думки", lv:2, q:[
+["Llueve, ___ no salgo. (наслідок)","por eso","porque","дощ → сиджу вдома"],
+["No salgo ___ llueve. (причина)","porque","por eso","сиджу вдома ← дощ"],
+["porque відповідає на…","чому?","і що тепер?","причина"],
+["por eso відповідає на…","який висновок?","чому?","наслідок"],
+["Estoy cansado, ___ me voy a dormir.","por eso","porque","наслідок"],
+["Me voy a dormir ___ estoy cansado.","porque","por eso","причина"],
+["porque і por eso — …","дзеркальні","однакові","напрямок думки"],
+["No comí nada, ___ tengo hambre.","por eso","porque","наслідок"],
+["Tengo hambre ___ no comí nada.","porque","por eso","причина"],
+["Перед por eso часто ставлять…","кому","знак оклику","з книги"]
+]},
+{t:"Розмовні: pues, o sea, pero bueno", lv:2, q:[
+["«Pues» на початку фрази = …","ну, що ж","пюре","з культ. нотаток"],
+["o sea = …","тобто","чи море","з культ. нотаток"],
+["«O sea, llegué tarde, pero bueno…» — стиль…","розмовний","офіційний","з культ. нотаток"],
+["pero bueno = …","ну але нехай","але добрий","пом'якшення"],
+["así que nada = …","тож ось так","отже пустота","завершення розповіді"],
+["«Que no te olvides, ¿eh?» — que тут…","розмовне попередження","питання","з культ. нотаток"],
+["¿eh? в кінці = …","гаразд? / чуєш?","що-що?","розмовне"],
+["Pues no sé… = …","ну, не знаю…","бо не знаю","вагання"],
+["Розмовні конектори роблять мову…","природнішою","офіційнішою","як іспанці!"],
+["«Entonces claro…» = …","ну от, значить…","тоді ясно надворі","зі словника"]
+]},
+{t:"CUANDO і MIENTRAS: практика", lv:2, q:[
+["___ tengo tiempo, leo.","Cuando","Mientras","звичка"],
+["___ tú cocinas, yo pongo la mesa.","Mientras","Hasta que","паралельно"],
+["Te llamo ___ llegue a casa.","cuando","mientras","коли прийду"],
+["___ esperaba el bus, leía.","Mientras","Si","паралельно"],
+["No me voy ___ me lo expliques.","hasta que","mientras","поки не"],
+["cuando + звичка → час…","presente","futuro","cuando llego"],
+["Дві одночасні дії → …","mientras","hasta que","поки"],
+["Espero hasta que ___. (ти прийдеш)","llegues","llegas","з книги"],
+["___ como, veo la tele. 😄","Mientras","Hasta que","мультизадачність"],
+["Mientras estudio, escucho música — дії…","одночасні","послідовні","паралель"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки", lv:3, q:[
+["❌ No tengo coche y tampoco bicicleta → ✅ …","No tengo coche ni bicicleta.","No tengo coche o bicicleta.","з культ. нотаток!"],
+["ni — правильний сполучник для…","подвійного заперечення","питань","з книги"],
+["❌ español y inglés → ✅ …","español e inglés","español ni inglés","i → e!"],
+["❌ No quiero té, pero café → ✅ …","No quiero té, sino café.","No quiero té, y café.","виправлення → sino"],
+["❌ Porque llueve, no salgo → ✅ …","Como llueve, no salgo.","Porque sí, no salgo.","porque не на початку!"],
+["❌ ¿Por que no vienes? → ✅ …","¿Por qué no vienes?","¿Porque no vienes?","питання: por qué"],
+["Порада: Si tienes hambre, ___.","come","comes","imperativo"],
+["❌ La ciudad que vivo → ✅ …","La ciudad donde vivo","La ciudad quien vivo","місце → donde"],
+["❌ No es lunes, pero martes → ✅ …","No es lunes, sino martes.","No es lunes, ni martes.","sino"],
+["❌ padre y hijo → ✅ …","padre e hijo","padre ni hijo","hi → e"]
+]},
+{t:"PORQUE SÍ та розмовне QUE", lv:3, q:[
+["— ¿Por qué no vienes? — «___» (без пояснень)","Porque sí.","Para que sí.","з культ. нотаток!"],
+["porque sí = …","бо так / просто так","бо сонячно","без логіки 😄"],
+["porque no = …","бо ні","тому що ніколи","аналогічно"],
+["Іспанці кажуть porque sí, коли…","не хочуть пояснювати","дуже ввічливі","з культ. нотаток"],
+["«Que no te olvides, ¿eh?» = …","дивись не забудь!","що ти забув?","з культ. нотаток"],
+["que як розмовний конектор — …","поширене в регіонах","заборонене","з культ. нотаток"],
+["«Que aproveche» = …","смачного!","скористайся моментом!","розмовне que"],
+["«Que te mejores» = …","одужуй!","ставай кращим у всьому","побажання"],
+["Розмовне que на початку побажань — …","типова іспанська","груба помилка","¡que tengas suerte!"],
+["«Que tengas un buen día» = …","гарного дня","що ти маєш день","зі словника"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«У мене є кіт і пес»","Tengo un gato y un perro.","Tengo un gato e un perro.","з книги"],
+["«Я вивчаю іспанську й англійську»","Estudio español e inglés.","Estudio español y inglés.","з книги"],
+["«Немає ні часу, ні енергії»","No tengo tiempo ni energía.","No tengo tiempo y energía.","з книги"],
+["«Хочу вийти, але йде дощ»","Quiero salir, pero llueve.","Quiero salir, sino llueve.","з книги"],
+["«Я не хочу чаю, а каву»","No quiero té, sino café.","No quiero té, pero café.","з книги"],
+["«Не виходжу, бо втомлений»","No salgo porque estoy cansado.","No salgo por eso estoy cansado.","з книги"],
+["«Погано спав, тому сонний»","No dormí bien, por eso tengo sueño.","No dormí bien, porque tengo sueño.","з книги"],
+["«Слухаю музику, поки вчуся»","Escucho música mientras estudio.","Escucho música hasta que estudio.","з книги"],
+["«Якщо вчишся — складеш»","Si estudias, apruebas.","Sí estudias, apruebas.","si без наголосу"],
+["«Дім, де я народився»","La casa donde nací.","La casa que nací.","donde"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«Estudio español e inglés» — …","правильно ✓","помилка","✓"],
+["«Estudio español y inglés» — …","помилка (e)","правильно","i!"],
+["«No quiero té, sino café» — …","правильно ✓","помилка","✓"],
+["«No tengo coche ni bici» — …","правильно ✓","помилка","✓"],
+["«Porque llueve, me quedo» — …","помилка (Como llueve…)","правильно","початок"],
+["«Como no llovía, salimos» — …","правильно ✓","помилка","✓"],
+["«Llueve, así que no salimos» — …","правильно ✓","помилка","✓"],
+["«La casa que nací» — …","помилка (donde)","правильно","місце"],
+["«No es rojo, pero azul» — …","помилка (sino)","правильно","виправлення"],
+["«Si quieres, ven» — …","правильно ✓","помилка","✓"]
+]},
+{t:"SINO QUE, NO SOLO… SINO", lv:3, q:[
+["No solo estudia, ___ también trabaja.","sino que","pero que","no solo… sino que"],
+["sino que вживається перед…","дієсловом","іменником","з дієсловом"],
+["No dije que no, ___ dije que sí.","sino que","pero","sino que + дієслово"],
+["No quiero café, ___ té. (іменник)","sino","sino que","без que"],
+["No solo canta, sino que también ___.","baila","bailar","конструкція"],
+["«No, sino que…» зі словника = …","ні, а саме…","ні, але може","зі словника"],
+["No leo novelas, sino ___ leo poesía.","que","y","дієслово → que"],
+["no solo… sino también = …","не лише… а й","ніколи… але","підсилення"],
+["No es que no quiera, ___ no puedo.","sino que","pero que","складніше"],
+["sino vs sino que — різниця в…","наявності дієслова після","значенні повністю","que + verbo"]
+]},
+{t:"AUNQUE: хоча", lv:3, q:[
+["___ hacía viento, había sol.","Aunque","Sino","з тексту"],
+["aunque = …","хоча","щоб","поступка"],
+["___ es caro, lo compro.","Aunque","Para que","хоча дорого 💸"],
+["Voy a salir ___ llueve.","aunque","porque","попри дощ"],
+["aunque ≈ українською…","хоч / попри те, що","бо","поступка"],
+["sin embargo ≈ ідея…","aunque (проте)","porque (бо)","з книги"],
+["___ estaba cansado, terminé el trabajo.","Aunque","Así que","поступка"],
+["aunque + факт → …","indicativo","завжди subjuntivo","aunque hace frío"],
+["«Хоч і пізно, подзвоню» = ___ es tarde, llamo.","Aunque","Cuando","поступка"],
+["pero і aunque — обидва про…","контраст","мету","протиставлення"]
+]},
+{t:"Побудуй речення логічно", lv:3, q:[
+["Tengo hambre, ___ como.","así que","sino","наслідок"],
+["Llueve, ___ cojo el paraguas.","así que","porque","наслідок ☔"],
+["No duermo ___ tomo mucho café.","porque","por eso","причина ☕"],
+["Estudio ___ escucho música.","mientras","hasta que","одночасно"],
+["___ llegue, te llamo.","Cuando","Mientras","час"],
+["No viajo ___ no tengo dinero.","porque","así que","причина"],
+["Te llamo ___ sepas la verdad.","para que","porque","мета"],
+["___ vienes, tráeme pan.","Si","Cuando","умова"],
+["Compré pan ___ leche.","y","e","додавання"],
+["Es difícil, ___ posible.","pero","sino","контраст 💪"]
+]},
+{t:"QUE чи DONDE?", lv:3, q:[
+["El libro ___ me diste es genial.","que","donde","зі словника"],
+["La casa ___ nací ya no existe.","donde","que","зі словника"],
+["El chico ___ conocimos ayer…","que","donde","особа"],
+["El pueblo ___ veraneamos…","donde","que","місце"],
+["La película ___ vimos anoche…","que","donde","річ"],
+["El restaurante ___ se come bien…","donde","que","з книги"],
+["Es la persona ___ vive en España.","que","donde","з книги"],
+["El día ___ te conocí… (коли)","que","donde","el día que"],
+["donde відповідає на питання…","¿dónde?","¿cuándo?","місце"],
+["que — найуніверсальніший…","сполучник","прийменник","король конекторів 👑"]
+]},
+{t:"«Mi fin de semana» (домашка)", lv:3, q:[
+["El sábado me levanté tarde ___ estaba cansado.","porque","por eso","причина"],
+["Desayuné ___ veía la tele.","mientras","hasta que","одночасно"],
+["Quería salir, ___ llovía.","pero","sino","контраст"],
+["___ dejó de llover, salí a pasear.","Cuando","Mientras","час"],
+["Compré pan ___ fruta.","y","e","додавання"],
+["No compré carne, ___ pescado.","sino","pero","виправлення"],
+["Estaba cansado, ___ volví pronto.","así que","porque","наслідок"],
+["El domingo no salí, ___ hacía frío.","ya que","sino","причина"],
+["Vi una película ___ me encantó.","que","donde","відносне"],
+["У домашці мінімум ___ різних сполучників.","8","2","з книги"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["español ___ inglés","e","y","e!"],
+["No quiero té, ___ café.","sino","pero","виправлення"],
+["No salgo ___ llueve.","porque","por eso","причина"],
+["Llueve, ___ no salgo.","por eso","porque","наслідок"],
+["Escucho música ___ estudio.","mientras","hasta que","поки"],
+["___ estudias, apruebas.","Si","Sino","умова"],
+["No tengo tiempo ___ energía.","ni","y","ni"],
+["La casa ___ nací.","donde","que","місце"],
+["— ¿Por qué? — ___ sí. 😄","Porque","Por eso","класика"],
+["Урок 16 готово! Aprendiste mucho ___ eres constante. 🎉","porque","sino","причина успіху"]
+]}
+];
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "CONJUNCIONES: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 16 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

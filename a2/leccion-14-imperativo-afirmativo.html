@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 14 · Imperativo afirmativo · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 14 · @malinnaartstudio</div>
+    <h1 id="htitle">IMPERATIVO: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+
+<main>
+  <div id="home">
+    <div class="intro">
+      <b style="color:var(--rasp)">Lección 14 · Imperativo afirmativo.</b>
+      30 вправ по 10 питань: habla/hable/hablad/hablen, накази вдома, у класі, на кухні,
+      зворотні (levántate, siéntate), написи й рецепти, ранок Ани. Від ★ до ★★★. ¡Practica y disfruta! 📣
+    </div>
+    <div class="legend">
+      <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · чотири форми наказу</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · текст і ситуації</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · тонкощі й помилки</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 14</footer>
+
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Що таке імператив?", lv:1, q:[
+["Імператив служить для…","наказів, порад, інструкцій, запрошень","опису минулого","з книги"],
+["«Come más verduras y haz deporte» — це…","порада","питання","з книги"],
+["Ven aquí, por favor = …","іди сюди, будь ласка","він іде сюди","наказ"],
+["Escuchad bien, chicos = …","слухайте уважно, діти","вони слухають","vosotros"],
+["Імператив у повсякденній іспанській…","дуже поширений","рідкісний","з книги"],
+["Наказ одній людині (ти) → форма…","tú","vosotros","habla"],
+["Наказ незнайомцю ввічливо → …","usted","tú","hable"],
+["Наказ групі друзів (Іспанія) → …","vosotros","ustedes","hablad"],
+["Наказ групі формально → …","ustedes","vosotros","hablen"],
+["Скільки форм наказу в таблиці книги?","чотири","одна","tú, usted, vosotros, ustedes"]
+]},
+{t:"TÚ: habla, come, escribe", lv:1, q:[
+["hablar → tú: ___","habla","hablas","без s!"],
+["comer → tú: ___","come","comes","без s"],
+["escribir → tú: ___","escribe","escribes","без s"],
+["estudiar → tú: ___","estudia","estudias","з таблиці"],
+["abrir → tú: ___","abre","abras","з таблиці"],
+["llamar → tú: ___","llama","llamas","з таблиці"],
+["esperar → tú: ___","espera","esperes","з таблиці"],
+["mirar → tú: ___","mira","miras","з таблиці"],
+["aprender → tú: ___","aprende","aprendas","з таблиці"],
+["responder → tú: ___","responde","respondes","з таблиці"]
+]},
+{t:"USTED: hable, coma, escriba", lv:1, q:[
+["hablar → usted: ___","hable","habla","з таблиці"],
+["comer → usted: ___","coma","come","з таблиці"],
+["escribir → usted: ___","escriba","escribe","з таблиці"],
+["estudiar → usted: ___","estudie","estudia","з таблиці"],
+["abrir → usted: ___","abra","abre","з таблиці"],
+["esperar → usted: ___","espere","espera","з таблиці"],
+["mirar → usted: ___","mire","mira","з таблиці"],
+["llamar → usted: ___","llame","llama","з таблиці"],
+["aprender → usted: ___","aprenda","aprende","з таблиці"],
+["Правило usted: -ar → -e, -er/-ir → …","-a","-e","обмін голосних!"]
+]},
+{t:"VOSOTROS: hablad, comed, escribid", lv:1, q:[
+["hablar → vosotros: ___","hablad","hablen","-ad"],
+["comer → vosotros: ___","comed","coman","-ed"],
+["escribir → vosotros: ___","escribid","escriban","-id"],
+["estudiar → vosotros: ___","estudiad","estudien","-ad"],
+["vivir → vosotros: ___","vivid","vivan","-id"],
+["abrir → vosotros: ___","abrid","abran","-id"],
+["esperar → vosotros: ___","esperad","esperen","-ad"],
+["mirar → vosotros: ___","mirad","miren","-ad"],
+["Правило vosotros: заміни -r на…","-d","-s","hablar → hablad"],
+["escuchar → vosotros: ___","escuchad","escuchen","з книги"]
+]},
+{t:"USTEDES: hablen, coman, escriban", lv:1, q:[
+["hablar → ustedes: ___","hablen","hablad","-en"],
+["comer → ustedes: ___","coman","comed","-an"],
+["escribir → ustedes: ___","escriban","escribid","-an"],
+["estudiar → ustedes: ___","estudien","estudiad","-en"],
+["abrir → ustedes: ___","abran","abrid","-an"],
+["esperar → ustedes: ___","esperen","esperad","-en"],
+["mirar → ustedes: ___","miren","mirad","-en"],
+["llamar → ustedes: ___","llamen","llamad","-en"],
+["aprender → ustedes: ___","aprendan","aprended","-an"],
+["ustedes = usted + …","-n","-d","hable → hablen"]
+]},
+{t:"Накази вдома", lv:1, q:[
+["___ tu habitación. (прибери)","Limpia","Limpio","зі словника"],
+["___ la ventana. (відкрий)","Abre","Abro","словник"],
+["___ la puerta. (закрий)","Cierra","Cerra","чергування!"],
+["___ la cena. (приготуй)","Prepara","Preparo","словник"],
+["___ la mesa. (накрий)","Pon","Pone","pon — неправильне!"],
+["___ los juguetes. (збери)","Recoge","Recojo","словник"],
+["___ a tu madre. (допоможи)","Ayuda","Ayudo","словник"],
+["___ un momento. (зачекай)","Espera","Esperas","словник"],
+["___ antes de cenar. (вчися)","Estudia","Estudias","словник"],
+["___ un poco. (відпочинь)","Descansa","Descansas","словник"]
+]},
+{t:"Накази в класі", lv:1, q:[
+["___ al profesor. (слухай)","Escucha","Escuchas","словник"],
+["___ la respuesta. (запиши)","Escribe","Escribes","словник"],
+["___ el texto. (прочитай)","Lee","Lees","словник"],
+["___ la palabra. (повтори)","Repite","Repites","e→i"],
+["___ el libro. (відкрий)","Abre","Abres","словник"],
+["___ el cuaderno. (закрий)","Cierra","Cierras","словник"],
+["___ si no entiendes. (запитай)","Pregunta","Preguntas","словник"],
+["___ en grupo. (працюй)","Trabaja","Trabajas","словник"],
+["___. (встань)","Levántate","Levanta te","зворотне!"],
+["___. (сядь)","Siéntate","Sienta te","зворотне!"]
+]},
+{t:"Кухня та вулиця", lv:1, q:[
+["___ despacio. (їж)","Come","Comes","словник"],
+["___ agua. (пий)","Bebe","Bebes","💧"],
+["___ la sopa. (скуштуй)","Prueba","Proba","o→ue"],
+["___ el pan. (наріж)","Corta","Cortas","🍞"],
+["___ los ingredientes. (перемішай)","Mezcla","Mezclas","🥄"],
+["___ las patatas. (посмаж)","Fríe","Frie","з наголосом"],
+["___ los platos. (помий)","Lava","Lavas","🍽️"],
+["___ la calle con cuidado. (переходь)","Cruza","Cruzas","🚸"],
+["___ en el semáforo. (зачекай)","Espera","Esperas","🚦"],
+["___ del paseo. (насолоджуйся)","Disfruta","Disfrutas","словник"]
+]},
+{t:"Офіс і поради для життя", lv:1, q:[
+["___ el informe. (напиши)","Escribe","Escribes","📄"],
+["___ al correo. (відповідай)","Responde","Respondes","📧"],
+["___ al cliente. (подзвони)","Llama","Llamas","📞"],
+["___ los documentos. (збережи)","Guarda","Guardas","💾"],
+["___ a tiempo. (приходь)","Llega","Llegas","⏰"],
+["___ bien. (спи)","Duerme","Dorme","o→ue"],
+["___ más. (усміхайся)","Sonríe","Sonria","😊"],
+["___. (розслабся)","Relájate","Relaja te","зворотне"],
+["___ positivo. (будь)","Sé","Se","з наголосом!"],
+["___ de la vida. (насолоджуйся)","Disfruta","Disfrutas","🌞"]
+]},
+{t:"Правило TÚ = 3-тя особа presente", lv:1, q:[
+["Форма tú імператива = формі…","3-ї особи однини presente","інфінітива","habla = él habla"],
+["él habla → наказ tú: …","habla","hablas","без s!"],
+["él come → tú: …","come","comes","без s"],
+["«Hablas más despacio» — не наказ, бо…","це presente «ти говориш»","занадто ввічливо","з книги!"],
+["escribir → tú: …","escribe","escribes","3-тя особа"],
+["-ar дієслова, tú: закінчення…","-a","-e","habla"],
+["-er/-ir дієслова, tú: закінчення…","-e","-a","come, escribe"],
+["cerrar (e→ie) → tú: …","cierra","cerra","чергування лишається"],
+["probar (o→ue) → tú: …","prueba","proba","чергування"],
+["dormir → tú: …","duerme","dorme","чергування"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Вправа 1 з книги (tú)", lv:2, q:[
+["___ (hablar) más despacio, por favor.","Habla","Hablas","з книги"],
+["___ (comer) las verduras.","Come","Comes","з книги"],
+["___ (escribir) tu nombre aquí.","Escribe","Escribes","з книги"],
+["___ (abrir) la ventana, hace calor.","Abre","Abres","з книги"],
+["___ (estudiar) para el examen.","Estudia","Estudias","з книги"],
+["___ (limpiar) tu habitación.","Limpia","Limpias","з книги"],
+["___ (esperar) un momento, ya voy.","Espera","Esperas","з книги"],
+["___ (mirar) este dibujo, es precioso.","Mira","Miras","з книги"],
+["___ (preparar) la cena, tengo hambre.","Prepara","Preparas","з книги"],
+["___ (responder) al teléfono, está sonando.","Responde","Respondes","з книги"]
+]},
+{t:"Вправа 2 з книги: кому наказ?", lv:2, q:[
+["(другові) abrir la puerta → …","Abre la puerta.","Abra la puerta.","tú"],
+["(шефу) escuchar → …","Escuche la explicación.","Escucha la explicación.","usted"],
+["(двом друзям) estudiar → …","Estudiad la lección.","Estudien la lección.","vosotros"],
+["(клієнтам) esperar → …","Esperen aquí un momento.","Esperad aquí.","ustedes"],
+["(мамі) ayudarme → …","Ayúdame con la compra.","Ayudame con la compra.","з наголосом!"],
+["(туристам, ustedes) mirar → …","Miren el mapa.","Mirad el mapa.","ustedes"],
+["(колегам, vosotros) trabajar → …","Trabajad juntos.","Trabajen juntos.","vosotros"],
+["(дитині) cerrar y dormir → …","Cierra el libro y duerme.","Cierre el libro y duerma.","tú"],
+["(викладачу) repetir → …","Repita la frase, por favor.","Repite la frase.","usted"],
+["(групі учнів, ustedes) leer → …","Lean el texto.","Leed el texto.","ustedes"]
+]},
+{t:"Текст «Una mañana en casa» (1)", lv:2, q:[
+["—Ana, ¡___ ya! (вставай)","levántate","levanta te","з тексту"],
+["___ la ventana y ventila tu habitación.","Abre","Abras","з тексту"],
+["___ la cara. (вмийся)","Lávate","Lava te","з тексту"],
+["___ los dientes. (почисть)","Cepíllate","Cepilla te","з тексту"],
+["Ana, baja y ___. (сідай)","siéntate","sienta te","з тексту"],
+["___ tus tostadas. (їж)","Come","Comes","з тексту"],
+["___ el zumo de naranja. (пий)","Bebe","Bebas","з тексту"],
+["No olvides la ___. (рюкзак)","mochila","mochuela","🎒"],
+["___ los libros. (візьми)","Coge","Coges","з тексту"],
+["ventila = …","провітри","повентилюй думки","повітря 💨"]
+]},
+{t:"Текст «Una mañana en casa» (2)", lv:2, q:[
+["___ la chaqueta. (одягни)","Ponte","Pon te","з тексту"],
+["___ a tu hermano pequeño. (допоможи)","Ayuda","Ayude","з тексту"],
+["—Niños, ___ mucho en el colegio.","estudiad","estudien","vosotros"],
+["___ a los profesores. (слухайте)","escuchad","escuchen","vosotros"],
+["…y ___ los deberes. (робіть)","haced","hagan","vosotros: hacer!"],
+["portaos bien = …","поводьтеся добре","носіть добре","portarse bien"],
+["¿Qué prepara el padre?","El desayuno","La cena","з питань"],
+["¿Por qué Ana tiene prisa?","El autobús llega en diez minutos","Es domingo","з питань"],
+["V/F: El padre apaga las luces.","Falso — la madre","Verdadero","з питань!"],
+["V/F: Los niños van caminando al colegio.","Falso — corren al autobús","Verdadero","з питань"]
+]},
+{t:"Визнач форму наказу", lv:2, q:[
+["«Habla» — кому?","одному другові (tú)","групі","tú"],
+["«Hable» — кому?","незнайомцю (usted)","другові","usted"],
+["«Hablad» — кому?","групі друзів (vosotros)","одній людині","vosotros"],
+["«Hablen» — кому?","групі формально (ustedes)","одному другові","ustedes"],
+["«Esperad» — форма…","vosotros","ustedes","-ad"],
+["«Coma» — форма…","usted","tú","usted"],
+["«Escriban» — форма…","ustedes","vosotros","-an"],
+["«Lee» — форма…","tú","usted","3-тя presente"],
+["Дітям удома мама каже (Іспанія)…","vosotros (estudiad)","ustedes","з тексту"],
+["У Латинській Америці замість vosotros → …","ustedes","tú для всіх","hablen"]
+]},
+{t:"Чергування в наказах", lv:2, q:[
+["cerrar → tú: ___","cierra","cerra","e→ie"],
+["probar → tú: ___","prueba","proba","o→ue"],
+["dormir → tú: ___","duerme","dorme","o→ue"],
+["pedir → tú: ___","pide","pede","e→i"],
+["repetir → tú: ___","repite","repete","e→i"],
+["empezar → tú: ___","empieza","empeza","e→ie"],
+["volver → tú: ___","vuelve","volve","o→ue"],
+["jugar → tú: ___","juega","juga","u→ue"],
+["cerrar → vosotros: ___","cerrad","cierrad","vosotros БЕЗ чергування!"],
+["freír → tú: ___ las patatas","fríe","frie","зі словника"]
+]},
+{t:"Рецепт: накажи на кухні", lv:2, q:[
+["___ el pan. (наріж)","Corta","Cortas","🍞"],
+["___ los ingredientes. (перемішай)","Mezcla","Mezclas","🥄"],
+["___ las patatas. (посмаж)","Fríe","Frías","🍟"],
+["___ la comida. (подай)","Sirve","Serve","e→i!"],
+["___ los platos. (помий)","Lava","Lavas","🍽️"],
+["___ la sopa. (скуштуй)","Prueba","Proba","o→ue"],
+["___ el café. (приготуй)","Prepara","Preparas","☕"],
+["___ agua. (пий)","Bebe","Bebas","💧"],
+["___ despacio. (їж)","Come","Comas","повільно"],
+["___ con calma. (готуй)","Cocina","Cocinas","👨‍🍳"]
+]},
+{t:"Поради для життя", lv:2, q:[
+["___ bien. (спи)","Duerme","Dorme","o→ue"],
+["___ sano. (їж)","Come","Comas","🥗"],
+["___ mucha agua.","Bebe","Bebas","💧"],
+["___ cada día. (вчися)","Estudia","Estudies","📚"],
+["___ más. (усміхайся)","Sonríe","Sonrías","😊"],
+["___. (розслабся)","Relájate","Relaja te","зворотне!"],
+["___ positivo. (будь)","Sé","Se","sé — з наголосом!"],
+["___ duro. (працюй)","Trabaja","Trabajas","💪"],
+["___ más. (подорожуй)","Viaja","Viajas","✈️"],
+["___ de la vida. (насолоджуйся)","Disfruta","Disfrutas","🌞"]
+]},
+{t:"Зворотні: levántate, siéntate", lv:2, q:[
+["levantarse → tú: ___","levántate","levanta te","займенник разом + наголос"],
+["sentarse → tú: ___","siéntate","sienta te","зі словника"],
+["relajarse → tú: ___","relájate","relaja te","наголос!"],
+["lavarse → tú: ___ la cara","lávate","lava te","з тексту"],
+["cepillarse → tú: ___ los dientes","cepíllate","cepilla te","з тексту"],
+["ponerse → tú: ___ la chaqueta","ponte","pone te","з тексту"],
+["Чому levántate з наголосом?","слово подовжилось, наголос лишився","для краси","правило"],
+["vestirse → tú: ___","vístete","viste te","e→i + наголос"],
+["ducharse → tú: ___","dúchate","ducha te","🚿"],
+["siéntate vs siéntete:","сядь vs почувайся","однакові","sentarse ≠ sentirse!"]
+]},
+{t:"Написи, інструкції, реклама", lv:2, q:[
+["Інструкція: «___ el envase».","Abre","Abras","з культ. нотаток"],
+["«___ la tapa».","Cierra","Cierres","з культ. нотаток"],
+["«___ con cuidado».","Usa","Usas","з культ. нотаток"],
+["У рецептах і мануалах імператив — …","звичайна справа","заборонений","з культ. нотаток"],
+["«___ aquí, por favor». (формально)","Espere","Espera","з культ. нотаток: usted"],
+["Вивіска: «___ antes de entrar». (дзвоніть)","Llame","Llamas","usted"],
+["«Empuje» на дверях = …","штовхайте","тягніть","🚪"],
+["«Tire» на дверях = …","тягніть","штовхайте","протилежне!"],
+["З незнайомцями до наказу додаємо…","por favor","nada","ввічливість"],
+["Реклама: «___ ahora». (купуй)","Compra","Compras","маркетинг 😄"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки", lv:3, q:[
+["❌ Hablas más despacio → ✅ …","Habla más despacio.","Hablar más despacio.","з книги!"],
+["❌ Comes la fruta (наказ) → ✅ …","Come la fruta.","Comer la fruta.","без s"],
+["Чому hablas — не наказ?","бо це presente «ти говориш»","бо занадто грубо","з книги"],
+["❌ Abres la puerta (наказ) → ✅ …","Abre la puerta.","Abras la puerta.","tú"],
+["Наказ групі друзів чекати → …","Esperad.","Esperáis.","vosotros"],
+["❌ Estudias mucho mañana (наказ) → ✅ …","Estudia mucho mañana.","Estudiarás mucho.","наказ"],
+["❌ Coma (другові) → ✅ …","Come.","Comed tú.","tú, не usted"],
+["❌ Mira usted → ✅ …","Mire usted.","Miras usted.","usted → -e"],
+["❌ Escribid (формальній групі) → ✅ …","Escriban.","Escribes.","ustedes"],
+["Наказ tú ≠ presente: різниця у…","відсутності s","часі доби","habla vs hablas"]
+]},
+{t:"Культура: імператив щодня", lv:3, q:[
+["В Іспанії імператив у розмові — …","повсякденна норма","завжди грубість","з культ. нотаток"],
+["«Ven, pasa, prueba esto» за столом — це…","гостинність","військовий наказ","запрошення!"],
+["dime la verdad = …","скажи мені правду","дай мені правду","di + me"],
+["З незнайомцями кажуть…","«Espere aquí, por favor»","«¡Espera tú ya!»","usted + por favor"],
+["«Pasa, pasa» у дверях означає…","заходь-заходь!","проходь повз","гостинність"],
+["Подвоєння наказу (pasa, pasa) звучить…","привітно","агресивно","тепла іспанська"],
+["«Prueba esto» за вечерею = …","скуштуй оце","доведи це","probar"],
+["Імператив у рецептах — …","стандарт","рідкість","з культ. нотаток"],
+["Між друзями наказ без por favor — …","нормально","образа","дружній тон"],
+["Офіціанту: «___ un café, por favor».","Póngame","Pon tú","формально"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Їж більше овочів»","Come más verduras.","Comes más verduras.","з книги"],
+["«Іди сюди, будь ласка»","Ven aquí, por favor.","Vienes aquí, por favor.","з книги"],
+["«Слухайте уважно, діти»","Escuchad bien, chicos.","Escuchan bien los chicos.","з книги"],
+["«Говори повільніше»","Habla más despacio.","Hablas más despacio.","з книги"],
+["«Зачекайте тут» (формально)","Espere aquí.","Esperas aquí.","usted"],
+["«Прибери свою кімнату»","Limpia tu habitación.","Limpias tu habitación.","наказ"],
+["«Відкрийте книжки» (учням у ЛА)","Abran los libros.","Abrís los libros.","ustedes"],
+["«Допоможи мені»","Ayúdame.","Ayuda me.","разом + наголос"],
+["«Відпочиньте» (друзям)","Descansad.","Descansáis.","vosotros"],
+["«Повтори слово»","Repite la palabra.","Repites la palabra.","e→i"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«Habla más despacio» — …","правильно ✓","помилка","✓"],
+["«Hablas más despacio» (як наказ) — …","помилка (habla)","правильно","з книги"],
+["«Come las verduras» — …","правильно ✓","помилка","✓"],
+["«Abre la ventana» — …","правильно ✓","помилка","✓"],
+["«Estudiad, chicos» — …","правильно ✓","помилка","✓"],
+["«Escuche usted, por favor» — …","правильно ✓","помилка","✓"],
+["«Cerra la puerta» — …","помилка (cierra)","правильно","e→ie"],
+["«Cierrad la puerta» — …","помилка (cerrad)","правильно","vosotros без чергування"],
+["«Siéntate» — …","правильно ✓","помилка","✓"],
+["«Relaja te» — …","помилка (relájate)","правильно","разом!"]
+]},
+{t:"TÚ чи USTED? Обери за ситуацією", lv:3, q:[
+["Лікар пацієнту: «___ la boca».","Abra","Abre","usted"],
+["Мама дитині: «___ la boca».","Abre","Abra","tú"],
+["Поліцейський водію: «___ los documentos».","Muestre","Muestra","usted"],
+["Друг другові: «___ la tele».","Enciende","Encienda","tú"],
+["Офіціант гостям: «___ ustedes».","Pasen","Pasad","ustedes"],
+["Викладач студентам (Іспанія): «___ el libro».","Abrid","Abran","vosotros"],
+["До бабусі (рідна людина) — зазвичай…","tú (abre)","usted завжди","родина"],
+["До нового клієнта: …","usted (espere)","tú (espera)","бізнес"],
+["Формальність залежить від…","стосунків і ситуації","погоди","контекст"],
+["У сумнівах краще почати з…","usted","tú","ввічливо"]
+]},
+{t:"VOSOTROS: тонкощі", lv:3, q:[
+["vosotros: заміни -r інфінітива на…","-d","-s","hablar → hablad"],
+["comer → vosotros: ___","comed","comad","-ed"],
+["vivir → vosotros: ___","vivid","vived","-id"],
+["escuchar → vosotros: ___","escuchad","escuchen","-ad"],
+["Чергування у vosotros…","зникає (cerrad)","залишається","без ie/ue"],
+["«Хлопці, працюйте разом» = ___ juntos.","Trabajad","Trabajáis","наказ"],
+["Розмовне «¡A hablar!» замість hablad — це…","неформальна заміна","стандартна норма","розмовна Іспанія"],
+["leer → vosotros: ___","leed","leyed","leed"],
+["hacer → vosotros: ___ los deberes","haced","hagáis","з тексту!"],
+["vosotros-імператив вживають у…","Іспанії","всій Латинській Америці","регіон"]
+]},
+{t:"Прев'ю: короткі неправильні", lv:3, q:[
+["venir → tú: ___ aquí","ven","viene","з книги: ven"],
+["hacer → tú: ___ deporte","haz","hace","з книги: haz"],
+["poner → tú: ___ la mesa","pon","pone","зі словника"],
+["ser → tú: ___ positivo","sé","se","зі словника: sé"],
+["ponerse → tú: ___ la chaqueta","ponte","pónete","з тексту"],
+["decir → tú: ___ la verdad","di","dice","dime!"],
+["Короткі форми — тема уроку…","15","30","наступний урок!"],
+["ir → tú: ___ a casa","ve","va","ve"],
+["salir → tú: ___ de aquí","sal","sale","sal"],
+["tener → tú: ___ cuidado","ten","tiene","ten cuidado!"]
+]},
+{t:"Прев'ю: CÓMELA — займенники", lv:3, q:[
+["❌ Come tú la fruta → ✅ …","Cómela.","Come la.","з книги!"],
+["Займенник у наказі стоїть…","після дієслова, разом","перед дієсловом","cómela"],
+["«Прочитай це» = ___.","Léelo","Lo lee","разом"],
+["«Купи їх» = ___.","Cómpralos","Los compra","разом"],
+["Чому cómela з наголосом?","слово стало довшим","прикраса","правило наголосу"],
+["«Слухай мене» = ___.","Escúchame","Me escucha","разом"],
+["«Подзвони їй» = ___.","Llámala","La llama","разом"],
+["«Зачекай на мене» = ___.","Espérame","Me espera","разом"],
+["Детально про це — урок…","15","20","далі!"],
+["«Відчини їх (двері)» = ___.","Ábrela","La abre","разом"]
+]},
+{t:"Рецепт: café con leche (домашка)", lv:3, q:[
+["1. ___ la leche. (підігрій)","Calienta","Calenta","e→ie"],
+["2. ___ el café. (приготуй)","Prepara","Preparas","☕"],
+["3. ___ el café en la taza. (налий/постав)","Pon","Pone","pon!"],
+["4. ___ la leche caliente. (додай)","Añade","Añades","añadir"],
+["5. ___ el azúcar. (перемішай)","Mezcla","Mezclas","🥄"],
+["6. ___ un poco. (зачекай)","Espera","Esperas","⏳"],
+["7. ___ despacio. (пий)","Bebe","Bebes","повільно"],
+["8. ___ del café. (насолоджуйся)","Disfruta","Disfrutas","😌"],
+["Рецепт — домашка з книги з ___ дієсловами.","8","80","в імперативі"],
+["Стиль рецепта — …","інструкція","казка","imperativo"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["hablar → tú: ___","habla","hablas","без s"],
+["comer → usted: ___","coma","come","usted"],
+["escribir → vosotros: ___","escribid","escriban","-id"],
+["estudiar → ustedes: ___","estudien","estudiad","-en"],
+["cerrar → tú: ___","cierra","cerra","e→ie"],
+["levantarse → tú: ___","levántate","levanta te","наголос"],
+["❌ Hablas más despacio → ✅ …","Habla más despacio.","Hablad tú.","з книги"],
+["«Скуштуй оце!» = ¡___ esto!","Prueba","Probas","гостинність"],
+["ser → tú: ___ positivo","sé","se","з наголосом"],
+["Урок 14 готово! ¡___ tu éxito! (святкуй)","Celebra","Celebras","🎉"]
+]}
+];
+
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "IMPERATIVO: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 14 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 29 · En el aeropuerto y en el hotel · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 29 · @malinnaartstudio</div>
+    <h1 id="htitle">AEROPUERTO Y HOTEL: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+<main>
+  <div id="home">
+    <div class="intro">
+            <b style="color:var(--rasp)">Lección 29 · En el aeropuerto y en el hotel.</b>
+      30 вправ по 10 питань: ¿Podría…?, Quisiera, Me gustaría, Disculpe pero…, ¿Sería posible…? —
+      п'ять способів звучати ввічливо навіть у складній ситуації, плюс словник аеропорту й готелю.
+      Від ★ до ★★★. Que tengas buen viaje! 🧳
+
+    </div>
+    <div class="legend">
+            <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · п'ять ввічливих конструкцій + словник</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · текст, gustar vs gustaría, реєстри</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · культура сервісу й типові помилки</span>
+
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 29</footer>
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Peticiones corteses: огляд", lv:1, q:[
+["Для ввічливих прохань і скарг використовують…","спеціальні ввічливі конструкції","звичайний imperativo завжди","з книги"],
+["Ці конструкції допомагають звучати чемно навіть…","у складній ситуації","лише в спокійній розмові","з книги"],
+["Урок 29 називається…","En el aeropuerto y en el hotel","Planificar un viaje","з підручника"],
+["П'ять головних конструкцій уроку: ¿Podría…?, Quisiera, Me gustaría, Disculpe/perdone і…","¿Sería posible…?","Hay que…","з таблиці книги"],
+["Ці фрази типово потрібні…","в аеропорту, на ресепшені, в ресторані","лише вдома","контекст уроку"],
+["Ввічливі конструкції протиставляються…","прямому imperativo (Dame la llave!)","минулому часу","з культ. нотаток"],
+["Знання цих конструкцій особливо корисне при…","скаргах і незвичних ситуаціях у подорожі","звичайній балачці з друзями","практична мета"],
+["Тема уроку 29 логічно завершує блок про…","подорожі (уроки 27–29)","роботу","послідовність тем"],
+["Всі п'ять конструкцій обʼєднує спільна риса —…","пом'якшення прохання/скарги","прямота і категоричність","суть теми"],
+["Мета граматики уроку 29 — навчитися…","ввічливо просити і скаржитися іспанською","говорити про минуле","підсумок"]
+]},
+{t:"¿PODRÍA + infinitivo…?", lv:1, q:[
+["¿Podría + infinitivo…? вживається для…","прохання до незнайомої особи","наказу знайомій людині","з таблиці книги"],
+["¿Podría ayudarme con la maleta? — переклад…","Чи могли б ви допомогти мені з валізою?","Допоможи мені з валізою!","ввічливе прохання"],
+["Podría — це форма дієслова poder у…","condicional (умовний спосіб)","futuro","граматична форма"],
+["¿Podría decirme la hora? — переклад…","Чи могли б ви сказати мені котра година?","Скажи мені котра година!","ввічливе прохання"],
+["¿Podría repetírmelo? — переклад…","Чи могли б ви повторити мені це?","Повтори мені це!","ввічливе прохання"],
+["Ця форма звучить набагато ввічливіше, ніж…","¿Puedes…? (звичайне питання)","Quisiera","порівняння ступеня ввічливості"],
+["¿Podría abrir la ventana? — переклад…","Чи могли б ви відкрити вікно?","Відкрий вікно!","ввічливе прохання"],
+["¿Podría + infinitivo…? типово звертається на форму…","usted (ввічливу)","tú (неформальну)","реєстр"],
+["Ключове слово в цій конструкції — форма condicional, яка…","пом'якшує прохання","робить його наказовим","граматична функція"],
+["¿Podría ayudarme? підходить для звертання до…","незнайомої людини (напр. персонал готелю)","близького друга завжди","практичне застосування"]
+]},
+{t:"QUISIERA + infinitivo/sustantivo", lv:1, q:[
+["Quisiera + infinitivo/sustantivo вживається для…","ввічливого бажання або прохання","прямого наказу","з таблиці книги"],
+["Quisiera cambiar de habitación — переклад…","Хотів(ла) би поміняти номер","Поміняй мені номер!","ввічливе бажання"],
+["Quisiera una habitación con balcón — переклад…","Хотів(ла) би номер з балконом","Дай мені номер з балконом!","ввічливе прохання"],
+["Quisiera — це форма дієслова querer у…","imperfecto de subjuntivo (вживається як ввічлива форма)","presente","особлива ввічлива форма"],
+["Quisiera pedir el desayuno — переклад…","Хотів(ла) би замовити сніданок","Замов мені сніданок!","ввічливе прохання"],
+["Quisiera saber si hay descuento — переклад…","Хотів(ла) би знати, чи є знижка","Знаю, що є знижка","ввічливе питання"],
+["Quisiera звучить…","дуже ввічливо, трохи формально","грубо і прямо","стилістичний регістр"],
+["Quisiera + іменник (наприклад, «una habitación») — це…","можливо, без дієслова після","завжди з інфінітивом обов'язково","гнучкість конструкції"],
+["Ця конструкція типова для…","звернень у готелі, ресторані, офісі","побутової розмови з друзями","контекст вживання"],
+["Quisiera hacer una reserva — переклад…","Хотів(ла) би зробити бронювання","Зроби мені бронювання!","ввічливе прохання"]
+]},
+{t:"ME GUSTARÍA + infinitivo/sustantivo", lv:1, q:[
+["Me gustaría + infinitivo/sustantivo вживається для…","бажання, прохання, пропозиції","наказу","з таблиці книги"],
+["Me gustaría pedir el desayuno — переклад…","Хотів(ла) би замовити сніданок","Замовляю сніданок постійно","ввічливе бажання"],
+["Me gustaría pagar con tarjeta — переклад…","Хотів(ла) би заплатити карткою","Плачу карткою завжди","ввічливе бажання"],
+["Me gustaría — це форма дієслова gustar у…","condicional (gustaría)","presente (gusta)","граматична форма"],
+["Різниця між «Me gusta» і «Me gustaría»:","gusta = подобається зараз; gustaría = хотів би (ввічливо)","немає різниці взагалі","важливий нюанс з культ. нотаток!"],
+["❌ Me gusta pedir desayuno (як прохання) → ✅ …","Me gustaría pedir desayuno.","Me gusto pedir desayuno.","з культ. нотаток"],
+["Me gustaría tener más información — переклад…","Хотів(ла) би мати більше інформації","Маю багато інформації","ввічливе бажання"],
+["Ця конструкція граматично схожа на…","gustar (непряме доповнення + дієслово)","imperativo","паралель з уроком 12 (А1)"],
+["Me gustaría reservar una mesa — переклад…","Хотів(ла) би забронювати столик","Бронюю столик прямо зараз","ввічливе прохання"],
+["A mí me gustaría, a ti te gustaría, a él le gustaría — це…","відмінювання за особами непрямого доповнення","дієвідмінювання головного дієслова","як і з gustar"]
+]},
+{t:"DISCULPE/PERDONE, PERO… і ¿SERÍA POSIBLE…?", lv:1, q:[
+["Disculpe/perdone, pero… вживається, коли…","є скарга або незручність","все добре і хочеться подякувати","з таблиці книги"],
+["Disculpe, pero la ducha no funciona — переклад…","Перепрошую, але душ не працює","Душ чудово працює, дякую","скарга ввічливо"],
+["Disculpe, pero hay mucho ruido — переклад…","Вибачте, але дуже шумно","Тут дуже тихо, дякую","скарга"],
+["¿Sería posible…? — це…","дуже ввічлива форма запиту","груба форма наказу","найввічливіша з п'яти"],
+["¿Sería posible tener una habitación con vistas al mar? — переклад…","Чи можливо було б мати номер з видом на море?","Дайте мені номер з видом на море!","найввічливіша форма"],
+["Sería — це форма дієслова ser у…","condicional","futuro","граматична форма"],
+["Disculpe і perdone — обидва означають…","перепрошую/вибачте (для привернення уваги або вибачення)","дякую","ввічливі вигуки"],
+["¿Sería posible cambiar la reserva? — переклад…","Чи можливо було б змінити бронювання?","Змінюю бронювання прямо зараз","найввічливіший запит"],
+["Ці дві конструкції (disculpe pero, sería posible) типово вживають, коли ситуація…","делікатна або є проблема","звичайна, без проблем","контекст вживання"],
+["¿Sería posible…? часто вважається навіть ввічливішим за…","¿Podría…?","imperativo","шкала ввічливості"]
+]},
+{t:"Expresiones útiles: аеропорт", lv:1, q:[
+["¿Dónde está el control de seguridad? — переклад…","Де знаходиться перевірка безпеки?","Де знаходиться ресторан?","з книги"],
+["¿A qué hora sale el vuelo? — переклад…","О котрій вилітає рейс?","О котрій прибуває рейс?","з книги"],
+["He perdido mi equipaje — переклад…","Я загубив(ла) багаж","Я забронював багаж","з книги, Perfecto"],
+["La tarjeta de embarque, por favor — переклад…","Посадковий талон, будь ласка","Паспорт, будь ласка","з книги"],
+["Disculpe, ¿podría repetírmelo? — переклад…","Перепрошую, чи могли б ви повторити?","Перепрошую, я вже все зрозумів","з книги"],
+["Ці фрази типово звучать…","в аеропорту","у лікарні","контекст"],
+["He perdido mi equipaje вимагає часу…","Pretérito Perfecto (недавня дія, результат зараз)","Futuro","логіка Perfecto"],
+["La tarjeta de embarque = …","посадковий талон","авіаквиток паперовий","базове"],
+["¿A qué hora sale el vuelo? — питання про…","розклад (Presente con valor de futuro)","минулий рейс","логіка часу"],
+["Ці фрази корисні на етапах…","реєстрації, контролю безпеки, посадки","лише під час польоту","практичні етапи подорожі"]
+]},
+{t:"Expresiones útiles: готель", lv:1, q:[
+["Necesito una habitación doble — переклад…","Мені потрібен двомісний номер","Мені потрібен одномісний номер","з книги"],
+["Me gustaría pagar con tarjeta — переклад…","Хотів(ла) би заплатити карткою","Плачу готівкою завжди","з книги"],
+["Quisiera una habitación con balcón — переклад…","Хотів(ла) би кімнату з балконом","Не хочу кімнату з балконом","з книги"],
+["¿A qué hora es el desayuno? — переклад…","О котрій подають сніданок?","О котрій вечеря?","з книги"],
+["Disculpe, pero hay mucho ruido — переклад…","Вибачте, але дуже шумно","Вибачте, я запізнююсь","з книги"],
+["Ці фрази типово звучать…","на рецепції готелю","в аеропорту","контекст"],
+["Necesito — це пряма, але все ще прийнятна форма, менш ввічлива за…","Quisiera / Me gustaría","imperativo","шкала ввічливості"],
+["habitación doble = …","двомісний номер","одномісний номер","базове"],
+["Ці фрази корисні для…","бронювання, заселення і скарг у готелі","лише прощання","практичне застосування"],
+["Використання цих фраз демонструє…","повагу до персоналу готелю","байдужість","культурний аспект"]
+]},
+{t:"Словник: аеропорт 1", lv:1, q:[
+["el vuelo / el embarque = …","рейс / посадка","рецепція / готель","базове"],
+["la puerta de embarque = …","вихід на посадку","паспортний контроль","базове"],
+["el mostrador / la facturación = …","стійка / реєстрація","ліфт / ключ","базове"],
+["el control de seguridad = …","перевірка безпеки","перевірка багажу лише","базове"],
+["el equipaje / la maleta = …","багаж / валіза","рюкзак / сумка","базове"],
+["la tarjeta de embarque = …","посадковий талон","готельна картка","базове"],
+["el retraso / la cancelación = …","затримка / скасування","прибуття / відправлення","базове"],
+["el pasajero / la aerolínea = …","пасажир / авіакомпанія","водій / компанія таксі","базове"],
+["la terminal / el aeropuerto = …","термінал / аеропорт","станція / вокзал","базове"],
+["el control de pasaportes = …","паспортний контроль","контроль багажу","базове"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Словник: аеропорт 2", lv:1, q:[
+["el vuelo con retraso = …","затриманий рейс","скасований рейс","базове"],
+["el vuelo cancelado = …","скасований рейс","затриманий рейс","базове"],
+["facturar el equipaje = …","здати багаж на реєстрації","отримати багаж","базове"],
+["recoger el equipaje = …","забрати багаж","здати багаж","протилежність facturar"],
+["el equipaje de mano = …","ручна поклажа","зареєстрований багаж","базове"],
+["despegar / aterrizar = …","злітати / приземлятися","заходити / виходити","базове дієслова польоту"],
+["la escala = …","пересадка (в польоті)","виліт","базове"],
+["el pasaporte / el visado = …","паспорт / віза","квиток / бронювання","базове"],
+["Ці слова типово потрібні на етапі…","реєстрації і посадки в аеропорту","заселення в готель","контекст"],
+["Розуміння цих слів корисне для…","реальної подорожі літаком","лише для іспиту","практична мета"]
+]},
+{t:"Резюме модуля 1", lv:1, q:[
+["¿Podría…?, Quisiera, Me gustaría, Disculpe pero, ¿Sería posible…? — усі допомагають…","звучати ввічливо","звучати категорично","підсумок"],
+["Найменш формальна серед вивчених фраз:","Necesito","¿Sería posible…?","шкала ввічливості"],
+["Найбільш формальна серед вивчених фраз:","¿Sería posible…?","Necesito","шкала ввічливості"],
+["Ці конструкції типово базуються на дієслові у…","condicional (podría, gustaría, sería)","imperativo","граматична спільність"],
+["Disculpe/perdone, pero… вживається, коли є…","скарга або незручність","похвала","функція"],
+["Урок 29 логічно завершує подорожній блок (27-28-29), додаючи…","практику ввічливості в реальних ситуаціях","новий минулий час","послідовність тем"],
+["❌ Me gusta pedir desayuno (як прохання) — типова помилка через плутанину з…","Me gustaría","es bueno","з культ. нотаток"],
+["Ці конструкції корисні не лише в подорожі, а й у…","будь-якій формальній ситуації (ресторан, офіс, магазин)","лише в готелі","ширше застосування"],
+["Іспанська культура сервісу заохочує…","спокій і доброзичливість навіть у складних ситуаціях","строгість і формальність","з культ. нотаток"],
+["Мета уроку 29 — підготувати до…","реальних розмов у аеропорту й готелі","письмового академічного тесту","підсумок"]
+]},
+{t:"Словник: готель 1", lv:2, q:[
+["la recepción / el recepcionista = …","рецепція / адміністратор","ресторан / кухар","базове"],
+["la habitación individual / doble = …","одномісний / двомісний номер","дешевий / дорогий номер","базове"],
+["el baño privado / compartido = …","власна / спільна ванна","велика / мала ванна","базове"],
+["el aire acondicionado / la calefacción = …","кондиціонер / опалення","холодильник / плита","базове"],
+["el ascensor / la llave / la tarjeta = …","ліфт / ключ / картка","сходи / двері / вікно","базове"],
+["la reserva / la confirmación = …","бронювання / підтвердження","скасування / скарга","базове"],
+["el servicio de limpieza / lavandería = …","прибирання / прання","сніданок / вечеря","базове"],
+["el desayuno incluido = …","сніданок включено","сніданок за додаткову плату","базове"],
+["la reclamación / la queja = …","скарга / претензія","подяка / комплімент","базове"],
+["Ці слова типово потрібні при…","заселенні й перебуванні в готелі","подорожі літаком лише","контекст уроку"]
+]},
+{t:"Вправа 1 з книги: обери конструкцію", lv:2, q:[
+["___ cambiar mi billete, por favor.","Quisiera","Quiero fuertemente","з книги, ввічливо"],
+["___ saber si hay retraso en el vuelo.","Me gustaría","Me gusta","з книги, ввічливо"],
+["___ pedir una habitación doble.","Quisiera","Quiere él","з книги"],
+["¿___ ayudarme con la maleta, señorita?","Podría","Puede tú","з книги, ввічливе питання"],
+["___ una toalla limpia, por favor.","Quisiera","Quiero ya mismo","з книги"],
+["Ці п'ять речень демонструють різні способи…","ввічливо просити щось","наказувати щось","мета вправи 1"],
+["У реченні 4 форма Podría звертається на…","usted (ввічливо, до señorita)","tú","реєстр"],
+["Всі відповіді вправи уникають…","прямого наказового imperativo","дієслова querer взагалі","стилістична мета"],
+["Ця вправа з книги — прямий приклад практики…","п'яти ввічливих конструкцій уроку","минулого часу","модуль 4, вправа 1"],
+["Вибір між Quisiera і Me gustaría часто…","взаємозамінний, стилістичний нюанс","завжди строго різний за значенням","гнучкість"]
+]},
+{t:"Вправа 2 з книги: виправ помилки", lv:2, q:[
+["Quiero cambiar habitación. → ввічливіше:","Quisiera cambiar de habitación.","Quiero cambiar de habitación ya mismo.","пряме quiero → ввічливе quisiera"],
+["¿Podrías decirme qué hora es? → формальніше (usted):","¿Podría decirme qué hora es?","¿Puedes decirme qué hora es ya?","podría, ввічлива форма usted"],
+["Me gusta pedir desayuno. → правильно (як прохання):","Me gustaría pedir desayuno.","Me gusto pedir desayuno ya.","з культ. нотаток! gusta ≠ gustaría"],
+["Dame la llave. → ввічливіше:","¿Podría darme la llave, por favor?","Dame la llave ya, por favor.","з культ. нотаток!"],
+["¿Sería posible tener vista al mar? → правильно (з артиклем):","¿Sería posible tener vista al mar?","¿Sería posible tener vista mar?","це речення вже правильне (bracket помилка була в «mar» без al у форматі книги — перевір!"],
+["Головна ідея вправи 2 — перетворити прямі фрази на…","ввічливі конструкції","короткі накази ще прямі","мета вправи"],
+["«Dame la llave!» — це приклад…","прямого imperativo (грубого в контексті готелю)","ввічливого прохання","з культ. нотаток"],
+["«Me gusta pedir desayuno» граматично неправильне як прохання, бо…","gusta означає постійне вподобання, а не прохання зараз","воно повністю правильне завжди","ключова відмінність"],
+["Ця вправа демонструє важливість…","вибору правильного ступеня ввічливості за ситуацією","швидкості мовлення","практичний висновок"],
+["Найкраща стратегія в готелі чи аеропорту — завжди…","обирати ввічливу форму (podría/quisiera/gustaría)","обирати найкоротшу форму","практична порада"]
+]},
+{t:"Переклад укр → ісп: ввічливість", lv:2, q:[
+["«Чи могли б ви дати мені меню?»","¿Podría darme el menú?","Dame el menú ahora ya.","¿Podría…?"],
+["«Хотів(ла) би замовити столик на двох»","Quisiera reservar una mesa para dos.","Quiero mesa para dos ahora mismo.","Quisiera"],
+["«Хотів(ла) би дізнатися ціну номера»","Me gustaría saber el precio de la habitación.","Me gusta saber el precio de la habitación siempre.","Me gustaría"],
+["«Вибачте, але замовлення затримується»","Disculpe, pero el pedido se está retrasando.","Disculpe pero pedido retrasa mucho.","з артиклем el"],
+["«Чи можливо було б отримати номер на вищому поверсі?»","¿Sería posible tener una habitación en un piso más alto?","Necesito habitación piso alto ya ahora.","¿Sería posible…?"],
+["«Дякую за терпіння» (формально)","Gracias por su paciencia.","Gracias por tu paciencia ya.","формальне su"],
+["«Нічого страшного, все владнається»","No pasa nada, ya se arregla.","Pasa algo muy grave siempre.","з культ. нотаток"],
+["«Гарної подорожі!»","¡Que tenga buen viaje!","¡Que tenga malo viaje!","побажання"],
+["«Чи могли б ви повторити, будь ласка?»","¿Podría repetirlo, por favor?","Repite, por favor ya mismo.","¿Podría…?"],
+["«Хотів(ла) би змінити дату вильоту»","Quisiera cambiar la fecha de salida.","Quiero cambiar fecha salida ahora ya.","Quisiera"]
+]},
+{t:"Текст: Un viaje con retraso (1)", lv:2, q:[
+["Lucía y Carlos van a viajar de Alicante a Madrid — конструкція:","ir a + infinitivo (план)","futuro simple","повторення уроку 28"],
+["para pasar un fin de semana romántico — переклад…","щоб провести романтичні вихідні","щоб працювати над проєктом","з тексту"],
+["Han reservado un vuelo temprano — форма han reservado:","Pretérito Perfecto (недавня дія)","Futuro","досвід/недавня дія"],
+["Todo parece perfecto… hasta que el vuelo se retrasa dos horas — переклад…","Все здається ідеальним… поки рейс не затримується на дві години","Все жахливо із самого початку","з тексту"],
+["En el aeropuerto la gente espera con paciencia — переклад…","В аеропорту люди чекають терпляче","В аеропорту люди сваряться","з тексту"],
+["Una pareja inglesa pregunta: «¿Podría decirme a qué hora sale el vuelo a Madrid?» — це приклад…","ввічливого прохання (¿Podría…?)","прямого наказу","граматика уроку в дії"],
+["El empleado sonríe y відповідає: «Saldrá a las once y media, señora» — форма Saldrá:","Futuro simple","Presente","прогноз відправлення"],
+["Cuando por fin despegan, el vuelo es corto y tranquilo — переклад «despegan»…","злітають","приземляються","дієслово польоту"],
+["al llegar al hotel, Lucía se da cuenta de que la habitación tiene dos camas separadas — переклад…","прибувши в готель, Люсія помічає, що в номері два окремих ліжка","прибувши в готель, вони одразу заснули","з тексту"],
+["Llama a la recepción — форма llama:","Pretérito Indefinido (конкретна дія)","Imperfecto","одноразова дія"]
+]},
+{t:"Текст: Un viaje con retraso (2)", lv:2, q:[
+["«Disculpe, pero habíamos reservado una cama doble» — це приклад…","ввічливої скарги (Disculpe, pero…)","прямого наказу","граматика уроку"],
+["habíamos reservado — ця форма (Pluscuamperfecto) означає…","ми забронювали ще до заселення (передминула дія)","ми забронюємо в майбутньому","контекст непрямої мови"],
+["«Lo siento, señora. Ahora mismo la cambiamos» — переклад…","Вибачте, пані. Зараз же поміняємо","Нічого не можемо зробити","типова реакція персоналу"],
+["Más tarde, ya instalados, salen a pasear por la Gran Vía — переклад «instalados»…","влаштувавшись, розмістившись","ще не розпакувавшись","дієприкметник стану"],
+["comen churros y visitan el Palacio Real — переклад…","їдять чуррос і відвідують Королівський палац","не їдять нічого і сидять у номері","з тексту"],
+["El viaje termina bien, aunque Carlos bromea — переклад «bromea»…","жартує","сердиться","dієслово"],
+["«La próxima vez, iremos en tren. El AVE nunca se retrasa» — форма iremos:","Futuro simple","ir a + infinitivo","майбутнє рішення"],
+["Головна тема тексту:","подорож з несподіванками, яка все ж закінчується добре","суцільна катастрофа без happy end","назва тексту"],
+["Текст ілюструє практичне застосування…","ввічливих прохань і скарг у реальних ситуаціях подорожі","лише минулого часу","мета тексту"],
+["Тон тексту загалом…","легкий, з гумором наприкінці","похмурий і драматичний","стиль розповіді"]
+]},
+{t:"Питання до тексту", lv:2, q:[
+["¿A dónde viajaron Lucía y Carlos?","De Alicante a Madrid","De Madrid a Barcelona","з тексту"],
+["¿Qué problema tuvieron en el aeropuerto?","El vuelo se retrasó dos horas","Perdieron el equipaje","з тексту"],
+["¿Cómo reaccionó el empleado?","Con una sonrisa, informando la hora de salida","Se enfadó con los pasajeros","з тексту"],
+["¿Qué pasó en el hotel?","La habitación tenía dos camas separadas en vez de una doble","El hotel estaba cerrado","з тексту"],
+["¿Qué hizo Lucía para solucionarlo?","Llamó a la recepción y pidió el cambio con cortesía","Se quejó gritando","з тексту"],
+["¿Qué lugares visitaron en Madrid?","La Gran Vía y el Palacio Real","El Museo Guggenheim","з тексту"],
+["¿Qué dijo Carlos al final del viaje?","Que la próxima vez irán en tren porque el AVE nunca se retrasa","Que nunca más viajará","з тексту"],
+["¿Qué aprendemos de esta historia?","Que los problemas se pueden resolver con calma y cortesía","Que viajar siempre sale mal","мораль тексту"],
+["¿Qué medio de transporte prefieren la próxima vez?","El tren (AVE)","El avión otra vez","з тексту"],
+["¿Por qué el viaje fue, al final, un éxito?","Porque a pesar de los contratiempos, disfrutaron de Madrid juntos","Porque no pasó nada en absoluto","з тексту, підсумок"]
+]},
+{t:"GUSTAR vs GUSTARÍA: культурна різниця", lv:2, q:[
+["Me gusta pedir desayuno означає…","мені подобається замовляти сніданок (загальна звичка/вподобання)","хотів би замовити сніданок зараз","Presente, не прохання!"],
+["Me gustaría pedir desayuno означає…","хотів(ла) би замовити сніданок (ввічливе прохання зараз)","мені завжди подобається замовляти сніданок","Condicional, прохання"],
+["❌ Me gusta pedir desayuno (як прохання офіціанту) → ✅ …","Me gustaría pedir desayuno.","Me gusto pedir desayuno ya.","з культ. нотаток"],
+["Різниця форм («gusta» vs «gustaría») — це різниця…","часу/способу дієслова (Presente vs Condicional)","роду іменника","граматична суть"],
+["Ця плутанина типова для…","студентів, що перекладають дослівно з рідної мови","носіїв мови","типова помилка"],
+["Правильне використання Condicional (gustaría) робить прохання…","ввічливим і природним","грубим","практичний ефект"],
+["На практиці, замовляючи щось у ресторані/готелі, завжди краще використовувати…","gustaría, а не gusta","обидві форми рівнозначно","практична порада"],
+["Ця тема повʼязана з попереднім вивченням gustar в уроці…","12 (рівень A1)","19 (сумнів)","звʼязок з базовою граматикою"],
+["Condicional (gustaría, podría, sería) — спільна риса всіх трьох…","пом'якшує/увічливлює висловлювання","робить категоричнішим","підсумок граматичної теми"],
+["Розуміння цієї різниці — ключовий момент уроку 29, бо…","це найпоширеніша помилка у ввічливих проханнях","це рідкісна деталь","важливість теми"]
+]},
+{t:"Ввічливість поглиблено: реєстри", lv:2, q:[
+["Найменш ввічлива форма з вивчених: «Necesito…» — використовується, коли…","ситуація потребує прямоти, але без грубості","завжди неввічливо","нейтральний реєстр"],
+["Найввічливіша форма: «¿Sería posible…?» — використовується, коли…","хочемо максимально пом'якшити прохання","хочемо здатись байдужим","найвищий реєстр ввічливості"],
+["Шкала ввічливості (від менш до більш ввічливого): Necesito → Quisiera/Me gustaría → …","¿Podría…? → ¿Sería posible…?","Dame → Necesito","логічна шкала"],
+["Imperativo («Dame la llave») в контексті готелю вважається…","занадто прямим/грубим","найввічливішим","з культ. нотаток"],
+["Вибір рівня ввічливості залежить від…","ситуації і стосунків зі співрозмовником","лише граматичних правил без контексту","прагматичний фактор"],
+["З персоналом готелю/аеропорту типово обирають…","вищий рівень ввічливості (Podría/Quisiera/gustaría)","найнижчий рівень (imperativo)","соціальна норма"],
+["Ввічливість НЕ означає…","складність мови","доброзичливість тону","важливе розмежування"],
+["Використання цих конструкцій — практичний навик для…","реальних подорожей і взаємодії з персоналом","лише академічних текстів","мета уроку"],
+["Розуміння реєстрів мовлення — ознака…","глибшого володіння мовою (вище A2/до B1)","базового рівня","рівень складності теми"],
+["Підсумок: вибір конструкції — це не лише граматика, а й…","соціальна навичка ввічливості","орфографічне правило","ширший висновок"]
+]},
+{t:"Словник поглиблено: подорож", lv:2, q:[
+["«У мене підтверджене бронювання номера» = Tengo la ___ de la habitación confirmada.","reserva","llave","базове"],
+["«Кондиціонер не працює» = El ___ no funciona.","aire acondicionado","ascensor","базове"],
+["«Мені потрібне чисте рушник» = Necesito una toalla ___.","limpia","sucia","прикметник"],
+["«У готелі є ліфт?» = ¿Hay ___ en el hotel?","ascensor","calefacción","базове"],
+["«Сніданок включено в ціну» = El desayuno está ___.","incluido","excluido","базове"],
+["«Хочу подати скаргу» = Quiero hacer una ___.","reclamación","confirmación","базове"],
+["«Мій багаж загубився» = Mi equipaje se ha ___.","perdido","encontrado","базове"],
+["«Де стійка реєстрації?» = ¿Dónde está el ___ de facturación?","mostrador","control","базове"],
+["«Мені потрібна кімната з власною ванною» = Necesito una habitación con baño ___.","privado","compartido","базове"],
+["Ці терміни типово потрібні для…","реальних ситуацій в аеропорту і готелі","побутової розмови вдома","практична мета уроку"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки", lv:3, q:[
+["❌ Dame la llave! → ✅ …","¿Podría darme la llave, por favor?","Dame la llave, gracias.","з культ. нотаток! потрібна ввічлива форма"],
+["❌ Me gusta pedir desayuno (як прохання) → ✅ …","Me gustaría pedir desayuno.","Me gusto pedir desayuno ahora.","gustaría, не gusta!"],
+["❌ Podrías decirme qué hora es? (розмовно, але формально краще) → ✅ …","¿Podría decirme qué hora es?","¿Puedes decir qué hora es ya?","podría формальніше з usted"],
+["❌ Quiero cambiar habitación (занадто прямо) → ✅ …","Quisiera cambiar de habitación.","Quiero cambiar de habitación ahora mismo ya.","quisiera ввічливіше"],
+["❌ Sería posible tener vista mar? → ✅ …","¿Sería posible tener vista al mar?","¿Sería posible tener vista de mar ya?","al mar, з прийменником і артиклем"],
+["❌ Disculpe pero ducha no funciona → ✅ …","Disculpe, pero la ducha no funciona.","Disculpe pero ducha no funcionan.","бракує артикля la!"],
+["❌ Quisiera que ayúdame → ✅ …","¿Podría ayudarme?","Quisiera que ayúdame por favor ya.","простіше: Podría + infinitivo"],
+["❌ Me gustaría que pedir el desayuno → ✅ …","Me gustaría pedir el desayuno.","Me gustaría que pido el desayuno.","gustaría + infinitivo, без que!"],
+["❌ ¿Podría usted a ayudarme? → ✅ …","¿Podría ayudarme?","¿Podría usted ayudarme por favor ya mismo?","зайвий «a» перед infinitivo!"],
+["Головне правило розділу: ввічливі конструкції завжди пом'якшують тон, а imperativo…","звучить надто прямо в формальних ситуаціях","завжди найввічливіший варіант","підсумок"]
+]},
+{t:"Культура: no pasa nada, ya está", lv:3, q:[
+["Іспанці вважають, що будь-яку проблему можна вирішити…","з посмішкою","з гнівом","з культ. нотаток"],
+["No pasa nada = …","нічого страшного","все дуже погано","з культ. нотаток"],
+["Ya está / Ya se arregla = …","вже все, вирішено / вже владнається","нічого не можна зробити","з культ. нотаток"],
+["Tranquilo, no hay problema = …","спокійно, немає проблеми","це серйозна проблема","з культ. нотаток"],
+["Gracias por su paciencia = …","дякую за ваше терпіння","вибачте за незручності повністю формально","з культ. нотаток, типова фраза персоналу"],
+["Que tenga buen viaje = …","гарної подорожі","поганої подорожі жартома","побажання"],
+["Ці фрази типово каже…","персонал, заспокоюючи клієнтів","лише клієнти персоналу","контекст вживання"],
+["Загальна культурна риса, що випливає з цих фраз:","оптимізм і спокій навіть у незручних ситуаціях","постійне занепокоєння","з культ. нотаток"],
+["Ці фрази корисно знати, щоб…","розуміти реакцію персоналу і не сприймати її як байдужість","сприймати їх як образу","практична порада"],
+["Підсумок: іспанська культура сервісу схиляється до…","заспокійливого, доброзичливого тону","строгого, формального тону","головний висновок"]
+]},
+{t:"Культура: спокій в аеропортах", lv:3, q:[
+["Іспанці зазвичай…","спокійні в аеропортах, навіть при затримці рейсу","дуже нервові при затримці рейсу","з культ. нотаток"],
+["Вони зазвичай не…","сперечаються з персоналом","чекають терпляче","з культ. нотаток"],
+["Типова фраза: «Bueno, ya saldrá cuando salga» означає…","«Ну що ж, вилетимо, коли вилетимо» (прийняття ситуації)","«Ми вимагаємо компенсацію негайно»","з культ. нотаток"],
+["Ця фраза ілюструє загальну рису…","філософського спокою перед незручностями","постійного невдоволення","культурне спостереження"],
+["У тексті уроку персонажі теж…","чекають з терпінням (con paciencia), п'ючи каву","влаштовують скандал в аеропорту","звʼязок з текстом"],
+["Ця культурна риса перегукується з уроком 23 про…","«El tiempo se vive» — філософське ставлення до часу","суворий графік і пунктуальність завжди","звʼязок тем"],
+["Розуміння цього допомагає…","не дивуватися спокійній реакції персоналу чи інших пасажирів","вимагати негайних змін завжди","практична порада"],
+["«Ya saldrá cuando salga» граматично використовує…","subjuntivo (salga) після cuando з невизначеним майбутнім","indicativo завжди","граматична деталь"],
+["Ця фраза — гарний приклад того, як культура впливає на…","вибір слів і граматичних конструкцій","лише лексику без граматики","міждисциплінарний звʼязок"],
+["Підсумок: у складних дорожніх ситуаціях іспанці схильні…","до прийняття та спокою, а не конфронтації","до негайних скарг","головний висновок культурних нотаток"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Чи могли б ви допомогти мені з валізою?»","¿Podría ayudarme con la maleta?","Ayúdame con la maleta ahora.","¿Podría…?"],
+["«Хотів(ла) би поміняти номер»","Quisiera cambiar de habitación.","Quiero cambiar habitación ya mismo.","Quisiera"],
+["«Хотів(ла) би заплатити карткою»","Me gustaría pagar con tarjeta.","Me gusta pagar con tarjeta siempre.","Me gustaría"],
+["«Вибачте, але душ не працює»","Disculpe, pero la ducha no funciona.","Disculpe pero ducha no funciona bien mal.","з артиклем la"],
+["«Чи можливо було б мати номер з видом на море?»","¿Sería posible tener una habitación con vistas al mar?","Necesito habitación con vista mar ya ahora.","найввічливіша форма"],
+["«Я загубив(ла) багаж»","He perdido mi equipaje.","Perdí mi equipaje mañana.","Perfecto, недавня дія"],
+["«О котрій подають сніданок?»","¿A qué hora es el desayuno?","¿A qué hora fue el desayuno ayer?","питання про розклад"],
+["«Дайте мені ключ, будь ласка» (ввічливо)","¿Podría darme la llave, por favor?","Dame la llave ya.","ввічлива форма, не imperativo"],
+["«Нічого страшного» (заспокоєння)","No pasa nada.","Pasa algo muy grave.","з культ. нотаток"],
+["«Наступного разу поїдемо потягом»","La próxima vez, iremos en tren.","La próxima vez, vamos a iremos en tren.","futuro, не дублювати з ir a"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«¿Podría ayudarme con la maleta?» — …","правильно ✓","помилка","✓"],
+["«Podría usted a ayudarme?» — …","помилка (зайвий «a»)","правильно","типова помилка"],
+["«Me gustaría pedir el desayuno» — …","правильно ✓","помилка","✓"],
+["«Me gusta pedir el desayuno» (як прохання) — …","стилістично гірше, ніж gustaría","завжди правильно і природно як прохання","з культ. нотаток"],
+["«Disculpe, pero la ducha no funciona» — …","правильно ✓","помилка","✓"],
+["«Disculpe pero ducha no funciona» — …","помилка (бракує la)","правильно","артикль обов'язковий"],
+["«¿Sería posible tener vista al mar?» — …","правильно ✓","помилка","✓"],
+["«Sería posible tener vista mar?» — …","помилка (бракує al)","правильно","прийменник + артикль"],
+["«Dame la llave, por favor» (у формальному контексті готелю) — …","менш ввічливо, ніж ¿Podría darme…?","найввічливіший можливий варіант","з культ. нотаток"],
+["«Quisiera una habitación con balcón» — …","правильно ✓","помилка","✓"]
+]},
+{t:"П'ять конструкцій: нюанси вибору", lv:3, q:[
+["Незнайома людина в аеропорту, формальне прохання → …","¿Podría…?","Dame","адресат і контекст"],
+["Ввічливе бажання щодо номера в готелі → …","Quisiera / Me gustaría","Necesito","стиль прохання"],
+["Скарга на несправність (душ не працює) → …","Disculpe, pero…","¿Podría…?","контекст скарги"],
+["Максимально делікатне прохання (спеціальний вид з номера) → …","¿Sería posible…?","Necesito","найвищий рівень ввічливості"],
+["Пряма, але прийнятна заява про потребу → …","Necesito una habitación doble","Dame una habitación doble","нейтральний реєстр"],
+["Якщо ситуація дуже напружена, а треба лишатися ввічливим — обираємо…","¿Podría…? або Disculpe, pero…","imperativo пряме","практична стратегія"],
+["Вибір між Quisiera і Me gustaría зазвичай…","стилістичний, обидва прийнятні","строго різний за значенням","гнучкість"],
+["Найменш формальна серед ввічливих конструкцій уроку:","Necesito","¿Sería posible…?","шкала"],
+["Найбільш формальна серед ввічливих конструкцій уроку:","¿Sería posible…?","Necesito","шкала"],
+["Розуміння нюансів цих п'яти конструкцій — ключ до…","природного і ввічливого спілкування в реальних ситуаціях","лише граматичного тесту","підсумок"]
+]},
+{t:"Побудуй речення логічно", lv:3, q:[
+["Чи могли б ви показати мені розклад рейсів? →","¿Podría mostrarme el horario de vuelos?","Muéstrame el horario de vuelos ahora.","¿Podría…?"],
+["Хотів(ла) би одномісний номер з кондиціонером →","Quisiera una habitación individual con aire acondicionado.","Quiero habitación individual con aire acondicionado ya.","Quisiera"],
+["Вибачте, але в номері дуже холодно →","Disculpe, pero hace mucho frío en la habitación.","Disculpe pero hace frío habitación mucho.","Disculpe, pero…"],
+["Чи можливо було б отримати пізніше виселення? →","¿Sería posible tener un check-out más tarde?","Necesito check-out más tarde ya mismo.","¿Sería posible…?"],
+["Хотів(ла) би замовити таксі до аеропорту →","Me gustaría pedir un taxi al aeropuerto.","Me gusta pedir un taxi al aeropuerto siempre.","Me gustaría"],
+["Я загубив(ла) паспорт в аеропорту →","He perdido mi pasaporte en el aeropuerto.","Perdí mi pasaporte en el aeropuerto mañana.","Perfecto"],
+["Нічого страшного, все владнається (заспокоєння) →","No pasa nada, ya se arregla.","Pasa algo muy grave, no se arregla.","з культ. нотаток"],
+["Наступного разу поїдемо на потязі, він ніколи не запізнюється →","La próxima vez iremos en tren, nunca se retrasa.","La próxima vez vamos a iremos en tren, nunca se retrasa.","futuro, не дублювати"],
+["Чи могли б ви повторити номер рейсу? →","¿Podría repetir el número de vuelo?","Repite el número de vuelo ahora ya.","¿Podría…?"],
+["Дякую за ваше терпіння →","Gracias por su paciencia.","Gracias por tu paciencia siempre mucho.","з культ. нотаток, формальне su"]
+]},
+{t:"Lucía y Carlos: подорож деталі", lv:3, q:[
+["Lucía y Carlos подорожували з…","Аліканте до Мадрида","Мадрида до Барселони","з тексту"],
+["Мета подорожі:","провести романтичний вікенд","ділова зустріч","з тексту"],
+["Проблема в аеропорту:","рейс затримався на дві години","загубили багаж","з тексту"],
+["Англійська пара запитала службовця про…","час вильоту рейсу до Мадрида","де забрати багаж","з тексту"],
+["Проблема в готелі:","номер мав два окремих ліжка замість двоспального","номер був не готовий узагалі","з тексту"],
+["Реакція рецепції на скаргу Люсії:","вибачилися і одразу поміняли номер","відмовили в допомозі","з тексту"],
+["У Мадриді пара відвідала…","Гран Віа і Королівський палац","лише аеропорт","з тексту"],
+["Карлос пожартував наприкінці, що наступного разу…","поїдуть потягом, бо AVE ніколи не запізнюється","більше ніколи нікуди не поїдуть","з тексту"],
+["Загальний висновок історії:","проблеми можна вирішити спокійно і з гумором","подорожі завжди приносять розчарування","мораль тексту"],
+["Ключова граматична конструкція, яку демонструє діалог з рецепцією:","Disculpe, pero… (ввічлива скарга)","imperativo пряме","звʼязок з граматикою уроку"]
+]},
+{t:"«Diálogo en el hotel» (домашка)", lv:3, q:[
+["Buenas tardes, ___ una habitación doble, por favor.","quisiera","quiero fuertemente ya","ввічливий діалог, з домашки"],
+["¿___ decirme si el desayuno está incluido?","Podría","Puedes tú informal","формальний реєстр"],
+["Disculpe, pero ___ (haber) un problema con el aire acondicionado.","hay","había ayer","опис поточної проблеми"],
+["Для домашки потрібно створити діалог клієнт-працівник довжиною…","6–8 реплік","1 репліка","з підручника"],
+["Друге завдання — описати…","останній досвід подорожі","улюблену страву","з підручника"],
+["Третє завдання — знайти реальний…","reseña de hotel en España (відгук про готель)","рецепт паельї","з підручника"],
+["У діалозі варто використати мінімум одну конструкцію з…","Podría/Quisiera/Me gustaría/Disculpe pero/Sería posible","лише Presente","мета вправи"],
+["Приклад репліки рецепціоніста: «___ señor/señora, ¿en qué puedo ayudarle?»","Buenos días","Adiós","типовий початок діалогу"],
+["Приклад ввічливого завершення діалогу: «Muchas gracias por ___.»","su ayuda","tu ayuda informal","формальний реєстр з клієнтом"],
+["Мета домашки уроку 29 — практика…","ввічливих прохань і скарг у реалістичному діалозі","минулого часу","підсумок"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["¿Podría ayudarme con la maleta? — конструкція:","ввічливе прохання до незнайомця","звичка","¿Podría…?"],
+["Quisiera cambiar de habitación — конструкція:","ввічливе бажання/прохання","скарга","Quisiera"],
+["Me gustaría pagar con tarjeta — конструкція:","бажання/пропозиція","заборона","Me gustaría"],
+["Disculpe, pero la ducha no funciona — конструкція:","ввічлива скарга","комплімент","Disculpe, pero…"],
+["¿Sería posible tener vista al mar? — конструкція:","найввічливіший запит","прямий наказ","¿Sería posible…?"],
+["❌ Dame la llave! → ✅ …","¿Podría darme la llave, por favor?","обидва варіанти однаково ввічливі","типова помилка"],
+["No pasa nada = …","нічого страшного","дуже погано","з культ. нотаток"],
+["Іспанці в аеропортах зазвичай…","спокійні, навіть при затримках","дуже нервові","з культ. нотаток"],
+["Lucía y Carlos наприкінці вирішили наступного разу їхати…","потягом (AVE)","знову літаком","з тексту"],
+["Урок 29 готово, а з ним і весь травел-блок! Que tengas un ___ viaje. ✈️","buen","malo","побажання з культ. нотаток"]
+]}
+
+];
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "AEROPUERTO Y HOTEL: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 29 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>

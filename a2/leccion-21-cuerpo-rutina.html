@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 21 · Mi cuerpo y mi rutina diaria · Español українською A2</title>
+<style>
+  :root{
+    --rasp:#C4184A; --ink:#2A2118; --paper:#F6F0E6; --card:#FFFDF8;
+    --beige:#EAE0CF; --green:#2E7D4F; --greenbg:#EDF7F0; --red:#B3362B; --redbg:#FBEDEB; --gold:#C99A2E;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Montserrat','Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.55}
+  header{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); padding:14px 20px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 4px}
+  .brand{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#D8C9A8}
+  h1{font-size:19px; font-weight:800; margin:2px 0 0}
+  .score{font-weight:700; font-size:18px; float:right; margin-top:-38px}
+  .bar{margin-top:10px; height:6px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden}
+  .bar>div{height:100%; width:0%; background:var(--rasp); transition:width .3s}
+  main{max-width:760px; margin:0 auto; padding:22px 14px 60px}
+  .stars{color:var(--gold); letter-spacing:2px; font-size:13px}
+  .stars .off{opacity:.25}
+  .legend{display:flex; gap:16px; font-size:12px; margin:0 0 14px; opacity:.85; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px}
+  .lcard{background:var(--card); border:1px solid var(--beige); border-radius:12px; padding:13px 14px;
+    cursor:pointer; transition:transform .12s, border-color .12s}
+  .lcard:hover{transform:translateY(-2px); border-color:var(--rasp)}
+  .lnum{font-weight:800; font-size:11.5px; color:var(--gold); letter-spacing:.08em; display:flex; justify-content:space-between; align-items:center}
+  .ltitle{font-weight:800; font-size:14px; margin:4px 0 2px}
+  .lprog{margin-top:8px; font-size:12px; font-weight:700; color:var(--rasp)}
+  .lprog.done{color:var(--green)}
+  .exhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .exhead h2{font-size:17px; font-weight:800; color:var(--rasp); margin:0}
+  .back{background:none; border:none; color:var(--rasp); font-weight:700; font-size:14px; cursor:pointer;
+    font-family:inherit; padding:6px 0; text-decoration:underline}
+  .exsub{font-size:13px; opacity:.7; margin:0 0 16px}
+  .q{background:var(--card); border:1px solid var(--beige); border-radius:10px; padding:13px 15px; margin-bottom:10px}
+  .q.ok{border-color:var(--green)} .q.bad{border-color:var(--red)}
+  .qtext{margin-bottom:10px}
+  .qnum{font-weight:800; font-size:13px; color:#B8A88C; margin-right:6px}
+  .opts{display:flex; gap:8px; flex-wrap:wrap}
+  .opt{padding:7px 16px; border-radius:8px; border:2px solid var(--beige); background:#fff; color:var(--ink);
+    font-weight:600; font-size:14px; cursor:pointer; font-family:inherit; transition:border-color .1s}
+  .opt:hover{border-color:var(--rasp)}
+  .opt:disabled{cursor:default}
+  .opt.correct{background:var(--greenbg); border-color:var(--green); color:var(--green)}
+  .opt.wrong{background:var(--redbg); border-color:var(--red); color:var(--red)}
+  .fb{margin-top:9px; font-size:13px; font-weight:600; display:none}
+  .fb .h{font-weight:500; opacity:.8; color:var(--ink)}
+  .fb.ok{display:block; color:var(--green)} .fb.bad{display:block; color:var(--red)}
+  .exresult{background:var(--ink); color:var(--paper); border-radius:14px; padding:20px; text-align:center; margin-top:18px; display:none}
+  .exresult .big{font-size:24px; font-weight:800}
+  .navbtns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .btn{background:var(--rasp); color:#fff; border:none; border-radius:10px; padding:10px 20px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:inherit}
+  .btn.ghost{background:transparent; border:2px solid var(--paper); color:var(--paper)}
+  .intro{background:var(--card); border:1px solid var(--beige); border-left:4px solid var(--rasp);
+    border-radius:12px; padding:14px 18px; margin-bottom:18px; font-size:14px}
+  footer{text-align:center; font-size:12px; opacity:.6; padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Español українською · A2 · Lección 21 · @malinnaartstudio</div>
+    <h1 id="htitle">MI CUERPO Y MI RUTINA: 30 вправ</h1>
+    <div class="score"><span id="gscore">0</span><span style="opacity:.5;font-size:13px"> / 300</span></div>
+    <div class="bar"><div id="gbar"></div></div>
+  </div>
+</header>
+<main>
+  <div id="home">
+    <div class="intro">
+            <b style="color:var(--rasp)">Lección 21 · Mi cuerpo y mi rutina diaria.</b>
+      30 вправ по 10 питань: verbos reflexivos (me, te, se…), me duele / me duelen / tengo dolor de,
+      повний словник тіла — від la cabeza до los pies — і розмовні вирази на кшталт estoy hecho polvo.
+      Від ★ до ★★★. ¡Un cuerpo con agenda! 🧠
+
+    </div>
+    <div class="legend">
+            <span><span class="stars">★<span class="off">★★</span></span> вправи 1–10 · зворотні дієслова, dolencias, словник тіла</span>
+      <span><span class="stars">★★<span class="off">★</span></span> вправи 11–20 · словник поглиблено, текст, питання</span>
+      <span><span class="stars">★★★</span> вправи 21–30 · культура, типові помилки, тонкощі</span>
+
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div id="ex" style="display:none"></div>
+</main>
+<footer>© MalinnaArtStudio · Español українською · A2 · Lección 21</footer>
+<script>
+// [питання, правильна, неправильна, підказка]; порядок варіантів перемішується
+const EX = [
+// ─────────── ★ 1–10 ───────────
+{t:"Verbos reflexivos: основна ідея", lv:1, q:[
+["lavar = …","мити (щось)","митися (себе)","звичайне дієслово"],
+["lavarse = …","митися (себе)","мити (щось)","дія повертається на себе"],
+["Reflexivos — це дієслова, де дія…","повертається на самого себе","завжди спрямована на іншу людину","з книги"],
+["Із зворотними дієсловами завжди вживається…","зворотний займенник (me, te, se…)","прийменник a","обов'язковий елемент"],
+["Me levanto temprano — переклад…","Я встаю рано","Я піднімаю щось рано","levantarse = вставати"],
+["Se viste rápido — переклад…","Він/вона швидко одягається","Він/вона швидко одягає когось","vestirse = одягатися"],
+["Nos lavamos los dientes — переклад…","Ми чистимо зуби","Ми миємо посуд","los dientes = зуби"],
+["Reflexivo o no reflexivo: Lavo la ropa — це…","не зворотне (мию одяг)","зворотне","без займенника se"],
+["Me lavo las manos — це…","зворотне (мию свої руки)","не зворотне","з займенником me"],
+["Урок 21 називається…","Mi cuerpo y mi rutina diaria","Futuro Simple","з підручника"]
+]},
+{t:"Pronombres reflexivos: me, te, se…", lv:1, q:[
+["yo → …","me","te","займенник"],
+["tú → …","te","se","займенник"],
+["él/ella/usted → …","se","le","займенник"],
+["nosotros/as → …","nos","os","займенник"],
+["vosotros/as → …","os","nos","займенник"],
+["ellos/ellas/ustedes → …","se","les","займенник"],
+["Структура речення: …","pronombre + verbo conjugado","verbo + pronombre завжди","базовий порядок"],
+["Te duchas por la mañana — займенник:","te (tú)","se (usted)","2 особа однини"],
+["Os acostáis tarde — займенник:","os (vosotros)","nos (nosotros)","2 особа множини"],
+["Se despiertan a las siete — займенник:","se (ellos/ellas)","te (tú)","3 особа множини"]
+]},
+{t:"REFLEXIVO чи NO REFLEXIVO?", lv:1, q:[
+["Lavo la ropa. (без se) — суб'єкт миє…","одяг (щось інше)","самого себе","no reflexivo"],
+["Me lavo las manos. — суб'єкт миє…","свої руки (себе)","чужі руки","reflexivo"],
+["Despierto a mi hijo. — суб'єкт будить…","сина (когось іншого)","самого себе","no reflexivo"],
+["Me despierto temprano. — суб'єкт будить…","себе (прокидається)","іншу людину","reflexivo"],
+["Pongo la mesa. — це…","накриваю на стіл (не reflexivo)","одягаюся (reflexivo)","без se"],
+["Me pongo el abrigo. — це…","вдягаю на себе пальто (reflexivo)","накриваю стіл","з me"],
+["Acuesto al niño. — суб'єкт вкладає спати…","дитину (когось іншого)","себе","no reflexivo"],
+["Me acuesto tarde. — суб'єкт вкладається спати…","сам (пізно)","вкладає когось іншого","reflexivo"],
+["Наявність займенника me/te/se зазвичай означає…","дію на себе","дію на іншу людину","ключова ознака"],
+["Одне й те саме дієслово може бути reflexivo і no reflexivo залежно від…","наявності займенника","роду іменника","контексту вживання"]
+]},
+{t:"Дієслова, які завжди зворотні", lv:1, q:[
+["despertarse = …","прокидатися","засинати","базове"],
+["levantarse = …","вставати","лягати","базове"],
+["ducharse = …","приймати душ","митися рушником","базове"],
+["afeitarse = …","голитися","розчісуватись","базове"],
+["vestirse = …","одягатися","роздягатися","базове"],
+["peinarse = …","розчісуватись","голитися","базове"],
+["maquillarse = …","фарбуватись","митися","базове"],
+["quitarse la ropa = …","роздягатись","одягатись","протилежність ponerse"],
+["llamarse = …","зватися","почуватися","¿Cómo te llamas?"],
+["sentirse = …","почуватися","зватися","¿Cómo te sientes?"]
+]},
+{t:"Позиція займенника", lv:1, q:[
+["Займенник reflexivo ставимо…","перед дієсловом","завжди в кінці речення","базове правило"],
+["Voy a ducharme — займенник тут…","приєднаний до інфінітива","стоїть окремо перед voy","ducharme"],
+["Estoy duchándome — займенник тут…","приєднаний до герундіо","стоїть перед estoy","duchándome"],
+["Альтернатива до «Voy a ducharme»:","Me voy a duchar","Voy me a duchar","обидва варіанти правильні"],
+["Альтернатива до «Estoy duchándome»:","Me estoy duchando","Estoy me duchando","обидва варіанти правильні"],
+["З простим дієвідмінюваним дієсловом займенник ставиться…","завжди перед ним","завжди після нього","Me levanto, не Levantome"],
+["З інфінітивом займенник можна…","приєднати в кінці","поставити в середину слова","-me, -te, -se…"],
+["Yo levanto — без se означає…","я піднімаю (щось)","я встаю","no reflexivo!"],
+["Yo me levanto — означає…","я встаю","я піднімаю щось","reflexivo!"],
+["Reflexivo здатне повністю…","змінити значення дієслова","ніяк не вплинути на значення","важлива особливість"]
+]},
+{t:"DOLENCIAS: ME DUELE (однина)", lv:1, q:[
+["Me duele la cabeza — переклад…","У мене болить голова","Мене болять голови","однина: duele"],
+["Me duele + …","іменник в однині","іменник у множині","duele = singular"],
+["Me duele la espalda — переклад…","У мене болить спина","У мене болять спини","однина"],
+["Me duele el estómago — переклад…","У мене болить живіт","У мене болять животи","однина"],
+["Ми НЕ вживаємо «mi cabeza» у цій конструкції, бо…","частина тіла вже зрозуміла з контексту","це граматично заборонено завжди","з правила книги"],
+["Замість присвійного займенника вживаємо…","артикль (la, el, los, las)","нічого не вживаємо","la cabeza, не mi cabeza"],
+["Me duele la garganta — переклад…","У мене болить горло","У мене болять зуби","однина"],
+["Структура Me duele схожа за логікою на дієслово…","gustar","ser","непряме доповнення + дієслово"],
+["Me duele el brazo — переклад…","У мене болить рука","У мене болять руки","однина: el brazo"],
+["Me duele el pie — переклад…","У мене болить нога (ступня)","У мене болять ноги","однина"]
+]},
+{t:"DOLENCIAS: ME DUELEN (множина) і TENER DOLOR DE", lv:1, q:[
+["Me duelen las piernas — переклад…","У мене болять ноги","У мене болить нога","множина: duelen"],
+["Me duelen + …","іменник у множині","іменник в однині","duelen = plural"],
+["Me duelen los ojos — переклад…","У мене болять очі","У мене болить око","множина"],
+["Me duelen las manos — переклад…","У мене болять руки (кисті)","У мене болить рука","множина"],
+["Tengo dolor de espalda — альтернативна структура зі словом…","dolor","duelo","«маю біль»"],
+["Tengo dolor de + parte del cuerpo — тут parte del cuerpo вживається…","без артикля","з артиклем завжди","на відміну від duele/duelen!"],
+["Tengo dolor de cabeza = …","Me duele la cabeza","Me duelen las cabezas","синонімічні структури"],
+["Tengo agujetas означає…","у мене крепатура (після спорту)","у мене голки","розмовний вираз"],
+["Se me cae el pelo означає…","у мене випадає волосся","у мене падає гребінець","розмовний вираз"],
+["Estoy hecho polvo означає…","я виснажений","я запилений","розмовний вираз"]
+]},
+{t:"Словник: голова й обличчя", lv:1, q:[
+["la cabeza = …","голова","шия","базове"],
+["el pelo / el cabello = …","волосся","шкіра","синоніми"],
+["la frente = …","чоло","обличчя","frente ≠ cara!"],
+["la cara / el rostro = …","обличчя","чоло","синоніми"],
+["las cejas = …","брови","вії","обережно, не переплутати!"],
+["las pestañas = …","вії","брови","обережно, не переплутати!"],
+["la nariz = …","ніс","рот","базове"],
+["los labios = …","губи","зуби","базове"],
+["los dientes = …","зуби","язик","базове"],
+["las orejas = …","вуха (зовнішні)","вухо (внутрішнє, oído)","різниця orejas/oído"]
+]},
+{t:"Словник: тулуб", lv:1, q:[
+["el tronco = …","тулуб","гілка дерева","подвійне значення слова"],
+["los hombros = …","плечі","лікті","базове"],
+["el pecho = …","груди","спина","базове"],
+["la espalda = …","спина","живіт","базове"],
+["la cintura = …","талія","стегна","базове"],
+["el estómago / la barriga = …","живіт","спина","синоніми, друге розмовне"],
+["las caderas = …","стегна (таз)","коліна","базове"],
+["el ombligo = …","пупок","лікоть","базове"],
+["el oído = …","вухо (внутрішнє, слух)","вухо (зовнішнє)","на відміну від oreja"],
+["el cuello = …","шия","плече","базове"]
+]},
+// ─────────── ★★ 11–20 ───────────
+{t:"Reflexivo у запереченні та питаннях", lv:1, q:[
+["No me levanto temprano los domingos.","No me levanto temprano","No levanto me temprano","заперечення: no + me + verbo"],
+["¿Te duchas por la mañana o por la noche?","Te duchas","Duchas te","питання зберігає порядок займенника"],
+["No nos acostamos tarde entre semana.","No nos acostamos tarde","No acostamos nos tarde","заперечення"],
+["¿Cómo te llamas?","te llamas","llamas te","стандартне питання"],
+["No se peina antes de dormir.","No se peina","No peina se","заперечення"],
+["¿Os laváis las manos antes de comer?","Os laváis","Laváis os","питання"],
+["No me siento bien hoy.","No me siento bien","No siento me bien","заперечення, sentirse"],
+["¿Se despierta temprano tu hermano?","Se despierta","Despierta se","питання"],
+["No te preocupes — тут preocuparse у формі…","наказовій (imperativo negativo)","звичайній stверджувальній","«не хвилюйся»"],
+["Порядок no + займенник + дієслово діє…","завжди при запереченні","лише в питаннях","базове правило"]
+]},
+{t:"Словник: руки", lv:2, q:[
+["el brazo = …","рука (від плеча до кисті)","кисть руки","загальна назва"],
+["el codo = …","лікоть","зап'ястя","базове"],
+["la muñeca = …","зап'ястя","лялька","омонім! la muñeca = і зап'ястя, і лялька"],
+["la mano = …","кисть руки","палець","базове"],
+["los dedos = …","пальці","нігті","базове"],
+["la uña = …","ніготь","палець","базове"],
+["el pulgar = …","великий палець","мізинець","специфічний палець"],
+["«Зламав зап'ястя» = Se rompió ___.","la muñeca","el pulgar","травма"],
+["la muñeca має два значення: зап'ястя і…","лялька","долоня","омонім, обережно!"],
+["los dedos del pie відрізняються від los dedos тим, що це…","пальці ніг, а не рук","те саме, без різниці","уточнення нижче в тексті"]
+]},
+{t:"Словник: ноги", lv:2, q:[
+["la pierna = …","нога (від стегна до ступні)","ступня","загальна назва"],
+["la rodilla = …","коліно","щиколотка","базове"],
+["el tobillo = …","щиколотка","коліно","базове"],
+["el pie = …","ступня","нога загалом","базове"],
+["los dedos del pie = …","пальці ніг","пальці рук","уточнення"],
+["el talón = …","п'ята","підошва","базове"],
+["«Підвернув щиколотку» = Me torcí ___.","el tobillo","la rodilla","травма"],
+["«Болять коліна» = Me duelen ___.","las rodillas","los talones","множина + артикль"],
+["pierna vs pie — різниця:","pierna = вся нога, pie = ступня","однакові слова","уточнення"],
+["el talón також фігурально в виразі «talón de Aquiles» означає…","слабке місце (ахіллесова п'ята)","сильну сторону","ідіома"]
+]},
+{t:"Словник: внутрішні органи", lv:2, q:[
+["el corazón = …","серце","мозок","базове"],
+["los pulmones = …","легені","нирки","базове"],
+["el estómago = …","шлунок","печінка","базове, повторення з тулуба"],
+["el hígado = …","печінка","серце","базове"],
+["los riñones = …","нирки","легені","базове"],
+["el cerebro = …","мозок","серце","базове"],
+["los huesos = …","кістки","м'язи","базове"],
+["los músculos = …","м'язи","кістки","базове"],
+["«Болить печінка» = Me duele ___.","el hígado","el cerebro","орган"],
+["Внутрішні органи вживаються з дієсловом doler так само, як…","зовнішні частини тіла (з артиклем, без mi)","окремо, із присвійним займенником","загальне правило"]
+]},
+{t:"Словник: дієслова відчуттів", lv:2, q:[
+["respirar = …","дихати","рухатись","базове"],
+["moverse = …","рухатись","дихати","reflexivo!"],
+["doler = …","боліти","торкатись","ключове дієслово уроку"],
+["tocar(se) = …","торкатись (себе)","нюхати","reflexivo можливий"],
+["oler = …","нюхати","смакувати","базове"],
+["saborear = …","смакувати","чути","базове"],
+["estornudar = …","чхати","кашляти","базове"],
+["toser = …","кашляти","сміятись","базове"],
+["sonreír vs reírse — різниця:","sonreír = усміхатись, reírse = сміятись","однакові слова","нюанс"],
+["sentirse bien / mal = …","почуватися добре / погано","виглядати добре / погано","reflexivo"]
+]},
+{t:"Expresiones розмовні", lv:2, q:[
+["Tengo agujetas = …","у мене крепатура","у мене голки в сумці","після спорту"],
+["Se me cae el pelo = …","у мене випадає волосся","у мене падає щось на волосся","розмовний вираз"],
+["Estoy hecho polvo = …","я виснажений","я запилений буквально","переносний вираз"],
+["No me tengo en pie = …","ледь стою на ногах (дуже втомлений)","не маю ноги","переносний вираз"],
+["Me duele hasta el alma = …","болить навіть душа (дуже сильно)","болить лише душа, тіло ні","гіпербола"],
+["Estoy fatal = …","почуваюся жахливо","почуваюся чудово","розмовний вираз"],
+["Me duele todo el cuerpo = …","мене болить усе тіло","у мене болить лише голова","загальний біль"],
+["«Yo sin mi café de la mañana no soy persona» — переклад…","Без ранкової кави я не людина (жарт)","Кава шкідлива для мене","розмовний гумор"],
+["Ці вирази типові для…","розмовної, емоційної іспанської","лише медичних документів","з культ. нотаток"],
+["Розмовні вирази роблять мову…","живішою і природнішою","складнішою для розуміння","практична користь"]
+]},
+{t:"Вправа 1 з книги: обери зворотне дієслово", lv:2, q:[
+["Yo ___ a las siete.","me levanto","levanto","з книги"],
+["Tú ___ los dientes después de comer.","te lavas","lavas","з книги"],
+["Nosotros ___ tarde los fines de semana.","nos acostamos","acostamos","з книги"],
+["Ella ___ muy cansada.","se siente","siente","з книги"],
+["Ellos ___ antes de las once.","se acuestan","acuestan","з книги"],
+["levantarse у 1-й особі множини:","nos levantamos","levantamos nos","базове відмінювання"],
+["ducharse у 3-й особі однини:","se ducha","ducha se","базове відмінювання"],
+["Список дієслів вправи включає levantarse, ducharse, lavarse, vestirse, acostarse і…","sentirse","dormir","з книги"],
+["Ці дієслова описують…","щоденну рутину (rutina diaria)","професійні навички","тема уроку"],
+["Без займенника se ці дієслова б означали дію на…","когось іншого","себе так само","reflexivo обов'язковий"]
+]},
+{t:"Вправа 2 з книги: упорядкуй речення", lv:2, q:[
+["se / levanta / temprano / él →","Él se levanta temprano.","Levanta él se temprano.","з книги"],
+["se / ducha / y / viste →","Se ducha y viste.","Ducha se y viste.","з книги (продовження попереднього підмета)"],
+["desayuna / café / y / pan →","Desayuna café y pan.","Café desayuna pan y.","з книги"],
+["trabaja / ocho / horas →","Trabaja ocho horas.","Ocho trabaja horas.","з книги"],
+["se / acuesta / a / las / once →","Se acuesta a las once.","Acuesta se a las once.","з книги"],
+["Займенник se у стверджувальному реченні стоїть…","перед дієсловом","після дієслова","базовий порядок"],
+["Ця вправа з книги описує…","типовий день (rutina diaria) когось","подорож","модуль 4, вправа 2"],
+["«Se ducha y viste» — тут пропущено повторення слова…","se (перед viste)","y","стилістичне скорочення"],
+["Порядок слів у розповіді про рутину зазвичай…","хронологічний","випадковий","логіка тексту"],
+["Ця вправа тренує…","побудову речень із зворотними дієсловами","переклад ідіом","мета вправи"]
+]},
+{t:"Текст: Un cuerpo con agenda (1)", lv:2, q:[
+["A las siete me despierta el sonido del despertador — тут despierta (без se) означає…","будить (когось/щось будить мене)","прокидаюсь","no reflexivo: el despertador me despierta"],
+["aunque todavía no ___ (levantarse).","me levanto","levanto","reflexivo"],
+["Cinco minutos más tarde ___ (levantarse), ___ (ducharse) con agua templada.","me levanto, me ducho","levanto, ducho","reflexivo"],
+["y me lavo la cara — переклад…","і вмиваю обличчя","і мию посуд","reflexivo"],
+["Después ___ (vestirse) y preparo el desayuno.","me visto","visto","reflexivo"],
+["Trabajo desde casa y paso horas sentado frente al ordenador — переклад «sentado»…","сидячи","стоячи","дієприкметник стану"],
+["a veces me duele la espalda o me duelen los ojos — тут два приклади структури…","me duele (однина) / me duelen (множина)","обидва однина","з граматики уроку"],
+["Intento moverme — переклад…","намагаюся рухатись","намагаюся спати","moverse = reflexivo"],
+["me estiro — переклад…","розтягуюсь","одягаюсь","stretching"],
+["me doy un pequeño paseo por el salón — переклад…","роблю невелику прогулянку по вітальні","готую їжу на кухні","з тексту"]
+]},
+{t:"Текст: Un cuerpo con agenda (2)", lv:2, q:[
+["A mediodía almuerzo algo ligero — переклад «ligero»…","легке (про їжу)","важке (про їжу)","прикметник"],
+["Después descanso un poco o ___ (tumbarse) en el sofá.","me tumbo","tumbo","reflexivo"],
+["Por la tarde vuelvo a trabajar hasta las seis — переклад…","вдень знову працюю до шостої","вранці більше не працюю","з тексту"],
+["Si tengo energía, salgo a caminar — переклад…","якщо маю енергію, виходжу гуляти","якщо не маю енергії, сплю","з тексту"],
+["El movimiento me ayuda a sentirme mejor — переклад…","рух допомагає мені почуватися краще","рух заважає мені спати","sentirse mejor"],
+["Cuando llego a casa, ___ (ducharse) otra vez.","me ducho","ducho","reflexivo"],
+["ceno, veo una serie y finalmente ___ (acostarse).","me acuesto","acuesto","reflexivo"],
+["A veces me duele la cabeza, pero me siento bien — головна ідея цього контрасту:","тіло втомлене, але людина щаслива","людина хвора і нещасна","фінал тексту"],
+["mi cuerpo está cansado, sí, pero feliz de tener un día completo — переклад «feliz de»…","щасливе (тому що)","сумне (через)","прикметник + de"],
+["Головна тема тексту «Un cuerpo con agenda»:","тіло як активний учасник щоденного розкладу","опис хвороби","назва тексту"]
+]},
+{t:"Питання до тексту", lv:2, q:[
+["¿A qué hora se despierta el protagonista?","A las siete","A las nueve","з тексту"],
+["¿Qué hace después de ducharse?","Se viste y prepara el desayuno","Sale de casa inmediatamente","з тексту"],
+["¿Por qué le duele la espalda?","Porque pasa horas sentado frente al ordenador","Porque hace mucho deporte","з тексту"],
+["¿Qué hace para sentirse mejor?","Se levanta, se estira y da un paseo","Se queda sentado todo el día","з тексту"],
+["¿Qué come a mediodía?","Algo ligero, casi siempre una ensalada","Una comida muy pesada","з тексту"],
+["¿Dónde trabaja?","Desde casa","En una oficina","з тексту"],
+["¿Qué hace por la tarde?","Vuelve a trabajar hasta las seis","Duerme toda la tarde","з тексту"],
+["¿Qué hace antes de acostarse?","Se ducha otra vez, cena y ve una serie","Sale a bailar","з тексту"],
+["¿Qué partes del cuerpo menciona?","La espalda, los ojos y la cabeza","Solo las manos","з тексту"],
+["¿Cómo se siente al final del día?","Cansado pero feliz","Triste y enfermo","з тексту"]
+]},
+// ─────────── ★★★ 21–30 ───────────
+{t:"Типові помилки", lv:3, q:[
+["❌ Estoy calor → ✅ …","Tengo calor.","Soy calor.","calor вживається з tener!"],
+["❌ Estoy frío → ✅ …","Tengo frío.","Soy frío.","frío вживається з tener!"],
+["❌ Estoy mareado de cabeza → ✅ …","Me duele la cabeza / Tengo mareo.","Estoy mareo de cabeza.","з культ. нотаток"],
+["❌ Me duele mi cabeza → ✅ …","Me duele la cabeza.","Me duele la mi cabeza.","артикль, не присвійний займенник!"],
+["❌ Levanto a las siete (маючи на увазі «я встаю») → ✅ …","Me levanto a las siete.","Levanto yo a las siete mismo.","без se — інше значення!"],
+["❌ Me duele los pies → ✅ …","Me duelen los pies.","Me duele los pie.","множина вимагає duelen!"],
+["❌ Yo me llamo a María por teléfono (плутанина значень) → «дзвонити» це…","llamar (без se) / llamar por teléfono","llamarse завжди","llamarse = зватися, а не дзвонити!"],
+["❌ Tengo dolor la espalda → ✅ …","Tengo dolor de espalda.","Tengo dolor en espalda mucho.","потрібен прийменник de!"],
+["❌ Me ducho me a las ocho (подвоєний займенник) → ✅ …","Me ducho a las ocho.","Ducho me a las ocho.","займенник лише один раз!"],
+["❌ Se levanta se temprano → ✅ …","Se levanta temprano.","Levanta se se temprano.","займенник лише раз, перед дієсловом!"]
+]},
+{t:"Культура: розклад дня в Іспанії", lv:3, q:[
+["В Іспанії день починається…","пізніше, ніж у більшості країн Європи","раніше, ніж у всій Європі","з культ. нотаток"],
+["Багато людей desayunan (снідають)…","о 8–9 годині","о 5–6 годині","sobre las 8 o 9"],
+["Обідають (almuerzan) зазвичай…","о 14–15 годині","о 11–12 годині","a las 14 o 15"],
+["Вечеряють (cenan)…","після 21 години","до 18 години","después de las 21"],
+["Фраза «Me acuesto tarde» для іспанця означає лягати спати…","після опівночі","о 22:00","культурна норма пізніше, ніж деінде"],
+["«Yo sin mi café de la mañana no soy persona» — це…","гумористичний, поширений жарт","серйозна медична заява","з культ. нотаток"],
+["Пізніший розклад дня в Іспанії пов'язаний з…","культурними традиціями харчування і соціального життя","іншою годинниковою зоною формально","культурна особливість"],
+["Розуміння цього розкладу важливе, щоб…","правильно інтерпретувати фрази про час","знати граматику дієслів","практична причина"],
+["В Іспанії природно й відкрито говорити про…","самопочуття (Estoy fatal, Estoy hecho polvo)","лише погоду","з культ. нотаток"],
+["Підсумок культурної нотатки уроку 21:","іспанський день зсунутий пізніше, і люди відкрито діляться самопочуттям","в Іспанії не прийнято говорити про здоров'я","головний висновок"]
+]},
+{t:"Переклад: обери правильне речення", lv:3, q:[
+["«Я встаю о сьомій»","Me levanto a las siete.","Levanto a las siete.","reflexivo"],
+["«У мене болить голова»","Me duele la cabeza.","Me duele mi cabeza.","артикль, не присвійний"],
+["«У мене болять ноги»","Me duelen las piernas.","Me duele las piernas.","множина"],
+["«Я приймаю душ і одягаюся»","Me ducho y me visto.","Ducho y visto.","reflexivo обов'язковий"],
+["«Мені холодно»","Tengo frío.","Estoy frío.","tener frío!"],
+["«Я виснажений» (розмовно)","Estoy hecho polvo.","Estoy hecho polvos.","ідіома, однина polvo"],
+["«У мене крепатура»","Tengo agujetas.","Tengo agua.","розмовний вираз"],
+["«Він зветься Хуан»","Se llama Juan.","Llama Juan.","llamarse reflexivo"],
+["«У мене болить усе тіло»","Me duele todo el cuerpo.","Me duelen todo el cuerpo.","cuerpo — однина"],
+["«Ми лягаємо спати пізно»","Nos acostamos tarde.","Acostamos tarde.","reflexivo"]
+]},
+{t:"Знайди помилку", lv:3, q:[
+["«Me levanto a las siete» — …","правильно ✓","помилка","✓"],
+["«Levanto a las siete» (маючи на увазі себе) — …","помилка (без se — інший сенс)","правильно","no reflexivo випадково"],
+["«Me duele la cabeza» — …","правильно ✓","помилка","✓"],
+["«Me duele mi cabeza» — …","помилка (без mi)","правильно","артикль, не присвійний"],
+["«Me duelen las piernas» — …","правильно ✓","помилка","✓"],
+["«Me duele las piernas» — …","помилка (duelen)","правильно","множина!"],
+["«Tengo frío» — …","правильно ✓","помилка","✓"],
+["«Estoy frío» — …","помилка (Tengo frío)","правильно","tener, не estar!"],
+["«Se llama María» — …","правильно ✓","помилка","✓"],
+["«Llama María» (значення «зветься») — …","помилка (Se llama)","правильно","llamarse reflexivo"]
+]},
+{t:"Reflexivo змінює значення", lv:3, q:[
+["Yo levanto algo — переклад…","я піднімаю щось","я встаю","без se"],
+["Yo me levanto — переклад…","я встаю","я піднімаю щось","з se!"],
+["Yo lavo el coche — переклад…","я мию машину","я миюся","без se"],
+["Yo me lavo — переклад…","я миюся","я мию когось","з se!"],
+["Duermo al bebé — переклад…","я присипляю (укладаю) дитину","я засинаю","без se"],
+["Me duermo — переклад…","я засинаю","я укладаю когось спати","з se!"],
+["Pongo el libro en la mesa — переклад…","кладу книгу на стіл","одягаюся","без se, ponerse ≠ poner"],
+["Me pongo el abrigo — переклад…","одягаю на себе пальто","кладу пальто на стіл","з se, ponerse"],
+["Головний висновок: se може…","повністю змінити значення дієслова","ніколи нічого не змінити","підсумок теми"],
+["Тому важливо завжди перевіряти…","чи є se і що воно змінює","лише рід іменника","практична порада"]
+]},
+{t:"Артикль з частинами тіла: правило", lv:3, q:[
+["Me duele la cabeza — чому la, а не mi?","бо частина тіла зрозуміла з контексту (me)","бо це помилка, треба mi","правило книги"],
+["Правильно: Me lavo ___ manos.","las","mis","артикль"],
+["Правильно: Me duele ___ espalda.","la","mi","артикль"],
+["Правильно: Se rompió ___ pierna.","la","su","артикль, не присвійний"],
+["Присвійний займенник (mi, tu, su) з частинами тіла зазвичай…","НЕ вживається, коли є зворотний займенник","завжди обов'язковий","ключове правило"],
+["Виняток можливий, коли треба уточнити чиє тіло:","La mano de María está herida (без reflexivo)","завжди без винятків","нюанс"],
+["Me duelen los ojos — чому los, а не mis?","той самий принцип: контекст замінює присвійність","бо ojos завжди без артикля","правило поширюється на всі частини тіла"],
+["Tengo dolor de espalda — тут espalda вживається…","без артикля (інша структура)","з артиклем la","на відміну від duele/duelen!"],
+["Правило поширюється на дії з тілом:","Me lavo la cara, me corto el pelo","Lavo mi cara завжди","типові приклади"],
+["Головне правило одним реченням:","артикль + reflexivo замінює присвійний займенник з частинами тіла","присвійний займенник завжди обов'язковий","підсумок"]
+]},
+{t:"DOLER як GUSTAR: граматична паралель", lv:3, q:[
+["Doler будується граматично так само, як…","gustar","hablar","непряме доповнення + дієслово"],
+["Me gusta el café / Me duele la cabeza — обидва мають структуру…","me + дієслово + іменник (підмет після дієслова)","іменник + дієслово + me","паралель"],
+["Me gustan los libros / Me duelen los pies — множина узгоджується з…","іменником (gustan/duelen), не з me","займенником me","та сама логіка"],
+["A Juan le duele la espalda — тут le відповідає…","a Juan (непряме доповнення)","підмету la espalda","як і з gustar: a mí, a ti, a Juan…"],
+["A mí me duele, a ti te duele, a él le duele — це…","відмінювання за особами непрямого доповнення","дієвідмінювання головного дієслова","doler відмінюється лише як él/ellos!"],
+["Doler відмінюється лише у формах…","3-ї особи однини й множини (duele/duelen)","всіх шести особах повністю","як gustar!"],
+["A los niños les duelen los dientes — переклад…","У дітей болять зуби","Діти болять зубами","непряме доповнення les"],
+["Розуміння паралелі doler-gustar допомагає…","не плутати структуру речення","краще запам'ятати словник тіла","граматична користь"],
+["¿A ti también te duele la cabeza? — переклад…","У тебе теж болить голова?","Ти теж любиш голову?","doler, не gustar, за змістом"],
+["Підсумок: doler, gustar, encantar, interesar — усі належать до групи дієслів з…","непрямим доповненням (me, te, le…)","прямим додатком без винятків","граматична категорія"]
+]},
+{t:"Побудуй речення логічно", lv:3, q:[
+["Я прокидаюся о сьомій, але не встаю одразу →","Me despierto a las siete, pero no me levanto enseguida.","Despierto a las siete, pero no levanto enseguida.","reflexivo"],
+["У мене болить спина через сидячу роботу →","Me duele la espalda por trabajar sentado.","Me duele mi espalda por trabajar sentado.","артикль"],
+["Ми лягаємо спати пізно по вихідних →","Nos acostamos tarde los fines de semana.","Acostamos tarde los fines de semana.","reflexivo"],
+["У мене крепатура після спортзалу →","Tengo agujetas después del gimnasio.","Tengo dolor agujetas después del gimnasio.","розмовний вираз"],
+["Вона почувається дуже втомленою →","Se siente muy cansada.","Siente muy cansada.","reflexivo"],
+["Мені холодно, дай мені светр →","Tengo frío, dame un jersey.","Estoy frío, dame un jersey.","tener frío"],
+["Він голиться щоранку →","Se afeita cada mañana.","Afeita cada mañana.","reflexivo"],
+["У мене болять очі від екрану →","Me duelen los ojos por la pantalla.","Me duele los ojos por la pantalla.","множина duelen"],
+["Вони одягаються швидко і виходять →","Se visten rápido y salen.","Visten rápido y salen.","reflexivo"],
+["Я почуваюся добре сьогодні →","Me siento bien hoy.","Siento bien hoy.","reflexivo, sentirse"]
+]},
+{t:"«Mi rutina diaria» (домашка)", lv:3, q:[
+["Todos los días, ___ (despertarse) a las siete.","me despierto","despierto","reflexivo, з домашки"],
+["Luego ___ (ducharse) y ___ (vestirse).","me ducho, me visto","ducho, visto","reflexivo"],
+["Para la domashka потрібно використати мінімум ___ зворотних дієслів.","6","2","з підручника"],
+["Текст домашки має містити…","8–10 речень","1–2 речення","з підручника"],
+["«Mi cuerpo se queja» — завдання розповісти, яка частина тіла…","болить і чому","найкрасивіша","з домашки"],
+["Опиши, як почуваєшся, коли…","хворий або втомлений","святкуєш день народження","з домашки"],
+["Приклад корисної фрази для домашки: Me duele ___ por trabajar mucho.","la espalda","mi espalda","артикль"],
+["Ще одна корисна фраза: Estoy ___ después de un día largo.","hecho polvo","hecho de polvo","ідіома"],
+["Мета домашки уроку 21 — практика…","зворотних дієслів і лексики тіла в контексті рутини","минулого часу","підсумок"],
+["Los deberes уроку 21 завершуються, як завжди,…","тестовим завданням (link test)","усним іспитом","як в інших уроках"]
+]},
+{t:"Фінальний мікс: усе разом", lv:3, q:[
+["Me levanto a las siete — reflexivo чи ні?","reflexivo","no reflexivo","з займенником me"],
+["Levanto la caja — reflexivo чи ні?","no reflexivo","reflexivo","без se, інший об'єкт"],
+["Me duele la cabeza — форма duele, бо cabeza…","однина","множина","узгодження"],
+["Me duelen los pies — форма duelen, бо pies…","множина","однина","узгодження"],
+["Tengo frío, не Estoy frío — бо…","frío вживається з tener","frío вживається з estar завжди","правило"],
+["Se llama Ana — llamarse означає…","зватися","дзвонити","reflexivo"],
+["Estoy hecho polvo означає…","я виснажений","я запилений буквально","ідіома"],
+["la cara vs el rostro — обидва означають…","обличчя","чоло","синоніми"],
+["Занадовго сидіти → часто болить…","la espalda","el pelo","з тексту"],
+["Урок 21 готово! Espero que ___ (sentirse) muy bien después de esta lección. 💪","te sientas","te sientes","з побажанням, subjuntivo після espero que"]
+]}
+
+];
+// ─── Логіка ───
+let answered = {};
+const grid = document.getElementById('grid');
+const exEl = document.getElementById('ex');
+const homeEl = document.getElementById('home');
+function starsHtml(lv){
+  return '<span class="stars">'+'★'.repeat(lv)+'<span class="off">'+'★'.repeat(3-lv)+'</span></span>';
+}
+function totalCorrect(){ return Object.values(answered).filter(Boolean).length; }
+function exStats(ei){
+  let a=0,c=0;
+  for(let qi=0; qi<10; qi++){ const k=ei+"-"+qi; if(k in answered){a++; if(answered[k])c++;} }
+  return {a,c};
+}
+function refreshHeader(){
+  document.getElementById('gscore').textContent = totalCorrect();
+  document.getElementById('gbar').style.width = (Object.keys(answered).length/300*100)+"%";
+}
+function renderHome(){
+  homeEl.style.display=''; exEl.style.display='none';
+  document.getElementById('htitle').textContent = "MI CUERPO Y MI RUTINA: 30 вправ";
+  grid.innerHTML='';
+  EX.forEach((E,ei)=>{
+    const {a,c}=exStats(ei);
+    const d=document.createElement('div');
+    d.className='lcard';
+    d.innerHTML = `<div class="lnum"><span>ВПРАВА ${ei+1}</span>${starsHtml(E.lv)}</div>
+      <div class="ltitle">${E.t}</div>
+      <div class="lprog ${a===10?'done':''}">${a===0?'Не почато':(a===10?('✓ '+c+' / 10'):(c+' / '+a+' відповіли'))}</div>`;
+    d.onclick=()=>renderEx(ei);
+    grid.appendChild(d);
+  });
+  refreshHeader();
+  window.scrollTo(0,0);
+}
+function shuffle2(correct, wrong){
+  return Math.random()<0.5 ? [[correct,true],[wrong,false]] : [[wrong,false],[correct,true]];
+}
+function renderEx(ei){
+  const E=EX[ei];
+  homeEl.style.display='none'; exEl.style.display='';
+  document.getElementById('htitle').textContent = "Вправа "+(ei+1)+" · "+E.t;
+  let html = `<div class="exhead">
+      <h2>Вправа ${ei+1}. ${E.t} ${starsHtml(E.lv)}</h2>
+      <button class="back" onclick="renderHome()">← До змісту</button>
+    </div>
+    <p class="exsub">10 питань · обери правильний варіант</p>`;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    const opts=shuffle2(Q[1],Q[2]);
+    html += `<div class="q" id="q-${key}">
+      <div class="qtext"><span class="qnum">${qi+1}.</span>${Q[0]}</div>
+      <div class="opts">
+        ${opts.map(o=>`<button class="opt" data-ok="${o[1]}" onclick="pick('${key}',${qi},${ei},this)">${o[0]}</button>`).join('')}
+      </div>
+      <div class="fb" id="fb-${key}"></div>
+    </div>`;
+  });
+  html += `<div class="exresult" id="res-${ei}">
+      <div class="big" id="resbig-${ei}"></div>
+      <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
+      <div class="navbtns">
+        <button class="btn" onclick="retryEx(${ei})">Пройти ще раз</button>
+        ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+        <button class="btn ghost" onclick="renderHome()">До змісту</button>
+      </div>
+    </div>`;
+  exEl.innerHTML=html;
+  E.q.forEach((Q,qi)=>{
+    const key=ei+"-"+qi;
+    if(key in answered) markAnswered(key, ei, Q, answered[key]);
+  });
+  checkFinished(ei);
+  window.scrollTo(0,0);
+}
+function pick(key, qi, ei, btn){
+  if(key in answered) return;
+  const ok = btn.dataset.ok==="true";
+  answered[key]=ok;
+  markAnswered(key, ei, EX[ei].q[qi], ok, btn);
+  refreshHeader();
+  checkFinished(ei);
+}
+function markAnswered(key, ei, Q, ok, clickedBtn){
+  const qEl=document.getElementById('q-'+key);
+  if(!qEl) return;
+  qEl.classList.add(ok?'ok':'bad');
+  qEl.querySelectorAll('.opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==="true") b.classList.add('correct');
+    else if(!ok && b===clickedBtn) b.classList.add('wrong');
+    else if(!ok && !clickedBtn && b.dataset.ok!=="true") b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb-'+key);
+  fb.className='fb '+(ok?'ok':'bad');
+  fb.innerHTML = (ok?'✓ Правильно! ':'✗ Не зовсім. ')+`<span class="h">${Q[3]}</span>`;
+}
+function checkFinished(ei){
+  const {a,c}=exStats(ei);
+  const res=document.getElementById('res-'+ei);
+  if(!res) return;
+  if(a===10){
+    res.style.display='block';
+    document.getElementById('resbig-'+ei).textContent = c+" / 10";
+    document.getElementById('restxt-'+ei).textContent =
+      c===10 ? "¡Perfecto! Бездоганно 🎉" :
+      c>=8 ? "¡Muy bien! Чудовий результат." :
+      c>=6 ? "¡Bien! Переглянь урок у книзі та спробуй ще." :
+      "Повтори урок 21 у книзі — і спробуй знову 💪";
+  } else res.style.display='none';
+}
+function retryEx(ei){
+  for(let qi=0; qi<10; qi++) delete answered[ei+"-"+qi];
+  refreshHeader();
+  renderEx(ei);
+}
+renderHome();
+</script>
+</body>
+</html>
