@@ -513,7 +513,11 @@ function renderEx(ei){
       <div class="fb" id="fb-${key}"></div>
     </div>`;
   });
-  html += `<div class="exresult" id="res-${ei}">
+  html += `<div class="navbtns" style="margin:22px 0">
+      ${ei>0?`<button class="btn ghost" onclick="renderEx(${ei-1})">← Попередня вправа</button>`:''}
+      ${ei<29?`<button class="btn ghost" onclick="renderEx(${ei+1})">Наступна вправа →</button>`:''}
+    </div>
+    <div class="exresult" id="res-${ei}">
       <div class="big" id="resbig-${ei}"></div>
       <div id="restxt-${ei}" style="margin-top:6px;font-size:14px"></div>
       <div class="navbtns">
