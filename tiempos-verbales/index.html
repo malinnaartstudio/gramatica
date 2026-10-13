@@ -265,6 +265,16 @@ main .kicker::before{counter-increment:sec;content:counter(sec,decimal-leading-z
 @media print{.seal,.facts,.band{display:none!important}main>section{width:auto}.endings::before,.endings::after{display:none}}
 @media (max-width:480px){.topbar .brand span{font-size:1.6rem}.topbar .brand img{height:34px;width:auto}}
 @media (max-width:360px){.topbar .brand span{font-size:1.35rem}.topbar .brand img{height:30px}}
+h2{font-family:'Noto Serif Display',Georgia,serif;font-style:italic;font-stretch:62.5%;font-weight:400;font-size:clamp(2.7rem,5.2vw,4.7rem);line-height:1;letter-spacing:0}
+h2 em,.practice h2 em{font-style:italic;font-weight:400}
+.section-head,.practice-grid>div:first-child{position:relative;counter-increment:sec}
+.section-head>div,.practice-grid>div:first-child>*{position:relative;z-index:1}
+main .kicker::before{content:"";display:none}
+.kicker{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase}
+.section-head::after,.practice-grid>div:first-child::after{content:counter(sec,decimal-leading-zero);position:absolute;z-index:0;left:-.03em;top:-.52em;font-family:'Noto Serif Display',Georgia,serif;font-style:italic;font-stretch:62.5%;font-weight:400;font-size:clamp(7rem,15vw,13rem);line-height:1;color:rgba(196,24,74,.085);pointer-events:none;user-select:none}
+.practice-grid>div:first-child::after{color:rgba(255,255,255,.07);top:-.35em}
+@media (max-width:580px){h2{font-size:clamp(2.4rem,11vw,3.2rem)}.section-head::after,.practice-grid>div:first-child::after{font-size:6.2rem;top:-.4em}}
+@media print{.section-head::after,.practice-grid>div:first-child::after{display:none}}
   </style>
 </head>
 <body>
