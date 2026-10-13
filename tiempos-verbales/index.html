@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" href="espanol-ukrainskoyu-assets/logo-sin-fondo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;700&family=Noto+Serif+Display:ital,wdth,wght@1,62.5,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;700&family=Noto+Serif+Display:ital,wdth,wght@1,62.5,400&family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
   <style>
     :root { --ink:#14213d; --navy:#0b1834; --rose:#c6175a; --pink:#f66d9b; --peach:#fff1e9; --paper:#fffdf9; --sand:#f6efe9; --mint:#def5ee; --line:#e8deda; --muted:#637085; --white:#fff; --shadow:0 18px 48px rgba(15,28,57,.12); }
     * { box-sizing:border-box; }
@@ -300,6 +300,41 @@ main .kicker::before{content:"";display:none}
 .footer{background:#0f1d3d;padding:2.2rem 0}
 @media (max-width:760px){.cs-cards{grid-template-columns:minmax(0,1fr)}.cs-card{padding:1.5rem}.cs-btn{width:100%}}
 @media print{.courses{display:none}}
+.contact,.footer{--lserif:"DM Serif Display",Georgia,serif;--lsans:"DM Sans",Arial,sans-serif}
+.contact{padding:clamp(4rem,8vw,6.5rem) 0;background:#f6efe5;color:#263b52;font-family:var(--lsans)}
+.contact-inner{width:min(1080px,92vw);margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(2rem,6vw,5rem);align-items:center}
+.ct-kicker{margin:0 0 1rem;color:var(--rose);font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.contact h2{margin:0 0 1.1rem;max-width:12ch;color:#15365e;font-family:var(--lserif);font-style:normal;font-stretch:100%;font-weight:400;font-size:clamp(2.6rem,5vw,4.2rem);line-height:1.02;letter-spacing:-.02em}
+.ct-text>p:not(.ct-kicker){max-width:44ch;margin:0 0 1rem;color:#4b5a6c;font-size:1.05rem;line-height:1.6}
+.ct-text .ct-author{padding-top:1rem;border-top:1px solid #dccfbf;color:#15365e;font-size:.92rem;font-weight:700}
+.ct-card{padding:1.7rem;border:1px solid #e5dccf;border-radius:6px;background:#fffdf9;box-shadow:0 20px 50px rgba(10,38,71,.12)}
+.ct-card-title{margin:0 0 1rem;color:#15365e;font-family:var(--lserif);font-size:1.55rem;line-height:1.15}
+.ct-method{display:grid;grid-template-columns:38px minmax(0,1fr) 18px;gap:.7rem;align-items:center;padding:.75rem 0;border-top:1px solid #e5e1db;color:#15365e;font-size:.95rem;font-weight:700;text-decoration:none;overflow-wrap:break-word;transition:color .2s}
+.ct-method:hover,.ct-method:focus-visible{color:var(--rose)}
+.ct-method small{display:block;color:#67727e;font-size:.62rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
+.ct-method b{font-size:1.2rem;font-weight:400}
+.ct-icon{display:grid;place-items:center;width:31px;height:31px;border-radius:50%;background:#f7e4e7;color:var(--rose);font-size:1rem}
+.ct-btn{display:flex;align-items:center;justify-content:center;gap:.7rem;width:100%;margin-top:.7rem;padding:1rem 1.4rem;border-radius:99px;font-size:.95rem;font-weight:700;text-decoration:none;transition:background .15s,transform .15s,border-color .15s}
+.ct-btn-main{margin-top:1.2rem;background:var(--rose);color:#fff;box-shadow:0 12px 28px rgba(196,24,74,.3)}
+.ct-btn-main:hover,.ct-btn-main:focus-visible{background:#dc2058;transform:translateY(-2px)}
+.ct-btn-line{border:1px solid #15365e;color:#15365e}
+.ct-btn-line:hover,.ct-btn-line:focus-visible{background:#15365e;color:#fff}
+.footer{padding:2rem 0;background:#0b2445;color:rgba(255,255,255,.82);font-family:var(--lsans)}
+.foot-grid{width:min(1080px,92vw);margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"brand links" "tag copy";gap:1.6rem;align-items:center}
+.footer .brand{white-space:nowrap}
+.footer .brand span{font-size:1.9rem}
+.foot-tag,.foot-copy,.foot-note{margin:0;font-size:.78rem;line-height:1.5}
+.foot-links{display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;font-size:.78rem;font-weight:700}
+.foot-links a{color:rgba(255,255,255,.88);text-decoration:none}
+.foot-links a:hover,.foot-links a:focus-visible{color:#ff9bb7}
+.foot-copy{color:rgba(255,255,255,.6)}
+.foot-note{width:min(1080px,92vw);margin:1.2rem auto 0;padding-top:1rem;border-top:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.55)}
+@media (max-width:860px){.contact-inner{grid-template-columns:minmax(0,1fr)}.contact h2{max-width:none}}
+@media (max-width:560px){.ct-card{padding:1.3rem}.ct-method{font-size:.88rem;gap:.55rem}}
+@media print{.contact{display:none}}
+@media (max-width:360px){.footer .brand span{font-size:1.5rem}}
+.footer .brand{grid-area:brand;justify-self:start}.foot-tag{grid-area:tag}.foot-links{grid-area:links;justify-self:end}.foot-copy{grid-area:copy;justify-self:end}
+@media (max-width:760px){.foot-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"brand" "tag" "links" "copy"}.foot-links,.foot-copy{justify-self:start}}
   </style>
 </head>
 <body>
@@ -388,7 +423,8 @@ main .kicker::before{content:"";display:none}
   </main>
 
   <section class="courses" id="courses" aria-labelledby="courses-title"><div class="courses-inner"><p class="cs-kicker">¿Cuál es el siguiente paso? · Cursos online</p><h2 id="courses-title">Ви знаєте правила.<br><em>Тепер час заговорити іспанською.</em></h2><div class="cs-lead"><p>Ви вже познайомилися з іспанськими часами та правилами їх використання. Але як застосовувати їх у розмові, не плутати закінчення й будувати власні речення?</p><p><strong>Саме для цього створені курси Español українською.</strong> Вивчайте іспанську крок за кроком: від перших слів до впевненішого спілкування. Зрозумілі пояснення українською, практичні вправи, корисна лексика та приклади з повсякденного життя допоможуть не просто зрозуміти граматику, а навчитися використовувати її на практиці.</p></div><div class="cs-cards"><article class="cs-card"><p class="cs-level">Nivel A1</p><h3>Почніть з основ</h3><p class="cs-meta">32 уроки</p><p>Для тих, хто починає вивчати іспанську або хоче систематизувати базові знання.</p><a class="cs-link" href="https://espanol-ukrayinskoiu.kwiga.com/courses/espanol-ukrayinskoiu-nivel-a1" target="_blank" rel="noopener">Переглянути курс <span aria-hidden="true">→</span></a></article><article class="cs-card"><p class="cs-level">Nivel A2</p><h3>Рухайтеся далі</h3><p class="cs-meta">31 урок</p><p>Для тих, хто вже знає основи й хоче розширити словниковий запас, краще розуміти граматику та впевненіше спілкуватися.</p><a class="cs-link" href="https://espanol-ukrayinskoiu.kwiga.com/courses/espanol-ukrayinskoiu-nivel-a2" target="_blank" rel="noopener">Переглянути курс <span aria-hidden="true">→</span></a></article></div><div class="cs-cta"><p class="cs-cta-title">Ваша іспанська починається тут.</p><a class="cs-btn" href="https://espanol-ukrayinskoiu.kwiga.com/ua" target="_blank" rel="noopener">Переглянути курси <span aria-hidden="true">→</span></a><p class="cs-note">Онлайн-навчання · Español українською · платформа Kwiga</p></div></div></section>
-  <footer class="footer"><div class="footer-row" style="width:min(1180px,92vw);margin:auto"><div class="brand"><img src="espanol-ukrainskoyu-assets/logo-sin-fondo.png" alt=""><span>Español <b>українською</b><br><small>MalinnaArtStudio · інтерактивна шпаргалка</small></span></div><nav class="footer-links" aria-label="Посилання"><a href="https://www.etsy.com/es/shop/EspanolUkrainskoyu" target="_blank" rel="noopener">Etsy-магазин</a><a href="https://www.instagram.com/malinnaartstudio" target="_blank" rel="noopener">Instagram</a></nav><button type="button" class="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Нагору</button></div><div class="footer-row" style="width:min(1180px,92vw);margin:1.6rem auto 0"><span>Форми подані для стандартної сучасної іспанської.</span></div></footer>
+  <section class="contact" id="contact" aria-labelledby="contact-title"><div class="contact-inner"><div class="ct-text"><p class="ct-kicker">Ваш наступний крок</p><h2 id="contact-title">Залишилися питання?</h2><p>Напишіть мені — допоможу обрати рівень, формат навчання та тариф із потрібною підтримкою.</p><p class="ct-author">Інна Малош · авторка курсів і підручників Español українською</p></div><div class="ct-card"><p class="ct-card-title">Оберіть зручний спосіб зв’язку</p><a class="ct-method" href="https://t.me/innamalosh" target="_blank" rel="noopener noreferrer"><span class="ct-icon" aria-hidden="true">✈</span><span><small>Telegram</small>@innamalosh</span><b aria-hidden="true">→</b></a><a class="ct-method" href="https://www.instagram.com/malinnaartstudio/" target="_blank" rel="noopener noreferrer"><span class="ct-icon" aria-hidden="true">◎</span><span><small>Instagram</small>@malinnaartstudio</span><b aria-hidden="true">→</b></a><a class="ct-method" href="mailto:malinnaartstudio@gmail.com"><span class="ct-icon" aria-hidden="true">✉</span><span><small>Email</small>malinnaartstudio@gmail.com</span><b aria-hidden="true">→</b></a><a class="ct-method" href="tel:+34611258692"><span class="ct-icon" aria-hidden="true">◔</span><span><small>Телефон</small>+34 611 258 692</span><b aria-hidden="true">→</b></a><a class="ct-btn ct-btn-main" href="https://calendar.app.google/MXkR7vQ7gREp6HYZ8" target="_blank" rel="noopener noreferrer">Записатися на урок <span aria-hidden="true">→</span></a><a class="ct-btn ct-btn-line" href="https://linktr.ee/malinnaartstudio" target="_blank" rel="noopener noreferrer">Усі посилання <span aria-hidden="true">→</span></a></div></div></section>
+  <footer class="footer"><div class="foot-grid"><a class="brand" href="#top"><img src="espanol-ukrainskoyu-assets/logo-sin-fondo.png" alt=""><span>Español <b>українською</b></span></a><p class="foot-tag">Іспанська мова для нового життя, можливостей і впевненості.</p><div class="foot-links"><a href="https://t.me/innamalosh" target="_blank" rel="noopener noreferrer">Telegram</a><a href="https://wa.me/34611258692" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="https://www.instagram.com/malinnaartstudio/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.etsy.com/es/shop/EspanolUkrainskoyu" target="_blank" rel="noopener noreferrer">Etsy</a><a href="https://espanol-ukrayinskoiu.kwiga.com" target="_blank" rel="noopener noreferrer">Kwiga</a></div><p class="foot-copy">© <span data-year>2026</span> Español українською</p></div><p class="foot-note">Форми подані для стандартної сучасної іспанської.</p><script>document.querySelectorAll('[data-year]').forEach(function(e){e.textContent=new Date().getFullYear()})</script></footer>
   <button type="button" class="fab" id="fab" aria-label="Нагору" title="Нагору">↑</button>
 
   <script>
