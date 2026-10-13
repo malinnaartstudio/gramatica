@@ -275,6 +275,20 @@ main .kicker::before{content:"";display:none}
 .practice-grid>div:first-child::after{color:rgba(255,255,255,.07);top:-.35em}
 @media (max-width:580px){h2{font-size:clamp(2.4rem,11vw,3.2rem)}.section-head::after,.practice-grid>div:first-child::after{font-size:6.2rem;top:-.4em}}
 @media print{.section-head::after,.practice-grid>div:first-child::after{display:none}}
+.footer-course{width:min(1180px,92vw);margin:0 auto 2.4rem;padding:0 0 2.4rem;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2rem 3rem;align-items:center;border-bottom:1px solid rgba(251,242,232,.16)}
+.footer-course h2{margin:0 0 .9rem;max-width:20ch;color:#fbf2e8;font-size:clamp(2.2rem,4.2vw,3.6rem);line-height:1}
+.footer-course h2 em{color:#ff9bb7}
+.fc-kicker{margin:0 0 .8rem;color:#ff9bb7;font-size:.7rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase}
+.fc-desc{max-width:62ch;margin:0 0 1.1rem;color:#d9ccc4;font-size:.98rem;line-height:1.65}
+.fc-levels{display:flex;flex-wrap:wrap;gap:.5rem .6rem;margin:0;padding:0;list-style:none}
+.fc-levels li{padding:.4rem .85rem;border:1px solid rgba(251,242,232,.22);border-radius:99px;color:#e9ddd5;font-size:.8rem}
+.fc-levels b{margin-right:.35rem;color:#fff}
+.fc-cta{display:flex;flex-direction:column;align-items:flex-start;gap:.7rem}
+.fc-btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.8rem;border-radius:99px;background:var(--rose);color:#fff;font-size:1rem;font-weight:700;text-decoration:none;box-shadow:0 10px 26px rgba(196,24,74,.38);transition:background .15s,transform .15s}
+.fc-btn:hover,.fc-btn:focus-visible{background:#dc2058;transform:translateY(-2px)}
+.fc-note{color:#a99a93;font-size:.74rem}
+@media (max-width:860px){.footer-course{grid-template-columns:minmax(0,1fr)}.fc-btn{width:100%;justify-content:center}}
+@media print{.footer-course{display:none}}
   </style>
 </head>
 <body>
@@ -362,7 +376,7 @@ main .kicker::before{content:"";display:none}
     </section>
   </main>
 
-  <footer class="footer"><div class="footer-row" style="width:min(1180px,92vw);margin:auto"><div class="brand"><img src="espanol-ukrainskoyu-assets/logo-sin-fondo.png" alt=""><span>Español <b>українською</b><br><small>MalinnaArtStudio · інтерактивна шпаргалка</small></span></div><nav class="footer-links" aria-label="Посилання"><a href="https://www.etsy.com/es/shop/EspanolUkrainskoyu" target="_blank" rel="noopener">Etsy-магазин</a><a href="https://www.instagram.com/malinnaartstudio" target="_blank" rel="noopener">Instagram</a></nav><button type="button" class="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Нагору</button></div><div class="footer-row" style="width:min(1180px,92vw);margin:1.6rem auto 0"><span>Форми подані для стандартної сучасної іспанської.</span></div></footer>
+  <footer class="footer"><div class="footer-course"><div class="fc-text"><p class="fc-kicker">Курси Español українською</p><h2>Вчіть іспанську <em>українською</em></h2><p class="fc-desc">Онлайн-курси іспанської для українців, які живуть в Іспанії або планують переїзд: пояснення рідною мовою, практичні діалоги й реальні життєві ситуації. Ведуча — Інна Малош.</p><ul class="fc-levels"><li><b>Nivel A1</b> 32 уроки</li><li><b>Nivel A2</b> 31 урок</li><li><b>Безкоштовні</b> вступні уроки</li></ul></div><div class="fc-cta"><a class="fc-btn" href="https://espanol-ukrayinskoiu.kwiga.com/ua" target="_blank" rel="noopener">Дізнатися про курс <span aria-hidden="true">→</span></a><span class="fc-note">Сторінка курсів на платформі Kwiga</span></div></div><div class="footer-row" style="width:min(1180px,92vw);margin:auto"><div class="brand"><img src="espanol-ukrainskoyu-assets/logo-sin-fondo.png" alt=""><span>Español <b>українською</b><br><small>MalinnaArtStudio · інтерактивна шпаргалка</small></span></div><nav class="footer-links" aria-label="Посилання"><a href="https://www.etsy.com/es/shop/EspanolUkrainskoyu" target="_blank" rel="noopener">Etsy-магазин</a><a href="https://www.instagram.com/malinnaartstudio" target="_blank" rel="noopener">Instagram</a></nav><button type="button" class="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Нагору</button></div><div class="footer-row" style="width:min(1180px,92vw);margin:1.6rem auto 0"><span>Форми подані для стандартної сучасної іспанської.</span></div></footer>
   <button type="button" class="fab" id="fab" aria-label="Нагору" title="Нагору">↑</button>
 
   <script>
