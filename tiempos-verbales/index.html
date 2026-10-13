@@ -7,6 +7,9 @@
   <title>Іспанські дієслова — повний інтерактивний довідник</title>
   <meta name="theme-color" content="#0b1834">
   <link rel="icon" type="image/png" href="espanol-ukrainskoyu-assets/logo-sin-fondo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
   <style>
     :root { --ink:#14213d; --navy:#0b1834; --rose:#c6175a; --pink:#f66d9b; --peach:#fff1e9; --paper:#fffdf9; --sand:#f6efe9; --mint:#def5ee; --line:#e8deda; --muted:#637085; --white:#fff; --shadow:0 18px 48px rgba(15,28,57,.12); }
     * { box-sizing:border-box; }
@@ -66,6 +69,198 @@
   .irr-list{list-style:none;margin:0;padding:0;display:grid;gap:.45rem;max-width:30rem}.irr-list li{display:grid;grid-template-columns:minmax(0,1fr) 1.5rem minmax(0,1.3fr);align-items:center;gap:.5rem;padding:.55rem .8rem;border-radius:12px;background:var(--sand,#faf6f3)}.irr-inf{font-weight:600;color:#6b7280}.irr-arrow{color:#9ca3af;text-align:center}.irr-form{font-weight:800}.irr-sub{margin:.9rem 0 .5rem;font-weight:700}.irr-sub:first-child{margin-top:0}
   .acc-body .pronouns{margin:.2rem 0 .9rem}.acc-body .pronoun-group h4{text-transform:none;letter-spacing:.02em;font-size:.8rem}@media(max-width:430px){.acc-body .pronouns{grid-template-columns:minmax(0,1fr)}}
   </style>
+  <style id="theme">
+:root{--ink:#2b2226;--navy:#14213d;--rose:#c4184a;--rose-d:#9d1239;--pink:#f08aa8;--peach:#fbeee8;--paper:#fbf7f1;--sand:#f3eadf;--cream:#f7f0e6;--mint:#e8efe6;--line:#e6d9ca;--muted:#6f636a;--white:#fffdfa;--terra:#a9512b;--sea:#2f6a8a;--gold:#86620f;--dark:#2c2427;--shadow:0 18px 44px rgba(70,35,35,.13);--serif:'Playfair Display',Georgia,'Times New Roman',serif;--sans:Montserrat,ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;--azulejo:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23c4184a' stroke-width='1.2'%3E%3Cpath d='M36 8 64 36 36 64 8 36Z'/%3E%3Cpath d='M36 22 50 36 36 50 22 36Z'/%3E%3Ccircle cx='36' cy='36' r='4'/%3E%3C/g%3E%3Cg fill='%23c4184a'%3E%3Ccircle cx='0' cy='0' r='3'/%3E%3Ccircle cx='72' cy='0' r='3'/%3E%3Ccircle cx='0' cy='72' r='3'/%3E%3Ccircle cx='72' cy='72' r='3'/%3E%3C/g%3E%3C/svg%3E")}
+body{font-family:var(--sans);font-size:15px;line-height:1.65;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.005em}
+h2{text-wrap:balance;font-size:clamp(2rem,3.7vw,3.35rem);line-height:1.1;letter-spacing:-.015em}
+h2 em,h1 em{font-style:italic;font-weight:500;color:var(--rose)}
+h3{letter-spacing:0}
+::selection{background:#f9c9d8}
+:focus-visible{outline-color:var(--rose)}
+.topbar{background:rgba(251,247,241,.92);border-bottom:1px solid var(--line)}
+.brand{letter-spacing:0;font-weight:500}
+.brand span{font-family:var(--serif);font-style:italic;font-size:1.28rem;line-height:1.05}
+.brand b{font-weight:500;color:var(--rose)}
+.nav a{position:relative;border-radius:0;padding:.55rem .7rem;color:#5d5057;font-size:.69rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase}
+.nav a::after{content:"";position:absolute;left:.7rem;right:.7rem;bottom:.2rem;height:1.5px;background:var(--rose);transform:scaleX(0);transition:transform .22s}
+.nav a:hover,.nav a.active,.nav a[aria-current="true"]{background:none;color:var(--rose)}
+.nav a:hover::after,.nav a[aria-current="true"]::after{transform:scaleX(1)}
+.progress i{background:linear-gradient(90deg,var(--rose),var(--pink),#f4a261)}
+.hero-copy{max-width:660px}
+.eyebrow{gap:.85rem;margin-bottom:1.2rem;padding:0;border:0;background:none;color:#fff;font-size:.68rem;font-weight:600;letter-spacing:.26em;text-shadow:0 1px 10px rgba(0,0,0,.45)}
+.eyebrow i{width:46px;height:1px;border-radius:0;background:rgba(255,255,255,.75)}
+.hero-grid > .eyebrow::after{content:"";width:46px;height:1px;background:rgba(255,255,255,.75)}
+h1{max-width:660px;text-wrap:balance;margin-bottom:1rem;font-size:clamp(2rem,3.5vw,3.35rem);line-height:1.07;letter-spacing:-.01em;font-weight:500}
+h1 em{color:#ffc4d4}
+.hero p{max-width:500px;font-size:.95rem;font-weight:400;line-height:1.7}
+.btn{padding:.95rem 1.6rem;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
+.btn-primary{background:var(--rose);color:#fff;box-shadow:0 10px 26px rgba(196,24,74,.35)}
+.btn-primary:hover{background:#d61e56}
+.btn-light{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.06);backdrop-filter:blur(3px)}
+.btn-light:hover{background:rgba(255,255,255,.18)}
+.seal{position:absolute;z-index:2;top:2.6rem;right:calc((100% - min(1180px,92vw)) / 2);width:124px;height:124px;transform:rotate(9deg);filter:drop-shadow(0 10px 22px rgba(20,6,25,.35));pointer-events:none}
+.seal svg{width:100%;height:100%;display:block}
+.seal text{font-family:var(--sans)}
+.facts{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem 2.6rem;padding:1.15rem 4vw;background:var(--white);border-bottom:1px solid var(--line);color:#5d5057;font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.facts span{display:inline-flex;align-items:center;gap:.6rem}
+.facts svg{width:21px;height:21px;color:var(--rose);flex:none}
+.facts b{font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.25rem;letter-spacing:0;text-transform:none;color:var(--ink)}
+main{width:auto;max-width:none;margin:0;counter-reset:sec}
+main>section{width:min(1180px,92vw);margin-inline:auto;padding:5rem 0}
+main>section.endings{width:auto;max-width:none;padding:5rem 4vw}
+.section-head{margin-bottom:2.2rem}
+.kicker{display:flex;align-items:center;gap:.8rem;margin-bottom:.8rem;color:var(--rose);font-size:.68rem;font-weight:700;letter-spacing:.22em}
+main .kicker::before{counter-increment:sec;content:counter(sec,decimal-leading-zero) " —";font-family:var(--serif);font-style:italic;font-size:1.15rem;font-weight:500;letter-spacing:0;color:var(--ink)}
+.card{background:var(--white);border:1px solid var(--line);border-radius:22px;box-shadow:0 12px 32px rgba(90,50,40,.06)}
+.card-pad{padding:1.7rem}
+.card h3{font-size:1.5rem;line-height:1.2}
+.how{background:linear-gradient(135deg,#fbe9e4,#fffaf4 70%);border-color:#efd3cb}
+.how{display:flex;flex-direction:column}.how ol{margin-bottom:1.6rem}
+.demo{display:flex;flex-wrap:wrap;align-items:center;gap:.55rem .6rem;margin-top:auto;padding:1rem 1.2rem;border:1px dashed #e0b3c0;border-radius:16px;background:rgba(255,255,255,.72);font-family:var(--serif);font-style:italic;font-size:1.35rem}
+.demo small{flex:0 0 100%;font-family:var(--sans);font-style:normal;font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--rose)}
+.demo i{color:#b4a69b;font-style:normal;font-family:var(--sans);font-size:1rem}
+.demo .end{padding:0 .4rem;border-radius:6px;background:#fbe3ea;color:var(--rose);font-family:var(--sans);font-style:normal;font-weight:700;font-size:1rem}
+.demo .res{font-weight:600}
+#subjunctive .intro-grid{align-items:start}
+.how li{gap:.95rem;align-items:flex-start;padding:.2rem 0}
+.how li::before{flex:0 0 2rem;width:2rem;height:2rem;font-family:var(--serif);font-style:italic;font-size:1.05rem;font-weight:500;box-shadow:0 5px 12px rgba(196,24,74,.3)}
+.chip{padding:.7rem .85rem;border-radius:12px;background:var(--sand);color:#5d5057;font-size:.86rem}
+.chip b{font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.04rem;color:var(--ink)}
+.pronoun-group h4{color:var(--rose);font-size:.64rem;letter-spacing:.2em}
+.inline-tip{margin-top:1.1rem;padding:1rem 1.2rem;border-left:3px solid var(--rose);border-radius:0 12px 12px 0;background:#fcefee;color:#4d4048;font-size:.88rem}
+.searchbox input{padding:.85rem 1.2rem .85rem 2.7rem;border:1px solid var(--line);background:var(--white);font-size:.84rem}
+.searchbox input:focus{border-color:var(--rose);box-shadow:0 0 0 4px #fbe0e8}
+.searchbox::before{top:.5rem}
+.filter-row{gap:.55rem;margin-bottom:1.6rem}
+.filter{padding:.55rem 1rem;border:1px solid var(--line);background:var(--white);color:#5d5057;font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.filter:hover{border-color:var(--rose);background:#fff;color:var(--rose)}
+.filter.is-active{border-color:var(--ink);background:var(--ink);color:#f7f0e6}
+.result-count{font-size:.74rem;letter-spacing:.04em}
+.tense-grid{gap:1.15rem}
+.tense-card{--mood:var(--rose);--mood-bg:#fbe8ee;position:relative;min-height:300px;padding:1.6rem 1.5rem 1.35rem;overflow:hidden}
+.tense-card[data-group="subjunctive"]{--mood:var(--sea);--mood-bg:#e3eff4}
+.tense-card[data-group="imperative"]{--mood:var(--terra);--mood-bg:#f9e7dd}
+.tense-card[data-group="rare"]{--mood:var(--gold);--mood-bg:#f6edd7}
+.tense-card::before{content:"";position:absolute;left:0;top:0;right:0;height:5px;background:var(--mood)}
+.tense-card:hover{transform:translateY(-4px);box-shadow:0 22px 44px rgba(70,35,35,.14)}
+.tense-card.is-selected{border-color:var(--mood);box-shadow:0 0 0 3px var(--mood-bg),var(--shadow)}
+.tag{--mood:var(--rose);display:inline-flex;align-items:center;gap:.5rem;margin-bottom:.9rem;padding:0;border-radius:0;background:none;color:var(--mood);font-size:.64rem;font-weight:700;letter-spacing:.2em}
+.tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--mood)}
+.tag.subj{--mood:var(--sea);background:none;color:var(--mood)}
+.tag.imp{--mood:var(--terra);background:none;color:var(--mood)}
+.tag.rare{--mood:var(--gold);background:none;color:var(--mood)}
+.tense-card h3{margin-bottom:.6rem;font-size:1.6rem;line-height:1.15}
+.tense-card p{margin-bottom:1.1rem;color:var(--muted);font-size:.84rem;line-height:1.6}
+.example{padding:.95rem 1.05rem;border-left:3px solid var(--mood);border-radius:0 14px 14px 0;background:var(--mood-bg);font-size:.8rem}
+.ex-es{display:block;font-family:var(--serif);font-style:italic;font-size:1.12rem;line-height:1.3;color:var(--ink)}
+.ex-uk{display:block;margin-top:.25rem;color:var(--muted);font-size:.78rem}
+.open-detail{margin-top:1.1rem;color:var(--mood);font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.open-detail:hover{text-decoration:none;letter-spacing:.2em}
+.detail{border-radius:24px;border-color:var(--line);background:var(--white);box-shadow:var(--shadow)}
+.detail-top{padding:1.6rem 1.7rem;background:linear-gradient(120deg,#fbe9e4,var(--white) 75%)}
+.detail-top h3{margin:0 0 .3rem;font-size:2.1rem;font-style:italic}
+.close{background:#fff;border:1px solid var(--line);color:var(--rose)}
+.detail-body{padding:1.6rem;gap:1.4rem}
+.note{background:var(--mint);color:#35523f;border-radius:14px}
+.formula{background:var(--dark);color:#f7f0e6;border-radius:12px}
+.formula .auxiliary{color:#ff9bb7}
+.guide-item{border-radius:14px;background:#fdf9f3}
+.guide-item b{color:#8a7a72;letter-spacing:.14em}
+.guide-item.markers{border-color:#efc4d0;background:#fcecef}
+.detail-nav{background:#fdf9f3}
+.detail-nav button{font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.table-wrap{border-radius:16px;border-color:var(--line);background:var(--white)}
+.gram-table{font-size:.86rem}
+.gram-table th{padding:.85rem 1rem;background:var(--sand);color:#7a6a62;font-size:.64rem;font-weight:700;letter-spacing:.16em;border-bottom:1px solid var(--line)}
+.gram-table td{padding:.8rem 1rem;border-bottom:1px solid #f0e6da}
+.gram-table tbody tr:nth-child(even) td{background:#fdf9f3}
+.gram-table td:first-child{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.02rem;color:var(--ink)}
+.gram-table code,.ending{padding:.02em .24em;border-radius:5px;background:#fbe3ea;color:var(--rose);font-family:inherit;font-weight:700}
+.cell-form{font-weight:500}
+.endings{position:relative;isolation:isolate;background:none;box-shadow:none;clip-path:none}
+.endings::before{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(180deg,rgba(247,240,230,.6),var(--cream) 340px),var(--azulejo) 0 0/72px 72px;background-color:var(--cream);opacity:1}
+.endings::after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(180deg,var(--paper) 0,rgba(251,247,241,.0) 120px,rgba(247,240,230,.92) 420px,var(--cream) 100%)}
+.endings .section-inner{width:min(1180px,92vw)}
+.tab-list,.time-nav{gap:.5rem}
+.tab{padding:.7rem 1.2rem;border:1px solid var(--line);border-radius:99px;background:var(--white);color:#5d5057;font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.tab:hover{border-color:var(--rose);color:var(--rose)}
+.tab[aria-selected="true"]{border-color:var(--ink);background:var(--ink);color:#f7f0e6}
+.time-nav{padding:.5rem;border:1px solid var(--line);border-radius:16px;background:rgba(255,253,250,.8)}
+.time-nav button{border-radius:11px;padding:.6rem .9rem;color:#6f636a;font-size:.74rem;font-weight:600}
+.time-nav button.is-active{background:var(--white);color:var(--rose);box-shadow:0 4px 12px rgba(80,40,40,.1)}
+.panel h3{font-size:1.9rem;font-style:italic}
+.panel-subtitle{color:var(--muted)}
+.form-card{padding:1.6rem}
+.form-card h3{margin:.1rem 0 .55rem;font-size:1.75rem}
+.form-card p{font-size:.84rem}
+.form-build{gap:.55rem;margin-top:1.3rem}
+.form-build-row{padding:.65rem .8rem;border-radius:12px;background:var(--sand);font-size:.84rem}
+.form-ending{justify-self:start;padding:.05rem .4rem;border-radius:6px;background:#fbe3ea;color:var(--rose);font-weight:700}
+.form-result{font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.2rem}
+.form-plus{color:#b4a69b}
+.form-card code{color:var(--rose)}
+.accordions details{border-radius:16px;border-color:var(--line);background:var(--white)}
+.accordions summary{padding:1.15rem 1.35rem;color:var(--ink);font-family:var(--serif);font-size:1.15rem;font-weight:500}
+.accordions summary::after{display:grid;place-items:center;width:1.7rem;height:1.7rem;border-radius:50%;background:#fbe3ea;color:var(--rose);font-family:var(--sans);font-size:1.1rem;line-height:1}
+.acc-body{padding:0 1.35rem 1.35rem}
+.irr-list li{border-radius:12px;background:var(--sand)}
+.irr-inf{font-family:var(--serif);font-style:italic;font-size:1.02rem;color:var(--ink)}
+.irr-form{font-weight:700}
+.irr-sub{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--rose)}
+.verb-picker{padding:1.2rem;gap:.55rem}
+.verb-btn{padding:.7rem .65rem;border-radius:12px;font-family:var(--serif);font-style:italic;font-size:1.1rem;font-weight:500;color:var(--ink)}
+.verb-btn small{font-family:var(--sans);font-style:normal;font-size:.68rem}
+.verb-btn:hover,.verb-btn.is-active{border-color:var(--rose);background:#fbe8ee;color:var(--rose-d)}
+.verb-panel{padding:1.8rem}
+.verb-panel-head h3{font-size:2.6rem;font-style:italic;line-height:1}
+.verb-panel-head span{font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.mini{border-radius:14px;background:var(--sand)}
+.mini b{letter-spacing:.14em}
+.mini span{font-weight:600}
+.conjugation details{border-radius:14px}
+.conjugation summary{font-family:var(--serif);font-size:1.05rem;font-weight:500}
+.band{position:relative;isolation:isolate;display:grid;place-items:center;min-height:clamp(230px,24vw,330px);padding:3rem 6vw;overflow:hidden;color:#fff;text-align:center;background:linear-gradient(180deg,#171a45 0%,#52296b 30%,#b3224f 62%,#ee8a5a 88%,#f6b27e 100%)}
+.band::before{content:"";position:absolute;z-index:-1;inset:0;background:var(--azulejo) 0 0/72px 72px;opacity:.16;mix-blend-mode:soft-light}
+.band small{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:1rem;font-size:.68rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;opacity:.92}
+.band small::before,.band small::after{content:"";width:clamp(28px,6vw,70px);height:1px;background:rgba(255,255,255,.7)}
+.band p{margin:0;font-family:var(--serif);font-style:italic;font-size:clamp(2rem,5vw,4rem);font-weight:400;line-height:1.1;letter-spacing:-.01em;text-shadow:0 4px 24px rgba(20,5,30,.35)}
+.band p em{color:#ffd0dc}
+.band p i{margin:0 .15em;opacity:.7;font-style:normal}
+.band .tr{display:block;margin-top:.9rem;font-family:var(--sans);font-style:normal;font-size:.82rem;letter-spacing:.06em;opacity:.9;text-shadow:none}
+.practice{position:relative;isolation:isolate;overflow:hidden;padding:clamp(1.8rem,5vw,3.6rem);border-radius:28px;background:var(--dark);box-shadow:var(--shadow)}
+.practice::before{content:"";position:absolute;z-index:-1;inset:0;background:var(--azulejo) 0 0/72px 72px;opacity:.07}
+.practice::after{content:"";position:absolute;z-index:-1;right:-120px;top:-120px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(196,24,74,.5),rgba(196,24,74,0) 70%)}
+.practice .kicker{color:#ff9bb7}
+.practice .kicker::before{color:#f7f0e6}
+.practice h2{margin-bottom:.9rem;color:#fbf2e8;font-size:clamp(1.9rem,3.2vw,2.9rem)}
+.practice h2 em{color:#ff9bb7}
+.practice p{color:#dccfc8}
+.quiz-card{padding:1.5rem;border:1px solid rgba(255,255,255,.14);border-radius:20px;background:rgba(255,248,240,.07)}
+.quiz-card small{font-size:.64rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#ff9bb7}
+.quiz-prompt{font-family:var(--serif);font-style:italic;font-size:1.5rem;font-weight:500;color:#fff}
+.answer-row input{border-radius:99px;padding:.8rem 1.1rem;background:#fffaf4}
+.answer-row .btn{padding:.75rem 1.1rem}
+.new-question{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:#ffadc5}
+.footer{margin-top:0;padding:3rem 0;border:0;background:var(--dark);color:#cdbfb8;font-size:.78rem}
+.footer .brand{min-width:0;max-width:100%;color:#fbf2e8}
+.footer .brand span{font-size:1.4rem}
+.footer .brand small{font-family:var(--sans);font-style:normal;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#a99a93}
+.footer .brand b{color:#ff9bb7}
+.footer-links{display:flex;gap:1.4rem}
+.footer-links a{color:#f1e4dc;font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(255,155,183,.6);padding-bottom:.15rem}
+.footer-links a:hover{color:#ff9bb7}
+.to-top{background:rgba(255,255,255,.1);color:#f7f0e6;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase}
+.fab{background:var(--rose)}
+.empty{border-color:#dccabc}
+@media (max-width:1240px){.nav a{padding:.5rem .46rem;letter-spacing:.07em;font-size:.63rem}.nav a::after{left:.46rem;right:.46rem}}
+@media (max-width:1040px){.nav{display:none;position:absolute;top:66px;right:.8rem;left:.8rem;flex-wrap:wrap;padding:.6rem;border:1px solid var(--line);border-radius:16px;background:var(--white);box-shadow:var(--shadow)}.nav.is-open{display:flex}.nav-toggle{display:block}.nav a{padding:.65rem .8rem;font-size:.68rem;letter-spacing:.1em}.nav a::after{display:none}.nav a[aria-current="true"]{background:#fbe8ee}}
+@media (max-width:1180px){.seal{width:108px;height:108px}}
+@media (max-width:900px){main>section{padding:4.4rem 0}main>section.endings{padding:4.4rem 4vw}.footer-row{flex-wrap:wrap}}
+@media (max-width:860px){.seal{top:.9rem;right:4vw;width:84px;height:84px}.hero-grid > .eyebrow::after{display:none}.facts{gap:.5rem 1.6rem;padding:1rem 4vw;font-size:.62rem}}
+@media (max-width:580px){h2{font-size:clamp(1.8rem,8vw,2.3rem)}h1{font-size:clamp(1.9rem,8vw,2.4rem)}.card-pad{padding:1.3rem}.tense-card{min-height:0}.band{min-height:230px}.footer-links{flex-wrap:wrap}.verb-panel-head h3{font-size:2.1rem}.nav a::after{display:none}.nav a{letter-spacing:.1em;font-size:.7rem}}
+@media print{.seal,.facts,.band{display:none!important}main>section{width:auto}.endings::before,.endings::after{display:none}}
+  </style>
 </head>
 <body>
   <a class="skip" href="#content">Перейти до змісту</a>
@@ -80,42 +275,51 @@
 
   <div id="top" class="hero">
     <div class="hero-grid">
-      <div class="eyebrow"><i></i> Український довідник</div>
+      <div class="eyebrow"><i></i> Інтерактивний довідник</div>
       <div class="hero-copy">
-        <h1>Іспанські дієслова — граматика без хаосу</h1>
+        <h1>Іспанські дієслова — <em>граматика без хаосу</em></h1>
         <p>Від інфінітива й герундія до умовного способу та всіх ключових форм <i>subjuntivo</i>. Шукайте, фільтруйте, розгортайте таблиці й звіряйтеся з прикладами.</p>
         <div class="hero-actions"><a class="btn btn-primary" href="#map">Почати з карти часів ↓</a><a class="btn btn-light" href="#endings">Шпаргалка закінчень</a></div>
       </div>
-      <aside class="hero-stat" aria-label="Зміст довідника"><strong>18+</strong><span>особових форм і способів<br>у одному місці</span></aside>
     </div>
+    <div class="seal" aria-hidden="true"><svg viewBox="0 0 140 140"><defs><path id="sealring" d="M70 70m-49 0a49 49 0 1 1 98 0a49 49 0 1 1 -98 0"/></defs><circle cx="70" cy="70" r="68" fill="#c4184a"/><circle cx="70" cy="70" r="63" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1"/><circle cx="70" cy="70" r="37" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1"/><text fill="#fff" font-size="9.4" font-weight="700" letter-spacing="2.2"><textPath href="#sealring" startOffset="0" textLength="305" lengthAdjust="spacing">ІНТЕРАКТИВНИЙ ДОВІДНИК • 16 ЧАСІВ • </textPath></text><text x="70" y="69" text-anchor="middle" fill="#fff" font-family="Playfair Display,Georgia,serif" font-style="italic" font-size="21" font-weight="500">Verbos</text><text x="70" y="86" text-anchor="middle" fill="#fff" font-size="7" font-weight="600" letter-spacing="1.8">ESPAÑOL</text></svg></div>
+  </div>
+
+  <div class="facts" aria-label="Що всередині">
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b>16</b> часів і способів</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M3.5 10h17M9.5 10v9.5"/></svg><b>15</b> таблиць закінчень</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.4 5.6L20 9.5l-4.3 3.9 1.2 5.9L12 16.4 7.1 19.3l1.2-5.9L4 9.5l5.6-.9z"/></svg><b>14</b> неправильних дієслів</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16.5 4.5a2 2 0 013 3L8 19z"/><path d="M14 7l3 3"/></svg>міні-практика</span>
   </div>
 
   <main id="content" tabindex="-1">
     <section id="start">
-      <div class="section-head"><div><p class="kicker">Як читати таблиці</p><h2>Одна логіка — багато форм</h2></div></div>
+      <div class="section-head"><div><p class="kicker">Як читати таблиці</p><h2>Одна логіка — <em>багато форм</em></h2></div></div>
       <div class="intro-grid">
-        <article class="card card-pad how"><h3>Швидкий маршрут</h3><ol><li><span><b>Відокремте основу.</b> У <i>hablar</i> це <b>habl-</b>; закінчення <b>-ar</b> прибираємо.</span></li><li><span><b>Оберіть час і спосіб.</b> Починайте з presente та pretérito indefinido.</span></li><li><span><b>Додайте закінчення.</b> Для <i>-ar</i> і <i>-er/-ir</i> вони часто різні.</span></li><li><span><b>Перевірте виняток.</b> Зміна голосної чи особлива основа можуть з’явитися лише в частині форм.</span></li></ol></article>
+        <article class="card card-pad how"><h3>Швидкий маршрут</h3><ol><li><span><b>Відокремте основу.</b> У <i>hablar</i> це <b>habl-</b>; закінчення <b>-ar</b> прибираємо.</span></li><li><span><b>Оберіть час і спосіб.</b> Починайте з presente та pretérito indefinido.</span></li><li><span><b>Додайте закінчення.</b> Для <i>-ar</i> і <i>-er/-ir</i> вони часто різні.</span></li><li><span><b>Перевірте виняток.</b> Зміна голосної чи особлива основа можуть з’явитися лише в частині форм.</span></li></ol><div class="demo"><small>Приклад</small><span>hablar</span><i>→</i><span>habl-</span><i>+</i><span class="end">-o</span><i>=</i><span class="res">hablo</span></div></article>
         <article class="card card-pad"><h3>Займенники, які побачите в таблицях</h3><div class="pronouns"><div class="pronoun-group"><h4>Однина</h4><div class="chip"><b>yo</b> — я</div><div class="chip"><b>tú</b> — ти</div><div class="chip"><b>él</b> — він</div><div class="chip"><b>ella</b> — вона</div></div><div class="pronoun-group"><h4>Множина</h4><div class="chip"><b>nosotros / nosotras</b> — ми</div><div class="chip"><b>vosotros / vosotras</b> — ви <span class="muted">(Іспанія)</span></div><div class="chip"><b>ellos</b> — вони</div><div class="chip"><b>ellas</b> — вони</div></div></div><p class="inline-tip"><b>Форми ввічливості:</b> <i>usted</i> відмінюється як <i>él / ella</i>, а <i>ustedes</i> — як <i>ellos / ellas</i>. В Іспанії <i>vosotros</i> — звичне неформальне «ви».</p></article>
       </div>
     </section>
 
     <section id="map">
-      <div class="section-head"><div><p class="kicker">Орієнтир</p><h2>Карта форм і часів</h2></div><label class="searchbox"><input id="search" type="search" autocomplete="off" placeholder="Напр., pasado, futuro, умовний…" aria-label="Пошук часу або прикладу"></label></div>
+      <div class="section-head"><div><p class="kicker">Орієнтир</p><h2>Карта <em>форм і часів</em></h2></div><label class="searchbox"><input id="search" type="search" autocomplete="off" placeholder="Напр., pasado, futuro, умовний…" aria-label="Пошук часу або прикладу"></label></div>
       <div class="filter-row" role="group" aria-label="Фільтр форм"><button class="filter is-active" type="button" aria-pressed="true" data-filter="all">Усі</button><button class="filter" type="button" aria-pressed="false" data-filter="indicative">Indicativo</button><button class="filter" type="button" aria-pressed="false" data-filter="subjunctive">Subjuntivo</button><button class="filter" type="button" aria-pressed="false" data-filter="imperative">Imperativo</button><button class="filter" type="button" aria-pressed="false" data-filter="rare">Рідковживані</button><span class="result-count" id="resultCount" role="status" aria-live="polite"></span></div>
       <div id="tenseGrid" class="tense-grid"></div>
       <div id="detail" class="detail" role="region" aria-label="Деталі часу"></div>
     </section>
 
+    <div class="band" aria-hidden="true"><div><small>Основа + закінчення</small><p>habl <i>+</i> <em>o</em> <i>=</i> hablo</p><span class="tr">Так працює кожна форма в таблицях нижче</span></div></div>
+
     <section id="endings" class="endings">
       <div class="section-inner">
-        <div class="section-head"><div><p class="kicker">Конструктор форм</p><h2>Регулярні закінчення</h2></div></div>
+        <div class="section-head"><div><p class="kicker">Конструктор форм</p><h2>Регулярні <em>закінчення</em></h2></div></div>
         <div class="tab-list" role="tablist" aria-label="Виберіть групу часу"><button class="tab" role="tab" aria-selected="true" data-tab="present">Теперішній</button><button class="tab" role="tab" aria-selected="false" data-tab="past">Минулі</button><button class="tab" role="tab" aria-selected="false" data-tab="future">Майбутнє й умовний</button><button class="tab" role="tab" aria-selected="false" data-tab="subj">Subjuntivo</button></div>
         <div id="tabPanels" aria-live="off"></div>
       </div>
     </section>
 
     <section id="forms">
-      <div class="section-head"><div><p class="kicker">Неособові форми</p><h2>Інфінітив, герундій, дієприкметник</h2></div></div>
+      <div class="section-head"><div><p class="kicker">Неособові форми</p><h2>Інфінітив, герундій, <em>дієприкметник</em></h2></div></div>
       <div class="forms-grid">
         <article class="card form-card"><span class="tag">Infinitivo</span><h3>Інфінітив</h3><p>Словникова форма; після <i>quiero, puedo, voy a</i> часто стоїть саме вона.</p><div class="form-build"><div class="form-build-row"><span class="form-stem">habl</span><span class="form-plus">+</span><span class="form-ending">-ar</span><span class="form-plus">→</span><span class="form-result">hablar</span></div><div class="form-build-row"><span class="form-stem">com</span><span class="form-plus">+</span><span class="form-ending">-er</span><span class="form-plus">→</span><span class="form-result">comer</span></div><div class="form-build-row"><span class="form-stem">viv</span><span class="form-plus">+</span><span class="form-ending">-ir</span><span class="form-plus">→</span><span class="form-result">vivir</span></div></div></article>
         <article class="card form-card"><span class="tag">Gerundio</span><h3>Герундій</h3><p>З <i>estar</i> утворює дію в процесі: <i>estoy leyendo</i>.</p><div class="form-build"><div class="form-build-row"><span class="form-stem">habl</span><span class="form-plus">+</span><span class="form-ending">-ando</span><span class="form-plus">→</span><span class="form-result">hablando</span></div><div class="form-build-row"><span class="form-stem">com</span><span class="form-plus">+</span><span class="form-ending">-iendo</span><span class="form-plus">→</span><span class="form-result">comiendo</span></div><div class="form-build-row"><span class="form-stem">viv</span><span class="form-plus">+</span><span class="form-ending">-iendo</span><span class="form-plus">→</span><span class="form-result">viviendo</span></div></div></article>
@@ -126,22 +330,24 @@
     </section>
 
     <section id="irregular">
-      <div class="section-head"><div><p class="kicker">Винятки без паніки</p><h2>Найуживаніші неправильні дієслова</h2></div></div>
+      <div class="section-head"><div><p class="kicker">Винятки без паніки</p><h2>Найуживаніші <em>неправильні</em> дієслова</h2></div></div>
       <div class="irregular-layout"><div class="card verb-picker" id="verbPicker" aria-label="Виберіть дієслово"></div><article class="card verb-panel" id="verbPanel" aria-live="polite"></article></div>
       <p class="inline-tip"><b>Секрет:</b> «неправильне» не означає хаотичне. Для майбутнього й умовного достатньо запам’ятати особливу основу (<i>tendr-, podr-, har-, dir-</i>), а закінчення лишаються регулярними.</p>
     </section>
 
+    <div class="band" aria-hidden="true"><div><small>Subjuntivo</small><p>Ojalá que <em>lo entiendas</em> todo</p><span class="tr">Сподіваюся, ти все зрозумієш</span></div></div>
+
     <section id="subjunctive">
-      <div class="section-head"><div><p class="kicker">Subjuntivo</p><h2>Спосіб бажання, сумніву й оцінки</h2></div></div>
+      <div class="section-head"><div><p class="kicker">Subjuntivo</p><h2>Спосіб <em>бажання</em>, сумніву й оцінки</h2></div></div>
       <div class="intro-grid"><article class="card card-pad"><h3>Коли він потрібен?</h3><p>Не для «часу», а для ставлення мовця до дії: бажання, сумнів, емоція, оцінка, мета, умова. Часто після <i>que</i> і двох різних діячів.</p><div class="accordions"><details open><summary>Presente de subjuntivo — закінчення</summary><div class="acc-body"><p><i>-ar</i> бере «e»-закінчення, <i>-er/-ir</i> — «a»-закінчення:</p><div class="pronouns"><div class="pronoun-group"><h4>-ar → hablar</h4><div class="chip"><b>yo</b> — habl<span class="ending">e</span></div><div class="chip"><b>tú</b> — habl<span class="ending">es</span></div><div class="chip"><b>él / ella</b> — habl<span class="ending">e</span></div><div class="chip"><b>nosotros/as</b> — habl<span class="ending">emos</span></div><div class="chip"><b>vosotros/as</b> — habl<span class="ending">éis</span></div><div class="chip"><b>ellos / ellas</b> — habl<span class="ending">en</span></div></div><div class="pronoun-group"><h4>-er / -ir → comer, vivir</h4><div class="chip"><b>yo</b> — com<span class="ending">a</span></div><div class="chip"><b>tú</b> — com<span class="ending">as</span></div><div class="chip"><b>él / ella</b> — com<span class="ending">a</span></div><div class="chip"><b>nosotros/as</b> — com<span class="ending">amos</span></div><div class="chip"><b>vosotros/as</b> — com<span class="ending">áis</span></div><div class="chip"><b>ellos / ellas</b> — com<span class="ending">an</span></div></div></div><p><i>Quiero que <b>vengas</b>.</i> — Я хочу, щоб ти прийшов/-ла.<br><i>Es posible que <b>llueva</b>.</i> — Можливо, піде дощ.</p></div></details><details><summary>Imperfecto de subjuntivo — закінчення</summary><div class="acc-body"><p>Візьміть форму <i>ellos</i> indefinido, заберіть <span class="ending">-ron</span> і додайте закінчення: <i>vinieron → vinie- → viniera</i>.</p><div class="pronouns"><div class="pronoun-group"><h4>Однина</h4><div class="chip"><b>yo</b> — vinie<span class="ending">ra</span></div><div class="chip"><b>tú</b> — vinie<span class="ending">ras</span></div><div class="chip"><b>él / ella</b> — vinie<span class="ending">ra</span></div></div><div class="pronoun-group"><h4>Множина</h4><div class="chip"><b>nosotros/as</b> — vinié<span class="ending">ramos</span></div><div class="chip"><b>vosotros/as</b> — vinie<span class="ending">rais</span></div><div class="chip"><b>ellos / ellas</b> — vinie<span class="ending">ran</span></div></div></div><p><i>Quería que <b>vinieras</b>.</i> — Я хотів/-ла, щоб ти прийшов/-ла.<br><i>Si <b>tuviera</b> tiempo…</i> — Якби я мав/-ла час…</p></div></details><details><summary>Складені форми</summary><div class="acc-body"><p>Допоміжне <i>haber</i> у subjuntivo + дієприкметник (<i>hablado, comido, vivido</i>). Форма з <i>hubiese</i> — варіант до <i>hubiera</i>.</p><div class="pronouns"><div class="pronoun-group"><h4>Perfecto: haya + дієприкметник</h4><div class="chip"><b>yo</b> — hay<span class="ending">a</span> + habl<span class="ending">ado</span></div><div class="chip"><b>tú</b> — hay<span class="ending">as</span> + habl<span class="ending">ado</span></div><div class="chip"><b>él / ella</b> — hay<span class="ending">a</span> + habl<span class="ending">ado</span></div><div class="chip"><b>nosotros/as</b> — hay<span class="ending">amos</span> + habl<span class="ending">ado</span></div><div class="chip"><b>vosotros/as</b> — ha<span class="ending">yáis</span> + habl<span class="ending">ado</span></div><div class="chip"><b>ellos / ellas</b> — hay<span class="ending">an</span> + habl<span class="ending">ado</span></div></div><div class="pronoun-group"><h4>Pluscuamperfecto: hubiera + дієприкметник</h4><div class="chip"><b>yo</b> — hubie<span class="ending">ra</span> + habl<span class="ending">ado</span></div><div class="chip"><b>tú</b> — hubie<span class="ending">ras</span> + habl<span class="ending">ado</span></div><div class="chip"><b>él / ella</b> — hubie<span class="ending">ra</span> + habl<span class="ending">ado</span></div><div class="chip"><b>nosotros/as</b> — hubié<span class="ending">ramos</span> + habl<span class="ending">ado</span></div><div class="chip"><b>vosotros/as</b> — hubie<span class="ending">rais</span> + habl<span class="ending">ado</span></div><div class="chip"><b>ellos / ellas</b> — hubie<span class="ending">ran</span> + habl<span class="ending">ado</span></div></div></div><p><i>Me alegra que <b>hayas venido</b>.</i> — Рада/радий, що ти прийшов/-ла.<br><i>Ojalá <b>hubieras venido</b>.</i> — Шкода, що ти не прийшов/-ла / Якби ж ти прийшов/-ла.</p></div></details></div></article><article class="card card-pad"><h3>Найкорисніші сигнали</h3><div class="pronouns"><div class="chip"><b>quiero que</b><br>я хочу, щоб</div><div class="chip"><b>es importante que</b><br>важливо, щоб</div><div class="chip"><b>dudo que</b><br>сумніваюся, що</div><div class="chip"><b>no creo que</b><br>не вважаю, що</div><div class="chip"><b>para que</b><br>щоб, з метою</div><div class="chip"><b>antes de que</b><br>перш ніж</div><div class="chip"><b>ojalá</b><br>якби ж / сподіваюся</div><div class="chip"><b>cuando + subjuntivo</b><br>коли (про майбутнє)</div></div><p class="inline-tip"><b>Контраст:</b> <i>Creo que viene</i> (я вважаю, що він приходить — indicativo), але <i>No creo que venga</i> (не думаю, що він прийде — subjuntivo).</p></article></div>
     </section>
 
     <section id="practice">
-      <div class="practice"><div class="practice-grid"><div><p class="kicker">Мініпрактика</p><h2>Перевірте себе за 30 секунд</h2><p>Запишіть форму дієслова, не всю фразу. Наголоси не обов’язкові для перевірки, але в реальному письмі вони важливі.</p></div><div class="quiz-card"><small id="quizLabel">Форма</small><div class="quiz-prompt" id="quizPrompt"></div><div class="answer-row"><input id="quizAnswer" aria-label="Ваша відповідь" autocomplete="off"><button class="btn btn-primary" id="checkAnswer" type="button">Перевірити</button></div><p class="feedback" id="feedback"></p><button class="new-question" id="newQuestion" type="button">Інше запитання ↻</button></div></div></div>
+      <div class="practice"><div class="practice-grid"><div><p class="kicker">Мініпрактика</p><h2>Перевірте себе <em>за 30 секунд</em></h2><p>Запишіть форму дієслова, не всю фразу. Наголоси не обов’язкові для перевірки, але в реальному письмі вони важливі.</p></div><div class="quiz-card"><small id="quizLabel">Форма</small><div class="quiz-prompt" id="quizPrompt"></div><div class="answer-row"><input id="quizAnswer" aria-label="Ваша відповідь" autocomplete="off"><button class="btn btn-primary" id="checkAnswer" type="button">Перевірити</button></div><p class="feedback" id="feedback"></p><button class="new-question" id="newQuestion" type="button">Інше запитання ↻</button></div></div></div>
     </section>
   </main>
 
-  <footer class="footer"><div class="footer-row" style="width:min(1180px,92vw);margin:auto"><div class="brand"><img src="espanol-ukrainskoyu-assets/logo-sin-fondo.png" alt=""><span>Español <b>українською</b><br><small>Інтерактивна граматична шпаргалка</small></span></div><span>Форми подані для стандартної сучасної іспанської.</span><button type="button" class="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Нагору</button></div></footer>
+  <footer class="footer"><div class="footer-row" style="width:min(1180px,92vw);margin:auto"><div class="brand"><img src="espanol-ukrainskoyu-assets/logo-sin-fondo.png" alt=""><span>Español <b>українською</b><br><small>MalinnaArtStudio · інтерактивна шпаргалка</small></span></div><nav class="footer-links" aria-label="Посилання"><a href="https://www.etsy.com/es/shop/EspanolUkrainskoyu" target="_blank" rel="noopener">Etsy-магазин</a><a href="https://www.instagram.com/malinnaartstudio" target="_blank" rel="noopener">Instagram</a></nav><button type="button" class="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Нагору</button></div><div class="footer-row" style="width:min(1180px,92vw);margin:1.6rem auto 0"><span>Форми подані для стандартної сучасної іспанської.</span></div></footer>
   <button type="button" class="fab" id="fab" aria-label="Нагору" title="Нагору">↑</button>
 
   <script>
@@ -261,7 +467,7 @@
       return t.forms[index];
     }
     const tenseGrid = document.querySelector('#tenseGrid'); const detail = document.querySelector('#detail'); let selectedFilter='all'; let selectedTense=null;
-    function cardHTML(t) { return `<article class="card tense-card" data-group="${t.group}" data-tid="${t.id}"><span class="tag ${t.group==='subjunctive'?'subj':t.group==='imperative'?'imp':t.group==='rare'?'rare':''}">${t.tag}</span><h3>${t.name}</h3><p>${t.use}</p><div class="example"><em>Приклад:</em> ${t.example}</div><button class="open-detail" data-id="${t.id}" type="button" aria-expanded="false" aria-controls="detail">Розгорнути форми ↓</button></article>`; }
+    function cardHTML(t) { return `<article class="card tense-card" data-group="${t.group}" data-tid="${t.id}"><span class="tag ${t.group==='subjunctive'?'subj':t.group==='imperative'?'imp':t.group==='rare'?'rare':''}">${t.tag}</span><h3>${t.name}</h3><p>${t.use}</p><div class="example">${(()=>{const k=t.example.indexOf(' — ');return k<0?`<span class="ex-es">${t.example}</span>`:`<span class="ex-es">${t.example.slice(0,k)}</span><span class="ex-uk">${t.example.slice(k+3)}</span>`;})()}</div><button class="open-detail" data-id="${t.id}" type="button" aria-expanded="false" aria-controls="detail">Розгорнути форми ↓</button></article>`; }
     // Додаткові слова для пошуку (укр. і ісп. назви груп), щоб працювали підказки «pasado», «futuro», «умовний»
     const searchKeys={present:'теперішній час presente',perfect:'минулий час pasado',imperfect:'минулий час pasado',indefinite:'минулий час pasado',pluperfect:'минулий час pasado передминулий',anterior:'минулий час pasado',future:'майбутній час futuro',
       'future-perfect':'майбутній час futuro','conditional':'умовний спосіб condicional','conditional-perfect':'умовний спосіб condicional минулий pasado',
