@@ -70,7 +70,7 @@
   .acc-body .pronouns{margin:.2rem 0 .9rem}.acc-body .pronoun-group h4{text-transform:none;letter-spacing:.02em;font-size:.8rem}@media(max-width:430px){.acc-body .pronouns{grid-template-columns:minmax(0,1fr)}}
   </style>
   <style id="theme">
-:root{--ink:#2b2226;--navy:#14213d;--rose:#c4184a;--rose-d:#9d1239;--pink:#f08aa8;--peach:#fbeee8;--paper:#fbf7f1;--sand:#f3eadf;--cream:#f7f0e6;--mint:#e8efe6;--line:#e6d9ca;--muted:#6f636a;--white:#fffdfa;--terra:#a9512b;--sea:#2f6a8a;--gold:#86620f;--dark:#2c2427;--shadow:0 18px 44px rgba(70,35,35,.13);--serif:Carlito,Calibri,'Segoe UI',system-ui,sans-serif;--sans:Carlito,Calibri,'Segoe UI',system-ui,sans-serif;--azulejo:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23c4184a' stroke-width='1.2'%3E%3Cpath d='M36 8 64 36 36 64 8 36Z'/%3E%3Cpath d='M36 22 50 36 36 50 22 36Z'/%3E%3Ccircle cx='36' cy='36' r='4'/%3E%3C/g%3E%3Cg fill='%23c4184a'%3E%3Ccircle cx='0' cy='0' r='3'/%3E%3Ccircle cx='72' cy='0' r='3'/%3E%3Ccircle cx='0' cy='72' r='3'/%3E%3Ccircle cx='72' cy='72' r='3'/%3E%3C/g%3E%3C/svg%3E")}
+:root{--ink:#2b2226;--navy:#14213d;--rose:#c4184a;--rose-d:#9d1239;--pink:#f08aa8;--peach:#fbeee8;--paper:#fbf7f1;--sand:#f3eadf;--cream:#f7f0e6;--mint:#e8efe6;--line:#e6d9ca;--muted:#6f636a;--white:#fffdfa;--terra:#a9512b;--sea:#2f6a8a;--gold:#86620f;--dark:#16294f;--shadow:0 18px 44px rgba(70,35,35,.13);--serif:Carlito,Calibri,'Segoe UI',system-ui,sans-serif;--sans:Carlito,Calibri,'Segoe UI',system-ui,sans-serif;--azulejo:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23c4184a' stroke-width='1.2'%3E%3Cpath d='M36 8 64 36 36 64 8 36Z'/%3E%3Cpath d='M36 22 50 36 36 50 22 36Z'/%3E%3Ccircle cx='36' cy='36' r='4'/%3E%3C/g%3E%3Cg fill='%23c4184a'%3E%3Ccircle cx='0' cy='0' r='3'/%3E%3Ccircle cx='72' cy='0' r='3'/%3E%3Ccircle cx='0' cy='72' r='3'/%3E%3Ccircle cx='72' cy='72' r='3'/%3E%3C/g%3E%3C/svg%3E")}
 body{font-family:var(--sans);font-size:1rem;line-height:1.65;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
 html{font-size:109%}
 main i{font-style:normal;color:var(--rose-d)}
@@ -238,17 +238,17 @@ main .kicker::before{counter-increment:sec;content:counter(sec,decimal-leading-z
 .practice .kicker::before{color:#f7f0e6}
 .practice h2{margin-bottom:.9rem;color:#fbf2e8;font-size:clamp(1.9rem,3.2vw,2.9rem)}
 .practice h2 em{color:#ff9bb7}
-.practice p{color:#dccfc8}
+.practice p{color:#d3dcf1}
 .quiz-card{padding:1.5rem;border:1px solid rgba(255,255,255,.14);border-radius:20px;background:rgba(255,248,240,.07)}
 .quiz-card small{font-size:.64rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#ff9bb7}
 .quiz-prompt{font-family:var(--serif);font-style:normal;font-size:1.55rem;font-weight:700;color:#fff}
 .answer-row input{border-radius:99px;padding:.8rem 1.1rem;background:#fffaf4}
 .answer-row .btn{padding:.75rem 1.1rem}
 .new-question{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:#ffadc5}
-.footer{margin-top:0;padding:3rem 0;border:0;background:var(--dark);color:#cdbfb8;font-size:.78rem}
+.footer{margin-top:0;padding:3rem 0;border:0;background:var(--dark);color:#c3cde6;font-size:.78rem}
 .footer .brand{min-width:0;max-width:100%;color:#fbf2e8}
 .footer .brand span{font-size:2.1rem}
-.footer .brand small{font-family:var(--sans);font-style:normal;font-stretch:100%;font-weight:700;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#a99a93}
+.footer .brand small{font-family:var(--sans);font-style:normal;font-stretch:100%;font-weight:700;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#8fa3cd}
 .footer .brand b{color:#ff9bb7}
 .footer-links{display:flex;gap:1.4rem}
 .footer-links a{color:#f1e4dc;font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(255,155,183,.6);padding-bottom:.15rem}
@@ -275,29 +275,29 @@ main .kicker::before{content:"";display:none}
 .practice-grid>div:first-child::after{color:rgba(255,255,255,.07);top:-.35em}
 @media (max-width:580px){h2{font-size:clamp(2.4rem,11vw,3.2rem)}.section-head::after,.practice-grid>div:first-child::after{font-size:6.2rem;top:-.4em}}
 @media print{.section-head::after,.practice-grid>div:first-child::after{display:none}}
-.courses{position:relative;overflow:hidden;margin-top:2rem;padding:clamp(4rem,8vw,6.5rem) 0;background:radial-gradient(80% 60% at 85% 0%,rgba(196,24,74,.34),transparent 60%),radial-gradient(60% 50% at 0% 100%,rgba(134,98,15,.22),transparent 60%),#2c2427;color:#f3e9e1}
+.courses{position:relative;overflow:hidden;margin-top:2rem;padding:clamp(4rem,8vw,6.5rem) 0;background:radial-gradient(75% 60% at 88% 0%,rgba(240,138,168,.32),transparent 62%),radial-gradient(70% 60% at 0% 100%,rgba(86,128,214,.34),transparent 62%),linear-gradient(180deg,#1c3768 0%,#13264e 100%);color:#e6ecfa}
 .courses-inner{position:relative;width:min(1080px,92vw);margin:0 auto}
 .cs-kicker{margin:0 0 1.1rem;color:#ff9bb7;font-size:.72rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase}
 .courses h2{margin:0 0 1.6rem;max-width:22ch;color:#fbf2e8;font-size:clamp(3rem,7vw,5.6rem);line-height:.98}
 .courses h2 em{color:#ff9bb7}
 .cs-lead{max-width:66ch;margin-bottom:2.6rem}
-.cs-lead p{margin:0 0 1rem;color:#dccfc7;font-size:1.06rem;line-height:1.7}
+.cs-lead p{margin:0 0 1rem;color:#d3dcf1;font-size:1.06rem;line-height:1.7}
 .cs-lead strong{color:#fff}
 .cs-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;margin-bottom:3.2rem}
-.cs-card{display:flex;flex-direction:column;padding:1.8rem 1.9rem;border:1px solid rgba(251,242,232,.2);border-radius:22px;background:rgba(255,255,255,.055);backdrop-filter:blur(4px);transition:border-color .2s,transform .2s,background .2s}
-.cs-card:hover{border-color:#ff9bb7;background:rgba(255,255,255,.08);transform:translateY(-3px)}
+.cs-card{display:flex;flex-direction:column;padding:1.8rem 1.9rem;border:1px solid rgba(200,215,245,.26);border-radius:22px;background:rgba(255,255,255,.07);backdrop-filter:blur(4px);transition:border-color .2s,transform .2s,background .2s}
+.cs-card:hover{border-color:#ff9bb7;background:rgba(255,255,255,.11);transform:translateY(-3px)}
 .cs-level{margin:0 0 .5rem;color:#ff9bb7;font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
 .cs-card h3{margin:0 0 .6rem;color:#fff;font-family:'Noto Serif Display',Georgia,serif;font-style:italic;font-stretch:62.5%;font-weight:400;font-size:clamp(2.2rem,3.6vw,3rem);line-height:1}
 .cs-meta{display:inline-block;align-self:flex-start;margin:0 0 1rem;padding:.28rem .8rem;border-radius:99px;background:rgba(196,24,74,.28);color:#ffd3df;font-size:.8rem;font-weight:700}
-.cs-card p:not(.cs-level):not(.cs-meta){margin:0 0 1.5rem;color:#d9ccc4;font-size:.98rem;line-height:1.6}
+.cs-card p:not(.cs-level):not(.cs-meta){margin:0 0 1.5rem;color:#cfd8ee;font-size:.98rem;line-height:1.6}
 .cs-link{margin-top:auto;color:#fff;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(255,155,183,.6);align-self:flex-start;padding-bottom:.15rem}
 .cs-link:hover,.cs-link:focus-visible{color:#ff9bb7}
 .cs-cta{display:flex;flex-direction:column;align-items:center;gap:1.1rem;text-align:center}
 .cs-cta-title{margin:0;color:#fbf2e8;font-family:'Noto Serif Display',Georgia,serif;font-style:italic;font-stretch:62.5%;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1}
 .cs-btn{display:inline-flex;align-items:center;justify-content:center;gap:.7rem;min-width:min(100%,360px);padding:1.15rem 2.4rem;border-radius:99px;background:var(--rose);color:#fff;font-size:1.02rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;box-shadow:0 14px 34px rgba(196,24,74,.45);transition:background .15s,transform .15s}
 .cs-btn:hover,.cs-btn:focus-visible{background:#dc2058;transform:translateY(-2px)}
-.cs-note{margin:0;color:#a99a93;font-size:.78rem}
-.footer{background:#1d1618;padding:2.2rem 0}
+.cs-note{margin:0;color:#8fa3cd;font-size:.78rem}
+.footer{background:#0f1d3d;padding:2.2rem 0}
 @media (max-width:760px){.cs-cards{grid-template-columns:minmax(0,1fr)}.cs-card{padding:1.5rem}.cs-btn{width:100%}}
 @media print{.courses{display:none}}
   </style>
@@ -387,7 +387,7 @@ main .kicker::before{content:"";display:none}
     </section>
   </main>
 
-  <section class="courses" id="courses" aria-labelledby="courses-title"><div class="courses-inner"><p class="cs-kicker">¿Cuál es el siguiente paso? · Cursos online</p><h2 id="courses-title">Ви знаєте правила.<br><em>Тепер час заговорити іспанською.</em></h2><div class="cs-lead"><p>Ви вже познайомилися з іспанськими часами та правилами їх використання. Але як застосовувати їх у розмові, не плутати закінчення й будувати власні речення?</p><p><strong>Саме для цього створені курси Español українською.</strong> Вивчайте іспанську крок за кроком: від перших слів до впевненішого спілкування. Зрозумілі пояснення українською, практичні вправи, корисна лексика та приклади з повсякденного життя допоможуть не просто зрозуміти граматику, а навчитися використовувати її на практиці.</p></div><div class="cs-cards"><article class="cs-card"><p class="cs-level">Nivel A1</p><h3>Почніть з основ</h3><p class="cs-meta">32 уроки</p><p>Для тих, хто починає вивчати іспанську або хоче систематизувати базові знання.</p><a class="cs-link" href="https://espanol-ukrayinskoiu.kwiga.com/ua" target="_blank" rel="noopener">Переглянути курс <span aria-hidden="true">→</span></a></article><article class="cs-card"><p class="cs-level">Nivel A2</p><h3>Рухайтеся далі</h3><p class="cs-meta">31 урок</p><p>Для тих, хто вже знає основи й хоче розширити словниковий запас, краще розуміти граматику та впевненіше спілкуватися.</p><a class="cs-link" href="https://espanol-ukrayinskoiu.kwiga.com/ua" target="_blank" rel="noopener">Переглянути курс <span aria-hidden="true">→</span></a></article></div><div class="cs-cta"><p class="cs-cta-title">Ваша іспанська починається тут.</p><a class="cs-btn" href="https://espanol-ukrayinskoiu.kwiga.com/ua" target="_blank" rel="noopener">Переглянути курси <span aria-hidden="true">→</span></a><p class="cs-note">Онлайн-навчання · Español українською · платформа Kwiga</p></div></div></section>
+  <section class="courses" id="courses" aria-labelledby="courses-title"><div class="courses-inner"><p class="cs-kicker">¿Cuál es el siguiente paso? · Cursos online</p><h2 id="courses-title">Ви знаєте правила.<br><em>Тепер час заговорити іспанською.</em></h2><div class="cs-lead"><p>Ви вже познайомилися з іспанськими часами та правилами їх використання. Але як застосовувати їх у розмові, не плутати закінчення й будувати власні речення?</p><p><strong>Саме для цього створені курси Español українською.</strong> Вивчайте іспанську крок за кроком: від перших слів до впевненішого спілкування. Зрозумілі пояснення українською, практичні вправи, корисна лексика та приклади з повсякденного життя допоможуть не просто зрозуміти граматику, а навчитися використовувати її на практиці.</p></div><div class="cs-cards"><article class="cs-card"><p class="cs-level">Nivel A1</p><h3>Почніть з основ</h3><p class="cs-meta">32 уроки</p><p>Для тих, хто починає вивчати іспанську або хоче систематизувати базові знання.</p><a class="cs-link" href="https://espanol-ukrayinskoiu.kwiga.com/courses/espanol-ukrayinskoiu-nivel-a1" target="_blank" rel="noopener">Переглянути курс <span aria-hidden="true">→</span></a></article><article class="cs-card"><p class="cs-level">Nivel A2</p><h3>Рухайтеся далі</h3><p class="cs-meta">31 урок</p><p>Для тих, хто вже знає основи й хоче розширити словниковий запас, краще розуміти граматику та впевненіше спілкуватися.</p><a class="cs-link" href="https://espanol-ukrayinskoiu.kwiga.com/courses/espanol-ukrayinskoiu-nivel-a2" target="_blank" rel="noopener">Переглянути курс <span aria-hidden="true">→</span></a></article></div><div class="cs-cta"><p class="cs-cta-title">Ваша іспанська починається тут.</p><a class="cs-btn" href="https://espanol-ukrayinskoiu.kwiga.com/ua" target="_blank" rel="noopener">Переглянути курси <span aria-hidden="true">→</span></a><p class="cs-note">Онлайн-навчання · Español українською · платформа Kwiga</p></div></div></section>
   <footer class="footer"><div class="footer-row" style="width:min(1180px,92vw);margin:auto"><div class="brand"><img src="espanol-ukrainskoyu-assets/logo-sin-fondo.png" alt=""><span>Español <b>українською</b><br><small>MalinnaArtStudio · інтерактивна шпаргалка</small></span></div><nav class="footer-links" aria-label="Посилання"><a href="https://www.etsy.com/es/shop/EspanolUkrainskoyu" target="_blank" rel="noopener">Etsy-магазин</a><a href="https://www.instagram.com/malinnaartstudio" target="_blank" rel="noopener">Instagram</a></nav><button type="button" class="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Нагору</button></div><div class="footer-row" style="width:min(1180px,92vw);margin:1.6rem auto 0"><span>Форми подані для стандартної сучасної іспанської.</span></div></footer>
   <button type="button" class="fab" id="fab" aria-label="Нагору" title="Нагору">↑</button>
 
